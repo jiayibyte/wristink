@@ -1,1 +1,2 @@
-module PreviewMode { const ENABLED=false; }
+module PreviewMode {
+    const DIAGNOSTIC=false; const ENABLED=false; }

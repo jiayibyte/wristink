@@ -1,0 +1,84 @@
+{
+  "page": "https://support.garmin.com/en-US/?faq=kArcrtjkiE55MEYli4FtK9",
+  "title": "Status Icons on the inReach Mini 2",
+  "icons": [
+    {
+      "name": "Sun",
+      "src": "https://atlaske-content.garmin.com/%2Fasset%2Fimages%2FinReach_Mini_2_Clear_Day_Time1648237210019.jpg",
+      "file": "official-00.jpg",
+      "sha256": "d7a4aa69191d72c1decf14a4ecfad882d8c956a19525c3d89f941e150c4b6979"
+    },
+    {
+      "name": "Moon",
+      "src": "https://atlaske-content.garmin.com/%2Fasset%2Fimages%2FinReach_Mini_2_Clear_Night_Time1648237223819.jpg",
+      "file": "official-01.jpg",
+      "sha256": "0064d0d0bd4ad36fdedb1a198f891c71645f5b21820a644e259fe606a9bb31b1"
+    },
+    {
+      "name": "Clouds",
+      "src": "https://atlaske-content.garmin.com/%2Fasset%2Fimages%2FinReach_Mini_2_Cloudy_Time1648237090024.jpg",
+      "file": "official-02.jpg",
+      "sha256": "7c6ebbd7143580d5a3cac52b5ffedc92a4a9c4b295f78efe1bd8a04186eab822"
+    },
+    {
+      "name": "Several Dashed Lines",
+      "src": "https://atlaske-content.garmin.com/%2Fasset%2Fimages%2FinReach_Mini_2_Foggy_Time1648237059912.jpg",
+      "file": "official-03.jpg",
+      "sha256": "ca1ab599b8863c34643c3f65baa115dfb7e0f4202503c3ed4e3662540fdfed63"
+    },
+    {
+      "name": "Cloud With Hail",
+      "src": "https://atlaske-content.garmin.com/%2Fasset%2Fimages%2FinReach_Mini_2_Hail_Time1648237033830.jpg",
+      "file": "official-04.jpg",
+      "sha256": "2eb6a3c5a863f4e2db7ad89130273def992b5aa93a0a2990a32804ca83c730b0"
+    },
+    {
+      "name": "Cloud and Sun",
+      "src": "https://atlaske-content.garmin.com/%2Fasset%2Fimages%2FinReach_Mini_2_Partly_Cloudy_Day_Time1648236996146.jpg",
+      "file": "official-05.jpg",
+      "sha256": "8c58f1115fade4ab5028c72a90efd0f80cc8c203b832be5024e31e045697661d"
+    },
+    {
+      "name": "Cloud and Moon",
+      "src": "https://atlaske-content.garmin.com/%2Fasset%2Fimages%2FinReach_Mini_2_Partly_Cloudy_Night_Time1648236977179.jpg",
+      "file": "official-06.jpg",
+      "sha256": "fef3b5251fece4856cb3cd8dc27998cd790dc5b7c531b8b524956be4dc8fd0b5"
+    },
+    {
+      "name": "Rain Cloud",
+      "src": "https://atlaske-content.garmin.com/%2Fasset%2Fimages%2FinReach_Mini_2_Rain_Time1648236961488.jpg",
+      "file": "official-07.jpg",
+      "sha256": "f40576f13615af17ece2aa59f71cf4e6106f8402e8089b1f1d4cc0731d0f9132"
+    },
+    {
+      "name": "Snow Cloud",
+      "src": "https://atlaske-content.garmin.com/%2Fasset%2Fimages%2FinReach_Mini_2_Snow_Time1648236949275.jpg",
+      "file": "official-08.jpg",
+      "sha256": "c6edd7c734036ac61abb2faebf1ed375f4c0a7a277e4b2f9641bbb97b88535c7"
+    },
+    {
+      "name": "Cloud and Lightning",
+      "src": "https://atlaske-content.garmin.com/%2Fasset%2Fimages%2FinReach_Mini_2_Thunderstorm_Time1648236935648.jpg",
+      "file": "official-09.jpg",
+      "sha256": "2cc370b28ac72528b2b9aa68f9d08cf8472d720bfa27c6dbfdd768e8678236d4"
+    },
+    {
+      "name": "Cloud With Question Mark",
+      "src": "https://atlaske-content.garmin.com/%2Fasset%2Fimages%2FinReach_Mini_2_Unknown_Time1648236920052.jpg",
+      "file": "official-10.jpg",
+      "sha256": "5315031200a6e90eed6bcc3ee41e5e7acb68d60a2ed845a9f099e633b3e62349"
+    },
+    {
+      "name": "Cloud with Wind",
+      "src": "https://atlaske-content.garmin.com/%2Fasset%2Fimages%2FinReach_Mini_2_Windy_or_Tornado_Time1648236900672.jpg",
+      "file": "official-11.jpg",
+      "sha256": "f599e45a4febd587b372216059290ec8fcb1ff4f152004dd2ec0ce5cc72dcfd1"
+    },
+    {
+      "name": "Snow and Sleet Cloud",
+      "src": "https://atlaske-content.garmin.com/%2Fasset%2Fimages%2FinReach_Mini_2_Sleet_Wintry_Mix_Time1648236886636.jpg",
+      "file": "official-12.jpg",
+      "sha256": "c34a632f820098289b398e6cdd8e0bdf4466683a489d816193c7cd1466cbe33f"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Original Retro World 1.2.14 native 176×176 dial, extracted from the local release archive source-project/resources/drawables/dial.png. Used to verify that 2.0 preserves the original layout outside the calibrated Instinct 3 circular window. This is a project-generated regression fixture, not an SDK framebuffer or firmware export.

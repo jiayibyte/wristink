@@ -42,7 +42,7 @@ module Environment {
                 temperature=24;condition=Weather.CONDITION_RAIN;latitude=39.90;longitude=116.40;source=2;
                 sunrise="06:04";sunset="17:18";return;
             }
-            var weather=Weather.getCurrentConditions();
+            var weather=(Weather has :getCurrentConditions) ? Weather.getCurrentConditions() : null;
             var goodWeather=weatherFresh(weather,stamp);
             temperature=goodWeather ? weather.temperature : null;condition=goodWeather ? weather.condition : null;
             // Read the last known fix. Never request or enable GPS location events.
@@ -57,7 +57,7 @@ module Environment {
         // Round only the cache key (~10 km), never the coordinates used in the calculation.
         var latKey=(latitude*10).toNumber();var lonKey=(longitude*10).toNumber();
         if(day!=_sunDay || latKey!=_sunLat || lonKey!=_sunLon) {
-            sunrise=timeText(Weather.getSunrise(_location,now));sunset=timeText(Weather.getSunset(_location,now));
+            sunrise=(Weather has :getSunrise) ? timeText(Weather.getSunrise(_location,now)) : "--:--";sunset=(Weather has :getSunset) ? timeText(Weather.getSunset(_location,now)) : "--:--";
             _sunDay=day;_sunLat=latKey;_sunLon=lonKey;sunCalculations++;
         }
     }

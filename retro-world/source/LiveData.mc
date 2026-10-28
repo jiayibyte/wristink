@@ -24,11 +24,11 @@ module LiveData {
     function daysText(days) {return days==null || days<0 ? "--" : days.format("%.1f");}
     function refreshHeart(stamp) {
         if(heartAt>=0 && stamp>=heartAt && stamp-heartAt<5) {return false;}
-        heartAt=stamp;
-        if(PreviewMode.ENABLED) {heart=76;return true;}
+        heartAt=stamp;var previous=heart;
+        if(PreviewMode.ENABLED) {heart=76;return previous!=heart;}
         var live=Activity.getActivityInfo().currentHeartRate;
         heart=heartValid(live) ? live : recentHeart(ActivityMonitor.getHeartRateHistory(1,true).next(),stamp);
-        return true;
+        return previous!=heart;
     }
     function refresh(stamp,settings) {
         refreshHeart(stamp);

@@ -20,6 +20,8 @@ Retro World 的陆地轮廓来自 [Natural Earth 1:110m land](https://github.com
 
 ## Garmin
 
+寰游时刻使用 Garmin 官方支持页公开的天气与日出日落符号，并在构建时适配为原生小尺寸位图。出处、原始文件哈希和适配过程分别保留在 `retro-world/assets/garmin-weather/` 与 `retro-world/assets/garmin-sun/`。这些是公开图形的适配，不是 Instinct 固件资源导出；其权利仍归 Garmin，不宣称获得开放源代码许可。新技能仅索引这些来源，不额外打包固件图标字体。
+
 墨刻还使用社区保存的 Garmin 图标资源；来源记录保留在 `moke/assets/icons/SOURCE.txt` 及同目录的参考 JSON 中。原镜像没有附带许可证声明，这些图标不属于上文的 OFL 字体资源，不能据此认定获得了相同的再授权。
 
 Garmin、Instinct 和 Connect IQ 是其各自权利人的商标。仓库不分发 Garmin SDK；开发者需自行安装。项目为独立实现，与 Garmin 无隶属关系。
