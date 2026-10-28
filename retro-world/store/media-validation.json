@@ -1,0 +1,125 @@
+{
+  "screenshots": [
+    {
+      "source": "instinct3-active.png",
+      "source_sha256": "b388ac692072d7c1879c0b16408f6fbdb2817f7158c7a2a02ed1c87a4e733b61",
+      "file": "mip-zh.png",
+      "bytes": 15696,
+      "source_size": [
+        176,
+        176
+      ],
+      "display_size": [
+        352,
+        352
+      ]
+    },
+    {
+      "source": "instinct3-active.png",
+      "source_sha256": "b388ac692072d7c1879c0b16408f6fbdb2817f7158c7a2a02ed1c87a4e733b61",
+      "file": "mip-en.png",
+      "bytes": 13611,
+      "source_size": [
+        176,
+        176
+      ],
+      "display_size": [
+        352,
+        352
+      ]
+    },
+    {
+      "source": "venu3-active.png",
+      "source_sha256": "b896d2817b109c87a3e8eb143525825a334976231e3281630b54edc26f4b668a",
+      "file": "amoled-zh.png",
+      "bytes": 75151,
+      "source_size": [
+        454,
+        454
+      ],
+      "display_size": [
+        404,
+        404
+      ]
+    },
+    {
+      "source": "venu3-active.png",
+      "source_sha256": "b896d2817b109c87a3e8eb143525825a334976231e3281630b54edc26f4b668a",
+      "file": "amoled-en.png",
+      "bytes": 72210,
+      "source_size": [
+        454,
+        454
+      ],
+      "display_size": [
+        404,
+        404
+      ]
+    },
+    {
+      "source": "venusq2-active.png",
+      "source_sha256": "2cd93b16b042d47acd165d61528214ac501ea6c28dff93e765b0eb1e1d5a1e2b",
+      "file": "rectangle-zh.png",
+      "bytes": 79114,
+      "source_size": [
+        320,
+        360
+      ],
+      "display_size": [
+        359,
+        404
+      ]
+    },
+    {
+      "source": "venusq2-active.png",
+      "source_sha256": "2cd93b16b042d47acd165d61528214ac501ea6c28dff93e765b0eb1e1d5a1e2b",
+      "file": "rectangle-en.png",
+      "bytes": 77071,
+      "source_size": [
+        320,
+        360
+      ],
+      "display_size": [
+        359,
+        404
+      ]
+    },
+    {
+      "source": "venu3-aod.png",
+      "source_sha256": "e493840b23e543df9416a1f97cfcf17637a91295e51586bd97dd6a39c234b29a",
+      "file": "aod-zh.png",
+      "bytes": 26522,
+      "source_size": [
+        454,
+        454
+      ],
+      "display_size": [
+        404,
+        404
+      ]
+    },
+    {
+      "source": "venu3-aod.png",
+      "source_sha256": "e493840b23e543df9416a1f97cfcf17637a91295e51586bd97dd6a39c234b29a",
+      "file": "aod-en.png",
+      "bytes": 24471,
+      "source_size": [
+        454,
+        454
+      ],
+      "display_size": [
+        404,
+        404
+      ]
+    }
+  ],
+  "artwork": "Actual SDK captures framed with text; no Garmin casing or logo",
+  "cover": [
+    500,
+    500
+  ],
+  "hero": [
+    1440,
+    720
+  ]
+}

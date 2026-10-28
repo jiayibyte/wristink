@@ -1,0 +1,6 @@
+2.0.0
+Native layouts and resources for multiple screen sizes and watch families, preserving the retro typography and Instinct sub-screen placement.
+New AMOLED colours and a dim always-on display with minute-based movement and pixel rest.
+Reusable map calculations, fewer unchanged heart-rate redraws, reduced bitmap palettes, and graphics-cache recovery.
+Retains 16 automatic map skins, weather-dependent icons, the centred sunrise/sunset row, and aligned STEP/KCAL labels.
+Unavailable data remains a placeholder rather than an invented reading.

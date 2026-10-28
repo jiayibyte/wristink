@@ -1,0 +1,23 @@
+Retro World · Map Watch Face
+
+A compact instrument-style face with a world map, bold retro time, and everyday watch data.
+
+• Original seven-segment digits and an analog sub-dial, with 12/24-hour time.
+• 16 world-map skins selected from local weather, daylight, dawn and dusk. The global day/night shading moves gradually with time.
+• A small marker shows an approximate location from an existing fix or fresh system-weather location. The face does not start GPS.
+• Heart rate, steps, calories, elevation, daily distance, and the watch's estimated remaining battery days.
+• Weather-dependent icons, day/night variants for clear and partly cloudy conditions, plus sunrise and sunset times.
+• Classic monochrome on MIP displays. Warm ivory panels, a teal map and amber accents on AMOLED displays.
+• Digital seconds and the second hand update only while the face is awake. AMOLED always-on mode uses dim outline time, minute-based movement and a rotating pixel-rest mask.
+
+Data and compatibility
+Use current watch firmware and keep Garmin Connect synchronized. Available data varies by device. Missing values show “--”; the live app never substitutes demonstration data. Battery days use the system estimate and display “--D” when unavailable. Units are Celsius, kilometres and metres. The watch face retains its retro English abbreviations; store information is available in English and Simplified Chinese.
+
+The low-resolution world map and location marker are illustrative, not navigation tools. Weather textures reflect local conditions, not global weather observations.
+
+Privacy and power
+No developer server, advertising, analytics SDK, or custom weather requests. No continuous GPS or additional sensor subscription. Map and environment data are cached. Always-on mode does not update weather, the map or health metrics. Battery use varies with the watch, display settings and usage.
+
+This is a free, independently developed watch face, not an official Garmin product. Store images contain simulated example data. The store's Compatible Devices list is the definitive device list.
+
+Support: cherryeveli@gmail.com

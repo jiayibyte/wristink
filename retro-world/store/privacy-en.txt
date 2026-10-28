@@ -1,0 +1,12 @@
+Retro World Privacy Notice
+Effective: 28 October 2026
+Developer: cherryeveli
+Contact: cherryeveli@gmail.com
+
+The face reads time, system state, daily activity totals, heart-rate and elevation records, cached system weather, an existing location record, and sunrise/sunset times locally on the watch for display and map calculations.
+
+It does not start GPS or continuously subscribe to sensors. There is no developer server, account sign-in, advertising, analytics SDK, or custom network request. The developer does not receive, upload, sell, or share your health, activity or location data. Garmin applications, weather services and synchronization are governed by Garmin's own privacy policies.
+
+Runtime caches stay in watch memory. The release program does not emit health or location logs. Store captures and diagnostic programs use labelled example data; diagnostic programs are not included in the store installation package.
+
+If you contact support, the developer receives only the information you choose to send. Do not send passwords, verification codes, or unnecessary health or location information.

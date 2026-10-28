@@ -8,6 +8,7 @@ import json
 import math
 import shutil
 from retro_style import digit as retro_digit, text as retro_text, fonts as retro_fonts, weather_glyph
+from garmin_weather import icon as garmin_icon, generate as generate_weather, COARSE
 from map_skins import NAMES as SKIN_NAMES, bitmap as skin_bitmap, select as select_skin
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -60,43 +61,40 @@ def phased_world(utc_hour=8,day_of_year=301,skin=0):
     return im
 
 def weather_icon(kind,size=11):
-    im=Image.new('1',(size,size),1)
-    class IconDraw:
-        def __init__(self):self.draw=ImageDraw.Draw(im)
-        def coords(self,values):return tuple(round(v*(size-1)/10) for v in values)
-        def line(self,values,**kw):self.draw.line(self.coords(values),**kw)
-        def ellipse(self,values,**kw):self.draw.ellipse(self.coords(values),**kw)
-    d=IconDraw()
-    if kind==1:
-        d.ellipse((3,3,7,7),outline=0)
-        for line in ((5,0,5,1),(5,9,5,10),(0,5,1,5),(9,5,10,5),(1,1,2,2),(8,8,9,9),(8,2,9,1),(1,9,2,8)):d.line(line,fill=0)
-    elif kind in (2,3,4,5):
-        d.ellipse((1,3,6,7),fill=1,outline=0);d.ellipse((4,1,9,7),fill=1,outline=0)
-        d.line((2,7,9,7),fill=0)
-        if kind==3:d.line((3,9,2,10),fill=0);d.line((8,9,7,10),fill=0)
-        if kind==4:d.line((1,9,3,9),fill=0);d.line((2,8,2,10),fill=0);d.line((7,9,9,9),fill=0);d.line((8,8,8,10),fill=0)
-        if kind==5:d.line((6,7,4,9,7,9,5,10),fill=0)
-    elif kind==6:
-        for y,ends in ((2,(1,9)),(5,(0,10)),(8,(2,8))):d.line((ends[0],y,ends[1],y),fill=0)
-    elif kind==7:
-        d.line((0,3,8,3,9,2,8,1,7,1),fill=0);d.line((1,6,9,6),fill=0);d.line((0,9,7,9,8,8),fill=0)
-    return im
+    return garmin_icon(COARSE[kind],size)
 
-def sun_icon(im,x,y,rising,color=1):
-    d=ImageDraw.Draw(im)
-    d.arc((x+2,y+4,x+8,y+10),180,360,fill=color)
-    d.line((x,y+8,x+10,y+8),fill=color)
-    if rising:
-        d.line((x+5,y,x+5,y+4),fill=color);d.line((x+3,y+2,x+5,y,x+7,y+2),fill=color)
-    else:
-        d.line((x+5,y,x+5,y+4),fill=color);d.line((x+3,y+2,x+5,y+4,x+7,y+2),fill=color)
+@lru_cache()
+def sun_mask():
+    # Garmin-published filled sun/horizon symbol; one shared icon between times,
+    # matching the native Instinct paired sunrise/sunset field. Build time only.
+    source=ROOT/'assets/garmin-sun/official-sunrise-sunset.png'
+    import hashlib
+    metadata=json.loads((source.parent/'source.json').read_text())
+    assert hashlib.sha256(source.read_bytes()).hexdigest()==metadata['sha256']
+    # Native-pixel tracing of the official six separate ink components.
+    # Uniform downsampling joins the rays to the sun at this size; preserve
+    # a full pixel of negative space instead of changing the official silhouette.
+    rows=["......#......", "..#...#...#..", "...#.....#...", ".............",
+          ".....###.....", "....#####....", "...#######...", "##.#######.##"]
+    mask=Image.new('1',(13,8),0)
+    for y,row in enumerate(rows):
+        for x,pixel in enumerate(row):
+            if pixel=='#':mask.putpixel((x,y),1)
+    return mask
 
-def circle_face():
+def sun_icon(im,x,y,color=1):
+    im.paste(color,(x,y),sun_mask())
+
+def circle_face(inset=0):
     im=Image.new('1',(63,63),0);d=ImageDraw.Draw(im)
     # Restore the substantial instrument-dial character, fitted inside the
     # physical 62px aperture rather than doubling the edge on its outer boundary.
-    d.ellipse((-1,-1,63,63),fill=1)
-    d.ellipse((1,1,60,60),outline=0)
+    if inset:
+        d.ellipse((inset,inset,62-inset,62-inset),fill=1)
+        d.ellipse((inset+1,inset+1,61-inset,61-inset),outline=0)
+    else:
+        d.ellipse((-1,-1,63,63),fill=1)
+        d.ellipse((1,1,60,60),outline=0)
     for i in range(60):
         a=math.radians(i*6-90)
         inner=25 if i%5==0 else 27
@@ -118,7 +116,7 @@ def base():
     d.rounded_rectangle((10,106,165,150),radius=5,outline=1);d.rounded_rectangle((13,109,162,147),radius=3,fill=1)
     d.rounded_rectangle((79,90,165,110),radius=4,outline=1);d.rounded_rectangle((82,93,162,112),radius=2,fill=1)
     d.rectangle((82,105,161,112),fill=1);d.line((83,108,161,108),fill=0);d.line((119,94,119,107),fill=0)
-    sun_icon(im,44,163,True);sun_icon(im,97,163,False)
+    sun_icon(im,82,163)
     return im
 
 def marker(im,lat,lon):
@@ -142,10 +140,10 @@ def render(hour=22,minute=8,second=36,day=30,month=6,dow='SUN',mode24=False,weat
         a=math.radians(a-90);d.line((144,31,144+int(r*math.cos(a)),31+int(r*math.sin(a))),fill=0,width=w)
     d.ellipse((142,29,146,33),fill=0)
     text(im,67,6,'HR 76',1,size=16,center=True);text(im,63,21,'BAT 24.3D',1,center=True)
-    text(im,58,33,'STEP 8608',center=True);text(im,59,43,'KCAL 1688',center=True)
+    text(im,42,33,'STEP 8608');text(im,42,43,'KCAL 1688')
     text(im,45,98,'ALT 128M',1,center=True);text(im,88,154,'DIST 6.42KM',1,center=True)
     # Match the native centered 31px time cells, not left-aligned preview labels.
-    text(im,63,164,'06:04',1);text(im,116,164,'17:18',1)
+    text(im,55,164,'06:04',1);text(im,105,164,'17:18',1)
     im.paste(weather_icon(weather,9),(129,76))
     for i,c in enumerate('24C'):im.paste(0,(143+i*6,77),weather_glyph(c))
     if location:marker(im,39.9,116.4)
@@ -184,12 +182,7 @@ def main():
     letters=Image.new('1',(26*6,10),1)
     for i,c in enumerate('ABCDEFGHIJKLMNOPQRSTUVWXYZ'):retro_text(letters,i*6,0,c,sy=2)
     letters.save(OUT/'letters.png')
-    weather=Image.new('1',(8*11,11),1)
-    for kind in range(8):weather.paste(weather_icon(kind),(kind*11,0))
-    weather.save(OUT/'weather.png')
-    small_weather=Image.new('1',(8*9,9),1)
-    for kind in range(8):small_weather.paste(weather_icon(kind,9),(kind*9,0))
-    small_weather.save(OUT/'weather-small.png')
+    generate_weather(OUT,dist)
     render().resize((62,62),Image.Resampling.NEAREST).save(OUT/'icon.png')
     entries=[('Dial','dial'),('Circle','circle'),('Map','map'),('MapNight','map-night'),('Weather','weather'),('WeatherSmall','weather-small'),('Large','large'),('Date','date'),('Letters','letters'),('Weekdays','weekdays'),('LauncherIcon','icon')]+[(f'Sec{n}',f'second-{n}') for n in range(10)]
     entries += [(f'MapSkin{s}{"Night" if n else "Day"}',f'map-skin-{s}-{n}') for s in range(len(SKIN_NAMES)) for n in (0,1)]

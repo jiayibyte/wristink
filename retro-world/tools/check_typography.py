@@ -32,7 +32,7 @@ def main():
     rows=[]
     with zipfile.ZipFile(BASELINE) as z:
         unchanged=['resources/fonts/'+n for n in ('tiny.png','tiny.fnt','medium.png','medium.fnt')]
-        unchanged+=['resources/drawables/'+n for n in ('letters.png','weekdays.png','weather.png')]
+        unchanged+=['resources/drawables/'+n for n in ('letters.png','weekdays.png')]
         for name in unchanged:assert (ROOT/name).read_bytes()==z.read('source-project/'+name),name
         for name,w,h in [('large.png',22,35),('date.png',8,13)]+[(f'second-{n}.png',13,24) for n in range(10)]:
             old=Image.open(io.BytesIO(z.read('source-project/resources/drawables/'+name)))

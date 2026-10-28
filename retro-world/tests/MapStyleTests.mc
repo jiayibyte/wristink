@@ -7,7 +7,7 @@ import Toybox.WatchUi;
 
 (:test)
 function allSkinResourcesRenderWithoutKeepingTheWholeLibraryInMemory(logger) {
-    var buffer=Graphics.createBufferedBitmap({:width=>89,:height=>29}).get();var dc=buffer.getDc();
+    var buffer=DeviceDrawing.buffer(89,29,DeviceProfile.SCALE);var dc=DeviceDrawing.resolve(buffer).getDc();
     for(var skin=0;skin<MapStyle.COUNT;skin++) {
         var day=WatchUi.loadResource(MapSkinResources.get(skin,false));dc.drawBitmap(0,0,day);day=null;
         var night=WatchUi.loadResource(MapSkinResources.get(skin,true));dc.drawBitmap(0,0,night);night=null;

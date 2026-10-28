@@ -8,19 +8,19 @@ import Toybox.WatchUi;
 module SolarMap {
     var _sin as Array<Float> = [];var _cos as Array<Float> = [];
     var _lonSin as Array<Float> = [];var _lonCos as Array<Float> = [];
-    var _map;var _night;var _buffer;var _slot=-1;var _markerX=-2;var _markerY=-2;var _weatherKind=-1;var builds=0;var skin=-1;
+    var _hours as Array<Float> = [];var _map;var _night;var _buffer;var _slot=-1;var _markerX=-2;var _markerY=-2;var _weatherKind=-1;var builds=0;var skin=-1;
     function initialize() {
-        _sin=[];_cos=[];_lonSin=[];_lonCos=[];
+        _sin=[];_cos=[];_lonSin=[];_lonCos=[];_hours=[];
         for(var row=0;row<29;row++) {
             var lat=(90-row*180/28.0)*Math.PI/180;
             _sin.add(Math.sin(lat));_cos.add(Math.cos(lat));
         }
         for(var x=0;x<89;x++) {
             var lon=(-180+x*360/88.0)*Math.PI/180;
-            _lonSin.add(Math.sin(lon));_lonCos.add(Math.cos(lon));
+            _lonSin.add(Math.sin(lon));_lonCos.add(Math.cos(lon));_hours.add(0.0);
         }
         _map=null;_night=null;skin=-1;_weatherKind=-1;
-        _buffer=Graphics.createBufferedBitmap({:width=>89,:height=>29}).get();_slot=-1;_markerX=-2;_markerY=-2;
+        _buffer=DeviceDrawing.buffer(89,29,DeviceProfile.SCALE);_slot=-1;_markerX=-2;_markerY=-2;
     }
     function dayOfYear(year,month,day) {
         var lengths=[31,28,31,30,31,30,31,31,30,31,30,31];
@@ -47,16 +47,18 @@ module SolarMap {
         var declination=23.44*Math.sin((day-80)*2*Math.PI/365.2422)*Math.PI/180;
         var sunLon=subsolarLongitude(d.hour*3600+d.min*60+d.sec);
         var sd=Math.sin(declination);var cd=Math.cos(declination);
-        var a=sunLon*Math.PI/180;var cs=Math.cos(a);var sn=Math.sin(a);var hours=[];
-        for(var x=0;x<89;x++) {hours.add(_lonCos[x]*cs+_lonSin[x]*sn);}
+        var a=sunLon*Math.PI/180;var cs=Math.cos(a);var sn=Math.sin(a);
+        for(var x=0;x<89;x++) {_hours[x]=_lonCos[x]*cs+_lonSin[x]*sn;}
         // Copy only night spans from the prebaked stippled bitmap. No per-pixel
         // drawing/trigonometry and no animation work from a seconds callback.
         for(var y=0;y<29;y++) {
             var vertical=_sin[y]*sd;var horizontal=_cos[y]*cd;
             var threshold=horizontal.abs()<0.000001 ? (vertical>=0 ? -2.0 : 2.0) : -vertical/horizontal;
-            var runs=nightRuns(threshold,hours);
-            for(var i=0;i<runs.size();i++) {
-                dc.setClip(runs[i][0],y,runs[i][1],1);dc.drawBitmap(0,0,_night);
+            var start=-1;
+            for(var x=0;x<=89;x++) {
+                var dark=x<89 && _hours[x]<threshold;
+                if(dark && start<0) {start=x;}
+                if(!dark && start>=0) {dc.setClip(start,y,x-start,1);dc.drawBitmap(0,0,_night);start=-1;}
             }
         }
         dc.clearClip();
@@ -74,17 +76,19 @@ module SolarMap {
         var p=Environment.latitude!=null && Environment.longitude!=null ? project(Environment.latitude,Environment.longitude) : null;
         var mx=p==null ? -1 : p[0];var my=p==null ? -1 : p[1];
         var kind=Environment.category(Environment.condition);
-        if(slot!=_slot || mx!=_markerX || my!=_markerY || kind!=_weatherKind) {
+        var buffer=DeviceDrawing.resolve(_buffer);
+        var lost=DeviceProfile.COLOR && (buffer has :isCached) && !buffer.isCached();
+        if(lost || slot!=_slot || mx!=_markerX || my!=_markerY || kind!=_weatherKind) {
             var selected=MapStyle.forMoment(now);
             if(selected!=skin) {
                 _map=null;_night=null;
                 _map=WatchUi.loadResource(MapSkinResources.get(selected,false));
                 _night=WatchUi.loadResource(MapSkinResources.get(selected,true));skin=selected;
             }
-            var bdc=_buffer.getDc();bdc.clearClip();bdc.drawBitmap(0,0,_map);shadeNight(bdc,now);
+            var bdc=DeviceDrawing.cache(buffer.getDc(),false);bdc.clearClip();bdc.drawBitmap(0,0,_map);shadeNight(bdc,now);
             if(Environment.latitude!=null && Environment.longitude!=null) {marker(bdc,Environment.latitude,Environment.longitude);}
             _slot=slot;_markerX=mx;_markerY=my;_weatherKind=kind;builds++;
         }
-        dc.setClip(17,56,89,29);dc.drawBitmap(17,56,_buffer);dc.clearClip();
+        DeviceDrawing.sprite(dc,buffer,0,17,56,89,29,1);
     }
 }
