@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='utf-8'?>
+<strings>
+  <string id="AppName">Moke</string>
+  <string id="LocaleEnglish">true</string>
+  <string id="MenuOn">On</string>
+  <string id="MenuOff">Off</string>
+  <string id="MenuAuto">Auto / system</string>
+  <string id="MenuNext">Next page</string>
+  <string id="MenuPrevious">Previous page</string>
+  <string id="MenuResetGroup">Reset this section</string>
+  <string id="MenuSelected">Selected</string>
+  <string id="MenuTitle">Customize face</string>
+  <string id="MenuResetAll">Reset all settings</string>
+  <string id="Setting_darkTheme" scope="settings">Appearance · Dark background</string>
+  <string id="Setting_showIcons" scope="settings">Appearance · Show data icons</string>
+  <string id="Setting_showUnits" scope="settings">Appearance · Show units</string>
+  <string id="Setting_linkFooterFonts" scope="settings">Appearance · Link footer text sizes</string>
+  <string id="Setting_dataFont" scope="settings">Appearance · Global data font</string>
+  <string id="Option_0" scope="settings">Clean</string>
+  <string id="Option_1" scope="settings">Bold</string>
+  <string id="Option_2" scope="settings">Condensed</string>
+  <string id="Setting_dataSize" scope="settings">Appearance · Global data size</string>
+  <string id="Option_3" scope="settings">Small</string>
+  <string id="Option_4" scope="settings">Standard</string>
+  <string id="Option_5" scope="settings">Large</string>
+  <string id="Setting_temperatureUnit" scope="settings">Appearance · Temperature unit</string>
+  <string id="Option_6" scope="settings">Celsius</string>
+  <string id="Option_7" scope="settings">Fahrenheit</string>
+  <string id="Setting_distanceUnit" scope="settings">Appearance · Distance unit</string>
+  <string id="Option_8" scope="settings">Kilometers</string>
+  <string id="Option_9" scope="settings">Miles</string>
+  <string id="Setting_altitudeUnit" scope="settings">Appearance · Altitude unit</string>
+  <string id="Option_10" scope="settings">Meters</string>
+  <string id="Option_11" scope="settings">Feet</string>
+  <string id="Setting_powerProfile" scope="settings">Appearance · Refresh policy</string>
+  <string id="Option_12" scope="settings">Power saving (chart 5 min / weather 30 min)</string>
+  <string id="Option_13" scope="settings">Standard (chart 1 min / weather 5 min)</string>
+  <string id="Setting_analogHandMode" scope="settings">Appearance · Analog hand clearance (Crossover only)</string>
+  <string id="Option_14" scope="settings">System timekeeping (power saving)</string>
+  <string id="Option_15" scope="settings">Horizontal while awake</string>
+  <string id="Option_16" scope="settings">Horizontal while face is visible</string>
+  <string id="Setting_showTime" scope="settings">Time and seconds · Show large time</string>
+  <string id="Setting_showSeconds" scope="settings">Time and seconds · Show seconds</string>
+  <string id="Setting_leadingZero" scope="settings">Time and seconds · Leading zero</string>
+  <string id="Setting_timeFormat" scope="settings">Time and seconds · Time format</string>
+  <string id="Option_17" scope="settings">24-hour</string>
+  <string id="Option_18" scope="settings">12-hour (AM/PM)</string>
+  <string id="Setting_timeSeparator" scope="settings">Time and seconds · Time separator</string>
+  <string id="Option_19" scope="settings">Colon</string>
+  <string id="Option_20" scope="settings">Dot</string>
+  <string id="Option_21" scope="settings">Space</string>
+  <string id="Setting_secondsMode" scope="settings">Time and seconds · Seconds refresh</string>
+  <string id="Option_22" scope="settings">Automatic with cards</string>
+  <string id="Option_23" scope="settings">Only while awake</string>
+  <string id="Option_24" scope="settings">Always (higher battery use)</string>
+  <string id="Option_25" scope="settings">Off (lowest battery use)</string>
+  <string id="Setting_timeFont" scope="settings">Time and seconds · Time font</string>
+  <string id="Option_26" scope="settings">Current numerals</string>
+  <string id="Option_27" scope="settings">Narrow numerals</string>
+  <string id="Setting_timeSize" scope="settings">Time and seconds · Time size</string>
+  <string id="Setting_secondsFont" scope="settings">Time and seconds · Seconds font</string>
+  <string id="Setting_secondsSize" scope="settings">Time and seconds · Seconds size</string>
+  <string id="Setting_showDate" scope="settings">Date and status · Show date</string>
+  <string id="Setting_dateFormat" scope="settings">Date and status · Date format</string>
+  <string id="Option_28" scope="settings">10/19 Mon</string>
+  <string id="Option_29" scope="settings">10/19</string>
+  <string id="Option_30" scope="settings">2026/10/19</string>
+  <string id="Option_31" scope="settings">10-19 Mon</string>
+  <string id="Option_32" scope="settings">Mon 10/19</string>
+  <string id="Option_33" scope="settings">10/19</string>
+  <string id="Option_34" scope="settings">2026-10-19</string>
+  <string id="Option_35" scope="settings">10/19 Mon</string>
+  <string id="Setting_dateFont" scope="settings">Date and status · Date font</string>
+  <string id="Option_36" scope="settings">Use global</string>
+  <string id="Setting_dateSize" scope="settings">Date and status · Date size</string>
+  <string id="Setting_showMoveBar" scope="settings">Date and status · Show activity indicator</string>
+  <string id="Setting_moveSource" scope="settings">Date and status · Activity indicator data</string>
+  <string id="Option_37" scope="settings">Hidden</string>
+  <string id="Option_38" scope="settings">Body Battery</string>
+  <string id="Option_39" scope="settings">Battery %</string>
+  <string id="Option_40" scope="settings">Step goal</string>
+  <string id="Option_41" scope="settings">Daily intensity (weekly goal / 7)</string>
+  <string id="Option_42" scope="settings">Weekly intensity goal</string>
+  <string id="Option_43" scope="settings">Move alert level</string>
+  <string id="Option_44" scope="settings">Floor goal</string>
+  <string id="Setting_moveStyle" scope="settings">Date and status · Activity indicator style</string>
+  <string id="Option_45" scope="settings">Person and segments</string>
+  <string id="Option_46" scope="settings">Thin progress line</string>
+  <string id="Option_47" scope="settings">Percentage</string>
+  <string id="Setting_moveFont" scope="settings">Date and status · Activity percentage font</string>
+  <string id="Setting_showWind" scope="settings">Date and status · Show direction arrow</string>
+  <string id="Setting_showMoon" scope="settings">Date and status · Show moon phase</string>
+  <string id="Setting_showCircle" scope="settings">Upper-right window · Show entire window</string>
+  <string id="Setting_heartRefresh" scope="settings">Upper-right window · Center heart rate refresh</string>
+  <string id="Option_48" scope="settings">Read current heart rate every 5 seconds</string>
+  <string id="Option_49" scope="settings">Every 5 seconds while awake</string>
+  <string id="Option_50" scope="settings">Every minute (power saving)</string>
+  <string id="Setting_heartSource" scope="settings">Upper-right window · Heart rate source</string>
+  <string id="Option_51" scope="settings">System current heart rate</string>
+  <string id="Option_52" scope="settings">Latest system sample (up to 3 min old)</string>
+  <string id="Setting_circle" scope="settings">Upper-right window · Center data</string>
+  <string id="Option_53" scope="settings">Steps</string>
+  <string id="Option_54" scope="settings">Distance</string>
+  <string id="Option_55" scope="settings">Floors climbed</string>
+  <string id="Option_56" scope="settings">Calories</string>
+  <string id="Option_57" scope="settings">Heart rate</string>
+  <string id="Option_58" scope="settings">Temperature</string>
+  <string id="Option_59" scope="settings">Sunset</string>
+  <string id="Option_60" scope="settings">Sunrise</string>
+  <string id="Option_61" scope="settings">Humidity</string>
+  <string id="Option_62" scope="settings">Notifications</string>
+  <string id="Option_63" scope="settings">Step goal %</string>
+  <string id="Option_64" scope="settings">Wind speed</string>
+  <string id="Option_65" scope="settings">Moon illumination %</string>
+  <string id="Option_66" scope="settings">Heart rate range</string>
+  <string id="Option_67" scope="settings">Feels like</string>
+  <string id="Option_68" scope="settings">Battery days</string>
+  <string id="Option_69" scope="settings">Altitude</string>
+  <string id="Option_70" scope="settings">Intensity minutes today</string>
+  <string id="Option_71" scope="settings">Intensity minutes this week</string>
+  <string id="Option_72" scope="settings">Daily intensity %</string>
+  <string id="Option_73" scope="settings">Weekly intensity %</string>
+  <string id="Option_74" scope="settings">Recovery time</string>
+  <string id="Option_75" scope="settings">Stress</string>
+  <string id="Option_76" scope="settings">Respiration rate</string>
+  <string id="Option_77" scope="settings">Air pressure</string>
+  <string id="Setting_circleStyle" scope="settings">Upper-right window · Center display style</string>
+  <string id="Option_78" scope="settings">Icon and value</string>
+  <string id="Option_79" scope="settings">Value only</string>
+  <string id="Option_80" scope="settings">Value and goal</string>
+  <string id="Setting_circleGoal" scope="settings">Upper-right window · Center custom goal (0 = auto)</string>
+  <string id="Setting_circleFont" scope="settings">Upper-right window · Center font</string>
+  <string id="Setting_circleSize" scope="settings">Upper-right window · Center size</string>
+  <string id="Setting_showCircleIcon" scope="settings">Upper-right window · Show center icon</string>
+  <string id="Setting_circleBackground" scope="settings">Upper-right window · Window background</string>
+  <string id="Option_81" scope="settings">Black</string>
+  <string id="Option_82" scope="settings">White</string>
+  <string id="Option_83" scope="settings">Use overall background</string>
+  <string id="Setting_cellsSource" scope="settings">Upper-right window · Inner segment data</string>
+  <string id="Setting_cellsStyle" scope="settings">Upper-right window · Inner segment style</string>
+  <string id="Option_84" scope="settings">Textured sectors</string>
+  <string id="Option_85" scope="settings">Solid sectors</string>
+  <string id="Option_86" scope="settings">Continuous inner ring</string>
+  <string id="Setting_ringSource" scope="settings">Upper-right window · Outer ring data</string>
+  <string id="Setting_ringStyle" scope="settings">Upper-right window · Outer ring style</string>
+  <string id="Option_87" scope="settings">Thin</string>
+  <string id="Option_88" scope="settings">Standard</string>
+  <string id="Option_89" scope="settings">Thick</string>
+  <string id="Option_90" scope="settings">Eight segments</string>
+  <string id="Setting_ringStart" scope="settings">Upper-right window · Outer ring start</string>
+  <string id="Option_91" scope="settings">Top</string>
+  <string id="Option_92" scope="settings">Right</string>
+  <string id="Option_93" scope="settings">Bottom</string>
+  <string id="Option_94" scope="settings">Left</string>
+  <string id="Setting_showStatus" scope="settings">Side cards and data · Show card area</string>
+  <string id="Setting_showBeijingCard" scope="settings">Side cards and data · Show upper card</string>
+  <string id="Setting_showAlipayCard" scope="settings">Side cards and data · Show lower card</string>
+  <string id="Setting_topCardImage" scope="settings">Side cards and data · Upper card artwork</string>
+  <string id="Option_95" scope="settings">Beijing transit (artwork)</string>
+  <string id="Option_96" scope="settings">Alipay (artwork)</string>
+  <string id="Option_97" scope="settings">Chat bubble</string>
+  <string id="Option_98" scope="settings">Metro</string>
+  <string id="Option_99" scope="settings">Bus</string>
+  <string id="Option_100" scope="settings">Access key</string>
+  <string id="Option_101" scope="settings">Bank card</string>
+  <string id="Option_102" scope="settings">Music</string>
+  <string id="Option_103" scope="settings">Coffee</string>
+  <string id="Option_104" scope="settings">Running</string>
+  <string id="Option_105" scope="settings">Cycling</string>
+  <string id="Option_106" scope="settings">Mountain</string>
+  <string id="Option_107" scope="settings">Airplane</string>
+  <string id="Option_108" scope="settings">Paw</string>
+  <string id="Option_109" scope="settings">Smile</string>
+  <string id="Option_110" scope="settings">Stars</string>
+  <string id="Option_111" scope="settings">Camera</string>
+  <string id="Option_112" scope="settings">Gamepad</string>
+  <string id="Option_113" scope="settings">Camping</string>
+  <string id="Option_114" scope="settings">Heart</string>
+  <string id="Setting_bottomCardImage" scope="settings">Side cards and data · Lower card artwork</string>
+  <string id="Setting_sideData" scope="settings">Side cards and data · Data replacing cards (hidden = cards)</string>
+  <string id="Setting_sideFont" scope="settings">Side cards and data · Side data font</string>
+  <string id="Setting_sideSize" scope="settings">Side cards and data · Side data size</string>
+  <string id="Setting_topOne" scope="settings">Top row · Data (hidden disables this area)</string>
+  <string id="Setting_topOneStyle" scope="settings">Top row · Display style</string>
+  <string id="Option_115" scope="settings">Progress line and value</string>
+  <string id="Option_116" scope="settings">Segments and value</string>
+  <string id="Setting_topOneFont" scope="settings">Top row · Font</string>
+  <string id="Setting_topOneSize" scope="settings">Top row · Text size</string>
+  <string id="Setting_topOneGoal" scope="settings">Top row · Custom goal (0 = auto)</string>
+  <string id="Setting_topTwo" scope="settings">Second row left · Data (hidden disables this area)</string>
+  <string id="Setting_topTwoStyle" scope="settings">Second row left · Display style</string>
+  <string id="Setting_topTwoFont" scope="settings">Second row left · Font</string>
+  <string id="Setting_topTwoSize" scope="settings">Second row left · Text size</string>
+  <string id="Setting_topTwoGoal" scope="settings">Second row left · Custom goal (0 = auto)</string>
+  <string id="Setting_topThree" scope="settings">Second row right · Data (hidden disables this area)</string>
+  <string id="Setting_topThreeStyle" scope="settings">Second row right · Display style</string>
+  <string id="Setting_topThreeFont" scope="settings">Second row right · Font</string>
+  <string id="Setting_topThreeSize" scope="settings">Second row right · Text size</string>
+  <string id="Setting_topThreeGoal" scope="settings">Second row right · Custom goal (0 = auto)</string>
+  <string id="Setting_bottomLeft" scope="settings">Lower left · Data (hidden disables this area)</string>
+  <string id="Setting_bottomLeftStyle" scope="settings">Lower left · Display style</string>
+  <string id="Setting_bottomLeftFont" scope="settings">Lower left · Font</string>
+  <string id="Setting_bottomLeftSize" scope="settings">Lower left · Text size</string>
+  <string id="Setting_bottomLeftGoal" scope="settings">Lower left · Custom goal (0 = auto)</string>
+  <string id="Setting_bottomRight" scope="settings">Lower right · Data (hidden disables this area)</string>
+  <string id="Setting_bottomRightStyle" scope="settings">Lower right · Display style</string>
+  <string id="Option_117" scope="settings">Trend chart</string>
+  <string id="Setting_bottomRightFont" scope="settings">Lower right · Font</string>
+  <string id="Setting_bottomRightSize" scope="settings">Lower right · Text size</string>
+  <string id="Setting_bottomRightGoal" scope="settings">Lower right · Custom goal (0 = auto)</string>
+  <string id="Setting_footerLeft" scope="settings">Footer left · Data (hidden disables this area)</string>
+  <string id="Setting_footerLeftStyle" scope="settings">Footer left · Display style</string>
+  <string id="Setting_footerLeftFont" scope="settings">Footer left · Font</string>
+  <string id="Setting_footerLeftSize" scope="settings">Footer left · Text size</string>
+  <string id="Setting_footerLeftGoal" scope="settings">Footer left · Custom goal (0 = auto)</string>
+  <string id="Setting_footerRight" scope="settings">Footer right · Data (hidden disables this area)</string>
+  <string id="Setting_footerRightStyle" scope="settings">Footer right · Display style</string>
+  <string id="Setting_footerRightFont" scope="settings">Footer right · Font</string>
+  <string id="Setting_footerRightSize" scope="settings">Footer right · Text size</string>
+  <string id="Setting_footerRightGoal" scope="settings">Footer right · Custom goal (0 = auto)</string>
+  <string id="Setting_showHeartGraph" scope="settings">Trend chart · Enable lower-right chart</string>
+  <string id="Setting_chartStyle" scope="settings">Trend chart · Chart style</string>
+  <string id="Option_118" scope="settings">Line</string>
+  <string id="Option_119" scope="settings">Area</string>
+  <string id="Option_120" scope="settings">Bars</string>
+  <string id="Setting_chartMinutes" scope="settings">Trend chart · Chart duration</string>
+  <string id="Option_121" scope="settings">15 minutes</string>
+  <string id="Option_122" scope="settings">30 minutes</string>
+  <string id="Option_123" scope="settings">60 minutes</string>
+  <string id="Setting_showChartLabels" scope="settings">Trend chart · Show minimum and maximum</string>
+  <string id="Setting_chartLabelFont" scope="settings">Trend chart · Chart label font</string>
+  <string id="Option_124" scope="settings">Small pixel labels</string>
+</strings>

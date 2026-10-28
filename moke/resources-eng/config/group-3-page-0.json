@@ -1,0 +1,1 @@
+[["showCircle", "Show entire window", 1, true, 0], ["heartRefresh", "Center heart rate refresh", 0, 0, 17], ["heartSource", "Heart rate source", 0, 0, 18], ["circle", "Center data", 0, 6, 19], ["circleStyle", "Center display style", 0, 0, 20], ["circleGoal", "Center custom goal (0 = auto)", 2, 0, 0]]

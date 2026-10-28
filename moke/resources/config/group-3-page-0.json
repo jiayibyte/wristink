@@ -1,0 +1,1 @@
+[["showCircle", "显示整个圆窗", 1, true, 0], ["heartRefresh", "中心心率刷新", 0, 0, 17], ["heartSource", "心率数据来源", 0, 0, 18], ["circle", "中心数据", 0, 6, 19], ["circleStyle", "中心显示方式", 0, 0, 20], ["circleGoal", "中心自定目标（0自动）", 2, 0, 0]]

@@ -1,0 +1,18 @@
+{
+  "locale": "zh-CN",
+  "language": "zhs",
+  "time_format": "HH:mm:ss",
+  "date_format": "M月d日 周X",
+  "preview_timezone": "Asia/Shanghai",
+  "preview_utc_offset": "+08:00",
+  "first_day_of_week": "Monday",
+  "preview_location": {
+    "name": "上海",
+    "latitude": 31.2304,
+    "longitude": 121.4737
+  },
+  "temperature": "Celsius",
+  "distance": "kilometers",
+  "weather": "simulated; not a live weather report",
+  "device_time_zone": "Follow the watch timezone; no fixed offset is added"
+}

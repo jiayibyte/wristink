@@ -1,0 +1,1 @@
+[["showDate", "Show date", 1, true, 0], ["dateFormat", "Date format", 0, 0, 12], ["dateFont", "Date font", 0, 0, 13], ["dateSize", "Date size", 0, 0, 14], ["showMoveBar", "Show activity indicator", 1, true, 0], ["moveSource", "Activity indicator data", 0, 6, 15]]

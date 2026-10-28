@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "label": "北京公交卡",
+    "width": 28,
+    "height": 13,
+    "theme_aware": false
+  },
+  {
+    "id": 2,
+    "label": "支付宝",
+    "width": 28,
+    "height": 13,
+    "theme_aware": false
+  },
+  {
+    "id": 3,
+    "label": "聊天气泡",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 4,
+    "label": "地铁",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 5,
+    "label": "公交车",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 6,
+    "label": "门禁钥匙",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 7,
+    "label": "银行卡",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 8,
+    "label": "音乐",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 9,
+    "label": "咖啡",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 10,
+    "label": "跑步",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 11,
+    "label": "骑行",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 12,
+    "label": "山峰",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 13,
+    "label": "飞机",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 14,
+    "label": "猫爪",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 15,
+    "label": "笑脸",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 16,
+    "label": "星空",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 17,
+    "label": "相机",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 18,
+    "label": "游戏机",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 19,
+    "label": "露营",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  },
+  {
+    "id": 20,
+    "label": "爱心",
+    "width": 28,
+    "height": 13,
+    "theme_aware": true
+  }
+]

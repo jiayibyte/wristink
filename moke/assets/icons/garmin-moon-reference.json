@@ -1,0 +1,10 @@
+{
+  "reference": "Garmin Instinct 3 Solar official manual / Controls / Moon Phase",
+  "page": "https://www8.garmin.com/manuals/webhelp/GUID-2C274FD2-F0C3-445C-B0AC-700FECCE12E9/EN-US/GUID-700E76C4-F7E2-4984-8199-D59D6A31DFB9.html",
+  "icon": "https://www8.garmin.com/manuals/webhelp/GUID-2C274FD2-F0C3-445C-B0AC-700FECCE12E9/Shared/GUID-67F4BDEA-8495-4BBF-9A1C-B2C98DEB1AA7-high.svg",
+  "svg_sha256": "02be17e2a549f7d2e1301f09b1187cd70ca65b8a06d6416d9ca1e3ccb97ca1ac",
+  "circle_radius": 13.38,
+  "outline_width": 1.6722,
+  "phase_style": "new=outline, first quarter=right filled, full=filled, last quarter=left filled",
+  "adaptation": "Normalize the official circular shape into the existing 15x15 box and interpolate phases; original moon age and refresh schedule unchanged."
+}

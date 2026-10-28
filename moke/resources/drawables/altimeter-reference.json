@@ -1,0 +1,8 @@
+{
+  "reference": "Garmin Instinct 3 Solar manual, Controls, Altimeter icon",
+  "page": "https://www8.garmin.com/manuals/webhelp/GUID-2C274FD2-F0C3-445C-B0AC-700FECCE12E9/EN-US/GUID-700E76C4-F7E2-4984-8199-D59D6A31DFB9.html",
+  "icon": "https://www8.garmin.com/manuals/webhelp/GUID-2C274FD2-F0C3-445C-B0AC-700FECCE12E9/Shared/GUID-D1484A38-435F-46DD-90C3-1E82B8ECB51D-high.svg",
+  "source_viewbox": [0, 0, 117.8, 72],
+  "source_polygon": [[86.7,23.2],[72,39.3],[42.5,0],[0,72],[117.8,72]],
+  "watch_polygon": [[12,5],[10,7],[6,2],[0,12],[16,12]]
+}

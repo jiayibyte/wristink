@@ -1,0 +1,1 @@
+[["showTime", "Show large time", 1, true, 0], ["showSeconds", "Show seconds", 1, true, 0], ["leadingZero", "Leading zero", 1, true, 0], ["timeFormat", "Time format", 0, 0, 8], ["timeSeparator", "Time separator", 0, 0, 9], ["secondsMode", "Seconds refresh", 0, 0, 10]]

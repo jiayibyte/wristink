@@ -1,0 +1,14 @@
+{
+  "folders": [
+    { "name": "墨刻 (moke)", "path": "moke" },
+    { "name": "Retro World", "path": "retro-world" },
+    { "name": "北京离线地图", "path": "beijing-map" }
+  ],
+  "settings": {
+    "monkeyC.typeCheckLevel": "Gradual",
+    "files.associations": { "*.mc": "monkeyc" }
+  },
+  "extensions": {
+    "recommendations": ["garmin.monkey-c"]
+  }
+}

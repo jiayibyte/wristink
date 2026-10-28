@@ -1,0 +1,2612 @@
+[
+  {
+    "id": "approachs60",
+    "name": "Approach® S60",
+    "api": "2.4",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 33,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x33-legacy-phone",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "approachs62",
+    "name": "Approach® S62",
+    "api": "3.0",
+    "memory": 135168,
+    "family": "round-260x260",
+    "geometry": {
+      "width": 260,
+      "height": 260,
+      "shape": "round",
+      "scale": 1.122727,
+      "x": 31,
+      "y": 31,
+      "analog": false,
+      "circle_scale": 1.122727,
+      "circle_x": 31,
+      "circle_y": 31,
+      "time_scale": 1.122727
+    },
+    "icon": {
+      "height": 35,
+      "width": 35
+    },
+    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon35x35-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "d2bravo",
+    "name": "D2™ Bravo",
+    "api": "1.4",
+    "memory": 65536,
+    "family": "round-218x218",
+    "geometry": {
+      "width": 218,
+      "height": 218,
+      "shape": "round",
+      "scale": 0.941364,
+      "x": 26,
+      "y": 26,
+      "analog": false,
+      "circle_scale": 0.941364,
+      "circle_x": 26,
+      "circle_y": 26,
+      "time_scale": 0.941364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-218x218-941364-c941364-t941364-icon40x40-noclip-legacy-phone",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "d2bravo_titanium",
+    "name": "D2™ Bravo Titanium",
+    "api": "1.4",
+    "memory": 65536,
+    "family": "round-218x218",
+    "geometry": {
+      "width": 218,
+      "height": 218,
+      "shape": "round",
+      "scale": 0.941364,
+      "x": 26,
+      "y": 26,
+      "analog": false,
+      "circle_scale": 0.941364,
+      "circle_x": 26,
+      "circle_y": 26,
+      "time_scale": 0.941364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-218x218-941364-c941364-t941364-icon40x40-noclip-legacy-phone",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "d2charlie",
+    "name": "D2™ Charlie",
+    "api": "3.0",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "d2delta",
+    "name": "D2™ Delta",
+    "api": "3.1",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "d2deltapx",
+    "name": "D2™ Delta PX",
+    "api": "3.1",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "d2deltas",
+    "name": "D2™ Delta S",
+    "api": "3.1",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "descentg1",
+    "name": "Descent™ G1 / G1 Solar",
+    "api": "3.4",
+    "memory": 65536,
+    "family": "semioctagon-176x176",
+    "geometry": {
+      "width": 176,
+      "height": 176,
+      "shape": "semi-octagon",
+      "scale": 1.0,
+      "x": 0,
+      "y": 0,
+      "analog": false,
+      "circle_scale": 1.0,
+      "circle_x": 0.0,
+      "circle_y": 0.0,
+      "time_scale": 1.0
+    },
+    "icon": {
+      "height": 62,
+      "width": 62
+    },
+    "asset_key": "semioctagon-176x176-1000000-c1000000-t1000000-icon62x62-legacy-phone",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "descentmk1",
+    "name": "Descent™ Mk1",
+    "api": "3.1",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "descentmk2",
+    "name": "Descent™ Mk2 / Mk2i",
+    "api": "3.4",
+    "memory": 131072,
+    "family": "round-280x280",
+    "geometry": {
+      "width": 280,
+      "height": 280,
+      "shape": "round",
+      "scale": 1.209091,
+      "x": 34,
+      "y": 34,
+      "analog": false,
+      "circle_scale": 1.209091,
+      "circle_x": 34,
+      "circle_y": 34,
+      "time_scale": 1.209091
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "descentmk2s",
+    "name": "Descent™ Mk2 S",
+    "api": "3.4",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "enduro",
+    "name": "Enduro™",
+    "api": "3.4",
+    "memory": 114688,
+    "family": "round-280x280",
+    "geometry": {
+      "width": 280,
+      "height": 280,
+      "shape": "round",
+      "scale": 1.209091,
+      "x": 34,
+      "y": 34,
+      "analog": false,
+      "circle_scale": 1.209091,
+      "circle_x": 34,
+      "circle_y": 34,
+      "time_scale": 1.209091
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "enduro3",
+    "name": "Enduro™ 3",
+    "api": "6.0",
+    "memory": 131072,
+    "family": "round-280x280",
+    "geometry": {
+      "width": 280,
+      "height": 280,
+      "shape": "round",
+      "scale": 1.209091,
+      "x": 34,
+      "y": 34,
+      "analog": false,
+      "circle_scale": 1.209091,
+      "circle_x": 34,
+      "circle_y": 34,
+      "time_scale": 1.209091
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "enduro4",
+    "name": "Enduro™ 4",
+    "api": "6.0",
+    "memory": 131072,
+    "family": "round-280x280",
+    "geometry": {
+      "width": 280,
+      "height": 280,
+      "shape": "round",
+      "scale": 1.209091,
+      "x": 34,
+      "y": 34,
+      "analog": false,
+      "circle_scale": 1.209091,
+      "circle_x": 34,
+      "circle_y": 34,
+      "time_scale": 1.209091
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "epix",
+    "name": "epix™",
+    "api": "1.2",
+    "memory": 1048576,
+    "family": "rectangle-205x148",
+    "geometry": {
+      "width": 205,
+      "height": 148,
+      "shape": "rectangle",
+      "scale": 0.795455,
+      "x": 32,
+      "y": 4,
+      "analog": false,
+      "circle_scale": 0.795455,
+      "circle_x": 32,
+      "circle_y": 4,
+      "time_scale": 0.795455
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "rectangle-205x148-795455-c795455-t795455-icon40x40-noclip-legacy-phone",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "fenix3",
+    "name": "fēnix® 3 / tactix® Bravo / quatix® 3",
+    "api": "1.4",
+    "memory": 65536,
+    "family": "round-218x218",
+    "geometry": {
+      "width": 218,
+      "height": 218,
+      "shape": "round",
+      "scale": 0.941364,
+      "x": 26,
+      "y": 26,
+      "analog": false,
+      "circle_scale": 0.941364,
+      "circle_x": 26,
+      "circle_y": 26,
+      "time_scale": 0.941364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-218x218-941364-c941364-t941364-icon40x40-noclip-legacy-phone",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "fenix3_hr",
+    "name": "fēnix® 3 HR",
+    "api": "1.4",
+    "memory": 65536,
+    "family": "round-218x218",
+    "geometry": {
+      "width": 218,
+      "height": 218,
+      "shape": "round",
+      "scale": 0.941364,
+      "x": 26,
+      "y": 26,
+      "analog": false,
+      "circle_scale": 0.941364,
+      "circle_x": 26,
+      "circle_y": 26,
+      "time_scale": 0.941364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-218x218-941364-c941364-t941364-icon40x40-noclip-legacy-phone",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "fenix5",
+    "name": "fēnix® 5 / quatix® 5",
+    "api": "3.1",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix5plus",
+    "name": "fēnix® 5 Plus",
+    "api": "3.3",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix5s",
+    "name": "fēnix® 5S",
+    "api": "3.1",
+    "memory": 98304,
+    "family": "round-218x218",
+    "geometry": {
+      "width": 218,
+      "height": 218,
+      "shape": "round",
+      "scale": 0.941364,
+      "x": 26,
+      "y": 26,
+      "analog": false,
+      "circle_scale": 0.941364,
+      "circle_x": 26,
+      "circle_y": 26,
+      "time_scale": 0.941364
+    },
+    "icon": {
+      "height": 36,
+      "width": 36
+    },
+    "asset_key": "round-218x218-941364-c941364-t941364-icon36x36-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix5splus",
+    "name": "fēnix® 5S Plus",
+    "api": "3.3",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix5x",
+    "name": "fēnix® 5X / tactix® Charlie",
+    "api": "3.1",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix5xplus",
+    "name": "fēnix® 5X Plus",
+    "api": "3.3",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix6",
+    "name": "fēnix® 6 / 6 Solar / 6 Dual Power",
+    "api": "3.4",
+    "memory": 114688,
+    "family": "round-260x260",
+    "geometry": {
+      "width": 260,
+      "height": 260,
+      "shape": "round",
+      "scale": 1.122727,
+      "x": 31,
+      "y": 31,
+      "analog": false,
+      "circle_scale": 1.122727,
+      "circle_x": 31,
+      "circle_y": 31,
+      "time_scale": 1.122727
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix6pro",
+    "name": "fēnix® 6 Pro / 6 Sapphire / 6 Pro Solar / 6 Pro Dual Power / quatix® 6",
+    "api": "3.4",
+    "memory": 114688,
+    "family": "round-260x260",
+    "geometry": {
+      "width": 260,
+      "height": 260,
+      "shape": "round",
+      "scale": 1.122727,
+      "x": 31,
+      "y": 31,
+      "analog": false,
+      "circle_scale": 1.122727,
+      "circle_x": 31,
+      "circle_y": 31,
+      "time_scale": 1.122727
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix6s",
+    "name": "fēnix® 6S / 6S Solar / 6S Dual Power",
+    "api": "3.4",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix6spro",
+    "name": "fēnix® 6S Pro / 6S Sapphire / 6S Pro Solar / 6S Pro Dual Power",
+    "api": "3.4",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix6xpro",
+    "name": "fēnix® 6X Pro / 6X Sapphire / 6X Pro Solar / tactix® Delta Sapphire / Delta Solar / Delta Solar - Ballistics Edition / quatix® 6X / 6X Solar / 6X Dual Power",
+    "api": "3.4",
+    "memory": 131072,
+    "family": "round-280x280",
+    "geometry": {
+      "width": 280,
+      "height": 280,
+      "shape": "round",
+      "scale": 1.209091,
+      "x": 34,
+      "y": 34,
+      "analog": false,
+      "circle_scale": 1.209091,
+      "circle_x": 34,
+      "circle_y": 34,
+      "time_scale": 1.209091
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix7",
+    "name": "fēnix® 7 / quatix® 7",
+    "api": "5.2",
+    "memory": 131072,
+    "family": "round-260x260",
+    "geometry": {
+      "width": 260,
+      "height": 260,
+      "shape": "round",
+      "scale": 1.122727,
+      "x": 31,
+      "y": 31,
+      "analog": false,
+      "circle_scale": 1.122727,
+      "circle_x": 31,
+      "circle_y": 31,
+      "time_scale": 1.122727
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix7pro",
+    "name": "fēnix® 7 Pro",
+    "api": "5.2",
+    "memory": 131072,
+    "family": "round-260x260",
+    "geometry": {
+      "width": 260,
+      "height": 260,
+      "shape": "round",
+      "scale": 1.122727,
+      "x": 31,
+      "y": 31,
+      "analog": false,
+      "circle_scale": 1.122727,
+      "circle_x": 31,
+      "circle_y": 31,
+      "time_scale": 1.122727
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix7pronowifi",
+    "name": "fēnix® 7 Pro - Solar Edition (no Wi-Fi)",
+    "api": "5.2",
+    "memory": 131072,
+    "family": "round-260x260",
+    "geometry": {
+      "width": 260,
+      "height": 260,
+      "shape": "round",
+      "scale": 1.122727,
+      "x": 31,
+      "y": 31,
+      "analog": false,
+      "circle_scale": 1.122727,
+      "circle_x": 31,
+      "circle_y": 31,
+      "time_scale": 1.122727
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix7s",
+    "name": "fēnix® 7S",
+    "api": "5.2",
+    "memory": 131072,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix7spro",
+    "name": "fēnix® 7S Pro",
+    "api": "5.2",
+    "memory": 131072,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix7x",
+    "name": "fēnix® 7X / tactix® 7 / quatix® 7X Solar / Enduro™ 2",
+    "api": "5.2",
+    "memory": 131072,
+    "family": "round-280x280",
+    "geometry": {
+      "width": 280,
+      "height": 280,
+      "shape": "round",
+      "scale": 1.209091,
+      "x": 34,
+      "y": 34,
+      "analog": false,
+      "circle_scale": 1.209091,
+      "circle_x": 34,
+      "circle_y": 34,
+      "time_scale": 1.209091
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix7xpro",
+    "name": "fēnix® 7X Pro",
+    "api": "5.2",
+    "memory": 131072,
+    "family": "round-280x280",
+    "geometry": {
+      "width": 280,
+      "height": 280,
+      "shape": "round",
+      "scale": 1.209091,
+      "x": 34,
+      "y": 34,
+      "analog": false,
+      "circle_scale": 1.209091,
+      "circle_x": 34,
+      "circle_y": 34,
+      "time_scale": 1.209091
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix7xpronowifi",
+    "name": "fēnix® 7X Pro - Solar Edition (no Wi-Fi)",
+    "api": "5.2",
+    "memory": 131072,
+    "family": "round-280x280",
+    "geometry": {
+      "width": 280,
+      "height": 280,
+      "shape": "round",
+      "scale": 1.209091,
+      "x": 34,
+      "y": 34,
+      "analog": false,
+      "circle_scale": 1.209091,
+      "circle_x": 34,
+      "circle_y": 34,
+      "time_scale": 1.209091
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix8solar47mm",
+    "name": "fēnix® 8 Solar 47mm",
+    "api": "6.0",
+    "memory": 131072,
+    "family": "round-260x260",
+    "geometry": {
+      "width": 260,
+      "height": 260,
+      "shape": "round",
+      "scale": 1.122727,
+      "x": 31,
+      "y": 31,
+      "analog": false,
+      "circle_scale": 1.122727,
+      "circle_x": 31,
+      "circle_y": 31,
+      "time_scale": 1.122727
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix8solar51mm",
+    "name": "fēnix® 8 Solar 51mm / tactix® 8 Solar 51mm",
+    "api": "6.0",
+    "memory": 131072,
+    "family": "round-280x280",
+    "geometry": {
+      "width": 280,
+      "height": 280,
+      "shape": "round",
+      "scale": 1.209091,
+      "x": 34,
+      "y": 34,
+      "analog": false,
+      "circle_scale": 1.209091,
+      "circle_x": 34,
+      "circle_y": 34,
+      "time_scale": 1.209091
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix9prosolar47mm",
+    "name": "fēnix® 9 Pro Solar 47mm",
+    "api": "6.0",
+    "memory": 131072,
+    "family": "round-260x260",
+    "geometry": {
+      "width": 260,
+      "height": 260,
+      "shape": "round",
+      "scale": 1.122727,
+      "x": 31,
+      "y": 31,
+      "analog": false,
+      "circle_scale": 1.122727,
+      "circle_x": 31,
+      "circle_y": 31,
+      "time_scale": 1.122727
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenix9prosolar51mm",
+    "name": "fēnix® 9 Pro Solar 51mm",
+    "api": "6.0",
+    "memory": 131072,
+    "family": "round-280x280",
+    "geometry": {
+      "width": 280,
+      "height": 280,
+      "shape": "round",
+      "scale": 1.209091,
+      "x": 34,
+      "y": 34,
+      "analog": false,
+      "circle_scale": 1.209091,
+      "circle_x": 34,
+      "circle_y": 34,
+      "time_scale": 1.209091
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fenixchronos",
+    "name": "fēnix® Chronos",
+    "api": "3.1",
+    "memory": 98304,
+    "family": "round-218x218",
+    "geometry": {
+      "width": 218,
+      "height": 218,
+      "shape": "round",
+      "scale": 0.941364,
+      "x": 26,
+      "y": 26,
+      "analog": false,
+      "circle_scale": 0.941364,
+      "circle_x": 26,
+      "circle_y": 26,
+      "time_scale": 0.941364
+    },
+    "icon": {
+      "height": 36,
+      "width": 36
+    },
+    "asset_key": "round-218x218-941364-c941364-t941364-icon36x36-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fr230",
+    "name": "Forerunner® 230",
+    "api": "1.4",
+    "memory": 65536,
+    "family": "semiround-215x180",
+    "geometry": {
+      "width": 215,
+      "height": 180,
+      "shape": "semi-round",
+      "scale": 0.777273,
+      "x": 39,
+      "y": 22,
+      "analog": false,
+      "circle_scale": 0.777273,
+      "circle_x": 39,
+      "circle_y": 22,
+      "time_scale": 0.777273
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "semiround-215x180-777273-c777273-t777273-icon40x40-noclip-legacy-phone",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "fr235",
+    "name": "Forerunner® 235",
+    "api": "1.4",
+    "memory": 65536,
+    "family": "semiround-215x180",
+    "geometry": {
+      "width": 215,
+      "height": 180,
+      "shape": "semi-round",
+      "scale": 0.777273,
+      "x": 39,
+      "y": 22,
+      "analog": false,
+      "circle_scale": 0.777273,
+      "circle_x": 39,
+      "circle_y": 22,
+      "time_scale": 0.777273
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "semiround-215x180-777273-c777273-t777273-icon40x40-noclip-legacy-phone",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "fr245",
+    "name": "Forerunner® 245",
+    "api": "3.3",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fr245m",
+    "name": "Forerunner® 245 Music",
+    "api": "3.3",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fr255",
+    "name": "Forerunner® 255",
+    "api": "5.2",
+    "memory": 131072,
+    "family": "round-260x260",
+    "geometry": {
+      "width": 260,
+      "height": 260,
+      "shape": "round",
+      "scale": 1.122727,
+      "x": 31,
+      "y": 31,
+      "analog": false,
+      "circle_scale": 1.122727,
+      "circle_x": 31,
+      "circle_y": 31,
+      "time_scale": 1.122727
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fr255m",
+    "name": "Forerunner® 255 Music",
+    "api": "5.2",
+    "memory": 131072,
+    "family": "round-260x260",
+    "geometry": {
+      "width": 260,
+      "height": 260,
+      "shape": "round",
+      "scale": 1.122727,
+      "x": 31,
+      "y": 31,
+      "analog": false,
+      "circle_scale": 1.122727,
+      "circle_x": 31,
+      "circle_y": 31,
+      "time_scale": 1.122727
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fr255s",
+    "name": "Forerunner® 255s",
+    "api": "5.2",
+    "memory": 131072,
+    "family": "round-218x218",
+    "geometry": {
+      "width": 218,
+      "height": 218,
+      "shape": "round",
+      "scale": 0.941364,
+      "x": 26,
+      "y": 26,
+      "analog": false,
+      "circle_scale": 0.941364,
+      "circle_x": 26,
+      "circle_y": 26,
+      "time_scale": 0.941364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-218x218-941364-c941364-t941364-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fr255sm",
+    "name": "Forerunner® 255s Music",
+    "api": "5.2",
+    "memory": 131072,
+    "family": "round-218x218",
+    "geometry": {
+      "width": 218,
+      "height": 218,
+      "shape": "round",
+      "scale": 0.941364,
+      "x": 26,
+      "y": 26,
+      "analog": false,
+      "circle_scale": 0.941364,
+      "circle_x": 26,
+      "circle_y": 26,
+      "time_scale": 0.941364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-218x218-941364-c941364-t941364-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fr45",
+    "name": "Forerunner® 45",
+    "api": "1.4",
+    "memory": 49152,
+    "family": "round-208x208",
+    "geometry": {
+      "width": 208,
+      "height": 208,
+      "shape": "round",
+      "scale": 0.898182,
+      "x": 25,
+      "y": 25,
+      "analog": false,
+      "circle_scale": 0.898182,
+      "circle_x": 25,
+      "circle_y": 25,
+      "time_scale": 0.898182
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-208x208-898182-c898182-t898182-icon65x65-noclip-legacy-phone-compact-text",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "fr55",
+    "name": "Forerunner® 55",
+    "api": "3.4",
+    "memory": 98304,
+    "family": "round-208x208",
+    "geometry": {
+      "width": 208,
+      "height": 208,
+      "shape": "round",
+      "scale": 0.898182,
+      "x": 25,
+      "y": 25,
+      "analog": false,
+      "circle_scale": 0.898182,
+      "circle_x": 25,
+      "circle_y": 25,
+      "time_scale": 0.898182
+    },
+    "icon": {
+      "height": 35,
+      "width": 35
+    },
+    "asset_key": "round-208x208-898182-c898182-t898182-icon35x35",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fr630",
+    "name": "Forerunner® 630",
+    "api": "1.4",
+    "memory": 65536,
+    "family": "semiround-215x180",
+    "geometry": {
+      "width": 215,
+      "height": 180,
+      "shape": "semi-round",
+      "scale": 0.777273,
+      "x": 39,
+      "y": 22,
+      "analog": false,
+      "circle_scale": 0.777273,
+      "circle_x": 39,
+      "circle_y": 22,
+      "time_scale": 0.777273
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "semiround-215x180-777273-c777273-t777273-icon40x40-noclip-legacy-phone",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "fr645",
+    "name": "Forerunner® 645",
+    "api": "3.1",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fr645m",
+    "name": "Forerunner® 645 Music",
+    "api": "3.2",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fr735xt",
+    "name": "Forerunner® 735xt",
+    "api": "2.4",
+    "memory": 65536,
+    "family": "semiround-215x180",
+    "geometry": {
+      "width": 215,
+      "height": 180,
+      "shape": "semi-round",
+      "scale": 0.777273,
+      "x": 39,
+      "y": 22,
+      "analog": false,
+      "circle_scale": 0.777273,
+      "circle_x": 39,
+      "circle_y": 22,
+      "time_scale": 0.777273
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "semiround-215x180-777273-c777273-t777273-icon40x40-legacy-phone",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "fr745",
+    "name": "Forerunner® 745",
+    "api": "3.3",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fr920xt",
+    "name": "Forerunner® 920XT",
+    "api": "1.4",
+    "memory": 65536,
+    "family": "rectangle-205x148",
+    "geometry": {
+      "width": 205,
+      "height": 148,
+      "shape": "rectangle",
+      "scale": 0.795455,
+      "x": 32,
+      "y": 4,
+      "analog": false,
+      "circle_scale": 0.795455,
+      "circle_x": 32,
+      "circle_y": 4,
+      "time_scale": 0.795455
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "rectangle-205x148-795455-c795455-t795455-icon65x65-noclip-legacy-phone",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "fr935",
+    "name": "Forerunner® 935",
+    "api": "3.1",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fr945",
+    "name": "Forerunner® 945",
+    "api": "3.3",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fr945lte",
+    "name": "Forerunner® 945 LTE",
+    "api": "3.4",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "fr955",
+    "name": "Forerunner® 955 / Solar",
+    "api": "5.2",
+    "memory": 131072,
+    "family": "round-260x260",
+    "geometry": {
+      "width": 260,
+      "height": 260,
+      "shape": "round",
+      "scale": 1.122727,
+      "x": 31,
+      "y": 31,
+      "analog": false,
+      "circle_scale": 1.122727,
+      "circle_x": 31,
+      "circle_y": 31,
+      "time_scale": 1.122727
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "garminswim2",
+    "name": "Garmin Swim™ 2",
+    "api": "1.4",
+    "memory": 49152,
+    "family": "round-208x208",
+    "geometry": {
+      "width": 208,
+      "height": 208,
+      "shape": "round",
+      "scale": 0.898182,
+      "x": 25,
+      "y": 25,
+      "analog": false,
+      "circle_scale": 0.898182,
+      "circle_x": 25,
+      "circle_y": 25,
+      "time_scale": 0.898182
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-208x208-898182-c898182-t898182-icon65x65-noclip-legacy-phone-compact-text",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "instinct2",
+    "name": "Instinct® 2 / Solar / Dual Power / dēzl Edition",
+    "api": "3.4",
+    "memory": 65536,
+    "family": "semioctagon-176x176",
+    "geometry": {
+      "width": 176,
+      "height": 176,
+      "shape": "semi-octagon",
+      "scale": 1.0,
+      "x": 0,
+      "y": 0,
+      "analog": false,
+      "circle_scale": 1.0,
+      "circle_x": 0.0,
+      "circle_y": 0.0,
+      "time_scale": 1.0
+    },
+    "icon": {
+      "height": 62,
+      "width": 62
+    },
+    "asset_key": "semioctagon-176x176-1000000-c1000000-t1000000-icon62x62-legacy-phone",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "instinct2s",
+    "name": "Instinct® 2S / Solar / Dual Power",
+    "api": "3.4",
+    "memory": 65536,
+    "family": "semioctagon-163x156",
+    "geometry": {
+      "width": 163,
+      "height": 156,
+      "shape": "semi-octagon",
+      "scale": 0.886364,
+      "x": 4,
+      "y": 0,
+      "analog": false,
+      "circle_scale": 0.870968,
+      "circle_x": 9.580608,
+      "circle_y": -8e-06,
+      "time_scale": 0.886364
+    },
+    "icon": {
+      "height": 54,
+      "width": 54
+    },
+    "asset_key": "semioctagon-163x156-886364-c870968-t886364-icon54x54-legacy-phone",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "instinct2x",
+    "name": "Instinct® 2X Solar",
+    "api": "3.4",
+    "memory": 65536,
+    "family": "semioctagon-176x176",
+    "geometry": {
+      "width": 176,
+      "height": 176,
+      "shape": "semi-octagon",
+      "scale": 1.0,
+      "x": 0,
+      "y": 0,
+      "analog": false,
+      "circle_scale": 1.0,
+      "circle_x": 0.0,
+      "circle_y": 0.0,
+      "time_scale": 1.0
+    },
+    "icon": {
+      "height": 62,
+      "width": 62
+    },
+    "asset_key": "semioctagon-176x176-1000000-c1000000-t1000000-icon62x62-legacy-phone",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "instinct3solar45mm",
+    "name": "Instinct® 3 Solar 45mm / 50mm",
+    "api": "6.0",
+    "memory": 65536,
+    "family": "semioctagon-176x176",
+    "geometry": {
+      "width": 176,
+      "height": 176,
+      "shape": "semi-octagon",
+      "scale": 1.0,
+      "x": 0,
+      "y": 0,
+      "analog": false,
+      "circle_scale": 1.0,
+      "circle_x": 0.0,
+      "circle_y": 0.0,
+      "time_scale": 1.0
+    },
+    "icon": {
+      "height": 62,
+      "width": 62
+    },
+    "asset_key": "semioctagon-176x176-1000000-c1000000-t1000000-icon62x62",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "instinctcrossover",
+    "name": "Instinct® Crossover",
+    "api": "3.4",
+    "memory": 65536,
+    "family": "semioctagon-176x176",
+    "geometry": {
+      "width": 176,
+      "height": 176,
+      "shape": "semi-octagon",
+      "scale": 0.76,
+      "x": 21,
+      "y": 21,
+      "analog": true,
+      "circle_scale": 0.76,
+      "circle_x": 21,
+      "circle_y": 21,
+      "time_scale": 0.6992
+    },
+    "icon": {
+      "height": 26,
+      "width": 26
+    },
+    "asset_key": "semioctagon-176x176-760000-c760000-t699200-icon26x26-legacy-phone",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "instincte40mm",
+    "name": "Instinct® E 40mm",
+    "api": "6.0",
+    "memory": 65536,
+    "family": "semioctagon-166x166",
+    "geometry": {
+      "width": 166,
+      "height": 166,
+      "shape": "semi-octagon",
+      "scale": 0.943182,
+      "x": 0,
+      "y": 0,
+      "analog": false,
+      "circle_scale": 0.83871,
+      "circle_x": 18.22576,
+      "circle_y": -1e-05,
+      "time_scale": 0.943182
+    },
+    "icon": {
+      "height": 52,
+      "width": 52
+    },
+    "asset_key": "semioctagon-166x166-943182-c838710-t943182-icon52x52",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "instincte45mm",
+    "name": "Instinct® E 45mm",
+    "api": "6.0",
+    "memory": 65536,
+    "family": "semioctagon-176x176",
+    "geometry": {
+      "width": 176,
+      "height": 176,
+      "shape": "semi-octagon",
+      "scale": 1.0,
+      "x": 0,
+      "y": 0,
+      "analog": false,
+      "circle_scale": 1.0,
+      "circle_x": 0.0,
+      "circle_y": 0.0,
+      "time_scale": 1.0
+    },
+    "icon": {
+      "height": 62,
+      "width": 62
+    },
+    "asset_key": "semioctagon-176x176-1000000-c1000000-t1000000-icon62x62",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "legacyherocaptainmarvel",
+    "name": "Captain Marvel",
+    "api": "3.3",
+    "memory": 524288,
+    "family": "round-218x218",
+    "geometry": {
+      "width": 218,
+      "height": 218,
+      "shape": "round",
+      "scale": 0.941364,
+      "x": 26,
+      "y": 26,
+      "analog": false,
+      "circle_scale": 0.941364,
+      "circle_x": 26,
+      "circle_y": 26,
+      "time_scale": 0.941364
+    },
+    "icon": {
+      "height": 30,
+      "width": 30
+    },
+    "asset_key": "round-218x218-941364-c941364-t941364-icon30x30",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "legacyherofirstavenger",
+    "name": "First Avenger",
+    "api": "3.3",
+    "memory": 524288,
+    "family": "round-260x260",
+    "geometry": {
+      "width": 260,
+      "height": 260,
+      "shape": "round",
+      "scale": 1.122727,
+      "x": 31,
+      "y": 31,
+      "analog": false,
+      "circle_scale": 1.122727,
+      "circle_x": 31,
+      "circle_y": 31,
+      "time_scale": 1.122727
+    },
+    "icon": {
+      "height": 35,
+      "width": 35
+    },
+    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon35x35",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "legacysagadarthvader",
+    "name": "Darth Vader™",
+    "api": "3.3",
+    "memory": 524288,
+    "family": "round-260x260",
+    "geometry": {
+      "width": 260,
+      "height": 260,
+      "shape": "round",
+      "scale": 1.122727,
+      "x": 31,
+      "y": 31,
+      "analog": false,
+      "circle_scale": 1.122727,
+      "circle_x": 31,
+      "circle_y": 31,
+      "time_scale": 1.122727
+    },
+    "icon": {
+      "height": 35,
+      "width": 35
+    },
+    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon35x35",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "legacysagarey",
+    "name": "Rey™",
+    "api": "3.3",
+    "memory": 524288,
+    "family": "round-218x218",
+    "geometry": {
+      "width": 218,
+      "height": 218,
+      "shape": "round",
+      "scale": 0.941364,
+      "x": 26,
+      "y": 26,
+      "analog": false,
+      "circle_scale": 0.941364,
+      "circle_x": 26,
+      "circle_y": 26,
+      "time_scale": 0.941364
+    },
+    "icon": {
+      "height": 30,
+      "width": 30
+    },
+    "asset_key": "round-218x218-941364-c941364-t941364-icon30x30",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "marqadventurer",
+    "name": "MARQ® Adventurer",
+    "api": "3.4",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "marqathlete",
+    "name": "MARQ® Athlete",
+    "api": "3.4",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "marqaviator",
+    "name": "MARQ® Aviator",
+    "api": "3.4",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "marqcaptain",
+    "name": "MARQ® Captain / MARQ® Captain: American Magic Edition",
+    "api": "3.4",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "marqcommander",
+    "name": "MARQ® Commander",
+    "api": "3.4",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "marqdriver",
+    "name": "MARQ® Driver",
+    "api": "3.4",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "marqexpedition",
+    "name": "MARQ® Expedition",
+    "api": "3.4",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "marqgolfer",
+    "name": "MARQ® Golfer",
+    "api": "3.4",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "vivoactive",
+    "name": "vívoactive®",
+    "api": "1.4",
+    "memory": 65536,
+    "family": "rectangle-205x148",
+    "geometry": {
+      "width": 205,
+      "height": 148,
+      "shape": "rectangle",
+      "scale": 0.795455,
+      "x": 32,
+      "y": 4,
+      "analog": false,
+      "circle_scale": 0.795455,
+      "circle_x": 32,
+      "circle_y": 4,
+      "time_scale": 0.795455
+    },
+    "icon": {
+      "height": 43,
+      "width": 61
+    },
+    "asset_key": "rectangle-205x148-795455-c795455-t795455-icon61x43-noclip-legacy-phone",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  },
+  {
+    "id": "vivoactive3",
+    "name": "vívoactive® 3",
+    "api": "3.1",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 33,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x33-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "vivoactive3d",
+    "name": "vívoactive® 3 Mercedes-Benz® Collection",
+    "api": "3.0",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 33,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x33-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "vivoactive3m",
+    "name": "vívoactive® 3 Music",
+    "api": "3.2",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 33,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x33-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "vivoactive3mlte",
+    "name": "vívoactive® 3 Music LTE",
+    "api": "3.1",
+    "memory": 98304,
+    "family": "round-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "round",
+      "scale": 1.036364,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.036364,
+      "circle_x": 29,
+      "circle_y": 29,
+      "time_scale": 1.036364
+    },
+    "icon": {
+      "height": 33,
+      "width": 40
+    },
+    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x33-legacy-ui",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": true
+  },
+  {
+    "id": "vivoactive4",
+    "name": "vívoactive® 4",
+    "api": "3.3",
+    "memory": 524288,
+    "family": "round-260x260",
+    "geometry": {
+      "width": 260,
+      "height": 260,
+      "shape": "round",
+      "scale": 1.122727,
+      "x": 31,
+      "y": 31,
+      "analog": false,
+      "circle_scale": 1.122727,
+      "circle_x": 31,
+      "circle_y": 31,
+      "time_scale": 1.122727
+    },
+    "icon": {
+      "height": 35,
+      "width": 35
+    },
+    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon35x35",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "vivoactive4s",
+    "name": "vívoactive® 4S",
+    "api": "3.3",
+    "memory": 524288,
+    "family": "round-218x218",
+    "geometry": {
+      "width": 218,
+      "height": 218,
+      "shape": "round",
+      "scale": 0.941364,
+      "x": 26,
+      "y": 26,
+      "analog": false,
+      "circle_scale": 0.941364,
+      "circle_x": 26,
+      "circle_y": 26,
+      "time_scale": 0.941364
+    },
+    "icon": {
+      "height": 30,
+      "width": 30
+    },
+    "asset_key": "round-218x218-941364-c941364-t941364-icon30x30",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true
+  },
+  {
+    "id": "vivoactive_hr",
+    "name": "vívoactive® HR",
+    "api": "2.4",
+    "memory": 65536,
+    "family": "rectangle-148x205",
+    "geometry": {
+      "width": 148,
+      "height": 205,
+      "shape": "rectangle",
+      "scale": 0.795455,
+      "x": 4,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 0.795455,
+      "circle_x": 4,
+      "circle_y": 32,
+      "time_scale": 0.795455
+    },
+    "icon": {
+      "height": 33,
+      "width": 40
+    },
+    "asset_key": "rectangle-148x205-795455-c795455-t795455-icon40x33-legacy-phone",
+    "paging": false,
+    "mode": "轻量兼容",
+    "renderer": "legacy",
+    "on_watch_settings": false
+  }
+]

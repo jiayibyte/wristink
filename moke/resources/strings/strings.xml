@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='utf-8'?>
+<strings>
+  <string id="AppName">墨刻</string>
+  <string id="LocaleEnglish">false</string>
+  <string id="MenuOn">开启</string>
+  <string id="MenuOff">关闭</string>
+  <string id="MenuAuto">自动／跟随系统</string>
+  <string id="MenuNext">下一页</string>
+  <string id="MenuPrevious">上一页</string>
+  <string id="MenuResetGroup">恢复本区默认</string>
+  <string id="MenuSelected">已选择</string>
+  <string id="MenuTitle">个性化表盘</string>
+  <string id="MenuResetAll">恢复全部默认</string>
+  <string id="Setting_darkTheme" scope="settings">全局外观 · 黑色背景</string>
+  <string id="Setting_showIcons" scope="settings">全局外观 · 显示数据图标</string>
+  <string id="Setting_showUnits" scope="settings">全局外观 · 显示单位</string>
+  <string id="Setting_linkFooterFonts" scope="settings">全局外观 · 底部两项字号联动</string>
+  <string id="Setting_dataFont" scope="settings">全局外观 · 全局数据字体</string>
+  <string id="Option_0" scope="settings">简洁黑体</string>
+  <string id="Option_1" scope="settings">加粗黑体</string>
+  <string id="Option_2" scope="settings">紧凑黑体</string>
+  <string id="Setting_dataSize" scope="settings">全局外观 · 全局数据字号</string>
+  <string id="Option_3" scope="settings">小</string>
+  <string id="Option_4" scope="settings">标准</string>
+  <string id="Option_5" scope="settings">大</string>
+  <string id="Setting_temperatureUnit" scope="settings">全局外观 · 温度单位</string>
+  <string id="Option_6" scope="settings">摄氏度</string>
+  <string id="Option_7" scope="settings">华氏度</string>
+  <string id="Setting_distanceUnit" scope="settings">全局外观 · 距离单位</string>
+  <string id="Option_8" scope="settings">公里</string>
+  <string id="Option_9" scope="settings">英里</string>
+  <string id="Setting_altitudeUnit" scope="settings">全局外观 · 高度单位</string>
+  <string id="Option_10" scope="settings">米</string>
+  <string id="Option_11" scope="settings">英尺</string>
+  <string id="Setting_powerProfile" scope="settings">全局外观 · 刷新策略</string>
+  <string id="Option_12" scope="settings">省电（曲线5分钟／天气30分钟）</string>
+  <string id="Option_13" scope="settings">标准（曲线1分钟／天气5分钟）</string>
+  <string id="Setting_analogHandMode" scope="settings">全局外观 · 机械指针避让（仅Crossover）</string>
+  <string id="Option_14" scope="settings">保持系统走时（省电）</string>
+  <string id="Option_15" scope="settings">抬腕时水平避让</string>
+  <string id="Option_16" scope="settings">表盘显示期间水平避让</string>
+  <string id="Setting_showTime" scope="settings">时间与秒数 · 显示大时间</string>
+  <string id="Setting_showSeconds" scope="settings">时间与秒数 · 显示秒数</string>
+  <string id="Setting_leadingZero" scope="settings">时间与秒数 · 小时补零</string>
+  <string id="Setting_timeFormat" scope="settings">时间与秒数 · 时间制式</string>
+  <string id="Option_17" scope="settings">24小时</string>
+  <string id="Option_18" scope="settings">12小时（上午下午）</string>
+  <string id="Setting_timeSeparator" scope="settings">时间与秒数 · 时间分隔符</string>
+  <string id="Option_19" scope="settings">冒号</string>
+  <string id="Option_20" scope="settings">圆点</string>
+  <string id="Option_21" scope="settings">空格</string>
+  <string id="Setting_secondsMode" scope="settings">时间与秒数 · 秒数刷新策略</string>
+  <string id="Option_22" scope="settings">随卡片自动切换</string>
+  <string id="Option_23" scope="settings">仅抬腕显示</string>
+  <string id="Option_24" scope="settings">持续显示（耗电较高）</string>
+  <string id="Option_25" scope="settings">关闭（最省电）</string>
+  <string id="Setting_timeFont" scope="settings">时间与秒数 · 大时间字体</string>
+  <string id="Option_26" scope="settings">当前数字</string>
+  <string id="Option_27" scope="settings">窄体数字</string>
+  <string id="Setting_timeSize" scope="settings">时间与秒数 · 大时间字号</string>
+  <string id="Setting_secondsFont" scope="settings">时间与秒数 · 秒数字体</string>
+  <string id="Setting_secondsSize" scope="settings">时间与秒数 · 秒数字号</string>
+  <string id="Setting_showDate" scope="settings">日期与状态 · 显示日期</string>
+  <string id="Setting_dateFormat" scope="settings">日期与状态 · 日期格式</string>
+  <string id="Option_28" scope="settings">10/19 一</string>
+  <string id="Option_29" scope="settings">10月19日</string>
+  <string id="Option_30" scope="settings">2026/10/19</string>
+  <string id="Option_31" scope="settings">10-19 周一</string>
+  <string id="Option_32" scope="settings">一 10/19</string>
+  <string id="Option_33" scope="settings">10/19</string>
+  <string id="Option_34" scope="settings">2026-10-19</string>
+  <string id="Option_35" scope="settings">10月19日 周一</string>
+  <string id="Setting_dateFont" scope="settings">日期与状态 · 日期字体</string>
+  <string id="Option_36" scope="settings">跟随全局</string>
+  <string id="Setting_dateSize" scope="settings">日期与状态 · 日期字号</string>
+  <string id="Setting_showMoveBar" scope="settings">日期与状态 · 显示活动指示区</string>
+  <string id="Setting_moveSource" scope="settings">日期与状态 · 活动指示区数据</string>
+  <string id="Option_37" scope="settings">隐藏</string>
+  <string id="Option_38" scope="settings">身体电量</string>
+  <string id="Option_39" scope="settings">电量百分比</string>
+  <string id="Option_40" scope="settings">步数目标</string>
+  <string id="Option_41" scope="settings">今日强度（周目标除以7）</string>
+  <string id="Option_42" scope="settings">本周强度目标</string>
+  <string id="Option_43" scope="settings">久坐等级</string>
+  <string id="Option_44" scope="settings">爬升楼层目标</string>
+  <string id="Setting_moveStyle" scope="settings">日期与状态 · 活动指示区样式</string>
+  <string id="Option_45" scope="settings">小人和分格</string>
+  <string id="Option_46" scope="settings">细进度线</string>
+  <string id="Option_47" scope="settings">百分比</string>
+  <string id="Setting_moveFont" scope="settings">日期与状态 · 活动百分比字体</string>
+  <string id="Setting_showWind" scope="settings">日期与状态 · 显示风向箭头</string>
+  <string id="Setting_showMoon" scope="settings">日期与状态 · 显示月相</string>
+  <string id="Setting_showCircle" scope="settings">右上圆窗 · 显示整个圆窗</string>
+  <string id="Setting_heartRefresh" scope="settings">右上圆窗 · 中心心率刷新</string>
+  <string id="Option_48" scope="settings">每5秒读取当前心率</string>
+  <string id="Option_49" scope="settings">仅抬腕时每5秒</string>
+  <string id="Option_50" scope="settings">每分钟（省电）</string>
+  <string id="Setting_heartSource" scope="settings">右上圆窗 · 心率数据来源</string>
+  <string id="Option_51" scope="settings">系统当前心率</string>
+  <string id="Option_52" scope="settings">最新系统采样（≤3分钟，非实时）</string>
+  <string id="Setting_circle" scope="settings">右上圆窗 · 中心数据</string>
+  <string id="Option_53" scope="settings">步数</string>
+  <string id="Option_54" scope="settings">距离</string>
+  <string id="Option_55" scope="settings">爬升楼层</string>
+  <string id="Option_56" scope="settings">热量</string>
+  <string id="Option_57" scope="settings">心率</string>
+  <string id="Option_58" scope="settings">气温</string>
+  <string id="Option_59" scope="settings">日落时间</string>
+  <string id="Option_60" scope="settings">日出时间</string>
+  <string id="Option_61" scope="settings">湿度</string>
+  <string id="Option_62" scope="settings">通知数量</string>
+  <string id="Option_63" scope="settings">步数目标百分比</string>
+  <string id="Option_64" scope="settings">风速</string>
+  <string id="Option_65" scope="settings">月相亮度百分比</string>
+  <string id="Option_66" scope="settings">心率范围</string>
+  <string id="Option_67" scope="settings">体感温度</string>
+  <string id="Option_68" scope="settings">剩余续航天数</string>
+  <string id="Option_69" scope="settings">海拔</string>
+  <string id="Option_70" scope="settings">今日强度分钟</string>
+  <string id="Option_71" scope="settings">本周强度分钟</string>
+  <string id="Option_72" scope="settings">今日强度完成百分比</string>
+  <string id="Option_73" scope="settings">本周强度完成百分比</string>
+  <string id="Option_74" scope="settings">恢复时间</string>
+  <string id="Option_75" scope="settings">压力</string>
+  <string id="Option_76" scope="settings">呼吸频率</string>
+  <string id="Option_77" scope="settings">气压</string>
+  <string id="Setting_circleStyle" scope="settings">右上圆窗 · 中心显示方式</string>
+  <string id="Option_78" scope="settings">图标和数值</string>
+  <string id="Option_79" scope="settings">仅数值</string>
+  <string id="Option_80" scope="settings">数值与目标</string>
+  <string id="Setting_circleGoal" scope="settings">右上圆窗 · 中心自定目标（0自动）</string>
+  <string id="Setting_circleFont" scope="settings">右上圆窗 · 中心字体</string>
+  <string id="Setting_circleSize" scope="settings">右上圆窗 · 中心字号</string>
+  <string id="Setting_showCircleIcon" scope="settings">右上圆窗 · 显示中心图标</string>
+  <string id="Setting_circleBackground" scope="settings">右上圆窗 · 圆窗背景</string>
+  <string id="Option_81" scope="settings">黑色</string>
+  <string id="Option_82" scope="settings">白色</string>
+  <string id="Option_83" scope="settings">跟随整体背景</string>
+  <string id="Setting_cellsSource" scope="settings">右上圆窗 · 八格数据来源</string>
+  <string id="Setting_cellsStyle" scope="settings">右上圆窗 · 八格显示方式</string>
+  <string id="Option_84" scope="settings">纹理扇形</string>
+  <string id="Option_85" scope="settings">实心扇形</string>
+  <string id="Option_86" scope="settings">连续内环</string>
+  <string id="Setting_ringSource" scope="settings">右上圆窗 · 外圈数据来源</string>
+  <string id="Setting_ringStyle" scope="settings">右上圆窗 · 外圈线条样式</string>
+  <string id="Option_87" scope="settings">细线</string>
+  <string id="Option_88" scope="settings">标准线</string>
+  <string id="Option_89" scope="settings">粗线</string>
+  <string id="Option_90" scope="settings">八段进度</string>
+  <string id="Setting_ringStart" scope="settings">右上圆窗 · 外圈起点</string>
+  <string id="Option_91" scope="settings">顶部</string>
+  <string id="Option_92" scope="settings">右侧</string>
+  <string id="Option_93" scope="settings">底部</string>
+  <string id="Option_94" scope="settings">左侧</string>
+  <string id="Setting_showStatus" scope="settings">右侧卡片与数据 · 显示卡片区</string>
+  <string id="Setting_showBeijingCard" scope="settings">右侧卡片与数据 · 显示上方卡片</string>
+  <string id="Setting_showAlipayCard" scope="settings">右侧卡片与数据 · 显示下方卡片</string>
+  <string id="Setting_topCardImage" scope="settings">右侧卡片与数据 · 上方卡片图案</string>
+  <string id="Option_95" scope="settings">北京公交卡</string>
+  <string id="Option_96" scope="settings">支付宝</string>
+  <string id="Option_97" scope="settings">聊天气泡</string>
+  <string id="Option_98" scope="settings">地铁</string>
+  <string id="Option_99" scope="settings">公交车</string>
+  <string id="Option_100" scope="settings">门禁钥匙</string>
+  <string id="Option_101" scope="settings">银行卡</string>
+  <string id="Option_102" scope="settings">音乐</string>
+  <string id="Option_103" scope="settings">咖啡</string>
+  <string id="Option_104" scope="settings">跑步</string>
+  <string id="Option_105" scope="settings">骑行</string>
+  <string id="Option_106" scope="settings">山峰</string>
+  <string id="Option_107" scope="settings">飞机</string>
+  <string id="Option_108" scope="settings">猫爪</string>
+  <string id="Option_109" scope="settings">笑脸</string>
+  <string id="Option_110" scope="settings">星空</string>
+  <string id="Option_111" scope="settings">相机</string>
+  <string id="Option_112" scope="settings">游戏机</string>
+  <string id="Option_113" scope="settings">露营</string>
+  <string id="Option_114" scope="settings">爱心</string>
+  <string id="Setting_bottomCardImage" scope="settings">右侧卡片与数据 · 下方卡片图案</string>
+  <string id="Setting_sideData" scope="settings">右侧卡片与数据 · 替换卡片的数据（隐藏则卡片）</string>
+  <string id="Setting_sideFont" scope="settings">右侧卡片与数据 · 右侧数据字体</string>
+  <string id="Setting_sideSize" scope="settings">右侧卡片与数据 · 右侧数据字号</string>
+  <string id="Setting_topOne" scope="settings">顶部第一行 · 数据（隐藏可关闭本区）</string>
+  <string id="Setting_topOneStyle" scope="settings">顶部第一行 · 显示方式</string>
+  <string id="Option_115" scope="settings">进度线和数值</string>
+  <string id="Option_116" scope="settings">分格和数值</string>
+  <string id="Setting_topOneFont" scope="settings">顶部第一行 · 字体</string>
+  <string id="Setting_topOneSize" scope="settings">顶部第一行 · 字号</string>
+  <string id="Setting_topOneGoal" scope="settings">顶部第一行 · 自定目标（0自动）</string>
+  <string id="Setting_topTwo" scope="settings">第二行左侧 · 数据（隐藏可关闭本区）</string>
+  <string id="Setting_topTwoStyle" scope="settings">第二行左侧 · 显示方式</string>
+  <string id="Setting_topTwoFont" scope="settings">第二行左侧 · 字体</string>
+  <string id="Setting_topTwoSize" scope="settings">第二行左侧 · 字号</string>
+  <string id="Setting_topTwoGoal" scope="settings">第二行左侧 · 自定目标（0自动）</string>
+  <string id="Setting_topThree" scope="settings">第二行右侧 · 数据（隐藏可关闭本区）</string>
+  <string id="Setting_topThreeStyle" scope="settings">第二行右侧 · 显示方式</string>
+  <string id="Setting_topThreeFont" scope="settings">第二行右侧 · 字体</string>
+  <string id="Setting_topThreeSize" scope="settings">第二行右侧 · 字号</string>
+  <string id="Setting_topThreeGoal" scope="settings">第二行右侧 · 自定目标（0自动）</string>
+  <string id="Setting_bottomLeft" scope="settings">下方左侧 · 数据（隐藏可关闭本区）</string>
+  <string id="Setting_bottomLeftStyle" scope="settings">下方左侧 · 显示方式</string>
+  <string id="Setting_bottomLeftFont" scope="settings">下方左侧 · 字体</string>
+  <string id="Setting_bottomLeftSize" scope="settings">下方左侧 · 字号</string>
+  <string id="Setting_bottomLeftGoal" scope="settings">下方左侧 · 自定目标（0自动）</string>
+  <string id="Setting_bottomRight" scope="settings">下方右侧 · 数据（隐藏可关闭本区）</string>
+  <string id="Setting_bottomRightStyle" scope="settings">下方右侧 · 显示方式</string>
+  <string id="Option_117" scope="settings">趋势图</string>
+  <string id="Setting_bottomRightFont" scope="settings">下方右侧 · 字体</string>
+  <string id="Setting_bottomRightSize" scope="settings">下方右侧 · 字号</string>
+  <string id="Setting_bottomRightGoal" scope="settings">下方右侧 · 自定目标（0自动）</string>
+  <string id="Setting_footerLeft" scope="settings">底部左侧 · 数据（隐藏可关闭本区）</string>
+  <string id="Setting_footerLeftStyle" scope="settings">底部左侧 · 显示方式</string>
+  <string id="Setting_footerLeftFont" scope="settings">底部左侧 · 字体</string>
+  <string id="Setting_footerLeftSize" scope="settings">底部左侧 · 字号</string>
+  <string id="Setting_footerLeftGoal" scope="settings">底部左侧 · 自定目标（0自动）</string>
+  <string id="Setting_footerRight" scope="settings">底部右侧 · 数据（隐藏可关闭本区）</string>
+  <string id="Setting_footerRightStyle" scope="settings">底部右侧 · 显示方式</string>
+  <string id="Setting_footerRightFont" scope="settings">底部右侧 · 字体</string>
+  <string id="Setting_footerRightSize" scope="settings">底部右侧 · 字号</string>
+  <string id="Setting_footerRightGoal" scope="settings">底部右侧 · 自定目标（0自动）</string>
+  <string id="Setting_showHeartGraph" scope="settings">趋势图 · 启用下方右侧趋势图</string>
+  <string id="Setting_chartStyle" scope="settings">趋势图 · 趋势图样式</string>
+  <string id="Option_118" scope="settings">折线</string>
+  <string id="Option_119" scope="settings">面积</string>
+  <string id="Option_120" scope="settings">竖线</string>
+  <string id="Setting_chartMinutes" scope="settings">趋势图 · 趋势时间跨度</string>
+  <string id="Option_121" scope="settings">15分钟</string>
+  <string id="Option_122" scope="settings">30分钟</string>
+  <string id="Option_123" scope="settings">60分钟</string>
+  <string id="Setting_showChartLabels" scope="settings">趋势图 · 显示最高最低值</string>
+  <string id="Setting_chartLabelFont" scope="settings">趋势图 · 刻度字体</string>
+  <string id="Option_124" scope="settings">像素小字</string>
+</strings>

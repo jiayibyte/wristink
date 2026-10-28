@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="13" viewBox="0 0 28 13">
+  <rect x="0.5" y="0.5" width="27" height="12" rx="1.5" fill="#fff" stroke="#000" stroke-width="1"/>
+  <!-- Compact monochrome interpretation of Alipay's cross and lower sweeping stroke. -->
+  <g transform="translate(5.8 1.1) scale(0.8 0.8)" fill="none" stroke="#000" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 0 V5 M3 2.5 H15 M2 5.5 H14 C12 9 7 12 3.2 11.7 C-0.6 11.4 0 8.2 3.4 8.3 C8.6 8.3 13.9 12.4 19.7 13.4"/>
+  </g>
+</svg>

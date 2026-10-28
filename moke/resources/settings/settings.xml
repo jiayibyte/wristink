@@ -1,0 +1,887 @@
+<?xml version='1.0' encoding='utf-8'?>
+<settings>
+  <setting propertyKey="@Properties.darkTheme" title="@Strings.Setting_darkTheme">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.showIcons" title="@Strings.Setting_showIcons">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.showUnits" title="@Strings.Setting_showUnits">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.linkFooterFonts" title="@Strings.Setting_linkFooterFonts">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.dataFont" title="@Strings.Setting_dataFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_0</listEntry>
+      <listEntry value="1">@Strings.Option_1</listEntry>
+      <listEntry value="2">@Strings.Option_2</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.dataSize" title="@Strings.Setting_dataSize">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_3</listEntry>
+      <listEntry value="1">@Strings.Option_4</listEntry>
+      <listEntry value="2">@Strings.Option_5</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.temperatureUnit" title="@Strings.Setting_temperatureUnit">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_6</listEntry>
+      <listEntry value="1">@Strings.Option_7</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.distanceUnit" title="@Strings.Setting_distanceUnit">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_8</listEntry>
+      <listEntry value="1">@Strings.Option_9</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.altitudeUnit" title="@Strings.Setting_altitudeUnit">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_10</listEntry>
+      <listEntry value="1">@Strings.Option_11</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.powerProfile" title="@Strings.Setting_powerProfile">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_12</listEntry>
+      <listEntry value="1">@Strings.Option_13</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.analogHandMode" title="@Strings.Setting_analogHandMode">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_14</listEntry>
+      <listEntry value="1">@Strings.Option_15</listEntry>
+      <listEntry value="2">@Strings.Option_16</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.showTime" title="@Strings.Setting_showTime">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.showSeconds" title="@Strings.Setting_showSeconds">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.leadingZero" title="@Strings.Setting_leadingZero">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.timeFormat" title="@Strings.Setting_timeFormat">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_17</listEntry>
+      <listEntry value="1">@Strings.Option_18</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.timeSeparator" title="@Strings.Setting_timeSeparator">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_19</listEntry>
+      <listEntry value="1">@Strings.Option_20</listEntry>
+      <listEntry value="2">@Strings.Option_21</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.secondsMode" title="@Strings.Setting_secondsMode">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_22</listEntry>
+      <listEntry value="1">@Strings.Option_23</listEntry>
+      <listEntry value="2">@Strings.Option_24</listEntry>
+      <listEntry value="3">@Strings.Option_25</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.timeFont" title="@Strings.Setting_timeFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_26</listEntry>
+      <listEntry value="1">@Strings.Option_0</listEntry>
+      <listEntry value="2">@Strings.Option_27</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.timeSize" title="@Strings.Setting_timeSize">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_3</listEntry>
+      <listEntry value="1">@Strings.Option_4</listEntry>
+      <listEntry value="2">@Strings.Option_5</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.secondsFont" title="@Strings.Setting_secondsFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_26</listEntry>
+      <listEntry value="1">@Strings.Option_0</listEntry>
+      <listEntry value="2">@Strings.Option_27</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.secondsSize" title="@Strings.Setting_secondsSize">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_3</listEntry>
+      <listEntry value="1">@Strings.Option_4</listEntry>
+      <listEntry value="2">@Strings.Option_5</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.showDate" title="@Strings.Setting_showDate">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.dateFormat" title="@Strings.Setting_dateFormat">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_28</listEntry>
+      <listEntry value="1">@Strings.Option_29</listEntry>
+      <listEntry value="2">@Strings.Option_30</listEntry>
+      <listEntry value="3">@Strings.Option_31</listEntry>
+      <listEntry value="4">@Strings.Option_32</listEntry>
+      <listEntry value="5">@Strings.Option_33</listEntry>
+      <listEntry value="6">@Strings.Option_34</listEntry>
+      <listEntry value="7">@Strings.Option_35</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.dateFont" title="@Strings.Setting_dateFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_0</listEntry>
+      <listEntry value="2">@Strings.Option_1</listEntry>
+      <listEntry value="3">@Strings.Option_2</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.dateSize" title="@Strings.Setting_dateSize">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_3</listEntry>
+      <listEntry value="2">@Strings.Option_4</listEntry>
+      <listEntry value="3">@Strings.Option_5</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.showMoveBar" title="@Strings.Setting_showMoveBar">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.moveSource" title="@Strings.Setting_moveSource">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_37</listEntry>
+      <listEntry value="1">@Strings.Option_38</listEntry>
+      <listEntry value="2">@Strings.Option_39</listEntry>
+      <listEntry value="3">@Strings.Option_40</listEntry>
+      <listEntry value="4">@Strings.Option_41</listEntry>
+      <listEntry value="5">@Strings.Option_42</listEntry>
+      <listEntry value="6">@Strings.Option_43</listEntry>
+      <listEntry value="7">@Strings.Option_44</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.moveStyle" title="@Strings.Setting_moveStyle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_45</listEntry>
+      <listEntry value="1">@Strings.Option_46</listEntry>
+      <listEntry value="2">@Strings.Option_47</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.moveFont" title="@Strings.Setting_moveFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_0</listEntry>
+      <listEntry value="2">@Strings.Option_1</listEntry>
+      <listEntry value="3">@Strings.Option_2</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.showWind" title="@Strings.Setting_showWind">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.showMoon" title="@Strings.Setting_showMoon">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.showCircle" title="@Strings.Setting_showCircle">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.heartRefresh" title="@Strings.Setting_heartRefresh">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_48</listEntry>
+      <listEntry value="1">@Strings.Option_49</listEntry>
+      <listEntry value="2">@Strings.Option_50</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.heartSource" title="@Strings.Setting_heartSource">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_51</listEntry>
+      <listEntry value="1">@Strings.Option_52</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.circle" title="@Strings.Setting_circle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_37</listEntry>
+      <listEntry value="1">@Strings.Option_39</listEntry>
+      <listEntry value="2">@Strings.Option_53</listEntry>
+      <listEntry value="3">@Strings.Option_54</listEntry>
+      <listEntry value="4">@Strings.Option_55</listEntry>
+      <listEntry value="5">@Strings.Option_56</listEntry>
+      <listEntry value="6">@Strings.Option_57</listEntry>
+      <listEntry value="7">@Strings.Option_58</listEntry>
+      <listEntry value="8">@Strings.Option_59</listEntry>
+      <listEntry value="9">@Strings.Option_60</listEntry>
+      <listEntry value="10">@Strings.Option_61</listEntry>
+      <listEntry value="11">@Strings.Option_62</listEntry>
+      <listEntry value="12">@Strings.Option_63</listEntry>
+      <listEntry value="13">@Strings.Option_64</listEntry>
+      <listEntry value="14">@Strings.Option_65</listEntry>
+      <listEntry value="15">@Strings.Option_66</listEntry>
+      <listEntry value="16">@Strings.Option_67</listEntry>
+      <listEntry value="17">@Strings.Option_68</listEntry>
+      <listEntry value="18">@Strings.Option_69</listEntry>
+      <listEntry value="19">@Strings.Option_38</listEntry>
+      <listEntry value="20">@Strings.Option_70</listEntry>
+      <listEntry value="21">@Strings.Option_71</listEntry>
+      <listEntry value="22">@Strings.Option_72</listEntry>
+      <listEntry value="23">@Strings.Option_73</listEntry>
+      <listEntry value="24">@Strings.Option_43</listEntry>
+      <listEntry value="25">@Strings.Option_74</listEntry>
+      <listEntry value="26">@Strings.Option_75</listEntry>
+      <listEntry value="27">@Strings.Option_76</listEntry>
+      <listEntry value="28">@Strings.Option_77</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.circleStyle" title="@Strings.Setting_circleStyle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_78</listEntry>
+      <listEntry value="1">@Strings.Option_79</listEntry>
+      <listEntry value="2">@Strings.Option_47</listEntry>
+      <listEntry value="3">@Strings.Option_80</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.circleGoal" title="@Strings.Setting_circleGoal">
+    <settingConfig type="numeric" min="0" max="1000000" />
+  </setting>
+  <setting propertyKey="@Properties.circleFont" title="@Strings.Setting_circleFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_26</listEntry>
+      <listEntry value="1">@Strings.Option_0</listEntry>
+      <listEntry value="2">@Strings.Option_27</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.circleSize" title="@Strings.Setting_circleSize">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_3</listEntry>
+      <listEntry value="1">@Strings.Option_4</listEntry>
+      <listEntry value="2">@Strings.Option_5</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.showCircleIcon" title="@Strings.Setting_showCircleIcon">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.circleBackground" title="@Strings.Setting_circleBackground">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_81</listEntry>
+      <listEntry value="1">@Strings.Option_82</listEntry>
+      <listEntry value="2">@Strings.Option_83</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.cellsSource" title="@Strings.Setting_cellsSource">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_37</listEntry>
+      <listEntry value="1">@Strings.Option_38</listEntry>
+      <listEntry value="2">@Strings.Option_39</listEntry>
+      <listEntry value="3">@Strings.Option_40</listEntry>
+      <listEntry value="4">@Strings.Option_41</listEntry>
+      <listEntry value="5">@Strings.Option_42</listEntry>
+      <listEntry value="6">@Strings.Option_43</listEntry>
+      <listEntry value="7">@Strings.Option_44</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.cellsStyle" title="@Strings.Setting_cellsStyle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_84</listEntry>
+      <listEntry value="1">@Strings.Option_85</listEntry>
+      <listEntry value="2">@Strings.Option_86</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.ringSource" title="@Strings.Setting_ringSource">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_37</listEntry>
+      <listEntry value="1">@Strings.Option_38</listEntry>
+      <listEntry value="2">@Strings.Option_39</listEntry>
+      <listEntry value="3">@Strings.Option_40</listEntry>
+      <listEntry value="4">@Strings.Option_41</listEntry>
+      <listEntry value="5">@Strings.Option_42</listEntry>
+      <listEntry value="6">@Strings.Option_43</listEntry>
+      <listEntry value="7">@Strings.Option_44</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.ringStyle" title="@Strings.Setting_ringStyle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_87</listEntry>
+      <listEntry value="1">@Strings.Option_88</listEntry>
+      <listEntry value="2">@Strings.Option_89</listEntry>
+      <listEntry value="3">@Strings.Option_90</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.ringStart" title="@Strings.Setting_ringStart">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_91</listEntry>
+      <listEntry value="1">@Strings.Option_92</listEntry>
+      <listEntry value="2">@Strings.Option_93</listEntry>
+      <listEntry value="3">@Strings.Option_94</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.showStatus" title="@Strings.Setting_showStatus">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.showBeijingCard" title="@Strings.Setting_showBeijingCard">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.showAlipayCard" title="@Strings.Setting_showAlipayCard">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.topCardImage" title="@Strings.Setting_topCardImage">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_37</listEntry>
+      <listEntry value="1">@Strings.Option_95</listEntry>
+      <listEntry value="2">@Strings.Option_96</listEntry>
+      <listEntry value="3">@Strings.Option_97</listEntry>
+      <listEntry value="4">@Strings.Option_98</listEntry>
+      <listEntry value="5">@Strings.Option_99</listEntry>
+      <listEntry value="6">@Strings.Option_100</listEntry>
+      <listEntry value="7">@Strings.Option_101</listEntry>
+      <listEntry value="8">@Strings.Option_102</listEntry>
+      <listEntry value="9">@Strings.Option_103</listEntry>
+      <listEntry value="10">@Strings.Option_104</listEntry>
+      <listEntry value="11">@Strings.Option_105</listEntry>
+      <listEntry value="12">@Strings.Option_106</listEntry>
+      <listEntry value="13">@Strings.Option_107</listEntry>
+      <listEntry value="14">@Strings.Option_108</listEntry>
+      <listEntry value="15">@Strings.Option_109</listEntry>
+      <listEntry value="16">@Strings.Option_110</listEntry>
+      <listEntry value="17">@Strings.Option_111</listEntry>
+      <listEntry value="18">@Strings.Option_112</listEntry>
+      <listEntry value="19">@Strings.Option_113</listEntry>
+      <listEntry value="20">@Strings.Option_114</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.bottomCardImage" title="@Strings.Setting_bottomCardImage">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_37</listEntry>
+      <listEntry value="1">@Strings.Option_95</listEntry>
+      <listEntry value="2">@Strings.Option_96</listEntry>
+      <listEntry value="3">@Strings.Option_97</listEntry>
+      <listEntry value="4">@Strings.Option_98</listEntry>
+      <listEntry value="5">@Strings.Option_99</listEntry>
+      <listEntry value="6">@Strings.Option_100</listEntry>
+      <listEntry value="7">@Strings.Option_101</listEntry>
+      <listEntry value="8">@Strings.Option_102</listEntry>
+      <listEntry value="9">@Strings.Option_103</listEntry>
+      <listEntry value="10">@Strings.Option_104</listEntry>
+      <listEntry value="11">@Strings.Option_105</listEntry>
+      <listEntry value="12">@Strings.Option_106</listEntry>
+      <listEntry value="13">@Strings.Option_107</listEntry>
+      <listEntry value="14">@Strings.Option_108</listEntry>
+      <listEntry value="15">@Strings.Option_109</listEntry>
+      <listEntry value="16">@Strings.Option_110</listEntry>
+      <listEntry value="17">@Strings.Option_111</listEntry>
+      <listEntry value="18">@Strings.Option_112</listEntry>
+      <listEntry value="19">@Strings.Option_113</listEntry>
+      <listEntry value="20">@Strings.Option_114</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.sideData" title="@Strings.Setting_sideData">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_37</listEntry>
+      <listEntry value="1">@Strings.Option_39</listEntry>
+      <listEntry value="2">@Strings.Option_53</listEntry>
+      <listEntry value="3">@Strings.Option_54</listEntry>
+      <listEntry value="4">@Strings.Option_55</listEntry>
+      <listEntry value="5">@Strings.Option_56</listEntry>
+      <listEntry value="6">@Strings.Option_57</listEntry>
+      <listEntry value="7">@Strings.Option_58</listEntry>
+      <listEntry value="8">@Strings.Option_59</listEntry>
+      <listEntry value="9">@Strings.Option_60</listEntry>
+      <listEntry value="10">@Strings.Option_61</listEntry>
+      <listEntry value="11">@Strings.Option_62</listEntry>
+      <listEntry value="12">@Strings.Option_63</listEntry>
+      <listEntry value="13">@Strings.Option_64</listEntry>
+      <listEntry value="14">@Strings.Option_65</listEntry>
+      <listEntry value="15">@Strings.Option_66</listEntry>
+      <listEntry value="16">@Strings.Option_67</listEntry>
+      <listEntry value="17">@Strings.Option_68</listEntry>
+      <listEntry value="18">@Strings.Option_69</listEntry>
+      <listEntry value="19">@Strings.Option_38</listEntry>
+      <listEntry value="20">@Strings.Option_70</listEntry>
+      <listEntry value="21">@Strings.Option_71</listEntry>
+      <listEntry value="22">@Strings.Option_72</listEntry>
+      <listEntry value="23">@Strings.Option_73</listEntry>
+      <listEntry value="24">@Strings.Option_43</listEntry>
+      <listEntry value="25">@Strings.Option_74</listEntry>
+      <listEntry value="26">@Strings.Option_75</listEntry>
+      <listEntry value="27">@Strings.Option_76</listEntry>
+      <listEntry value="28">@Strings.Option_77</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.sideFont" title="@Strings.Setting_sideFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_0</listEntry>
+      <listEntry value="2">@Strings.Option_1</listEntry>
+      <listEntry value="3">@Strings.Option_2</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.sideSize" title="@Strings.Setting_sideSize">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_3</listEntry>
+      <listEntry value="2">@Strings.Option_4</listEntry>
+      <listEntry value="3">@Strings.Option_5</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.topOne" title="@Strings.Setting_topOne">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_37</listEntry>
+      <listEntry value="1">@Strings.Option_39</listEntry>
+      <listEntry value="2">@Strings.Option_53</listEntry>
+      <listEntry value="3">@Strings.Option_54</listEntry>
+      <listEntry value="4">@Strings.Option_55</listEntry>
+      <listEntry value="5">@Strings.Option_56</listEntry>
+      <listEntry value="6">@Strings.Option_57</listEntry>
+      <listEntry value="7">@Strings.Option_58</listEntry>
+      <listEntry value="8">@Strings.Option_59</listEntry>
+      <listEntry value="9">@Strings.Option_60</listEntry>
+      <listEntry value="10">@Strings.Option_61</listEntry>
+      <listEntry value="11">@Strings.Option_62</listEntry>
+      <listEntry value="12">@Strings.Option_63</listEntry>
+      <listEntry value="13">@Strings.Option_64</listEntry>
+      <listEntry value="14">@Strings.Option_65</listEntry>
+      <listEntry value="15">@Strings.Option_66</listEntry>
+      <listEntry value="16">@Strings.Option_67</listEntry>
+      <listEntry value="17">@Strings.Option_68</listEntry>
+      <listEntry value="18">@Strings.Option_69</listEntry>
+      <listEntry value="19">@Strings.Option_38</listEntry>
+      <listEntry value="20">@Strings.Option_70</listEntry>
+      <listEntry value="21">@Strings.Option_71</listEntry>
+      <listEntry value="22">@Strings.Option_72</listEntry>
+      <listEntry value="23">@Strings.Option_73</listEntry>
+      <listEntry value="24">@Strings.Option_43</listEntry>
+      <listEntry value="25">@Strings.Option_74</listEntry>
+      <listEntry value="26">@Strings.Option_75</listEntry>
+      <listEntry value="27">@Strings.Option_76</listEntry>
+      <listEntry value="28">@Strings.Option_77</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.topOneStyle" title="@Strings.Setting_topOneStyle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_78</listEntry>
+      <listEntry value="1">@Strings.Option_79</listEntry>
+      <listEntry value="2">@Strings.Option_47</listEntry>
+      <listEntry value="3">@Strings.Option_80</listEntry>
+      <listEntry value="4">@Strings.Option_115</listEntry>
+      <listEntry value="5">@Strings.Option_116</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.topOneFont" title="@Strings.Setting_topOneFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_0</listEntry>
+      <listEntry value="2">@Strings.Option_1</listEntry>
+      <listEntry value="3">@Strings.Option_2</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.topOneSize" title="@Strings.Setting_topOneSize">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_3</listEntry>
+      <listEntry value="2">@Strings.Option_4</listEntry>
+      <listEntry value="3">@Strings.Option_5</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.topOneGoal" title="@Strings.Setting_topOneGoal">
+    <settingConfig type="numeric" min="0" max="1000000" />
+  </setting>
+  <setting propertyKey="@Properties.topTwo" title="@Strings.Setting_topTwo">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_37</listEntry>
+      <listEntry value="1">@Strings.Option_39</listEntry>
+      <listEntry value="2">@Strings.Option_53</listEntry>
+      <listEntry value="3">@Strings.Option_54</listEntry>
+      <listEntry value="4">@Strings.Option_55</listEntry>
+      <listEntry value="5">@Strings.Option_56</listEntry>
+      <listEntry value="6">@Strings.Option_57</listEntry>
+      <listEntry value="7">@Strings.Option_58</listEntry>
+      <listEntry value="8">@Strings.Option_59</listEntry>
+      <listEntry value="9">@Strings.Option_60</listEntry>
+      <listEntry value="10">@Strings.Option_61</listEntry>
+      <listEntry value="11">@Strings.Option_62</listEntry>
+      <listEntry value="12">@Strings.Option_63</listEntry>
+      <listEntry value="13">@Strings.Option_64</listEntry>
+      <listEntry value="14">@Strings.Option_65</listEntry>
+      <listEntry value="15">@Strings.Option_66</listEntry>
+      <listEntry value="16">@Strings.Option_67</listEntry>
+      <listEntry value="17">@Strings.Option_68</listEntry>
+      <listEntry value="18">@Strings.Option_69</listEntry>
+      <listEntry value="19">@Strings.Option_38</listEntry>
+      <listEntry value="20">@Strings.Option_70</listEntry>
+      <listEntry value="21">@Strings.Option_71</listEntry>
+      <listEntry value="22">@Strings.Option_72</listEntry>
+      <listEntry value="23">@Strings.Option_73</listEntry>
+      <listEntry value="24">@Strings.Option_43</listEntry>
+      <listEntry value="25">@Strings.Option_74</listEntry>
+      <listEntry value="26">@Strings.Option_75</listEntry>
+      <listEntry value="27">@Strings.Option_76</listEntry>
+      <listEntry value="28">@Strings.Option_77</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.topTwoStyle" title="@Strings.Setting_topTwoStyle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_78</listEntry>
+      <listEntry value="1">@Strings.Option_79</listEntry>
+      <listEntry value="2">@Strings.Option_47</listEntry>
+      <listEntry value="3">@Strings.Option_80</listEntry>
+      <listEntry value="4">@Strings.Option_115</listEntry>
+      <listEntry value="5">@Strings.Option_116</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.topTwoFont" title="@Strings.Setting_topTwoFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_0</listEntry>
+      <listEntry value="2">@Strings.Option_1</listEntry>
+      <listEntry value="3">@Strings.Option_2</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.topTwoSize" title="@Strings.Setting_topTwoSize">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_3</listEntry>
+      <listEntry value="2">@Strings.Option_4</listEntry>
+      <listEntry value="3">@Strings.Option_5</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.topTwoGoal" title="@Strings.Setting_topTwoGoal">
+    <settingConfig type="numeric" min="0" max="1000000" />
+  </setting>
+  <setting propertyKey="@Properties.topThree" title="@Strings.Setting_topThree">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_37</listEntry>
+      <listEntry value="1">@Strings.Option_39</listEntry>
+      <listEntry value="2">@Strings.Option_53</listEntry>
+      <listEntry value="3">@Strings.Option_54</listEntry>
+      <listEntry value="4">@Strings.Option_55</listEntry>
+      <listEntry value="5">@Strings.Option_56</listEntry>
+      <listEntry value="6">@Strings.Option_57</listEntry>
+      <listEntry value="7">@Strings.Option_58</listEntry>
+      <listEntry value="8">@Strings.Option_59</listEntry>
+      <listEntry value="9">@Strings.Option_60</listEntry>
+      <listEntry value="10">@Strings.Option_61</listEntry>
+      <listEntry value="11">@Strings.Option_62</listEntry>
+      <listEntry value="12">@Strings.Option_63</listEntry>
+      <listEntry value="13">@Strings.Option_64</listEntry>
+      <listEntry value="14">@Strings.Option_65</listEntry>
+      <listEntry value="15">@Strings.Option_66</listEntry>
+      <listEntry value="16">@Strings.Option_67</listEntry>
+      <listEntry value="17">@Strings.Option_68</listEntry>
+      <listEntry value="18">@Strings.Option_69</listEntry>
+      <listEntry value="19">@Strings.Option_38</listEntry>
+      <listEntry value="20">@Strings.Option_70</listEntry>
+      <listEntry value="21">@Strings.Option_71</listEntry>
+      <listEntry value="22">@Strings.Option_72</listEntry>
+      <listEntry value="23">@Strings.Option_73</listEntry>
+      <listEntry value="24">@Strings.Option_43</listEntry>
+      <listEntry value="25">@Strings.Option_74</listEntry>
+      <listEntry value="26">@Strings.Option_75</listEntry>
+      <listEntry value="27">@Strings.Option_76</listEntry>
+      <listEntry value="28">@Strings.Option_77</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.topThreeStyle" title="@Strings.Setting_topThreeStyle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_78</listEntry>
+      <listEntry value="1">@Strings.Option_79</listEntry>
+      <listEntry value="2">@Strings.Option_47</listEntry>
+      <listEntry value="3">@Strings.Option_80</listEntry>
+      <listEntry value="4">@Strings.Option_115</listEntry>
+      <listEntry value="5">@Strings.Option_116</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.topThreeFont" title="@Strings.Setting_topThreeFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_0</listEntry>
+      <listEntry value="2">@Strings.Option_1</listEntry>
+      <listEntry value="3">@Strings.Option_2</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.topThreeSize" title="@Strings.Setting_topThreeSize">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_3</listEntry>
+      <listEntry value="2">@Strings.Option_4</listEntry>
+      <listEntry value="3">@Strings.Option_5</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.topThreeGoal" title="@Strings.Setting_topThreeGoal">
+    <settingConfig type="numeric" min="0" max="1000000" />
+  </setting>
+  <setting propertyKey="@Properties.bottomLeft" title="@Strings.Setting_bottomLeft">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_37</listEntry>
+      <listEntry value="1">@Strings.Option_39</listEntry>
+      <listEntry value="2">@Strings.Option_53</listEntry>
+      <listEntry value="3">@Strings.Option_54</listEntry>
+      <listEntry value="4">@Strings.Option_55</listEntry>
+      <listEntry value="5">@Strings.Option_56</listEntry>
+      <listEntry value="6">@Strings.Option_57</listEntry>
+      <listEntry value="7">@Strings.Option_58</listEntry>
+      <listEntry value="8">@Strings.Option_59</listEntry>
+      <listEntry value="9">@Strings.Option_60</listEntry>
+      <listEntry value="10">@Strings.Option_61</listEntry>
+      <listEntry value="11">@Strings.Option_62</listEntry>
+      <listEntry value="12">@Strings.Option_63</listEntry>
+      <listEntry value="13">@Strings.Option_64</listEntry>
+      <listEntry value="14">@Strings.Option_65</listEntry>
+      <listEntry value="15">@Strings.Option_66</listEntry>
+      <listEntry value="16">@Strings.Option_67</listEntry>
+      <listEntry value="17">@Strings.Option_68</listEntry>
+      <listEntry value="18">@Strings.Option_69</listEntry>
+      <listEntry value="19">@Strings.Option_38</listEntry>
+      <listEntry value="20">@Strings.Option_70</listEntry>
+      <listEntry value="21">@Strings.Option_71</listEntry>
+      <listEntry value="22">@Strings.Option_72</listEntry>
+      <listEntry value="23">@Strings.Option_73</listEntry>
+      <listEntry value="24">@Strings.Option_43</listEntry>
+      <listEntry value="25">@Strings.Option_74</listEntry>
+      <listEntry value="26">@Strings.Option_75</listEntry>
+      <listEntry value="27">@Strings.Option_76</listEntry>
+      <listEntry value="28">@Strings.Option_77</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.bottomLeftStyle" title="@Strings.Setting_bottomLeftStyle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_78</listEntry>
+      <listEntry value="1">@Strings.Option_79</listEntry>
+      <listEntry value="2">@Strings.Option_47</listEntry>
+      <listEntry value="3">@Strings.Option_80</listEntry>
+      <listEntry value="4">@Strings.Option_115</listEntry>
+      <listEntry value="5">@Strings.Option_116</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.bottomLeftFont" title="@Strings.Setting_bottomLeftFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_0</listEntry>
+      <listEntry value="2">@Strings.Option_1</listEntry>
+      <listEntry value="3">@Strings.Option_2</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.bottomLeftSize" title="@Strings.Setting_bottomLeftSize">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_3</listEntry>
+      <listEntry value="2">@Strings.Option_4</listEntry>
+      <listEntry value="3">@Strings.Option_5</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.bottomLeftGoal" title="@Strings.Setting_bottomLeftGoal">
+    <settingConfig type="numeric" min="0" max="1000000" />
+  </setting>
+  <setting propertyKey="@Properties.bottomRight" title="@Strings.Setting_bottomRight">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_37</listEntry>
+      <listEntry value="1">@Strings.Option_39</listEntry>
+      <listEntry value="2">@Strings.Option_53</listEntry>
+      <listEntry value="3">@Strings.Option_54</listEntry>
+      <listEntry value="4">@Strings.Option_55</listEntry>
+      <listEntry value="5">@Strings.Option_56</listEntry>
+      <listEntry value="6">@Strings.Option_57</listEntry>
+      <listEntry value="7">@Strings.Option_58</listEntry>
+      <listEntry value="8">@Strings.Option_59</listEntry>
+      <listEntry value="9">@Strings.Option_60</listEntry>
+      <listEntry value="10">@Strings.Option_61</listEntry>
+      <listEntry value="11">@Strings.Option_62</listEntry>
+      <listEntry value="12">@Strings.Option_63</listEntry>
+      <listEntry value="13">@Strings.Option_64</listEntry>
+      <listEntry value="14">@Strings.Option_65</listEntry>
+      <listEntry value="15">@Strings.Option_66</listEntry>
+      <listEntry value="16">@Strings.Option_67</listEntry>
+      <listEntry value="17">@Strings.Option_68</listEntry>
+      <listEntry value="18">@Strings.Option_69</listEntry>
+      <listEntry value="19">@Strings.Option_38</listEntry>
+      <listEntry value="20">@Strings.Option_70</listEntry>
+      <listEntry value="21">@Strings.Option_71</listEntry>
+      <listEntry value="22">@Strings.Option_72</listEntry>
+      <listEntry value="23">@Strings.Option_73</listEntry>
+      <listEntry value="24">@Strings.Option_43</listEntry>
+      <listEntry value="25">@Strings.Option_74</listEntry>
+      <listEntry value="26">@Strings.Option_75</listEntry>
+      <listEntry value="27">@Strings.Option_76</listEntry>
+      <listEntry value="28">@Strings.Option_77</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.bottomRightStyle" title="@Strings.Setting_bottomRightStyle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_78</listEntry>
+      <listEntry value="1">@Strings.Option_79</listEntry>
+      <listEntry value="2">@Strings.Option_47</listEntry>
+      <listEntry value="3">@Strings.Option_80</listEntry>
+      <listEntry value="4">@Strings.Option_115</listEntry>
+      <listEntry value="5">@Strings.Option_116</listEntry>
+      <listEntry value="6">@Strings.Option_117</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.bottomRightFont" title="@Strings.Setting_bottomRightFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_0</listEntry>
+      <listEntry value="2">@Strings.Option_1</listEntry>
+      <listEntry value="3">@Strings.Option_2</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.bottomRightSize" title="@Strings.Setting_bottomRightSize">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_3</listEntry>
+      <listEntry value="2">@Strings.Option_4</listEntry>
+      <listEntry value="3">@Strings.Option_5</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.bottomRightGoal" title="@Strings.Setting_bottomRightGoal">
+    <settingConfig type="numeric" min="0" max="1000000" />
+  </setting>
+  <setting propertyKey="@Properties.footerLeft" title="@Strings.Setting_footerLeft">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_37</listEntry>
+      <listEntry value="1">@Strings.Option_39</listEntry>
+      <listEntry value="2">@Strings.Option_53</listEntry>
+      <listEntry value="3">@Strings.Option_54</listEntry>
+      <listEntry value="4">@Strings.Option_55</listEntry>
+      <listEntry value="5">@Strings.Option_56</listEntry>
+      <listEntry value="6">@Strings.Option_57</listEntry>
+      <listEntry value="7">@Strings.Option_58</listEntry>
+      <listEntry value="8">@Strings.Option_59</listEntry>
+      <listEntry value="9">@Strings.Option_60</listEntry>
+      <listEntry value="10">@Strings.Option_61</listEntry>
+      <listEntry value="11">@Strings.Option_62</listEntry>
+      <listEntry value="12">@Strings.Option_63</listEntry>
+      <listEntry value="13">@Strings.Option_64</listEntry>
+      <listEntry value="14">@Strings.Option_65</listEntry>
+      <listEntry value="15">@Strings.Option_66</listEntry>
+      <listEntry value="16">@Strings.Option_67</listEntry>
+      <listEntry value="17">@Strings.Option_68</listEntry>
+      <listEntry value="18">@Strings.Option_69</listEntry>
+      <listEntry value="19">@Strings.Option_38</listEntry>
+      <listEntry value="20">@Strings.Option_70</listEntry>
+      <listEntry value="21">@Strings.Option_71</listEntry>
+      <listEntry value="22">@Strings.Option_72</listEntry>
+      <listEntry value="23">@Strings.Option_73</listEntry>
+      <listEntry value="24">@Strings.Option_43</listEntry>
+      <listEntry value="25">@Strings.Option_74</listEntry>
+      <listEntry value="26">@Strings.Option_75</listEntry>
+      <listEntry value="27">@Strings.Option_76</listEntry>
+      <listEntry value="28">@Strings.Option_77</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.footerLeftStyle" title="@Strings.Setting_footerLeftStyle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_78</listEntry>
+      <listEntry value="1">@Strings.Option_79</listEntry>
+      <listEntry value="2">@Strings.Option_47</listEntry>
+      <listEntry value="3">@Strings.Option_80</listEntry>
+      <listEntry value="4">@Strings.Option_115</listEntry>
+      <listEntry value="5">@Strings.Option_116</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.footerLeftFont" title="@Strings.Setting_footerLeftFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_0</listEntry>
+      <listEntry value="2">@Strings.Option_1</listEntry>
+      <listEntry value="3">@Strings.Option_2</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.footerLeftSize" title="@Strings.Setting_footerLeftSize">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_3</listEntry>
+      <listEntry value="2">@Strings.Option_4</listEntry>
+      <listEntry value="3">@Strings.Option_5</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.footerLeftGoal" title="@Strings.Setting_footerLeftGoal">
+    <settingConfig type="numeric" min="0" max="1000000" />
+  </setting>
+  <setting propertyKey="@Properties.footerRight" title="@Strings.Setting_footerRight">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_37</listEntry>
+      <listEntry value="1">@Strings.Option_39</listEntry>
+      <listEntry value="2">@Strings.Option_53</listEntry>
+      <listEntry value="3">@Strings.Option_54</listEntry>
+      <listEntry value="4">@Strings.Option_55</listEntry>
+      <listEntry value="5">@Strings.Option_56</listEntry>
+      <listEntry value="6">@Strings.Option_57</listEntry>
+      <listEntry value="7">@Strings.Option_58</listEntry>
+      <listEntry value="8">@Strings.Option_59</listEntry>
+      <listEntry value="9">@Strings.Option_60</listEntry>
+      <listEntry value="10">@Strings.Option_61</listEntry>
+      <listEntry value="11">@Strings.Option_62</listEntry>
+      <listEntry value="12">@Strings.Option_63</listEntry>
+      <listEntry value="13">@Strings.Option_64</listEntry>
+      <listEntry value="14">@Strings.Option_65</listEntry>
+      <listEntry value="15">@Strings.Option_66</listEntry>
+      <listEntry value="16">@Strings.Option_67</listEntry>
+      <listEntry value="17">@Strings.Option_68</listEntry>
+      <listEntry value="18">@Strings.Option_69</listEntry>
+      <listEntry value="19">@Strings.Option_38</listEntry>
+      <listEntry value="20">@Strings.Option_70</listEntry>
+      <listEntry value="21">@Strings.Option_71</listEntry>
+      <listEntry value="22">@Strings.Option_72</listEntry>
+      <listEntry value="23">@Strings.Option_73</listEntry>
+      <listEntry value="24">@Strings.Option_43</listEntry>
+      <listEntry value="25">@Strings.Option_74</listEntry>
+      <listEntry value="26">@Strings.Option_75</listEntry>
+      <listEntry value="27">@Strings.Option_76</listEntry>
+      <listEntry value="28">@Strings.Option_77</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.footerRightStyle" title="@Strings.Setting_footerRightStyle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_78</listEntry>
+      <listEntry value="1">@Strings.Option_79</listEntry>
+      <listEntry value="2">@Strings.Option_47</listEntry>
+      <listEntry value="3">@Strings.Option_80</listEntry>
+      <listEntry value="4">@Strings.Option_115</listEntry>
+      <listEntry value="5">@Strings.Option_116</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.footerRightFont" title="@Strings.Setting_footerRightFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_0</listEntry>
+      <listEntry value="2">@Strings.Option_1</listEntry>
+      <listEntry value="3">@Strings.Option_2</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.footerRightSize" title="@Strings.Setting_footerRightSize">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="1">@Strings.Option_3</listEntry>
+      <listEntry value="2">@Strings.Option_4</listEntry>
+      <listEntry value="3">@Strings.Option_5</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.footerRightGoal" title="@Strings.Setting_footerRightGoal">
+    <settingConfig type="numeric" min="0" max="1000000" />
+  </setting>
+  <setting propertyKey="@Properties.showHeartGraph" title="@Strings.Setting_showHeartGraph">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.chartStyle" title="@Strings.Setting_chartStyle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_118</listEntry>
+      <listEntry value="1">@Strings.Option_119</listEntry>
+      <listEntry value="2">@Strings.Option_120</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.chartMinutes" title="@Strings.Setting_chartMinutes">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_121</listEntry>
+      <listEntry value="1">@Strings.Option_122</listEntry>
+      <listEntry value="2">@Strings.Option_123</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.showChartLabels" title="@Strings.Setting_showChartLabels">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.chartLabelFont" title="@Strings.Setting_chartLabelFont">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_124</listEntry>
+      <listEntry value="1">@Strings.Option_0</listEntry>
+      <listEntry value="2">@Strings.Option_1</listEntry>
+      <listEntry value="3">@Strings.Option_2</listEntry>
+    </settingConfig>
+  </setting>
+</settings>

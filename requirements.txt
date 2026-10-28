@@ -1,0 +1,3 @@
+# Bitmap resource generators (the local baseline uses Pillow 10.3.0).
+Pillow>=10.3,<12
+fonttools>=4,<5

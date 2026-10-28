@@ -1,0 +1,25 @@
+{
+  "reference": "Garmin official manual, Navigating with the Compass / Bearing pointer",
+  "page": "https://www8.garmin.com/manuals/webhelp/GUID-A494ACED-FFD6-481B-9DAF-D521E717FE5F/EN-US/GUID-0475EA1B-DC7B-4EBC-A835-F608204C14BC.html",
+  "icon": "https://www8.garmin.com/manuals/webhelp/GUID-A494ACED-FFD6-481B-9DAF-D521E717FE5F/Shared/GUID-E92DB572-FBC5-4FD8-90DF-84C81BE13BA3-high.svg",
+  "svg_sha256": "a8c25c4ff99a04db1e0a125f94e01d8589f8a19dcf43f4229132cd98f831f3e9",
+  "outer_polygon": [
+    [
+      23.277,
+      0.0
+    ],
+    [
+      0.0,
+      72.0
+    ],
+    [
+      23.277,
+      68.775
+    ],
+    [
+      46.527,
+      72.0
+    ]
+  ],
+  "adaptation": "Official bearing-pointer silhouette in monochrome, 15x15 pixels, 32 pre-rasterized directions; existing wind-bearing orientation unchanged."
+}

@@ -1,0 +1,5 @@
+Aileron Regular — Sora Sagano / dot colon
+Source used: Pillow bundled Aileron Regular subset (Pillow 10.3.0).
+Author source: https://dotcolon.net/fonts/aileron/
+Author license statement checked 2026-10-19: Aileron is No Rights Reserved. The author permits use, modification and redistribution without warranty.
+Bitmap glyph derivatives are named Moke Bitmap in this application.

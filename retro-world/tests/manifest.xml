@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
+  <iq:application id="d2fd1f269ea4491f9bf5c77046e0e303" type="watchface" name="@Strings.AppName" entry="RetroWorldApp" launcherIcon="@Drawables.LauncherIcon" minApiLevel="3.0.0">
+    <iq:products><iq:product id="instinct3solar45mm"/></iq:products>
+    <iq:permissions><iq:uses-permission id="SensorHistory"/><iq:uses-permission id="Positioning"/></iq:permissions>
+    <iq:languages><iq:language>eng</iq:language><iq:language>zhs</iq:language></iq:languages>
+    <iq:barrels/>
+  </iq:application>
+</iq:manifest>

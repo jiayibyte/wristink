@@ -1,0 +1,42 @@
+// Logical pixels on the 176 x 176 display. Insets also account for the sloped mask.
+module FaceLayout {
+    const WIND_X = 88;
+    const MOON_X = 76;
+    const MOON_Y = 37;
+    const POWER_ROW_Y = 28;
+    const POWER_ROW_WIDTH = 58;
+    const MOVE_X = 70;
+    const MOVE_COMPACT_X = 67;
+    const MOVE_Y = 50;
+    const MOVE_WIDTH = 36;
+    const MOVE_HEIGHT = 13;
+    const STEP_X = 12;
+    const STEP_WIDTH = 82;
+    const CARD_X = 139;
+    const SECONDS_X = 153;
+    const SECONDS_LEFT = 140;
+    const SECONDS_WIDTH = 28;
+    const SECONDS_Y = 90;
+    const CARD_TOP_Y = 84;
+    const CARD_BOTTOM_Y = 104;
+    const CARD_SINGLE_Y = 94;
+    const LOWER_LEFT_X = 30;
+    const LOWER_RIGHT_X = 98;
+    const LOWER_LEFT_WIDTH = 64;
+    const LOWER_RIGHT_WIDTH = 68;
+    const LOWER_TEXT_OFFSET = 20;
+    const LOWER_Y = 128;
+    const FOOTER_Y = 149;
+    const FOOTER_RIGHT_WIDTH = 58;
+    const FEELS_X = 61;
+    const GRAPH_X = 98;
+    const GRAPH_Y = 126;
+    const GRAPH_WIDTH = 66;
+    const GRAPH_HEIGHT = 21;
+    const GRAPH_LOW_LABEL_OFFSET = 12;
+    const GRAPH_BOTTOM_INSET = 4;
+    const HEART_ICON_Y = 11;
+    const HEART_VALUE_Y = 26;
+    const HEART_SMALL_VALUE_Y = 27;
+    const TIME_Y = 72;
+}

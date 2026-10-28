@@ -1,0 +1,1 @@
+[["showHeartGraph", "启用下方右侧趋势图", 1, true, 0], ["chartStyle", "趋势图样式", 0, 0, 28], ["chartMinutes", "趋势时间跨度", 0, 1, 29], ["showChartLabels", "显示最高最低值", 1, true, 0], ["chartLabelFont", "刻度字体", 0, 0, 30]]

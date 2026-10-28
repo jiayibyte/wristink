@@ -1,0 +1,1 @@
+[["showStatus", "显示卡片区", 1, true, 0], ["showBeijingCard", "显示上方卡片", 1, true, 0], ["showAlipayCard", "显示下方卡片", 1, true, 0], ["topCardImage", "上方卡片图案", 0, 1, 25], ["bottomCardImage", "下方卡片图案", 0, 2, 25], ["sideData", "替换卡片的数据（隐藏则卡片）", 0, 0, 19], ["sideFont", "右侧数据字体", 0, 0, 13], ["sideSize", "右侧数据字号", 0, 1, 14]]

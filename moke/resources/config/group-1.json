@@ -1,0 +1,1 @@
+[["showTime", "显示大时间", 1, true, 0], ["showSeconds", "显示秒数", 1, true, 0], ["leadingZero", "小时补零", 1, true, 0], ["timeFormat", "时间制式", 0, 0, 8], ["timeSeparator", "时间分隔符", 0, 0, 9], ["secondsMode", "秒数刷新策略", 0, 0, 10], ["timeFont", "大时间字体", 0, 0, 11], ["timeSize", "大时间字号", 0, 1, 2], ["secondsFont", "秒数字体", 0, 0, 11], ["secondsSize", "秒数字号", 0, 1, 2]]

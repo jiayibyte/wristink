@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
+<iq:application id="42f30c8dc0f04d759771e318c128b7f9" type="watch-app" name="@Strings.AppName" entry="BatchApp" launcherIcon="@Drawables.LauncherIcon" minApiLevel="5.1.0">
+<iq:products><iq:product id="instinct3solar45mm"/></iq:products>
+<iq:permissions><iq:uses-permission id="Positioning"/><iq:uses-permission id="Fit"/><iq:uses-permission id="Sensor"/></iq:permissions>
+<iq:languages><iq:language>eng</iq:language><iq:language>zhs</iq:language></iq:languages><iq:barrels/>
+</iq:application></iq:manifest>

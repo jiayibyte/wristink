@@ -1,0 +1,1641 @@
+{
+  "groups": [
+    [
+      "general",
+      "全局外观"
+    ],
+    [
+      "time",
+      "时间与秒数"
+    ],
+    [
+      "date",
+      "日期与状态"
+    ],
+    [
+      "circle",
+      "右上圆窗"
+    ],
+    [
+      "cards",
+      "右侧卡片与数据"
+    ],
+    [
+      "topOne",
+      "顶部第一行"
+    ],
+    [
+      "topTwo",
+      "第二行左侧"
+    ],
+    [
+      "topThree",
+      "第二行右侧"
+    ],
+    [
+      "bottomLeft",
+      "下方左侧"
+    ],
+    [
+      "bottomRight",
+      "下方右侧"
+    ],
+    [
+      "footerLeft",
+      "底部左侧"
+    ],
+    [
+      "footerRight",
+      "底部右侧"
+    ],
+    [
+      "chart",
+      "趋势图"
+    ]
+  ],
+  "metrics": [
+    "隐藏",
+    "电量百分比",
+    "步数",
+    "距离",
+    "爬升楼层",
+    "热量",
+    "心率",
+    "气温",
+    "日落时间",
+    "日出时间",
+    "湿度",
+    "通知数量",
+    "步数目标百分比",
+    "风速",
+    "月相亮度百分比",
+    "心率范围",
+    "体感温度",
+    "剩余续航天数",
+    "海拔",
+    "身体电量",
+    "今日强度分钟",
+    "本周强度分钟",
+    "今日强度完成百分比",
+    "本周强度完成百分比",
+    "久坐等级",
+    "恢复时间",
+    "压力",
+    "呼吸频率",
+    "气压"
+  ],
+  "progress": [
+    "隐藏",
+    "身体电量",
+    "电量百分比",
+    "步数目标",
+    "今日强度（周目标除以7）",
+    "本周强度目标",
+    "久坐等级",
+    "爬升楼层目标"
+  ],
+  "settings": [
+    {
+      "group": 0,
+      "key": "darkTheme",
+      "label": "黑色背景",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 0,
+      "key": "showIcons",
+      "label": "显示数据图标",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 0,
+      "key": "showUnits",
+      "label": "显示单位",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 0,
+      "key": "linkFooterFonts",
+      "label": "底部两项字号联动",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 0,
+      "key": "dataFont",
+      "label": "全局数据字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "简洁黑体",
+        "加粗黑体",
+        "紧凑黑体"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 0,
+      "key": "dataSize",
+      "label": "全局数据字号",
+      "type": 0,
+      "default": 1,
+      "options": [
+        "小",
+        "标准",
+        "大"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 0,
+      "key": "temperatureUnit",
+      "label": "温度单位",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "摄氏度",
+        "华氏度"
+      ],
+      "min": 0,
+      "max": 1
+    },
+    {
+      "group": 0,
+      "key": "distanceUnit",
+      "label": "距离单位",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "公里",
+        "英里"
+      ],
+      "min": 0,
+      "max": 1
+    },
+    {
+      "group": 0,
+      "key": "altitudeUnit",
+      "label": "高度单位",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "米",
+        "英尺"
+      ],
+      "min": 0,
+      "max": 1
+    },
+    {
+      "group": 0,
+      "key": "powerProfile",
+      "label": "刷新策略",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "省电（曲线5分钟／天气30分钟）",
+        "标准（曲线1分钟／天气5分钟）"
+      ],
+      "min": 0,
+      "max": 1
+    },
+    {
+      "group": 0,
+      "key": "analogHandMode",
+      "label": "机械指针避让（仅Crossover）",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "保持系统走时（省电）",
+        "抬腕时水平避让",
+        "表盘显示期间水平避让"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 1,
+      "key": "showTime",
+      "label": "显示大时间",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 1,
+      "key": "showSeconds",
+      "label": "显示秒数",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 1,
+      "key": "leadingZero",
+      "label": "小时补零",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 1,
+      "key": "timeFormat",
+      "label": "时间制式",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "24小时",
+        "12小时（上午下午）"
+      ],
+      "min": 0,
+      "max": 1
+    },
+    {
+      "group": 1,
+      "key": "timeSeparator",
+      "label": "时间分隔符",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "冒号",
+        "圆点",
+        "空格"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 1,
+      "key": "secondsMode",
+      "label": "秒数刷新策略",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "随卡片自动切换",
+        "仅抬腕显示",
+        "持续显示（耗电较高）",
+        "关闭（最省电）"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 1,
+      "key": "timeFont",
+      "label": "大时间字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "当前数字",
+        "简洁黑体",
+        "窄体数字"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 1,
+      "key": "timeSize",
+      "label": "大时间字号",
+      "type": 0,
+      "default": 1,
+      "options": [
+        "小",
+        "标准",
+        "大"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 1,
+      "key": "secondsFont",
+      "label": "秒数字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "当前数字",
+        "简洁黑体",
+        "窄体数字"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 1,
+      "key": "secondsSize",
+      "label": "秒数字号",
+      "type": 0,
+      "default": 1,
+      "options": [
+        "小",
+        "标准",
+        "大"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 2,
+      "key": "showDate",
+      "label": "显示日期",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 2,
+      "key": "dateFormat",
+      "label": "日期格式",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "10/19 一",
+        "10月19日",
+        "2026/10/19",
+        "10-19 周一",
+        "一 10/19",
+        "10/19",
+        "2026-10-19",
+        "10月19日 周一"
+      ],
+      "min": 0,
+      "max": 7
+    },
+    {
+      "group": 2,
+      "key": "dateFont",
+      "label": "日期字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "简洁黑体",
+        "加粗黑体",
+        "紧凑黑体"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 2,
+      "key": "dateSize",
+      "label": "日期字号",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "小",
+        "标准",
+        "大"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 2,
+      "key": "showMoveBar",
+      "label": "显示活动指示区",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 2,
+      "key": "moveSource",
+      "label": "活动指示区数据",
+      "type": 0,
+      "default": 6,
+      "options": [
+        "隐藏",
+        "身体电量",
+        "电量百分比",
+        "步数目标",
+        "今日强度（周目标除以7）",
+        "本周强度目标",
+        "久坐等级",
+        "爬升楼层目标"
+      ],
+      "min": 0,
+      "max": 7
+    },
+    {
+      "group": 2,
+      "key": "moveStyle",
+      "label": "活动指示区样式",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "小人和分格",
+        "细进度线",
+        "百分比"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 2,
+      "key": "moveFont",
+      "label": "活动百分比字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "简洁黑体",
+        "加粗黑体",
+        "紧凑黑体"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 2,
+      "key": "showWind",
+      "label": "显示风向箭头",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 2,
+      "key": "showMoon",
+      "label": "显示月相",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 3,
+      "key": "showCircle",
+      "label": "显示整个圆窗",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 3,
+      "key": "heartRefresh",
+      "label": "中心心率刷新",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "每5秒读取当前心率",
+        "仅抬腕时每5秒",
+        "每分钟（省电）"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 3,
+      "key": "heartSource",
+      "label": "心率数据来源",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "系统当前心率",
+        "最新系统采样（≤3分钟，非实时）"
+      ],
+      "min": 0,
+      "max": 1
+    },
+    {
+      "group": 3,
+      "key": "circle",
+      "label": "中心数据",
+      "type": 0,
+      "default": 6,
+      "options": [
+        "隐藏",
+        "电量百分比",
+        "步数",
+        "距离",
+        "爬升楼层",
+        "热量",
+        "心率",
+        "气温",
+        "日落时间",
+        "日出时间",
+        "湿度",
+        "通知数量",
+        "步数目标百分比",
+        "风速",
+        "月相亮度百分比",
+        "心率范围",
+        "体感温度",
+        "剩余续航天数",
+        "海拔",
+        "身体电量",
+        "今日强度分钟",
+        "本周强度分钟",
+        "今日强度完成百分比",
+        "本周强度完成百分比",
+        "久坐等级",
+        "恢复时间",
+        "压力",
+        "呼吸频率",
+        "气压"
+      ],
+      "min": 0,
+      "max": 28
+    },
+    {
+      "group": 3,
+      "key": "circleStyle",
+      "label": "中心显示方式",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "图标和数值",
+        "仅数值",
+        "百分比",
+        "数值与目标"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 3,
+      "key": "circleGoal",
+      "label": "中心自定目标（0自动）",
+      "type": 2,
+      "default": 0,
+      "options": [],
+      "min": 0,
+      "max": 1000000
+    },
+    {
+      "group": 3,
+      "key": "circleFont",
+      "label": "中心字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "当前数字",
+        "简洁黑体",
+        "窄体数字"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 3,
+      "key": "circleSize",
+      "label": "中心字号",
+      "type": 0,
+      "default": 1,
+      "options": [
+        "小",
+        "标准",
+        "大"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 3,
+      "key": "showCircleIcon",
+      "label": "显示中心图标",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 3,
+      "key": "circleBackground",
+      "label": "圆窗背景",
+      "type": 0,
+      "default": 1,
+      "options": [
+        "黑色",
+        "白色",
+        "跟随整体背景"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 3,
+      "key": "cellsSource",
+      "label": "八格数据来源",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "隐藏",
+        "身体电量",
+        "电量百分比",
+        "步数目标",
+        "今日强度（周目标除以7）",
+        "本周强度目标",
+        "久坐等级",
+        "爬升楼层目标"
+      ],
+      "min": 0,
+      "max": 7
+    },
+    {
+      "group": 3,
+      "key": "cellsStyle",
+      "label": "八格显示方式",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "纹理扇形",
+        "实心扇形",
+        "连续内环"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 3,
+      "key": "ringSource",
+      "label": "外圈数据来源",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "隐藏",
+        "身体电量",
+        "电量百分比",
+        "步数目标",
+        "今日强度（周目标除以7）",
+        "本周强度目标",
+        "久坐等级",
+        "爬升楼层目标"
+      ],
+      "min": 0,
+      "max": 7
+    },
+    {
+      "group": 3,
+      "key": "ringStyle",
+      "label": "外圈线条样式",
+      "type": 0,
+      "default": 1,
+      "options": [
+        "细线",
+        "标准线",
+        "粗线",
+        "八段进度"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 3,
+      "key": "ringStart",
+      "label": "外圈起点",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "顶部",
+        "右侧",
+        "底部",
+        "左侧"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 4,
+      "key": "showStatus",
+      "label": "显示卡片区",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 4,
+      "key": "showBeijingCard",
+      "label": "显示上方卡片",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 4,
+      "key": "showAlipayCard",
+      "label": "显示下方卡片",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 4,
+      "key": "topCardImage",
+      "label": "上方卡片图案",
+      "type": 0,
+      "default": 1,
+      "options": [
+        "隐藏",
+        "北京公交卡",
+        "支付宝",
+        "聊天气泡",
+        "地铁",
+        "公交车",
+        "门禁钥匙",
+        "银行卡",
+        "音乐",
+        "咖啡",
+        "跑步",
+        "骑行",
+        "山峰",
+        "飞机",
+        "猫爪",
+        "笑脸",
+        "星空",
+        "相机",
+        "游戏机",
+        "露营",
+        "爱心"
+      ],
+      "min": 0,
+      "max": 20
+    },
+    {
+      "group": 4,
+      "key": "bottomCardImage",
+      "label": "下方卡片图案",
+      "type": 0,
+      "default": 2,
+      "options": [
+        "隐藏",
+        "北京公交卡",
+        "支付宝",
+        "聊天气泡",
+        "地铁",
+        "公交车",
+        "门禁钥匙",
+        "银行卡",
+        "音乐",
+        "咖啡",
+        "跑步",
+        "骑行",
+        "山峰",
+        "飞机",
+        "猫爪",
+        "笑脸",
+        "星空",
+        "相机",
+        "游戏机",
+        "露营",
+        "爱心"
+      ],
+      "min": 0,
+      "max": 20
+    },
+    {
+      "group": 4,
+      "key": "sideData",
+      "label": "替换卡片的数据（隐藏则卡片）",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "隐藏",
+        "电量百分比",
+        "步数",
+        "距离",
+        "爬升楼层",
+        "热量",
+        "心率",
+        "气温",
+        "日落时间",
+        "日出时间",
+        "湿度",
+        "通知数量",
+        "步数目标百分比",
+        "风速",
+        "月相亮度百分比",
+        "心率范围",
+        "体感温度",
+        "剩余续航天数",
+        "海拔",
+        "身体电量",
+        "今日强度分钟",
+        "本周强度分钟",
+        "今日强度完成百分比",
+        "本周强度完成百分比",
+        "久坐等级",
+        "恢复时间",
+        "压力",
+        "呼吸频率",
+        "气压"
+      ],
+      "min": 0,
+      "max": 28
+    },
+    {
+      "group": 4,
+      "key": "sideFont",
+      "label": "右侧数据字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "简洁黑体",
+        "加粗黑体",
+        "紧凑黑体"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 4,
+      "key": "sideSize",
+      "label": "右侧数据字号",
+      "type": 0,
+      "default": 1,
+      "options": [
+        "跟随全局",
+        "小",
+        "标准",
+        "大"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 5,
+      "key": "topOne",
+      "label": "数据（隐藏可关闭本区）",
+      "type": 0,
+      "default": 7,
+      "options": [
+        "隐藏",
+        "电量百分比",
+        "步数",
+        "距离",
+        "爬升楼层",
+        "热量",
+        "心率",
+        "气温",
+        "日落时间",
+        "日出时间",
+        "湿度",
+        "通知数量",
+        "步数目标百分比",
+        "风速",
+        "月相亮度百分比",
+        "心率范围",
+        "体感温度",
+        "剩余续航天数",
+        "海拔",
+        "身体电量",
+        "今日强度分钟",
+        "本周强度分钟",
+        "今日强度完成百分比",
+        "本周强度完成百分比",
+        "久坐等级",
+        "恢复时间",
+        "压力",
+        "呼吸频率",
+        "气压"
+      ],
+      "min": 0,
+      "max": 28
+    },
+    {
+      "group": 5,
+      "key": "topOneStyle",
+      "label": "显示方式",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "图标和数值",
+        "仅数值",
+        "百分比",
+        "数值与目标",
+        "进度线和数值",
+        "分格和数值"
+      ],
+      "min": 0,
+      "max": 5
+    },
+    {
+      "group": 5,
+      "key": "topOneFont",
+      "label": "字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "简洁黑体",
+        "加粗黑体",
+        "紧凑黑体"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 5,
+      "key": "topOneSize",
+      "label": "字号",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "小",
+        "标准",
+        "大"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 5,
+      "key": "topOneGoal",
+      "label": "自定目标（0自动）",
+      "type": 2,
+      "default": 0,
+      "options": [],
+      "min": 0,
+      "max": 1000000
+    },
+    {
+      "group": 6,
+      "key": "topTwo",
+      "label": "数据（隐藏可关闭本区）",
+      "type": 0,
+      "default": 17,
+      "options": [
+        "隐藏",
+        "电量百分比",
+        "步数",
+        "距离",
+        "爬升楼层",
+        "热量",
+        "心率",
+        "气温",
+        "日落时间",
+        "日出时间",
+        "湿度",
+        "通知数量",
+        "步数目标百分比",
+        "风速",
+        "月相亮度百分比",
+        "心率范围",
+        "体感温度",
+        "剩余续航天数",
+        "海拔",
+        "身体电量",
+        "今日强度分钟",
+        "本周强度分钟",
+        "今日强度完成百分比",
+        "本周强度完成百分比",
+        "久坐等级",
+        "恢复时间",
+        "压力",
+        "呼吸频率",
+        "气压"
+      ],
+      "min": 0,
+      "max": 28
+    },
+    {
+      "group": 6,
+      "key": "topTwoStyle",
+      "label": "显示方式",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "图标和数值",
+        "仅数值",
+        "百分比",
+        "数值与目标",
+        "进度线和数值",
+        "分格和数值"
+      ],
+      "min": 0,
+      "max": 5
+    },
+    {
+      "group": 6,
+      "key": "topTwoFont",
+      "label": "字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "简洁黑体",
+        "加粗黑体",
+        "紧凑黑体"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 6,
+      "key": "topTwoSize",
+      "label": "字号",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "小",
+        "标准",
+        "大"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 6,
+      "key": "topTwoGoal",
+      "label": "自定目标（0自动）",
+      "type": 2,
+      "default": 0,
+      "options": [],
+      "min": 0,
+      "max": 1000000
+    },
+    {
+      "group": 7,
+      "key": "topThree",
+      "label": "数据（隐藏可关闭本区）",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "隐藏",
+        "电量百分比",
+        "步数",
+        "距离",
+        "爬升楼层",
+        "热量",
+        "心率",
+        "气温",
+        "日落时间",
+        "日出时间",
+        "湿度",
+        "通知数量",
+        "步数目标百分比",
+        "风速",
+        "月相亮度百分比",
+        "心率范围",
+        "体感温度",
+        "剩余续航天数",
+        "海拔",
+        "身体电量",
+        "今日强度分钟",
+        "本周强度分钟",
+        "今日强度完成百分比",
+        "本周强度完成百分比",
+        "久坐等级",
+        "恢复时间",
+        "压力",
+        "呼吸频率",
+        "气压"
+      ],
+      "min": 0,
+      "max": 28
+    },
+    {
+      "group": 7,
+      "key": "topThreeStyle",
+      "label": "显示方式",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "图标和数值",
+        "仅数值",
+        "百分比",
+        "数值与目标",
+        "进度线和数值",
+        "分格和数值"
+      ],
+      "min": 0,
+      "max": 5
+    },
+    {
+      "group": 7,
+      "key": "topThreeFont",
+      "label": "字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "简洁黑体",
+        "加粗黑体",
+        "紧凑黑体"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 7,
+      "key": "topThreeSize",
+      "label": "字号",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "小",
+        "标准",
+        "大"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 7,
+      "key": "topThreeGoal",
+      "label": "自定目标（0自动）",
+      "type": 2,
+      "default": 0,
+      "options": [],
+      "min": 0,
+      "max": 1000000
+    },
+    {
+      "group": 8,
+      "key": "bottomLeft",
+      "label": "数据（隐藏可关闭本区）",
+      "type": 0,
+      "default": 2,
+      "options": [
+        "隐藏",
+        "电量百分比",
+        "步数",
+        "距离",
+        "爬升楼层",
+        "热量",
+        "心率",
+        "气温",
+        "日落时间",
+        "日出时间",
+        "湿度",
+        "通知数量",
+        "步数目标百分比",
+        "风速",
+        "月相亮度百分比",
+        "心率范围",
+        "体感温度",
+        "剩余续航天数",
+        "海拔",
+        "身体电量",
+        "今日强度分钟",
+        "本周强度分钟",
+        "今日强度完成百分比",
+        "本周强度完成百分比",
+        "久坐等级",
+        "恢复时间",
+        "压力",
+        "呼吸频率",
+        "气压"
+      ],
+      "min": 0,
+      "max": 28
+    },
+    {
+      "group": 8,
+      "key": "bottomLeftStyle",
+      "label": "显示方式",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "图标和数值",
+        "仅数值",
+        "百分比",
+        "数值与目标",
+        "进度线和数值",
+        "分格和数值"
+      ],
+      "min": 0,
+      "max": 5
+    },
+    {
+      "group": 8,
+      "key": "bottomLeftFont",
+      "label": "字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "简洁黑体",
+        "加粗黑体",
+        "紧凑黑体"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 8,
+      "key": "bottomLeftSize",
+      "label": "字号",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "小",
+        "标准",
+        "大"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 8,
+      "key": "bottomLeftGoal",
+      "label": "自定目标（0自动）",
+      "type": 2,
+      "default": 0,
+      "options": [],
+      "min": 0,
+      "max": 1000000
+    },
+    {
+      "group": 9,
+      "key": "bottomRight",
+      "label": "数据（隐藏可关闭本区）",
+      "type": 0,
+      "default": 15,
+      "options": [
+        "隐藏",
+        "电量百分比",
+        "步数",
+        "距离",
+        "爬升楼层",
+        "热量",
+        "心率",
+        "气温",
+        "日落时间",
+        "日出时间",
+        "湿度",
+        "通知数量",
+        "步数目标百分比",
+        "风速",
+        "月相亮度百分比",
+        "心率范围",
+        "体感温度",
+        "剩余续航天数",
+        "海拔",
+        "身体电量",
+        "今日强度分钟",
+        "本周强度分钟",
+        "今日强度完成百分比",
+        "本周强度完成百分比",
+        "久坐等级",
+        "恢复时间",
+        "压力",
+        "呼吸频率",
+        "气压"
+      ],
+      "min": 0,
+      "max": 28
+    },
+    {
+      "group": 9,
+      "key": "bottomRightStyle",
+      "label": "显示方式",
+      "type": 0,
+      "default": 6,
+      "options": [
+        "图标和数值",
+        "仅数值",
+        "百分比",
+        "数值与目标",
+        "进度线和数值",
+        "分格和数值",
+        "趋势图"
+      ],
+      "min": 0,
+      "max": 6
+    },
+    {
+      "group": 9,
+      "key": "bottomRightFont",
+      "label": "字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "简洁黑体",
+        "加粗黑体",
+        "紧凑黑体"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 9,
+      "key": "bottomRightSize",
+      "label": "字号",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "小",
+        "标准",
+        "大"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 9,
+      "key": "bottomRightGoal",
+      "label": "自定目标（0自动）",
+      "type": 2,
+      "default": 0,
+      "options": [],
+      "min": 0,
+      "max": 1000000
+    },
+    {
+      "group": 10,
+      "key": "footerLeft",
+      "label": "数据（隐藏可关闭本区）",
+      "type": 0,
+      "default": 5,
+      "options": [
+        "隐藏",
+        "电量百分比",
+        "步数",
+        "距离",
+        "爬升楼层",
+        "热量",
+        "心率",
+        "气温",
+        "日落时间",
+        "日出时间",
+        "湿度",
+        "通知数量",
+        "步数目标百分比",
+        "风速",
+        "月相亮度百分比",
+        "心率范围",
+        "体感温度",
+        "剩余续航天数",
+        "海拔",
+        "身体电量",
+        "今日强度分钟",
+        "本周强度分钟",
+        "今日强度完成百分比",
+        "本周强度完成百分比",
+        "久坐等级",
+        "恢复时间",
+        "压力",
+        "呼吸频率",
+        "气压"
+      ],
+      "min": 0,
+      "max": 28
+    },
+    {
+      "group": 10,
+      "key": "footerLeftStyle",
+      "label": "显示方式",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "图标和数值",
+        "仅数值",
+        "百分比",
+        "数值与目标",
+        "进度线和数值",
+        "分格和数值"
+      ],
+      "min": 0,
+      "max": 5
+    },
+    {
+      "group": 10,
+      "key": "footerLeftFont",
+      "label": "字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "简洁黑体",
+        "加粗黑体",
+        "紧凑黑体"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 10,
+      "key": "footerLeftSize",
+      "label": "字号",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "小",
+        "标准",
+        "大"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 10,
+      "key": "footerLeftGoal",
+      "label": "自定目标（0自动）",
+      "type": 2,
+      "default": 0,
+      "options": [],
+      "min": 0,
+      "max": 1000000
+    },
+    {
+      "group": 11,
+      "key": "footerRight",
+      "label": "数据（隐藏可关闭本区）",
+      "type": 0,
+      "default": 18,
+      "options": [
+        "隐藏",
+        "电量百分比",
+        "步数",
+        "距离",
+        "爬升楼层",
+        "热量",
+        "心率",
+        "气温",
+        "日落时间",
+        "日出时间",
+        "湿度",
+        "通知数量",
+        "步数目标百分比",
+        "风速",
+        "月相亮度百分比",
+        "心率范围",
+        "体感温度",
+        "剩余续航天数",
+        "海拔",
+        "身体电量",
+        "今日强度分钟",
+        "本周强度分钟",
+        "今日强度完成百分比",
+        "本周强度完成百分比",
+        "久坐等级",
+        "恢复时间",
+        "压力",
+        "呼吸频率",
+        "气压"
+      ],
+      "min": 0,
+      "max": 28
+    },
+    {
+      "group": 11,
+      "key": "footerRightStyle",
+      "label": "显示方式",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "图标和数值",
+        "仅数值",
+        "百分比",
+        "数值与目标",
+        "进度线和数值",
+        "分格和数值"
+      ],
+      "min": 0,
+      "max": 5
+    },
+    {
+      "group": 11,
+      "key": "footerRightFont",
+      "label": "字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "简洁黑体",
+        "加粗黑体",
+        "紧凑黑体"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 11,
+      "key": "footerRightSize",
+      "label": "字号",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "跟随全局",
+        "小",
+        "标准",
+        "大"
+      ],
+      "min": 0,
+      "max": 3
+    },
+    {
+      "group": 11,
+      "key": "footerRightGoal",
+      "label": "自定目标（0自动）",
+      "type": 2,
+      "default": 0,
+      "options": [],
+      "min": 0,
+      "max": 1000000
+    },
+    {
+      "group": 12,
+      "key": "showHeartGraph",
+      "label": "启用下方右侧趋势图",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 12,
+      "key": "chartStyle",
+      "label": "趋势图样式",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "折线",
+        "面积",
+        "竖线"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 12,
+      "key": "chartMinutes",
+      "label": "趋势时间跨度",
+      "type": 0,
+      "default": 1,
+      "options": [
+        "15分钟",
+        "30分钟",
+        "60分钟"
+      ],
+      "min": 0,
+      "max": 2
+    },
+    {
+      "group": 12,
+      "key": "showChartLabels",
+      "label": "显示最高最低值",
+      "type": 1,
+      "default": true,
+      "options": [],
+      "min": 0,
+      "max": -1
+    },
+    {
+      "group": 12,
+      "key": "chartLabelFont",
+      "label": "刻度字体",
+      "type": 0,
+      "default": 0,
+      "options": [
+        "像素小字",
+        "简洁黑体",
+        "加粗黑体",
+        "紧凑黑体"
+      ],
+      "min": 0,
+      "max": 3
+    }
+  ]
+}

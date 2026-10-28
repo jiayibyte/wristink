@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
+    <iq:application id="0fa8fba62479480d83b64efba9912100" type="watchface" name="@Strings.PreviewName" entry="InstinctFaceApp" launcherIcon="@Drawables.LauncherIcon" minApiLevel="5.1.0">
+        <iq:products><iq:product id="instinct3solar45mm"/></iq:products>
+        <iq:permissions><iq:uses-permission id="Positioning"/><iq:uses-permission id="SensorHistory"/></iq:permissions>
+        <iq:languages><iq:language>eng</iq:language><iq:language>zhs</iq:language></iq:languages>
+        <iq:barrels/>
+    </iq:application>
+</iq:manifest>

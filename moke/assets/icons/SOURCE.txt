@@ -1,0 +1,7 @@
+Garmin standard / Connect icon font shared by ftrimboli in the Garmin developer forum.
+Forum origin: https://forums.garmin.com/developer/connect-iq/f/discussion/6777/where-to-find-standard-garmin-icons-for-use-in-apps-watchfaces
+Original linked repository sunpazed/garmin-iconfonts is unavailable as of 2026-10-27.
+Preserved mirror: https://github.com/acb09/garmin-iconfonts
+This is a community-preserved Garmin icon set, not a public CIQ API for native firmware watch-face icons.
+No license declaration is supplied with this mirror; preserve this provenance notice.
+TTF SHA256: 88a925b725e4b3d1461f3659497b940c9666f851cd6c585f11da23d21456905b

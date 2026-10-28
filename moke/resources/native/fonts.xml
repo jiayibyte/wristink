@@ -1,0 +1,15 @@
+<fonts>
+    <font id="GarminStandardIcons" filename="garmin-icons.fnt" />
+    <font id="UpperMoon" filename="upper-moon.fnt" />
+    <font id="UpperDetails" filename="upper-details.fnt" />
+    <font id="WhiteHeartF0S22" filename="white-heart-f0-s22.fnt" />
+    <font id="WhiteHeartF0S26" filename="white-heart-f0-s26.fnt" />
+    <font id="WhiteHeartF0S28" filename="white-heart-f0-s28.fnt" />
+    <font id="WhiteHeartF1S22" filename="white-heart-f1-s22.fnt" />
+    <font id="WhiteHeartF1S26" filename="white-heart-f1-s26.fnt" />
+    <font id="WhiteHeartF1S28" filename="white-heart-f1-s28.fnt" />
+    <font id="WhiteHeartF2S22" filename="white-heart-f2-s22.fnt" />
+    <font id="WhiteHeartF2S26" filename="white-heart-f2-s26.fnt" />
+    <font id="WhiteHeartF2S28" filename="white-heart-f2-s28.fnt" />
+    <font id="ShaftWindArrow" filename="shaft-wind.fnt" />
+</fonts>

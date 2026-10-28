@@ -1,0 +1,1 @@
+[["circleFont", "Center font", 0, 0, 11], ["circleSize", "Center size", 0, 1, 2], ["showCircleIcon", "Show center icon", 1, true, 0], ["circleBackground", "Window background", 0, 1, 21], ["cellsSource", "Inner segment data", 0, 0, 15], ["cellsStyle", "Inner segment style", 0, 0, 22]]

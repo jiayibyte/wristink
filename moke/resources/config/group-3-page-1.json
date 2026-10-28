@@ -1,0 +1,1 @@
+[["circleFont", "中心字体", 0, 0, 11], ["circleSize", "中心字号", 0, 1, 2], ["showCircleIcon", "显示中心图标", 1, true, 0], ["circleBackground", "圆窗背景", 0, 1, 21], ["cellsSource", "八格数据来源", 0, 0, 15], ["cellsStyle", "八格显示方式", 0, 0, 22]]

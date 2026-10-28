@@ -1,0 +1,4 @@
+project.manifest = manifest.xml
+base.sourcePath = .;../../source;../../preview;../../profiles/base
+base.resourcePath = ../../resources;../../preview/resources;../../resources-eng
+base.lang.eng = ../../resources-eng

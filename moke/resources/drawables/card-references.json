@@ -1,0 +1,20 @@
+{
+  "beijing-card.svg": {
+    "reference": "https://english.beijing.gov.cn/travellinginbeijing/recommendations/202010/t20201029_2124571.html",
+    "style": "Monochrome miniature with 京 mark and sweeping transit-card arcs",
+    "dimensions": [
+      28,
+      13
+    ]
+  },
+  "alipay-card.svg": {
+    "reference": "https://www.alipay.cn/",
+    "logo_reference": "https://t.alipayobjects.com/images/T11rdgXbFkXXXXXXXX.png",
+    "style": "Monochrome miniature using the Alipay 支 mark",
+    "dimensions": [
+      28,
+      13
+    ]
+  },
+  "behavior": "Display-only artwork, not a payment or transit credential"
+}
