@@ -34,7 +34,7 @@ Moke使用已有设计预览作本轮视觉参考，未重新取得所有机型�
 
 ## 新技能的实际输出
 
-入口：[garmin-watchface-replica](../skills/garmin-watchface-replica/SKILL.md)。包含6份专项参考和一个像素QA工具。
+入口：[garmin-watchface-replica](../skills/garmin-watchface-replica/SKILL.md)。包含7份专项参考和一个像素QA工具，其中[官方数据接入手册](../skills/garmin-watchface-replica/references/official-data.md)覆盖天气、心率、活动、位置、天文、电池及支持设备上的系统Complications，逐项说明单位、权限、缓存和缺失值策略。
 
 以后提供截图时，执行顺序是：参考拆解与测量 → 主机型原生静态复现 → 字形/比例对照迭代 → 接入真实数据 → 分家族适配 → 视觉、行为、预算分别验收。无需你逐项指定实现细节，但每次应能看到实际原生屏幕，不能只展示营销图。
 
