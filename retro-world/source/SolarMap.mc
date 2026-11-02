@@ -79,14 +79,14 @@ module SolarMap {
         var buffer=DeviceDrawing.resolve(_buffer);
         var lost=DeviceProfile.COLOR && (buffer has :isCached) && !buffer.isCached();
         if(lost || slot!=_slot || mx!=_markerX || my!=_markerY || kind!=_weatherKind) {
-            var selected=MapStyle.forMoment(now);
+            var selected=FaceSettings.mapSkin<0 ? MapStyle.forMoment(now) : FaceSettings.mapSkin;
             if(selected!=skin) {
                 _map=null;_night=null;
                 _map=WatchUi.loadResource(MapSkinResources.get(selected,false));
                 _night=WatchUi.loadResource(MapSkinResources.get(selected,true));skin=selected;
             }
             var bdc=DeviceDrawing.cache(buffer.getDc(),false);bdc.clearClip();bdc.drawBitmap(0,0,_map);shadeNight(bdc,now);
-            if(Environment.latitude!=null && Environment.longitude!=null) {marker(bdc,Environment.latitude,Environment.longitude);}
+            if(FaceSettings.showMarker && Environment.latitude!=null && Environment.longitude!=null) {marker(bdc,Environment.latitude,Environment.longitude);}
             _slot=slot;_markerX=mx;_markerY=my;_weatherKind=kind;builds++;
         }
         DeviceDrawing.sprite(dc,buffer,0,17,56,89,29,1);

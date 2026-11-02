@@ -8,5 +8,5 @@ python_bin="${RETRO_PYTHON:-python3}"
 mkdir -p bin dist
 "$python_bin" tools/device_profiles.py
 "$python_bin" tools/check_devices.py
-"$sdk_path/bin/monkeyc" -f monkey.jungle -e -o dist/RetroWorld-2.0.0.iq -y "$HOME/.Garmin/keys/developer_key.der" -r -O 3z -w
-shasum -a 256 dist/RetroWorld-2.0.0.iq > dist/RetroWorld-2.0.0.sha256
+"$sdk_path/bin/monkeyc" -f monkey.jungle -e -o dist/RetroWorld-2.1.0.iq -y "$HOME/.Garmin/keys/developer_key.der" -r -O 3z -w
+shasum -a 256 dist/RetroWorld-2.1.0.iq > dist/RetroWorld-2.1.0.sha256

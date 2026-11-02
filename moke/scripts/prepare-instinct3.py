@@ -14,5 +14,5 @@ for demo in (False,True):
         if item.get('id')!='instinct3solar45mm':products.remove(item)
     name='preview' if demo else 'live'
     tree.write(folder/(name+'-manifest.xml'),encoding='utf-8',xml_declaration=True)
-    (folder/(name+'.jungle')).write_text('project.manifest = '+name+'-manifest.xml\nbase.sourcePath = ../../source;../../'+('preview' if demo else 'live')+';../../profiles/base\nbase.resourcePath = ../../resources'+(';../../preview/resources' if demo else '')+'\nbase.lang.eng = ../../resources-eng\n')
+    (folder/(name+'.jungle')).write_text('project.manifest = '+name+'-manifest.xml\nbase.sourcePath = ../../source;../../'+('preview' if demo else 'live')+';../../profiles/base\nbase.resourcePath = ../../resources;../../resources-eng'+(';../../preview/resources' if demo else '')+'\nbase.lang.eng = ../../resources-eng\nbase.lang.zhs = ../../resources\n')
 print('Prepared Instinct 3 Solar 45/50mm target (two part-number variants).')

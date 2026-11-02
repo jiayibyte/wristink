@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<properties>
+  <property id="TimeFormat" type="number">0</property>
+  <property id="LeadingZero" type="boolean">false</property>
+  <property id="RefreshMode" type="number">1</property>
+  <property id="ShowSeconds" type="boolean">true</property>
+  <property id="ShowNeedle" type="boolean">true</property>
+  <property id="ShowDate" type="boolean">true</property>
+  <property id="ShowMap" type="boolean">true</property>
+  <property id="ShowMarker" type="boolean">true</property>
+  <property id="MapSkin" type="number">-1</property>
+  <property id="Field1" type="number">1</property>
+  <property id="Field2" type="number">2</property>
+  <property id="Field3" type="number">3</property>
+  <property id="Field4" type="number">4</property>
+  <property id="Field5" type="number">5</property>
+  <property id="Field6" type="number">6</property>
+  <property id="Field7" type="number">7</property>
+  <property id="Field8" type="number">8</property>
+  <property id="Field9" type="number">9</property>
+  <property id="ManualLocation" type="boolean">false</property>
+  <property id="Latitude" type="float">0.0</property>
+  <property id="Longitude" type="float">0.0</property>
+</properties>

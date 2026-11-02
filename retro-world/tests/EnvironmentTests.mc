@@ -66,3 +66,15 @@ function environmentPollIsLowFrequencyAndRejectsFutureSamples(logger) {
     Test.assert(!Environment.fresh(new Time.Moment(899),1000,100));
     return true;
 }
+
+(:test)
+function solarFallbackCoversEquinoxPolarAndSignedUtcDates(logger) {
+    var rise=SolarTimes.utcMinutes(2026,3,20,0,0,true);
+    var set=SolarTimes.utcMinutes(2026,3,20,0,0,false);
+    Test.assert(rise>350 && rise<375);Test.assert(set>1070 && set<1100);
+    Test.assert(SolarTimes.utcMinutes(2026,6,21,89,0,true)==null);
+    Test.assert(SolarTimes.utcMinutes(2026,12,21,89,0,false)==null);
+    Test.assert(SolarTimes.utcMinutes(2026,3,20,0,170,true)<0);
+    Test.assert(SolarTimes.utcMinutes(2026,3,20,91,0,true)==null);
+    return true;
+}

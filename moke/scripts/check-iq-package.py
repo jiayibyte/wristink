@@ -15,12 +15,13 @@ with tempfile.TemporaryDirectory(prefix='moke-iq-review-') as folder:
   part=item.get('partNumber');device,original=expected[part];assert int(item.get('minFirmwareVersion') or 0)>=original.get('firmwareVersion',0);assert item.get('connectIqVersion')==original['connectIQVersion']
   data=json.loads((Path(folder)/item.get('settings')).read_text());assert {x['key'] for x in data['settings']}==keys,part
   langs=data['languages'];text=json.dumps(langs,ensure_ascii=False)
-  assert 'eng' in langs and 'valyrian' in langs,part
+  assert 'eng' in langs and 'zhs' in langs and 'valyrian' in langs,part
   settings={x['key']:x for x in data['settings']}
   for row in schema['settings']:
    item=settings[row['key']];assert item['defaultValue']==row['default']
    title=schema['groups'][row['group']][1]+' · '+row['label'];english=translations[schema['groups'][row['group']][1]]+' · '+translations[row['label']]
-   assert langs['valyrian'][item['configTitle']]==title,(part,row['key'],'Chinese')
+   assert langs['zhs'][item['configTitle']]==title,(part,row['key'],'Chinese')
+   assert langs['valyrian'][item['configTitle']]==english,(part,row['key'],'English fallback')
    assert langs['eng'][item['configTitle']]==english,(part,row['key'],'English')
    if row['type']==0:
     options=item['configOptions'];assert [o['value'] for o in options]==list(range(len(row['options'])))

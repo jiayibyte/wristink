@@ -2,6 +2,7 @@ project.manifest = manifest.xml
 base.excludeAnnotations = diagnostic
 base.sourcePath = source;live;generated/profiles/instinct3solar45mm
 base.resourcePath = generated/semioctagon-176x176-mip-instinct3solar45mm-i62/resources
+base.lang.zhs = resources-zhs
 approachs50.sourcePath = source;live;generated/profiles/approachs50
 approachs50.resourcePath = generated/round-390x390-amoled-i56/resources
 approachs7042mm.sourcePath = source;live;generated/profiles/approachs7042mm
