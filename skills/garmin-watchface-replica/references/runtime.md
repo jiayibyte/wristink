@@ -2,6 +2,8 @@
 
 具体数据入口、单位、权限、当前值与历史回退见 [佳明官方数据接入手册](official-data.md)。先核实来源语义，再决定刷新频率。
 
+用户要求持续秒或自定义数据槽时，读 [配置与刷新](settings-and-refresh.md)，其中包括 WatchFaceDelegate 预算回调、缓存失效、区域 API 和默认语言回退。
+
 ## 状态表先于优化
 
 为 awake、MIP sleep、AMOLED AOD、settings changed、cache lost 列出读取源、周期、重画区域与失效条件。

@@ -4,6 +4,8 @@
 
 SDK 设备包的 compiler/simulator 信息、Device Reference 与运行时 `dc.getWidth()/getHeight()` 交叉核对。产品宣传分辨率、SDK 家族名、模拟器表壳外框和可写 framebuffer 可能不同。记录形状、宽高、调色板、API、watch-face RAM、子屏遮罩、可缩放字体和 AOD 能力。
 
+API 基线取 `compiler.json` 的所有目标 `partNumbers[].connectIQVersion` 的最小值，而非 `deviceGroup`；同机型的地区变体可能更旧。用 `scripts/sdk_device_baseline.py` 读取，生成能力分支仍应配合运行时检查。具体失败模式见 [区域兼容](settings-and-refresh.md)。
+
 按家族建立布局：小型单色本能带圆窗、圆形彩色 MIP、圆形 AMOLED、方/长方 AMOLED、混合实体指针。每个家族有字号、边距和信息密度配置；同一比例相近的设备可共享资源。不要按型号复制全部绘图逻辑，也不要把最低分辨率 framebuffer 直接拉伸给所有设备。
 
 ## 几何实践
@@ -17,7 +19,7 @@ SDK 设备包的 compiler/simulator 信息、Device Reference 与运行时 `dc.g
 
 ## 当前案例，非通用常量
 
-Retro World Instinct 3 Solar 的 SDK 表壳测量：软件圆心从 [245,189] 校准到 [244,191]，相对 dx=-1、dy=+2，白面59px，按该版 SDK mask 白色裁切0。以后 SDK 或设备变更应重测。
+Retro World 2.0 曾以 SDK 橙色装饰圈测量，将圆心 [245,189] 移到 [244,191]。2026-11-02 用户真机照片反馈仍偏左下；2.1 改回 SDK LCD 矩形中心 [245,189]，即相对2.0向右1、向上2px，59px白面按该SDK遮罩仍无裁切。这是纠正旧参考的案例，不是通用常量，也不是已完成真机验收：装饰圈、实际开孔和照片透视需分开判断，以当前设备证据重测。
 
 Instinct 2S 的该 SDK 原生 framebuffer 是163×156；不能用营销参数反推 DC。Venu Sq2 的320×360缩放曾出现 `22*s=37.49999` 取37而 atlas 格宽38，数字串格显示0E；实际图宽才是渲染依据。
 

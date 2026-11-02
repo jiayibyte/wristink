@@ -7,6 +7,8 @@
 | 布局/字体 | `source/FaceLayout.mc`、`scripts/font_rasterizer.py`、`assets/fonts/layout-metrics.json` | `tools/retro_style.py`、`tools/assets.py`、`tools/device_profiles.py` |
 | 屏幕适配 | `scripts/generate-mip-targets.py`、`source/DeviceDrawing.mc` | `tools/device_profiles.py`、`source/DeviceDrawing.mc` |
 | 数据刷新 | `source/PowerPolicy.mc`、`source/LiveHeart.mc`、`source/InstinctFaceView.mc` | `source/LiveData.mc`、`source/Environment.mc`、`source/RetroWorld.mc` |
+| 配置/语言 | `scripts/generate-mip-targets.py`、`resources-eng/`、`scripts/check-iq-package.py` | `source/FaceSettings.mc`、`source/DataFields.mc`、`tools/settings.py`、`tools/check_settings_package.py` |
+| 区域太阳接口 | `scripts/generate-mip-targets.py` 及运行时 `has` 检查 | `source/SolarTimes.mc`、`source/Environment.mc`，官方优先/旧接口近似回退 |
 | 图标 | `assets/icons/SOURCE.txt`、`scripts/make-garmin-icons.py` | `assets/garmin-weather/`、`assets/garmin-sun/`、`source/WeatherIcons.mc` |
 | 内存/省电 | `tests/power/`、`scripts/check-power.py`、字体缓存 | `source/AlwaysOn.mc`、`source/SolarMap.mc`、`source/Benchmark.mc` |
 | 原生回归 | `scripts/probe-mip-runtime.py` | `tools/run_probes.py`、`tests/NativeAtlasTests.mc` |
@@ -28,4 +30,16 @@ Retro World原生配置、图形API兼容、实际atlas stride、地图缓存和
 - Instinct3圆窗需按具体SDK开孔光学校正；不可全型号套偏移。
 - 极小字号0/8混同：从3×5母版重新适配，保留关键中横。
 
-Retro World 2.0.0记录过112 SDK目标/183变体编译、17代表设备8帧原生诊断、4目标各19测试；这些是当次技术证据，**不是长期实表耗电、全机型视觉接受或当前源码永远通过的保证**。Moke的本次审阅以源码和已有设计预览为主，不冒称重新完成实表回归。
+Retro World 2.0.0记录过112 SDK目标/183变体编译、17代表设备8帧原生诊断、4目标各19测试；这些是当次技术证据，**不是长期实表耗电、全机型视觉接受或当前源码永远通过的保证**。当时Moke的审阅以源码和已有设计预览为主，不代表重新完成实表回归。
+
+## 2026-11 配置与维护案例
+
+Retro World 2.1.0 使用21项中英文设置、9个可选数据槽、MIP局部秒刷新和独立12/24小时制；`tests/SecondsTests.mc` 检查生命周期/设置/降级，`tools/build_scenario.py` 使用独立ID验证设置画面。圆窗新结论见 [设备适配](devices.md)，不要继续套用2.0的装饰圈偏移。
+
+Moke 1.1.1 按最低地区API生成，默认英文并用简体中文覆盖；`scripts/probe-mip-runtime.py --live --locale eng|zhs` 区分正式/演示测试状态。实际源代码及当前目标包仍需现场核对。
+
+已知商店ID仅用于定位，使用时核对当前作者/标题/版本：
+- Retro World：`76e1c5f4-abe8-49ab-bcc0-44c2b1c1a267`。
+- Moke：`08e3601d-b0b1-451a-a390-67543e39ae02`。
+
+分别在 `https://apps.garmin.com/apps/<store-id>` 和 `https://apps.garmin.cn/apps/<store-id>` 查看。账号、下载量、评论数、审核及公开状态不固化在技能里；也不保存凭据或把过去批准当成新的授权。
