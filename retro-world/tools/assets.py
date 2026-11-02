@@ -124,13 +124,17 @@ def marker(im,lat,lon):
     d=ImageDraw.Draw(im);d.ellipse((x-3,y-3,x+3,y+3),fill=1)
     d.ellipse((x-2,y-2,x+2,y+2),outline=0);d.point((x,y),fill=0)
 
-def render(hour=22,minute=8,second=36,day=30,month=6,dow='SUN',mode24=False,weather=3,location=True,utc_hour=8,skin=0):
+def render(hour=22,minute=8,second=36,day=30,month=6,dow='SUN',mode24=False,weather=3,location=True,utc_hour=8,skin=0,leading_zero=False):
     im=base();d=ImageDraw.Draw(im);h=hour if mode24 else (hour%12 or 12)
     im.paste(phased_world(utc_hour,skin=skin),(17,56))
-    for i,n in enumerate(f'{h:02}{minute:02}'):im.paste(digit(int(n),22,35),([24,47,79,102][i],111))
+    for i,n in enumerate(f'{h:02}{minute:02}'):
+        if i==0 and h<10 and not mode24 and not leading_zero:continue
+        im.paste(digit(int(n),22,35),([26,49,79,102][i],111))
     d.rectangle((72,122,74,124),fill=0);d.rectangle((72,133,74,135),fill=0)
     for i,n in enumerate(f'{second:02}'):im.paste(digit(int(n),13,24),(132+i*14,122))
-    if not mode24:text(im,15,113,'PM' if hour>=12 else 'AM',size=8)
+    if not mode24:
+        text(im,17,114,'P' if hour>=12 else 'A',size=8)
+        text(im,17,127,'M',size=8)
     text(im,100,96,dow,size=13,center=True)
     for i,n in enumerate(f'{month:02}{day:02}'):
         if i==0 and month<10:continue

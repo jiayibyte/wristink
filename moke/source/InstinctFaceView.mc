@@ -266,7 +266,7 @@ class InstinctFaceView extends WatchUi.WatchFace {
     function refreshWeather(now){_weatherAt=now.value();_weather=null;if(!PreviewMode.ENABLED){_weather=Weather.getCurrentConditions();}}
     function refreshSun(now,d){
         if(PreviewMode.ENABLED){return;}
-        if(_weather==null || _weather.observationLocationPosition==null){
+        if(!(Weather has :getSunrise) || !(Weather has :getSunset) || _weather==null || _weather.observationLocationPosition==null){
             _sunset="--:--";_sunrise="--:--";_sunDay=-1;return;
         }
         var day=d.year*10000+d.month*100+d.day;

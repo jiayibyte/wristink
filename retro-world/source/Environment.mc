@@ -10,7 +10,7 @@ module Environment {
     const FIX_MAX_AGE=7200;
     var temperature=null;var condition=null;var latitude=null;var longitude=null;
     var source=0;var sunrise="--:--";var sunset="--:--";var revision=0;
-    var _readAt=-1;var _sunDay=-1;var _sunLat=null;var _sunLon=null;var _location as Position.Location? = null;
+    var _readAt=-1;var _sunDay=-1;var _sunLat=null;var _sunLon=null;var _sunZone=null;var _location as Position.Location? = null;
     var reads=0;var sunCalculations=0;
     function fresh(when,stamp,limit) {
         if(when==null) {return false;}var age=stamp-when.value();return age>=0 && age<=limit;
@@ -48,6 +48,9 @@ module Environment {
             // Read the last known fix. Never request or enable GPS location events.
             var fix=Position.getInfo();var chosen=chooseLocation(fix,weather,stamp);
             _location=chosen==null ? null : chosen[:position];source=chosen==null ? 0 : chosen[:source];
+            if(FaceSettings.manualLocation && Environment.validCoordinates([FaceSettings.latitude,FaceSettings.longitude])) {
+                _location=new Position.Location({:latitude=>FaceSettings.latitude,:longitude=>FaceSettings.longitude,:format=>:degrees});source=3;
+            }
             if(_location==null) {latitude=null;longitude=null;}
             else {var coords=_location.toDegrees() as Array<Double>;latitude=coords[0];longitude=coords[1];}
         }
@@ -56,9 +59,11 @@ module Environment {
         var d=Gregorian.info(now,Time.FORMAT_SHORT);var day=d.year*10000+d.month*100+d.day;
         // Round only the cache key (~10 km), never the coordinates used in the calculation.
         var latKey=(latitude*10).toNumber();var lonKey=(longitude*10).toNumber();
-        if(day!=_sunDay || latKey!=_sunLat || lonKey!=_sunLon) {
-            sunrise=(Weather has :getSunrise) ? timeText(Weather.getSunrise(_location,now)) : "--:--";sunset=(Weather has :getSunset) ? timeText(Weather.getSunset(_location,now)) : "--:--";
-            _sunDay=day;_sunLat=latKey;_sunLon=lonKey;sunCalculations++;
+        var utc=Gregorian.utcInfo(now,Time.FORMAT_SHORT);var zone=d.hour*60+d.min-utc.hour*60-utc.min;
+        if(day!=_sunDay || latKey!=_sunLat || lonKey!=_sunLon || zone!=_sunZone) {
+            sunrise=timeText((Weather has :getSunrise) ? Weather.getSunrise(_location,now) : SolarTimes.event(now,latitude,longitude,true));
+            sunset=timeText((Weather has :getSunset) ? Weather.getSunset(_location,now) : SolarTimes.event(now,latitude,longitude,false));
+            _sunDay=day;_sunLat=latKey;_sunLon=lonKey;_sunZone=zone;sunCalculations++;
         }
     }
     function category(value) {

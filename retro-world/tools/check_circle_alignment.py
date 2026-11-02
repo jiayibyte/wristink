@@ -10,12 +10,13 @@ for y in range(sub['y']-15,sub['y']+sub['height']+15):
 bezel=[(min(x for x,y in points)+max(x for x,y in points))/2,(min(y for x,y in points)+max(y for x,y in points))/2]
 matrix=json.loads((ROOT/'dist/device-matrix.json').read_text());row=next(r for r in matrix['devices'] if r['id']=='instinct3solar45mm');g=row['geometry']
 center=[main['x']+g['circle_x']+144*g['circle_scale'],main['y']+g['circle_y']+31*g['circle_scale']]
-assert center==bezel,(center,bezel)
+lcd=[sub['x']+sub['width']/2,sub['y']+sub['height']/2]
+assert center==lcd,(center,lcd)
 circle=Image.open(ROOT/'generated'/row['profile']/'resources/drawables/circle.png').convert('1');clipped=0
 ox=main['x']+round(g['circle_x']+113*g['circle_scale']);oy=main['y']+round(g['circle_y'])
 for y in range(circle.height):
  for x in range(circle.width):
   if circle.getpixel((x,y)) and skin.getpixel((ox+x,oy+y))[3]>=128:clipped+=1
 assert clipped==0,clipped
-report={'device':'instinct3solar45mm','reference':'Garmin SDK device.png orange bezel and alpha aperture','bezel_center':bezel,'dial_center':center,'previous_center':[245,189],'offset':[-1,2],'white_face_diameter':59,'white_pixels_clipped_by_hardware_mask':clipped,'physical_device_tested':False}
-(ROOT/'dist/circle-alignment-2.0.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
+report={'device':'instinct3solar45mm','reference':'Garmin SDK LCD rectangle; user photo reports former bezel correction left/down','bezel_center':bezel,'lcd_center':lcd,'dial_center':center,'previous_center':[244,191],'change_from_2_0':[1,-2],'white_face_diameter':59,'white_pixels_clipped_by_hardware_mask':clipped,'physical_device_tested':False}
+(ROOT/'dist/circle-alignment-2.1.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

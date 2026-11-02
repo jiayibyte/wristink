@@ -32,9 +32,9 @@ def geometry(c,s):
         if loc['width']!=w:cx-=loc['width']-w
     inset=0
     if c["deviceId"]=="instinct3solar45mm":
-        # Measured orange bezel centre (244,191) in Garmin's official skin.
-        # Inset 2 keeps every white pixel inside the actual LCD alpha aperture.
-        cx-=1;cy+=2;inset=2
+        # Use the SDK LCD centre, not the decorative orange bezel. The 2.0
+        # optical correction (-1,+2) appeared left/down on the user's watch.
+        inset=2
     return dict(width=w,height=h,shape=shape,scale=scale,x=ox,y=oy,circle_scale=cs,circle_x=cx,circle_y=cy,circle_inset=inset,subscreen=bool(sub),analog=bool(s.get('analogHands')))
 
 def native_image(im,size,color=False,map_image=False):
@@ -116,6 +116,7 @@ def resource_set(key,g,color,icon):
         shutil.copytree(ROOT/'resources/fonts',dest/'fonts',dirs_exist_ok=True)
     else:fonts(dest/'fonts',scale)
     shutil.copytree(ROOT/'resources/strings',dest/'strings',dirs_exist_ok=True)
+    shutil.copytree(ROOT/'resources/settings',dest/'settings',dirs_exist_ok=True)
     tree=ET.parse(ROOT/'resources/drawables/drawables.xml');ET.SubElement(tree.getroot(),'bitmap',id='Aod',filename='aod.png')
     for bitmap in tree.getroot():
         bitmap.set('dithering','none');bitmap.set('compress','false')
@@ -134,7 +135,8 @@ def ImageChops_subtract(a,b):
     return ImageChops.subtract(a,b)
 
 def main():
-    assets.main();rows=[];excluded=[];groups={}
+    import settings
+    settings.generate();assets.main();rows=[];excluded=[];groups={}
     for p in sorted(PACKS.glob('*/compiler.json')):
         c=json.loads(p.read_text());types={v['type']:v['memoryLimit'] for v in c['appTypes']}
         if 'watchFace' not in types:continue
@@ -162,7 +164,7 @@ def main():
         for row in rows:ET.SubElement(products,f'{{{NS}}}product',id=row['id'])
         tree.write(ROOT/manifest,encoding='utf-8',xml_declaration=True)
         mode='preview' if demo else 'live'
-        lines=[f'project.manifest = {manifest}','base.excludeAnnotations = diagnostic',f'base.sourcePath = source;{mode};generated/profiles/instinct3solar45mm','base.resourcePath = generated/semioctagon-176x176-mip-instinct3solar45mm-i62/resources']
+        lines=[f'project.manifest = {manifest}','base.excludeAnnotations = diagnostic',f'base.sourcePath = source;{mode};generated/profiles/instinct3solar45mm','base.resourcePath = generated/semioctagon-176x176-mip-instinct3solar45mm-i62/resources','base.lang.zhs = resources-zhs']
         for row in rows:
             lines.extend([f"{row['id']}.sourcePath = source;{mode};generated/profiles/{row['id']}",f"{row['id']}.resourcePath = generated/{row['profile']}/resources"])
         (ROOT/jungle).write_text('\n'.join(lines)+'\n')

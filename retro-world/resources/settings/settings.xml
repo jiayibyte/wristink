@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='utf-8'?>
+<settings>
+  <setting propertyKey="@Properties.TimeFormat" title="@Strings.TimeFormatTitle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.TimeFormatOption0</listEntry>
+      <listEntry value="1">@Strings.TimeFormatOption1</listEntry>
+      <listEntry value="2">@Strings.TimeFormatOption2</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.LeadingZero" title="@Strings.LeadingZeroTitle">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.RefreshMode" title="@Strings.RefreshModeTitle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.RefreshModeOption0</listEntry>
+      <listEntry value="1">@Strings.RefreshModeOption1</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.ShowSeconds" title="@Strings.ShowSecondsTitle">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.ShowNeedle" title="@Strings.ShowNeedleTitle">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.ShowDate" title="@Strings.ShowDateTitle">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.ShowMap" title="@Strings.ShowMapTitle">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.ShowMarker" title="@Strings.ShowMarkerTitle">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.MapSkin" title="@Strings.MapSkinTitle">
+    <settingConfig type="list">
+      <listEntry value="-1">@Strings.MapSkinOptionN1</listEntry>
+      <listEntry value="0">@Strings.MapSkinOption0</listEntry>
+      <listEntry value="1">@Strings.MapSkinOption1</listEntry>
+      <listEntry value="2">@Strings.MapSkinOption2</listEntry>
+      <listEntry value="3">@Strings.MapSkinOption3</listEntry>
+      <listEntry value="4">@Strings.MapSkinOption4</listEntry>
+      <listEntry value="5">@Strings.MapSkinOption5</listEntry>
+      <listEntry value="6">@Strings.MapSkinOption6</listEntry>
+      <listEntry value="7">@Strings.MapSkinOption7</listEntry>
+      <listEntry value="8">@Strings.MapSkinOption8</listEntry>
+      <listEntry value="9">@Strings.MapSkinOption9</listEntry>
+      <listEntry value="10">@Strings.MapSkinOption10</listEntry>
+      <listEntry value="11">@Strings.MapSkinOption11</listEntry>
+      <listEntry value="12">@Strings.MapSkinOption12</listEntry>
+      <listEntry value="13">@Strings.MapSkinOption13</listEntry>
+      <listEntry value="14">@Strings.MapSkinOption14</listEntry>
+      <listEntry value="15">@Strings.MapSkinOption15</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.Field1" title="@Strings.Field1Title">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Field1Option0</listEntry>
+      <listEntry value="1">@Strings.Field1Option1</listEntry>
+      <listEntry value="2">@Strings.Field1Option2</listEntry>
+      <listEntry value="3">@Strings.Field1Option3</listEntry>
+      <listEntry value="4">@Strings.Field1Option4</listEntry>
+      <listEntry value="5">@Strings.Field1Option5</listEntry>
+      <listEntry value="6">@Strings.Field1Option6</listEntry>
+      <listEntry value="7">@Strings.Field1Option7</listEntry>
+      <listEntry value="8">@Strings.Field1Option8</listEntry>
+      <listEntry value="9">@Strings.Field1Option9</listEntry>
+      <listEntry value="10">@Strings.Field1Option10</listEntry>
+      <listEntry value="11">@Strings.Field1Option11</listEntry>
+      <listEntry value="12">@Strings.Field1Option12</listEntry>
+      <listEntry value="13">@Strings.Field1Option13</listEntry>
+      <listEntry value="14">@Strings.Field1Option14</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.Field2" title="@Strings.Field2Title">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Field2Option0</listEntry>
+      <listEntry value="1">@Strings.Field2Option1</listEntry>
+      <listEntry value="2">@Strings.Field2Option2</listEntry>
+      <listEntry value="3">@Strings.Field2Option3</listEntry>
+      <listEntry value="4">@Strings.Field2Option4</listEntry>
+      <listEntry value="5">@Strings.Field2Option5</listEntry>
+      <listEntry value="6">@Strings.Field2Option6</listEntry>
+      <listEntry value="7">@Strings.Field2Option7</listEntry>
+      <listEntry value="8">@Strings.Field2Option8</listEntry>
+      <listEntry value="9">@Strings.Field2Option9</listEntry>
+      <listEntry value="10">@Strings.Field2Option10</listEntry>
+      <listEntry value="11">@Strings.Field2Option11</listEntry>
+      <listEntry value="12">@Strings.Field2Option12</listEntry>
+      <listEntry value="13">@Strings.Field2Option13</listEntry>
+      <listEntry value="14">@Strings.Field2Option14</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.Field3" title="@Strings.Field3Title">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Field3Option0</listEntry>
+      <listEntry value="1">@Strings.Field3Option1</listEntry>
+      <listEntry value="2">@Strings.Field3Option2</listEntry>
+      <listEntry value="3">@Strings.Field3Option3</listEntry>
+      <listEntry value="4">@Strings.Field3Option4</listEntry>
+      <listEntry value="5">@Strings.Field3Option5</listEntry>
+      <listEntry value="6">@Strings.Field3Option6</listEntry>
+      <listEntry value="7">@Strings.Field3Option7</listEntry>
+      <listEntry value="8">@Strings.Field3Option8</listEntry>
+      <listEntry value="9">@Strings.Field3Option9</listEntry>
+      <listEntry value="10">@Strings.Field3Option10</listEntry>
+      <listEntry value="11">@Strings.Field3Option11</listEntry>
+      <listEntry value="12">@Strings.Field3Option12</listEntry>
+      <listEntry value="13">@Strings.Field3Option13</listEntry>
+      <listEntry value="14">@Strings.Field3Option14</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.Field4" title="@Strings.Field4Title">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Field4Option0</listEntry>
+      <listEntry value="1">@Strings.Field4Option1</listEntry>
+      <listEntry value="2">@Strings.Field4Option2</listEntry>
+      <listEntry value="3">@Strings.Field4Option3</listEntry>
+      <listEntry value="4">@Strings.Field4Option4</listEntry>
+      <listEntry value="5">@Strings.Field4Option5</listEntry>
+      <listEntry value="6">@Strings.Field4Option6</listEntry>
+      <listEntry value="7">@Strings.Field4Option7</listEntry>
+      <listEntry value="8">@Strings.Field4Option8</listEntry>
+      <listEntry value="9">@Strings.Field4Option9</listEntry>
+      <listEntry value="10">@Strings.Field4Option10</listEntry>
+      <listEntry value="11">@Strings.Field4Option11</listEntry>
+      <listEntry value="12">@Strings.Field4Option12</listEntry>
+      <listEntry value="13">@Strings.Field4Option13</listEntry>
+      <listEntry value="14">@Strings.Field4Option14</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.Field5" title="@Strings.Field5Title">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Field5Option0</listEntry>
+      <listEntry value="1">@Strings.Field5Option1</listEntry>
+      <listEntry value="2">@Strings.Field5Option2</listEntry>
+      <listEntry value="3">@Strings.Field5Option3</listEntry>
+      <listEntry value="4">@Strings.Field5Option4</listEntry>
+      <listEntry value="5">@Strings.Field5Option5</listEntry>
+      <listEntry value="6">@Strings.Field5Option6</listEntry>
+      <listEntry value="7">@Strings.Field5Option7</listEntry>
+      <listEntry value="8">@Strings.Field5Option8</listEntry>
+      <listEntry value="9">@Strings.Field5Option9</listEntry>
+      <listEntry value="10">@Strings.Field5Option10</listEntry>
+      <listEntry value="11">@Strings.Field5Option11</listEntry>
+      <listEntry value="12">@Strings.Field5Option12</listEntry>
+      <listEntry value="13">@Strings.Field5Option13</listEntry>
+      <listEntry value="14">@Strings.Field5Option14</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.Field6" title="@Strings.Field6Title">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Field6Option0</listEntry>
+      <listEntry value="1">@Strings.Field6Option1</listEntry>
+      <listEntry value="2">@Strings.Field6Option2</listEntry>
+      <listEntry value="3">@Strings.Field6Option3</listEntry>
+      <listEntry value="4">@Strings.Field6Option4</listEntry>
+      <listEntry value="5">@Strings.Field6Option5</listEntry>
+      <listEntry value="6">@Strings.Field6Option6</listEntry>
+      <listEntry value="7">@Strings.Field6Option7</listEntry>
+      <listEntry value="8">@Strings.Field6Option8</listEntry>
+      <listEntry value="9">@Strings.Field6Option9</listEntry>
+      <listEntry value="10">@Strings.Field6Option10</listEntry>
+      <listEntry value="11">@Strings.Field6Option11</listEntry>
+      <listEntry value="12">@Strings.Field6Option12</listEntry>
+      <listEntry value="13">@Strings.Field6Option13</listEntry>
+      <listEntry value="14">@Strings.Field6Option14</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.Field7" title="@Strings.Field7Title">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Field7Option0</listEntry>
+      <listEntry value="1">@Strings.Field7Option1</listEntry>
+      <listEntry value="2">@Strings.Field7Option2</listEntry>
+      <listEntry value="3">@Strings.Field7Option3</listEntry>
+      <listEntry value="4">@Strings.Field7Option4</listEntry>
+      <listEntry value="5">@Strings.Field7Option5</listEntry>
+      <listEntry value="6">@Strings.Field7Option6</listEntry>
+      <listEntry value="7">@Strings.Field7Option7</listEntry>
+      <listEntry value="8">@Strings.Field7Option8</listEntry>
+      <listEntry value="9">@Strings.Field7Option9</listEntry>
+      <listEntry value="10">@Strings.Field7Option10</listEntry>
+      <listEntry value="11">@Strings.Field7Option11</listEntry>
+      <listEntry value="12">@Strings.Field7Option12</listEntry>
+      <listEntry value="13">@Strings.Field7Option13</listEntry>
+      <listEntry value="14">@Strings.Field7Option14</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.Field8" title="@Strings.Field8Title">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Field8Option0</listEntry>
+      <listEntry value="1">@Strings.Field8Option1</listEntry>
+      <listEntry value="2">@Strings.Field8Option2</listEntry>
+      <listEntry value="3">@Strings.Field8Option3</listEntry>
+      <listEntry value="4">@Strings.Field8Option4</listEntry>
+      <listEntry value="5">@Strings.Field8Option5</listEntry>
+      <listEntry value="6">@Strings.Field8Option6</listEntry>
+      <listEntry value="7">@Strings.Field8Option7</listEntry>
+      <listEntry value="8">@Strings.Field8Option8</listEntry>
+      <listEntry value="9">@Strings.Field8Option9</listEntry>
+      <listEntry value="10">@Strings.Field8Option10</listEntry>
+      <listEntry value="11">@Strings.Field8Option11</listEntry>
+      <listEntry value="12">@Strings.Field8Option12</listEntry>
+      <listEntry value="13">@Strings.Field8Option13</listEntry>
+      <listEntry value="14">@Strings.Field8Option14</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.Field9" title="@Strings.Field9Title">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Field9Option0</listEntry>
+      <listEntry value="1">@Strings.Field9Option1</listEntry>
+      <listEntry value="2">@Strings.Field9Option2</listEntry>
+      <listEntry value="3">@Strings.Field9Option3</listEntry>
+      <listEntry value="4">@Strings.Field9Option4</listEntry>
+      <listEntry value="5">@Strings.Field9Option5</listEntry>
+      <listEntry value="6">@Strings.Field9Option6</listEntry>
+      <listEntry value="7">@Strings.Field9Option7</listEntry>
+      <listEntry value="8">@Strings.Field9Option8</listEntry>
+      <listEntry value="9">@Strings.Field9Option9</listEntry>
+      <listEntry value="10">@Strings.Field9Option10</listEntry>
+      <listEntry value="11">@Strings.Field9Option11</listEntry>
+      <listEntry value="12">@Strings.Field9Option12</listEntry>
+      <listEntry value="13">@Strings.Field9Option13</listEntry>
+      <listEntry value="14">@Strings.Field9Option14</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.ManualLocation" title="@Strings.ManualLocationTitle">
+    <settingConfig type="boolean" />
+  </setting>
+  <setting propertyKey="@Properties.Latitude" title="@Strings.LatitudeTitle">
+    <settingConfig type="numeric" min="-90" max="90" />
+  </setting>
+  <setting propertyKey="@Properties.Longitude" title="@Strings.LongitudeTitle">
+    <settingConfig type="numeric" min="-180" max="180" />
+  </setting>
+</settings>

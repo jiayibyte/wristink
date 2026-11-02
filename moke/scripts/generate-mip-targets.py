@@ -198,7 +198,7 @@ function fontSize(key){var n=get(key+"Size");return n==0 ? get("dataSize") : n-1
     source+='return null;}\n    function weather(now){'
     if api>=(3,2):
         source+='var w=Weather.getCurrentConditions();if(w!=null){var sunrise="--:--";var sunset="--:--";'
-        if api>=(3,3):source+='if(w.observationLocationPosition!=null){sunrise=clock(Weather.getSunrise(w.observationLocationPosition,now));sunset=clock(Weather.getSunset(w.observationLocationPosition,now));}'
+        if api>=(3,3):source+='if((Weather has :getSunrise) && (Weather has :getSunset) && w.observationLocationPosition!=null){sunrise=clock(Weather.getSunrise(w.observationLocationPosition,now));sunset=clock(Weather.getSunset(w.observationLocationPosition,now));}'
         source+='return [w.temperature,w.relativeHumidity,w.windSpeed!=null ? w.windSpeed*3.6 : null,w.feelsLikeTemperature,w.windBearing,WeatherIcons.category(w.condition),sunrise,sunset];}'
         shutil.copy2(ROOT/'source/WeatherIcons.mc',folder/'WeatherIcons.mc')
     source+='return [null,null,null,null,null,0,"--:--","--:--"];}\n'
@@ -221,7 +221,8 @@ def main():
         types={a['type']:a['memoryLimit'] for a in c['appTypes']}
         if c.get('displayType')!='mip' or 'watchFace' not in types:continue
         if args.only and c['deviceId'] not in args.only:continue
-        api=tuple(map(int,c['deviceGroup'].split()[-1].split('.')))
+        # Regional hardware may expose an older API than the device group.
+        api=min(tuple(map(int,part['connectIQVersion'].split('.'))) for part in c['partNumbers'])
         g=geometry(c,s);icon=c.get('launcherIcon',dict(width=40,height=40));key=c['deviceFamily']+'-'+str(round(g['scale']*1000000))+f'-c{round(g["circle_scale"]*1000000)}-t{round(g["time_scale"]*1000000)}-icon{icon["width"]}x{icon["height"]}'
         paging=c.get('codePageSize',0)>0
         renderer='modern' if api>=(3,3) and (types['watchFace']>65536 or paging) else 'legacy'
@@ -264,13 +265,14 @@ def main():
         products=app.find('iq:products',NS);products.clear()
         for row in rows:ET.SubElement(products,'{'+NS['iq']+'}product',id=row['id'])
         ET.indent(tree,space='    ');tree.write(manifest,encoding='utf-8',xml_declaration=True)
-        jungle=['project.manifest = '+str(manifest.relative_to(ROOT)),f'base.sourcePath = source;{"preview" if preview else "live"};profiles/base','base.resourcePath = resources'+(';preview/resources' if preview else '')]
+        jungle=['project.manifest = '+str(manifest.relative_to(ROOT)),f'base.sourcePath = source;{"preview" if preview else "live"};profiles/base','base.resourcePath = resources;resources-eng'+(';preview/resources' if preview else ''),'base.lang.zhs = resources']
         jungle.append('base.lang.eng = resources-eng')
         for row in rows:
             mode=('source' if row['paging'] else 'generated/modern-no-paging') if row['renderer']=='modern' else 'generated/legacy-core'
             jungle.append(f'{row["id"]}.sourcePath = {mode};{"preview" if preview else "live"};generated/profiles/{row["id"]}')
             if row['renderer']=='legacy' and row['on_watch_settings']:jungle.append(f'{row["id"]}.excludeAnnotations = classicPrefs')
-            jungle.append(f'{row["id"]}.resourcePath = generated/assets/{row["asset_key"]}/resources'+(';preview/resources' if preview else ''))
+            jungle.append(f'{row["id"]}.resourcePath = generated/assets/{row["asset_key"]}/resources;generated/assets/{row["asset_key"]}/resources-eng'+(';preview/resources' if preview else ''))
+            jungle.append(f'{row["id"]}.lang.zhs = generated/assets/{row["asset_key"]}/resources')
             jungle.append(f'{row["id"]}.lang.eng = generated/assets/{row["asset_key"]}/resources-eng')
         ROOT.joinpath('preview.jungle' if preview else 'monkey.jungle').write_text('\n'.join(jungle)+'\n')
     ROOT.joinpath('config/mip-devices.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
