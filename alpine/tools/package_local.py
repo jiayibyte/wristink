@@ -2,7 +2,7 @@
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont
 import hashlib,json,shutil,zipfile
-R=Path(__file__).resolve().parents[1];E=R/'dist/evidence';D=R/'docs';version='1.0.1'
+R=Path(__file__).resolve().parents[1];E=R/'dist/evidence';D=R/'docs';version='1.1.0'
 for name in ['instinct3-native','instinct2s-native','fenix7-native','epix2-native','epix2-night']:
  shutil.copy2(E/(name+'.png'),D/(name+'.png'))
 board=Image.new('RGB',(1280,520),(14,19,23));draw=ImageDraw.Draw(board)
@@ -10,7 +10,7 @@ f=ImageFont.truetype(str(R/'assets/fonts/Rajdhani-SemiBold.ttf'),25);small=Image
 for title,filename,left,width,scale in [('INSTINCT 3 SOLAR','instinct3-native',0,400,2),('AMOLED / DAY','epix2-native',416,416,1),('AMOLED / NIGHT','epix2-night',848,416,1)]:
  draw.text((left+18,14),title,font=f,fill='white');im=Image.open(E/(filename+'.png')).convert('RGB');im=im.resize((im.width*scale,im.height*scale),Image.Resampling.NEAREST)
  board.paste(im,(left+(width-im.width)//2,55+(416-im.height)//2));draw.text((left+18,481),'SIMULATOR / DEMO DATA'+(' / 2X' if scale==2 else ' / 1X'),font=small,fill=(154,175,183))
-board.save(D/'preview-board.png');board.save(D/'preview-details.png')
+board.save(D/'preview-board.png');board.save(D/'preview-everest.png')
 manifest=[]
 for p in sorted((R/'bin').glob('*-live.prg')):
  target=R/'dist'/p.name;shutil.copy2(p,target);manifest.append({'file':target.name,'bytes':target.stat().st_size,'sha256':hashlib.sha256(target.read_bytes()).hexdigest()})

@@ -28,4 +28,4 @@ Garmin、Instinct 和 Connect IQ 是其各自权利人的商标。仓库不分�
 
 ## Alpine / 山境
 
-Alpine reuses the SIL Open Font License 1.1 Rajdhani SemiBold font already included in this repository. The original font and license are retained under `alpine/assets/fonts/`. Mountain, tree, cabin and scene geometry are original code; the user-provided Forester X image is a visual reference, not a bundled watch-face asset.
+Alpine reuses the SIL Open Font License 1.1 Rajdhani SemiBold font already included in this repository. The original font and license are retained under `alpine/assets/fonts/`. Mountain and scene geometry are original code; Everest visual reference sources are documented in `alpine/assets/everest/SOURCES.md`; the user-provided Forester X image is a visual reference, not a bundled watch-face asset.

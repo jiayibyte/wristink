@@ -85,3 +85,21 @@ function batteryEstimateUsesOnlySystemDays(logger) {
  Data.batteryDays=Data.remainingDays(new BatteryDaysFixture(0.0));Test.assertEqual(Data.daysText(),"0.0D");
  Data.batteryDays=null;Data.battery=100;Test.assertEqual(Data.value(4),"--D");return true;
 }
+
+(:test)
+function everestBackgroundCachesAndAllScenesRender(logger) {
+ var ref=null;var bitmap;
+ if(Graphics has :createBufferedBitmap) {ref=Graphics.createBufferedBitmap({:width=>1,:height=>1});bitmap=ref.get();}
+ else {bitmap=new Graphics.BufferedBitmap({:width=>1,:height=>1});}
+ var dc=bitmap.getDc();var view=new AlpineView();var stamp=Time.now().value();
+ Data.heart=80;Data.altitude=1280;Data.batteryDays=18.4;Data.notifications=0;
+ view._scene=2;view.landscape(dc,840,stamp);
+ var first=view._background;view.landscape(dc,841,stamp);
+ Test.assert(view._background==first);Test.assertEqual(view._artScene,2);first=null;
+ for(var scene=1;scene<=9;scene++) {
+  view._scene=scene;view.landscape(dc,840,stamp);
+  Test.assertEqual(view._artScene,scene);Test.assert(view._background!=null);
+  view.restore(dc,12,12,20,10);
+ }
+ return true;
+}
