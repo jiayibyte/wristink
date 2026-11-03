@@ -25,3 +25,7 @@ Retro World 的陆地轮廓来自 [Natural Earth 1:110m land](https://github.com
 墨刻还使用社区保存的 Garmin 图标资源；来源记录保留在 `moke/assets/icons/SOURCE.txt` 及同目录的参考 JSON 中。原镜像没有附带许可证声明，这些图标不属于上文的 OFL 字体资源，不能据此认定获得了相同的再授权。
 
 Garmin、Instinct 和 Connect IQ 是其各自权利人的商标。仓库不分发 Garmin SDK；开发者需自行安装。项目为独立实现，与 Garmin 无隶属关系。
+
+## Alpine / 山境
+
+Alpine reuses the SIL Open Font License 1.1 Rajdhani SemiBold font already included in this repository. The original font and license are retained under `alpine/assets/fonts/`. Mountain, tree, cabin and scene geometry are original code; the user-provided Forester X image is a visual reference, not a bundled watch-face asset.
