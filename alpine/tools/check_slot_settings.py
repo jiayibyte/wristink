@@ -3,7 +3,7 @@ from pathlib import Path
 import argparse,json,xml.etree.ElementTree as ET
 R=Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser();p.add_argument('devices',nargs='+');p.add_argument('--mode',default='live');a=p.parse_args()
-expected={'CircleData':6,'HeaderTop':3,'HeaderLeft':4,'HeaderRight':5,'Left':0,'Middle':1,'Right':2}
+expected={'CircleData':6,'HeaderTop':11,'HeaderLeft':11,'HeaderRight':11,'Left':0,'Middle':1,'Right':2}
 for device in a.devices:
  path=R/f'bin/Alpine-{device}-{a.mode}-settings.json';data=json.loads(path.read_text());items={x['key']:x for x in data['settings']}
  assert 'Circle' not in items

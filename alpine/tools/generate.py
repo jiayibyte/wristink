@@ -118,7 +118,7 @@ def generate():
     for mode in ['preview','tests']:
         for device in DEVICES:
             rel=f'generated/{device}/{mode}-manifest.xml'
-            ident=uuid.uuid5(uuid.NAMESPACE_DNS,f'wristink.alpine.slots3.{mode}.{device}').hex
+            ident=uuid.uuid5(uuid.NAMESPACE_DNS,f'wristink.alpine.headershidden1.{mode}.{device}').hex
             source=(ROOT/mode/'manifest.xml').read_text()
             old='bb71078cce15417aa5425aa350817002' if mode=='preview' else 'bb71078cce15417aa5425aa350817003'
             (ROOT/rel).write_text(source.replace(old,ident))

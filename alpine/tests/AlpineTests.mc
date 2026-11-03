@@ -68,7 +68,7 @@ function sleepStopsSecondPaintingAndWakeInvalidates(logger) {
  v.onExitSleep();Test.assert(!v._sleep);Test.assertEqual(v._minute,-1);return true;
 }
 (:test)
-function defaultCircleIsWeatherAndHeartRemainsBelow(logger) {Settings.load();Test.assertEqual(Settings.circle,6);Test.assertEqual(Settings.middle,1);Test.assertEqual(Settings.upperLeft,4);return true;}
+function defaultCircleIsWeatherAndHeartRemainsBelow(logger) {Settings.load();Test.assertEqual(Settings.circle,6);Test.assertEqual(Settings.middle,1);Test.assertEqual(Settings.top,11);Test.assertEqual(Settings.upperLeft,11);Test.assertEqual(Settings.upperRight,11);return true;}
 (:test)
 function moonCycleIsBounded(logger) {Test.assert(Scene.moon(0)>=0);Test.assert(Scene.moon(0)<29.53059);Test.assert(Scene.moon(Time.now().value())<29.53059);return true;}
 

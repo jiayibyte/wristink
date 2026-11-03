@@ -33,3 +33,17 @@ function legacyCircleAndDefaultsHaveStableMeaning(logger) {
  Application.Properties.setValue("Circle",old);Settings.setSlot("CircleData",value);
  Test.assert(ok);return true;
 }
+
+(:test)
+function headerDefaultsHideOnceWithoutResettingCustomChoices(logger) {
+ Settings.load();var top=Settings.top;var left=Settings.upperLeft;var right=Settings.upperRight;
+ Application.Storage.setValue("HeaderDefaultsVersion",0);
+ Application.Properties.setValue("HeaderTop",3);Application.Properties.setValue("HeaderLeft",4);Application.Properties.setValue("HeaderRight",5);
+ Settings.load();var ok=Settings.top==11 && Settings.upperLeft==11 && Settings.upperRight==11;
+ Settings.setSlot("HeaderTop",3);Settings.load();ok=ok && Settings.top==3;
+ Application.Storage.setValue("HeaderDefaultsVersion",0);
+ Application.Properties.setValue("HeaderTop",1);Application.Properties.setValue("HeaderLeft",6);Application.Properties.setValue("HeaderRight",7);
+ Settings.load();ok=ok && Settings.top==1 && Settings.upperLeft==6 && Settings.upperRight==7;
+ Settings.setSlot("HeaderTop",top);Settings.setSlot("HeaderLeft",left);Settings.setSlot("HeaderRight",right);
+ Test.assert(ok);return true;
+}
