@@ -17,6 +17,6 @@ flags=(-r -O 0)
 [[ "$mode" != tests ]] || flags=(-t)
 for device in $devices; do
   [[ "$mode" == live ]] || jungle="$mode-$device.jungle"
-  "$sdk_path/bin/monkeyc" -f "$jungle" -d "$device" -o "bin/Alpine-$device-$mode.prg" -y "$HOME/.Garmin/keys/developer_key.der" $flags -w > "bin/$device-$mode-build.log" 2>&1 || { cat "bin/$device-$mode-build.log"; exit 1; }
+  "$sdk_path/bin/monkeyc" -f "$jungle" -d "$device" -o "bin/Alpine-$device-$mode.prg" -y "$HOME/.Garmin/keys/developer_key.der" $flags -w --no-gen-styles > "bin/$device-$mode-build.log" 2>&1 || { cat "bin/$device-$mode-build.log"; exit 1; }
   echo "$device $mode: built"
 done

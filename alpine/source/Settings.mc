@@ -9,7 +9,7 @@ module Settings {
     }
     function flag(key,fallback) {var v=Application.Properties.getValue(key);return v instanceof Boolean ? v : fallback;}
     function load() {
-        timeFormat=number("TimeFormat",0,0,2);scene=number("Scene",0,0,9);circle=number("Circle",0,0,2);
+        timeFormat=number("TimeFormat",0,0,2);scene=number("Scene",0,0,12);circle=number("Circle",0,0,2);
         lowBattery=number("LowBattery",20,5,50);stressLimit=number("StressLimit",75,25,100);
         left=number("Left",0,0,5);middle=number("Middle",1,0,5);right=number("Right",2,0,5);
         smart=flag("Smart",true);seconds=flag("Seconds",true);

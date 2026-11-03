@@ -25,7 +25,7 @@ function sunriseTransitionsAndMissingLocation(logger) {
 }
 (:test)
 function scenesRespectPriorityAndExplicitChoice(logger) {
- Settings.scene=0;Settings.smart=true;Data.rise=null;Data.set=null;
+ Sky.ready=false;Data.weather=0;Data.cloudCover=0;Settings.scene=0;Settings.smart=true;Data.rise=null;Data.set=null;
  Data.battery=10;Data.stress=90;Data.rainy=true;Data.steps=11000;Data.stepGoal=10000;
  Test.assertEqual(Scene.choose(800),7);Data.battery=80;Test.assertEqual(Scene.choose(800),6);
  Data.stress=0;Test.assertEqual(Scene.choose(800),5);Data.rainy=false;
@@ -95,10 +95,10 @@ function everestBackgroundCachesAndAllScenesRender(logger) {
  Data.heart=80;Data.altitude=1280;Data.batteryDays=18.4;Data.notifications=0;
  view._scene=2;view.landscape(dc,840,stamp);
  var first=view._background;view.landscape(dc,841,stamp);
- Test.assert(view._background==first);Test.assertEqual(view._artScene,2);first=null;
- for(var scene=1;scene<=9;scene++) {
+ Test.assert(view._background==first);Test.assertEqual(view._artScene,Scene.artKey(2));first=null;
+ for(var scene=1;scene<=12;scene++) {
   view._scene=scene;view.landscape(dc,840,stamp);
-  Test.assertEqual(view._artScene,scene);Test.assert(view._background!=null);
+  Test.assertEqual(view._artScene,Scene.artKey(scene));Test.assert(view._background!=null);
   view.restore(dc,12,12,20,10);
  }
  return true;

@@ -9,6 +9,7 @@ import Toybox.Weather;
 module Data {
     var heart=null;var steps=null;var calories=null;var altitude=null;var distance=null;var battery=null;var stress=null;
     var batteryDays=null;
+    var latitude=null;var longitude=null;var weather=0;var cloudCover=0;
     var stepGoal=null;var notifications=0;var temp=null;var rainy=false;var rise=null;var set=null;
     var heartAt=-1;var environmentAt=-1;var minute=-1;var imperialAlt=false;var imperialDist=false;var fahrenheit=false;
     function fresh(when,now,age) {return when!=null && now>=when.value() && now-when.value()<=age;}
@@ -38,7 +39,7 @@ module Data {
     function refresh(now,settings) {
         refreshHeart(now.value());var m=(now.value()/60).toNumber();if(minute==m) {return;}minute=m;
         imperialAlt=settings.elevationUnits==System.UNIT_STATUTE;imperialDist=settings.distanceUnits==System.UNIT_STATUTE;fahrenheit=settings.temperatureUnits==System.UNIT_STATUTE;
-        if(Mode.DEMO) {steps=8620;stepGoal=10000;calories=1688;altitude=1280;battery=76;batteryDays=18.4;distance=642000;notifications=2;temp=24;stress=32;rainy=false;return;}
+        if(Mode.DEMO) {steps=8620;stepGoal=10000;calories=1688;altitude=1280;battery=76;batteryDays=18.4;distance=642000;notifications=2;temp=Mode.WEATHER==5 ? -6 : (Mode.WEATHER==4 ? 16 : 24);stress=32;weather=Mode.WEATHER;cloudCover=WeatherStyle.cover(weather,null);rainy=weather==4 || weather==6;latitude=Mode.LAT;longitude=Mode.LON;rise=null;set=null;return;}
         var d=ActivityMonitor.getInfo();var a=Activity.getActivityInfo();
         steps=d==null ? null : d.steps;stepGoal=d==null ? null : d.stepGoal;calories=d==null ? null : d.calories;distance=d==null ? null : d.distance;
         var stats=System.getSystemStats();battery=stats.battery;batteryDays=remainingDays(stats);notifications=settings.notificationCount;
@@ -54,10 +55,13 @@ module Data {
     function environment(now) {
         var stamp=now.value();if(environmentAt>=0 && stamp>=environmentAt && stamp-environmentAt<300) {return;}environmentAt=stamp;
         var w=Weather.getCurrentConditions();var good=w!=null && fresh(w.observationTime,stamp,10800);
-        temp=good ? w.temperature : null;rainy=good && weatherRain(w.condition);rise=null;set=null;
+        temp=good ? w.temperature : null;weather=good ? WeatherStyle.category(w.condition) : WeatherStyle.UNKNOWN;
+        var cover=good && (w has :cloudCover) ? w.cloudCover : null;cloudCover=WeatherStyle.cover(weather,cover);
+        rainy=weather==WeatherStyle.RAIN || weather==WeatherStyle.STORM;rise=null;set=null;latitude=null;longitude=null;
         var loc=null;var p=Position.getInfo();
         if(p!=null && p.position!=null && p.accuracy!=null && p.accuracy>0 && p.accuracy<=4 && fresh(p.when,stamp,7200)) {loc=p.position;}
         else if(good && (w has :observationLocationPosition)) {loc=w.observationLocationPosition;}
+        if(loc!=null) {var coords=loc.toDegrees();if(coords!=null && coords.size()>=2 && Sky.validLocation(coords[0],coords[1])) {latitude=coords[0];longitude=coords[1];}else {loc=null;}}
         if(loc!=null && (Weather has :getSunrise) && (Weather has :getSunset)) {
             var r=Weather.getSunrise(loc,now);var s=Weather.getSunset(loc,now);
             if(r!=null) {var ri=Gregorian.info(r,Time.FORMAT_SHORT);rise=ri.hour*60+ri.min;}

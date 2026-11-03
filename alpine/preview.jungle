@@ -1,6 +1,6 @@
 project.manifest = preview/manifest.xml
 base.sourcePath = source;preview
-base.resourcePath = resources
+base.resourcePath = resources;preview/resources
 instinct3solar45mm.sourcePath = $(base.sourcePath);generated/instinct3solar45mm
 instinct3solar45mm.resourcePath = $(base.resourcePath);generated/instinct3solar45mm/resources
 instinct3solar45mm.lang.zhs = resources-zhs

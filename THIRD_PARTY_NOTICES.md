@@ -29,3 +29,7 @@ Garmin、Instinct 和 Connect IQ 是其各自权利人的商标。仓库不分�
 ## Alpine / 山境
 
 Alpine reuses the SIL Open Font License 1.1 Rajdhani SemiBold font already included in this repository. The original font and license are retained under `alpine/assets/fonts/`. Mountain and scene geometry are original code; Everest visual reference sources are documented in `alpine/assets/everest/SOURCES.md`; the user-provided Forester X image is a visual reference, not a bundled watch-face asset.
+
+## Alpine astronomy
+
+Solar/lunar position and lunar illumination formulas in `alpine/source/Sky.mc` are adapted from SunCalc v1.9.0, copyright (c) 2014 Vladimir Agafonkin, under the BSD 2-Clause license. The full license is retained at `alpine/assets/astronomy/LICENSE-SunCalc.txt` and included in the local binary distribution. Upstream reference and independent fixture provenance: `alpine/assets/astronomy/SOURCES.md`.

@@ -10,16 +10,17 @@ import Toybox.WatchUi;
 class AlpineApp extends Application.AppBase {
     var view;
     function initialize() {AppBase.initialize();}
-    function getInitialView() {view=new AlpineView();return [view];}
-    function onSettingsChanged() {if(view!=null) {view.settingsChanged();}}
+    function getInitialView() {if(Mode.DEMO) {Mode.refresh();}view=new AlpineView();return [view];}
+    function onSettingsChanged() {if(Mode.DEMO) {Mode.refresh();}if(view!=null) {view.settingsChanged();}}
 }
 
 class AlpineView extends WatchUi.WatchFace {
     var _time;var _small;var _label;var _metric;var _circle;var _aod;
-    var _background=null;var _artScene=-1;
+    var _background=null;var _front=null;var _artScene=-1;
     var _sleep=false;var _minute=-1;var _scene=2;var _second=-1;var _accent=0x66CCCC;var _logged=false;
     function initialize() {
         WatchFace.initialize();Settings.load();
+        if(Device.MONO) {_front=WatchUi.loadResource(Rez.Drawables.SkyFront);}
         _time=WatchUi.loadResource(Rez.Fonts.Time);_small=WatchUi.loadResource(Rez.Fonts.Small);
         _label=WatchUi.loadResource(Rez.Fonts.Label);_metric=WatchUi.loadResource(Rez.Fonts.Metric);_circle=WatchUi.loadResource(Rez.Fonts.Circle);_aod=WatchUi.loadResource(Rez.Fonts.Aod);
     }
@@ -53,34 +54,70 @@ class AlpineView extends WatchUi.WatchFace {
     }
     function accent(scene) {
         if(Device.MONO) {return Graphics.COLOR_WHITE;}
-        if(scene==1) {return 0xCCCCFF;}if(scene==3 || scene==6) {return 0xFFAA55;}
+        if(scene==1) {return 0xCCCCFF;}if(scene==3 || scene==6 || scene==7) {return 0xFFAA55;}
         if(scene==4 || scene==9) {return 0x9999FF;}if(scene==5) {return 0x99BBBB;}return 0x66DDDD;
     }
+    function skyPixel(x,y) {return x>=0 && y>=0 && x<Device.W && y<Device.H && y<Device.SKYLINE[x];}
+    function cloud(dc,x,y,width,c) {
+        // Native filled primitives avoid per-pixel VM loops in a watch-face callback.
+        var w=p(width);var xx=p(x);var yy=p(y);var r=(w*.20).toNumber();
+        dc.setClip(xx,yy-r,w,r*2+1);color(dc,c);
+        dc.fillCircle(xx+r,yy+r,r);
+        dc.fillCircle(xx+(w*.47).toNumber(),yy+(w*.15).toNumber(),(w*.25).toNumber());
+        dc.fillCircle(xx+(w*.76).toNumber(),yy+r,r);
+        dc.clearClip();
+    }
+    function body(dc,progress,isMoon,stamp) {
+        var x=(Device.MONO ? 10 : 12)+(Device.MONO ? 98 : 236)*progress;
+        var leftEdge=Device.SKYLINE[p(Device.MONO ? 10 : 12)]/Device.S;var rightEdge=Device.SKYLINE[p(Device.MONO ? 108 : 248)]/Device.S;
+        var baseline=leftEdge+(rightEdge-leftEdge)*progress;var y=baseline-(baseline-(Device.MONO ? 24 : 48))*Math.sin(progress*Math.PI);
+        var radius=p(isMoon ? (Device.MONO ? 4 : 7) : (Device.MONO ? 3 : 6));var cx=p(x);var cy=p(y);
+        var angle=Sky.moonPhase*2*Math.PI;var flip=Data.latitude!=null && Data.latitude<0 ? -1 : 1;
+        color(dc,Device.MONO ? 0xFFFFFF : (isMoon ? 0xF6E9C7 : 0xFFF2CC));
+        for(var yy=-radius;yy<=radius;yy++) {for(var xx=-radius;xx<=radius;xx++) {
+            var rr=(xx*xx+yy*yy).toFloat()/(radius*radius);
+            if(rr<=1 && skyPixel(cx+xx,cy+yy) && (!isMoon || flip*xx.toFloat()/radius*Math.sin(angle)-Math.sqrt(1-rr)*Math.cos(angle)>0)) {dc.drawPoint(cx+xx,cy+yy);}
+        }}
+    }
     function landscape(dc,minutes,stamp) {
-        if(_artScene!=_scene || _background==null) {
-            var ids=[Rez.Drawables.Everest1,Rez.Drawables.Everest2,Rez.Drawables.Everest3,Rez.Drawables.Everest4,Rez.Drawables.Everest5,Rez.Drawables.Everest6,Rez.Drawables.Everest7,Rez.Drawables.Everest8,Rez.Drawables.Everest9];
-            _background=null;_background=WatchUi.loadResource(ids[_scene-1]);_artScene=_scene;
+        Sky.refresh(stamp,minutes,Data.latitude,Data.longitude,Data.rise,Data.set);
+        var key=Scene.artKey(_scene);
+        if(_artScene!=key || _background==null) {
+            var ids=[Rez.Drawables.Sky1,Rez.Drawables.Sky2,Rez.Drawables.Sky3,Rez.Drawables.Sky4,Rez.Drawables.Sky5,Rez.Drawables.Sky6,Rez.Drawables.Sky7,Rez.Drawables.Sky8,Rez.Drawables.Sky9,Rez.Drawables.Sky10,Rez.Drawables.Sky11,Rez.Drawables.Sky12,Rez.Drawables.Sky13,Rez.Drawables.Sky14,Rez.Drawables.Sky15,Rez.Drawables.Sky16,Rez.Drawables.Sky17,Rez.Drawables.Sky18,Rez.Drawables.Sky19,Rez.Drawables.Sky20] as Array<ResourceId>;
+            _background=null;_background=WatchUi.loadResource(ids[key-1]);_artScene=key;
         }
         dc.drawBitmap(0,0,_background);
-        var dayStart=Data.rise==null ? 360 : Data.rise;var dayEnd=Data.set==null ? 1080 : Data.set;
-        var fraction=dayEnd>dayStart ? (minutes-dayStart).toFloat()/(dayEnd-dayStart) : 0.5;
-        fraction=max(0.08,min(0.92,fraction));
-        if(_scene==4 || _scene==9) {
-            for(var i=0;i<(Device.MONO ? 15 : 42);i++) {
-                var sx=8+(i*47)%(Device.MONO ? 100 : 244);var sy=8+(i*17)%(Device.MONO ? 28 : 45);
-                rect(dc,sx,sy,1,1,Device.MONO ? 0xFFFFFF : 0xAACCDD);
-                if(!Device.MONO && i%11==0) {line(dc,sx-1,sy,sx+1,sy,0xCCDDEE);line(dc,sx,sy-1,sx,sy+1,0xCCDDEE);}
+        var weather=Scene.effectiveWeather(_scene);var cover=Scene.clouds(_scene);
+        if(Sky.phase==4 && cover<70) {
+            var count=(Device.MONO ? 15 : 42)*(100-cover)/100;
+            for(var i=0;i<count;i++) {
+                var sx=p(8+(i*47)%(Device.MONO ? 100 : 244));var sy=p(8+(i*17)%(Device.MONO ? 28 : 45));
+                if(skyPixel(sx,sy)) {color(dc,Device.MONO ? 0xFFFFFF : 0xAACCDD);dc.drawPoint(sx,sy);}
             }
-            moon(dc,Device.MONO ? 38 : 215,Device.MONO ? 33 : 42,Device.MONO ? 4 : 7,stamp);
-        } else {
-            var sx=Device.MONO ? 30+30*fraction : 185+45*fraction;
-            var sy=Device.MONO ? 33-4*Math.sin(fraction*Math.PI) : 49;
-            disk(dc,sx,sy,Device.MONO ? 3 : 6,Device.MONO ? 0xFFFFFF : 0xFFF2CC);
         }
-        if(_scene==5) {
-            for(var r=0;r<18;r++) {var rx=8+(r*29)%(Device.MONO ? 104 : 244);var ry=20+(r*13)%(Device.MONO ? 23 : 50);line(dc,rx,ry,rx-2,ry+4,Device.MONO ? 0xFFFFFF : 0xA2BAC6);}
+        // Each body has its own horizon visibility; a daytime Moon is allowed.
+        if(cover<85) {
+            if(Sky.sunVisible) {body(dc,Sky.sunProgress,false,stamp);}
+            if(Sky.moonVisible && Sky.illumination>0.005) {body(dc,Sky.moonProgress,true,stamp);}
         }
-        if(_scene==7) {poly(dc,Device.MONO ? [[30,20],[22,36],[28,34],[23,46],[38,29],[30,30]] : [[218,26],[200,51],[213,48],[201,69],[227,41],[215,43]],Device.MONO ? 0xFFFFFF : 0xDAF4F5);}
+        // Clouds are entirely dynamic: a clear or unknown weather state paints none.
+        if(cover>0) {
+            var c=Device.MONO ? 0xFFFFFF : (Sky.phase==4 ? 0x476375 : (cover>=70 ? 0x91AAB3 : 0xCDDDE0));
+            var drift=((stamp/300).toNumber()%7)-3;
+            cloud(dc,(Device.MONO ? 10 : 20)+drift,Device.MONO ? 35 : 45,Device.MONO ? 29 : 51,c);
+            if(cover>=30) {cloud(dc,(Device.MONO ? 77 : 176)-drift,Device.MONO ? 24 : 44,Device.MONO ? 30 : 60,c);}
+            if(cover>=70) {cloud(dc,Device.MONO ? 43 : 98,Device.MONO ? 36 : 45,Device.MONO ? 37 : 65,c);}
+        }
+        if(Device.MONO && cover>0 && _front!=null) {dc.drawBitmap(0,0,_front);}
+        if(weather==WeatherStyle.RAIN || weather==WeatherStyle.STORM || weather==WeatherStyle.SNOW) {
+            for(var r=0;r<18;r++) {
+                var rx=p(8+(r*29)%(Device.MONO ? 104 : 244));var ry=p(26+(r*13)%(Device.MONO ? 31 : 60));
+                var c=Device.MONO ? 0xFFFFFF : (weather==WeatherStyle.SNOW ? 0xEEF4F0 : 0xA2BAC6);
+                if(weather==WeatherStyle.SNOW) {for(var k=-1;k<=1;k++) {if(skyPixel(rx+k,ry)) {color(dc,c);dc.drawPoint(rx+k,ry);}}if(skyPixel(rx,ry-1)) {color(dc,c);dc.drawPoint(rx,ry-1);}if(skyPixel(rx,ry+1)) {dc.drawPoint(rx,ry+1);}}
+                else {for(var j=0;j<p(4);j++) {if(skyPixel(rx-j/2,ry+j)) {color(dc,c);dc.drawPoint(rx-j/2,ry+j);}}}
+            }
+        }
+        if(weather==WeatherStyle.STORM) {poly(dc,Device.MONO ? [[30,20],[22,36],[28,34],[23,46],[38,29],[30,30]] : [[218,26],[200,51],[213,48],[201,69],[227,41],[215,43]],Device.MONO ? 0xFFFFFF : 0xDAF4F5);}
         if(_scene==8) {
             var colors=[0xEE9966,0xDDCC88,0x88BBAA];
             for(var a=0;a<3;a++) {color(dc,Device.MONO ? 0xFFFFFF : colors[a]);dc.drawArc(p(Device.MONO ? 67 : 130),p(Device.MONO ? 87 : 145),p((Device.MONO ? 70 : 123)-a*3),Graphics.ARC_CLOCKWISE,160,20);}
@@ -99,14 +136,6 @@ class AlpineView extends WatchUi.WatchFace {
             var tx=Device.MONO ? 150 : 220;var ty=Device.MONO ? 84 : 132;
             poly(dc,[[tx-4,ty],[tx,ty-4],[tx+4,ty]],Device.MONO ? 0xFFFFFF : 0xDBAE62);
         }
-    }
-    function moon(dc,x,y,r,stamp) {
-        var radius=p(r);var cx=p(x);var cy=p(y);var angle=Scene.moon(stamp)/29.53059*2*Math.PI;
-        color(dc,Device.MONO ? 0xFFFFFF : 0xF6E9C7);
-        for(var yy=-radius;yy<=radius;yy++) {for(var xx=-radius;xx<=radius;xx++) {
-            var rr=(xx*xx+yy*yy).toFloat()/(radius*radius);
-            if(rr<=1 && xx.toFloat()/radius*Math.sin(angle)-Math.sqrt(1-rr)*Math.cos(angle)>0) {dc.drawPoint(cx+xx,cy+yy);}
-        }}
     }
     function firework(dc,x,y,c) {for(var i=0;i<12;i++) {var a=i*Math.PI/6;line(dc,x+4*Math.cos(a),y+4*Math.sin(a),x+11*Math.cos(a),y+11*Math.sin(a),c);}}
     function circle(dc) {
@@ -151,21 +180,21 @@ class AlpineView extends WatchUi.WatchFace {
         var rows=[64,105,146,187];var y=rows[m%4];text(dc,130,y,_aod,timeText(h,m,is24),0x777777);
     }
     function onUpdate(dc) {
-        var now=Time.now();var clock=System.getClockTime();var sys=System.getDeviceSettings();
-        var h=Mode.DEMO ? 14 : clock.hour;var m=Mode.DEMO ? 23 : clock.min;var sec=Mode.DEMO ? 16 : clock.sec;
+        var now=Mode.DEMO ? new Time.Moment(Mode.STAMP) : Time.now();var clock=System.getClockTime();var sys=System.getDeviceSettings();
+        var h=Mode.DEMO ? (Mode.MINUTES/60).toNumber() : clock.hour;var m=Mode.DEMO ? Mode.MINUTES%60 : clock.min;var sec=Mode.DEMO ? 16 : clock.sec;
         var is24=Settings.is24(sys.is24Hour);var minute=(now.value()/60).toNumber();
         if(Device.AMOLED && _sleep) {if(_minute!=minute) {aod(dc,h,m,is24);_minute=minute;}return;}
         if(_minute==minute) {
             if(!_sleep) {if(Data.refreshHeart(now.value())) {circle(dc);metrics(dc);}if(sec!=_second) {seconds(dc,sec);_second=sec;}}
             return;
         }
-        Data.refresh(now,sys);_scene=Scene.choose(h*60+m);_accent=accent(_scene);
+        Data.refresh(now,sys);Sky.refresh(now.value(),h*60+m,Data.latitude,Data.longitude,Data.rise,Data.set);_scene=Scene.choose(h*60+m);_accent=accent(_scene);
         dc.clearClip();dc.setPenWidth(1);dc.setColor(0,0);dc.clear();landscape(dc,h*60+m,now.value());
         var x=Device.MONO ? 82 : 130;var y=Device.MONO ? 88 : 136;
         text(dc,x,y,_time,timeText(h,m,is24),0xFFFFFF);
         if(!Device.MONO) {text(dc,25,150,_small,Data.temperature()+(Data.fahrenheit ? "F" : "C"),0xFFFFFF);text(dc,232,150,_small,is24 ? "24H" : (h>=12 ? "PM" : "AM"),0xFFFFFF);}
         var d=Gregorian.info(now,Time.FORMAT_SHORT);var weekdays=["SUN","MON","TUE","WED","THU","FRI","SAT"];
-        var date=Mode.DEMO ? "SUN  08/09" : weekdays[d.day_of_week-1]+"  "+d.month.format("%02d")+"/"+d.day.format("%02d");
+        var date=Mode.DEMO ? Mode.DATE : weekdays[d.day_of_week-1]+"  "+d.month.format("%02d")+"/"+d.day.format("%02d");
         text(dc,Device.MONO ? 88 : 130,Device.MONO ? 126 : 187,_small,date,0xFFFFFF);
         if(Device.MONO && !is24) {text(dc,158,99,_small,h>=12 ? "PM" : "AM",0xFFFFFF);}
         metrics(dc);circle(dc);seconds(dc,sec);_minute=minute;_second=sec;
