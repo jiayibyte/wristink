@@ -37,15 +37,15 @@ function scenesRespectPriorityAndExplicitChoice(logger) {
 function zerosNegativeAltitudeAndUnits(logger) {
  Data.altitude=-59;Data.imperialAlt=false;Test.assertEqual(Data.value(3),"-59");
  Data.imperialAlt=true;Test.assertEqual(Data.label(3),"FT");Test.assertEqual(Data.value(3),"-194");
- Data.steps=0;Data.calories=0;Data.battery=0;Test.assertEqual(Data.value(0),"0");Test.assertEqual(Data.value(2),"0");Test.assertEqual(Data.value(4),"0%");
+ Data.steps=0;Data.calories=0;Data.battery=0;Data.batteryDays=0.0;Test.assertEqual(Data.value(0),"0");Test.assertEqual(Data.value(2),"0");Test.assertEqual(Data.value(4),"0.0D");
  Data.distance=0;Data.imperialDist=false;Test.assertEqual(Data.value(5),"0.0");Data.imperialDist=true;Test.assertEqual(Data.label(5),"MI");
  Data.temp=0;Data.fahrenheit=true;Test.assertEqual(Data.temperature(),"32");Data.fahrenheit=false;Test.assertEqual(Data.temperature(),"0");
  Data.imperialAlt=false;Data.imperialDist=false;return true;
 }
 (:test)
 function absentValuesNeverBecomeFixtures(logger) {
- Data.heart=null;Data.steps=null;Data.calories=null;Data.altitude=null;Data.distance=null;Data.battery=null;Data.temp=null;
- for(var i=0;i<6;i++) {Test.assertEqual(Data.value(i),i==4 ? "--%" : "--");}
+ Data.heart=null;Data.steps=null;Data.calories=null;Data.altitude=null;Data.distance=null;Data.battery=null;Data.batteryDays=null;Data.temp=null;
+ for(var i=0;i<6;i++) {Test.assertEqual(Data.value(i),i==4 ? "--D" : "--");}
  Test.assertEqual(Data.temperature(),"--");Data.steps=10;Data.stepGoal=0;Test.assert(!Data.goal());return true;
 }
 class SleepProbe extends AlpineView {
@@ -71,3 +71,17 @@ function sleepStopsSecondPaintingAndWakeInvalidates(logger) {
 function defaultInstinctCircleIsHeart(logger) {Settings.load();Test.assertEqual(Settings.circle,0);return true;}
 (:test)
 function moonCycleIsBounded(logger) {Test.assert(Scene.moon(0)>=0);Test.assert(Scene.moon(0)<29.53059);Test.assert(Scene.moon(Time.now().value())<29.53059);return true;}
+
+class BatteryDaysFixture {var batteryInDays=null;function initialize(v) {batteryInDays=v;}}
+class LegacyBatteryFixture {var battery=76;}
+(:test)
+function batteryEstimateUsesOnlySystemDays(logger) {
+ Test.assert(Data.remainingDays(null)==null);
+ Test.assert(Data.remainingDays(new LegacyBatteryFixture())==null);
+ Test.assert(Data.remainingDays(new BatteryDaysFixture(null))==null);
+ Test.assert(Data.remainingDays(new BatteryDaysFixture(-1))==null);
+ Data.batteryDays=Data.remainingDays(new BatteryDaysFixture(18.4));Test.assertEqual(Data.daysText(),"18D");
+ Data.batteryDays=Data.remainingDays(new BatteryDaysFixture(2.5));Test.assertEqual(Data.daysText(),"2.5D");
+ Data.batteryDays=Data.remainingDays(new BatteryDaysFixture(0.0));Test.assertEqual(Data.daysText(),"0.0D");
+ Data.batteryDays=null;Data.battery=100;Test.assertEqual(Data.value(4),"--D");return true;
+}

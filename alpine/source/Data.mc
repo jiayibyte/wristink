@@ -8,11 +8,21 @@ import Toybox.Position;
 import Toybox.Weather;
 module Data {
     var heart=null;var steps=null;var calories=null;var altitude=null;var distance=null;var battery=null;var stress=null;
+    var batteryDays=null;
     var stepGoal=null;var notifications=0;var temp=null;var rainy=false;var rise=null;var set=null;
     var heartAt=-1;var environmentAt=-1;var minute=-1;var imperialAlt=false;var imperialDist=false;var fahrenheit=false;
     function fresh(when,now,age) {return when!=null && now>=when.value() && now-when.value()<=age;}
     function validHeart(v) {return v!=null && v>0 && v<=300 && v!=ActivityMonitor.INVALID_HR_SAMPLE;}
     function numeric(v) {return v==null ? "--" : v.format("%.0f");}
+    function remainingDays(stats) {
+        if(stats==null || !(stats has :batteryInDays)) {return null;}
+        var days=stats.batteryInDays;
+        return days!=null && days>=0 ? days : null;
+    }
+    function daysText() {
+        if(batteryDays==null || batteryDays<0) {return "--D";}
+        return (batteryDays>=10 ? batteryDays.toNumber().format("%d") : batteryDays.format("%.1f"))+"D";
+    }
     function recent(sample,now,age) {return sample!=null && sample.data!=null && fresh(sample.when,now,age) ? sample.data : null;}
     function refreshHeart(now) {
         if(heartAt>=0 && now>=heartAt && now-heartAt<5) {return false;}
@@ -28,10 +38,10 @@ module Data {
     function refresh(now,settings) {
         refreshHeart(now.value());var m=(now.value()/60).toNumber();if(minute==m) {return;}minute=m;
         imperialAlt=settings.elevationUnits==System.UNIT_STATUTE;imperialDist=settings.distanceUnits==System.UNIT_STATUTE;fahrenheit=settings.temperatureUnits==System.UNIT_STATUTE;
-        if(Mode.DEMO) {steps=8620;stepGoal=10000;calories=1688;altitude=1280;battery=76;distance=642000;notifications=2;temp=24;stress=32;rainy=false;return;}
+        if(Mode.DEMO) {steps=8620;stepGoal=10000;calories=1688;altitude=1280;battery=76;batteryDays=18.4;distance=642000;notifications=2;temp=24;stress=32;rainy=false;return;}
         var d=ActivityMonitor.getInfo();var a=Activity.getActivityInfo();
         steps=d==null ? null : d.steps;stepGoal=d==null ? null : d.stepGoal;calories=d==null ? null : d.calories;distance=d==null ? null : d.distance;
-        battery=System.getSystemStats().battery;notifications=settings.notificationCount;
+        var stats=System.getSystemStats();battery=stats.battery;batteryDays=remainingDays(stats);notifications=settings.notificationCount;
         altitude=a==null ? null : a.altitude;
         if(altitude==null && (SensorHistory has :getElevationHistory)) {altitude=recent(SensorHistory.getElevationHistory({:period=>1,:order=>SensorHistory.ORDER_NEWEST_FIRST}).next(),now.value(),900);}
         stress=null;
@@ -60,7 +70,7 @@ module Data {
     function value(kind) {
         switch(kind) {
             case 0:return steps!=null && steps>=100000 ? (steps/1000.0).format("%.0f")+"K" : numeric(steps);
-            case 1:return numeric(heart);case 2:return numeric(calories);case 3:return numeric(elevation());case 4:return numeric(battery)+"%";
+            case 1:return numeric(heart);case 2:return numeric(calories);case 3:return numeric(elevation());case 4:return daysText();
             case 5:return distance==null ? "--" : (distance/(imperialDist ? 160934.4 : 100000.0)).format("%.1f");
         }
         return "--";

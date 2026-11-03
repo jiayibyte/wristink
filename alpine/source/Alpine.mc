@@ -15,12 +15,12 @@ class AlpineApp extends Application.AppBase {
 }
 
 class AlpineView extends WatchUi.WatchFace {
-    var _time;var _small;var _data;var _circle;var _aod;
+    var _time;var _small;var _label;var _metric;var _circle;var _aod;
     var _sleep=false;var _minute=-1;var _scene=2;var _second=-1;var _accent=0x66CCCC;var _logged=false;
     function initialize() {
         WatchFace.initialize();Settings.load();
         _time=WatchUi.loadResource(Rez.Fonts.Time);_small=WatchUi.loadResource(Rez.Fonts.Small);
-        _data=WatchUi.loadResource(Rez.Fonts.Data);_circle=WatchUi.loadResource(Rez.Fonts.Circle);_aod=WatchUi.loadResource(Rez.Fonts.Aod);
+        _label=WatchUi.loadResource(Rez.Fonts.Label);_metric=WatchUi.loadResource(Rez.Fonts.Metric);_circle=WatchUi.loadResource(Rez.Fonts.Circle);_aod=WatchUi.loadResource(Rez.Fonts.Aod);
     }
     function settingsChanged() {Settings.load();_minute=-1;Data.minute=-1;Data.environmentAt=-1;WatchUi.requestUpdate();}
     function onShow() {_minute=-1;}
@@ -81,10 +81,11 @@ class AlpineView extends WatchUi.WatchFace {
         var fraction=dayEnd>dayStart ? (minutes-dayStart).toFloat()/(dayEnd-dayStart) : 0.5;
         fraction=max(0.08,min(0.92,fraction));
         var sunX=cx-radius*.68*Math.cos(fraction*Math.PI);var sunY=cy-15-radius*.64*Math.sin(fraction*Math.PI);
+        if(Device.MONO) {sunX=30+30*fraction;sunY=33-4*Math.sin(fraction*Math.PI);}
         if(_scene==4 || _scene==9) {
             for(var i=0;i<22;i++) {var sx=cx-radius+12+(i*37)%(radius*2-24);var sy=top+13+(i*19)%(cy-top-22);var dx=sx-cx;var ddy=sy-cy;
                 if(dx*dx+ddy*ddy<(radius-8)*(radius-8)) {rect(dc,sx,sy,1,1,Device.MONO ? 0 : 0xCCCCFF);}}
-            var mx=cx+radius*.49;var my=cy-radius*.64;disk(dc,mx,my,Device.MONO ? 5 : 7,Device.MONO ? 0 : 0xFFFFCC);
+            var mx=Device.MONO ? 42 : cx+radius*.49;var my=Device.MONO ? 32 : cy-radius*.64;disk(dc,mx,my,Device.MONO ? 5 : 7,Device.MONO ? 0 : 0xFFFFCC);
             var age=Scene.moon(stamp);
             if(age<12 || age>17) {disk(dc,mx+(age<14.765 ? -3 : 3),my-1,Device.MONO ? 4 : 6,skyColor(_scene,0.35));}
         } else {disk(dc,sunX,sunY,Device.MONO ? 4 : 6,Device.MONO ? 0 : 0xFFFFDD);}
@@ -96,7 +97,7 @@ class AlpineView extends WatchUi.WatchFace {
             for(var a=0;a<5;a++) {color(dc,Device.MONO ? (a%2==0 ? 0 : 0xFFFFFF) : rainbow[a]);dc.setPenWidth(max(1,p(2)));dc.drawArc(p(cx),p(cy+3),p(radius-10-a*3),Graphics.ARC_CLOCKWISE,166,14);}
             dc.setPenWidth(1);
         }
-        if(_scene==9) {firework(dc,cx-radius*.5,cy-radius*.62,Device.MONO ? 0 : 0xFFCC88);firework(dc,cx+radius*.18,cy-radius*.78,Device.MONO ? 0 : 0x99DDFF);}
+        if(_scene==9) {firework(dc,cx-radius*.5,cy-radius*.62,Device.MONO ? 0 : 0xFFCC88);firework(dc,cx+radius*.29,cy-radius*.70,Device.MONO ? 0 : 0x99DDFF);}
         if(_scene==7) {poly(dc,[[cx+radius*.42,top+15],[cx+radius*.2,top+43],[cx+radius*.34,top+42],[cx+radius*.16,top+65],[cx+radius*.52,top+34],[cx+radius*.36,top+35]],Device.MONO ? 0 : 0xEEFFFF);}
         // Snow ridge: original polygon artwork, laid out separately for each family.
         var mx=Device.MONO ? 75 : 129;var base=Device.MONO ? 89 : 136;var peak=Device.MONO ? 35 : 60;var mw=Device.MONO ? 57 : 81;
@@ -114,32 +115,39 @@ class AlpineView extends WatchUi.WatchFace {
         if(Data.notifications!=null && Data.notifications>0) {rect(dc,hx-3,hy+1,3,3,Device.MONO ? 0xFFFFFF : 0xFFDD66);}
         if(Device.MONO) {
             rect(dc,16,5,95,17,0);text(dc,62,7,_small,"ALT "+Data.numeric(Data.elevation())+(Data.imperialAlt ? "FT" : "M"),0xFFFFFF);
-            rect(dc,8,73,52,12,0);text(dc,34,75,_small,"BAT "+Data.numeric(Data.battery),0xFFFFFF);
+            rect(dc,8,73,57,12,0);text(dc,36,75,_small,"BAT "+Data.daysText(),0xFFFFFF);
         } else {
             // Header values follow the arc without relying on recent vector-font APIs.
             text(dc,130,23,_small,"ALT "+Data.numeric(Data.elevation())+(Data.imperialAlt ? "FT" : "M"),0xFFFFFF);
             text(dc,47,76,_small,"HR "+Data.numeric(Data.heart),0xFFFFFF);
-            text(dc,213,76,_small,"BAT "+Data.numeric(Data.battery),0xFFFFFF);
+            text(dc,213,76,_small,"BAT "+Data.daysText(),0xFFFFFF);
         }
     }
     function firework(dc,x,y,c) {for(var i=0;i<12;i++) {var a=i*Math.PI/6;line(dc,x+4*Math.cos(a),y+4*Math.sin(a),x+11*Math.cos(a),y+11*Math.sin(a),c);}}
     function circle(dc) {
         if(!Device.MONO) {return;}
-        dc.setColor(0,0);dc.fillRectangle(Device.CX-Device.CR-2,Device.CY-Device.CR-2,Device.CR*2+4,Device.CR*2+4);
+        // A circular clearance follows the physical aperture; no rectangular sky remnants.
+        dc.setColor(0,0);dc.fillCircle(Device.CX,Device.CY,Device.CR+p(15));
         color(dc,0xFFFFFF);dc.fillCircle(Device.CX,Device.CY,Device.CR);
-        var label=Settings.circle==0 ? "BPM" : (Settings.circle==1 ? "BAT" : "STR");
+        var label=Settings.circle==0 ? "BPM" : (Settings.circle==1 ? "DAYS" : "STR");
         var value=Settings.circle==0 ? Data.heart : (Settings.circle==1 ? Data.battery : Data.stress);
         color(dc,0);dc.drawText(Device.CX,Device.CY-p(19),_small,label,Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(Device.CX,Device.CY-p(6),_circle,Data.numeric(value),Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(Device.CX,Device.CY-p(6),Settings.circle==1 ? _metric : _circle,Settings.circle==1 ? Data.daysText() : Data.numeric(value),Graphics.TEXT_JUSTIFY_CENTER);
     }
     function metrics(dc) {
-        var keys=[Settings.left,Settings.middle,Settings.right];var xs=Device.MONO ? [46,88,130] : [83,130,177];
-        var y=Device.MONO ? 139 : 203;var width=Device.MONO ? 39 : 43;
+        var keys=[Settings.left,Settings.middle,Settings.right];
+        var xs=Device.MONO ? [46,88,130] : [79,130,181];
+        var y=Device.MONO ? 139 : 204;var width=Device.MONO ? 39 : 47;
+        var values=[Data.value(keys[0]),Data.value(keys[1]),Data.value(keys[2])];
+        // Fit as one row: an exceptional long value never makes only its neighbours larger.
+        var font=_metric;
+        for(var j=0;j<3;j++) {if(dc.getTextWidthInPixels(values[j],font)>p(width-2)) {font=_label;}}
         for(var i=0;i<3;i++) {
-            rect(dc,xs[i]-width/2,y,width,Device.MONO ? 27 : 36,0);
-            rect(dc,xs[i]-width/2,y,width,Device.MONO ? 10 : 15,_accent);
-            text(dc,xs[i],y,_small,Data.label(keys[i]),0);
-            fitted(dc,xs[i],y+(Device.MONO ? 12 : 18),_data,Data.value(keys[i]),width,0xFFFFFF);
+            rect(dc,xs[i]-width/2,y,width,Device.MONO ? 28 : 38,0);
+            rect(dc,xs[i]-width/2,y,width,Device.MONO ? 11 : 15,_accent);
+            text(dc,xs[i],y+(Device.MONO ? 1 : (Device.AMOLED ? 2 : -1)),_label,Data.label(keys[i]),0);
+            var value=dc.getTextWidthInPixels(values[i],font)>p(width-2) ? "--" : values[i];
+            text(dc,xs[i],Device.MONO ? 152 : 222,font,value,0xFFFFFF);
         }
         if(!Device.MONO) {
             line(dc,101,253,159,253,0x333333);

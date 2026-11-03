@@ -26,6 +26,46 @@ def font(out,name,height,chars,bold=False):
         rows.append(f'char id={ord(ch)} x={cell*i} y=0 width={im.width} height={line} xoffset=0 yoffset=0 xadvance={im.width+max(1,round(height*.07))} page=0 chnl=15')
     atlas.save(out/(name+'.png'));(out/(name+'.fnt')).write_text('\n'.join(rows)+'\n')
 
+def precise_font(out,name,height,chars,max_width=None):
+    # Fit the whole character set to an exact ink height and a shared baseline.
+    # Numeric advances are equal: 80 and 8620 use the same cap height and baseline.
+    size=1
+    def bounds(n):
+        f=ImageFont.truetype(str(FONT),n)
+        boxes=[f.getbbox(c) for c in chars if c!=' ']
+        return f,min(b[1] for b in boxes),max(b[3] for b in boxes)
+    def fits(n):
+        f,top,bottom=bounds(n)
+        if bottom-top>height:return False
+        if max_width is None:return True
+        widths=[]
+        for c in '0123456789':
+            box=f.getmask(c).getbbox();widths.append(box[2]-box[0])
+        return 4*(max(widths)+1)<=max_width
+    while fits(size+1):size+=1
+    f,top,bottom=bounds(size);line=bottom-top
+    # Font advance boxes contain side bearings; fit actual raster ink, not padding.
+    ink=[]
+    for c in chars:
+        box=f.getbbox(c);im=Image.new('RGBA',(max(1,box[2]-box[0]),line))
+        ImageDraw.Draw(im).text((-box[0],-top),c,font=f,fill='white')
+        im.putalpha(im.getchannel('A').point(lambda v:255 if v>=105 else 0))
+        bounds=im.getchannel('A').getbbox()
+        im=im.crop((bounds[0],0,bounds[2],line)) if bounds else Image.new('RGBA',(max(2,round(height*.25)),line))
+        ink.append((c,im))
+    digit_width=max(im.width for c,im in ink if c.isdigit())
+    glyphs=[]
+    for c,im in ink:
+        width=digit_width if c.isdigit() else im.width
+        cell_image=Image.new('RGBA',(width,line));cell_image.paste(im,((width-im.width)//2,0))
+        glyphs.append((c,cell_image))
+    cell=max(im.width for _,im in glyphs)+2;atlas=Image.new('RGBA',(cell*len(chars),line));rows=[]
+    for i,(c,im) in enumerate(glyphs):
+        atlas.paste(im,(i*cell,0))
+        rows.append(f'char id={ord(c)} x={i*cell} y=0 width={im.width} height={line} xoffset=0 yoffset=0 xadvance={im.width+1} page=0 chnl=15')
+    atlas.save(out/(name+'.png'))
+    (out/(name+'.fnt')).write_text(f'info face="Alpine Rajdhani" size={line} bold=0 italic=0 unicode=1 smooth=0 aa=1\ncommon lineHeight={line} base={line} scaleW={atlas.width} scaleH={line} pages=1 packed=0\npage id=0 file="{name}.png"\nchars count={len(chars)}\n'+'\n'.join(rows)+'\n')
+
 def generate():
     jungle=['project.manifest = manifest.xml','base.sourcePath = source;live','base.resourcePath = resources']
     profiles=[]
@@ -35,6 +75,9 @@ def generate():
         out=ROOT/'generated'/device;res=out/'resources';fonts=res/'fonts';fonts.mkdir(parents=True,exist_ok=True)
         sizes={'Time':round(35*scale if mono else 49*scale),'Small':max(7,round(9*scale if mono else 13*scale)),'Data':round(13*scale if mono else 19*scale),'Circle':round(20*scale),'Aod':round(21*scale)}
         for name,height in sizes.items():font(fonts,name,height,'0123456789:-' if name in ('Time','Circle','Aod') else ' ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-:.%/',name in ('Time','Circle'))
+        for name,height in [('Label',max(7,round((8 if mono else 11)*scale))),('Metric',int((12 if mono else 15)*scale))]:
+            precise_font(fonts,name,height,'0123456789-:.DKM' if name=='Metric' else ' ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-:.',round((37 if mono else 45)*scale) if name=='Metric' else None)
+            sizes[name]=height
         (fonts/'fonts.xml').write_text('<fonts>'+''.join(f'<font id="{n}" filename="{n}.fnt"/>' for n in sizes)+'</fonts>')
         loc=s['display']['location'];sub=s.get('subscreen');cx=cy=radius=0
         if sub:
@@ -60,7 +103,7 @@ def generate():
     for mode in ['preview','tests']:
         for device in DEVICES:
             rel=f'generated/{device}/{mode}-manifest.xml'
-            ident=uuid.uuid5(uuid.NAMESPACE_DNS,f'wristink.alpine.{mode}.{device}').hex
+            ident=uuid.uuid5(uuid.NAMESPACE_DNS,f'wristink.alpine.detail6.{mode}.{device}').hex
             source=(ROOT/mode/'manifest.xml').read_text()
             old='bb71078cce15417aa5425aa350817002' if mode=='preview' else 'bb71078cce15417aa5425aa350817003'
             (ROOT/rel).write_text(source.replace(old,ident))

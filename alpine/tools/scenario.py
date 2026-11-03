@@ -5,7 +5,7 @@ from generate import generate, ROOT, DEVICES
 p=argparse.ArgumentParser();p.add_argument('device',choices=DEVICES);p.add_argument('scene',type=int,choices=range(1,10));a=p.parse_args()
 generate();dest=ROOT/'generated/scenarios'/f'{a.device}-{a.scene}';dest.mkdir(parents=True,exist_ok=True)
 (dest/'Mode.mc').write_text(f'module Mode {{const DEMO=true;const SCENE={a.scene};}}\n')
-manifest=(ROOT/'manifest.xml').read_text().replace('bb71078cce15417aa5425aa350817001',uuid.uuid5(uuid.NAMESPACE_DNS,f'wristink.alpine.{a.device}.{a.scene}').hex)
+manifest=(ROOT/'manifest.xml').read_text().replace('bb71078cce15417aa5425aa350817001',uuid.uuid5(uuid.NAMESPACE_DNS,f'wristink.alpine.detail6.{a.device}.{a.scene}').hex)
 (dest/'manifest.xml').write_text(manifest)
 rel=dest.relative_to(ROOT)
 jungle=(ROOT/'monkey.jungle').read_text().replace('project.manifest = manifest.xml',f'project.manifest = {rel}/manifest.xml').replace('base.sourcePath = source;live',f'base.sourcePath = source;{rel}')
