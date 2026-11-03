@@ -18,12 +18,17 @@ def font(out,name,height,chars,bold=False):
         im=Image.new('RGBA',(w,h));ImageDraw.Draw(im).text((-box[0],-box[1]),ch,font=f,fill='white',stroke_width=stroke,stroke_fill='white')
         # MIP and AMOLED share grid-fitted fonts, regenerated at each native size.
         a=im.getchannel('A').point(lambda v:255 if v>=105 else 0);im.putalpha(a)
+        if name=='Circle':
+            bounds=a.getbbox()
+            if bounds:im=im.crop((bounds[0],0,bounds[2],im.height))
         glyphs.append((ch,im))
     cell=max(im.width for _,im in glyphs)+2;line=max(im.height for _,im in glyphs)
+    circle_top=min(f.getbbox(c,stroke_width=stroke)[1] for c in chars if c.isalnum()) if name=='Circle' else 0
+    if name=='Circle':line=max(f.getbbox(c,stroke_width=stroke)[3] for c in chars)-circle_top
     atlas=Image.new('RGBA',(cell*len(chars),line))
     rows=[f'info face="Alpine Rajdhani" size={line} bold=1 italic=0 unicode=1 smooth=0 aa=1',f'common lineHeight={line} base={line} scaleW={atlas.width} scaleH={line} pages=1 packed=0',f'page id=0 file="{name}.png"',f'chars count={len(chars)}']
     for i,(ch,im) in enumerate(glyphs):
-        y=line-im.height;atlas.paste(im,(cell*i,y))
+        y=f.getbbox(ch,stroke_width=stroke)[1]-circle_top if name=='Circle' else line-im.height;atlas.paste(im,(cell*i,y))
         rows.append(f'char id={ord(ch)} x={cell*i} y=0 width={im.width} height={line} xoffset=0 yoffset=0 xadvance={im.width+max(1,round(height*.07))} page=0 chnl=15')
     atlas.save(out/(name+'.png'));(out/(name+'.fnt')).write_text('\n'.join(rows)+'\n')
 
@@ -75,9 +80,9 @@ def generate():
         w,h=map(int,c['deviceFamily'].split('-')[-1].split('x'));mono=c['bitsPerPixel']==1;scale=h/176 if mono else w/260
         out=ROOT/'generated'/device;res=out/'resources';fonts=res/'fonts';fonts.mkdir(parents=True,exist_ok=True)
         sizes={'Time':round(35*scale if mono else 49*scale),'Small':max(7,round(9*scale if mono else 13*scale)),'Data':round(13*scale if mono else 19*scale),'Circle':round(20*scale),'Aod':round(21*scale)}
-        for name,height in sizes.items():font(fonts,name,height,'0123456789:-' if name in ('Time','Circle','Aod') else ' ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-:.%/',name in ('Time','Circle'))
+        for name,height in sizes.items():font(fonts,name,height,('0123456789:-.CFDKM' if name=='Circle' else '0123456789:-') if name in ('Time','Circle','Aod') else ' ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-:.%/',name in ('Time','Circle'))
         for name,height in [('Label',max(7,round((8 if mono else 11)*scale))),('Metric',int((12 if mono else 15)*scale))]:
-            precise_font(fonts,name,height,'0123456789-:.DKM' if name=='Metric' else ' ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-:.',round((37 if mono else 45)*scale) if name=='Metric' else None)
+            precise_font(fonts,name,height,'0123456789-:.CFDKM' if name=='Metric' else ' ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-:.',round((37 if mono else 45)*scale) if name=='Metric' else None)
             sizes[name]=height
         (fonts/'fonts.xml').write_text('<fonts>'+''.join(f'<font id="{n}" filename="{n}.fnt"/>' for n in sizes)+'</fonts>')
         loc=s['display']['location'];sub=s.get('subscreen');cx=cy=radius=0
@@ -102,7 +107,7 @@ def generate():
     (ROOT/'monkey.jungle').write_text('\n'.join(jungle)+'\n')
     for mode in ['preview','tests']:
         lines=[l.replace('project.manifest = manifest.xml',f'project.manifest = {mode}/manifest.xml').replace('base.sourcePath = source;live','base.sourcePath = source;'+('preview' if mode=='preview' else 'live;tests')) for l in jungle]
-        if mode=='preview':lines=[l.replace('base.resourcePath = resources','base.resourcePath = resources;preview/resources') for l in lines]
+        if mode=='preview':lines=[l.replace('base.resourcePath = resources','base.resourcePath = resources;preview/resources').replace('.lang.zhs = resources-zhs','.lang.zhs = resources-zhs;preview/resources-zhs') for l in lines]
         (ROOT/(mode+'.jungle')).write_text('\n'.join(lines)+'\n')
     (ROOT/'generated/profiles.json').write_text(json.dumps(profiles,indent=2)+'\n')
     for mode,ident in [('live','bb71078cce15417aa5425aa350817001'),('preview','bb71078cce15417aa5425aa350817002'),('tests','bb71078cce15417aa5425aa350817003')]:
@@ -113,7 +118,7 @@ def generate():
     for mode in ['preview','tests']:
         for device in DEVICES:
             rel=f'generated/{device}/{mode}-manifest.xml'
-            ident=uuid.uuid5(uuid.NAMESPACE_DNS,f'wristink.alpine.weather3.{mode}.{device}').hex
+            ident=uuid.uuid5(uuid.NAMESPACE_DNS,f'wristink.alpine.slots3.{mode}.{device}').hex
             source=(ROOT/mode/'manifest.xml').read_text()
             old='bb71078cce15417aa5425aa350817002' if mode=='preview' else 'bb71078cce15417aa5425aa350817003'
             (ROOT/rel).write_text(source.replace(old,ident))

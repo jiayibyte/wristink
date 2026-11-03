@@ -26,6 +26,7 @@ module Data {
     }
     function recent(sample,now,age) {return sample!=null && sample.data!=null && fresh(sample.when,now,age) ? sample.data : null;}
     function refreshHeart(now) {
+        if(!Settings.uses(1)) {var changed=heart!=null;heart=null;return changed;}
         if(heartAt>=0 && now>=heartAt && now-heartAt<5) {return false;}
         heartAt=now;var before=heart;
         if(Mode.DEMO) {heart=80;return before!=heart;}
@@ -44,9 +45,9 @@ module Data {
         steps=d==null ? null : d.steps;stepGoal=d==null ? null : d.stepGoal;calories=d==null ? null : d.calories;distance=d==null ? null : d.distance;
         var stats=System.getSystemStats();battery=stats.battery;batteryDays=remainingDays(stats);notifications=settings.notificationCount;
         altitude=a==null ? null : a.altitude;
-        if(altitude==null && (SensorHistory has :getElevationHistory)) {altitude=recent(SensorHistory.getElevationHistory({:period=>1,:order=>SensorHistory.ORDER_NEWEST_FIRST}).next(),now.value(),900);}
+        if(Settings.uses(3) && altitude==null && (SensorHistory has :getElevationHistory)) {altitude=recent(SensorHistory.getElevationHistory({:period=>1,:order=>SensorHistory.ORDER_NEWEST_FIRST}).next(),now.value(),900);}
         stress=null;
-        if(SensorHistory has :getStressHistory) {stress=recent(SensorHistory.getStressHistory({:period=>1,:order=>SensorHistory.ORDER_NEWEST_FIRST}).next(),now.value(),300);if(stress!=null && (stress<0 || stress>100)) {stress=null;}}
+        if((Settings.smart || Settings.uses(7)) && (SensorHistory has :getStressHistory)) {stress=recent(SensorHistory.getStressHistory({:period=>1,:order=>SensorHistory.ORDER_NEWEST_FIRST}).next(),now.value(),300);if(stress!=null && (stress<0 || stress>100)) {stress=null;}}
         environment(now);
     }
     function weatherRain(c) {
@@ -70,14 +71,28 @@ module Data {
     }
     function elevation() {return altitude==null ? null : altitude*(imperialAlt ? 3.28084 : 1.0);}
     function temperature() {return temp==null ? "--" : numeric(fahrenheit ? temp*1.8+32 : temp);}
-    function label(kind) {return ["STEP","BPM","KCAL",imperialAlt ? "FT" : "M","BAT",imperialDist ? "MI" : "KM"][kind];}
+    function weatherLabel() {return ["WX",Sky.phase==4 ? "NITE" : "SUN","PART","CLD","RAIN","SNOW","STORM","FOG"][weather];}
+    function clockText(minutes) {return minutes==null ? "--:--" : (minutes/60).toNumber().format("%02d")+":"+(minutes%60).format("%02d");}
+    function label(kind) {
+        switch(kind) {
+            case 0:return "STEP";case 1:return "BPM";case 2:return "KCAL";case 3:return imperialAlt ? "FT" : "M";case 4:return "BAT";
+            case 5:return imperialDist ? "MI" : "KM";case 6:return weatherLabel();case 7:return "STR";case 8:return "MSG";case 9:return "RISE";case 10:return "SET";
+        }return "";
+    }
     function value(kind) {
         switch(kind) {
             case 0:return steps!=null && steps>=100000 ? (steps/1000.0).format("%.0f")+"K" : numeric(steps);
             case 1:return numeric(heart);case 2:return numeric(calories);case 3:return numeric(elevation());case 4:return daysText();
             case 5:return distance==null ? "--" : (distance/(imperialDist ? 160934.4 : 100000.0)).format("%.1f");
-        }
-        return "--";
+            case 6:return temp==null ? "--" : temperature()+(fahrenheit ? "F" : "C");
+            case 7:return numeric(stress);case 8:return numeric(notifications);case 9:return clockText(rise);case 10:return clockText(set);
+        }return "";
+    }
+    function header(kind) {
+        if(kind==11) {return "";}
+        if(kind==3) {return "ALT "+value(kind)+(imperialAlt ? "FT" : "M");}
+        if(kind==5) {return "DST "+value(kind)+(imperialDist ? "MI" : "KM");}
+        return label(kind)+" "+value(kind);
     }
     function goal() {return steps!=null && stepGoal!=null && stepGoal>0 && steps>=stepGoal;}
 }
