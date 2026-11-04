@@ -25,11 +25,11 @@
   <property id="dateFormat" type="number">0</property>
   <property id="dateFont" type="number">0</property>
   <property id="dateSize" type="number">0</property>
-  <property id="showMoveBar" type="boolean">true</property>
+  <property id="showMoveBar" type="boolean">false</property>
   <property id="moveSource" type="number">6</property>
   <property id="moveStyle" type="number">0</property>
   <property id="moveFont" type="number">0</property>
-  <property id="showWind" type="boolean">true</property>
+  <property id="showWind" type="boolean">false</property>
   <property id="showMoon" type="boolean">true</property>
   <property id="showCircle" type="boolean">true</property>
   <property id="heartRefresh" type="number">0</property>
@@ -49,11 +49,11 @@
   <property id="showStatus" type="boolean">true</property>
   <property id="showBeijingCard" type="boolean">true</property>
   <property id="showAlipayCard" type="boolean">true</property>
-  <property id="topCardImage" type="number">1</property>
-  <property id="bottomCardImage" type="number">2</property>
-  <property id="sideData" type="number">0</property>
+  <property id="topCardImage" type="number">0</property>
+  <property id="bottomCardImage" type="number">0</property>
+  <property id="sideData" type="number">19</property>
   <property id="sideFont" type="number">0</property>
-  <property id="sideSize" type="number">1</property>
+  <property id="sideSize" type="number">2</property>
   <property id="topOne" type="number">7</property>
   <property id="topOneStyle" type="number">0</property>
   <property id="topOneFont" type="number">0</property>

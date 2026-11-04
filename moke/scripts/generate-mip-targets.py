@@ -127,7 +127,7 @@ module FacePrefs {
 var revision=0;function prepare(){}function reload(){revision+=1;}
 function raw(key){FontCatalog.reset();var v=null;try{v=Application.getApp().getProperty(key);}catch(e){}return v;}
 function get(key){var v=raw(key);return v instanceof Number && v>=0 && v<=PrefsDefaults.max(key) ? v : PrefsDefaults.value(key);}
-function flag(key){var v=raw(key);return v instanceof Boolean ? v : true;}
+function flag(key){var v=raw(key);return v instanceof Boolean ? v : PrefsDefaults.flag(key);}
 function fontFamily(key){var n=get(key+"Font");return n==0 ? get("dataFont") : n-1;}
 function fontSize(key){var n=get(key+"Size");return n==0 ? get("dataSize") : n-1;}
 }
@@ -137,7 +137,7 @@ function fontSize(key){var n=get(key+"Size");return n==0 ? get("dataSize") : n-1
         entries=[[r['key'],r['default'],r['type'],r['max']] for r in catalog]
         fast='module FacePrefs {var revision=0;var _cache;const ENTRIES='+json.dumps(entries,ensure_ascii=False)+';'
         fast+='function reload(){revision+=1;_cache=null;}function prepare(){if(_cache!=null){return;}_cache={};var app=Application.getApp();for(var i=0;i<ENTRIES.size();i++){var row=ENTRIES[i];var value=app.getProperty(row[0]);if(row[2]==1){value=value instanceof Boolean ? value : row[1];}else{value=value instanceof Number && value>=0 && value<=row[3] ? value : row[1];}_cache[row[0]]=value;}}'
-        fast+='function get(key){var v=_cache[key];return v instanceof Number ? v : 0;}function flag(key){var v=_cache[key];return v instanceof Boolean ? v : true;}function fontFamily(key){var n=get(key+"Font");return n==0 ? get("dataFont") : n-1;}function fontSize(key){var n=get(key+"Size");return n==0 ? get("dataSize") : n-1;}}\n'
+        fast+='function get(key){var v=_cache[key];return v instanceof Number ? v : 0;}function flag(key){var v=_cache[key];return v instanceof Boolean ? v : PrefsDefaults.flag(key);}function fontFamily(key){var n=get(key+"Font");return n==0 ? get("dataFont") : n-1;}function fontSize(key){var n=get(key+"Size");return n==0 ? get("dataSize") : n-1;}}\n'
         start=face.index('(:classicPrefs)');end=face.index('class InstinctFaceApp',start)
         face=face[:start]+fast+face[end:]
         folder.joinpath('LegacyPrefsIndex.mc').unlink(missing_ok=True)

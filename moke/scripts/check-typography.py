@@ -21,6 +21,7 @@ for folder in folders:
         with Image.open(folder/(name+'.png')) as atlas:
             alpha = atlas.getchannel('A')
             assert set(alpha.getdata()) <= {0, 255}, (folder, name, 'non-binary alpha')
+            digit_masks={}
             for line in text.splitlines():
                 if not line.startswith('char id='):
                     continue
@@ -28,6 +29,11 @@ for folder in folders:
                 char = chr(e['id'])
                 ink = alpha.crop((e['x'],e['y'],e['x']+e['width'],e['y']+e['height'])).getbbox()
                 assert char.isspace() or ink is not None, (folder, name, char)
+                if char in '0123456789':
+                    tile=alpha.crop((e['x'],e['y'],e['x']+e['width'],e['y']+e['height']))
+                    key=(tile.size,tile.tobytes())
+                    assert key not in digit_masks,(folder,name,char,digit_masks.get(key),'identical digits')
+                    digit_masks[key]=char
                 count += 1
         if folder == ROOT/'resources/fonts':
             old = METRICS[name]['chars']

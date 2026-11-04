@@ -9,9 +9,8 @@ module PrefsDefaults {
         case "circleSize":return 1;
         case "circleBackground":return 1;
         case "ringStyle":return 1;
-        case "topCardImage":return 1;
-        case "bottomCardImage":return 2;
-        case "sideSize":return 1;
+        case "sideData":return 19;
+        case "sideSize":return 2;
         case "topOne":return 7;
         case "topTwo":return 17;
         case "bottomLeft":return 2;
@@ -21,6 +20,10 @@ module PrefsDefaults {
         case "footerRight":return 18;
         case "chartMinutes":return 1;
     } return 0; }
+    function flag(key) { switch(key) {
+        case "showMoveBar":return false;
+        case "showWind":return false;
+    }return true;}
     function max(key) {
         var suffix=key.length()>=4 ? key.substring(key.length()-4,key.length()) : "";
         if(suffix.equals("Goal")){return 1000000;}

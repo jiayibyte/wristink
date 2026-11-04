@@ -8,7 +8,7 @@
 
 | 项目 | 类型 | 主要功能 | 设备范围 |
 | --- | --- | --- | --- |
-| [墨刻 Moke](moke/) | 数据表盘 | 大字时间、可配置数据区、当前心率与曲线、中英文、主题与装饰卡片 | 清单内的 Garmin MIP 机型，含轻量兼容实现 |
+| [墨刻 Moke](moke/) | 数据表盘 | 圆角大时间、可配置数据区、当前心率与曲线、中英文、主题与装饰卡片 | 清单内的 Garmin MIP 机型，含轻量兼容实现 |
 | [寰游时刻 Retro World](retro-world/) | 世界地图表盘 | 复古数字、模拟圆盘、16 种地图皮肤、昼夜变化、天气、日出日落、AMOLED 配色与常亮 | 112 个 SDK 目标 / 183 硬件变体，具体见项目兼容清单 |
 | [北京离线地图](beijing-map/) | 独立手表应用 | 离线地图、地点搜索、步行路线、GPS 跟随、轨迹记录、手表数据页 | Instinct 3 Solar 45 / 50 mm |
 
@@ -104,7 +104,7 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 
 # 墨刻：生成必要资源并构建 Instinct 3 专项包
-zsh moke/scripts/build-instinct3.sh 1.1.0
+zsh moke/scripts/build-instinct3.sh 1.2.0
 
 # Retro World：生成资源并构建正式、演示与商店包
 zsh retro-world/tools/build.sh

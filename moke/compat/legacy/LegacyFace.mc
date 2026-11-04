@@ -23,7 +23,7 @@ module FacePrefs {
     function read(key){try{return Application.getApp().getProperty(key);}catch(e){return null;}}
     function raw(key){var index=LegacyPrefsIndex.index(key);if(_cache!=null && index!=null){return _cache[index];}return read(key);}
     function get(key){var value=raw(key);return value instanceof Number && value>=0 && value<=PrefsDefaults.max(key) ? value : PrefsDefaults.value(key);}
-    function flag(key){var value=raw(key);return value instanceof Boolean ? value : true;}
+    function flag(key){var value=raw(key);return value instanceof Boolean ? value : PrefsDefaults.flag(key);}
     function fontFamily(key){var n=get(key+"Font");return n==0 ? get("dataFont") : n-1;}
     function fontSize(key){var n=get(key+"Size");return n==0 ? get("dataSize") : n-1;}
 }
