@@ -4,6 +4,7 @@ import argparse,json,subprocess,uuid
 
 ROOT=Path(__file__).resolve().parents[1]
 PROFILES={
+ 'clean-light':dict(darkTheme=False),
  'crossover-hands':dict(analogHandMode=2),
  'cards-new':dict(topCardImage=12,bottomCardImage=19),
  'cards-single':dict(topCardImage=14,bottomCardImage=0),

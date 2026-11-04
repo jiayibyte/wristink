@@ -37,6 +37,16 @@ module FacePrefs {
             Application.Properties.setValue("ringSource",0);
             Application.Storage.setValue("plainWhiteHeartV6",true);
         }
+        if(Application.Storage.getValue("roundedLayoutV7")!=true){
+            // Update only the complete old stock card combination. Custom
+            // cards/data survive the visual upgrade unchanged.
+            if(Application.Properties.getValue("topCardImage")==1 && Application.Properties.getValue("bottomCardImage")==2 && Application.Properties.getValue("sideData")==0){
+                Application.Properties.setValue("topCardImage",0);Application.Properties.setValue("bottomCardImage",0);Application.Properties.setValue("sideData",19);
+                if(Application.Properties.getValue("sideSize")==1){Application.Properties.setValue("sideSize",2);}
+                Application.Properties.setValue("showMoveBar",false);Application.Properties.setValue("showWind",false);
+            }
+            Application.Storage.setValue("roundedLayoutV7",true);
+        }
     }
 
     function reload() {
@@ -48,12 +58,15 @@ module FacePrefs {
         return v instanceof Number && v>=0 && v<=PrefsDefaults.max(key) ? v : PrefsDefaults.value(key);
     }
     function flag(key) {
-        var v=null;try{v=Application.Properties.getValue(key);}catch(e){}return v instanceof Boolean ? v : true;
+        var v=null;try{v=Application.Properties.getValue(key);}catch(e){}return v instanceof Boolean ? v : PrefsDefaults.flag(key);
     }
     (:extendedCode)
     function set(key,value) {
+        // Property serialization needs heap space on 60 KB watches. Release
+        // the bitmap font before writing, rather than after the write.
+        FontCatalog.reset();
         Application.Properties.setValue(key,value); reload();
-        FontCatalog.reset(); WatchUi.requestUpdate();
+        WatchUi.requestUpdate();
     }
     (:extendedCode)
     function caption(row as Array) {
@@ -71,6 +84,7 @@ module FacePrefs {
     }
     (:extendedCode)
     function resetGroup(group) {
+        FontCatalog.reset();
         var first=group<0 ? 0 : group;var last=group<0 ? SettingsCatalog.COUNT-1 : group;
         for(var g=first;g<=last;g++){
             for(var page=0;page<SettingsCatalog.pages(g);page++){

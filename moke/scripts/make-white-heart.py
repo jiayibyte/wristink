@@ -20,11 +20,7 @@ for family in range(3):
                 ImageDraw.Draw(tile).rounded_rectangle((3,height//2-1,cell-4,height//2+1),radius=1,fill=255)
             else:
                 w=width//2 if char=='1' else width
-                if family==1:
-                    font=ImageFont.truetype(str(NOTO),round(height/.72)*8);b=font.getbbox(char)
-                    im=Image.new('L',(b[2]-b[0],b[3]-b[1]));ImageDraw.Draw(im).text((-b[0],-b[1]),char,font=font,fill=255)
-                    ink=im.crop(im.getbbox()).resize((w,height),Image.Resampling.BOX).point(lambda p:255 if p>=128 else 0)
-                else:ink=reference_digit(char,w,height,family,False)
+                ink=reference_digit(char,w,height,family,False)
                 tile.paste(ink,((cell-w)//2,0))
             rgba=Image.new('RGBA',tile.size,(255,255,255,0));rgba.putalpha(tile);atlas.paste(rgba,(i*(cell+1),0))
             rows.append(f'char id={ord(char)} x={i*(cell+1)} y=0 width={cell} height={height} xoffset=0 yoffset=0 xadvance={cell} page=0 chnl=15')

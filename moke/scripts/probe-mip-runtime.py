@@ -10,7 +10,7 @@ if a.profile!='default':
 rows={r['id']:r for r in json.loads((R/'config/mip-devices.json').read_text())};results=[]
 for device in a.devices:
  row=rows[device];mode='live' if a.live else 'demo';folder=R/'bin/mip-probes'/(device+'-'+a.profile+'-'+a.locale+'-'+mode);folder.mkdir(parents=True,exist_ok=True)
- manifest=(R/('manifest.xml' if a.live else 'preview/manifest.xml')).read_text().replace('e4c16f1eb76d4c88a6de6aa791adf801' if a.live else 'e4c16f1eb76d4c88a6de6aa791adf802',uuid.uuid5(uuid.NAMESPACE_DNS,'moke-runtime-probe-v7-'+device+'-'+a.profile+'-'+a.locale+'-'+mode).hex).replace('entry="InstinctFaceApp"','entry="ProbeApp"');(folder/'manifest.xml').write_text(manifest)
+ manifest=(R/('manifest.xml' if a.live else 'preview/manifest.xml')).read_text().replace('e4c16f1eb76d4c88a6de6aa791adf801' if a.live else 'e4c16f1eb76d4c88a6de6aa791adf802',uuid.uuid5(uuid.NAMESPACE_DNS,'moke-runtime-probe-v8-'+device+'-'+a.profile+'-'+a.locale+'-'+mode).hex).replace('entry="InstinctFaceApp"','entry="ProbeApp"');(folder/'manifest.xml').write_text(manifest)
  lines=(R/('monkey.jungle' if a.live else 'preview.jungle')).read_text().splitlines();src=next(x.split(' = ')[1] for x in lines if x.startswith(device+'.sourcePath'));res=next(x.split(' = ')[1] for x in lines if x.startswith(device+'.resourcePath'))
  source=';'.join(str(R/x) for x in src.split(';'));resource=';'.join(str(R/x) for x in res.split(';'))
  resource+=';'+str(R/'generated/assets'/row['asset_key']/('resources-eng' if a.locale=='eng' else 'resources'))
@@ -40,5 +40,5 @@ for device in a.devices:
  status='passed' if 'FRAME_OK' in text and 'app crash' not in text.lower() else 'failed'
  results.append(dict(id=device,profile=a.profile,locale=a.locale,mode=mode,status=status,free_bytes=re.findall(r'free=(\d+)',text),partial='PARTIAL_OK' in text,scope='SDK simulator native render with isolated test app ID; visual QA separate'));print(device,status,text[-300:].strip(),flush=True)
 if a.build_only:raise SystemExit(0)
-file=R/'bin/mip-runtime-1.1.0.json';previous=json.loads(file.read_text()) if file.exists() else [];by_id={(r['id'],r.get('profile','default'),r.get('locale','zhs'),r.get('mode','demo')):r for r in previous};by_id.update({(r['id'],r.get('profile','default'),r.get('locale','zhs'),r.get('mode','demo')):r for r in results});file.write_text(json.dumps(list(by_id.values()),ensure_ascii=False,indent=2)+'\n')
+file=R/'bin/mip-runtime-1.2.0.json';previous=json.loads(file.read_text()) if file.exists() else [];by_id={(r['id'],r.get('profile','default'),r.get('locale','zhs'),r.get('mode','demo')):r for r in previous};by_id.update({(r['id'],r.get('profile','default'),r.get('locale','zhs'),r.get('mode','demo')):r for r in results});file.write_text(json.dumps(list(by_id.values()),ensure_ascii=False,indent=2)+'\n')
 raise SystemExit(0 if all(r['status']=='passed' for r in results) else 1)

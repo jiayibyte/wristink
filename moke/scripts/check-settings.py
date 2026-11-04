@@ -23,16 +23,21 @@ for name in args.builds:
     phone = {r['key']: r for r in compiled['settings']}
     assert set(phone) == set(keys)
     translations = compiled['languages']['valyrian']
+    base_english=translations[phone['darkTheme']['configTitle']]=='Appearance · Dark background'
     for row in rows:
         key = row['key']
         setting = phone[key]
         assert setting['defaultValue'] == row['default'], key
-        assert translations[setting['configTitle']] == catalog['groups'][row['group']][1] + ' · ' + row['label'], key
+        title=catalog['groups'][row['group']][1] + ' · ' + row['label']
+        if base_english:
+            tr=json.loads((ROOT/'config/english-translations.json').read_text())
+            title=tr[catalog['groups'][row['group']][1]]+' · '+tr[row['label']]
+        assert translations[setting['configTitle']] == title, key
         if row['type'] == 0:
             assert 0 <= row['default'] < len(row['options']), key
             opts = setting['configOptions']
             assert [o['value'] for o in opts] == list(range(len(row['options']))), key
-            assert [translations[o['display']] for o in opts] == row['options'], key
+            assert [translations[o['display']] for o in opts] == ([tr[s] for s in row['options']] if base_english else row['options']), key
         elif row['type'] == 2:
             assert setting['configMin'] == row['min'] and setting['configMax'] == row['max'], key
     for g in range(len(catalog['groups'])):
@@ -58,7 +63,7 @@ defaults = {r['key']: r['default'] for r in rows}
 assert defaults['timeFormat'] == 0
 assert defaults['heartRefresh'] == 0
 assert defaults['powerProfile'] == 0 and defaults['secondsMode'] == 0
-assert defaults['topCardImage'] == 1 and defaults['bottomCardImage'] == 2
+assert defaults['topCardImage'] == 0 and defaults['bottomCardImage'] == 0 and defaults['sideData'] == 19
 for key in ['topCardImage', 'bottomCardImage']:
     assert len(next(r for r in rows if r['key'] == key)['options']) == 21
 artwork = json.loads((ROOT / 'config/card-artwork.json').read_text())
