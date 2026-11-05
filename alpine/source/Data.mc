@@ -42,7 +42,9 @@ module Data {
         imperialAlt=settings.elevationUnits==System.UNIT_STATUTE;imperialDist=settings.distanceUnits==System.UNIT_STATUTE;fahrenheit=settings.temperatureUnits==System.UNIT_STATUTE;
         if(Mode.DEMO) {steps=8620;stepGoal=10000;calories=1688;altitude=1280;battery=76;batteryDays=18.4;distance=642000;notifications=2;temp=Mode.WEATHER==5 ? -6 : (Mode.WEATHER==4 ? 16 : 24);stress=32;weather=Mode.WEATHER;cloudCover=WeatherStyle.cover(weather,null);rainy=weather==4 || weather==6;latitude=Mode.LAT;longitude=Mode.LON;rise=null;set=null;return;}
         var smart=Settings.smart && Settings.scene==0;
-        var d=Settings.uses(0) || Settings.uses(2) || Settings.uses(5) || smart ? ActivityMonitor.getInfo() : null;
+        // The colour layout always exposes the step-progress strip, even when
+        // the numeric step slot is hidden or another skin is pinned.
+        var d=!Device.MONO || Settings.uses(0) || Settings.uses(2) || Settings.uses(5) || smart ? ActivityMonitor.getInfo() : null;
         var a=Settings.uses(3) ? Activity.getActivityInfo() : null;
         steps=d==null ? null : d.steps;stepGoal=d==null ? null : d.stepGoal;calories=d==null ? null : d.calories;distance=d==null ? null : d.distance;
         var stats=Settings.uses(4) || smart ? System.getSystemStats() : null;
