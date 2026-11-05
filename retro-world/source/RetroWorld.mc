@@ -21,7 +21,7 @@ class RetroWorldApp extends Application.AppBase {
 class RetroWorldDelegate extends WatchUi.WatchFaceDelegate {
     var _view;
     function initialize(view) {WatchFaceDelegate.initialize();_view=view;}
-    function onPowerBudgetExceeded(powerInfo) {_view._partialBlocked=true;}
+    function onPowerBudgetExceeded(powerInfo) {_view.partialBudgetExceeded();}
 }
 
 class RetroWorldView extends WatchUi.WatchFace {
@@ -31,6 +31,8 @@ class RetroWorldView extends WatchUi.WatchFace {
     var _hour=0;var _min=0;var _reportedMinute=-1;var _visibleSecond=-1;
     var _circleBuffer;var _secSprites as Array<WatchUi.BitmapResource> = [];var _xs as Array<Number> = [];var _ys as Array<Number> = [];
     var _oldSecond=-1;var _lastSecond=-1;var _partialBlocked=false;
+    var _partialHeartAllowed=true;
+    var _secondWidth=13;var _secondHeight=24;var _secondY=122;var _secondTensX=132;var _secondOnesX=146;
     function initialize() {
         WatchFace.initialize();
         FaceSettings.load();
@@ -48,16 +50,31 @@ class RetroWorldView extends WatchUi.WatchFace {
         _circleBuffer=DeviceDrawing.buffer(39,39,DeviceProfile.CIRCLE_SCALE);
         var sprites=[Rez.Drawables.Sec0,Rez.Drawables.Sec1,Rez.Drawables.Sec2,Rez.Drawables.Sec3,Rez.Drawables.Sec4,Rez.Drawables.Sec5,Rez.Drawables.Sec6,Rez.Drawables.Sec7,Rez.Drawables.Sec8,Rez.Drawables.Sec9];
         for(var i=0;i<sprites.size();i++) {_secSprites.add(WatchUi.loadResource(sprites[i]));}
+        // These sprites are already generated at the native device size. Do not
+        // query bitmap dimensions or transform their coordinates every second.
+        var shape=DeviceDrawing.metrics(_secSprites[0]);_secondWidth=shape.getWidth();_secondHeight=shape.getHeight();
+        _secondY=Math.round(DeviceProfile.Y+122*DeviceProfile.SCALE).toNumber();
+        _secondTensX=Math.round(DeviceProfile.X+132*DeviceProfile.SCALE).toNumber();
+        _secondOnesX=Math.round(DeviceProfile.X+146*DeviceProfile.SCALE).toNumber();
         for(var s=0;s<60;s++) {
             var a=(s*6-90)*Math.PI/180;
             _xs.add(144+(Math.cos(a)*18).toNumber());_ys.add(31+(Math.sin(a)*18).toNumber());
         }
         SolarMap.initialize();
     }
-    function onShow() {_minute=-1;_environmentWake=true;}
-    function settingsChanged() {_minute=-1;_environmentWake=true;_partialBlocked=false;}
+    function onShow() {_minute=-1;_environmentWake=true;_partialBlocked=false;}
+    function settingsChanged() {_minute=-1;_environmentWake=true;_partialBlocked=false;_partialHeartAllowed=true;}
+    function partialBudgetExceeded() {
+        _partialBlocked=true;
+        // The OS can stop partial callbacks after a violation. Wait for user
+        // wake, then continue seconds without optional heart-rate reads/draws.
+        _partialHeartAllowed=false;
+        // The OS rejects the over-budget frame, so its drawing caches no longer
+        // describe the display. Restore both digits and the complete dial next.
+        _minute=-1;_lastSecond=-1;_oldSecond=-1;
+    }
     function onExitSleep() {
-        _sleeping=false;_minute=-1;_environmentWake=true;
+        _sleeping=false;_minute=-1;_environmentWake=true;_partialBlocked=false;
         if(PreviewMode.DIAGNOSTIC) {Performance.log("RETRO_SECONDS_WAKE");}WatchUi.requestUpdate();
     }
     function onEnterSleep() {
@@ -98,7 +115,10 @@ class RetroWorldView extends WatchUi.WatchFace {
         if(_lastSecond<0 || tens!=(_lastSecond/10).toNumber()) {secondDigit(dc,tens,132);}
         secondDigit(dc,s%10,146);_lastSecond=s;
     }
-    function secondDigit(dc,n,x) {DeviceDrawing.sprite(dc,_secSprites[n],0,x,122,13,24,1);}
+    function secondDigit(dc,n,x) {
+        dc=DeviceDrawing.raw(dc);x=x==132 ? _secondTensX : _secondOnesX;
+        dc.setClip(x,_secondY,_secondWidth,_secondHeight);dc.drawBitmap(x,_secondY,_secSprites[n]);dc.clearClip();
+    }
     function needleClip(dc,s) {
         var px=_xs[s];var py=_ys[s];
         var x=px<144 ? px-1 : 143;var y=py<31 ? py-1 : 30;
@@ -187,9 +207,20 @@ class RetroWorldView extends WatchUi.WatchFace {
         if(DeviceProfile.COLOR || !FaceSettings.continuous || _partialBlocked || _minute<0 || !_sleeping) {return;}
         // Wait for the top-of-minute full frame before using its cached hands.
         if(_minute!=(stamp/60).toNumber()) {return;}
-        _visibleSecond=sec;tick(DeviceDrawing.target(dc),stamp,sec);
+        _visibleSecond=sec;
+        dc=DeviceDrawing.target(dc);
+        // Reserve the tight MIP budget for the two seconds displays. Current HR
+        // remains live while awake; at rest sample at most once every 5 seconds,
+        // using the current cached sample only (never history in this callback).
+        if(_partialHeartAllowed && (LiveData.heartAt<0 || stamp<LiveData.heartAt || stamp-LiveData.heartAt>=5) && FaceSettings.hasHeart() && LiveData.refreshTickHeart(stamp)) {heartFields(dc);}
+        seconds(dc,sec);if(FaceSettings.showNeedle) {paintCircle(dc,sec);}
     }
-    function onPartialUpdate(dc) {partialAt(dc,Time.now().value(),System.getClockTime().sec);}
+    function onPartialUpdate(dc) {
+        // A single timestamp supplies both the minute cache key and seconds.
+        // Avoid a second clock object/API call in the budgeted path, and avoid
+        // mixing values from opposite sides of a second/minute rollover.
+        var stamp=Time.now().value();partialAt(dc,stamp,stamp%60);
+    }
     function onUpdate(dc) {
         if(self has :diagnosticUpdate) {diagnosticUpdate(dc);return;}
         updateAt(dc,Time.now(),System.getClockTime());
@@ -212,7 +243,7 @@ class RetroWorldView extends WatchUi.WatchFace {
         dc=DeviceDrawing.target(dc);
         var hr=PreviewMode.ENABLED ? 22 : clock.hour;
         var mn=PreviewMode.ENABLED ? 8 : clock.min;
-        if(!_sleeping || _visibleSecond<0 || (FaceSettings.continuous && !_partialBlocked)) {_visibleSecond=clock.sec;}
+        if(!_sleeping || _visibleSecond<0 || FaceSettings.continuous) {_visibleSecond=clock.sec;}
         var sec=_visibleSecond;
         _hour=hr;_min=mn;
         if(_minute==stamp) {
@@ -248,7 +279,7 @@ class RetroWorldView extends WatchUi.WatchFace {
         else {dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.fillRectangle(17,56,89,29);}
         buildCircle();paintCircle(dc,sec);seconds(dc,sec);_minute=stamp;
         if(PreviewMode.DIAGNOSTIC && !_logged) {
-            Performance.log("RETRO_FRAME_OK version=2.1.0 demo="+PreviewMode.ENABLED+" free="+System.getSystemStats().freeMemory+" hour="+hr+" minute="+mn+" month="+month+" day="+day+" weekday="+weekday+" mode24="+is24+" data="+(PreviewMode.ENABLED ? "fixture" : "garmin")+" configurable_seconds=true map_skin="+SolarMap.skin+" weather_kind="+Environment.category(Environment.condition)+" location_source="+Environment.source+" sunrise="+Environment.sunrise+" sunset="+Environment.sunset);
+            Performance.log("RETRO_FRAME_OK version=2.1.1 demo="+PreviewMode.ENABLED+" free="+System.getSystemStats().freeMemory+" hour="+hr+" minute="+mn+" month="+month+" day="+day+" weekday="+weekday+" mode24="+is24+" data="+(PreviewMode.ENABLED ? "fixture" : "garmin")+" configurable_seconds=true map_skin="+SolarMap.skin+" weather_kind="+Environment.category(Environment.condition)+" location_source="+Environment.source+" sunrise="+Environment.sunrise+" sunset="+Environment.sunset);
             _logged=true;
         }
         if(PreviewMode.DIAGNOSTIC && _reportedMinute!=stamp) {

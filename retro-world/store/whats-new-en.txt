@@ -1,6 +1,5 @@
-2.0.0
-Native layouts and resources for multiple screen sizes and watch families, preserving the retro typography and Instinct sub-screen placement.
-New AMOLED colours and a dim always-on display with minute-based movement and pixel rest.
-Reusable map calculations, fewer unchanged heart-rate redraws, reduced bitmap palettes, and graphics-cache recovery.
-Retains 16 automatic map skins, weather-dependent icons, the centred sunrise/sunset row, and aligned STEP/KCAL labels.
-Unavailable data remains a placeholder rather than an invented reading.
+2.1.1
+• Fixes continuous seconds stopping after the watch enters low-power mode on supported MIP devices.
+• Reduces seconds-rendering and clock-read overhead. At rest, current heart rate is read at most once every 5 seconds; awake readings remain once per second.
+• Improves recovery after a power-budget violation, prioritizing seconds over optional low-power heart-rate updates.
+• Retains cached weather/maps, existing layouts and independent AMOLED always-on behaviour.
