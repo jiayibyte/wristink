@@ -40,7 +40,7 @@ class AlpineView extends WatchUi.WatchFace {
     function onExitSleep() {_sleep=false;_minute=-1;Data.heartAt=-1;WatchUi.requestUpdate();}
     function max(a,b) {return a>b ? a : b;}
     function min(a,b) {return a<b ? a : b;}
-    function p(v) {return Math.round(v*Device.S).toNumber();}
+    function p(v as Numeric) as Number {return Math.round(v*Device.S).toNumber();}
     function color(dc,c) {dc.setColor(c,Graphics.COLOR_TRANSPARENT);}
     function line(dc,x1,y1,x2,y2,c) {color(dc,c);dc.drawLine(p(x1),p(y1),p(x2),p(y2));}
     function rect(dc,x,y,w,h,c) {color(dc,c);dc.fillRectangle(p(x),p(y),p(x+w)-p(x),p(y+h)-p(y));}
