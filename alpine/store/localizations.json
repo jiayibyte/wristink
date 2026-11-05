@@ -1,0 +1,282 @@
+{
+  "en": {
+    "storeKey": "en",
+    "locale": "en-US",
+    "title": "Alpine · Mountain Watch Face",
+    "headline": "Your mountain. Your time.",
+    "tagline": "18 backgrounds · Your data · Day & night",
+    "description": "A full-screen Everest-inspired mountain watch face with bold time and original scenery.\n\n• 18 background choices: automatic, dawn, day, dusk, night, rain, snow, overcast, fog, lightning, aurora, rainbow, fireworks, warm accents and four festivals: Spring Festival, Christmas, Halloween and Mid-Autumn.\n• Pin any background and keep it after restarting. Choose weather-linked effects or a fixed skin. Optional birds and airplane are off by default.\n• Six data positions on Instinct and seven on round colour screens; independently choose or hide steps, heart rate, total calories, altitude, battery-day estimate, distance, weather/temperature, stress, notifications, sunrise or sunset. Four data-panel styles.\n• System/12/24-hour time, optional awake seconds, moving Sun/Moon and real Moon phase. Night-only Moon is the default. Step-goal rainbow/fireworks and a notification tent light in automatic scenes.\n• Separate monochrome MIP, colour MIP and AMOLED artwork. AMOLED has a dim moving always-on clock with minute updates. Cached weather/location; no active GPS or developer network requests.\n\nWatch menus/settings remain English and Simplified Chinese; face labels use compact English. Store translations do not add watch languages. Data availability depends on device, permissions and sync; missing values show --. Sky positions are approximate, with an illustrative fallback without location. Sample images use demo data. Free, no ads or subscription; health/location data stays on the watch.",
+    "whatsNew": "First public release: 18 backgrounds, optional birds and airplane, configurable data, four panel styles, 12/24-hour time, Sun/Moon, weather scenes and low-brightness AMOLED always-on. Optimized second updates, heart-rate value patches and cached data reads. Watch menus remain English and Simplified Chinese; only the store page is translated.",
+    "demoCaption": "Simulator sample data · Watch menus: English / Simplified Chinese"
+  },
+  "zh_CN": {
+    "storeKey": "zh_CN",
+    "locale": "zh-CN",
+    "title": "山境 · Alpine",
+    "headline": "把山境戴在腕上",
+    "tagline": "18 款背景 · 自定义数据 · 昼夜变化",
+    "description": "全屏珠峰灵感山景表盘，大字时间，原创雪面、远山与天空。\n\n• 18 项背景：自动、黎明、白昼、黄昏、夜晚、雨、雪、阴、雾、闪电、极光、彩虹、烟花、暖色强调，以及春节、圣诞、万圣节、中秋。\n• 任意背景可固定为常用默认，重启仍保留；可选择天气联动或固定皮肤。飞鸟、飞机装饰默认关闭，可分别或同时开启。\n• 本能系列 6 个数据位、圆形彩屏 7 个数据位，均可独立更换或隐藏：步数、心率、总热量、海拔、系统预计剩余天数、距离、天气/温度、压力、通知、日出、日落。另有 4 种数据区装饰。\n• 跟随系统或独立 12/24 小时制，可选抬腕秒数；日月位置随时间变化并显示真实月相，默认白天只显示太阳。自动场景支持步数达标彩虹/烟花和通知帐篷灯光。\n• 黑白 MIP、彩色 MIP、AMOLED 分别绘制；AMOLED 常亮为独立低亮移动时钟，按分钟更新。读取已有天气/位置缓存，不主动启动 GPS，不请求开发者服务器。\n\n表盘菜单与设置保持中英文，表盘标签使用紧凑英文；商店多语言不代表新增表盘语言。数据依设备、权限与同步情况，缺失显示 --。天象为近似计算，无位置时使用时段示意。图片使用演示数据。免费，无广告和订阅；健康与位置数据留在手表本地。",
+    "whatsNew": "首次公开发布：18 项背景、可选飞鸟飞机、自定义数据位、4 种数据区样式、12/24 小时制、日月与天气场景、AMOLED 低亮常亮。优化秒级更新、心率数字局部重画和缓存数据读取。表盘菜单仍保持中英文，仅商店页面新增多语言。",
+    "demoCaption": "模拟器演示数据 · 表盘菜单：英文 / 简体中文"
+  },
+  "zh_TW": {
+    "storeKey": "zh_TW",
+    "locale": "zh-TW",
+    "title": "山境 · Alpine",
+    "headline": "把山境戴在腕上",
+    "tagline": "18 款背景 · 自訂資料 · 日夜變化",
+    "description": "全螢幕珠峰靈感山景錶面，大字時間，原創雪面、遠山與天空。\n\n• 18 種背景：自動、黎明、白晝、黃昏、夜晚、雨、雪、陰、霧、閃電、極光、彩虹、煙火、暖色強調，以及春節、聖誕節、萬聖節、中秋。\n• 任意背景可固定為常用預設，重新啟動後仍保留；可選天氣連動或固定風格。飛鳥、飛機裝飾預設關閉，可分別或同時開啟。\n• Instinct 系列 6 個、圓形彩色螢幕 7 個資料位置，可獨立更換或隱藏：步數、心率、總熱量、海拔、系統預估電池天數、距離、天氣/溫度、壓力、通知、日出、日落。提供 4 種資料區樣式。\n• 跟隨系統或選擇 12/24 小時制，可選喚醒時顯示秒數；日月位置隨時間變化，月相依實際計算，預設白天只顯示太陽。自動場景另有步數達標彩虹/煙火與通知帳篷燈光。\n• 黑白 MIP、彩色 MIP、AMOLED 獨立繪製；AMOLED 常亮使用低亮移動時鐘，每分鐘更新。讀取既有天氣/位置快取，不主動啟動 GPS，也不連線至開發者伺服器。\n\n錶面選單與設定仍為英文及簡體中文，資料標籤使用精簡英文；商店翻譯不會新增錶面語言。資料依裝置、權限及同步狀況，缺失顯示 --。天象為近似計算，無位置時為時段示意。圖片使用示範資料。免費、無廣告或訂閱；健康與位置資料留在手錶內。",
+    "whatsNew": "首次公開發行：18 種背景、可選飛鳥飛機、自訂資料位置、4 種資料區樣式、12/24 小時制、日月與天氣場景、AMOLED 低亮常亮。改善秒級更新、心率數字局部重繪與快取讀取。錶面選單仍為英文及簡體中文，僅商店頁面新增多語言。",
+    "demoCaption": "模擬器示範資料 · 錶面選單：英文 / 簡體中文"
+  },
+  "ja": {
+    "storeKey": "ja",
+    "locale": "ja-JP",
+    "title": "Alpine · 山岳ウォッチフェイス",
+    "headline": "山の景色を、いつも腕に",
+    "tagline": "18 の背景 · 自分のデータ · 昼と夜",
+    "description": "エベレストをイメージしたオリジナルの山岳風景と、大きく見やすい時刻表示。\n\n• 背景は18種類。自動、夜明け、昼、夕暮れ、夜、雨、雪、曇り、霧、雷、オーロラ、虹、花火、暖色、春節、クリスマス、ハロウィン、中秋節。\n• 好きな背景を固定して保存でき、再起動後も維持。天気連動も選べます。鳥と飛行機は初期状態では非表示で、個別または同時に有効化できます。\n• Instinctは6か所、丸型カラー画面は7か所のデータ欄。歩数、心拍数、総消費カロリー、高度、システム推定バッテリー日数、距離、天気/気温、ストレス、通知、日の出・日の入りから選択または非表示。データパネルは4種類。\n• システム連動/12/24時間表示、起動中の秒表示、時間に応じた太陽と月、実際の月相。初期設定では昼の月は表示しません。自動場面には歩数目標達成時の虹/花火と通知テントの灯りもあります。\n• モノクロMIP、カラーMIP、AMOLED用の専用描画。AMOLED常時表示は低輝度の移動時計を毎分更新。天気と位置は既存キャッシュを利用し、GPSを起動せず、開発者サーバーにも接続しません。\n\n時計のメニューと設定は英語・簡体字中国語のままです。ラベルは短い英語表記です。ストア翻訳で時計の言語は増えません。データは機種、権限、同期に依存し、未取得は --。天体位置は近似で、位置情報がない場合は時間帯のイメージ表示です。画像はデモデータ。無料、広告・定期購入なし。健康・位置データは時計内に保持します。",
+    "whatsNew": "初回公開版。18の背景、鳥と飛行機、データ欄、4種類のパネル、12/24時間表示、日月・天気、AMOLED低輝度常時表示。秒更新、心拍数の部分描画、キャッシュ読み出しを最適化しました。時計のメニューは英語・簡体字中国語のままで、翻訳はストアページのみです。",
+    "demoCaption": "シミュレーターのデモデータ · 時計メニュー：英語 / 簡体字中国語"
+  },
+  "ko": {
+    "storeKey": "ko",
+    "locale": "ko-KR",
+    "title": "Alpine · 산 풍경 워치 페이스",
+    "headline": "손목 위의 산, 나만의 시간",
+    "tagline": "18가지 배경 · 맞춤 데이터 · 낮과 밤",
+    "description": "에베레스트에서 영감을 받은 독창적인 산 풍경과 크고 선명한 시간 표시를 즐기세요.\n\n• 자동, 새벽, 낮, 황혼, 밤, 비, 눈, 흐림, 안개, 번개, 오로라, 무지개, 불꽃놀이, 따뜻한 강조색, 춘절, 크리스마스, 핼러윈, 중추절까지 18가지 배경.\n• 원하는 배경을 기본으로 저장하면 재시작 후에도 유지됩니다. 날씨 연동 또는 고정 테마를 선택하세요. 새와 비행기 장식은 기본적으로 꺼져 있으며 개별 또는 함께 켤 수 있습니다.\n• Instinct는 6개, 원형 컬러 화면은 7개 데이터 위치를 지원합니다. 걸음 수, 심박수, 총 칼로리, 고도, 시스템 예상 배터리 일수, 거리, 날씨/온도, 스트레스, 알림, 일출·일몰을 선택하거나 숨길 수 있습니다. 데이터 패널 스타일은 4가지입니다.\n• 시스템/12/24시간 형식, 깨어 있을 때의 초 표시, 움직이는 해와 달 및 실제 달의 위상. 기본값은 낮에 달을 숨깁니다. 자동 장면에는 걸음 목표 달성 무지개/불꽃놀이와 알림 텐트 조명도 있습니다.\n• 흑백 MIP, 컬러 MIP, AMOLED 전용 그래픽. AMOLED 상시 표시에서는 어두운 이동 시계를 분 단위로 갱신합니다. 기존 날씨·위치 캐시를 사용하며 GPS를 켜거나 개발자 서버에 연결하지 않습니다.\n\n워치 메뉴와 설정은 영어·중국어 간체 그대로이며 데이터 라벨은 짧은 영어입니다. 스토어 번역으로 워치 언어가 추가되지는 않습니다. 데이터는 기기·권한·동기화에 따라 다르며 없으면 --로 표시합니다. 천체 위치는 근사치이고 위치 정보가 없으면 시간대 예시를 사용합니다. 이미지는 데모 데이터입니다. 무료, 광고·구독 없음. 건강·위치 데이터는 워치에 남습니다.",
+    "whatsNew": "첫 공개 버전: 18가지 배경, 선택형 새·비행기, 맞춤 데이터, 패널 4종, 12/24시간, 해·달과 날씨, AMOLED 저휘도 상시 표시. 초 갱신, 심박수 부분 그리기와 캐시 읽기를 최적화했습니다. 워치 메뉴는 영어·중국어 간체 그대로이며 스토어만 번역합니다.",
+    "demoCaption": "시뮬레이터 데모 · 워치 메뉴: 영어 / 중국어 간체"
+  },
+  "de": {
+    "storeKey": "de",
+    "locale": "de-DE",
+    "title": "Alpine · Berglandschaften",
+    "headline": "Deine Berge. Deine Zeit.",
+    "tagline": "18 Hintergründe · Deine Daten · Tag & Nacht",
+    "description": "Ein bildschirmfüllendes Berg-Zifferblatt mit eigener, vom Everest inspirierter Grafik und großer Uhrzeit.\n\n• 18 Hintergründe: automatisch, Morgengrauen, Tag, Abend, Nacht, Regen, Schnee, Wolken, Nebel, Blitz, Polarlicht, Regenbogen, Feuerwerk, warme Akzente sowie Frühlingsfest, Weihnachten, Halloween und Mittherbstfest.\n• Jeden Hintergrund dauerhaft speichern, auch über Neustarts hinweg. Wettereffekte koppeln oder das Motiv fixieren. Vögel und Flugzeug sind standardmäßig aus und einzeln oder zusammen zuschaltbar.\n• 6 Datenpositionen auf Instinct, 7 auf runden Farbdisplays; Schritte, Puls, Gesamtkalorien, Höhe, geschätzte Batterietage, Distanz, Wetter/Temperatur, Stress, Mitteilungen, Sonnenauf- und -untergang wählen oder ausblenden. 4 Panel-Stile.\n• System-, 12- oder 24-Stundenformat, optionale Sekunden im Wachmodus, wandernde Sonne/Mond und echte Mondphase. Tagsüber ist der Mond standardmäßig verborgen. Automatische Szenen bieten Ziel-Regenbogen/Feuerwerk und ein Mitteilungs-Zeltlicht.\n• Eigene Grafik für monochromes MIP, Farb-MIP und AMOLED. Gedimmte, wandernde AMOLED-Daueranzeige mit Minutenaktualisierung. Wetter und Position aus dem Cache; kein GPS-Start und keine Entwickler-Netzwerkanfragen.\n\nUhrenmenüs bleiben Englisch/vereinfachtes Chinesisch, Datenkürzel Englisch. Die Store-Übersetzung erweitert keine Uhrensprachen. Verfügbarkeit hängt von Gerät, Berechtigungen und Synchronisierung ab; fehlende Werte: --. Himmelspositionen sind Näherungen, ohne Position nur eine Tageszeitdarstellung. Bilder zeigen Demodaten. Kostenlos, ohne Werbung/Abo; Gesundheits- und Standortdaten bleiben auf der Uhr.",
+    "whatsNew": "Erste öffentliche Version: 18 Hintergründe, optionale Vögel/Flugzeug, Datenfelder, 4 Panel-Stile, 12/24 Stunden, Sonne/Mond, Wetter und gedimmtes AMOLED Always-On. Sekunden, Pulswert-Patches und Cache-Zugriffe optimiert. Uhrenmenüs bleiben Englisch/vereinfachtes Chinesisch; nur die Store-Seite ist übersetzt.",
+    "demoCaption": "Simulator-Beispieldaten · Menüs: Englisch / vereinfachtes Chinesisch"
+  },
+  "fr": {
+    "storeKey": "fr",
+    "locale": "fr-FR",
+    "title": "Alpine · Paysages de montagne",
+    "headline": "Votre montagne. Votre temps.",
+    "tagline": "18 fonds · Vos données · Jour et nuit",
+    "description": "Un cadran plein écran aux paysages originaux inspirés de l’Everest, avec une heure bien lisible.\n\n• 18 fonds : automatique, aube, jour, crépuscule, nuit, pluie, neige, nuages, brouillard, éclairs, aurore polaire, arc-en-ciel, feux d’artifice, accents chauds, fête du Printemps, Noël, Halloween et fête de la Mi-Automne.\n• Enregistrez n’importe quel fond, conservé après redémarrage. Choisissez le suivi météo ou un thème fixe. Oiseaux et avion sont désactivés par défaut, activables séparément ou ensemble.\n• 6 emplacements sur Instinct, 7 sur les écrans couleur ronds : pas, fréquence cardiaque, calories totales, altitude, autonomie estimée en jours, distance, météo/température, stress, notifications, lever/coucher du soleil, ou masquage. 4 styles de panneaux.\n• Format système/12/24 h, secondes facultatives à l’éveil, Soleil/Lune mobiles et phase lunaire réelle. Lune masquée le jour par défaut. Scènes automatiques avec arc-en-ciel/feux d’artifice à l’objectif de pas et lumière de tente pour les notifications.\n• Dessins distincts pour MIP monochrome, MIP couleur et AMOLED. Horloge AMOLED permanente atténuée et déplacée, actualisée chaque minute. Utilise les caches météo/position, sans activer le GPS ni contacter un serveur du développeur.\n\nMenus et réglages de la montre restent en anglais/chinois simplifié, avec libellés anglais courts. La traduction du Store n’ajoute pas de langues à la montre. Données selon l’appareil, les autorisations et la synchronisation ; valeurs absentes : --. Positions célestes approximatives, illustration horaire sans position. Images de démonstration. Gratuit, sans publicité ni abonnement ; données de santé/localisation conservées sur la montre.",
+    "whatsNew": "Première version publique : 18 fonds, oiseaux/avion optionnels, données configurables, 4 panneaux, heure 12/24 h, Soleil/Lune, météo et AMOLED Always-On atténué. Optimisation des secondes, du tracé partiel du pouls et des caches. Menus de la montre toujours anglais/chinois simplifié ; seule la fiche est traduite.",
+    "demoCaption": "Données de démonstration · Menus : anglais / chinois simplifié"
+  },
+  "es": {
+    "storeKey": "es",
+    "locale": "es-ES",
+    "title": "Alpine · Paisajes de montaña",
+    "headline": "Tu montaña. Tu tiempo.",
+    "tagline": "18 fondos · Tus datos · Día y noche",
+    "description": "Esfera de pantalla completa con paisajes originales inspirados en el Everest y una hora grande y legible.\n\n• 18 fondos: automático, amanecer, día, atardecer, noche, lluvia, nieve, nubes, niebla, rayos, aurora, arcoíris, fuegos artificiales, tonos cálidos, Fiesta de la Primavera, Navidad, Halloween y Festival de Medio Otoño.\n• Guarda cualquier fondo como habitual; se conserva al reiniciar. Elige efectos según el tiempo o un diseño fijo. Aves y avión desactivados por defecto, activables por separado o juntos.\n• 6 posiciones de datos en Instinct y 7 en pantallas redondas a color: pasos, pulso, calorías totales, altitud, días de batería estimados, distancia, tiempo/temperatura, estrés, avisos, salida/puesta del sol, o esconder. 4 estilos de panel.\n• Formato del sistema/12/24 horas, segundos opcionales al activarse, Sol/Luna móviles y fase lunar real. La Luna se oculta de día por defecto. Escenas automáticas con arcoíris/fuegos artificiales al lograr pasos y luz de tienda para avisos.\n• Gráficos propios para MIP monocromo, MIP a color y AMOLED. Reloj AMOLED permanente tenue y desplazado, actualizado cada minuto. Usa tiempo y posición en caché, sin activar GPS ni contactar servidores del desarrollador.\n\nLos menús y ajustes del reloj siguen en inglés/chino simplificado; las etiquetas son abreviaturas inglesas. Traducir la ficha no añade idiomas al reloj. Datos según dispositivo, permisos y sincronización; ausentes: --. Posiciones celestes aproximadas; sin ubicación, ilustración horaria. Imágenes con datos de muestra. Gratis, sin anuncios ni suscripción; salud y ubicación permanecen en el reloj.",
+    "whatsNew": "Primera versión pública: 18 fondos, aves/avión opcionales, datos configurables, 4 paneles, hora 12/24 h, Sol/Luna, tiempo y AMOLED permanente tenue. Optimizados segundos, redibujado parcial del pulso y cachés. Los menús siguen en inglés/chino simplificado; solo se traduce la ficha.",
+    "demoCaption": "Datos de demostración · Menús: inglés / chino simplificado"
+  },
+  "it": {
+    "storeKey": "it",
+    "locale": "it-IT",
+    "title": "Alpine · Paesaggi di montagna",
+    "headline": "La tua montagna. Il tuo tempo.",
+    "tagline": "18 sfondi · I tuoi dati · Giorno e notte",
+    "description": "Quadrante a tutto schermo con paesaggi originali ispirati all’Everest e un orario grande e leggibile.\n\n• 18 sfondi: automatico, alba, giorno, tramonto, notte, pioggia, neve, nuvole, nebbia, fulmini, aurora, arcobaleno, fuochi d’artificio, accenti caldi, Festa di Primavera, Natale, Halloween e Festa di Metà Autunno.\n• Salva qualsiasi sfondo come preferito: resta dopo il riavvio. Scegli effetti legati al meteo o uno stile fisso. Uccelli e aereo sono disattivati inizialmente e attivabili separatamente o insieme.\n• 6 posizioni dati su Instinct, 7 su schermi rotondi a colori: passi, frequenza cardiaca, calorie totali, altitudine, giorni di batteria stimati, distanza, meteo/temperatura, stress, notifiche, alba/tramonto, oppure nascondi. 4 stili di pannello.\n• Formato di sistema/12/24 ore, secondi opzionali da sveglio, Sole/Luna in movimento e fase lunare reale. Luna nascosta di giorno per impostazione iniziale. Scene automatiche con arcobaleno/fuochi al traguardo passi e luce della tenda per notifiche.\n• Grafica dedicata per MIP monocromatico, MIP a colori e AMOLED. Orologio AMOLED sempre acceso attenuato e spostato, aggiornato al minuto. Usa meteo/posizione in cache, senza avviare GPS o contattare server dello sviluppatore.\n\nMenu e impostazioni restano inglese/cinese semplificato; etichette in inglese abbreviato. La traduzione dello Store non aggiunge lingue al quadrante. Dati secondo dispositivo, permessi e sincronizzazione; mancanti: --. Posizioni celesti approssimate, illustrazione oraria senza posizione. Immagini con dati dimostrativi. Gratis, senza pubblicità o abbonamenti; dati salute/posizione sull’orologio.",
+    "whatsNew": "Prima versione pubblica: 18 sfondi, uccelli/aereo opzionali, dati configurabili, 4 pannelli, ora 12/24 h, Sole/Luna, meteo e AMOLED sempre acceso attenuato. Ottimizzati secondi, ridisegno parziale del battito e cache. Menu sempre inglese/cinese semplificato; tradotta solo la scheda Store.",
+    "demoCaption": "Dati dimostrativi · Menu: inglese / cinese semplificato"
+  },
+  "pt_BR": {
+    "storeKey": "pt_BR",
+    "locale": "pt-BR",
+    "title": "Alpine · Paisagens de montanha",
+    "headline": "Sua montanha. Seu tempo.",
+    "tagline": "18 fundos · Seus dados · Dia e noite",
+    "description": "Mostrador em tela cheia com paisagens originais inspiradas no Everest e horário grande e legível.\n\n• 18 fundos: automático, amanhecer, dia, entardecer, noite, chuva, neve, nublado, neblina, raios, aurora, arco-íris, fogos, tons quentes, Festival da Primavera, Natal, Halloween e Festival do Meio do Outono.\n• Salve qualquer fundo como padrão pessoal, mantido após reiniciar. Escolha efeitos ligados ao clima ou um visual fixo. Pássaros e avião vêm desligados e podem ser ativados separados ou juntos.\n• 6 posições de dados no Instinct, 7 em telas redondas coloridas: passos, frequência cardíaca, calorias totais, altitude, dias estimados de bateria, distância, clima/temperatura, estresse, notificações, nascer/pôr do sol ou ocultar. 4 estilos de painel.\n• Formato do sistema/12/24 h, segundos opcionais com a tela ativa, Sol/Lua em movimento e fase lunar real. Lua oculta durante o dia por padrão. Cenas automáticas com arco-íris/fogos na meta de passos e luz de barraca para avisos.\n• Arte própria para MIP monocromático, MIP colorido e AMOLED. Relógio AMOLED sempre ativo discreto e móvel, atualizado a cada minuto. Usa clima e posição em cache, sem ligar GPS ou acessar servidor do desenvolvedor.\n\nMenus e configurações continuam em inglês/chinês simplificado; rótulos em inglês abreviado. Traduções da loja não adicionam idiomas ao relógio. Dados dependem do dispositivo, permissões e sincronização; ausentes: --. Posições celestes aproximadas; sem localização, ilustração por horário. Imagens com dados de demonstração. Grátis, sem anúncios ou assinatura; saúde/localização ficam no relógio.",
+    "whatsNew": "Primeira versão pública: 18 fundos, pássaros/avião opcionais, dados configuráveis, 4 painéis, 12/24 h, Sol/Lua, clima e AMOLED sempre ativo discreto. Otimizados segundos, atualização parcial do pulso e caches. Menus continuam em inglês/chinês simplificado; só a loja é traduzida.",
+    "demoCaption": "Dados de demonstração · Menus: inglês / chinês simplificado"
+  },
+  "pt_PT": {
+    "storeKey": "pt_PT",
+    "locale": "pt-PT",
+    "title": "Alpine · Paisagens de montanha",
+    "headline": "A sua montanha. O seu tempo.",
+    "tagline": "18 fundos · Os seus dados · Dia e noite",
+    "description": "Mostrador de ecrã inteiro com paisagens originais inspiradas no Evereste e horas grandes e legíveis.\n\n• 18 fundos: automático, amanhecer, dia, entardecer, noite, chuva, neve, nublado, nevoeiro, relâmpagos, aurora, arco-íris, fogo de artifício, tons quentes, Festa da Primavera, Natal, Halloween e Festival do Meio do Outono.\n• Guarde qualquer fundo como predefinição pessoal, mantida após reiniciar. Escolha efeitos ligados à meteorologia ou um tema fixo. Aves e avião vêm desativados e podem ser ligados em separado ou em conjunto.\n• 6 posições de dados no Instinct, 7 em ecrãs redondos a cores: passos, frequência cardíaca, calorias totais, altitude, dias de bateria estimados, distância, tempo/temperatura, stress, notificações, nascer/pôr do sol ou ocultar. 4 estilos de painel.\n• Formato do sistema/12/24 h, segundos opcionais com o ecrã ativo, Sol/Lua em movimento e fase lunar real. Lua oculta de dia por predefinição. Cenas automáticas com arco-íris/fogo de artifício na meta de passos e luz de tenda para avisos.\n• Arte própria para MIP monocromático, MIP a cores e AMOLED. Relógio AMOLED permanente discreto e móvel, atualizado por minuto. Usa meteorologia e posição em cache, sem ativar GPS nem contactar servidores do programador.\n\nMenus e definições mantêm inglês/chinês simplificado; etiquetas em inglês abreviado. A tradução da loja não acrescenta idiomas ao relógio. Dados conforme dispositivo, permissões e sincronização; ausentes: --. Posições celestes aproximadas; sem localização, ilustração horária. Imagens com dados de demonstração. Gratuito, sem publicidade ou subscrição; saúde/localização ficam no relógio.",
+    "whatsNew": "Primeira versão pública: 18 fundos, aves/avião opcionais, dados configuráveis, 4 painéis, 12/24 h, Sol/Lua, meteorologia e AMOLED permanente discreto. Otimizados segundos, atualização parcial do pulso e caches. Menus mantêm inglês/chinês simplificado; só a página da loja é traduzida.",
+    "demoCaption": "Dados de demonstração · Menus: inglês / chinês simplificado"
+  },
+  "ru": {
+    "storeKey": "ru",
+    "locale": "ru-RU",
+    "title": "Alpine · Горные пейзажи",
+    "headline": "Ваши горы. Ваше время.",
+    "tagline": "18 фонов · Ваши данные · День и ночь",
+    "description": "Циферблат с оригинальными горными пейзажами во весь экран, вдохновлёнными Эверестом, и крупным временем.\n\n• 18 фонов: автоматический, рассвет, день, закат, ночь, дождь, снег, облака, туман, молния, сияние, радуга, фейерверк, тёплые акценты, Праздник весны, Рождество, Хэллоуин и Праздник середины осени.\n• Любой фон можно сохранить постоянным; выбор остаётся после перезапуска. Доступны связь с погодой и фиксированный стиль. Птицы и самолёт по умолчанию выключены, включаются отдельно или вместе.\n• 6 позиций данных на Instinct, 7 на круглых цветных экранах: шаги, пульс, общие калории, высота, оценка батареи в днях, расстояние, погода/температура, стресс, уведомления, восход/закат или скрытие. 4 оформления панелей.\n• Системный/12/24-часовой формат, секунды при активном экране, движение Солнца/Луны и настоящая фаза Луны. Днём Луна по умолчанию скрыта. Автосцены включают радугу/фейерверк за цель шагов и свет палатки для уведомлений.\n• Отдельная графика для монохромного MIP, цветного MIP и AMOLED. Тусклые перемещаемые часы AMOLED Always-On обновляются раз в минуту. Погода и положение из кэша; без запуска GPS и запросов на сервер разработчика.\n\nМеню и настройки часов остаются на английском/упрощённом китайском, подписи сокращены по-английски. Перевод магазина не добавляет языков часам. Данные зависят от модели, разрешений и синхронизации; отсутствующие: --. Положение светил приблизительное, без координат — иллюстрация времени суток. Изображения с демоданными. Бесплатно, без рекламы и подписки; здоровье/местоположение остаются на часах.",
+    "whatsNew": "Первая публичная версия: 18 фонов, птицы/самолёт по выбору, данные, 4 панели, 12/24 часа, Солнце/Луна, погода и тусклый AMOLED Always-On. Оптимизированы секунды, частичная перерисовка пульса и кэш. Меню остаются английскими/китайскими упрощёнными; переведена только страница магазина.",
+    "demoCaption": "Демоданные · Меню часов: английский / упрощённый китайский"
+  },
+  "in": {
+    "storeKey": "in",
+    "locale": "id-ID",
+    "title": "Alpine · Panorama Pegunungan",
+    "headline": "Gunung Anda. Waktu Anda.",
+    "tagline": "18 latar · Data pilihan · Siang & malam",
+    "description": "Tampilan jam layar penuh dengan lanskap pegunungan orisinal terinspirasi Everest dan waktu besar yang mudah dibaca.\n\n• 18 latar: otomatis, fajar, siang, senja, malam, hujan, salju, mendung, kabut, petir, aurora, pelangi, kembang api, aksen hangat, Imlek, Natal, Halloween, dan Festival Pertengahan Musim Gugur.\n• Simpan latar favorit, tetap tersimpan setelah dimulai ulang. Pilih efek mengikuti cuaca atau tema tetap. Burung dan pesawat mati secara bawaan; dapat diaktifkan sendiri atau bersama.\n• 6 posisi data di Instinct, 7 di layar warna bulat. Pilih/sembunyikan langkah, denyut jantung, kalori total, ketinggian, perkiraan sisa hari baterai, jarak, cuaca/suhu, stres, notifikasi, matahari terbit/terbenam. 4 gaya panel.\n• Format sistem/12/24 jam, detik opsional saat aktif, gerak Matahari/Bulan dan fase Bulan nyata. Bulan disembunyikan pada siang hari secara bawaan. Adegan otomatis menampilkan pelangi/kembang api saat target langkah tercapai serta lampu tenda notifikasi.\n• Grafis khusus MIP monokrom, MIP warna, AMOLED. Jam AMOLED always-on redup dan berpindah, diperbarui tiap menit. Membaca cache cuaca/lokasi tanpa mengaktifkan GPS atau menghubungi server pengembang.\n\nMenu/pengaturan jam tetap Inggris/Tionghoa Sederhana; label memakai singkatan Inggris. Terjemahan toko tidak menambah bahasa jam. Data tergantung perangkat, izin, sinkronisasi; data kosong: --. Posisi langit berupa perkiraan, tanpa lokasi hanya ilustrasi waktu. Gambar memakai data demo. Gratis, tanpa iklan/langganan; data kesehatan/lokasi tetap di jam.",
+    "whatsNew": "Rilis publik pertama: 18 latar, burung/pesawat opsional, data pilihan, 4 panel, waktu 12/24 jam, Matahari/Bulan, cuaca dan AMOLED always-on redup. Pembaruan detik, gambar ulang denyut dan cache dioptimalkan. Menu tetap Inggris/Tionghoa Sederhana; hanya halaman toko yang diterjemahkan.",
+    "demoCaption": "Data demo simulator · Menu jam: Inggris / Tionghoa Sederhana"
+  },
+  "ms": {
+    "storeKey": "ms",
+    "locale": "ms-MY",
+    "title": "Alpine · Pemandangan Gunung",
+    "headline": "Gunung anda. Masa anda.",
+    "tagline": "18 latar · Data anda · Siang & malam",
+    "description": "Muka jam skrin penuh dengan landskap gunung asli berinspirasikan Everest dan paparan masa besar.\n\n• 18 latar: automatik, fajar, siang, senja, malam, hujan, salji, mendung, kabus, kilat, aurora, pelangi, bunga api, warna hangat, Tahun Baharu Cina, Krismas, Halloween dan Perayaan Pertengahan Musim Luruh.\n• Simpan sebarang latar sebagai pilihan tetap, kekal selepas mula semula. Pilih kesan mengikut cuaca atau tema tetap. Burung dan kapal terbang dimatikan secara lalai, boleh dihidupkan berasingan atau bersama.\n• 6 kedudukan data pada Instinct, 7 pada skrin warna bulat: langkah, kadar denyutan jantung, jumlah kalori, altitud, anggaran baki hari bateri, jarak, cuaca/suhu, tekanan, pemberitahuan, matahari terbit/terbenam, atau sembunyikan. 4 gaya panel.\n• Format sistem/12/24 jam, saat pilihan ketika aktif, pergerakan Matahari/Bulan dan fasa Bulan sebenar. Bulan disembunyikan pada siang hari secara lalai. Adegan automatik termasuk pelangi/bunga api untuk sasaran langkah serta lampu khemah pemberitahuan.\n• Grafik khusus MIP monokrom, MIP warna dan AMOLED. Jam AMOLED sentiasa hidup yang malap dan beralih kedudukan, dikemas kini setiap minit. Menggunakan cache cuaca/lokasi tanpa mengaktifkan GPS atau pelayan pembangun.\n\nMenu/tetapan jam kekal bahasa Inggeris/Cina Ringkas; label menggunakan singkatan Inggeris. Terjemahan kedai tidak menambah bahasa jam. Data bergantung pada peranti, kebenaran dan penyegerakan; yang tiada: --. Kedudukan cakerawala anggaran; tanpa lokasi hanya ilustrasi waktu. Gambar menggunakan data demo. Percuma, tiada iklan/langganan; data kesihatan/lokasi kekal pada jam.",
+    "whatsNew": "Keluaran awam pertama: 18 latar, burung/kapal terbang pilihan, data boleh suai, 4 panel, masa 12/24 jam, Matahari/Bulan, cuaca dan AMOLED sentiasa hidup yang malap. Kemas kini saat, lukisan semula denyutan dan cache dioptimumkan. Menu kekal Inggeris/Cina Ringkas; hanya halaman kedai diterjemahkan.",
+    "demoCaption": "Data demo simulator · Menu jam: Inggeris / Cina Ringkas"
+  },
+  "cs": {
+    "storeKey": "cs",
+    "locale": "cs-CZ",
+    "title": "Alpine · Horské scenérie",
+    "headline": "Vaše hory. Váš čas.",
+    "tagline": "18 pozadí · Vaše data · Den a noc",
+    "description": "Celoobrazovkový horský ciferník s originální kresbou inspirovanou Everestem a velkým časem.\n\n• 18 pozadí: automatické, svítání, den, soumrak, noc, déšť, sníh, oblačno, mlha, blesky, polární záře, duha, ohňostroj, teplé tóny, Svátek jara, Vánoce, Halloween a Svátek středu podzimu.\n• Libovolné pozadí lze uložit natrvalo, zůstává po restartu. Zvolte návaznost na počasí nebo pevný motiv. Ptáci a letadlo jsou standardně vypnuté; lze zapnout zvlášť či společně.\n• 6 datových pozic na Instinct, 7 na kulatých barevných displejích: kroky, tep, celkové kalorie, výška, odhad dnů baterie, vzdálenost, počasí/teplota, stres, oznámení, východ/západ slunce nebo skrytí. 4 styly panelu.\n• Systémový/12/24hodinový čas, volitelné sekundy při probuzení, pohyb Slunce/Měsíce a skutečná fáze Měsíce. Ve dne je Měsíc standardně skrytý. Automatické scény: duha/ohňostroj při splnění cíle kroků a světlo stanu pro oznámení.\n• Samostatná grafika pro černobílý MIP, barevný MIP a AMOLED. Tlumené pohyblivé hodiny AMOLED Always-On s minutovou aktualizací. Používá uložené počasí/polohu, neaktivuje GPS ani server vývojáře.\n\nNabídky/nastavení hodinek zůstávají anglicky a zjednodušeně čínsky, popisky zkráceně anglicky. Překlad obchodu nepřidává jazyky do hodinek. Data závisí na modelu, oprávněních a synchronizaci; chybějící: --. Nebeské polohy jsou přibližné, bez polohy jen ilustrace denní doby. Snímky obsahují ukázková data. Zdarma, bez reklam/předplatného; zdravotní/polohová data zůstávají v hodinkách.",
+    "whatsNew": "První veřejná verze: 18 pozadí, volitelní ptáci/letadlo, datová pole, 4 panely, 12/24 hodin, Slunce/Měsíc, počasí a tlumený AMOLED Always-On. Optimalizace sekund, dílčího překreslení tepu a cache. Nabídky zůstávají anglicky/zjednodušeně čínsky; přeložena je pouze stránka obchodu.",
+    "demoCaption": "Ukázková data · Nabídky: anglicky / zjednodušeně čínsky"
+  },
+  "da": {
+    "storeKey": "da",
+    "locale": "da-DK",
+    "title": "Alpine · Bjerglandskaber",
+    "headline": "Dine bjerge. Din tid.",
+    "tagline": "18 baggrunde · Dine data · Dag og nat",
+    "description": "En urskive med originale, Everest-inspirerede bjerglandskaber i fuld skærm og et stort klokkeslæt.\n\n• 18 baggrunde: automatisk, daggry, dag, skumring, nat, regn, sne, overskyet, tåge, lyn, nordlys, regnbue, fyrværkeri, varme farver, forårsfestival, jul, halloween og midtefterårsfestival.\n• Gem enhver baggrund som fast valg, også efter genstart. Vælg vejrafhængige effekter eller et fast tema. Fugle og fly er slået fra som standard og kan aktiveres hver for sig eller sammen.\n• 6 datafelter på Instinct, 7 på runde farveskærme: skridt, puls, samlede kalorier, højde, anslåede batteridage, distance, vejr/temperatur, stress, notifikationer, solopgang/-nedgang eller skjul. 4 panelstile.\n• System-/12-/24-timersformat, valgfri sekunder i vågen tilstand, bevægelig Sol/Måne og virkelig månefase. Månen er som standard skjult om dagen. Automatiske scener med regnbue/fyrværkeri ved skridtmål og teltlys ved notifikationer.\n• Særskilt grafik til monokrom MIP, farve-MIP og AMOLED. Dæmpet, flyttende AMOLED Always-On-ur med minutopdatering. Bruger lagret vejr/position uden at starte GPS eller kontakte udviklerens server.\n\nUrets menuer/indstillinger forbliver engelsk/forenklet kinesisk; etiketter er korte engelske. Butiksoversættelsen tilføjer ikke ursprog. Data afhænger af enhed, tilladelser og synkronisering; manglende vises som --. Himmelpositioner er omtrentlige; uden position vises en tidsillustration. Billeder bruger demodata. Gratis, uden reklamer/abonnement; sundheds-/positionsdata bliver på uret.",
+    "whatsNew": "Første offentlige version: 18 baggrunde, valgfrie fugle/fly, datafelter, 4 paneler, 12/24 timer, Sol/Måne, vejr og dæmpet AMOLED Always-On. Sekunder, delvis pulsvisning og cache optimeret. Urmenuer er stadig engelsk/forenklet kinesisk; kun butikssiden er oversat.",
+    "demoCaption": "Demodata fra simulator · Menuer: engelsk / forenklet kinesisk"
+  },
+  "hr": {
+    "storeKey": "hr",
+    "locale": "hr-HR",
+    "title": "Alpine · Planinski krajolici",
+    "headline": "Vaše planine. Vaše vrijeme.",
+    "tagline": "18 pozadina · Vaši podaci · Dan i noć",
+    "description": "Izgled sata preko cijelog zaslona s izvornim planinskim prizorima nadahnutima Everestom i velikim prikazom vremena.\n\n• 18 pozadina: automatska, zora, dan, sumrak, noć, kiša, snijeg, oblaci, magla, munje, polarna svjetlost, duga, vatromet, topli tonovi, Proljetni festival, Božić, Noć vještica i Blagdan sredine jeseni.\n• Spremite bilo koju pozadinu kao stalni izbor, zadržan nakon ponovnog pokretanja. Odaberite povezivanje s vremenom ili fiksni motiv. Ptice i zrakoplov početno su isključeni; uključuju se zasebno ili zajedno.\n• 6 položaja podataka na Instinctu, 7 na okruglim zaslonima u boji: koraci, puls, ukupne kalorije, visina, procijenjeni dani baterije, udaljenost, vrijeme/temperatura, stres, obavijesti, izlazak/zalazak Sunca ili skrivanje. 4 stila panela.\n• Sustavski/12/24-satni format, sekunde dok je sat aktivan, pomično Sunce/Mjesec i stvarna Mjesečeva mijena. Mjesec je početno skriven danju. Automatske scene nude dugu/vatromet za cilj koraka i svjetlo šatora za obavijesti.\n• Posebna grafika za jednobojni MIP, MIP u boji i AMOLED. Prigušen pomični AMOLED stalni sat, osvježen svake minute. Koristi spremljeno vrijeme/lokaciju, bez aktiviranja GPS-a ili poslužitelja razvojnog programera.\n\nIzbornici i postavke sata ostaju na engleskom/pojednostavljenom kineskom, oznake su engleske kratice. Prijevod trgovine ne dodaje jezike satu. Podaci ovise o uređaju, dopuštenjima i sinkronizaciji; nedostajući: --. Nebeski položaji su približni, bez lokacije samo vremenska ilustracija. Slike koriste demo podatke. Besplatno, bez oglasa/pretplate; zdravlje/lokacija ostaju na satu.",
+    "whatsNew": "Prva javna verzija: 18 pozadina, izbor ptica/zrakoplova, prilagodljivi podaci, 4 panela, 12/24 h, Sunce/Mjesec, vrijeme i prigušeni stalni AMOLED. Optimizirane sekunde, djelomično crtanje pulsa i cache. Izbornici ostaju engleski/pojednostavljeni kineski; prevedena je samo trgovina.",
+    "demoCaption": "Demo podaci · Izbornici: engleski / pojednostavljeni kineski"
+  },
+  "hu": {
+    "storeKey": "hu",
+    "locale": "hu-HU",
+    "title": "Alpine · Hegyi tájak",
+    "headline": "A te hegyeid. A te időd.",
+    "tagline": "18 háttér · Saját adatok · Nappal és éjjel",
+    "description": "Teljes képernyős hegyi számlap eredeti, Everest ihlette tájakkal és nagy időjelzéssel.\n\n• 18 háttér: automatikus, hajnal, nappal, alkony, éjszaka, eső, hó, felhő, köd, villám, sarki fény, szivárvány, tűzijáték, meleg színek, tavaszünnep, karácsony, Halloween és őszközépünnep.\n• Bármely háttér állandóként menthető, újraindítás után is megmarad. Választható időjárás-követés vagy rögzített téma. A madarak és a repülő alapból kikapcsoltak, külön vagy együtt bekapcsolhatók.\n• 6 adatpozíció Instincten, 7 kerek színes kijelzőn: lépések, pulzus, összes kalória, magasság, becsült akkumulátornapok, távolság, időjárás/hőmérséklet, stressz, értesítések, napkelte/napnyugta vagy elrejtés. 4 panelstílus.\n• Rendszer-/12/24 órás formátum, éber állapotban választható másodpercek, mozgó Nap/Hold és valódi holdfázis. A Hold nappal alapból rejtett. Automatikus jelenetek: szivárvány/tűzijáték lépéscélnál és sátorfény értesítéseknél.\n• Külön grafika monokróm MIP, színes MIP és AMOLED kijelzőhöz. Halvány, mozgó AMOLED állandó óra percenként frissítve. Gyorsítótárazott időjárást/helyzetet használ, GPS-indítás és fejlesztői szerver nélkül.\n\nAz óra menüi/beállításai angolok és egyszerűsített kínaiak maradnak, az adatcímkék angol rövidítések. Az áruház fordítása nem bővíti az óra nyelveit. Az adatok eszköz-, engedély- és szinkronfüggők; hiány esetén --. Az égi pozíciók közelítőek, helyadat nélkül napszakillusztráció látható. A képek demoadatokat mutatnak. Ingyenes, reklám/előfizetés nélkül; az egészség- és helyadat az órán marad.",
+    "whatsNew": "Első nyilvános kiadás: 18 háttér, választható madarak/repülő, adatmezők, 4 panel, 12/24 óra, Nap/Hold, időjárás és halvány AMOLED állandó kijelzés. Optimalizált másodpercek, részleges pulzusrajzolás és gyorsítótár. A menü angol/egyszerűsített kínai marad; csak az áruházoldal fordított.",
+    "demoCaption": "Szimulátoros demoadatok · Menü: angol / egyszerűsített kínai"
+  },
+  "nl": {
+    "storeKey": "nl",
+    "locale": "nl-NL",
+    "title": "Alpine · Berglandschappen",
+    "headline": "Jouw bergen. Jouw tijd.",
+    "tagline": "18 achtergronden · Jouw data · Dag en nacht",
+    "description": "Een schermvullende wijzerplaat met originele, op de Everest geïnspireerde berglandschappen en grote tijdweergave.\n\n• 18 achtergronden: automatisch, dageraad, dag, schemering, nacht, regen, sneeuw, bewolkt, mist, bliksem, poollicht, regenboog, vuurwerk, warme accenten, Lentefeest, Kerstmis, Halloween en Midherfstfeest.\n• Sla elke achtergrond vast op, ook na opnieuw starten. Kies weersafhankelijke effecten of een vast thema. Vogels en vliegtuig staan standaard uit en kunnen apart of samen aan.\n• 6 dataposities op Instinct, 7 op ronde kleurenschermen: stappen, hartslag, totale calorieën, hoogte, geschatte batterijdagen, afstand, weer/temperatuur, stress, meldingen, zonsopkomst/-ondergang of verbergen. 4 paneelstijlen.\n• Systeem-/12-/24-uursformaat, optionele seconden bij actief scherm, bewegende Zon/Maan en echte maanfase. De Maan is overdag standaard verborgen. Automatische scènes met regenboog/vuurwerk bij stapdoel en tentlicht voor meldingen.\n• Aparte illustraties voor monochroom MIP, kleuren-MIP en AMOLED. Gedimde, verplaatsende AMOLED Always-On-klok met minuutupdates. Gebruikt weer/locatie uit de cache, zonder GPS te starten of een ontwikkelaarsserver te benaderen.\n\nHorlogemenu’s/-instellingen blijven Engels/vereenvoudigd Chinees; datalabels zijn Engelse afkortingen. De winkelvertaling voegt geen horlogetalen toe. Data hangt af van apparaat, rechten en synchronisatie; ontbrekend: --. Hemelposities zijn benaderingen; zonder locatie een tijdsillustratie. Afbeeldingen tonen demodata. Gratis, zonder advertenties/abonnement; gezondheids-/locatiedata blijft op het horloge.",
+    "whatsNew": "Eerste openbare versie: 18 achtergronden, optionele vogels/vliegtuig, datavelden, 4 panelen, 12/24 uur, Zon/Maan, weer en gedimde AMOLED Always-On. Seconden, gedeeltelijke pulsweergave en cache geoptimaliseerd. Menu’s blijven Engels/vereenvoudigd Chinees; alleen de winkelpagina is vertaald.",
+    "demoCaption": "Demodata uit simulator · Menu’s: Engels / vereenvoudigd Chinees"
+  },
+  "nb": {
+    "storeKey": "nb",
+    "locale": "nb-NO",
+    "title": "Alpine · Fjellandskap",
+    "headline": "Dine fjell. Din tid.",
+    "tagline": "18 bakgrunner · Dine data · Dag og natt",
+    "description": "En heldekkende urskive med originale, Everest-inspirerte fjellandskap og stort klokkeslett.\n\n• 18 bakgrunner: automatisk, daggry, dag, skumring, natt, regn, snø, overskyet, tåke, lyn, nordlys, regnbue, fyrverkeri, varme farger, vårfestival, jul, Halloween og midthøstfestival.\n• Lagre enhver bakgrunn som fast valg, også etter omstart. Velg værstyrte effekter eller et fast tema. Fugler og fly er av som standard og kan aktiveres hver for seg eller sammen.\n• 6 dataposisjoner på Instinct, 7 på runde fargeskjermer: skritt, puls, totale kalorier, høyde, anslåtte batteridager, avstand, vær/temperatur, stress, varsler, soloppgang/-nedgang eller skjul. 4 panelstiler.\n• System-/12-/24-timersformat, valgfrie sekunder når aktiv, bevegelig Sol/Måne og ekte månefase. Månen er skjult på dagtid som standard. Automatiske scener med regnbue/fyrverkeri ved skrittmål og teltlys for varsler.\n• Egen grafikk for monokrom MIP, farge-MIP og AMOLED. Dempet, flyttende AMOLED alltid-på-klokke med oppdatering hvert minutt. Bruker mellomlagret vær/posisjon uten å starte GPS eller kontakte utviklerserver.\n\nKlokkemenyer/-innstillinger forblir engelsk/forenklet kinesisk; dataetiketter er engelske forkortelser. Butikkoversettelsen legger ikke til klokkespråk. Data avhenger av enhet, tillatelser og synkronisering; manglende: --. Himmelposisjoner er omtrentlige; uten posisjon vises en tidsillustrasjon. Bildene bruker demodata. Gratis, uten reklame/abonnement; helse-/posisjonsdata blir på klokken.",
+    "whatsNew": "Første offentlige versjon: 18 bakgrunner, valgfrie fugler/fly, datafelt, 4 paneler, 12/24 timer, Sol/Måne, vær og dempet AMOLED alltid-på. Sekunder, delvis pulsvisning og hurtigbuffer optimalisert. Klokkemenyer forblir engelsk/forenklet kinesisk; bare butikksiden er oversatt.",
+    "demoCaption": "Demodata fra simulator · Menyer: engelsk / forenklet kinesisk"
+  },
+  "pl": {
+    "storeKey": "pl",
+    "locale": "pl-PL",
+    "title": "Alpine · Górskie krajobrazy",
+    "headline": "Twoje góry. Twój czas.",
+    "tagline": "18 teł · Twoje dane · Dzień i noc",
+    "description": "Pełnoekranowa tarcza z oryginalnymi górskimi krajobrazami inspirowanymi Everestem i dużą godziną.\n\n• 18 teł: automatyczne, świt, dzień, zmierzch, noc, deszcz, śnieg, chmury, mgła, błyskawice, zorza, tęcza, fajerwerki, ciepłe akcenty, Święto Wiosny, Boże Narodzenie, Halloween i Święto Środka Jesieni.\n• Zapisz dowolne tło na stałe; pozostanie po ponownym uruchomieniu. Wybierz powiązanie z pogodą lub stały motyw. Ptaki i samolot są domyślnie wyłączone, można włączyć osobno lub razem.\n• 6 pozycji danych na Instinct, 7 na okrągłych kolorowych ekranach: kroki, tętno, całkowite kalorie, wysokość, szacowane dni baterii, dystans, pogoda/temperatura, stres, powiadomienia, wschód/zachód Słońca lub ukrycie. 4 style panelu.\n• Format systemowy/12/24 h, opcjonalne sekundy po wybudzeniu, ruch Słońca/Księżyca i rzeczywista faza Księżyca. Księżyc domyślnie ukryty za dnia. Automatyczne sceny: tęcza/fajerwerki po celu kroków i światło namiotu dla powiadomień.\n• Osobna grafika dla monochromatycznego MIP, kolorowego MIP i AMOLED. Przyciemniony ruchomy zegar AMOLED Always-On odświeżany co minutę. Korzysta z zapisanej pogody/lokalizacji, bez uruchamiania GPS i serwera dewelopera.\n\nMenu/ustawienia zegarka pozostają angielskie/chińskie uproszczone; etykiety to angielskie skróty. Tłumaczenie sklepu nie dodaje języków zegarka. Dane zależą od modelu, uprawnień i synchronizacji; brak: --. Pozycje niebieskie są przybliżone, bez lokalizacji to ilustracja pory dnia. Obrazy zawierają dane demonstracyjne. Bezpłatnie, bez reklam/subskrypcji; zdrowie/lokalizacja pozostają na zegarku.",
+    "whatsNew": "Pierwsza wersja publiczna: 18 teł, opcjonalne ptaki/samolot, dane, 4 panele, 12/24 h, Słońce/Księżyc, pogoda i przyciemniony AMOLED Always-On. Optymalizacja sekund, częściowego rysowania pulsu i pamięci podręcznej. Menu pozostaje angielskie/chińskie uproszczone; tłumaczenie dotyczy tylko sklepu.",
+    "demoCaption": "Dane demonstracyjne · Menu: angielski / chiński uproszczony"
+  },
+  "sk": {
+    "storeKey": "sk",
+    "locale": "sk-SK",
+    "title": "Alpine · Horské scenérie",
+    "headline": "Vaše hory. Váš čas.",
+    "tagline": "18 pozadí · Vaše údaje · Deň a noc",
+    "description": "Celoobrazovkový horský ciferník s originálnou kresbou inšpirovanou Everestom a veľkým časom.\n\n• 18 pozadí: automatické, svitanie, deň, súmrak, noc, dážď, sneh, oblačno, hmla, blesky, polárna žiara, dúha, ohňostroj, teplé tóny, Sviatok jari, Vianoce, Halloween a Sviatok stredu jesene.\n• Ľubovoľné pozadie možno uložiť natrvalo aj po reštarte. Zvoľte prepojenie s počasím alebo pevný motív. Vtáky a lietadlo sú predvolene vypnuté, možno ich zapnúť osobitne alebo spolu.\n• 6 dátových pozícií na Instinct, 7 na okrúhlych farebných displejoch: kroky, tep, celkové kalórie, výška, odhad dní batérie, vzdialenosť, počasie/teplota, stres, oznámenia, východ/západ Slnka alebo skrytie. 4 štýly panelov.\n• Systémový/12/24-hodinový formát, voliteľné sekundy po prebudení, pohyb Slnka/Mesiaca a skutočná fáza Mesiaca. Cez deň je Mesiac predvolene skrytý. Automatické scény: dúha/ohňostroj pri cieli krokov a svetlo stanu pre oznámenia.\n• Samostatná grafika pre čiernobiely MIP, farebný MIP a AMOLED. Tlmené pohyblivé hodiny AMOLED Always-On s minútovou aktualizáciou. Využíva uložené počasie/polohu, nespúšťa GPS ani server vývojára.\n\nPonuky/nastavenia hodiniek zostávajú anglicky/zjednodušene čínsky; popisy sú anglické skratky. Preklad obchodu nepridáva jazyky hodinkám. Údaje podľa zariadenia, oprávnení a synchronizácie; chýbajúce: --. Nebeské polohy sú približné, bez polohy len ilustrácia dennej doby. Obrázky obsahujú demo údaje. Zadarmo, bez reklám/predplatného; zdravie/poloha zostávajú v hodinkách.",
+    "whatsNew": "Prvá verejná verzia: 18 pozadí, voliteľné vtáky/lietadlo, dátové polia, 4 panely, 12/24 hodín, Slnko/Mesiac, počasie a tlmený AMOLED Always-On. Optimalizované sekundy, čiastočné kreslenie tepu a cache. Ponuky zostávajú anglické/zjednodušene čínske; preložená je len stránka obchodu.",
+    "demoCaption": "Ukážkové údaje · Ponuky: anglicky / zjednodušene čínsky"
+  },
+  "sl": {
+    "storeKey": "sl",
+    "locale": "sl-SI",
+    "title": "Alpine · Gorske pokrajine",
+    "headline": "Vaše gore. Vaš čas.",
+    "tagline": "18 ozadij · Vaši podatki · Dan in noč",
+    "description": "Celozaslonska številčnica z izvirnimi gorskimi pokrajinami po navdihu Everesta in veliko uro.\n\n• 18 ozadij: samodejno, zora, dan, mrak, noč, dež, sneg, oblaki, megla, strele, polarni sij, mavrica, ognjemet, topli poudarki, pomladni festival, božič, noč čarovnic in praznik sredi jeseni.\n• Poljubno ozadje shranite kot stalno; ostane po ponovnem zagonu. Izberite vremensko povezavo ali fiksen motiv. Ptice in letalo so privzeto izklopljeni, vklopite jih ločeno ali skupaj.\n• 6 podatkovnih mest na Instinctu, 7 na okroglih barvnih zaslonih: koraki, srčni utrip, skupne kalorije, višina, ocenjeni dnevi baterije, razdalja, vreme/temperatura, stres, obvestila, sončni vzhod/zahod ali skrij. 4 slogi plošč.\n• Sistemski/12/24-urni format, izbirne sekunde ob aktivnem zaslonu, premik Sonca/Lune in prava Lunina mena. Luna je podnevi privzeto skrita. Samodejni prizori vključujejo mavrico/ognjemet ob cilju korakov in luč šotora za obvestila.\n• Ločena grafika za enobarvni MIP, barvni MIP in AMOLED. Zatemnjena premikajoča se stalna ura AMOLED s posodobitvijo na minuto. Uporablja shranjeno vreme/lokacijo brez zagona GPS ali strežnika razvijalca.\n\nMeniji/nastavitve ure ostajajo v angleščini/poenostavljeni kitajščini, oznake so angleške kratice. Prevod trgovine ne dodaja jezikov uri. Podatki so odvisni od naprave, dovoljenj in sinhronizacije; manjkajoči: --. Položaji nebesnih teles so približni, brez lokacije le prikaz dela dneva. Slike vsebujejo demo podatke. Brezplačno, brez oglasov/naročnine; zdravje/lokacija ostajata v uri.",
+    "whatsNew": "Prva javna izdaja: 18 ozadij, izbirne ptice/letalo, podatki, 4 plošče, 12/24 ur, Sonce/Luna, vreme in zatemnjena stalna ura AMOLED. Izboljšane sekunde, delni izris utripa in predpomnilnik. Meniji ostajajo angleški/poenostavljeno kitajski; prevedena je le stran trgovine.",
+    "demoCaption": "Demo podatki · Meniji: angleški / poenostavljeno kitajski"
+  },
+  "fi": {
+    "storeKey": "fi",
+    "locale": "fi-FI",
+    "title": "Alpine · Vuoristomaisemat",
+    "headline": "Sinun vuoresi. Sinun aikasi.",
+    "tagline": "18 taustaa · Omat tiedot · Päivä ja yö",
+    "description": "Koko näytön kellotaulu, jossa on alkuperäisiä Everestin innoittamia vuoristomaisemia ja suuri kellonaika.\n\n• 18 taustaa: automaattinen, aamunkoitto, päivä, iltahämärä, yö, sade, lumi, pilvet, sumu, salama, revontulet, sateenkaari, ilotulitus, lämpimät sävyt, kevätjuhla, joulu, Halloween ja keskisyksyn juhla.\n• Tallenna mikä tahansa tausta pysyväksi; valinta säilyy uudelleenkäynnistyksessä. Valitse säälinkitys tai kiinteä teema. Linnut ja lentokone ovat oletuksena pois, ja ne voi kytkeä erikseen tai yhdessä.\n• 6 tietopaikkaa Instinctissä, 7 pyöreällä värinäytöllä: askeleet, syke, kokonaiskalorit, korkeus, arvioidut akkupäivät, matka, sää/lämpötila, stressi, ilmoitukset, auringonnousu/-lasku tai piilotus. 4 paneelityyliä.\n• Järjestelmän/12/24 tunnin aika, valinnaiset sekunnit hereillä, liikkuva Aurinko/Kuu ja todellinen kuunvaihe. Kuu on päivällä oletuksena piilossa. Automaattitiloissa askeltavoitteen sateenkaari/ilotulitus ja ilmoitusten telttavalo.\n• Oma grafiikka yksiväriselle MIP-, väri-MIP- ja AMOLED-näytölle. Himmeä liikkuva AMOLED-aina päällä -kello päivittyy minuutin välein. Käyttää välimuistin sää-/sijaintitietoja, ei käynnistä GPS:ää tai yhteyttä kehittäjän palvelimeen.\n\nKellon valikot/asetukset säilyvät englanniksi/yksinkertaistetuksi kiinaksi, tietotunnisteet ovat englannin lyhenteitä. Kauppakäännös ei lisää kellon kieliä. Tiedot riippuvat laitteesta, luvista ja synkronoinnista; puuttuvat: --. Taivaan sijainnit ovat likimääräisiä; ilman sijaintia vuorokaudenaikakuva. Kuvissa on demotietoja. Maksuton, ei mainoksia/tilausta; terveys-/sijaintitiedot pysyvät kellossa.",
+    "whatsNew": "Ensimmäinen julkinen versio: 18 taustaa, valinnaiset linnut/lentokone, tietokentät, 4 paneelia, 12/24 h, Aurinko/Kuu, sää ja himmeä AMOLED-aina päällä. Sekunnit, sykkeen osittaispiirto ja välimuisti optimoitu. Valikot pysyvät englanniksi/yksinkertaistetuksi kiinaksi; vain kauppasivu on käännetty.",
+    "demoCaption": "Simulaattorin demotiedot · Valikot: englanti / yksinkertaistettu kiina"
+  },
+  "sv": {
+    "storeKey": "sv",
+    "locale": "sv-SE",
+    "title": "Alpine · Bergslandskap",
+    "headline": "Dina berg. Din tid.",
+    "tagline": "18 bakgrunder · Dina data · Dag och natt",
+    "description": "En urtavla över hela skärmen med egna Everest-inspirerade bergslandskap och stor tidsvisning.\n\n• 18 bakgrunder: automatisk, gryning, dag, skymning, natt, regn, snö, moln, dimma, blixtar, norrsken, regnbåge, fyrverkeri, varma färger, vårfestival, jul, Halloween och midhöstfestival.\n• Spara valfri bakgrund som fast val, även efter omstart. Välj väderstyrda effekter eller fast tema. Fåglar och flygplan är av från början och kan aktiveras separat eller tillsammans.\n• 6 datapositioner på Instinct, 7 på runda färgskärmar: steg, puls, totala kalorier, höjd, uppskattade batteridagar, distans, väder/temperatur, stress, aviseringar, soluppgång/-nedgång eller dölj. 4 panelstilar.\n• System-/12-/24-timmarsformat, valfria sekunder när vaken, rörlig Sol/Måne och verklig månfas. Månen döljs dagtid som standard. Automatiska scener med regnbåge/fyrverkeri vid stegmål och tältljus för aviseringar.\n• Egen grafik för enfärgad MIP, färg-MIP och AMOLED. Dämpad rörlig AMOLED alltid-på-klocka med minutuppdatering. Använder cachat väder/plats utan att starta GPS eller kontakta utvecklarserver.\n\nKlockmenyer/-inställningar förblir engelska/förenklad kinesiska; dataetiketter är engelska förkortningar. Butiksöversättningen lägger inte till klockspråk. Data beror på enhet, behörigheter och synkning; saknade: --. Himmelpositioner är ungefärliga; utan plats visas en tidsillustration. Bilderna använder demodata. Gratis, utan reklam/prenumeration; hälso-/platsdata stannar på klockan.",
+    "whatsNew": "Första offentliga versionen: 18 bakgrunder, valfria fåglar/flygplan, datafält, 4 paneler, 12/24 timmar, Sol/Måne, väder och dämpad AMOLED alltid-på. Sekunder, partiell pulsritning och cache optimerade. Menyerna förblir engelska/förenklad kinesiska; endast butikssidan är översatt.",
+    "demoCaption": "Demodata från simulator · Menyer: engelska / förenklad kinesiska"
+  },
+  "el": {
+    "storeKey": "el",
+    "locale": "el-GR",
+    "title": "Alpine · Ορεινά τοπία",
+    "headline": "Το βουνό σας. Ο χρόνος σας.",
+    "tagline": "18 φόντα · Τα δεδομένα σας · Μέρα και νύχτα",
+    "description": "Καντράν πλήρους οθόνης με πρωτότυπα ορεινά τοπία εμπνευσμένα από το Έβερεστ και μεγάλη ένδειξη ώρας.\n\n• 18 φόντα: αυτόματο, αυγή, μέρα, σούρουπο, νύχτα, βροχή, χιόνι, σύννεφα, ομίχλη, αστραπές, σέλας, ουράνιο τόξο, πυροτεχνήματα, θερμοί τόνοι, Γιορτή της Άνοιξης, Χριστούγεννα, Halloween και Γιορτή του Μέσου Φθινοπώρου.\n• Αποθηκεύστε οποιοδήποτε φόντο μόνιμα, ακόμη και μετά από επανεκκίνηση. Επιλέξτε σύνδεση με τον καιρό ή σταθερό θέμα. Πουλιά και αεροπλάνο είναι αρχικά ανενεργά, ενεργοποιούνται χωριστά ή μαζί.\n• 6 θέσεις δεδομένων στο Instinct, 7 σε στρογγυλές έγχρωμες οθόνες: βήματα, παλμοί, συνολικές θερμίδες, υψόμετρο, εκτιμώμενες ημέρες μπαταρίας, απόσταση, καιρός/θερμοκρασία, στρες, ειδοποιήσεις, ανατολή/δύση ή απόκρυψη. 4 στυλ πάνελ.\n• Ώρα συστήματος/12/24 ωρών, προαιρετικά δευτερόλεπτα όταν είναι ενεργό, κινούμενος Ήλιος/Σελήνη και πραγματική φάση Σελήνης. Την ημέρα η Σελήνη κρύβεται αρχικά. Αυτόματες σκηνές με ουράνιο τόξο/πυροτεχνήματα στον στόχο βημάτων και φως σκηνής για ειδοποιήσεις.\n• Ξεχωριστά γραφικά για μονόχρωμο MIP, έγχρωμο MIP και AMOLED. Χαμηλής φωτεινότητας κινούμενο ρολόι AMOLED συνεχούς προβολής, με ενημέρωση ανά λεπτό. Χρησιμοποιεί αποθηκευμένο καιρό/θέση, χωρίς ενεργοποίηση GPS ή διακομιστή προγραμματιστή.\n\nΜενού/ρυθμίσεις ρολογιού παραμένουν αγγλικά/απλοποιημένα κινεζικά, ετικέτες με αγγλικές συντομογραφίες. Η μετάφραση καταστήματος δεν προσθέτει γλώσσες ρολογιού. Δεδομένα ανά συσκευή, άδειες και συγχρονισμό· ελλείψεις: --. Οι ουράνιες θέσεις είναι προσεγγιστικές, χωρίς θέση μόνο χρονική απεικόνιση. Εικόνες με δεδομένα επίδειξης. Δωρεάν, χωρίς διαφημίσεις/συνδρομή· υγεία/τοποθεσία μένουν στο ρολόι.",
+    "whatsNew": "Πρώτη δημόσια έκδοση: 18 φόντα, προαιρετικά πουλιά/αεροπλάνο, δεδομένα, 4 πάνελ, 12/24 ώρες, Ήλιος/Σελήνη, καιρός και χαμηλή συνεχής προβολή AMOLED. Βελτιστοποιήθηκαν δευτερόλεπτα, μερική σχεδίαση παλμών και cache. Μενού αγγλικά/απλοποιημένα κινεζικά όπως πριν· μεταφράστηκε μόνο η σελίδα καταστήματος.",
+    "demoCaption": "Δεδομένα επίδειξης · Μενού: αγγλικά / απλοποιημένα κινεζικά"
+  },
+  "iw": {
+    "storeKey": "iw",
+    "locale": "he-IL",
+    "title": "Alpine · נופי הרים",
+    "headline": "ההרים שלכם. הזמן שלכם.",
+    "tagline": "18 רקעים · הנתונים שלכם · יום ולילה",
+    "description": "לוח שעון במסך מלא עם נופי הרים מקוריים בהשראת האוורסט ושעה גדולה וברורה.\n\n• 18 רקעים: אוטומטי, שחר, יום, דמדומים, לילה, גשם, שלג, עננים, ערפל, ברקים, זוהר קוטבי, קשת, זיקוקים, גוונים חמים, חג האביב, חג המולד, ליל כל הקדושים וחג אמצע הסתיו.\n• אפשר לשמור כל רקע כבחירה קבועה, גם לאחר הפעלה מחדש. בחרו אפקטים לפי מזג האוויר או עיצוב קבוע. ציפורים ומטוס כבויים כברירת מחדל, וניתן להפעילם בנפרד או יחד.\n• 6 מיקומי נתונים ב-Instinct ו-7 במסכים עגולים צבעוניים: צעדים, דופק, סך קלוריות, גובה, אומדן ימי סוללה, מרחק, מזג אוויר/טמפרטורה, לחץ, התראות, זריחה/שקיעה או הסתרה. 4 סגנונות לוחות.\n• תבנית מערכת/12/24 שעות, שניות אופציונליות במצב פעיל, שמש/ירח נעים ומופע ירח אמיתי. הירח מוסתר ביום כברירת מחדל. סצנות אוטומטיות עם קשת/זיקוקים ביעד צעדים ואור אוהל להתראות.\n• גרפיקה נפרדת ל-MIP מונוכרומטי, MIP צבעוני ו-AMOLED. שעון AMOLED תמיד-פועל מעומעם ונע, שמתעדכן בכל דקה. משתמש במזג אוויר/מיקום שמורים, ללא הפעלת GPS או פנייה לשרת המפתח.\n\nתפריטי והגדרות השעון נשארים באנגלית/סינית מפושטת; התוויות הן קיצורים באנגלית. תרגום החנות לא מוסיף שפות לשעון. הנתונים תלויים במכשיר, הרשאות וסנכרון; חוסר מוצג כ --. מיקומי גרמי השמיים משוערים, וללא מיקום זו המחשה לפי שעה. התמונות מכילות נתוני הדגמה. חינם, ללא פרסומות/מינוי; נתוני בריאות ומיקום נשארים בשעון.",
+    "whatsNew": "גרסה ציבורית ראשונה: 18 רקעים, ציפורים/מטוס לבחירה, נתונים מותאמים, 4 לוחות, 12/24 שעות, שמש/ירח, מזג אוויר ו-AMOLED קבוע ומעומעם. שופרו עדכוני שניות, ציור חלקי של דופק ומטמון. התפריטים נשארים באנגלית/סינית מפושטת; רק עמוד החנות מתורגם.",
+    "demoCaption": "נתוני הדגמה · תפריטי השעון: אנגלית / סינית מפושטת"
+  },
+  "th": {
+    "storeKey": "th",
+    "locale": "th-TH",
+    "title": "Alpine · วิวภูเขา",
+    "headline": "ภูเขาของคุณ เวลาของคุณ",
+    "tagline": "18 พื้นหลัง · ข้อมูลของคุณ · กลางวันและกลางคืน",
+    "description": "หน้าปัดเต็มจอพร้อมภาพภูเขาต้นฉบับที่ได้แรงบันดาลใจจากเอเวอเรสต์และตัวเลขเวลาขนาดใหญ่\n\n• พื้นหลัง 18 แบบ: อัตโนมัติ รุ่งเช้า กลางวัน พลบค่ำ กลางคืน ฝน หิมะ เมฆ หมอก ฟ้าผ่า แสงเหนือ รุ้ง พลุ โทนอบอุ่น ตรุษจีน คริสต์มาส ฮาโลวีน และไหว้พระจันทร์\n• บันทึกพื้นหลังใดก็ได้เป็นค่าโปรดและคงไว้หลังเริ่มใหม่ เลือกเอฟเฟกต์ตามอากาศหรือธีมคงที่ นกและเครื่องบินปิดเป็นค่าเริ่มต้น เปิดแยกกันหรือพร้อมกันได้\n• ช่องข้อมูล 6 ตำแหน่งบน Instinct และ 7 ตำแหน่งบนจอสีทรงกลม: ก้าว ชีพจร แคลอรีรวม ความสูง วันแบตเตอรี่โดยประมาณ ระยะทาง อากาศ/อุณหภูมิ ความเครียด การแจ้งเตือน พระอาทิตย์ขึ้น/ตก หรือซ่อน มีแผงข้อมูล 4 สไตล์\n• รูปแบบเวลาตามระบบ/12/24 ชั่วโมง วินาทีขณะหน้าจอทำงาน ดวงอาทิตย์/ดวงจันทร์เคลื่อนตามเวลาและข้างขึ้นข้างแรมจริง ค่าเริ่มต้นซ่อนดวงจันทร์ในเวลากลางวัน ฉากอัตโนมัติมีรุ้ง/พลุเมื่อถึงเป้าก้าวและไฟเต็นท์สำหรับการแจ้งเตือน\n• ภาพเฉพาะสำหรับ MIP ขาวดำ MIP สี และ AMOLED โหมดจอติดตลอด AMOLED ใช้นาฬิกาหรี่แสงที่ย้ายตำแหน่งและอัปเดตทุกนาที ใช้แคชอากาศ/ตำแหน่ง ไม่เปิด GPS หรือเชื่อมต่อเซิร์ฟเวอร์ผู้พัฒนา\n\nเมนูและการตั้งค่านาฬิกายังคงเป็นอังกฤษ/จีนตัวย่อ ป้ายข้อมูลใช้ตัวย่ออังกฤษ การแปลหน้าร้านไม่เพิ่มภาษาบนนาฬิกา ข้อมูลขึ้นกับรุ่น สิทธิ์และการซิงค์ หากไม่มีจะแสดง -- ตำแหน่งท้องฟ้าเป็นค่าประมาณ หากไม่มีพิกัดจะเป็นภาพสื่อช่วงเวลา รูปใช้ข้อมูลสาธิต ฟรี ไม่มีโฆษณาหรือสมาชิก ข้อมูลสุขภาพ/ตำแหน่งอยู่ในนาฬิกา",
+    "whatsNew": "รุ่นสาธารณะครั้งแรก: 18 พื้นหลัง นก/เครื่องบินตามเลือก ช่องข้อมูล 4 สไตล์แผง เวลา 12/24 ชั่วโมง ดวงอาทิตย์/ดวงจันทร์ อากาศ และจอ AMOLED ติดตลอดแบบหรี่แสง ปรับปรุงวินาที การวาดค่าชีพจรเฉพาะส่วนและแคช เมนูยังเป็นอังกฤษ/จีนตัวย่อ แปลเฉพาะหน้าร้านเท่านั้น",
+    "demoCaption": "ข้อมูลสาธิต · เมนูนาฬิกา: อังกฤษ / จีนตัวย่อ"
+  }
+}

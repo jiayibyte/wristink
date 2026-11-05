@@ -53,7 +53,7 @@ class SleepProbe extends AlpineView {
  function initialize() {AlpineView.initialize();}
  function seconds(dc,sec) {writes++;}
  function circle(dc) {}
- function metrics(dc) {}
+ function metrics(dc,heartOnly) {}
 }
 (:test)
 function sleepStopsSecondPaintingAndWakeInvalidates(logger) {
@@ -96,7 +96,7 @@ function everestBackgroundCachesAndAllScenesRender(logger) {
  view._scene=2;view.landscape(dc,840,stamp);
  var first=view._background;view.landscape(dc,841,stamp);
  Test.assert(view._background==first);Test.assertEqual(view._artScene,Scene.artKey(2));first=null;
- for(var scene=1;scene<=12;scene++) {
+ for(var scene=1;scene<=17;scene++) {
   view._scene=scene;view.landscape(dc,840,stamp);
   Test.assertEqual(view._artScene,Scene.artKey(scene));Test.assert(view._background!=null);
   view.restore(dc,12,12,20,10);

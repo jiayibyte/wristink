@@ -2,7 +2,7 @@
 from pathlib import Path
 import argparse,os,subprocess,uuid,datetime
 from generate import generate,ROOT,DEVICES
-p=argparse.ArgumentParser();p.add_argument('device',choices=DEVICES);p.add_argument('scene',type=int,choices=range(13));p.add_argument('--at');p.add_argument('--weather',choices=['unknown','clear','partly','cloudy','rain','snow','storm','fog'],default='clear');p.add_argument('--lat',type=float,default=39.9);p.add_argument('--lon',type=float,default=116.4);p.add_argument('--name');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('device',choices=DEVICES);p.add_argument('scene',type=int,choices=range(18));p.add_argument('--at');p.add_argument('--weather',choices=['unknown','clear','partly','cloudy','rain','snow','storm','fog'],default='clear');p.add_argument('--lat',type=float,default=39.9);p.add_argument('--lon',type=float,default=116.4);p.add_argument('--name');a=p.parse_args()
 hour={1:5,3:19,4:23,9:23}.get(a.scene,14)
 at=datetime.datetime.fromisoformat(a.at) if a.at else datetime.datetime(2026,6,21,hour,23,tzinfo=datetime.timezone(datetime.timedelta(hours=8)))
 if at.tzinfo is None:p.error('--at requires a UTC offset')
@@ -17,4 +17,6 @@ rel=dest.relative_to(ROOT);j=ROOT/'scenario.jungle'
 j.write_text((ROOT/'monkey.jungle').read_text().replace('project.manifest = manifest.xml',f'project.manifest = {rel}/manifest.xml').replace('base.sourcePath = source;live',f'base.sourcePath = source;{rel}'))
 sdk=Path((Path.home()/'Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg').read_text().strip())
 env=dict(os.environ,JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home');env['PATH']=env['JAVA_HOME']+'/bin:'+env['PATH']
-subprocess.run([str(sdk/'bin/monkeyc'),'-f',str(j),'-d',a.device,'-o',str(ROOT/f'bin/Alpine-{a.device}-{name}.prg'),'-y',str(Path.home()/'.Garmin/keys/developer_key.der'),'-r','-O','0','-w','--no-gen-styles'],cwd=ROOT,env=env,check=True)
+optimization='2z' if a.device in ('instinct2','instinct2s','instinct2x') else '0'
+compat=['--disable-api-has-check-removal'] if optimization=='2z' else []
+subprocess.run([str(sdk/'bin/monkeyc'),'-f',str(j),'-d',a.device,'-o',str(ROOT/f'bin/Alpine-{a.device}-{name}.prg'),'-y',str(Path.home()/'.Garmin/keys/developer_key.der'),'-r','-O',optimization,'-w','--no-gen-styles']+compat,cwd=ROOT,env=env,check=True)

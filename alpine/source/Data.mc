@@ -41,13 +41,16 @@ module Data {
         refreshHeart(now.value());var m=(now.value()/60).toNumber();if(minute==m) {return;}minute=m;
         imperialAlt=settings.elevationUnits==System.UNIT_STATUTE;imperialDist=settings.distanceUnits==System.UNIT_STATUTE;fahrenheit=settings.temperatureUnits==System.UNIT_STATUTE;
         if(Mode.DEMO) {steps=8620;stepGoal=10000;calories=1688;altitude=1280;battery=76;batteryDays=18.4;distance=642000;notifications=2;temp=Mode.WEATHER==5 ? -6 : (Mode.WEATHER==4 ? 16 : 24);stress=32;weather=Mode.WEATHER;cloudCover=WeatherStyle.cover(weather,null);rainy=weather==4 || weather==6;latitude=Mode.LAT;longitude=Mode.LON;rise=null;set=null;return;}
-        var d=ActivityMonitor.getInfo();var a=Activity.getActivityInfo();
+        var smart=Settings.smart && Settings.scene==0;
+        var d=Settings.uses(0) || Settings.uses(2) || Settings.uses(5) || smart ? ActivityMonitor.getInfo() : null;
+        var a=Settings.uses(3) ? Activity.getActivityInfo() : null;
         steps=d==null ? null : d.steps;stepGoal=d==null ? null : d.stepGoal;calories=d==null ? null : d.calories;distance=d==null ? null : d.distance;
-        var stats=System.getSystemStats();battery=stats.battery;batteryDays=remainingDays(stats);notifications=settings.notificationCount;
+        var stats=Settings.uses(4) || smart ? System.getSystemStats() : null;
+        battery=stats==null ? null : stats.battery;batteryDays=remainingDays(stats);notifications=settings.notificationCount;
         altitude=a==null ? null : a.altitude;
         if(Settings.uses(3) && altitude==null && (SensorHistory has :getElevationHistory)) {altitude=recent(SensorHistory.getElevationHistory({:period=>1,:order=>SensorHistory.ORDER_NEWEST_FIRST}).next(),now.value(),900);}
         stress=null;
-        if((Settings.smart || Settings.uses(7)) && (SensorHistory has :getStressHistory)) {stress=recent(SensorHistory.getStressHistory({:period=>1,:order=>SensorHistory.ORDER_NEWEST_FIRST}).next(),now.value(),300);if(stress!=null && (stress<0 || stress>100)) {stress=null;}}
+        if((smart || Settings.uses(7)) && (SensorHistory has :getStressHistory)) {stress=recent(SensorHistory.getStressHistory({:period=>1,:order=>SensorHistory.ORDER_NEWEST_FIRST}).next(),now.value(),300);if(stress!=null && (stress<0 || stress>100)) {stress=null;}}
         environment(now);
     }
     function weatherRain(c) {

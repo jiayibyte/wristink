@@ -1,0 +1,798 @@
+[
+  {
+    "file": "cover-500.png",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-en-1440x720.jpg",
+    "locale": "en",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-zh_CN-1440x720.jpg",
+    "locale": "zh_CN",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-zh_TW-1440x720.jpg",
+    "locale": "zh_TW",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-ja-1440x720.jpg",
+    "locale": "ja",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-ko-1440x720.jpg",
+    "locale": "ko",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-de-1440x720.jpg",
+    "locale": "de",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-fr-1440x720.jpg",
+    "locale": "fr",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-es-1440x720.jpg",
+    "locale": "es",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-it-1440x720.jpg",
+    "locale": "it",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-pt_BR-1440x720.jpg",
+    "locale": "pt_BR",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-pt_PT-1440x720.jpg",
+    "locale": "pt_PT",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-ru-1440x720.jpg",
+    "locale": "ru",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-in-1440x720.jpg",
+    "locale": "in",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-ms-1440x720.jpg",
+    "locale": "ms",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-cs-1440x720.jpg",
+    "locale": "cs",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-da-1440x720.jpg",
+    "locale": "da",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-hr-1440x720.jpg",
+    "locale": "hr",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-hu-1440x720.jpg",
+    "locale": "hu",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-nl-1440x720.jpg",
+    "locale": "nl",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-nb-1440x720.jpg",
+    "locale": "nb",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-pl-1440x720.jpg",
+    "locale": "pl",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-sk-1440x720.jpg",
+    "locale": "sk",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-sl-1440x720.jpg",
+    "locale": "sl",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-fi-1440x720.jpg",
+    "locale": "fi",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-sv-1440x720.jpg",
+    "locale": "sv",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-el-1440x720.jpg",
+    "locale": "el",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-iw-1440x720.jpg",
+    "locale": "iw",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "hero-th-1440x720.jpg",
+    "locale": "th",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      }
+    ]
+  },
+  {
+    "file": "01-displays.jpg",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      },
+      {
+        "file": "docs/verified-sky/epix2-aurora.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "5878aa586020a7603aa86e3883215eb358de3ce0c361fec383600e3ec83ff8cb"
+      },
+      {
+        "file": "docs/verified-bright/fenix7-day-bright.png",
+        "nativeSize": [
+          260,
+          260
+        ],
+        "displaySize": [
+          364,
+          364
+        ],
+        "sha256": "873a4bd97045b68eadd8219f74ea3b2df59303418de5a7ba8be0faa7b1f4de21"
+      },
+      {
+        "file": "docs/verified-bright/instinct2s-day-default.png",
+        "nativeSize": [
+          163,
+          156
+        ],
+        "displaySize": [
+          326,
+          312
+        ],
+        "sha256": "2a0a88c2f1ce84557fd6df95bae882a3b22fb9beac2a147f96264d6f8c5bf329"
+      }
+    ],
+    "historicalNativeCaptures": true,
+    "freshCaptureReview": "pending Mac unlock; rendering layout unchanged by power-only changes"
+  },
+  {
+    "file": "02-backgrounds.jpg",
+    "sources": [
+      {
+        "file": "docs/verified-sky/epix2-aurora.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "5878aa586020a7603aa86e3883215eb358de3ce0c361fec383600e3ec83ff8cb"
+      },
+      {
+        "file": "docs/verified-sky/epix2-rain.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "874acaecb90954704957b5b3aeb62db7ace96d8792d6207a89c058217cccd460"
+      },
+      {
+        "file": "docs/verified-sky/epix2-snow.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "7c1bf9b09ea8ff27af68f0b42c474be73d42cc21883e5dd73b48a49dddca9700"
+      },
+      {
+        "file": "docs/sky-sunrise.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "7313475779289430cba7fb8883a7d2ff3f909a77581e53948e710bd819e2a5a6"
+      }
+    ],
+    "historicalNativeCaptures": true,
+    "freshCaptureReview": "pending Mac unlock; rendering layout unchanged by power-only changes"
+  },
+  {
+    "file": "03-festivals.jpg",
+    "sources": [
+      {
+        "file": "docs/verified-bright/epix2-spring.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "b33f35f888b2c90e7c024f6c5ba5ad845d564f45fa014b322703b570ff629f12"
+      },
+      {
+        "file": "docs/verified-bright/epix2-christmas.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "29f4a314bd3d31fc1b6c80b9722e4f4bdc158015d47c7f613551fdb56f102bd4"
+      },
+      {
+        "file": "docs/verified-bright/epix2-halloween.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "137caf0cd25a1748363fe50a06a687250a1d4c09ca6191009005ffabeacaa1fc"
+      },
+      {
+        "file": "docs/verified-bright/epix2-mid-autumn-night.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "62be5b718a5d2f92668b9bc2bbc6a324e46158fe5e27601831161624886acb3b"
+      }
+    ],
+    "historicalNativeCaptures": true,
+    "freshCaptureReview": "pending Mac unlock; rendering layout unchanged by power-only changes"
+  },
+  {
+    "file": "04-your-data.jpg",
+    "sources": [
+      {
+        "file": "docs/verified/verified-instinct3-classic.png",
+        "nativeSize": [
+          176,
+          176
+        ],
+        "displaySize": [
+          352,
+          352
+        ],
+        "sha256": "197e28ca588229c19f2122b4f76133c72e28abddfc906f002a826e95c125d9eb"
+      },
+      {
+        "file": "docs/verified/verified-instinct3-contour.png",
+        "nativeSize": [
+          176,
+          176
+        ],
+        "displaySize": [
+          352,
+          352
+        ],
+        "sha256": "fc157a94713dc577f5e6e0275afcca92de02935cdc5c8e558013199b8a7020c5"
+      },
+      {
+        "file": "docs/verified/verified-instinct3-expedition.png",
+        "nativeSize": [
+          176,
+          176
+        ],
+        "displaySize": [
+          352,
+          352
+        ],
+        "sha256": "f6784a17356cad8f0bf1aa8241a62a4c6161fd542bcfe34b5e68523c8ee7173b"
+      },
+      {
+        "file": "docs/verified/verified-instinct3-wings.png",
+        "nativeSize": [
+          176,
+          176
+        ],
+        "displaySize": [
+          352,
+          352
+        ],
+        "sha256": "8eadfd598d580a630d8628206d89a467f4366758e213db968b21e0df65f0e6ec"
+      }
+    ],
+    "historicalNativeCaptures": true,
+    "freshCaptureReview": "pending Mac unlock; rendering layout unchanged by power-only changes"
+  },
+  {
+    "file": "05-everyday.jpg",
+    "sources": [
+      {
+        "file": "docs/verified-bright/epix2-day-bright.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "2d6e9c3ff7b0a70dcfcd83e19d1c40270a3c677871cc288444df6e095d4fd9cb"
+      },
+      {
+        "file": "docs/verified-sky/epix2-sky-both.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "768b1518db7d346a7ad27d54c694b21665acfcecf9edcc70a21244abcd6c7984"
+      },
+      {
+        "file": "docs/verified-sky/epix2-aurora.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "5878aa586020a7603aa86e3883215eb358de3ce0c361fec383600e3ec83ff8cb"
+      },
+      {
+        "file": "docs/verified-bright/instinct2s-time24-menu.png",
+        "nativeSize": [
+          163,
+          156
+        ],
+        "displaySize": [
+          326,
+          312
+        ],
+        "sha256": "c008b402fe2c7ee5fb5ae2d1dee7be5f14b69911f2d6433f15674f8ce85903ee"
+      }
+    ],
+    "historicalNativeCaptures": true,
+    "freshCaptureReview": "pending Mac unlock; rendering layout unchanged by power-only changes"
+  }
+]

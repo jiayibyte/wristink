@@ -47,3 +47,23 @@ function headerDefaultsHideOnceWithoutResettingCustomChoices(logger) {
  Settings.setSlot("HeaderTop",top);Settings.setSlot("HeaderLeft",left);Settings.setSlot("HeaderRight",right);
  Test.assert(ok);return true;
 }
+
+(:test)
+function timeAndSkyChoicesPersistWithoutChangingDataSlots(logger) {
+ Settings.load();var oldTime=Settings.timeFormat;var oldSky=Settings.skyDisplay;
+ var left=Settings.left;var festival=Settings.festival;
+ Test.assert(Settings.setChoice("TimeFormat",1));Settings.load();Test.assert(!Settings.is24(true));
+ Test.assertEqual(Settings.shownHour(0,false),12);Test.assertEqual(Settings.shownHour(23,false),11);
+ Test.assert(Settings.setChoice("TimeFormat",2));Settings.load();Test.assert(Settings.is24(false));
+ Test.assertEqual(Settings.shownHour(0,true),0);Test.assertEqual(Settings.shownHour(23,true),23);
+ Test.assert(Settings.setChoice("TimeFormat",0));Test.assert(Settings.is24(true));Test.assert(!Settings.is24(false));
+ Test.assert(Settings.setChoice("SkyDisplay",1));Settings.load();Test.assertEqual(Settings.skyDisplay,1);
+ Test.assert(!Settings.setChoice("SkyDisplay",2));Test.assert(!Settings.setChoice("TimeFormat",-1));
+ Test.assert(!Settings.setChoice("TimeFormat",3));Test.assert(!Settings.setChoice("Left",0));
+ Test.assertEqual(Settings.left,left);Test.assertEqual(Settings.festival,festival);
+ for(var i=0;i<SlotCatalog.choiceKeys.size();i++) {
+  var key=SlotCatalog.choiceKeys[i];var choices=SlotCatalog.choices(key);
+  for(var j=0;j<choices.size();j++) {Test.assert(SlotCatalog.choiceName(key,j).length()>0);}
+ }
+ Settings.setChoice("TimeFormat",oldTime);Settings.setChoice("SkyDisplay",oldSky);return true;
+}

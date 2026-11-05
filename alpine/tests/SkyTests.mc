@@ -91,3 +91,19 @@ function clearWeatherHasNoCloudsAndOtherWeatherChangesMountains(logger) {
  Data.weather=WeatherStyle.SNOW;var snow=Scene.artKey(2);Test.assert(snow!=rain && snow!=clear);
  Test.assert(Scene.artKey(4)!=snow);Data.weather=0;Data.cloudCover=0;Sky.ready=false;return true;
 }
+
+(:test)
+function moonDisplaySeparatesDayNightFromTrueAstronomy(logger) {
+ // Beijing reference: both bodies are above the horizon at local noon.
+ Sky.ready=false;Sky.refresh(1782014400,720,39.9d,116.4d,null,null);
+ Test.assert(Sky.sunVisible && Sky.moonVisible);
+ Test.assert(!Sky.showMoon(0));Test.assert(Sky.showMoon(1));
+ Sky.refresh(1793026800,1380,39.9d,116.4d,null,null);
+ Test.assert(!Sky.sunVisible && Sky.moonVisible);
+ Test.assert(Sky.showMoon(0));Test.assert(Sky.showMoon(1));
+ Sky.refresh(1781988600,290,39.9d,116.4d,null,null);
+ Test.assert(!Sky.moonVisible);Test.assert(!Sky.showMoon(0));Test.assert(!Sky.showMoon(1));
+ Sky.refresh(1794207600,720,39.9d,116.4d,null,null);
+ Test.assert(Sky.illumination<0.005);Test.assert(!Sky.showMoon(1));
+ Sky.ready=false;return true;
+}

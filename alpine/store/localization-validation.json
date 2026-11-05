@@ -1,0 +1,178 @@
+{
+  "languages": [
+    {
+      "storeKey": "en",
+      "titleChars": 28,
+      "descriptionChars": 1498,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "zh_CN",
+      "titleChars": 11,
+      "descriptionChars": 520,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "zh_TW",
+      "titleChars": 11,
+      "descriptionChars": 535,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "ja",
+      "titleChars": 19,
+      "descriptionChars": 638,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "ko",
+      "titleChars": 20,
+      "descriptionChars": 823,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "de",
+      "titleChars": 25,
+      "descriptionChars": 1622,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "fr",
+      "titleChars": 29,
+      "descriptionChars": 1694,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "es",
+      "titleChars": 28,
+      "descriptionChars": 1614,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "it",
+      "titleChars": 29,
+      "descriptionChars": 1637,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "pt_BR",
+      "titleChars": 30,
+      "descriptionChars": 1597,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "pt_PT",
+      "titleChars": 30,
+      "descriptionChars": 1632,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "ru",
+      "titleChars": 23,
+      "descriptionChars": 1552,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "in",
+      "titleChars": 28,
+      "descriptionChars": 1535,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "ms",
+      "titleChars": 27,
+      "descriptionChars": 1605,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "cs",
+      "titleChars": 24,
+      "descriptionChars": 1488,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "da",
+      "titleChars": 24,
+      "descriptionChars": 1509,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "hr",
+      "titleChars": 28,
+      "descriptionChars": 1590,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "hu",
+      "titleChars": 20,
+      "descriptionChars": 1527,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "nl",
+      "titleChars": 25,
+      "descriptionChars": 1595,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "nb",
+      "titleChars": 21,
+      "descriptionChars": 1484,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "pl",
+      "titleChars": 27,
+      "descriptionChars": 1573,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "sk",
+      "titleChars": 24,
+      "descriptionChars": 1496,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "sl",
+      "titleChars": 25,
+      "descriptionChars": 1527,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "fi",
+      "titleChars": 25,
+      "descriptionChars": 1600,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "sv",
+      "titleChars": 22,
+      "descriptionChars": 1473,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "el",
+      "titleChars": 21,
+      "descriptionChars": 1651,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "iw",
+      "titleChars": 18,
+      "descriptionChars": 1237,
+      "fontCoverage": "passed"
+    },
+    {
+      "storeKey": "th",
+      "titleChars": 17,
+      "descriptionChars": 1297,
+      "fontCoverage": "passed"
+    }
+  ],
+  "runtimeLanguagesUnchanged": [
+    "eng",
+    "zhs"
+  ],
+  "localeSource": "Garmin developer Edit App Details visible language selector",
+  "imageChecks": "passed"
+}

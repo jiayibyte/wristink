@@ -47,6 +47,11 @@ module Sky {
         h=h<0 ? 0 : h;
         return 0.0002967d/Math.tan(h+0.00312536d/(h+0.08901179d));
     }
+    // Default: no daytime Moon. Astronomy mode permits genuine daytime visibility.
+    // Neither mode invents a Moon below the horizon or replaces its actual phase.
+    function showMoon(displayMode) {
+        return moonVisible && illumination>0.005 && (displayMode==1 || !sunVisible);
+    }
     function phaseAt(alt,hourAngle) as Number {
         if(alt < -6*RAD) {return 4;}
         if(alt < 6*RAD) {return hourAngle<0 ? 1 : 3;}

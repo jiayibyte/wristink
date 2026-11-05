@@ -1,0 +1,8 @@
+Alpine Privacy Notice
+Developer: cherryeveli
+Contact: cherryeveli@gmail.com
+
+Alpine reads time, system state, selected activity/heart-rate/elevation/stress records, notifications, cached weather and an existing location record locally on the watch for display and approximate sky calculations.
+It does not start GPS or continuously subscribe to sensors. It has no developer server, account sign-in, advertising, analytics SDK or custom network request. The developer does not receive, upload, sell or share health, activity or location data. Garmin weather and synchronization are subject to Garmin policies.
+Only preferences are saved across restarts. Runtime caches stay on the watch. The store program does not emit health/location logs. Screenshots use labelled demo data; diagnostic/test programs are excluded from the installation package.
+If you contact support, the developer receives only what you choose to send. Do not send passwords, verification codes or unnecessary health/location details.

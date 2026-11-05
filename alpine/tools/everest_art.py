@@ -2,6 +2,7 @@
 Original artwork; references and stylization boundary: assets/everest/SOURCES.md.
 """
 from PIL import Image,ImageDraw
+from festival_art import PALETTES,MIP_PALETTES,aurora as aurora_sky,backdrop,decorate
 
 RIDGE=[(-.08,.72),(.04,.62),(.14,.51),(.20,.445),(.25,.395),(.33,.377),(.40,.35),(.455,.303),(.48,.26),(.505,.235),(.53,.26),(.55,.294),(.585,.322),(.61,.35),(.65,.397),(.70,.44),(.75,.48),(.82,.565),(.92,.63),(1.08,.72)]
 
@@ -33,8 +34,18 @@ def monochrome(width,height,weather=0):
         ridge([(0,74),(28,71),(55,75),(80,72)])
     return im
 
-def render(width,height,scene,mono=False,amoled=False,weather=0):
-    if mono:return monochrome(width,height,weather)
+def render(width,height,scene,mono=False,amoled=False,weather=0,holiday=0,aurora=False):
+    if mono:
+        im=monochrome(width,height,weather)
+        # Sky effects use a mask, so fireworks never paint over the snow faces.
+        sky=Image.new('1',im.size,0)
+        if aurora:aurora_sky(sky,True)
+        else:backdrop(sky,holiday,True)
+        mask=Image.new('1',im.size,0);md=ImageDraw.Draw(mask)
+        for x,edge in enumerate(skyline(width,height,True)):
+            if edge>0:md.line((x,0,x,edge-1),fill=1)
+        im.paste(sky,(0,0),mask)
+        return decorate(im,holiday,True)
     ss=4 if amoled else 1;W,H=width*ss,height*ss
     im=Image.new('RGB',(W,H));d=ImageDraw.Draw(im);night=scene in (4,9)
     def rgb(c):return ((c>>16)&255,(c>>8)&255,c&255)
@@ -45,10 +56,29 @@ def render(width,height,scene,mono=False,amoled=False,weather=0):
     elif scene==1:top,bottom=0x6C6496,0xEAC7BC;snow,ice,shade,rock=0xFFF2DC,0xCBCDDD,0x626881,0x263B55
     elif scene in (3,6):top,bottom=0x805E78,0xE9B27E;snow,ice,shade,rock=0xFFF1D6,0xD7C2B6,0x70627A,0x28374E
     elif scene in (5,7):top,bottom=0x284858,0x98B8BF;snow,ice,shade,rock=0xE2E9E2,0xA5C4CE,0x506C7D,0x263E51
-    else:top,bottom=0x287D9E,0xAFDDE0;snow,ice,shade,rock=0xFAFFF4,0xABD3DE,0x346783,0x163D58
+    else:top,bottom=0x1676C9,0xC5F2FF;snow,ice,shade,rock=0xFFFFFF,0xC6EDF9,0x4587AD,0x164B7B
+    if not amoled:
+        # Design for fēnix's actual 2-bit-per-channel palette. Keep blue rock
+        # planes and white snow instead of quantizing the whole scene to grey.
+        if scene==2:top,bottom=0x0055FF,0xAAFFFF;snow,ice,shade,rock=0xFFFFFF,0xAAFFFF,0x5555AA,0x0055AA
+        elif scene==1:top,bottom=0x5555AA,0xFFAAAA
+        elif scene==3:top,bottom=0xAA5555,0xFFAA55
+    if aurora:
+        top,bottom=(0x061B45,0x215E7D) if night else (0x073B66,0x35BBBA)
+        snow,ice,shade,rock=0xF8FFF5,0xB6F0E5,0x438C9E,0x124567
+        if not amoled:top,bottom=(0x000055,0x005555) if night else (0x0055AA,0x55AAAA)
     def tint(c,target,amount):
         a=rgb(c);b=rgb(target);v=[round(x*(1-amount)+y*amount) for x,y in zip(a,b)]
         return (v[0]<<16)|(v[1]<<8)|v[2]
+    if holiday:
+        # Keep dawn/day/dusk/night differences and weather shading within each palette.
+        palette=PALETTES[holiday]
+        top,bottom,snow,ice,shade,rock=[tint(c,t,.95 if i<2 else .88) for i,(c,t) in enumerate(zip((top,bottom,snow,ice,shade,rock),palette))]
+        if night:
+            top=tint(top,0x030819,.45);bottom=tint(bottom,0x08182D,.35)
+        if not amoled:
+            top,bottom,snow,ice,shade,rock=MIP_PALETTES[holiday]
+            if night:top=tint(top,0x000055,.55);bottom=tint(bottom,0x000055,.35)
     if weather:
         target=(0x354C60 if night else 0x768D96)
         if weather==2:target=0x223B50 if night else 0x486574
@@ -63,9 +93,12 @@ def render(width,height,scene,mono=False,amoled=False,weather=0):
         color=tuple(round(v*(1-k)+z*k) for v,z in zip(a,b))
         if mono:color=(0,0,0) if night else (255,255,255)
         d.line((0,y,W,y),fill=color)
+    if aurora:aurora_sky(im,False)
+    else:backdrop(im,holiday,False)
     # Distant silhouettes, softened on colour screens and clean contours on MIP.
     far=[(-.1,.64),(.04,.43),(.10,.47),(.165,.37),(.23,.46),(.30,.41),(.39,.50),(.50,.43),(.59,.47),(.69,.37),(.74,.42),(.82,.35),(.89,.44),(1.1,.49),(1.1,1),(-.1,1)]
-    poly(far,0 if mono else (0x23445E if night else 0x7DAAB8))
+    far_color=tint(bottom,rock,.4) if holiday else (0x23445E if night else (0x55AAFF if not amoled else 0x80BDDA))
+    poly(far,far_color)
     if mono:line(far[:14],0xFFFFFF if night else 0,1)
     for x,y in [(.165,.37),(.69,.37),(.82,.35)]:
         poly([(x-.026,y+.040),(x,y),(x+.032,y+.045),(x+.01,y+.03),(x-.002,y+.022)],0xFFFFFF if mono else (0x7599AC if night else 0xD2E3E1))
@@ -86,10 +119,11 @@ def render(width,height,scene,mono=False,amoled=False,weather=0):
     if not mono:line([(.505,.249),(.502,.284),(.514,.322),(.52,.344)],0xFFFFFF,1)
     # Foreground glacier valley and rock walls continue behind the clock/data.
     glacier=[(.62,.56),(.67,.58),(.70,.68),(.61,.79),(.58,.88),(.71,1.06),(.43,1.06),(.52,.86),(.56,.74)]
-    poly(glacier,0 if mono else (0x15364D if night else 0x305D73))
+    valley=tint(rock,ice,.3) if holiday else (0x15364D if night else (0x5555AA if not amoled else 0x357B9F))
+    poly(glacier,valley)
     left=[(-.1,.57),(.03,.55),(.16,.65),(.28,.73),(.40,.85),(.46,1.1),(-.1,1.1)]
     right=[(1.1,.59),(.96,.61),(.88,.70),(.78,.80),(.68,.91),(.68,1.1),(1.1,1.1)]
-    poly(left,0 if mono else 0x0A2337);poly(right,0 if mono else 0x102D42)
+    poly(left,tint(rock,0x000025,.48));poly(right,tint(rock,0x001E44,.38))
     # Sparse contour accents at the edges, not a texture carpet under the numerals.
     if mono:
         line([(.0,.58),(.07,.63),(.13,.71)],0xFFFFFF,1)
@@ -103,14 +137,16 @@ def render(width,height,scene,mono=False,amoled=False,weather=0):
     if not mono:
         layer=Image.new('RGBA',(W,H));ld=ImageDraw.Draw(layer)
         for y in range(H):
-            k=max(0,min(1,(y/H-.46)/.48));alpha=round(115*k*k*(3-2*k))
+            k=max(0,min(1,(y/H-.57)/.40));alpha=round((72 if amoled else 35)*k*k*(3-2*k))
             ld.line((0,y,W,y),fill=(0,5,13,alpha))
         im=Image.alpha_composite(im.convert('RGBA'),layer).convert('RGB')
+    decorate(im,holiday,False)
     if ss!=1:im=im.resize((width,height),Image.Resampling.LANCZOS)
     if mono:return im.convert('1',dither=Image.Dither.NONE)
     if not amoled:
         palette=Image.new('P',(1,1))
-        palette.putpalette([0,0,0,85,85,85,170,170,170,255,255,255,85,170,170]+[0,0,0]*251)
+        colors=([r,g,b] for r in (0,85,170,255) for g in (0,85,170,255) for b in (0,85,170,255))
+        flat=[c for color in colors for c in color];palette.putpalette(flat+[0]*(768-len(flat)))
         return im.quantize(palette=palette,dither=Image.Dither.NONE)
     return im
 
@@ -134,13 +170,23 @@ def generate_resources(folder,width,height,mono,amoled):
     from pathlib import Path
     import hashlib
     folder.mkdir(exist_ok=True)
-    digest=hashlib.sha256(Path(__file__).read_bytes()+str((width,height,mono,amoled)).encode()).hexdigest()
+    digest=hashlib.sha256(Path(__file__).read_bytes()+Path(__file__).with_name('festival_art.py').read_bytes()+str((width,height,mono,amoled)).encode()).hexdigest()
     cache=folder/'sky-art.sha256'
-    if cache.exists() and cache.read_text()==digest and all((folder/f'sky-{i}.png').exists() for i in range(1,21)) and (folder/'sky-front.png').exists():return
+    count=20 if mono else 80
+    if cache.exists() and cache.read_text()==digest and all((folder/f'sky-{i}.png').exists() for i in range(1,21)) and all((folder/f'festival-{i}.png').exists() for i in range(1,count+1)) and all((folder/f'aurora-{i}.png').exists() for i in range(1,6 if mono else 21)) and (folder/'sky-front.png').exists():return
     for light in range(1,5):
         for weather in range(5):
             key=(light-1)*5+weather+1
             render(width,height,light,mono,amoled,weather).save(folder/f'sky-{key}.png')
+    for holiday in range(1,5):
+        for light in ([2] if mono else range(1,5)):
+            for weather in range(5):
+                key=(holiday-1)*(5 if mono else 20)+(0 if mono else (light-1)*5)+weather+1
+                render(width,height,light,mono,amoled,weather,holiday).save(folder/f'festival-{key}.png')
+    for light in ([2] if mono else range(1,5)):
+        for weather in range(5):
+            key=(0 if mono else (light-1)*5)+weather+1
+            render(width,height,light,mono,amoled,weather,aurora=True).save(folder/f'aurora-{key}.png')
     # Only the top 48 logical pixels can overlap cloud primitives on Instinct.
     # A 2-bit transparent foreground mask is much smaller than a full-frame overlay.
     if mono:

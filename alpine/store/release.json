@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "manifestAppId": "bb71078cce15417aa5425aa350817001",
+  "releaseKind": "first-public-release",
+  "runtimeLanguages": ["eng", "zhs"],
+  "storeLanguages": ["zh-TW", "zh-CN", "ja-JP", "id-ID", "ms-MY", "cs-CZ", "da-DK", "de-DE", "en-US", "es-ES", "fr-FR", "hr-HR", "it-IT", "hu-HU", "nl-NL", "nb-NO", "pl-PL", "pt-BR", "pt-PT", "sk-SK", "sl-SI", "fi-FI", "sv-SE", "el-GR", "ru-RU", "he-IL", "th-TH", "ko-KR"],
+  "storeAuthor": "cherryeveli",
+  "price": "free",
+  "advertising": false,
+  "privacy": "local-watch-data-no-developer-network",
+  "status": "preparing",
+  "legalConsent": "pending-at-submission"
+}
