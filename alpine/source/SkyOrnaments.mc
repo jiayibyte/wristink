@@ -1,4 +1,5 @@
 import Toybox.Graphics;
+import Toybox.Lang;
 import Toybox.Math;
 import Toybox.WatchUi;
 // Tiny original native-size sprites; no resources are loaded while disabled.
