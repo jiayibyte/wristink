@@ -40,10 +40,13 @@
   "price": "free",
   "advertising": false,
   "privacy": "local-watch-data-no-developer-network",
-  "status": "blocked-by-instinct2s-settings-return-memory-regression",
+  "status": "validated-signed-candidate-awaiting-action-time-legal-confirmation",
   "legalConsent": "pending-at-submission",
-  "packageSourceCommit": "cf71c95",
-  "packageSha256": "7ea2db6be4e30379923d26bdc9f161e122e1c797e955b8aa6f2c4d2541faf5ee",
+  "packageSourceCommit": "301136a",
+  "packageSha256": "dab1c2f79b79407e73e1a19811e62adae3e77a748b330e4e5046134e177d3da3",
   "hardwareVariants": 11,
-  "candidateUsableForSubmission": false
+  "candidateUsableForSubmission": true,
+  "signatureVerification": "Garmin SDK package and all product signatures verified",
+  "nativeRegressionTests": 68,
+  "storeSubmitted": false
 }

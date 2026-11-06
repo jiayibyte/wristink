@@ -1,0 +1,174 @@
+{
+  "sourceCommit": "301136a",
+  "timestamp": "2026-11-06T03:07:25.036111+00:00",
+  "nativeTests": [
+    {
+      "device": "instinct2s",
+      "passed": true,
+      "returncode": 1,
+      "tests": 34,
+      "sha256": "98c1c2bc433a4347e71f82d220c8c6fbe8c195ef913d1c3ed900c044d8ea7502"
+    },
+    {
+      "device": "epix2",
+      "passed": true,
+      "returncode": 1,
+      "tests": 34,
+      "sha256": "bcb470a90a3d81305231c808c107809651ae9242d3640b0c9322d2329bee5944"
+    }
+  ],
+  "normalHeapInstinct2s": {
+    "settingsTimeoutReturnCycles": 16,
+    "postCyclesUsedKB": 56.5,
+    "availableKB": 59.8,
+    "crossMinute": "passed",
+    "rainWithBothSkyDecorations": {
+      "bootFreeBytes": 2200,
+      "settingsTimeoutReturnCycles": 3,
+      "passed": true
+    },
+    "snowWithBothSkyDecorations": {
+      "bootFreeBytes": 2200,
+      "passed": true
+    },
+    "fullDataStormExpeditionBothOrnaments": {
+      "allSixPositionsVisible": true,
+      "bootFreeBytes": 2200,
+      "settingsTimeoutReturnCycles": 3,
+      "passed": true,
+      "programSha256": "27f7782cb26b2e7093383a3aebb5422f4196939f9fb65bf5a8b1a536730d2471",
+      "screenshot": "docs/verified-release/instinct2s-full-data-storm-expedition.png"
+    }
+  },
+  "programs": [
+    {
+      "path": "bin/Alpine-instinct2s-live.prg",
+      "sha256": "b24e909c7bc62ba1043cee9678223d5054fe650845c031b1042b07d692a8b148"
+    },
+    {
+      "path": "bin/Alpine-epix2-live.prg",
+      "sha256": "f6a76d2dee9c06c7dba6b7b4021f8b7f6c67bca5ad89eee876024a9d70b7b0ea"
+    },
+    {
+      "path": "bin/gallery/instinct2s/rain/Alpine.prg",
+      "sha256": "4e79e1c79556594cb82d3e002cc349e0a656162f36284018601446fdf084580f"
+    },
+    {
+      "path": "bin/gallery/instinct2s/snow/Alpine.prg",
+      "sha256": "469e76e0fdde0049e78c35267ba8263c9d20904ca8fe23b926b18abe9c2fbd0f"
+    }
+  ],
+  "physicalDeviceBatteryTest": false,
+  "packageAudit": "passed for all 11 hardware variants",
+  "amoled": {
+    "aodFramebufferAudit": "dist/evidence/aod-framebuffer-audit.json",
+    "wakeRecovery": "passed",
+    "settingsReturnCycles": 2
+  },
+  "signedPackageNativeRun": {
+    "device": "instinct2s",
+    "partNumber": "006-B4091-00",
+    "prgSha256": "b24e909c7bc62ba1043cee9678223d5054fe650845c031b1042b07d692a8b148",
+    "settingsTimeoutReturnCycles": 4,
+    "passed": true
+  },
+  "packageSha256": "dab1c2f79b79407e73e1a19811e62adae3e77a748b330e4e5046134e177d3da3",
+  "hardwareVariants": [
+    {
+      "partNumber": "006-B4091-00",
+      "device": "instinct2s",
+      "api": "3.2.7",
+      "sha256": "b24e909c7bc62ba1043cee9678223d5054fe650845c031b1042b07d692a8b148",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3889-00",
+      "device": "instinct2s",
+      "api": "3.4.2",
+      "sha256": "b24e909c7bc62ba1043cee9678223d5054fe650845c031b1042b07d692a8b148",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4394-00",
+      "device": "instinct2x",
+      "api": "3.4.3",
+      "sha256": "e6ad46c39a94d6bbad977cccca0acc0bbf5e5b9187d930293816cb352ba69e36",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3906-00",
+      "device": "fenix7",
+      "api": "5.2.0",
+      "sha256": "78bea7fa3d1e23be7fd840f085f11839bfc2a2a36fcc90382226a824ce778709",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3909-00",
+      "device": "fenix7",
+      "api": "5.2.0",
+      "sha256": "78bea7fa3d1e23be7fd840f085f11839bfc2a2a36fcc90382226a824ce778709",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3888-00",
+      "device": "instinct2",
+      "api": "3.4.2",
+      "sha256": "e6ad46c39a94d6bbad977cccca0acc0bbf5e5b9187d930293816cb352ba69e36",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4071-00",
+      "device": "instinct2",
+      "api": "3.2.7",
+      "sha256": "e6ad46c39a94d6bbad977cccca0acc0bbf5e5b9187d930293816cb352ba69e36",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3944-00",
+      "device": "epix2",
+      "api": "5.2.0",
+      "sha256": "f6a76d2dee9c06c7dba6b7b4021f8b7f6c67bca5ad89eee876024a9d70b7b0ea",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3943-00",
+      "device": "epix2",
+      "api": "5.2.0",
+      "sha256": "f6a76d2dee9c06c7dba6b7b4021f8b7f6c67bca5ad89eee876024a9d70b7b0ea",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4585-00",
+      "device": "instinct3solar45mm",
+      "api": "6.0.2",
+      "sha256": "c92a8d20a55b3eb5ee9d5bb7ede9d80f4b4dfc15d43c62f2d6abf52a820cba42",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4759-00",
+      "device": "instinct3solar45mm",
+      "api": "6.0.2",
+      "sha256": "c92a8d20a55b3eb5ee9d5bb7ede9d80f4b4dfc15d43c62f2d6abf52a820cba42",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    }
+  ],
+  "garminSdkSignatureVerification": "passed: IQ package and all product signatures",
+  "storeLocales": 28,
+  "runtimeLanguages": [
+    "eng",
+    "zhs"
+  ],
+  "storeSubmitted": false,
+  "legalConsent": "pending"
+}
