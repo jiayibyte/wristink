@@ -54,7 +54,7 @@ def save(im,name,limit):
  assert path.stat().st_size<limit,(name,path.stat().st_size)
  return path
 def main():
- DAY=R/'docs/verified-sky/epix2-sky-both.png';NIGHT=R/'docs/verified-sky/epix2-aurora.png'
+ DAY=R/'docs/verified-release/epix2-day-birds-plane.png';NIGHT=R/'docs/verified-release/epix2-aurora-birds-plane.png'
  # A single 500px cover, with a true 416px colour framebuffer.
  cover=canvas(500,500);sources=[face(cover,DAY,42,8)]
  text(cover,(250,438),'ALPINE',36,anchor='ma',bold=True);text(cover,(250,480),'MOUNTAIN SKINS',12,color='#9edbcc',anchor='ma')
@@ -76,15 +76,15 @@ def main():
  # Five global screenshot slots: several native scenes in each panel.
  PANELS=[
   ('01-displays.jpg','A mountain for every display','Original art, bold time, independent monochrome and colour layouts',[
-   ('AMOLED / DAY','docs/verified-sky/epix2-sky-both.png',True),('AMOLED / NIGHT','docs/verified-sky/epix2-aurora.png',True),('COLOUR MIP / FENIX 7','docs/verified-bright/fenix7-day-bright.png',True),('MONOCHROME MIP / INSTINCT','docs/verified-bright/instinct2s-day-default.png',False)]),
+   ('AMOLED / DAY','docs/verified-release/epix2-day-birds-plane.png',True),('AMOLED / NIGHT','docs/verified-release/epix2-aurora-birds-plane.png',True),('COLOUR MIP / FENIX 7','docs/verified-release/fenix7-day-birds-plane.png',True),('MONOCHROME MIP / INSTINCT','docs/verified-release/instinct2s-snow-birds-plane.png',False)]),
   ('02-backgrounds.jpg','18 backgrounds. Your choice stays.','Automatic weather, or pin your favourite. Birds and airplane are optional.',[
-   ('AURORA','docs/verified-sky/epix2-aurora.png',True),('RAIN SKIN','docs/verified-sky/epix2-rain.png',True),('SNOW SKIN','docs/verified-sky/epix2-snow.png',True),('DAWN','docs/sky-sunrise.png',True)]),
+   ('AURORA','docs/verified-release/epix2-aurora-birds-plane.png',True),('RAIN SKIN','docs/verified-sky/epix2-rain.png',True),('SNOW SKIN','docs/verified-sky/epix2-snow.png',True),('DAWN','docs/sky-sunrise.png',True)]),
   ('03-festivals.jpg','Four festivals, any time of year','Spring Festival · Christmas · Halloween · Mid-Autumn',[
    ('SPRING FESTIVAL','docs/verified-bright/epix2-spring.png',True),('CHRISTMAS','docs/verified-bright/epix2-christmas.png',True),('HALLOWEEN','docs/verified-bright/epix2-halloween.png',True),('MID-AUTUMN / NIGHT','docs/verified-bright/epix2-mid-autumn-night.png',True)]),
   ('04-your-data.jpg','Your data. Your layout.','6 Instinct / 7 colour data positions · 12 choices · 4 panel styles',[
    ('CLASSIC','docs/verified/verified-instinct3-classic.png',False),('CONTOUR','docs/verified/verified-instinct3-contour.png',False),('EXPEDITION','docs/verified/verified-instinct3-expedition.png',False),('SUMMIT WINGS','docs/verified/verified-instinct3-wings.png',False)]),
   ('05-everyday.jpg','Built for everyday use','12/24-hour time · Awake seconds · Moving Sun/Moon · Low-brightness AMOLED clock',[
-   ('12-HOUR / COLOUR','docs/verified-bright/epix2-day-bright.png',True),('24-HOUR / COLOUR','docs/verified-sky/epix2-sky-both.png',True),('SKY / NIGHT','docs/verified-sky/epix2-aurora.png',True),('ON-WATCH SETTINGS','docs/verified-bright/instinct2s-time24-menu.png',False)])]
+   ('12-HOUR / COLOUR','docs/verified-bright/epix2-day-bright.png',True),('24-HOUR / COLOUR','docs/verified-release/epix2-day-birds-plane.png',True),('AMOLED / ALWAYS-ON','docs/verified-release/epix2-aod-native.png',True),('ON-WATCH SETTINGS','docs/verified-bright/instinct2s-time24-menu.png',False)])]
  for name,title,subtitle,items in PANELS:
   im=canvas(1440,1280);text(im,(60,44),'ALPINE',24,color='#9edbcc',bold=True);text(im,(60,90),title,49,bold=True)
   for i,line in enumerate(lines(subtitle,font(24),1310)):text(im,(60,166+34*i),line,24,color='#c5d7df')
@@ -97,7 +97,7 @@ def main():
    sources.append(face(im,path,x,y,size,rounded));text(im,(i%cols*cellw+cellw//2,y+size+12),label,20,color='#a5e9db',anchor='ma',bold=True)
   footer='Native simulator captures · Demo data · Manual skins do not change actual weather data'
   text(im,(60,1230),footer,19,color='#a8b9c5')
-  path=save(im,name,148000);records.append({'file':name,'sources':sources,'historicalNativeCaptures':True,'freshCaptureReview':'pending Mac unlock; rendering layout unchanged by power-only changes'})
+  path=save(im,name,148000);records.append({'file':name,'sources':sources,'historicalNativeCaptures':any('verified-release' not in s['file'] for s in sources),'freshCaptureReview':'Source 301136a: fresh display-family, aurora and always-on captures; retained native festival and configuration examples.'})
  (OUT/'media-manifest.json').write_text(json.dumps(records,ensure_ascii=False,indent=2)+'\n')
  print('Prepared',len(records),'media assets: cover + 28 localized banners + 5 rich screenshot panels')
 

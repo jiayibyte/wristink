@@ -101,4 +101,4 @@ python3 tools/check_slot_settings.py instinct3solar45mm instinct2 instinct2s ins
 
 导出会重建可复现资源，保留区域 API 检查，使用统一代码空间优化，调用 Garmin SDK 验证 IQ 与产品签名。提交前另检查 IQ 中的全部硬件变体、设置与语言，排除演示/测试代码。许可证通知随程序资源保留，运行时不加载。
 
-性能与功耗策略见 [performance.md](docs/performance.md)。商店素材只使用实际模拟器画布，标注演示数据；全新常亮与运行时性能截图在解锁后复核。编译、模拟器验证、Git 提交、商店提交、审核和公开状态分别记录。
+性能与功耗策略见 [performance.md](docs/performance.md)。商店素材只使用实际模拟器画布，标注演示数据；最终正常堆、常亮/唤醒和新截图已完成原生复核，详见验证记录。编译、模拟器验证、Git 提交、商店提交、审核和公开状态分别记录。
