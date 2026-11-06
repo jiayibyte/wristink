@@ -169,6 +169,13 @@
     "eng",
     "zhs"
   ],
-  "storeSubmitted": false,
-  "legalConsent": "pending"
+  "storeSubmitted": true,
+  "legalConsent": "confirmed by user for this submission",
+  "storeStatus": "pending",
+  "storeUrl": "https://apps.garmin.com/zh-CN/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb",
+  "garminFileStatus": "Verified",
+  "garminSignatureStatus": "Verified",
+  "persistedStoreLocales": 28,
+  "persistedBanners": 28,
+  "screenshotPanels": 5
 }

@@ -40,13 +40,31 @@
   "price": "free",
   "advertising": false,
   "privacy": "local-watch-data-no-developer-network",
-  "status": "validated-signed-candidate-awaiting-action-time-legal-confirmation",
-  "legalConsent": "pending-at-submission",
+  "status": "submitted-pending-garmin-approval",
+  "legalConsent": {
+    "status": "confirmed-by-user",
+    "scope": "Alpine 1.0.0, cherryeveli account, Garmin Developer License Agreement and Terms of Use, free public release and 28 store languages",
+    "confirmedAt": "2026-11-06T03:39:02.900653+00:00"
+  },
   "packageSourceCommit": "301136a",
   "packageSha256": "dab1c2f79b79407e73e1a19811e62adae3e77a748b330e4e5046134e177d3da3",
   "hardwareVariants": 11,
   "candidateUsableForSubmission": true,
   "signatureVerification": "Garmin SDK package and all product signatures verified",
   "nativeRegressionTests": 68,
-  "storeSubmitted": false
+  "storeSubmitted": true,
+  "submittedAt": "2026-11-06T03:52:38.393424+00:00",
+  "storeAppId": "8fdd0374-78f0-4452-bfd7-9bfa9c1229eb",
+  "storeUrl": "https://apps.garmin.com/zh-CN/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb",
+  "garminFileStatus": "Verified",
+  "garminSignatureStatus": "Verified",
+  "storeLanguagesPersisted": 28,
+  "localizedBannersPersisted": 28,
+  "screenshotPanelsPersisted": 5,
+  "submitHttpStatus": 200,
+  "publicAvailability": {
+    "international": "Pending; owner-only preview, not yet publicly listed",
+    "china": "Detail page not visible at verification time; no direct China submission claimed"
+  },
+  "initialSignatureWarning": "Initial upload page said signature check failed. After successful submission, reopened details show Signature: Verified. No key change or package rewrite."
 }
