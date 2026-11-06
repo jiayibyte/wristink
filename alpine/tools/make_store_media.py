@@ -82,7 +82,7 @@ def main():
   ('03-festivals.jpg','Four festivals, any time of year','Spring Festival · Christmas · Halloween · Mid-Autumn',[
    ('SPRING FESTIVAL','docs/verified-bright/epix2-spring.png',True),('CHRISTMAS','docs/verified-bright/epix2-christmas.png',True),('HALLOWEEN','docs/verified-bright/epix2-halloween.png',True),('MID-AUTUMN / NIGHT','docs/verified-bright/epix2-mid-autumn-night.png',True)]),
   ('04-your-data.jpg','Your data. Your layout.','6 Instinct / 7 colour data positions · 12 choices · 4 panel styles',[
-   ('CLASSIC','docs/verified/verified-instinct3-classic.png',False),('CONTOUR','docs/verified/verified-instinct3-contour.png',False),('EXPEDITION','docs/verified/verified-instinct3-expedition.png',False),('SUMMIT WINGS','docs/verified/verified-instinct3-wings.png',False)]),
+   ('CLASSIC','docs/verified/verified-instinct3-classic.png',False),('CONTOUR','docs/verified/verified-instinct3-contour.png',False),('EXPEDITION / CUSTOM DATA','docs/verified-release/instinct2s-full-data-storm-expedition.png',False),('SUMMIT WINGS','docs/verified/verified-instinct3-wings.png',False)]),
   ('05-everyday.jpg','Built for everyday use','12/24-hour time · Awake seconds · Moving Sun/Moon · Low-brightness AMOLED clock',[
    ('12-HOUR / COLOUR','docs/verified-bright/epix2-day-bright.png',True),('24-HOUR / COLOUR','docs/verified-release/epix2-day-birds-plane.png',True),('AMOLED / ALWAYS-ON','docs/verified-release/epix2-aod-native.png',True),('ON-WATCH SETTINGS','docs/verified-bright/instinct2s-time24-menu.png',False)])]
  for name,title,subtitle,items in PANELS:

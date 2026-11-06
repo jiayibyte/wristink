@@ -713,16 +713,16 @@
         "sha256": "fc157a94713dc577f5e6e0275afcca92de02935cdc5c8e558013199b8a7020c5"
       },
       {
-        "file": "docs/verified/verified-instinct3-expedition.png",
+        "file": "docs/verified-release/instinct2s-full-data-storm-expedition.png",
         "nativeSize": [
-          176,
-          176
+          163,
+          156
         ],
         "displaySize": [
-          352,
-          352
+          326,
+          312
         ],
-        "sha256": "f6784a17356cad8f0bf1aa8241a62a4c6161fd542bcfe34b5e68523c8ee7173b"
+        "sha256": "62f2c1e298e7340d728ed41af2b5a9b6ce61adb5e2c5d05a49c3108b48478729"
       },
       {
         "file": "docs/verified/verified-instinct3-wings.png",
