@@ -11,12 +11,12 @@ class PowerTickProbe extends AlpineView {
 }
 (:test)
 function disabledSecondsAndSleepingTicksDoNoPainting(logger) {
- Settings.load();var seconds=Settings.seconds;Settings.seconds=false;
+ Settings.load();var seconds=Settings.seconds;
  var ref=null;var bitmap;
  if(Graphics has :createBufferedBitmap) {ref=Graphics.createBufferedBitmap({:width=>1,:height=>1});bitmap=ref.get();}
  else {bitmap=new Graphics.BufferedBitmap({:width=>1,:height=>1});}
  var dc=bitmap.getDc();
- var v=new PowerTickProbe();var now=Time.now().value();Data.heartAt=now;
+ var v=new PowerTickProbe();Settings.seconds=false;var now=Time.now().value();Data.heartAt=now;
  v._minute=(now/60).toNumber();v._second=-1;
  for(var i=0;i<20;i++) {v.onUpdate(dc);}
  Test.assertEqual(v.secondWrites,0);Test.assertEqual(v.metricWrites,0);Test.assertEqual(v.circleWrites,0);
@@ -26,12 +26,12 @@ function disabledSecondsAndSleepingTicksDoNoPainting(logger) {
 (:test)
 function aodReleasesLandscapeAndUsesOnlyMinuteClock(logger) {
  if(!Device.AMOLED) {return true;}
- Settings.load();var format=Settings.timeFormat;Settings.timeFormat=1;
+ Settings.load();var format=Settings.timeFormat;
  var ref=null;var bitmap;
  if(Graphics has :createBufferedBitmap) {ref=Graphics.createBufferedBitmap({:width=>1,:height=>1});bitmap=ref.get();}
  else {bitmap=new Graphics.BufferedBitmap({:width=>1,:height=>1});}
  var dc=bitmap.getDc();
- var v=new PowerTickProbe();v.onEnterSleep();
+ var v=new PowerTickProbe();Settings.timeFormat=1;v.onEnterSleep();
  var minute=Data.minute;var environment=Data.environmentAt;var heart=Data.heartAt;
  v.onUpdate(dc);Test.assertEqual(v.aodWrites,1);Test.assert(!v.last24);
  Test.assert(v._time==null);Test.assert(v._metric==null);Test.assert(v._circle==null);
@@ -60,7 +60,7 @@ function heartPatchTouchesOnlyConfiguredValueBoxes(logger) {
  else {bitmap=new Graphics.BufferedBitmap({:width=>1,:height=>1});}
  var dc=bitmap.getDc();var v=new MetricPatchProbe();v.metrics(dc,true);
  Test.assertEqual(v.restores,1);Test.assertEqual(v.labels,1);Test.assertEqual(v.painted,"80|");Test.assert(v.widest<50);Test.assertEqual(v.edges,0);Test.assertEqual(v.area,Device.MONO ? 35*12 : 43*21);
- Settings.left=1;Settings.right=1;var all=new MetricPatchProbe();all.metrics(dc,true);
+ var all=new MetricPatchProbe();Settings.left=1;Settings.middle=1;Settings.right=1;all.metrics(dc,true);
  Test.assertEqual(all.restores,3);Test.assertEqual(all.labels,3);Test.assertEqual(all.edges,0);
  v.releaseFaceResources();all.releaseFaceResources();Settings.left=l;Settings.middle=m;Settings.right=r;Data.steps=steps;Data.heart=heart;Data.calories=calories;
  return true;

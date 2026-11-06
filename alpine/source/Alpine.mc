@@ -11,7 +11,7 @@ class AlpineApp extends Application.AppBase {
     var view;
     function initialize() {AppBase.initialize();}
     function getInitialView() {if(Mode.DEMO) {Mode.refresh();}view=new AlpineView();return [view];}
-    function getSettingsView() {if(view!=null) {view.releaseFaceResources();}Settings.load();return [new SlotMenu(),new SlotMenuDelegate(view)];}
+    function getSettingsView() {if(view!=null) {view.prepareSettings();}Settings.load();var menu=new SlotMenu();return [menu,new SlotMenuDelegate(view,menu)];}
     function onSettingsChanged() {if(Mode.DEMO) {Mode.refresh();}if(view!=null) {view.settingsChanged();}}
 }
 
@@ -19,6 +19,7 @@ class AlpineView extends WatchUi.WatchFace {
     var _time;var _small;var _label;var _metric;var _circle;var _aod;
     var _background=null;var _artScene=-1;var _holiday=0;
     var _sleep=false;var _minute=-1;var _scene=2;var _second=-1;var _accent=0x66CCCC;var _logged=false;
+    var _settingsOpen=false;
     function initialize() {
         WatchFace.initialize();Settings.load();loadFonts();
     }
@@ -30,12 +31,14 @@ class AlpineView extends WatchUi.WatchFace {
         // Monochrome devices never enter the AMOLED AOD rendering path.
     }
     function settingsChanged() {Settings.load();_minute=-1;Data.minute=-1;Data.heartAt=-1;Data.environmentAt=-1;WatchUi.requestUpdate();}
-    function onShow() {_minute=-1;WatchUi.requestUpdate();}
+    function onShow() {_settingsOpen=false;_minute=-1;}
+    function releaseFonts() {_time=null;_small=null;_label=null;_metric=null;_circle=null;_aod=null;}
+    function prepareSettings() {_settingsOpen=true;_minute=-1;releaseFonts();}
     function releaseFaceResources() {
         _background=null;_artScene=-1;_minute=-1;
-        _time=null;_small=null;_label=null;_metric=null;_circle=null;_aod=null;
+        releaseFonts();
     }
-    function onHide() {releaseFaceResources();}
+    function onHide() {if(_settingsOpen) {releaseFonts();}else {releaseFaceResources();}}
     function onEnterSleep() {_sleep=true;_minute=-1;if(Device.AMOLED) {releaseFaceResources();}WatchUi.requestUpdate();}
     function onExitSleep() {_sleep=false;_minute=-1;Data.heartAt=-1;WatchUi.requestUpdate();}
     function max(a,b) {return a>b ? a : b;}
@@ -46,8 +49,7 @@ class AlpineView extends WatchUi.WatchFace {
     function rect(dc,x,y,w,h,c) {color(dc,c);dc.fillRectangle(p(x),p(y),p(x+w)-p(x),p(y+h)-p(y));}
     function disk(dc,x,y,r,c) {color(dc,c);dc.fillCircle(p(x),p(y),p(r));}
     function poly(dc,points as Array<Array<Numeric>>,c) {
-        var vertices=[];for(var i=0;i<points.size();i++) {vertices.add([p(points[i][0]),p(points[i][1])]);}
-        color(dc,c);dc.fillPolygon(vertices);
+        color(dc,c);dc.fillPolygon(points);
     }
     function text(dc,x,y,font,value,c) {
         var xx=p(x);var yy=p(y);
@@ -100,12 +102,15 @@ class AlpineView extends WatchUi.WatchFace {
             if(rr<=1 && skyPixel(cx+xx,cy+yy) && (!isMoon || flip*xx.toFloat()/radius*sine-Math.sqrt(1-rr)*cosine>0)) {dc.drawPoint(cx+xx,cy+yy);}
         }}
     }
-    function landscape(dc,minutes,stamp) {
-        Sky.refresh(stamp,minutes,Data.latitude,Data.longitude,Data.rise,Data.set);
+    function prepareBackground() {
         var key=Scene.resourceKey(_scene,_holiday);
         if(_artScene!=key || _background==null) {
             _background=null;_background=WatchUi.loadResource(LandscapeArt.id(key));_artScene=key;
         }
+    }
+    function landscape(dc,minutes,stamp) {
+        Sky.refresh(stamp,minutes,Data.latitude,Data.longitude,Data.rise,Data.set);
+        prepareBackground();
         dc.drawBitmap(0,0,_background);
         SkyOrnaments.draw(dc,Settings.skyDecor,stamp);
         var weather=Scene.effectiveWeather(_scene);var cover=Scene.clouds(_scene);
@@ -138,8 +143,8 @@ class AlpineView extends WatchUi.WatchFace {
             }
         }
         if(weather==WeatherStyle.STORM) {
-            if(Device.MONO) {poly(dc,[[30,20],[22,36],[28,34],[23,46],[38,29],[30,30]],0xFFFFFF);}
-            else {poly(dc,[[218,26],[200,51],[213,48],[201,69],[227,41],[215,43]],0xDAF4F5);}
+            if(Device.MONO) {poly(dc,[[p(30),p(20)],[p(22),p(36)],[p(28),p(34)],[p(23),p(46)],[p(38),p(29)],[p(30),p(30)]],0xFFFFFF);}
+            else {poly(dc,[[p(218),p(26)],[p(200),p(51)],[p(213),p(48)],[p(201),p(69)],[p(227),p(41)],[p(215),p(43)]],0xDAF4F5);}
         }
         if(_scene==8 && _holiday==0) {
             var colors=[0xEE9966,0xDDCC88,0x88BBAA];
@@ -150,7 +155,7 @@ class AlpineView extends WatchUi.WatchFace {
         // A tiny lit tent represents unread notifications in the foreground valley.
         if(Data.notifications!=null && Data.notifications>0) {
             var tx=Device.MONO ? 150 : 220;var ty=Device.MONO ? 84 : 132;
-            poly(dc,[[tx-4,ty],[tx,ty-4],[tx+4,ty]],Device.MONO ? 0xFFFFFF : 0xDBAE62);
+            poly(dc,[[p(tx-4),p(ty)],[p(tx),p(ty-4)],[p(tx+4),p(ty)]],Device.MONO ? 0xFFFFFF : 0xDBAE62);
         }
     }
     function firework(dc,x,y,c) {for(var i=0;i<12;i++) {var a=i*Math.PI/6;line(dc,x+4*Math.cos(a),y+4*Math.sin(a),x+11*Math.cos(a),y+11*Math.sin(a),c);}}
@@ -233,7 +238,7 @@ class AlpineView extends WatchUi.WatchFace {
             else if(Settings.panelStyle==2) {line(dc,outer,y,outer-dir*3,y-3,_accent);}
             else {
                 var x=outer-dir*2;
-                poly(dc,[[x,y-2],[x+2,y],[x,y+2],[x-2,y]],_accent);
+                poly(dc,[[p(x),p(y-2)],[p(x+2),p(y)],[p(x),p(y+2)],[p(x-2),p(y)]],_accent);
             }
         }
     }
@@ -266,10 +271,12 @@ class AlpineView extends WatchUi.WatchFace {
         var h=Mode.DEMO ? (Mode.MINUTES/60).toNumber() : clock.hour;var m=Mode.DEMO ? Mode.MINUTES%60 : clock.min;var sec=Mode.DEMO ? 16 : clock.sec;
         var is24=Settings.is24(sys.is24Hour);
         if(Device.AMOLED && _sleep) {if(_aod==null) {_aod=WatchUi.loadResource(Rez.Fonts.Aod);}aod(dc,h,m,is24);_minute=minute;return;}
-        if(_time==null) {loadFonts();}
         Data.refresh(now,sys);Sky.refresh(now.value(),h*60+m,Data.latitude,Data.longitude,Data.rise,Data.set);_scene=Scene.choose(h*60+m);
         var d=Gregorian.info(now,Time.FORMAT_SHORT);
         _holiday=Scene.holiday(d.year,d.month,d.day);_accent=Festival.accent(_holiday,accent(_scene));
+        // Reuse the background while menus are shown. If a skin changed, obtain
+        // its largest allocation before rebuilding the smaller font objects.
+        prepareBackground();if(_time==null) {loadFonts();}
         dc.clearClip();dc.setPenWidth(1);dc.setColor(0,0);dc.clear();landscape(dc,h*60+m,now.value());
         var x=Device.MONO ? 82 : 130;var y=Device.MONO ? 84 : 136;
         text(dc,x,y,_time,timeText(h,m,is24),0xFFFFFF);

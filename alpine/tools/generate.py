@@ -20,7 +20,7 @@ def generate():
         c=json.loads((PACKS/device/'compiler.json').read_text());s=json.loads((PACKS/device/'simulator.json').read_text())
         w,h=map(int,c['deviceFamily'].split('-')[-1].split('x'));mono=c['bitsPerPixel']==1;scale=h/176 if mono else w/260
         out=ROOT/'generated'/device;res=out/'resources';fonts=res/'fonts';fonts.mkdir(parents=True,exist_ok=True)
-        generate_panels(out,mono)
+        generate_panels(out,mono,scale)
         build_fonts(fonts,scale,mono,c['bitsPerPixel']==16)
         loc=s['display']['location'];sub=s.get('subscreen');cx=cy=radius=0
         if sub:

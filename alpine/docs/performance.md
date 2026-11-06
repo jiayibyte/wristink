@@ -9,7 +9,7 @@ This is a software/runtime policy audit. Simulator timings and font-mask pixel c
 | Heart-rate change | Repaint only heart-rate value boxes; circle if configured; full scene only for a sky header needing it | Keep the same row-wide fitting rule; do not repaint other labels, decorations or step progress |
 | MIP sleep | Normal minute updates; no continuous seconds | Same-minute callbacks return without reading clock/settings, sensors or painting |
 | AMOLED always-on | Dim clock only; four vertically separated positions rotated by minute | Release active landscape and face fonts; load only AOD font; no weather, location, sky or health refresh |
-| Hidden / settings menu | No face painting | Release face fonts/background before constructing the menu; reload on return |
+| Hidden / settings menu | No face painting | Release face fonts before constructing menus; retain the current background to avoid a second large allocation on return; clear inactive menu rows |
 
 The previous same-minute seconds-disabled path still restored the seconds rectangle. That operation is now absent. Device settings are no longer fetched on every active tick. Manual skins no longer trigger unused altitude/stress/activity/battery inputs solely for disabled automatic effects.
 
@@ -20,3 +20,5 @@ The logical background restoration area for one changed heart-rate footer value 
 Offline AOD font-mask audit covers all 12/24-hour combinations (2,880 frames). The conservative maximum is 1,722 nonzero-alpha pixels, 0.995% of a 416×416 canvas. Adjacent minute positions do not overlap in the 34px font height. This is not a device framebuffer or burn-in certification; native low-power validation is still a separate check.
 
 New native regressions cover disabled-seconds and sleeping ticks, AOD resource release/minute-only work, and heart-rate-only value patches. An SDK 9.2 optimizer error on conditional array constants was diagnosed with local compiler logs; equidistant footer coordinates and explicit lightning branches remove that trigger without changing the layout. Type checking and regional runtime API guards remain enabled.
+
+Fixed panel polygons are converted to merged native-pixel horizontal spans during generation. The native drawing path no longer allocates nested polygon arrays. A normal-memory Instinct 2S simulator completed 16 consecutive settings enter/timeout-return cycles and a minute transition without crashing; its post-cycle memory readout returned to 56.5/59.8 KB. This is simulator evidence, not a physical-device endurance result.

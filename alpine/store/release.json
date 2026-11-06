@@ -40,9 +40,10 @@
   "price": "free",
   "advertising": false,
   "privacy": "local-watch-data-no-developer-network",
-  "status": "signed-candidate-pending-native-validation-and-manual-unlock",
+  "status": "blocked-by-instinct2s-settings-return-memory-regression",
   "legalConsent": "pending-at-submission",
   "packageSourceCommit": "cf71c95",
   "packageSha256": "7ea2db6be4e30379923d26bdc9f161e122e1c797e955b8aa6f2c4d2541faf5ee",
-  "hardwareVariants": 11
+  "hardwareVariants": 11,
+  "candidateUsableForSubmission": false
 }
