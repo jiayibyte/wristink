@@ -1,8 +1,11 @@
 """English data fonts retain all existing glyph geometry and append missing Latin glyphs."""
 from pathlib import Path
-import copy,re,xml.etree.ElementTree as ET
-from font_rasterizer import METRICS,render_font,NOTO
-from PIL import ImageFont
+import copy,json,re,xml.etree.ElementTree as ET
+from font_rasterizer import METRICS,render_font
+
+# Preserve the published English advances across FreeType/Pillow versions.
+# Re-measuring fractional advances changed a few 8px/14px letters by one pixel.
+ADVANCES=json.loads((Path(__file__).resolve().parents[1]/'assets/fonts/english-advances.json').read_text())
 
 def generate(out,scale=1.0,circle_scale=None):
     out=Path(out);dest=out/'fonts';dest.mkdir(parents=True,exist_ok=True)
@@ -13,10 +16,10 @@ def generate(out,scale=1.0,circle_scale=None):
         size=int(re.search(r'\bsize=(\d+)',header[0])[1]);width=int(re.search(r'scaleW=(\d+)',header[1])[1])
         zero=next(e for e in spec['chars'] if e['id']==48);height=zero['height'];cap=zero['ink'][3]-zero['ink'][1]
         existing={e['id'] for e in spec['chars']}
-        font=ImageFont.truetype(str(NOTO),size)
         for char in (dict.fromkeys('SunMonTueWedThuFriSatAMPd') if name.startswith('data') else ['d']):
             if ord(char) in existing:continue
-            box=font.getbbox(char);w=max(2,min(size,round(font.getlength(char))))
+            w=ADVANCES[name][char]
+            if w<2 or w>size:raise ValueError(f'Invalid English advance: {name} {char}')
             e=dict(zero);e.update(id=ord(char),x=width,y=0,width=w+2,height=height,xoffset=-1,xadvance=w,ink=[1,zero['ink'][1],w+1,zero['ink'][1]+cap]);spec['chars'].append(e);width+=w+3
         header[1]=re.sub(r'scaleW=\d+','scaleW='+str(width),header[1]);METRICS[name]=spec
         try:render_font(name,dest,(circle_scale or scale) if name.startswith('circle') else scale)

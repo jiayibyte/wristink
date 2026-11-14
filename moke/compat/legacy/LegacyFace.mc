@@ -32,7 +32,12 @@ class InstinctFaceApp extends Application.AppBase {
     function initialize(){AppBase.initialize();}
     function onStart(state){}
     function getInitialView(){_view=new LegacyFace();return LegacyPower.views(_view);}
-    function getSettingsView(){if(_view!=null){_view.suspend();}return LegacyPower.settings();}
+    function getSettingsView(){
+        // Phone-only targets return no view. Suspending in that case leaves
+        // the face frozen because there is no menu to return from/onShow.
+        if(!LegacyPower.HAS_SETTINGS){return null;}
+        if(_view!=null){_view.suspend();}return LegacyPower.settings();
+    }
     function onSettingsChanged(){FacePrefs.reload();if(_view!=null){_view.invalidate();}WatchUi.requestUpdate();}
     function onStop(state){if(_view!=null){_view.invalidate();DeviceProfile.releaseHands(_view);}_view=null;FacePrefs.reload();}
 }

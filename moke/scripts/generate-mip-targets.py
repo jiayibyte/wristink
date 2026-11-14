@@ -205,7 +205,7 @@ function fontSize(key){var n=get(key+"Size");return n==0 ? get("dataSize") : n-1
     source+='    function trend(kind,now,minutes){'+('return TrendData.fetch(kind,now,minutes);' if api>=(2,1) else 'return {:values=>[],:range=>[null,null]};')+'}\n'
     source+='    function clock(moment){if(moment==null){return "--:--";}var d=Gregorian.info(moment,Time.FORMAT_SHORT);return d.hour.format("%02d")+":"+d.min.format("%02d");}\n}\n'
     folder.joinpath('LegacyExtras.mc').write_text(source)
-    source='import Toybox.WatchUi;\nmodule LegacyPower {function prepare(){'+('' if native_menu else 'FacePrefs.prepare();')+'}function views(view){return [view'+(',new LegacyPowerDelegate(view)' if api>=(2,3) else '')+'];}function settings(){'
+    source='import Toybox.WatchUi;\nmodule LegacyPower {const HAS_SETTINGS='+str(native_menu).lower()+';function prepare(){'+('' if native_menu else 'FacePrefs.prepare();')+'}function views(view){return [view'+(',new LegacyPowerDelegate(view)' if api>=(2,3) else '')+'];}function settings(){'
     source+=('var menu=new FaceSettingsMenu(0);return [menu,new FaceSettingsDelegate(menu,0)];' if native_menu else 'return null;')+'}}\n'
     if api>=(2,3):source+='class LegacyPowerDelegate extends WatchUi.WatchFaceDelegate {var _view;function initialize(view){WatchFaceDelegate.initialize();_view=view;}function onPowerBudgetExceeded(info){_view.budgetExceeded();}}\n'
     folder.joinpath('LegacyPower.mc').write_text(source)

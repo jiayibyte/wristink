@@ -44,3 +44,13 @@ SHA-256：`1cae628bd3b536be86d6cab4b3814d73a43c2fbd39129b1670ff5ddb7779bc4a`。
 当前仅本地候选，未上传、未回复评论、未创建 MR、未推送远端。它不是所有真机反馈均已解决的正式发布声明。详情见 `store-snapshot.json`、`evidence/package.json` 与每项原始日志。
 
 商店来源：[Moke 国际](https://apps.garmin.com/apps/08e3601d-b0b1-451a-a390-67543e39ae02)、[Moke 中国](https://apps.garmin.cn/apps/08e3601d-b0b1-451a-a390-67543e39ae02?tid=2)、[Retro World 国际](https://apps.garmin.com/apps/76e1c5f4-abe8-49ab-bcc0-44c2b1c1a267)、[Retro World 中国](https://apps.garmin.cn/apps/76e1c5f4-abe8-49ab-bcc0-44c2b1c1a267?tid=2)、[Alpine 国际](https://apps.garmin.com/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb)、[Alpine 中国](https://apps.garmin.cn/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb?tid=2)。完整/局部刷新约定参考 [Garmin WatchFace 文档](https://developer.garmin.com/connect-iq/api-docs/Toybox/WatchUi/WatchFace.html)。
+
+## 2026-11-14 商店提交结果
+
+Retro World 2.1.2 已上传并完成详情 Submit，Garmin 文件及签名均为 Verified。重新打开详情页，28 种语言更新说明及原有标题全部持久保存。后台 Latest app version 与国际区公开 Version 均为 2.1.2（Internal: 4）。国际区新增两条开发者回复：Andrei 与 Bubu；已核验可见，原有五条回复保留。
+
+中国区最后核对仍为 2.1.1。用户随后授权中国区登录；登录成功后，Retro World 与 Moke 评论页均只有“举报问题”操作，没有开发者回复控件；中国区 `/developer/dashboard` 返回首页。9 条回复保留为草稿，没有以普通用户评论冒充开发者回复，也没有把登录凭据写入文件。
+
+Garmin 官方论坛的团队回复确认了国际区到中国区的商店同步机制及曾出现过的同步阻塞：[官方团队同步说明](https://forums.garmin.com/developer/connect-iq/f/discussion/269016/app-updates-not-synced-to-iq-store-chinese-version/1676061)。这不证明本次延迟必然是同一故障。当前登录页面没有回复入口，与开发者报告的中国区评论回复限制一致：[开发者一手报告](https://forums.garmin.com/developer/connect-iq/f/discussion/385879/releasing-a-version-with-bug-fixes-will-lower-the-ranking-of-the-watch-face)。
+
+提交与回复证据见 `publication-status.json`、`publication-drafts.json` 和 `evidence/store-*.jpg`。上述提交状态取代前一节的“仅本地候选”状态；未定位的真机反馈仍不记为已解决。
