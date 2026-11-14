@@ -1,0 +1,14 @@
+{
+  "app_version": "1.2.0 source at origin/main e35ee3e",
+  "target": "instinct3solar45mm",
+  "simulated_api": "6.0.2",
+  "test_id": "isolated runtime probe v8, English, live data",
+  "observations": [
+    "Native menu Appearance > Dark background On -> Off, return twice: white theme applied",
+    "Kill App and launch same test ID: white theme retained",
+    "Official Application.Properties editor loaded with GARMIN/Settings/PROBE-settings.json",
+    "Initial editor attempt did not visibly update; a subsequent instrumented attempt invoked callback and rendered dark theme",
+    "Callback logs: PHONE_CALLBACK before=true; PHONE_CALLBACK after=true suspended=false; THEME_READ value=true suspended=false force=false revision=2"
+  ],
+  "conclusion": "Settings fault not stably reproduced; no runtime fix claimed. Physical watch, firmware and Connect IQ phone synchronization remain unverified."
+}

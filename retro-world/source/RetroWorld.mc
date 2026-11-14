@@ -27,7 +27,7 @@ class RetroWorldDelegate extends WatchUi.WatchFaceDelegate {
 class RetroWorldView extends WatchUi.WatchFace {
     var _aod;var _dial;var _large;var _date;var _weekdays;var _circle;var _letters;var _weather;
     var _tiny;var _medium;var _weatherFont;var _environmentWake=true;
-    var _minute=-1;var _logged=false;var _sleeping=false;
+    var _minute=-1;var _dataMinute=-1;var _logged=false;var _sleeping=false;
     var _hour=0;var _min=0;var _reportedMinute=-1;var _visibleSecond=-1;
     var _circleBuffer;var _secSprites as Array<WatchUi.BitmapResource> = [];var _xs as Array<Number> = [];var _ys as Array<Number> = [];
     var _oldSecond=-1;var _lastSecond=-1;var _partialBlocked=false;
@@ -62,8 +62,8 @@ class RetroWorldView extends WatchUi.WatchFace {
         }
         SolarMap.initialize();
     }
-    function onShow() {_minute=-1;_environmentWake=true;_partialBlocked=false;}
-    function settingsChanged() {_minute=-1;_environmentWake=true;_partialBlocked=false;_partialHeartAllowed=true;}
+    function onShow() {_minute=-1;_dataMinute=-1;_environmentWake=true;_partialBlocked=false;}
+    function settingsChanged() {_dataMinute=-1;_minute=-1;_environmentWake=true;_partialBlocked=false;_partialHeartAllowed=true;}
     function partialBudgetExceeded() {
         _partialBlocked=true;
         // The OS can stop partial callbacks after a violation. Wait for user
@@ -79,7 +79,7 @@ class RetroWorldView extends WatchUi.WatchFace {
     }
     function onEnterSleep() {
         _sleeping=true;
-        if(DeviceProfile.COLOR) {_minute=-1;WatchUi.requestUpdate();}
+        if(DeviceProfile.COLOR || !FaceSettings.continuous) {_minute=-1;WatchUi.requestUpdate();}
         // The OS owns gesture duration. Supported MIP targets continue via
         // onPartialUpdate; AMOLED retains its independent minute-based AOD.
         if(PreviewMode.DIAGNOSTIC) {Performance.log("RETRO_SECONDS_SLEEP held="+_visibleSecond);}
@@ -128,7 +128,7 @@ class RetroWorldView extends WatchUi.WatchFace {
     function paintCircle(dc,s) {
         dc=DeviceDrawing.circle(dc);
         var circleBuffer=DeviceDrawing.resolve(_circleBuffer);
-        if(DeviceProfile.COLOR && (circleBuffer has :isCached) && !circleBuffer.isCached()) {buildCircle();}
+        if((circleBuffer has :isCached) && !circleBuffer.isCached()) {buildCircle();}
         // Cached hour/minute dial; erase only the OLD needle's small bounding box.
         if(_oldSecond<0) {dc.setClip(125,12,39,39);dc.drawBitmap(125,12,circleBuffer);}
         else {
@@ -207,6 +207,12 @@ class RetroWorldView extends WatchUi.WatchFace {
         if(DeviceProfile.COLOR || !FaceSettings.continuous || _partialBlocked || _minute<0 || !_sleeping) {return;}
         // Wait for the top-of-minute full frame before using its cached hands.
         if(_minute!=(stamp/60).toNumber()) {return;}
+        // A purged dial must be rebuilt by a full callback, never inside the
+        // restricted partial-update budget.
+        if(FaceSettings.showNeedle && _circleBuffer!=null) {
+            var cached=DeviceDrawing.resolve(_circleBuffer);
+            if((cached has :isCached) && !cached.isCached()) {_minute=-1;return;}
+        }
         _visibleSecond=sec;
         dc=DeviceDrawing.target(dc);
         // Reserve the tight MIP budget for the two seconds displays. Current HR
@@ -234,10 +240,8 @@ class RetroWorldView extends WatchUi.WatchFace {
     function updateAt(dc,now,clock) {
         var stamp=(now.value()/60).toNumber();
         if(DeviceProfile.COLOR && _sleeping) {
-            if(stamp!=_minute) {
-                var is24=FaceSettings.is24(System.getDeviceSettings().is24Hour);
-                AlwaysOn.draw(dc,_aod,is24 ? clock.hour : (clock.hour%12==0 ? 12 : clock.hour%12),clock.min,stamp);_minute=stamp;
-            }
+            var is24=FaceSettings.is24(System.getDeviceSettings().is24Hour);
+            AlwaysOn.draw(dc,_aod,is24 ? clock.hour : (clock.hour%12==0 ? 12 : clock.hour%12),clock.min,stamp);_minute=stamp;
             return;
         }
         dc=DeviceDrawing.target(dc);
@@ -246,14 +250,17 @@ class RetroWorldView extends WatchUi.WatchFace {
         if(!_sleeping || _visibleSecond<0 || FaceSettings.continuous) {_visibleSecond=clock.sec;}
         var sec=_visibleSecond;
         _hour=hr;_min=mn;
-        if(_minute==stamp) {
-            if(_sleeping) {return;}
-            tick(dc,now.value(),sec);return;
-        }
+        // onUpdate supplies a full frame: LCD/AMOLED back buffers and the
+        // Instinct sub-screen need not retain the previous callback's pixels.
+        // Only onPartialUpdate may rely on the existing frame. Keep expensive
+        // data reads minute-cached independently of drawing.
         var date=Gregorian.info(now,Time.FORMAT_SHORT);
         var settings=System.getDeviceSettings();
-        LiveData.refresh(now.value(),settings);
-        Environment.refresh(now,_environmentWake);_environmentWake=false;
+        if(_dataMinute!=stamp) {
+            LiveData.refresh(now.value(),settings);
+            Environment.refresh(now,_environmentWake);_environmentWake=false;
+            _dataMinute=stamp;
+        } else if(!_sleeping && FaceSettings.hasHeart()) {LiveData.refreshTickHeart(now.value());}
         var is24=FaceSettings.is24(PreviewMode.ENABLED ? false : settings.is24Hour);
         var shown=FaceSettings.shownHour(hr,is24);
         dc.clearClip();dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();dc.setPenWidth(1);
@@ -277,9 +284,11 @@ class RetroWorldView extends WatchUi.WatchFace {
         metrics(dc);
         if(FaceSettings.showMap) {SolarMap.paint(dc,now);}
         else {dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.fillRectangle(17,56,89,29);}
-        buildCircle();paintCircle(dc,sec);seconds(dc,sec);_minute=stamp;
+        buildCircle();paintCircle(dc,sec);
+        if(!_sleeping || FaceSettings.continuous) {seconds(dc,sec);}
+        _minute=stamp;
         if(PreviewMode.DIAGNOSTIC && !_logged) {
-            Performance.log("RETRO_FRAME_OK version=2.1.1 demo="+PreviewMode.ENABLED+" free="+System.getSystemStats().freeMemory+" hour="+hr+" minute="+mn+" month="+month+" day="+day+" weekday="+weekday+" mode24="+is24+" data="+(PreviewMode.ENABLED ? "fixture" : "garmin")+" configurable_seconds=true map_skin="+SolarMap.skin+" weather_kind="+Environment.category(Environment.condition)+" location_source="+Environment.source+" sunrise="+Environment.sunrise+" sunset="+Environment.sunset);
+            Performance.log("RETRO_FRAME_OK version=2.1.2 demo="+PreviewMode.ENABLED+" free="+System.getSystemStats().freeMemory+" hour="+hr+" minute="+mn+" month="+month+" day="+day+" weekday="+weekday+" mode24="+is24+" data="+(PreviewMode.ENABLED ? "fixture" : "garmin")+" configurable_seconds=true map_skin="+SolarMap.skin+" weather_kind="+Environment.category(Environment.condition)+" location_source="+Environment.source+" sunrise="+Environment.sunrise+" sunset="+Environment.sunset);
             _logged=true;
         }
         if(PreviewMode.DIAGNOSTIC && _reportedMinute!=stamp) {

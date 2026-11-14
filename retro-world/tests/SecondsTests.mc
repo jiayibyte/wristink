@@ -15,23 +15,13 @@ class SecondsDrawingProbe extends RetroWorldView {
 }
 
 (:test)
-function sleepStopsBothSecondWritesAndWakeResumesThem(logger) {
+function sleepHidesGestureSecondsAndWakeRequestsFullFrame(logger) {
     FaceSettings.continuous=false;
-    var view=new SecondsDrawingProbe();var now=Time.now().value();
-    view._minute=(now/60).toNumber();LiveData.heartAt=now;
-    view.onUpdate(null);
-    Test.assertEqual(view.digitWrites,1);Test.assertEqual(view.needleWrites,1);
-    var held=view._visibleSecond;
-    view.onEnterSleep();view._minute=(Time.now().value()/60).toNumber();
-    view.onUpdate(null);view.onUpdate(null);
-    Test.assertEqual(view.digitWrites,1);Test.assertEqual(view.needleWrites,1);
-    Test.assertEqual(view._visibleSecond,held);
+    var view=new SecondsDrawingProbe();
+    view._visibleSecond=17;view._minute=100;
+    view.onEnterSleep();
+    Test.assert(view._sleeping);Test.assertEqual(view._minute,-1);
     view.onExitSleep();Test.assert(!view._sleeping);Test.assertEqual(view._minute,-1);
-    // Simulate completion of the requested full-frame refresh, then test awake ticks.
-    view._minute=(Time.now().value()/60).toNumber();LiveData.heartAt=Time.now().value();
-    view.onUpdate(null);
-    Test.assertEqual(view.digitWrites,2);Test.assertEqual(view.needleWrites,2);
-    Test.assert(view.writtenSecond>=0 && view.writtenSecond<=59);
     FaceSettings.continuous=true;return true;
 }
 
@@ -138,4 +128,46 @@ function phonePropertiesLoadAndInvalidateTheExistingView(logger) {
     Test.assertEqual(view._minute,-1);Test.assert(!view._partialBlocked);Test.assert(view._environmentWake);
     for(var j=0;j<keys.size();j++) {Application.Properties.setValue(keys[j],old[j]);}
     FaceSettings.load();return true;
+}
+
+// A complete frame must be redrawn even if the minute has not changed.
+// This emulates an LCD/AMOLED back buffer discarded by the OS, and the
+// separately refreshed Instinct sub-screen after returning to the face.
+class FullFrameDcProbe {
+    var clears=0;
+    function clearClip() {}
+    function setClip(x,y,w,h) {}
+    function setColor(ink,paper) {}
+    function setPenWidth(width) {}
+    function clear() {clears++;}
+    function drawBitmap(x,y,bitmap) {}
+    function fillRectangle(x,y,w,h) {}
+    function drawLine(x,y,xx,yy) {}
+}
+class FullFrameViewProbe extends SecondsDrawingProbe {
+    var frames=0;
+    function initialize() {SecondsDrawingProbe.initialize();}
+    function number(dc,atlas,n,x,y,w,h) {}
+    function letters(dc,word,x,y,spacing) {}
+    function metrics(dc) {frames++;}
+    function buildCircle() {_lastSecond=-1;_oldSecond=-1;}
+}
+class FrameClockProbe {
+    var hour=14;var min=20;var sec=17;
+}
+(:test)
+function fullCallbacksRestoreStaticContentButGestureSleepOmitsSeconds(logger) {
+    var savedSlots=FaceSettings.slots;
+    FaceSettings.slots=[0,0,0,0,0,0,0,0,0];FaceSettings.showDate=false;FaceSettings.showMap=false;
+    var now=Time.now();var view=new FullFrameViewProbe();var dc=new FullFrameDcProbe();var clock=new FrameClockProbe();
+    view._dataMinute=(now.value()/60).toNumber();
+    view.updateAt(dc,now,clock);view.updateAt(dc,now,clock);
+    Test.assertEqual(view.frames,2);Test.assertEqual(dc.clears,2);
+    Test.assertEqual(view.digitWrites,2);Test.assertEqual(view.needleWrites,2);
+    FaceSettings.continuous=false;view._sleeping=true;
+    if(!DeviceProfile.COLOR) {
+        view.updateAt(dc,now,clock);Test.assertEqual(view.frames,3);
+        Test.assertEqual(view.digitWrites,2);Test.assertEqual(view.needleWrites,3);
+    }
+    FaceSettings.slots=savedSlots;FaceSettings.load();return true;
 }

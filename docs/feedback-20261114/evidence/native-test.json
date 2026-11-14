@@ -1,0 +1,30 @@
+[
+  {
+    "device": "fr55",
+    "passed": true,
+    "mode": "test",
+    "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/retro-world/bin/probes/test/fr55.log",
+    "prg_sha256": "d700f2d3907b167f97212e5fb2a709cb5678b535ff84a5a439b5d8ed72f07899"
+  },
+  {
+    "device": "venusq",
+    "passed": true,
+    "mode": "test",
+    "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/retro-world/bin/probes/test/venusq.log",
+    "prg_sha256": "34d411cee9725e3101694c2ef9a9b3acf496358baa3d341d10b9eea845251b6c"
+  },
+  {
+    "device": "instinct2",
+    "passed": true,
+    "mode": "test",
+    "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/retro-world/bin/probes/test/instinct2.log",
+    "prg_sha256": "d6eae96c02617602215f9d48b07bfa2414829f71bb4a7055e0ffbf0de881c5f5"
+  },
+  {
+    "device": "venux1",
+    "passed": false,
+    "mode": "test",
+    "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/retro-world/bin/probes/test/venux1.log",
+    "prg_sha256": "fbde3f66c8fc34baeec5f60689b4117d8b0c87bbdf1864e356c048653a783d93"
+  }
+]

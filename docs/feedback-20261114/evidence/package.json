@@ -1,0 +1,14 @@
+{
+  "version": "2.1.2",
+  "package": "retro-world/dist/RetroWorld-2.1.2.iq",
+  "sha256": "1cae628bd3b536be86d6cab4b3814d73a43c2fbd39129b1670ff5ddb7779bc4a",
+  "settings_validation": {
+    "passed": true,
+    "hardware_variants": 183,
+    "settings_per_variant": 21,
+    "sha256": "1cae628bd3b536be86d6cab4b3814d73a43c2fbd39129b1670ff5ddb7779bc4a"
+  },
+  "status": "local candidate, not uploaded or publicly available",
+  "sdk_signature_verification": "Passed: VerifyingUtils.verifyIqFile, IQ package and all product signatures",
+  "sdk": "9.2.0"
+}
