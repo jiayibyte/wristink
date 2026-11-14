@@ -1,9 +1,9 @@
 // Logical pixels on the 176 x 176 display. Insets also account for the sloped mask.
 module FaceLayout {
     const WIND_X = 88;
-    const MOON_X = 76;
+    const MOON_X = 92;
     const MOON_Y = 37;
-    const POWER_ROW_Y = 28;
+    const POWER_ROW_Y = 29;
     const POWER_ROW_WIDTH = 58;
     const MOVE_X = 70;
     const MOVE_COMPACT_X = 67;
@@ -38,5 +38,5 @@ module FaceLayout {
     const HEART_ICON_Y = 11;
     const HEART_VALUE_Y = 26;
     const HEART_SMALL_VALUE_Y = 27;
-    const TIME_Y = 72;
+    const TIME_Y = 71;
 }

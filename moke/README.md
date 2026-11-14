@@ -1,8 +1,8 @@
-# Moke 1.1.1 候选修复
+# Moke 1.2.0 候选版
 
-本轮尚未提交商店。区域兼容生成改为使用同一机型所有硬件变体中的最低 Connect IQ API，而非设备组版本；日出日落调用增加能力检查。Instinct 2/2S 的部分区域变体为 API 3.2.7，不能无条件调用 3.3 的太阳接口。缺失接口时显示空值，不能冒充已经获取数据。
+本轮采用 Dosis 圆角数字，统一时间、数据和圆窗数字风格。默认右侧显示身体电量，减少活动条和风向箭头的视觉密度；94 项设置键和 28 种数据选项继续保留。仅完整旧默认卡片组合会迁移到新布局，自定义卡片和数据选择保留。
 
-默认语言资源改为英文，简体中文仍使用原中文资源。这样其他系统语言不再回退成中文；中文和英文字形、94 项设置的键与默认值保留。`check-iq-package.py` 检查签名包内默认英文与中文两套设置文本。
+表盘和设置仍只支持简体中文与英文，其他手表语言回退到英文。国际化仅针对商店的标题、说明和更新文案，资料见 `store-listings/`。设置写入前释放字体缓存，加入生命周期保存与升级迁移回归；模拟器通过不能代替评论者的真机确认。地区最低 API 和太阳接口兼容策略沿用 1.1.1。
 
 ---
 
@@ -16,7 +16,7 @@
 
 ```sh
 # 从仓库根目录运行：仅构建 Instinct 3 Solar 45 / 50 mm
-zsh moke/scripts/build-instinct3.sh 1.1.0
+zsh moke/scripts/build-instinct3.sh 1.2.0
 ```
 
 正式侧载包为 `moke/bin/Moke-Instinct3.prg`，演示包为 `moke/bin/Moke-Instinct3-demo.prg`，商店包输出到 `moke/dist/`。两个尺寸使用同一个 SDK 构建目标；演示包包含模拟数据和独立应用 ID。
@@ -24,7 +24,7 @@ zsh moke/scripts/build-instinct3.sh 1.1.0
 全 MIP 目标构建需要通过 SDK Manager 安装所需设备包。下列脚本会重新生成派生代码、位图资源、设备清单与 jungle 配置，并执行资源检查：
 
 ```sh
-zsh moke/scripts/build-store.sh 1.1.0
+zsh moke/scripts/build-store.sh 1.2.0
 ```
 
 `scripts/build.sh` 和 `scripts/build-preview.sh` 直接使用 `monkey.jungle` / `preview.jungle`，需先存在对应的 `generated/` 资源；全机型派生资源可用 `python3 moke/scripts/generate-mip-targets.py` 生成。该生成器依据本机已安装的设备包运行，结果可能随 SDK 设备库变化。

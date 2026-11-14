@@ -13,19 +13,17 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parents[1]
 METRICS = json.loads((ROOT / 'assets/fonts/layout-metrics.json').read_text())
 NOTO = ROOT / 'assets/fonts/NotoSansCJKsc-Regular.otf'
-REFERENCE_MEDIUM = ROOT / 'assets/fonts/Rajdhani-Medium.ttf'
-REFERENCE_SEMIBOLD = ROOT / 'assets/fonts/Rajdhani-SemiBold.ttf'
+REFERENCE_MEDIUM = ROOT / 'assets/fonts/Dosis[wght].ttf'
+REFERENCE_SEMIBOLD = REFERENCE_MEDIUM
 
 
 def reference_digit(char, width, height, weight=0, small=False, clock=False):
     """Rasterize the reference-style narrow, softly squared numeral outlines."""
-    if char=='4' and not small:
-        # The reference uses an upright open four, rather than a long diagonal.
-        return digit(char,width,height,weight,small,clock)
     # Small labels already have one-pixel stems; retain their proven hinting.
     ss=4 if small or clock else 8
     path=REFERENCE_SEMIBOLD if weight==1 or clock else REFERENCE_MEDIUM
     font=ImageFont.truetype(str(path), max(16, round(height/.65))*ss)
+    font.set_variation_by_axes([740 if weight==1 else (650 if clock else 580)])
     box=font.getbbox(char)
     source=Image.new('L',(max(1,box[2]-box[0]),max(1,box[3]-box[1])))
     ImageDraw.Draw(source).text((-box[0],-box[1]),char,font=font,fill=255)
@@ -139,6 +137,10 @@ def text_glyph(char, width, height, size, bold=False):
 
 def render_font(name, dest, scale=1.0):
     """Preserve per-device advance/clip geometry and rasterize at native pixels."""
+    # The plot's 4x7 master must not collapse to a 2/3-column glyph: that
+    # removes the middle bar and makes 0 indistinguishable from 8.
+    if name=='chart':
+        scale=max(1.0,scale)
     spec = METRICS[name]
     header = list(spec['header'])
     number = lambda v: round(v*scale)
@@ -238,7 +240,7 @@ def render_font(name, dest, scale=1.0):
         rgba.putalpha(tile)
         atlas.paste(rgba, (e['x'], e['y']))
         entries.append('char '+' '.join(f'{k}={v}' for k, v in e.items()))
-    header[0] = re.sub(r'face="[^"]+"', f'face="Moke Reference {name}"', header[0])
+    header[0] = re.sub(r'face="[^"]+"', f'face="Moke Rounded {name}"', header[0])
     for i, line in enumerate(header):
         for key in ('size', 'lineHeight', 'base', 'scaleW', 'scaleH'):
             line = re.sub(r'\b'+key+r'=(-?\d+)', lambda m: key+'='+str(number(int(m[1]))), line)

@@ -1,4 +1,4 @@
-"""Check bilingual release resources without changing the approved layout or defaults."""
+"""Check English/Chinese resources and identical numeric glyphs in both locales."""
 from pathlib import Path
 import json,re,xml.etree.ElementTree as ET
 from PIL import Image,ImageChops
@@ -16,9 +16,9 @@ for path in (R/'resources-eng/config').glob('options-*.json'):
     if len(b)>12:
         packed=json.loads(path.with_name(path.name.replace('options-','labels-')).read_text());width=len(packed)//len(b)
         assert [packed[i*width:(i+1)*width].rstrip() for i in range(len(b))]==b
-prior=json.loads((R/'releases/instinct3-before-fine-pass-2026-10-27/config/settings-catalog.json').read_text())
-assert [(r['key'],r['type'],r['default'],r['min'],r['max']) for r in schema['settings']]==[(r['key'],r['type'],r['default'],r['min'],r['max']) for r in prior['settings']]
-assert (R/'source/FaceLayout.mc').read_bytes()==(R/'releases/instinct3-before-fine-pass-2026-10-27/source/FaceLayout.mc').read_bytes()
+defaults={r['key']:r['default'] for r in schema['settings']}
+assert defaults['sideData']==19 and defaults['topCardImage']==0 and defaults['bottomCardImage']==0
+assert defaults['showMoveBar'] is False and defaults['showWind'] is False
 checks=0
 for path in (R/'resources-eng/fonts').glob('dataf*.fnt'):
     def glyphs(p):return {int(m['id']):m for line in p.read_text().splitlines() if line.startswith('char id=') for m in [dict((k,int(v)) for k,v in re.findall(r'(\w+)=(-?\d+)',line))]}
@@ -32,9 +32,5 @@ for path in (R/'resources-eng/fonts').glob('dataf*.fnt'):
     for text in ['10/19 Mon','10/19 Wed','Mon 10/19','2026/10/19','AM','PM','28d']:
         assert all(ord(c) in enchars for c in text)
     checks+=1
-# Main time pixels remain the approved bold 1.0.9/1.0.10 glyphs.
-for path in (R/'resources/fonts').glob('time*.png'):
-    prior=R/'releases/instinct3-before-fine-pass-2026-10-27/resources/fonts'/path.name
-    assert prior.read_bytes()==path.read_bytes(),path
-result=dict(status='passed',settings=94,groups=13,languages=['zhs','eng'],english_data_fonts=checks,unchanged_chinese_glyphs=True,unchanged_bold_time=True,scope='Generated bilingual resources and font geometry; device runtime checked separately.')
+result=dict(status='passed',settings=94,groups=13,languages=['zhs','eng'],english_data_fonts=checks,identical_numeric_glyphs=True,rounded_clean_defaults=True,scope='Generated resource parity and font geometry; device runtime checked separately.')
 (R/'bin/english-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(result)

@@ -85,6 +85,33 @@ function settingsBoundsMatchCatalog(logger){
 }
 
 (:test)
+function changedSettingsSurviveLifecycle(logger){
+    var dark=Application.Properties.getValue("darkTheme");var time=Application.Properties.getValue("timeFormat");
+    FacePrefs.set("darkTheme",false);FacePrefs.set("timeFormat",1);
+    Application.getApp().onSettingsChanged();
+    Test.assertEqual(FacePrefs.flag("darkTheme"),false);Test.assertEqual(FacePrefs.get("timeFormat"),1);
+    Application.getApp().onStop(null);Application.getApp().onStart(null);
+    Test.assertEqual(FacePrefs.flag("darkTheme"),false);Test.assertEqual(FacePrefs.get("timeFormat"),1);
+    Application.Properties.setValue("darkTheme",dark);Application.Properties.setValue("timeFormat",time);FacePrefs.reload();return true;
+}
+
+(:test)
+function visualUpgradePreservesCustomSettings(logger){
+    var keys=["topCardImage","bottomCardImage","sideData","sideSize","showMoveBar","showWind"];
+    var old=[];for(var i=0;i<keys.size();i++){old.add(Application.Properties.getValue(keys[i]));}
+    var marker=Application.Storage.getValue("roundedLayoutV7");
+    Application.Storage.setValue("roundedLayoutV7",false);
+    Application.Properties.setValue("topCardImage",1);Application.Properties.setValue("bottomCardImage",2);Application.Properties.setValue("sideData",0);
+    FacePrefs.migrate();Test.assertEqual(FacePrefs.get("sideData"),19);Test.assertEqual(FacePrefs.flag("showMoveBar"),false);
+    FacePrefs.set("topCardImage",8);FacePrefs.set("bottomCardImage",9);FacePrefs.set("sideData",7);FacePrefs.set("showWind",true);
+    FacePrefs.migrate();Test.assertEqual(FacePrefs.get("topCardImage"),8);Test.assertEqual(FacePrefs.get("bottomCardImage"),9);Test.assertEqual(FacePrefs.get("sideData"),7);Test.assertEqual(FacePrefs.flag("showWind"),true);
+    Application.Storage.setValue("roundedLayoutV7",false);FacePrefs.migrate();Test.assertEqual(FacePrefs.get("topCardImage"),8);Test.assertEqual(FacePrefs.get("sideData"),7);
+    for(var i=0;i<keys.size();i++){Application.Properties.setValue(keys[i],old[i]);}
+    if(marker==null){Application.Storage.deleteValue("roundedLayoutV7");}else{Application.Storage.setValue("roundedLayoutV7",marker);}
+    FacePrefs.reload();return true;
+}
+
+(:test)
 function rootMenuPagination(logger){
     var expected=[8,9,3]; // Six groups plus navigation/reset, then the last group.
     for(var page=0;page<3;page++){

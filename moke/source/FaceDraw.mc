@@ -107,10 +107,10 @@ module FaceDraw {
     }
     (:extendedCode)
     function sideData(dc,kind,value){
-        dc.setClip(136,73,35,30);dc.setColor(foreground,background);
-        if(FacePrefs.flag("showIcons")){icon(dc,kind,146,73,foreground,background);}
-        var font=FontCatalog.fit(dc,"data",FacePrefs.fontFamily("side"),FacePrefs.fontSize("side")+1,value,32,14);
-        dc.drawText(153,89,font,value,Graphics.TEXT_JUSTIFY_CENTER);dc.clearClip();
+        dc.setClip(136,74,35,36);dc.setColor(foreground,background);
+        if(FacePrefs.flag("showIcons")){icon(dc,kind,146,75,foreground,background);}
+        var font=FontCatalog.fit(dc,"data",FacePrefs.fontFamily("side"),FacePrefs.fontSize("side")+2,value,32,18);
+        dc.drawText(153,94,font,value,Graphics.TEXT_JUSTIFY_CENTER);dc.clearClip();
     }
     (:extendedCode)
     function moveBar(dc,ratio,compact){

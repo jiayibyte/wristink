@@ -37,11 +37,11 @@ g=group('date','日期与状态')
 add(g,'showDate','显示日期',True)
 add(g,'dateFormat','日期格式',0,['10/19 一','10月19日','2026/10/19','10-19 周一','一 10/19','10/19','2026-10-19','10月19日 周一'])
 add(g,'dateFont','日期字体',0,FONT);add(g,'dateSize','日期字号',0,SIZE)
-add(g,'showMoveBar','显示活动指示区',True)
+add(g,'showMoveBar','显示活动指示区',False)
 add(g,'moveSource','活动指示区数据',6,PROGRESS)
 add(g,'moveStyle','活动指示区样式',0,['小人和分格','细进度线','百分比'])
 add(g,'moveFont','活动百分比字体',0,FONT)
-add(g,'showWind','显示风向箭头',True);add(g,'showMoon','显示月相',True)
+add(g,'showWind','显示风向箭头',False);add(g,'showMoon','显示月相',True)
 g=group('circle','右上圆窗')
 add(g,'showCircle','显示整个圆窗',True)
 add(g,'heartRefresh','中心心率刷新',0,['每5秒读取当前心率','仅抬腕时每5秒','每分钟（省电）'])
@@ -61,9 +61,9 @@ add(g,'ringStart','外圈起点',0,['顶部','右侧','底部','左侧'])
 g=group('cards','右侧卡片与数据')
 add(g,'showStatus','显示卡片区',True)
 add(g,'showBeijingCard','显示上方卡片',True);add(g,'showAlipayCard','显示下方卡片',True)
-add(g,'topCardImage','上方卡片图案',1,CARDS);add(g,'bottomCardImage','下方卡片图案',2,CARDS)
-add(g,'sideData','替换卡片的数据（隐藏则卡片）',0,METRICS)
-add(g,'sideFont','右侧数据字体',0,FONT);add(g,'sideSize','右侧数据字号',1,SIZE)
+add(g,'topCardImage','上方卡片图案',0,CARDS);add(g,'bottomCardImage','下方卡片图案',0,CARDS)
+add(g,'sideData','替换卡片的数据（隐藏则卡片）',19,METRICS)
+add(g,'sideFont','右侧数据字体',0,FONT);add(g,'sideSize','右侧数据字号',2,SIZE)
 for key,label,default in [('topOne','顶部第一行',7),('topTwo','第二行左侧',17),('topThree','第二行右侧',0),('bottomLeft','下方左侧',2),('bottomRight','下方右侧',15),('footerLeft','底部左侧',5),('footerRight','底部右侧',18)]:
     g=group(key,label)
     add(g,key,'数据（隐藏可关闭本区）',default,METRICS)
@@ -142,6 +142,10 @@ def main():
     for row in rows:
         if row['type']!=1 and row['default']!=0:defaults+='        case '+js(row['key'])+':return '+js(row['default'])+';\n'
     defaults+='    } return 0; }\n'
+    defaults+='    function flag(key) { switch(key) {\n'
+    for row in rows:
+        if row['type']==1 and row['default']==False:defaults+='        case '+js(row['key'])+':return false;\n'
+    defaults+='    }return true;}\n'
     defaults+='''    function max(key) {
         var suffix=key.length()>=4 ? key.substring(key.length()-4,key.length()) : "";
         if(suffix.equals("Goal")){return 1000000;}
@@ -177,7 +181,7 @@ def main():
             ET.SubElement(cfg,'listEntry',value=str(i)).text='@Strings.'+ident
     for path,el in [('resources/settings/properties.xml',properties),('resources/settings/settings.xml',settings),('resources/strings/strings.xml',strings)]:
         tree=ET.ElementTree(el);ET.indent(tree,space='  ');tree.write(ROOT/path,encoding='utf-8',xml_declaration=True)
-    import subprocess
-    subprocess.run(['python3',str(ROOT/'scripts/generate-english.py')],check=True)
+    import subprocess,sys
+    subprocess.run([sys.executable,str(ROOT/'scripts/generate-english.py')],check=True)
     print(f'Generated {len(rows)} shared settings in {len(groups)} groups; {len(METRICS)-1} data choices.')
 if __name__=='__main__':main()

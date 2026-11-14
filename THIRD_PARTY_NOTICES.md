@@ -6,6 +6,7 @@
 
 - Rajdhani：Google Fonts / Indian Type Foundry，SIL Open Font License 1.1。许可保留于 `moke/licenses/OFL-Rajdhani.txt` 和 `retro-world/assets/fonts/OFL-Rajdhani.txt`。
 - Noto Sans CJK：SIL Open Font License 1.1，见 `moke/licenses/OFL-NotoSansCJK.txt`。源字体位于 `moke/assets/fonts/`。
+- Dosis：Google Fonts / Impallari Type，SIL Open Font License 1.1。源字体和许可位于 `moke/assets/fonts/Dosis[wght].ttf`、`moke/assets/fonts/Dosis-OFL.txt`，用于墨刻圆角数字。
 - Aileron 相关位图字形：来源与作者许可说明见 `moke/licenses/Aileron-notice.txt`。
 
 ## Natural Earth

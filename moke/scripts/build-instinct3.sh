@@ -3,7 +3,7 @@ set -euo pipefail
 cd "${0:A:h:h}"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
-version="${1:-1.1.0}"
+version="${1:-1.2.0}"
 mkdir -p bin dist
 python3 scripts/make-fonts.py
 python3 scripts/make-weather-icons.py

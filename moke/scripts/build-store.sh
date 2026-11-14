@@ -5,7 +5,7 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 # Run generation to completion before starting compilers: deleting/rebuilding an
 # asset profile concurrently with a compiler invalidates its input snapshot.
-version="${1:-1.1.0}"
+version="${1:-1.2.0}"
 mkdir -p bin dist
 python3 scripts/make-fonts.py
 python3 scripts/make-weather-icons.py

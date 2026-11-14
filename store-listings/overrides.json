@@ -1,0 +1,11 @@
+{
+  "moke": {
+    "zh_TW": {
+      "description": "適用於相容 Garmin MIP 手錶的黑白資訊錶盤，以圓角醒目數字顯示時間，搭配可自訂資料區域。免費使用，無需訂閱或開發者帳號。\n\n• 提供 94 項設定和 28 種資料選項，可調整或隱藏資料區域、字型、字號、單位、圖表及進度指示。\n• 錶盤與設定提供簡體中文和英文；其他手錶系統語言使用英文。\n• 支援 12/24 小時制、深淺主題及可選數位秒數。簡潔的預設版面會在裝置支援時顯示身體能量指數（Body Battery）；裝飾卡片、月相、風向箭頭與活動指示均可自由開關。\n• 心率、步數、熱量、海拔、天氣及電池資料依手錶能力與 Garmin 系統快取而定。缺失資料顯示 --，錶盤不會啟動 GPS。\n• 裝飾卡片沒有交通票證、門禁或付款功能。預覽圖片使用模擬資料。\n\n資料在手錶本機讀取，開發者不收集或上傳健康與位置資料。本應用獨立開發，與 Garmin 無隸屬關係。",
+      "whatsNew": "1.2.0\n• 新增圓角數字與更清爽的預設版面，右側預設顯示身體能量指數（Body Battery）。\n• 保留 94 項設定、28 種資料選項及中英文錶盤介面。\n• 視覺更新保留自訂卡片和資料選擇。\n• 改善儲存設定時的記憶體處理，並提升極小圖表數字的辨識度。"
+    },
+    "fi": {
+      "whatsNew": "1.2.0\n• Pyöristetyt numerot ja selkeämpi oletusasettelu, jossa Body Battery näkyy oikeanpuoleisella data-alueella.\n• Säilyttää kaikki 94 asetusta, 28 datavaihtoehtoa sekä kiinan- ja englanninkielisen käyttöliittymän.\n• Säilyttää mukautetut kortti- ja datavalinnat ulkoasupäivityksen aikana.\n• Parantaa muistin käyttöä asetuksia tallennettaessa ja pienten kaavionumeroiden luettavuutta."
+    }
+  }
+}
