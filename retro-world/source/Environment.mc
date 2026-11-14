@@ -8,6 +8,9 @@ module Environment {
     const POLL_SECONDS=300;
     const WEATHER_MAX_AGE=10800;
     const FIX_MAX_AGE=7200;
+    // Temperature freshness and location usefulness are different. Indoors,
+    // the last known location can still supply solar times after weather ages.
+    const LOCATION_MAX_AGE=604800;
     var temperature=null;var condition=null;var latitude=null;var longitude=null;
     var source=0;var sunrise="--:--";var sunset="--:--";var revision=0;
     var _readAt=-1;var _sunDay=-1;var _sunLat=null;var _sunLon=null;var _sunZone=null;var _location as Position.Location? = null;
@@ -27,6 +30,10 @@ module Environment {
         if(weatherFresh(weather,stamp) && weather.observationLocationPosition!=null && validCoordinates(weather.observationLocationPosition.toDegrees())) {
             return {:position=>weather.observationLocationPosition,:source=>2};
         }
+        var oldFix=fix!=null && fix.position!=null && fix.accuracy!=null && fix.accuracy>0 && fix.accuracy<=4 && fresh(fix.when,stamp,LOCATION_MAX_AGE) && validCoordinates(fix.position.toDegrees());
+        var oldWeather=weather!=null && weather.observationLocationPosition!=null && fresh(weather.observationTime,stamp,LOCATION_MAX_AGE) && validCoordinates(weather.observationLocationPosition.toDegrees());
+        if(oldFix && (!oldWeather || fix.when.value()>=weather.observationTime.value())) {return {:position=>fix.position,:source=>4};}
+        if(oldWeather) {return {:position=>weather.observationLocationPosition,:source=>5};}
         return null;
     }
     function due(last,stamp,wake) {return last<0 || stamp<last || stamp-last>=POLL_SECONDS || (wake && stamp-last>=60);}

@@ -77,7 +77,7 @@ module SolarMap {
         var mx=p==null ? -1 : p[0];var my=p==null ? -1 : p[1];
         var kind=Environment.category(Environment.condition);
         var buffer=DeviceDrawing.resolve(_buffer);
-        var lost=DeviceProfile.COLOR && (buffer has :isCached) && !buffer.isCached();
+        var lost=(buffer has :isCached) && !buffer.isCached();
         if(lost || slot!=_slot || mx!=_markerX || my!=_markerY || kind!=_weatherKind) {
             var selected=FaceSettings.mapSkin<0 ? MapStyle.forMoment(now) : FaceSettings.mapSkin;
             if(selected!=skin) {
