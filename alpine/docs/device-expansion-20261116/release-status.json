@@ -1,0 +1,14 @@
+{
+  "version": "1.1.0",
+  "storeId": "8fdd0374-78f0-4452-bfd7-9bfa9c1229eb",
+  "sourceCommit": "158f8b4",
+  "targetCount": 73,
+  "previousTargetCount": 6,
+  "newTargets": 67,
+  "hardwareVariants": 96,
+  "sha256": "30c778f9c21bd781d0bfcae287a33d804c2397085a55f85ab439d09a98a96879",
+  "nativeTests": 136,
+  "signature": "Garmin SDK verified IQ package and all product signatures",
+  "runtimeRecovery": "venu2s: both separate launches passed",
+  "status": "Ready; awaiting per-submission legal confirmation; not uploaded"
+}
