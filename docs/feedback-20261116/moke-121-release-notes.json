@@ -1,0 +1,5 @@
+{
+  "en": "1.2.1\nFixes settings-related freezing on compatible watches with phone-only settings. Reduces memory use on low-memory models to improve saving and restoring settings. Handles missing weather data safely. Existing settings and icon shapes are preserved.",
+  "zh_CN": "1.2.1\n修复仅支持手机设置的兼容机型进入设置后表盘冻结的问题。降低低内存机型的常驻内存占用，改善设置保存和恢复；补充天气数据缺失保护。保留已有设置与图标形状。",
+  "zh_TW": "1.2.1\n修正僅支援手機設定的相容機型進入設定後錶盤凍結的問題。降低低記憶體機型的常駐記憶體用量，改善設定儲存與恢復；補充天氣資料缺失保護。保留既有設定與圖示形狀。"
+}

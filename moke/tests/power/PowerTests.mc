@@ -476,3 +476,9 @@ function bilingualDateAndUnits(logger){
     Test.assertEqual(FaceFormat.dateText(d),"10/19 一");Test.assertEqual(FaceLocale.days(),"天");Test.assertEqual(FaceLocale.period(12),"下午");
     FaceLocale._english=previousLocale;Application.Properties.setValue("dateFormat",previousFormat);return true;
 }
+
+(:test)
+function missingWeatherConditionUsesUnknownIcon(logger){
+    Test.assertEqual(WeatherIcons.category(null),WeatherIcons.UNKNOWN);
+    return true;
+}

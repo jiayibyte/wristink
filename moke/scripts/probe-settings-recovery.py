@@ -49,6 +49,7 @@ import Toybox.WatchUi;
 class RecoveryApp extends InstinctFaceApp {
     function initialize(){InstinctFaceApp.initialize();}
     function getInitialView(){_view=new RecoveryView();return VIEWS;}
+    function onStop(state){InstinctFaceApp.onStop(state);System.println("RECOVERY_STOP free="+System.getSystemStats().freeMemory);}
 }
 class RecoveryView extends BASE {
     var _recoveryStage=0;var _secondLaunch=false;
@@ -61,19 +62,22 @@ class RecoveryView extends BASE {
             PHONE_PROBE
             _recoveryStage=1;
             var app=Application.getApp();
-            app.setProperty("darkTheme",false);app.setProperty("timeFormat",1);
-            app.setProperty("topOne",2);app.setProperty("sideData",1);
-            app.setProperty("circle",1);app.setProperty("showWind",false);
+            Application.Properties.setValue("darkTheme",false);Application.Properties.setValue("timeFormat",1);
+            Application.Properties.setValue("topOne",2);Application.Properties.setValue("sideData",1);
+            Application.Properties.setValue("circle",1);Application.Properties.setValue("showWind",false);
             app.onSettingsChanged();WatchUi.requestUpdate();return;
         }
         if(_recoveryStage<2){
             _recoveryStage=2;
-            if(!valuesMatch() || _suspended){fail("values_or_visibility");return;}
+            if(!valuesMatch() || _suspended){System.println("VALUES direct="+Application.Properties.getValue("darkTheme")+" old="+Application.getApp().getProperty("darkTheme")+" dark="+FacePrefs.flag("darkTheme")+" time="+FacePrefs.get("timeFormat")+" top="+FacePrefs.get("topOne")+" side="+FacePrefs.get("sideData")+" circle="+FacePrefs.get("circle")+" wind="+FacePrefs.flag("showWind")+" suspended="+_suspended);fail("values_or_visibility");return;}
             if(!_secondLaunch){
                 Application.Storage.setValue("recoveryWritten",true);
-                System.println("RECOVERY_PHASE1_OK free="+System.getSystemStats().freeMemory);System.exit();return;
+                suspend();System.println("RECOVERY_PHASE1_OK free="+System.getSystemStats().freeMemory);System.exit();return;
             }
-            onHide();onShow();onEnterSleep();onExitSleep();BASE.onUpdate(dc);
+            onHide();onShow();onEnterSleep();onExitSleep();WatchUi.requestUpdate();return;
+        }
+        if(_recoveryStage==2 && _secondLaunch){
+            _recoveryStage=3;
             if(!valuesMatch() || _suspended){fail("lifecycle_restore");return;}
             System.println("RECOVERY_PHASE2_OK free="+System.getSystemStats().freeMemory);System.exit();
         }
@@ -104,6 +108,9 @@ for phase in (1, 2):
                 break
             time.sleep(.25)
         output = path.read_text()
+        settings_file=Path(os.environ['TMPDIR'])/'com.garmin.connectiq/GARMIN/APPS/SETTINGS/RECOVERY.SET'
+        if settings_file.exists():
+            (folder/('phase'+str(phase)+'.set')).write_bytes(settings_file.read_bytes())
         passed = marker in output and not any(term in output.lower() for term in ("recovery_fail", "app crash", "error:"))
         if passed:
             try:

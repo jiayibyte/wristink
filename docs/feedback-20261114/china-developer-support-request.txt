@@ -1,0 +1,16 @@
+Subject: China-store review reply access for international developer cherryeveli
+
+Hello Connect IQ Store team,
+
+I own these apps under my international developer account cherryeveli (developer ID 5478400c-5a15-4d78-a708-fab405655e6b):
+Moke: 08e3601d-b0b1-451a-a390-67543e39ae02
+Retro World: 76e1c5f4-abe8-49ab-bcc0-44c2b1c1a267
+Alpine: 8fdd0374-78f0-4452-bfd7-9bfa9c1229eb
+
+The China listings contain separate user reviews. Signing in with a separate mainland-China account shows no developer reply controls; the China developer/dashboard route returns the storefront home page.
+
+Please confirm whether there is a supported way to associate the mainland account with the existing international developer identity, or to reply to China reviews using the original developer account. If China developer replies are unavailable, please confirm the recommended support channel and whether localized description/release-note updates are synchronized from the international developer dashboard.
+
+I want to retain the existing app IDs, ownership and reviews. I do not want duplicate listings or an unverified ownership transfer.
+
+Thank you.
