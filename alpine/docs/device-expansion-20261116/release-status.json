@@ -6,9 +6,29 @@
   "previousTargetCount": 6,
   "newTargets": 67,
   "hardwareVariants": 96,
-  "sha256": "30c778f9c21bd781d0bfcae287a33d804c2397085a55f85ab439d09a98a96879",
+  "sha256": "d9f8fea04882ed2ed21e186192b493f95fa015df78984812835e33f8496a72aa",
   "nativeTests": 136,
   "signature": "Garmin SDK verified IQ package and all product signatures",
   "runtimeRecovery": "venu2s: both separate launches passed",
-  "status": "Ready; awaiting per-submission legal confirmation; not uploaded"
+  "status": "Uploaded, details submitted, public international listing updated",
+  "legalConsent": "User explicitly agreed to this Alpine 1.1.0 submission on 2026-11-16",
+  "originalSha256": "30c778f9c21bd781d0bfcae287a33d804c2397085a55f85ab439d09a98a96879",
+  "uploadPackage": "dist/Alpine-1.1.0-compact.iq",
+  "compressionVerification": "All291 extracted files SHA256 identical; Garmin package and product signatures verified",
+  "uploadAttempts": [
+    {
+      "package": "SDK original 376MiB",
+      "result": "Server communication error; fresh backend check still1.0.0"
+    },
+    {
+      "package": "solid-compressed98MiB",
+      "result": "Garmin file Verified, Signature Verified, Version1.1.0"
+    }
+  ],
+  "storeLocales": 28,
+  "backendLatest": "1.1.0",
+  "publicInternationalVersion": "1.1.0 (Internal: 2)",
+  "publicInternationalCompatibility": "Expanded list visibly includes new Forerunner, Venu, fenix, epix and other target families",
+  "publicChinaVersion": "1.0.0; synchronization not confirmed",
+  "storeLocalesPersisted": 28
 }

@@ -4,7 +4,7 @@ cd "${0:A:h:h}"
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home
 export PATH="$JAVA_HOME/bin:$PATH"
 sdk_path="$(tr -d '\r\n' < "$HOME/Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg")"
-version="${1:-1.0.0}"
+version="${1:-1.1.0}"
 mkdir -p dist
 python_bin="${ALPINE_PYTHON:-python3}"
 "$python_bin" tools/settings.py
@@ -14,3 +14,7 @@ python_bin="${ALPINE_PYTHON:-python3}"
 openssl pkey -inform DER -in "$HOME/.Garmin/keys/developer_key.der" -pubout -outform DER -out dist/developer-public.der
 "$JAVA_HOME/bin/java" -cp "dist:$sdk_path/bin/monkeybrains.jar" VerifyIq "dist/Alpine-${version}.iq" dist/developer-public.der
 shasum -a 256 "dist/Alpine-${version}.iq" > "dist/Alpine-${version}.sha256"
+
+# Preserve SDK output; the store transport copy retains identical signed files.
+"$python_bin" tools/recompress_iq.py "dist/Alpine-${version}.iq" "dist/Alpine-${version}-compact.iq"
+"$JAVA_HOME/bin/java" -cp "dist:$sdk_path/bin/monkeybrains.jar" VerifyIq "dist/Alpine-${version}-compact.iq" dist/developer-public.der

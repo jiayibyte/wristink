@@ -1,11 +1,11 @@
 from pathlib import Path
 import argparse,json,hashlib,subprocess,tempfile,xml.etree.ElementTree as ET
 R=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--source-commit',required=True);parser.add_argument('--version',default='1.0.0');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--source-commit',required=True);parser.add_argument('--version',default='1.0.0');parser.add_argument('--package');args=parser.parse_args()
 source_commit=subprocess.check_output(['git','rev-parse',args.source_commit],cwd=R,text=True).strip()
 inputs=['config/devices.json','source','live','resources','resources-zhs','manifest.xml','monkey.jungle','tools/settings.py','tools/generate.py','tools/panels.py','tools/everest_art.py','tools/typography.py','tools/sky_ornaments.py','tools/festivals.py']
 subprocess.run(['git','diff','--quiet',source_commit,'--']+inputs,cwd=R,check=True)
-package=R/f'dist/Alpine-{args.version}.iq'
+package=Path(args.package).resolve() if args.package else R/f'dist/Alpine-{args.version}.iq'
 assert package.exists()
 root=Path(tempfile.mkdtemp(prefix='iq-audit-',dir=R/'dist'))
 subprocess.run(['/opt/homebrew/bin/7zz','x',str(package),'-o'+str(root),'-y'],stdout=subprocess.DEVNULL,check=True)
