@@ -22,7 +22,7 @@
 | fenix7 | 260 × 260 | 彩色 MIP |
 | epix2 | 416 × 416 | AMOLED |
 
-清单仅包括本次实现的六个 SDK 目标，不代表全部 Garmin 或全部本能型号。构建、模拟器运行和真机验收分别记录在 [验证记录](docs/validation.md)。
+1.1.0 设备扩展候选增加更多同类圆屏，完整目标清单见 `config/devices.json`：共73个SDK目标、96个硬件变体；包括更多 fēnix、Forerunner、Venu、epix、Enduro、MARQ、Approach、Descent 和本能 AMOLED。方屏、实体指针以及新增低内存彩屏尚未开放；商店提交状态见 `docs/device-expansion-20261116/README.md`。以上六项是原1.0.0范围。构建、模拟器运行和真机验收分别记录在 [验证记录](docs/validation.md)。
 
 ## 自定义数据位
 

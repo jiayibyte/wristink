@@ -1,0 +1,30 @@
+{
+  "device": "fenix9pro51mm",
+  "kind": "conservative offline bitmap-font mask audit",
+  "frames": 2880,
+  "fontHeight": 38,
+  "minuteRows": [
+    115,
+    188,
+    262,
+    335
+  ],
+  "adjacentRowsDoNotOverlap": true,
+  "results": [
+    {
+      "format": 12,
+      "maximumNonzeroAlphaPixels": 1930,
+      "maximumCanvasPercent": 0.889,
+      "largestInkExample": "08:08",
+      "maximumAdvance": 112
+    },
+    {
+      "format": 24,
+      "maximumNonzeroAlphaPixels": 1930,
+      "maximumCanvasPercent": 0.889,
+      "largestInkExample": "08:08",
+      "maximumAdvance": 112
+    }
+  ],
+  "limits": "Not an actual framebuffer capture, device battery measurement or burn-in certification."
+}

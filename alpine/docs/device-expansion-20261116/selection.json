@@ -1,0 +1,391 @@
+{
+  "previous": [
+    "instinct3solar45mm",
+    "instinct2",
+    "instinct2s",
+    "instinct2x",
+    "fenix7",
+    "epix2"
+  ],
+  "selected": [
+    "instinct3solar45mm",
+    "instinct2",
+    "instinct2s",
+    "instinct2x",
+    "fenix7",
+    "epix2",
+    "approachs50",
+    "approachs7042mm",
+    "approachs7047mm",
+    "approachs7243mm",
+    "approachs7247mm",
+    "d2airx10",
+    "d2mach1",
+    "d2mach2",
+    "d2mach2pro",
+    "descentg2",
+    "descentmk343mm",
+    "descentmk351mm",
+    "enduro3",
+    "enduro4",
+    "epix2pro42mm",
+    "epix2pro47mm",
+    "epix2pro51mm",
+    "fenix7pro",
+    "fenix7pronowifi",
+    "fenix7s",
+    "fenix7spro",
+    "fenix7x",
+    "fenix7xpro",
+    "fenix7xpronowifi",
+    "fenix843mm",
+    "fenix847mm",
+    "fenix8pro47mm",
+    "fenix8solar47mm",
+    "fenix8solar51mm",
+    "fenix943mm",
+    "fenix947mm",
+    "fenix9pro43mm",
+    "fenix9pro47mm",
+    "fenix9pro51mm",
+    "fenix9prosolar47mm",
+    "fenix9prosolar51mm",
+    "fenixe",
+    "fr165",
+    "fr165m",
+    "fr170",
+    "fr170m",
+    "fr255",
+    "fr255m",
+    "fr255s",
+    "fr255sm",
+    "fr265",
+    "fr265s",
+    "fr57042mm",
+    "fr57047mm",
+    "fr70",
+    "fr955",
+    "fr965",
+    "fr970",
+    "instinct3amoled45mm",
+    "instinct3amoled50mm",
+    "marq2",
+    "marq2aviator",
+    "marq3",
+    "venu2",
+    "venu2plus",
+    "venu2s",
+    "venu3",
+    "venu3s",
+    "venu441mm",
+    "venu445mm",
+    "vivoactive5",
+    "vivoactive6"
+  ],
+  "excluded": [
+    {
+      "device": "approachs60",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "approachs62",
+      "reason": "Older regional API not included in this colour expansion"
+    },
+    {
+      "device": "d2air",
+      "reason": "Older regional API not included in this colour expansion"
+    },
+    {
+      "device": "d2bravo",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "d2bravo_titanium",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "d2charlie",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "d2delta",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "d2deltapx",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "d2deltas",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "descentg1",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "descentmk1",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "descentmk2",
+      "reason": "Older regional API not included in this colour expansion"
+    },
+    {
+      "device": "descentmk2s",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "enduro",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "epix",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "fenix3",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fenix3_hr",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fenix5",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fenix5plus",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fenix5s",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fenix5splus",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fenix5x",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fenix5xplus",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fenix6",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fenix6pro",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fenix6s",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fenix6spro",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fenix6xpro",
+      "reason": "Older regional API not included in this colour expansion"
+    },
+    {
+      "device": "fenixchronos",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fr230",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "fr235",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "fr245",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fr245m",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fr45",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fr55",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fr630",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "fr645",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fr645m",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fr735xt",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "fr745",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fr920xt",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "fr935",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fr945",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "fr945lte",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "garminswim2",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "instinctcrossover",
+      "reason": "Physical hands require dedicated layout"
+    },
+    {
+      "device": "instinctcrossoveramoled",
+      "reason": "Physical hands require dedicated layout"
+    },
+    {
+      "device": "instincte40mm",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "instincte45mm",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "legacyherocaptainmarvel",
+      "reason": "Older regional API not included in this colour expansion"
+    },
+    {
+      "device": "legacyherofirstavenger",
+      "reason": "Older regional API not included in this colour expansion"
+    },
+    {
+      "device": "legacysagadarthvader",
+      "reason": "Older regional API not included in this colour expansion"
+    },
+    {
+      "device": "legacysagarey",
+      "reason": "Older regional API not included in this colour expansion"
+    },
+    {
+      "device": "marqadventurer",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "marqathlete",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "marqaviator",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "marqcaptain",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "marqcommander",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "marqdriver",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "marqexpedition",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "marqgolfer",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "venu",
+      "reason": "Older regional API not included in this colour expansion"
+    },
+    {
+      "device": "venud",
+      "reason": "Older regional API not included in this colour expansion"
+    },
+    {
+      "device": "venusq",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "venusq2",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "venusq2m",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "venusqm",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "venux1",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "vivoactive",
+      "reason": "Non-round display requires dedicated layout"
+    },
+    {
+      "device": "vivoactive3",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "vivoactive3d",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "vivoactive3m",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "vivoactive3mlte",
+      "reason": "Colour assets require at least 128 KiB watch-face RAM"
+    },
+    {
+      "device": "vivoactive4",
+      "reason": "Older regional API not included in this colour expansion"
+    },
+    {
+      "device": "vivoactive4s",
+      "reason": "Older regional API not included in this colour expansion"
+    },
+    {
+      "device": "vivoactive_hr",
+      "reason": "Non-round display requires dedicated layout"
+    }
+  ]
+}

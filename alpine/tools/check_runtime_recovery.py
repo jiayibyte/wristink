@@ -4,7 +4,7 @@ Uses a separate test application ID and restores its own properties after pass 2
 from pathlib import Path
 import argparse,hashlib,json,os,subprocess,uuid
 ROOT=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('device',choices=['instinct2s','epix2']);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('device');a=p.parse_args()
 folder=ROOT/'generated/recovery'/a.device;folder.mkdir(parents=True,exist_ok=True)
 (folder/'RecoveryProbe.mc').write_text('''import Toybox.Application;
 import Toybox.Graphics;

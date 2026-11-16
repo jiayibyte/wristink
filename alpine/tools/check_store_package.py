@@ -3,7 +3,7 @@ import argparse,json,hashlib,subprocess,tempfile,xml.etree.ElementTree as ET
 R=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser();parser.add_argument('--source-commit',required=True);parser.add_argument('--version',default='1.0.0');args=parser.parse_args()
 source_commit=subprocess.check_output(['git','rev-parse',args.source_commit],cwd=R,text=True).strip()
-inputs=['source','live','resources','resources-zhs','manifest.xml','monkey.jungle','tools/settings.py','tools/generate.py','tools/panels.py','tools/everest_art.py','tools/typography.py','tools/sky_ornaments.py','tools/festivals.py']
+inputs=['config/devices.json','source','live','resources','resources-zhs','manifest.xml','monkey.jungle','tools/settings.py','tools/generate.py','tools/panels.py','tools/everest_art.py','tools/typography.py','tools/sky_ornaments.py','tools/festivals.py']
 subprocess.run(['git','diff','--quiet',source_commit,'--']+inputs,cwd=R,check=True)
 package=R/f'dist/Alpine-{args.version}.iq'
 assert package.exists()
@@ -12,7 +12,7 @@ subprocess.run(['/opt/homebrew/bin/7zz','x',str(package),'-o'+str(root),'-y'],st
 ns={'iq':'http://www.garmin.com/xml/connectiq'};doc=ET.parse(root/'manifest.xml').getroot();app=doc.find('iq:application',ns)
 assert app.attrib['id']=='bb71078cce15417aa5425aa350817001' and app.attrib['type']=='watchface'
 assert {e.text for e in app.findall('.//iq:language',ns)}=={'eng','zhs'}
-profiles=['instinct3solar45mm','instinct2','instinct2s','instinct2x','fenix7','epix2'];expected={}
+profiles=json.loads((R/'config/devices.json').read_text());expected={}
 for dev in profiles:
  data=json.loads((Path.home()/f'Library/Application Support/Garmin/ConnectIQ/Devices/{dev}/compiler.json').read_text())
  for p in data['partNumbers']:expected[p['number']]={'sdkDevice':dev,'api':p['connectIQVersion']}

@@ -3,7 +3,11 @@ from pathlib import Path
 import json,re
 from PIL import Image
 R=Path(__file__).resolve().parents[1]
-folder=R/'generated/epix2/resources/fonts';atlas=Image.open(folder/'Aod.png').getchannel('A')
+import argparse
+p=argparse.ArgumentParser();p.add_argument('--device',default='epix2');args=p.parse_args()
+profile=next(x for x in json.loads((R/'generated/profiles.json').read_text()) if x['device']==args.device)
+assert profile['AMOLED']
+folder=R/'generated'/args.device/'resources/fonts';atlas=Image.open(folder/'Aod.png').getchannel('A')
 glyphs={}
 for row in (folder/'Aod.fnt').read_text().splitlines():
  if not row.startswith('char id='):continue
@@ -19,9 +23,9 @@ for fmt in [12,24]:
   width=sum(glyphs[c][1]['xadvance'] for c in value)
   if pixels>max_pixels:max_pixels=pixels;max_value=value
   max_width=max(max_width,width)
- results.append({'format':fmt,'maximumNonzeroAlphaPixels':max_pixels,'maximumCanvasPercent':round(max_pixels/(416*416)*100,3),'largestInkExample':max_value,'maximumAdvance':max_width})
-height=max(v[0].height for v in glyphs.values());rows=[round(v*1.6) for v in [64,105,146,187]]
+ results.append({'format':fmt,'maximumNonzeroAlphaPixels':max_pixels,'maximumCanvasPercent':round(max_pixels/(profile['W']*profile['H'])*100,3),'largestInkExample':max_value,'maximumAdvance':max_width})
+height=max(v[0].height for v in glyphs.values());rows=[round(v*profile['S']) for v in [64,105,146,187]]
 assert all(abs(a-b)>=height for a,b in zip(rows,rows[1:]+rows[:1]))
 assert all(x['maximumCanvasPercent']<3 for x in results)
-report={'device':'epix2','kind':'conservative offline bitmap-font mask audit','frames':2880,'fontHeight':height,'minuteRows':rows,'adjacentRowsDoNotOverlap':True,'results':results,'limits':'Not an actual framebuffer capture, device battery measurement or burn-in certification.'}
-(R/'dist/evidence/aod-pixel-audit.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
+report={'device':args.device,'kind':'conservative offline bitmap-font mask audit','frames':2880,'fontHeight':height,'minuteRows':rows,'adjacentRowsDoNotOverlap':True,'results':results,'limits':'Not an actual framebuffer capture, device battery measurement or burn-in certification.'}
+(R/f'dist/evidence/aod-pixel-audit-{args.device}.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))

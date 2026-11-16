@@ -10,41 +10,41 @@ module Sky {
     var sunVisible=false;var moonVisible=false;var sunProgress=0.5;var moonProgress=0.5;
     var sunAltitude=0.0;var moonAltitude=0.0;
     var _stamp=-1;var _minutes=-1;var _lat=null;var _lon=null;var _rise=null;var _set=null;
-    function clamp(v,lo,hi) {return v<lo ? lo : (v>hi ? hi : v);}
-    function wrap(v,period) {return v-Math.floor(v/period)*period;}
-    function radians(degrees) {return wrap(degrees,360.0d)*RAD;}
-    function days(stamp) {return stamp.toDouble()/86400.0d-10957.5d;}
+    function clamp(v as Numeric,lo as Numeric,hi as Numeric) as Double {return (v<lo ? lo : (v>hi ? hi : v)).toDouble();}
+    function wrap(v as Numeric,period as Numeric) as Double {return (v-Math.floor(v/period)*period).toDouble();}
+    function radians(degrees as Numeric) as Double {return wrap(degrees,360.0d)*RAD;}
+    function days(stamp as Numeric) as Double {return stamp.toDouble()/86400.0d-10957.5d;}
     function validLocation(lat,lon) {return lat!=null && lon!=null && lat>=-90 && lat<=90 && lon>=-180 && lon<=180;}
-    function equatorial(l as Numeric,b as Numeric) as Array<Numeric> {
+    function equatorial(l as Double,b as Double) as Array<Double> {
         return [Math.atan2(Math.sin(l)*Math.cos(E)-Math.tan(b)*Math.sin(E),Math.cos(l)),Math.asin(clamp(Math.sin(b)*Math.cos(E)+Math.cos(b)*Math.sin(E)*Math.sin(l),-1,1))];
     }
-    function solar(d as Numeric) as Array<Numeric> {
+    function solar(d as Double) as Array<Double> {
         var m=radians(357.5291d+0.98560028d*d);
         var c=RAD*(1.9148d*Math.sin(m)+0.02d*Math.sin(2*m)+0.0003d*Math.sin(3*m));
         return equatorial(m+c+102.9372d*RAD+PI,0.0d);
     }
-    function lunar(d as Numeric) as Array<Numeric> {
+    function lunar(d as Double) as Array<Double> {
         var l=radians(218.316d+13.176396d*d);var m=radians(134.963d+13.064993d*d);var f=radians(93.272d+13.229350d*d);
         var coords=equatorial(l+RAD*6.289d*Math.sin(m),RAD*5.128d*Math.sin(f));
         return [coords[0],coords[1],385001.0d-20905.0d*Math.cos(m)];
     }
-    function moonLight(s as Array<Numeric>,m as Array<Numeric>) as Array<Numeric> {
+    function moonLight(s as Array<Double>,m as Array<Double>) as Array<Double> {
         var phi=Math.acos(clamp(Math.sin(s[1])*Math.sin(m[1])+Math.cos(s[1])*Math.cos(m[1])*Math.cos(s[0]-m[0]),-1,1));
         var inc=Math.atan2(149598000.0d*Math.sin(phi),m[2]-149598000.0d*Math.cos(phi));
         var angle=Math.atan2(Math.cos(s[1])*Math.sin(s[0]-m[0]),Math.sin(s[1])*Math.cos(m[1])-Math.cos(s[1])*Math.sin(m[1])*Math.cos(s[0]-m[0]));
         return [(1+Math.cos(inc))/2,0.5d+0.5d*inc*(angle<0 ? -1 : 1)/PI];
     }
     // Result: geometric altitude, hour angle, progress from geometric rise to set.
-    function horizontal(d as Numeric,lat as Numeric,lon as Numeric,coords as Array<Numeric>) as Array<Numeric> {
+    function horizontal(d as Double,lat as Numeric,lon as Numeric,coords as Array<Double>) as Array<Double> {
         var phi=lat*RAD;var h=wrap(radians(280.16d+360.9856235d*d)+lon*RAD-coords[0]+PI,2*PI)-PI;
         var altitude=Math.asin(clamp(Math.sin(phi)*Math.sin(coords[1])+Math.cos(phi)*Math.cos(coords[1])*Math.cos(h),-1,1));
         var cosRise=-Math.tan(phi)*Math.tan(coords[1]);
         var half=cosRise<=-1 || cosRise>=1 ? PI : Math.acos(cosRise);
         var progress=half<0.0001 ? 0.5 : clamp((h+half)/(2*half),0,1);
-        return [altitude,h,progress];
+        return [altitude.toDouble(),h.toDouble(),progress.toDouble()];
     }
-    function refraction(h) {
-        h=h<0 ? 0 : h;
+    function refraction(h as Double) as Double {
+        h=h<0 ? 0.0d : h;
         return 0.0002967d/Math.tan(h+0.00312536d/(h+0.08901179d));
     }
     // Default: no daytime Moon. Astronomy mode permits genuine daytime visibility.

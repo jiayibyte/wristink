@@ -5,7 +5,7 @@ import Toybox.WatchUi;
 // Tiny original native-size sprites; no resources are loaded while disabled.
 module SkyOrnaments {
  function p(v as Numeric) as Number {return Math.round(v*Device.S).toNumber();}
- function glyph(dc,bitmap,x,y) {
+ function glyph(dc,bitmap,x as Numeric,y as Numeric) {
   var w=bitmap.getWidth();var h=bitmap.getHeight();var left=p(x)-(w/2).toNumber();var top=p(y)-(h/2).toNumber();
   var edge=Device.H;
   for(var i=left;i<left+w;i++) {
@@ -16,7 +16,7 @@ module SkyOrnaments {
   if(Device.MONO && Settings.top!=11 && top<p(20)) {top=p(20);}
   if(bottom>top) {dc.setClip(left,top,w,bottom-top);dc.drawBitmap(left,p(y)-(h/2).toNumber(),bitmap);dc.clearClip();}
  }
- function draw(dc,mode,stamp) {
+ function draw(dc,mode as Number,stamp as Number) {
   if(mode<1 || mode>3) {return;}
   var night=Sky.phase==4;var drift=(stamp/300).toNumber()%9-4;
   var bitmap=null;

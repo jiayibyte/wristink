@@ -1,0 +1,367 @@
+[
+  {
+    "device": "instinct3solar45mm",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "instinct2",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "instinct2s",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "instinct2x",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fenix7",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "epix2",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "approachs50",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "approachs7042mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "approachs7047mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "approachs7243mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "approachs7247mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "d2airx10",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "d2mach1",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "d2mach2",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "d2mach2pro",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "descentg2",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "descentmk343mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "descentmk351mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "enduro3",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "enduro4",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "epix2pro42mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "epix2pro47mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "epix2pro51mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fenix7pro",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fenix7pronowifi",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fenix7s",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fenix7spro",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fenix7x",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fenix7xpro",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fenix7xpronowifi",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fenix843mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fenix847mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fenix8pro47mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fenix8solar47mm",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fenix8solar51mm",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fenix943mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fenix947mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fenix9pro43mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fenix9pro47mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fenix9pro51mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fenix9prosolar47mm",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fenix9prosolar51mm",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fenixe",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fr165",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fr165m",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fr170",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fr170m",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fr255",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fr255m",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fr255s",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fr255sm",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fr265",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fr265s",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fr57042mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fr57047mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fr70",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fr955",
+    "passed": true,
+    "antialias": false
+  },
+  {
+    "device": "fr965",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "fr970",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "instinct3amoled45mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "instinct3amoled50mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "marq2",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "marq2aviator",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "marq3",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "venu2",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "venu2plus",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "venu2s",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "venu3",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "venu3s",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "venu441mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "venu445mm",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "vivoactive5",
+    "passed": true,
+    "antialias": true
+  },
+  {
+    "device": "vivoactive6",
+    "passed": true,
+    "antialias": true
+  }
+]

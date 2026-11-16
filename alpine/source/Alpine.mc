@@ -41,17 +41,17 @@ class AlpineView extends WatchUi.WatchFace {
     function onHide() {if(_settingsOpen) {releaseFonts();}else {releaseFaceResources();}}
     function onEnterSleep() {_sleep=true;_minute=-1;if(Device.AMOLED) {releaseFaceResources();}WatchUi.requestUpdate();}
     function onExitSleep() {_sleep=false;_minute=-1;Data.heartAt=-1;WatchUi.requestUpdate();}
-    function max(a,b) {return a>b ? a : b;}
-    function min(a,b) {return a<b ? a : b;}
+    function max(a as Numeric,b as Numeric) as Numeric {return a>b ? a : b;}
+    function min(a as Numeric,b as Numeric) as Numeric {return a<b ? a : b;}
     function p(v as Numeric) as Number {return Math.round(v*Device.S).toNumber();}
-    function color(dc,c) {dc.setColor(c,Graphics.COLOR_TRANSPARENT);}
-    function line(dc,x1,y1,x2,y2,c) {color(dc,c);dc.drawLine(p(x1),p(y1),p(x2),p(y2));}
-    function rect(dc,x,y,w,h,c) {color(dc,c);dc.fillRectangle(p(x),p(y),p(x+w)-p(x),p(y+h)-p(y));}
-    function disk(dc,x,y,r,c) {color(dc,c);dc.fillCircle(p(x),p(y),p(r));}
+    function color(dc,c as Number) {dc.setColor(c,Graphics.COLOR_TRANSPARENT);}
+    function line(dc,x1 as Numeric,y1 as Numeric,x2 as Numeric,y2 as Numeric,c as Number) {color(dc,c);dc.drawLine(p(x1),p(y1),p(x2),p(y2));}
+    function rect(dc,x as Numeric,y as Numeric,w as Numeric,h as Numeric,c as Number) {color(dc,c);dc.fillRectangle(p(x),p(y),p(x+w)-p(x),p(y+h)-p(y));}
+    function disk(dc,x as Numeric,y as Numeric,r as Numeric,c as Number) {color(dc,c);dc.fillCircle(p(x),p(y),p(r));}
     function poly(dc,points as Array<Array<Numeric>>,c) {
         color(dc,c);dc.fillPolygon(points);
     }
-    function text(dc,x,y,font,value,c) {
+    function text(dc,x as Numeric,y as Numeric,font,value as String,c as Number) {
         var xx=p(x);var yy=p(y);
         if(!Device.MONO && c==0xFFFFFF && _background!=null && font==_time) {
             color(dc,0);dc.drawText(xx-1,yy,font,value,Graphics.TEXT_JUSTIFY_CENTER);dc.drawText(xx+1,yy,font,value,Graphics.TEXT_JUSTIFY_CENTER);
@@ -59,7 +59,7 @@ class AlpineView extends WatchUi.WatchFace {
         }
         color(dc,c);dc.drawText(xx,yy,font,value,Graphics.TEXT_JUSTIFY_CENTER);
     }
-    function restore(dc,x,y,w,h) {
+    function restore(dc,x as Numeric,y as Numeric,w as Numeric,h as Numeric) {
         dc.setClip(p(x),p(y),p(x+w)-p(x),p(y+h)-p(y));
         if(_background!=null) {dc.drawBitmap(0,0,_background);}else {dc.setColor(0,0);dc.clear();}
         dc.clearClip();
@@ -70,7 +70,7 @@ class AlpineView extends WatchUi.WatchFace {
         if(scene==4 || scene==9) {return 0x9999FF;}if(scene==5) {return 0x99BBBB;}return 0x66DDDD;
     }
     function skyPixel(x,y) {return x>=0 && y>=0 && x<Device.W && y<Device.H && y<Device.SKYLINE[x]-Device.SKYSHIFT;}
-    function cloud(dc,x,y,width,c) {
+    function cloud(dc,x as Numeric,y as Numeric,width as Numeric,c as Number) {
         // Native filled primitives avoid per-pixel VM loops in a watch-face callback.
         var w=p(width);var xx=p(x);var yy=p(y);var r=(w*.20).toNumber();
         var top=yy-r;var bottom=yy+r+1;
@@ -158,8 +158,8 @@ class AlpineView extends WatchUi.WatchFace {
             poly(dc,[[p(tx-4),p(ty)],[p(tx),p(ty-4)],[p(tx+4),p(ty)]],Device.MONO ? 0xFFFFFF : 0xDBAE62);
         }
     }
-    function firework(dc,x,y,c) {for(var i=0;i<12;i++) {var a=i*Math.PI/6;line(dc,x+4*Math.cos(a),y+4*Math.sin(a),x+11*Math.cos(a),y+11*Math.sin(a),c);}}
-    function slotHeader(dc,x,y,width,kind) {
+    function firework(dc,x as Numeric,y as Numeric,c as Number) {for(var i=0;i<12;i++) {var a=i*Math.PI/6;line(dc,x+4*Math.cos(a),y+4*Math.sin(a),x+11*Math.cos(a),y+11*Math.sin(a),c);}}
+    function slotHeader(dc,x as Numeric,y as Numeric,width as Numeric,kind as Number) {
         if(kind==11) {return;}
         var value=Data.header(kind);var font=_small;
         if(dc.getTextWidthInPixels(value,font)>p(width)) {font=_label;}

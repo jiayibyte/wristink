@@ -1,13 +1,13 @@
 """Native geometry and font resources; all artwork is original vector geometry."""
 from pathlib import Path
-import json, math, uuid
+import json, math, uuid, shutil
 from PIL import Image, ImageDraw, ImageFont
 from everest_art import generate_resources, skyline
 from typography import build_fonts
 from sky_ornaments import generate as generate_ornaments
 ROOT=Path(__file__).resolve().parents[1]
 PACKS=Path.home()/'Library/Application Support/Garmin/ConnectIQ/Devices'
-DEVICES=['instinct3solar45mm','instinct2','instinct2s','instinct2x','fenix7','epix2']
+DEVICES=json.loads((ROOT/'config/devices.json').read_text())
 FONT=ROOT/'assets/fonts/Rajdhani-SemiBold.ttf'
 
 def generate():
@@ -15,13 +15,16 @@ def generate():
     from festivals import generate as generate_festivals
     generate_festivals()
     jungle=['project.manifest = manifest.xml','base.sourcePath = source;live','base.resourcePath = resources']
-    profiles=[]
+    profiles=[];resource_families={}
     for device in DEVICES:
         c=json.loads((PACKS/device/'compiler.json').read_text());s=json.loads((PACKS/device/'simulator.json').read_text())
         w,h=map(int,c['deviceFamily'].split('-')[-1].split('x'));mono=c['bitsPerPixel']==1;scale=h/176 if mono else w/260
         out=ROOT/'generated'/device;res=out/'resources';fonts=res/'fonts';fonts.mkdir(parents=True,exist_ok=True)
+        family=(w,h,mono,c['bitsPerPixel'])
+        reuse=resource_families.get(family)
+        if reuse:shutil.copytree(reuse,res,dirs_exist_ok=True)
         generate_panels(out,mono,scale)
-        build_fonts(fonts,scale,mono,c['bitsPerPixel']==16)
+        if not reuse:build_fonts(fonts,scale,mono,c['bitsPerPixel']==16)
         loc=s['display']['location'];sub=s.get('subscreen');cx=cy=radius=0
         if sub:
             q=sub['location'];cx=q['x']-loc['x']+q['width']/2;cy=q['y']-loc['y']+q['height']/2;radius=q['width']/2-3
@@ -29,8 +32,9 @@ def generate():
         icons=res/'drawables';icons.mkdir(exist_ok=True)
         iw=c['launcherIcon']['width'];ih=c['launcherIcon']['height']
         (icons/'icon.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{iw}" height="{ih}" viewBox="0 0 40 40"><rect width="40" height="40" fill="black"/><path d="M3 31 L18 8 L25 18 L29 13 L38 31 Z" fill="white"/><path d="M12 27 L18 13 L21 21 L18 19 Z" fill="black"/></svg>')
-        generate_resources(icons,w,h,mono,c['bitsPerPixel']==16)
-        generate_ornaments(icons,scale,mono,c['bitsPerPixel']==16)
+        if not reuse:generate_resources(icons,w,h,mono,c['bitsPerPixel']==16)
+        if not reuse:generate_ornaments(icons,scale,mono,c['bitsPerPixel']==16)
+        resource_families.setdefault(family,res)
         entries=['<bitmap id="LauncherIcon" filename="icon.svg"/>','<bitmap id="SkyFront" filename="sky-front.png" dithering="none" compress="true"/>']
         for i in range(1,21):
             if mono:
@@ -70,7 +74,7 @@ def generate():
         else:packed=str(heights)
         (out/'Device.mc').write_text('import Toybox.Lang;\nmodule Device {\n'+''.join(f' const {k}={str(v).lower()};\n' for k,v in constants.items())+' var SKYLINE as Array<Number> = '+packed+';\n}\n')
         jungle += [f'{device}.sourcePath = $(base.sourcePath);generated/{device}',f'{device}.resourcePath = $(base.resourcePath);generated/{device}/resources',f'{device}.lang.zhs = resources-zhs']
-        profiles.append(dict(device=device,**constants,minimumApi=min(p['connectIQVersion'] for p in c['partNumbers'])))
+        profiles.append(dict(device=device,**constants,minimumApi='.'.join(map(str,min(tuple(map(int,p['connectIQVersion'].split('.'))) for p in c['partNumbers'])))))
     (ROOT/'monkey.jungle').write_text('\n'.join(jungle)+'\n')
     for mode in ['preview','tests']:
         lines=[l.replace('project.manifest = manifest.xml',f'project.manifest = {mode}/manifest.xml').replace('base.sourcePath = source;live','base.sourcePath = source;'+('preview' if mode=='preview' else 'live;tests')) for l in jungle]

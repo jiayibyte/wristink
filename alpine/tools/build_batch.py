@@ -1,21 +1,33 @@
 """Parallel native builds with isolated compiler output directories (no shared gen/)."""
 from pathlib import Path
-import os,subprocess,concurrent.futures,shutil,json,argparse,time
+import os,subprocess,concurrent.futures,shutil,json,argparse,time,xml.etree.ElementTree as ET
 from generate import generate,ROOT,DEVICES
-p=argparse.ArgumentParser();p.add_argument('mode',choices=['live','preview','tests']);p.add_argument('devices',nargs='*');p.add_argument('--jobs',type=int,default=2);a=p.parse_args()
-subprocess.run([os.sys.executable,str(ROOT/'tools/settings.py')],check=True);generate()
+p=argparse.ArgumentParser();p.add_argument('mode',choices=['live','preview','tests']);p.add_argument('devices',nargs='*');p.add_argument('--jobs',type=int,default=2);p.add_argument('--skip-generate',action='store_true');p.add_argument('--typecheck',type=int,choices=[0,1,2,3],default=1);a=p.parse_args()
+if not a.skip_generate:
+ subprocess.run([os.sys.executable,str(ROOT/'tools/settings.py')],check=True);generate()
 sdk=Path((Path.home()/'Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg').read_text().strip());key=Path.home()/'.Garmin/keys/developer_key.der'
 env=dict(os.environ,JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home');env['PATH']=env['JAVA_HOME']+'/bin:'+env['PATH']
 def build(device):
  out=ROOT/'bin/isolated'/a.mode/device;out.mkdir(parents=True,exist_ok=True);prg=out/'Alpine.prg';log=ROOT/f'bin/{device}-{a.mode}-build.log'
- jungle='monkey.jungle' if a.mode=='live' else f'{a.mode}-{device}.jungle'
+ ns='http://www.garmin.com/xml/connectiq';ET.register_namespace('iq',ns)
+ tree=ET.parse(ROOT/('manifest.xml' if a.mode=='live' else f'generated/{device}/{a.mode}-manifest.xml'))
+ products=tree.getroot().find('{'+ns+'}application/{'+ns+'}products')
+ for product in list(products):
+  if product.get('id')!=device:products.remove(product)
+ tree.write(out/'manifest.xml',encoding='utf-8')
+ source=[ROOT/'source',ROOT/('preview' if a.mode=='preview' else 'live'),ROOT/'generated'/device]
+ if a.mode=='tests':source.append(ROOT/'tests')
+ resources=[ROOT/'resources',ROOT/'generated'/device/'resources'];chinese=[ROOT/'resources-zhs']
+ if a.mode=='preview':resources.append(ROOT/'preview/resources');chinese.append(ROOT/'preview/resources-zhs')
+ jungle=out/'target.jungle'
+ jungle.write_text('project.manifest = manifest.xml\nbase.sourcePath = '+';'.join(map(str,source))+'\nbase.resourcePath = '+';'.join(map(str,resources))+'\nbase.lang.zhs = '+';'.join(map(str,chinese))+'\n')
  # Legacy Instinct bytecode lives in the same 60 KB pool as bitmap resources.
  # Fast code-space optimisation keeps the complete face and menus in budget.
- opt='2z'
+ opt='2z' if device in ['instinct2','instinct2s','instinct2x'] else '0'
  flags=(['-t','-O',opt] if opt=='2z' else ['-t']) if a.mode=='tests' else ['-r','-O',opt]
  # Keep runtime API guards for regional firmware below the default SDK device API.
  compat=['--disable-api-has-check-removal']
- cmd=[str(sdk/'bin/monkeyc'),'-f',jungle,'-d',device,'-o',str(prg),'-y',str(key),'-w','--no-gen-styles']+flags+compat
+ cmd=[str(sdk/'bin/monkeyc'),'-f',str(jungle),'-d',device,'-o',str(prg),'-y',str(key),'-w','--no-gen-styles','-l',str(a.typecheck)]+flags+compat
  start=time.monotonic()
  with log.open('w') as f:r=subprocess.run(cmd,cwd=ROOT,env=env,stdout=f,stderr=subprocess.STDOUT)
  if r.returncode:print(log.read_text()[-6000:],flush=True)
