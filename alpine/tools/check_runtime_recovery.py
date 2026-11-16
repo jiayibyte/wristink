@@ -4,7 +4,7 @@ Uses a separate test application ID and restores its own properties after pass 2
 from pathlib import Path
 import argparse,hashlib,json,os,subprocess,uuid
 ROOT=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('device');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('device');p.add_argument('--typecheck',type=int,choices=[0,1,2,3],default=1);a=p.parse_args()
 folder=ROOT/'generated/recovery'/a.device;folder.mkdir(parents=True,exist_ok=True)
 (folder/'RecoveryProbe.mc').write_text('''import Toybox.Application;
 import Toybox.Graphics;
@@ -46,7 +46,7 @@ env=dict(os.environ,JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-19.jdk/Cont
 out=ROOT/'bin/recovery'/a.device;out.mkdir(parents=True,exist_ok=True);prg=out/'Alpine.prg'
 flags=['-O','2z','--disable-api-has-check-removal'] if a.device=='instinct2s' else []
 with (out/'build.log').open('w') as log:
- subprocess.run([str(sdk/'bin/monkeyc'),'-f',str(jf),'-d',a.device,'-o',str(prg),'-y',str(Path.home()/'.Garmin/keys/developer_key.der'),'-t','-w','--no-gen-styles']+flags,cwd=ROOT,env=env,stdout=log,stderr=subprocess.STDOUT,check=True)
+ subprocess.run([str(sdk/'bin/monkeyc'),'-f',str(jf),'-d',a.device,'-o',str(prg),'-y',str(Path.home()/'.Garmin/keys/developer_key.der'),'-t','-w','--no-gen-styles','-l',str(a.typecheck)]+flags,cwd=ROOT,env=env,stdout=log,stderr=subprocess.STDOUT,check=True)
 print('Native recovery probe compiled',flush=True)
 records=[]
 for phase,expected in [(1,'saved_for_restart'),(2,'reloaded_and_restored')]:
