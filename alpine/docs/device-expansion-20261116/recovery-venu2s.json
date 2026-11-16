@@ -1,0 +1,16 @@
+{
+  "device": "venu2s",
+  "sha256": "83fdfaedfd3a077ea8ac23ab69b4ae81d4dc33638e86b2d0898f84bf20f66c72",
+  "phases": [
+    {
+      "phase": 1,
+      "passed": true,
+      "returncode": 1
+    },
+    {
+      "phase": 2,
+      "passed": true,
+      "returncode": 1
+    }
+  ]
+}

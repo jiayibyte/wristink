@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------
+Executing test unsupportedNativeSettingsMustNotSuspendPhoneConfigurableFace...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000296 
+  - API code 0x300001f3 
+  - unsupportedNativeSettingsMustNotSuspendPhoneConfigurableFace() at /Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/moke/tests/settings-runtime/SettingsRuntimeTests.mc:15 0x1000043b 
+  - evaluate_test_entries_0_to_1() at /Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/moke/bin/settings-regression/instinct2x/gen/006-B4394-00/source/UnitTests.mcgen:51 0x10002d36 
+  - runTest() at /Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/moke/bin/settings-regression/instinct2x/gen/006-B4394-00/source/UnitTests.mcgen:66 0x10002e1b 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                                                        Status:
+unsupportedNativeSettingsMustNotSuspendPhoneConfigurableFace ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

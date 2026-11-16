@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "package": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/moke/dist/Moke-1.2.1.iq",
+  "sha256": "81cb69b490e41ab1145dc2ae266d87e8ae74714fa761b9353f590d68be36e01e",
+  "size": 13843594,
+  "device_targets": 90,
+  "part_number_variants": 184,
+  "settings_per_variant": 94,
+  "font_notices": 184,
+  "bilingual_settings_variants": 184,
+  "scope": "Signed archive manifest, variant coverage, firmware floors, application identity, settings and bundled font notices; no runtime claim.",
+  "signature_verification": "Garmin SDK verified IQ package and all product signatures",
+  "native_after_fix": "Not run: desktop lock blocked simulator; no pass claimed"
+}

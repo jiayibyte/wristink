@@ -1,0 +1,30 @@
+[
+  {
+    "device": "fr55",
+    "passed": true,
+    "seconds": 4.99,
+    "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/retro-world/bin/matrix/test/fr55/build.log",
+    "prg": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/retro-world/bin/matrix/test/fr55/RetroWorld.prg"
+  },
+  {
+    "device": "venusq",
+    "passed": true,
+    "seconds": 4.9,
+    "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/retro-world/bin/matrix/test/venusq/build.log",
+    "prg": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/retro-world/bin/matrix/test/venusq/RetroWorld.prg"
+  },
+  {
+    "device": "instinct2",
+    "passed": true,
+    "seconds": 3.77,
+    "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/retro-world/bin/matrix/test/instinct2/build.log",
+    "prg": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/retro-world/bin/matrix/test/instinct2/RetroWorld.prg"
+  },
+  {
+    "device": "venux1",
+    "passed": true,
+    "seconds": 3.8,
+    "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/retro-world/bin/matrix/test/venux1/build.log",
+    "prg": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/retro-world/bin/matrix/test/venux1/RetroWorld.prg"
+  }
+]

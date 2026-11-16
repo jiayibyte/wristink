@@ -17,6 +17,7 @@ module WeatherIcons {
 
     // Map Garmin's cached weather condition, including shower/snow variants.
     function category(condition) {
+        if(condition==null){return UNKNOWN;}
         switch (condition) {
             case Weather.CONDITION_CLEAR: case Weather.CONDITION_FAIR: return CLEAR;
             case Weather.CONDITION_PARTLY_CLOUDY: case Weather.CONDITION_PARTLY_CLEAR:

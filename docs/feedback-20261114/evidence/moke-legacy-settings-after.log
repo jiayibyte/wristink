@@ -1,0 +1,11 @@
+------------------------------------------------------------------------------
+Executing test unsupportedNativeSettingsMustNotSuspendPhoneConfigurableFace...
+PASS
+
+==============================================================================
+RESULTS
+Test:                                                        Status:
+unsupportedNativeSettingsMustNotSuspendPhoneConfigurableFace PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

@@ -1,0 +1,40 @@
+[
+  {
+    "device": "fr55",
+    "passed": false,
+    "observed_sleep": false,
+    "log": "fr55-live.log",
+    "scope": "Isolated native simulator app, production data APIs, no preview fixtures; not physical watch evidence",
+    "interpretation": "No launcher output while simulator unavailable; runtime outcome unknown"
+  },
+  {
+    "device": "venusq",
+    "passed": false,
+    "observed_sleep": false,
+    "log": "venusq-live.log",
+    "scope": "Isolated native simulator app, production data APIs, no preview fixtures; not physical watch evidence",
+    "interpretation": "No launcher output while simulator unavailable; runtime outcome unknown"
+  },
+  {
+    "device": "instinct2",
+    "passed": false,
+    "observed_sleep": false,
+    "log": "instinct2-live.log",
+    "scope": "Isolated native simulator app, production data APIs, no preview fixtures; not physical watch evidence",
+    "interpretation": "No launcher output while simulator unavailable; runtime outcome unknown"
+  },
+  {
+    "device": "venux1",
+    "passed": true,
+    "observed_sleep": false,
+    "log": "venux1-live.log",
+    "scope": "Isolated native simulator app, production data APIs, no preview fixtures; not physical watch evidence"
+  },
+  {
+    "device": "fr55",
+    "attempt": "after clean simulator restart",
+    "passed": true,
+    "log": "fr55-live-retry.log",
+    "scope": "Production-data API native simulator scene; full face observed in UI. No physical-watch recovery claim."
+  }
+]

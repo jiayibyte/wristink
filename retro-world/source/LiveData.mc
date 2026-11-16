@@ -36,7 +36,7 @@ module LiveData {
         return previous!=heart;
     }
     function refreshTickHeart(stamp) {
-        if(heartAt==stamp) {return false;}
+        if(heartAt>=0 && stamp>=heartAt && stamp-heartAt<5) {return false;}
         heartAt=stamp;var previous=heart;
         if(PreviewMode.ENABLED) {heart=76;return previous!=heart;}
         var info=Activity.getActivityInfo();var live=info==null ? null : info.currentHeartRate;

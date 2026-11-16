@@ -32,7 +32,12 @@ class InstinctFaceApp extends Application.AppBase {
     function initialize(){AppBase.initialize();}
     function onStart(state){}
     function getInitialView(){_view=new LegacyFace();return LegacyPower.views(_view);}
-    function getSettingsView(){if(_view!=null){_view.suspend();}return LegacyPower.settings();}
+    function getSettingsView(){
+        // Phone-only targets return no view. Suspending in that case leaves
+        // the face frozen because there is no menu to return from/onShow.
+        if(!LegacyPower.HAS_SETTINGS){return null;}
+        if(_view!=null){_view.suspend();}return LegacyPower.settings();
+    }
     function onSettingsChanged(){FacePrefs.reload();if(_view!=null){_view.invalidate();}WatchUi.requestUpdate();}
     function onStop(state){if(_view!=null){_view.invalidate();DeviceProfile.releaseHands(_view);}_view=null;FacePrefs.reload();}
 }
@@ -221,6 +226,10 @@ class LegacyFace extends WatchUi.WatchFace {
         slot(dc,"bottomLeft",12,128,82,20);var right=FacePrefs.get("bottomRight");if((right==6 || right==15 || right==18 || right==19 || right==28) && FacePrefs.flag("showHeartGraph") && FacePrefs.get("bottomRightStyle")==6){graph(dc);}else{slot(dc,"bottomRight",98,128,68,20);}
         footer(dc);if(FacePrefs.flag("showCircle")){circle(DeviceDrawing.circleTarget(dc));}
         if(_secondsOn && _secondsMode!=0){_secondsFont=FontCatalog.fit(dc,"data",FacePrefs.get("secondsFont"),4,"88",DeviceProfile.SECONDS_WIDTH-1,DeviceProfile.SECONDS_HEIGHT);}partial(dc,now);
+        // Cards and the last full-frame font are not used by partial updates.
+        _topImage=null;_bottomImage=null;
+        if(!_heartOn || _heartMode==2){_heartFont=null;}
+        FontCatalog.reset();
     }
     function move(dc,x,y,compact){
         var source=FacePrefs.get("moveSource");var ratio=progress(source);

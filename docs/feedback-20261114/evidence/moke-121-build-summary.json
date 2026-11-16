@@ -1,0 +1,13 @@
+{
+  "built_hardware_variants": 184,
+  "build_successful": true,
+  "warning_lines": 3628,
+  "warning_categories": {
+    "unsupported_language": 2576,
+    "deprecated_compatibility_api": 51,
+    "static_container_type": 914,
+    "unsupported_code_paging": 87
+  },
+  "log": "moke/bin/settings-recovery-export.log",
+  "scope": "Headless package export; not a post-fix simulator result"
+}

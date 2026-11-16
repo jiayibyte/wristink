@@ -1,0 +1,798 @@
+[
+  {
+    "file": "cover-500.png",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-en-1440x720.jpg",
+    "locale": "en",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-zh_CN-1440x720.jpg",
+    "locale": "zh_CN",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-zh_TW-1440x720.jpg",
+    "locale": "zh_TW",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-ja-1440x720.jpg",
+    "locale": "ja",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-ko-1440x720.jpg",
+    "locale": "ko",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-de-1440x720.jpg",
+    "locale": "de",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-fr-1440x720.jpg",
+    "locale": "fr",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-es-1440x720.jpg",
+    "locale": "es",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-it-1440x720.jpg",
+    "locale": "it",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-pt_BR-1440x720.jpg",
+    "locale": "pt_BR",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-pt_PT-1440x720.jpg",
+    "locale": "pt_PT",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-ru-1440x720.jpg",
+    "locale": "ru",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-in-1440x720.jpg",
+    "locale": "in",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-ms-1440x720.jpg",
+    "locale": "ms",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-cs-1440x720.jpg",
+    "locale": "cs",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-da-1440x720.jpg",
+    "locale": "da",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-hr-1440x720.jpg",
+    "locale": "hr",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-hu-1440x720.jpg",
+    "locale": "hu",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-nl-1440x720.jpg",
+    "locale": "nl",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-nb-1440x720.jpg",
+    "locale": "nb",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-pl-1440x720.jpg",
+    "locale": "pl",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-sk-1440x720.jpg",
+    "locale": "sk",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-sl-1440x720.jpg",
+    "locale": "sl",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-fi-1440x720.jpg",
+    "locale": "fi",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-sv-1440x720.jpg",
+    "locale": "sv",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-el-1440x720.jpg",
+    "locale": "el",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-iw-1440x720.jpg",
+    "locale": "iw",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "hero-th-1440x720.jpg",
+    "locale": "th",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      }
+    ]
+  },
+  {
+    "file": "01-displays.jpg",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      },
+      {
+        "file": "docs/verified-release/epix2-aurora-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "5e0851b8b7d5122766090e06bcb57c7e383866470d41933731fd409af7ea2e9d"
+      },
+      {
+        "file": "docs/verified-release/fenix7-day-birds-plane.png",
+        "nativeSize": [
+          260,
+          260
+        ],
+        "displaySize": [
+          364,
+          364
+        ],
+        "sha256": "e2da6f48a6bb20567e72aa682b1d58e21e7d5313666710d20e64d852ae58b0c6"
+      },
+      {
+        "file": "docs/verified-release/instinct2s-snow-birds-plane.png",
+        "nativeSize": [
+          163,
+          156
+        ],
+        "displaySize": [
+          326,
+          312
+        ],
+        "sha256": "20529f64fb03f716aeb96ea69ac1dd4dfa43048f4a10b45045e60fc8c4f1547b"
+      }
+    ],
+    "historicalNativeCaptures": false,
+    "freshCaptureReview": "Source 301136a: fresh display-family, aurora and always-on captures; retained native festival and configuration examples."
+  },
+  {
+    "file": "02-backgrounds.jpg",
+    "sources": [
+      {
+        "file": "docs/verified-release/epix2-aurora-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "5e0851b8b7d5122766090e06bcb57c7e383866470d41933731fd409af7ea2e9d"
+      },
+      {
+        "file": "docs/verified-sky/epix2-rain.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "874acaecb90954704957b5b3aeb62db7ace96d8792d6207a89c058217cccd460"
+      },
+      {
+        "file": "docs/verified-sky/epix2-snow.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "7c1bf9b09ea8ff27af68f0b42c474be73d42cc21883e5dd73b48a49dddca9700"
+      },
+      {
+        "file": "docs/sky-sunrise.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "7313475779289430cba7fb8883a7d2ff3f909a77581e53948e710bd819e2a5a6"
+      }
+    ],
+    "historicalNativeCaptures": true,
+    "freshCaptureReview": "Source 301136a: fresh display-family, aurora and always-on captures; retained native festival and configuration examples."
+  },
+  {
+    "file": "03-festivals.jpg",
+    "sources": [
+      {
+        "file": "docs/verified-bright/epix2-spring.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "b33f35f888b2c90e7c024f6c5ba5ad845d564f45fa014b322703b570ff629f12"
+      },
+      {
+        "file": "docs/verified-bright/epix2-christmas.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "29f4a314bd3d31fc1b6c80b9722e4f4bdc158015d47c7f613551fdb56f102bd4"
+      },
+      {
+        "file": "docs/verified-bright/epix2-halloween.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "137caf0cd25a1748363fe50a06a687250a1d4c09ca6191009005ffabeacaa1fc"
+      },
+      {
+        "file": "docs/verified-bright/epix2-mid-autumn-night.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "62be5b718a5d2f92668b9bc2bbc6a324e46158fe5e27601831161624886acb3b"
+      }
+    ],
+    "historicalNativeCaptures": true,
+    "freshCaptureReview": "Source 301136a: fresh display-family, aurora and always-on captures; retained native festival and configuration examples."
+  },
+  {
+    "file": "04-your-data.jpg",
+    "sources": [
+      {
+        "file": "docs/verified/verified-instinct3-classic.png",
+        "nativeSize": [
+          176,
+          176
+        ],
+        "displaySize": [
+          352,
+          352
+        ],
+        "sha256": "197e28ca588229c19f2122b4f76133c72e28abddfc906f002a826e95c125d9eb"
+      },
+      {
+        "file": "docs/verified/verified-instinct3-contour.png",
+        "nativeSize": [
+          176,
+          176
+        ],
+        "displaySize": [
+          352,
+          352
+        ],
+        "sha256": "fc157a94713dc577f5e6e0275afcca92de02935cdc5c8e558013199b8a7020c5"
+      },
+      {
+        "file": "docs/verified-release/instinct2s-full-data-storm-expedition.png",
+        "nativeSize": [
+          163,
+          156
+        ],
+        "displaySize": [
+          326,
+          312
+        ],
+        "sha256": "62f2c1e298e7340d728ed41af2b5a9b6ce61adb5e2c5d05a49c3108b48478729"
+      },
+      {
+        "file": "docs/verified/verified-instinct3-wings.png",
+        "nativeSize": [
+          176,
+          176
+        ],
+        "displaySize": [
+          352,
+          352
+        ],
+        "sha256": "8eadfd598d580a630d8628206d89a467f4366758e213db968b21e0df65f0e6ec"
+      }
+    ],
+    "historicalNativeCaptures": true,
+    "freshCaptureReview": "Source 301136a: fresh display-family, aurora and always-on captures; retained native festival and configuration examples."
+  },
+  {
+    "file": "05-everyday.jpg",
+    "sources": [
+      {
+        "file": "docs/verified-bright/epix2-day-bright.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "2d6e9c3ff7b0a70dcfcd83e19d1c40270a3c677871cc288444df6e095d4fd9cb"
+      },
+      {
+        "file": "docs/verified-release/epix2-day-birds-plane.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "3da47583e6426148763a4175381e20a893feb820eec1278a4ce390e46b27a6a1"
+      },
+      {
+        "file": "docs/verified-release/epix2-aod-native.png",
+        "nativeSize": [
+          416,
+          416
+        ],
+        "displaySize": [
+          416,
+          416
+        ],
+        "sha256": "9488e572eee2155ad8e4527eb0d703f8b91926f4735a1db30bc90bd622da09c5"
+      },
+      {
+        "file": "docs/verified-bright/instinct2s-time24-menu.png",
+        "nativeSize": [
+          163,
+          156
+        ],
+        "displaySize": [
+          326,
+          312
+        ],
+        "sha256": "c008b402fe2c7ee5fb5ae2d1dee7be5f14b69911f2d6433f15674f8ce85903ee"
+      }
+    ],
+    "historicalNativeCaptures": true,
+    "freshCaptureReview": "Source 301136a: fresh display-family, aurora and always-on captures; retained native festival and configuration examples."
+  }
+]

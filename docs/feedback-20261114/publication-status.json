@@ -1,0 +1,53 @@
+{
+  "app": "Retro World",
+  "version": "2.1.2",
+  "store_id": "76e1c5f4-abe8-49ab-bcc0-44c2b1c1a267",
+  "package_sha256": "1cae628bd3b536be86d6cab4b3814d73a43c2fbd39129b1670ff5ddb7779bc4a",
+  "international": {
+    "upload": "Verified",
+    "details_submission": "Completed; all 28 localized release notes persisted and titles preserved",
+    "public_version_at_start": "2.1.1",
+    "published_replies": [
+      {
+        "review_id": "5830afab-951a-4d70-8a87-cf9e66abca37",
+        "reply_id": "dd74a461-3b54-4b60-a99b-0caa4f17464b",
+        "author": "Andrei",
+        "verified_visible": true
+      },
+      {
+        "review_id": "ae88cb4f-1cbe-4a1b-8dae-e8cc28e0fde1",
+        "reply_id": "5ab5e58f-1db1-4cef-845b-7ff660a6c09e",
+        "author": "Bubu",
+        "verified_visible": true
+      }
+    ],
+    "existing_replies_preserved": 5,
+    "release_note_locales": 28,
+    "signature": "Verified",
+    "backend_latest": "2.1.2",
+    "public_version": "2.1.2 (Internal: 4)"
+  },
+  "china": {
+    "status": "Signed in with user-provided China credentials; both review pages lack developer reply controls; /developer/dashboard redirects to homepage",
+    "draft_replies": 9,
+    "public_version_at_last_check": "2.1.1",
+    "reply_published": 0,
+    "credentials_stored": false
+  },
+  "legal_confirmation": "User confirmed this Retro World 2.1.2 submission, 2026-11-14",
+  "moke_followup": {
+    "baseline": "8a45c58 / published Moke 1.2.0 source",
+    "confirmed_defect": "getSettingsView suspends phone-only legacy face before returning null; no corresponding resume",
+    "native_before": "Instinct2X API 3.4.3: assertion failed, expected face not suspended",
+    "code_fix": "Guard with generated HAS_SETTINGS capability before suspension",
+    "native_after": "Not verified: Mac locked; user unlock requested",
+    "candidate_version": "1.2.1",
+    "additional_control": "Published English advances pinned to prevent regenerated 8px/14px glyph drift",
+    "build_targets": 90,
+    "hardware_variants": 184,
+    "settings_per_variant": 94,
+    "package_sha256": "81cb69b490e41ab1145dc2ae266d87e8ae74714fa761b9353f590d68be36e01e",
+    "signature": "Verified by Garmin SDK",
+    "upload": "Not uploaded; post-fix native checks blocked by desktop lock"
+  }
+}

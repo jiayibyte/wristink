@@ -1,0 +1,781 @@
+{
+  "package": "/Users/jiayi/Documents/instinct/worktrees/alpine-device-expansion-20261116/alpine/dist/Alpine-1.1.0-compact.iq",
+  "sha256": "d9f8fea04882ed2ed21e186192b493f95fa015df78984812835e33f8496a72aa",
+  "sourceCommit": "158f8b4e56780de3df649d982b7bd3fcf892b456",
+  "variants": [
+    {
+      "partNumber": "006-B4776-00",
+      "device": "fenix8solar51mm",
+      "api": "6.0.3",
+      "sha256": "a5a5d070f2cb9e060d685a4dffc6167f7c08db4b3528caeaa633aa46ca98e70c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4533-00",
+      "device": "fenix8solar51mm",
+      "api": "6.0.3",
+      "sha256": "a5a5d070f2cb9e060d685a4dffc6167f7c08db4b3528caeaa633aa46ca98e70c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4258-00",
+      "device": "fr265s",
+      "api": "5.2.0",
+      "sha256": "aa7d8f0c47ba2b7d0a3a7c7333d6b8a1967ad48e470678a517b12e12eaf0972e",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4586-00",
+      "device": "instinct3amoled45mm",
+      "api": "6.0.2",
+      "sha256": "77a8f1782cad490f2e436b0e8866ff5026d66070e55d7cb0da04bf1b7ba0d3d2",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4585-00",
+      "device": "instinct3solar45mm",
+      "api": "6.0.2",
+      "sha256": "e34c7cb5e32d9ea5aca68cc503af1021c9a1c1e07aaf56c4808a5b03d010a17c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4759-00",
+      "device": "instinct3solar45mm",
+      "api": "6.0.2",
+      "sha256": "e34c7cb5e32d9ea5aca68cc503af1021c9a1c1e07aaf56c4808a5b03d010a17c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4233-00",
+      "device": "approachs7042mm",
+      "api": "5.1.0",
+      "sha256": "269de91e9e8c5f8151ed5a5c3c601925343697b1f0d06626476096a0413188d5",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4587-00",
+      "device": "instinct3amoled50mm",
+      "api": "6.0.2",
+      "sha256": "51272bf8c8ecc8f1519d7267ea8174a41f239777feb14787862f976bf209a729",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4105-00",
+      "device": "marq2",
+      "api": "5.2.0",
+      "sha256": "269de91e9e8c5f8151ed5a5c3c601925343697b1f0d06626476096a0413188d5",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4472-00",
+      "device": "marq2",
+      "api": "5.2.0",
+      "sha256": "269de91e9e8c5f8151ed5a5c3c601925343697b1f0d06626476096a0413188d5",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3703-00",
+      "device": "venu2",
+      "api": "5.0.0",
+      "sha256": "5bb77cfc5cff31f9c10037b34ec44856812c369373174ef04eab38a6d6161acf",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3950-00",
+      "device": "venu2",
+      "api": "5.0.0",
+      "sha256": "5bb77cfc5cff31f9c10037b34ec44856812c369373174ef04eab38a6d6161acf",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4171-00",
+      "device": "venu2",
+      "api": "5.0.0",
+      "sha256": "5bb77cfc5cff31f9c10037b34ec44856812c369373174ef04eab38a6d6161acf",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4180-00",
+      "device": "venu2",
+      "api": "5.0.0",
+      "sha256": "5bb77cfc5cff31f9c10037b34ec44856812c369373174ef04eab38a6d6161acf",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4260-00",
+      "device": "venu3",
+      "api": "5.2.0",
+      "sha256": "ed8483eeaff40496419ec3d24255ca5e13925944a141bae37e5b88f9944bcd5c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B5214-00",
+      "device": "fr70",
+      "api": "6.0.3",
+      "sha256": "68d694eab25f3547c4d9be17df40b9e34eb337a0af8e6626bae5b6d09ff70c8e",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4916-00",
+      "device": "fr70",
+      "api": "6.0.3",
+      "sha256": "68d694eab25f3547c4d9be17df40b9e34eb337a0af8e6626bae5b6d09ff70c8e",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4223-00",
+      "device": "descentmk351mm",
+      "api": "5.1.0",
+      "sha256": "60822d9f067cfa1ceb125c2e51edb5c05728f9a5e2443a9dabd570ad9f92b917",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3944-00",
+      "device": "epix2",
+      "api": "5.2.0",
+      "sha256": "dfc91028dd7c5dfc7dce7d886d3adfa6dbb8e11d0c7d87cc048f7e7cdd22889c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3943-00",
+      "device": "epix2",
+      "api": "5.2.0",
+      "sha256": "dfc91028dd7c5dfc7dce7d886d3adfa6dbb8e11d0c7d87cc048f7e7cdd22889c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4575-00",
+      "device": "enduro3",
+      "api": "6.0.3",
+      "sha256": "a5a5d070f2cb9e060d685a4dffc6167f7c08db4b3528caeaa633aa46ca98e70c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B5169-00",
+      "device": "enduro4",
+      "api": "6.0.3",
+      "sha256": "a5a5d070f2cb9e060d685a4dffc6167f7c08db4b3528caeaa633aa46ca98e70c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4024-00",
+      "device": "fr955",
+      "api": "5.2.0",
+      "sha256": "e15754295a0bb4c0088a1ed6801eff0924ca3df0142bd50ed89e4ee37d44b18a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4879-00",
+      "device": "d2mach2",
+      "api": "6.0.3",
+      "sha256": "a15f0ad7d522c145790c349ccf83c00c61b7f9286689445fadbca2ac4f8e499a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4079-00",
+      "device": "d2mach1",
+      "api": "5.2.0",
+      "sha256": "dfc91028dd7c5dfc7dce7d886d3adfa6dbb8e11d0c7d87cc048f7e7cdd22889c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4596-00",
+      "device": "fenix7xpronowifi",
+      "api": "5.2.0",
+      "sha256": "a5a5d070f2cb9e060d685a4dffc6167f7c08db4b3528caeaa633aa46ca98e70c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4374-00",
+      "device": "fenix7spro",
+      "api": "5.2.0",
+      "sha256": "6927ec39fa3362e5b980a6361fb597afd89df0918518c332f02de46031b3f6c3",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3906-00",
+      "device": "fenix7",
+      "api": "5.2.0",
+      "sha256": "e15754295a0bb4c0088a1ed6801eff0924ca3df0142bd50ed89e4ee37d44b18a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3909-00",
+      "device": "fenix7",
+      "api": "5.2.0",
+      "sha256": "e15754295a0bb4c0088a1ed6801eff0924ca3df0142bd50ed89e4ee37d44b18a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B5133-00",
+      "device": "fenix943mm",
+      "api": "6.0.3",
+      "sha256": "dfc91028dd7c5dfc7dce7d886d3adfa6dbb8e11d0c7d87cc048f7e7cdd22889c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4956-00",
+      "device": "fenix9prosolar51mm",
+      "api": "6.0.3",
+      "sha256": "a5a5d070f2cb9e060d685a4dffc6167f7c08db4b3528caeaa633aa46ca98e70c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3704-00",
+      "device": "venu2s",
+      "api": "5.0.0",
+      "sha256": "ab709bfa11420285f0628278fe7793b6c31bf1d0bb64e498002cef96f9f5a92e",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4175-00",
+      "device": "venu2s",
+      "api": "5.0.0",
+      "sha256": "ab709bfa11420285f0628278fe7793b6c31bf1d0bb64e498002cef96f9f5a92e",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3949-00",
+      "device": "venu2s",
+      "api": "5.0.0",
+      "sha256": "ab709bfa11420285f0628278fe7793b6c31bf1d0bb64e498002cef96f9f5a92e",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4181-00",
+      "device": "venu2s",
+      "api": "5.0.0",
+      "sha256": "ab709bfa11420285f0628278fe7793b6c31bf1d0bb64e498002cef96f9f5a92e",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4125-00",
+      "device": "d2airx10",
+      "api": "5.0.0",
+      "sha256": "89fe6a5b833c30eea4972b6edd283e93e8d2d2f7fa54d2efc1513cfbe021aa7e",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4532-00",
+      "device": "fenix8solar47mm",
+      "api": "6.0.3",
+      "sha256": "e15754295a0bb4c0088a1ed6801eff0924ca3df0142bd50ed89e4ee37d44b18a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4631-00",
+      "device": "fenix8pro47mm",
+      "api": "6.0.3",
+      "sha256": "a15f0ad7d522c145790c349ccf83c00c61b7f9286689445fadbca2ac4f8e499a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B5134-00",
+      "device": "fenix947mm",
+      "api": "6.0.3",
+      "sha256": "a15f0ad7d522c145790c349ccf83c00c61b7f9286689445fadbca2ac4f8e499a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4570-00",
+      "device": "fr57047mm",
+      "api": "6.0.3",
+      "sha256": "a15f0ad7d522c145790c349ccf83c00c61b7f9286689445fadbca2ac4f8e499a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4815-00",
+      "device": "fr170",
+      "api": "6.0.3",
+      "sha256": "f4d7aea119645706d225ca0c153ba3469e5351eff50ed740b4e2b08d6625c532",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4625-00",
+      "device": "vivoactive6",
+      "api": "6.0.3",
+      "sha256": "f4d7aea119645706d225ca0c153ba3469e5351eff50ed740b4e2b08d6625c532",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4426-00",
+      "device": "vivoactive5",
+      "api": "5.2.0",
+      "sha256": "1c1a4c05fc5452c869cfe18cff981d64b23f9c8c71c1c8b7ee180e9638830dcf",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4432-00",
+      "device": "fr165",
+      "api": "5.2.0",
+      "sha256": "68d694eab25f3547c4d9be17df40b9e34eb337a0af8e6626bae5b6d09ff70c8e",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4124-00",
+      "device": "marq2aviator",
+      "api": "5.2.0",
+      "sha256": "269de91e9e8c5f8151ed5a5c3c601925343697b1f0d06626476096a0413188d5",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4775-00",
+      "device": "fenix847mm",
+      "api": "6.0.3",
+      "sha256": "a15f0ad7d522c145790c349ccf83c00c61b7f9286689445fadbca2ac4f8e499a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4536-00",
+      "device": "fenix847mm",
+      "api": "6.0.3",
+      "sha256": "a15f0ad7d522c145790c349ccf83c00c61b7f9286689445fadbca2ac4f8e499a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3888-00",
+      "device": "instinct2",
+      "api": "3.4.2",
+      "sha256": "8c45dbcf3b0942e0071e12a9e7cc80f4199d470574b0f762c364a8e1dbccb16b",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4071-00",
+      "device": "instinct2",
+      "api": "3.2.7",
+      "sha256": "8c45dbcf3b0942e0071e12a9e7cc80f4199d470574b0f762c364a8e1dbccb16b",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4312-00",
+      "device": "epix2pro42mm",
+      "api": "5.2.0",
+      "sha256": "269de91e9e8c5f8151ed5a5c3c601925343697b1f0d06626476096a0413188d5",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4222-00",
+      "device": "descentmk343mm",
+      "api": "5.1.0",
+      "sha256": "269de91e9e8c5f8151ed5a5c3c601925343697b1f0d06626476096a0413188d5",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4534-00",
+      "device": "fenix843mm",
+      "api": "6.0.3",
+      "sha256": "dfc91028dd7c5dfc7dce7d886d3adfa6dbb8e11d0c7d87cc048f7e7cdd22889c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3851-00",
+      "device": "venu2plus",
+      "api": "5.0.0",
+      "sha256": "5bb77cfc5cff31f9c10037b34ec44856812c369373174ef04eab38a6d6161acf",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4017-00",
+      "device": "venu2plus",
+      "api": "5.0.0",
+      "sha256": "5bb77cfc5cff31f9c10037b34ec44856812c369373174ef04eab38a6d6161acf",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4315-00",
+      "device": "fr965",
+      "api": "5.2.0",
+      "sha256": "a15f0ad7d522c145790c349ccf83c00c61b7f9286689445fadbca2ac4f8e499a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3993-00",
+      "device": "fr255s",
+      "api": "5.2.0",
+      "sha256": "92b74869bfeacddd586c30c0237245ed9d6a5b2a98950d62b847047aa85a876f",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4814-00",
+      "device": "fr170m",
+      "api": "6.0.3",
+      "sha256": "f4d7aea119645706d225ca0c153ba3469e5351eff50ed740b4e2b08d6625c532",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4394-00",
+      "device": "instinct2x",
+      "api": "3.4.3",
+      "sha256": "8c45dbcf3b0942e0071e12a9e7cc80f4199d470574b0f762c364a8e1dbccb16b",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4261-00",
+      "device": "venu3s",
+      "api": "5.2.0",
+      "sha256": "613d7b73dc6b424d42861fdf445bc4a956f0a882cbd18ee23f131809a14a8316",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4234-00",
+      "device": "approachs7047mm",
+      "api": "5.1.0",
+      "sha256": "ed8483eeaff40496419ec3d24255ca5e13925944a141bae37e5b88f9944bcd5c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3910-00",
+      "device": "fenix7x",
+      "api": "5.2.0",
+      "sha256": "a5a5d070f2cb9e060d685a4dffc6167f7c08db4b3528caeaa633aa46ca98e70c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4341-00",
+      "device": "fenix7x",
+      "api": "5.2.0",
+      "sha256": "a5a5d070f2cb9e060d685a4dffc6167f7c08db4b3528caeaa633aa46ca98e70c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3907-00",
+      "device": "fenix7x",
+      "api": "5.2.0",
+      "sha256": "a5a5d070f2cb9e060d685a4dffc6167f7c08db4b3528caeaa633aa46ca98e70c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4135-00",
+      "device": "fenix7x",
+      "api": "5.2.0",
+      "sha256": "a5a5d070f2cb9e060d685a4dffc6167f7c08db4b3528caeaa633aa46ca98e70c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3990-00",
+      "device": "fr255m",
+      "api": "5.2.0",
+      "sha256": "66676045a0591f8a90bf4026b322bcdae7971390dfa5e91e4c7be614727afd42",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4595-00",
+      "device": "fenix7pronowifi",
+      "api": "5.2.0",
+      "sha256": "e15754295a0bb4c0088a1ed6801eff0924ca3df0142bd50ed89e4ee37d44b18a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3908-00",
+      "device": "fenix7s",
+      "api": "5.2.0",
+      "sha256": "6927ec39fa3362e5b980a6361fb597afd89df0918518c332f02de46031b3f6c3",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3905-00",
+      "device": "fenix7s",
+      "api": "5.2.0",
+      "sha256": "6927ec39fa3362e5b980a6361fb597afd89df0918518c332f02de46031b3f6c3",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4954-00",
+      "device": "fenix9pro51mm",
+      "api": "6.0.3",
+      "sha256": "327e5606f99ffd06f1ff66d5c1771be7643eeb1badafcfc61ada01b5491ce951",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4955-00",
+      "device": "fenix9prosolar47mm",
+      "api": "6.0.3",
+      "sha256": "e15754295a0bb4c0088a1ed6801eff0924ca3df0142bd50ed89e4ee37d44b18a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4588-00",
+      "device": "descentg2",
+      "api": "5.1.0",
+      "sha256": "77a8f1782cad490f2e436b0e8866ff5026d66070e55d7cb0da04bf1b7ba0d3d2",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4565-00",
+      "device": "fr970",
+      "api": "6.0.3",
+      "sha256": "a15f0ad7d522c145790c349ccf83c00c61b7f9286689445fadbca2ac4f8e499a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3992-00",
+      "device": "fr255",
+      "api": "5.2.0",
+      "sha256": "66676045a0591f8a90bf4026b322bcdae7971390dfa5e91e4c7be614727afd42",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4376-00",
+      "device": "fenix7xpro",
+      "api": "5.2.0",
+      "sha256": "a5a5d070f2cb9e060d685a4dffc6167f7c08db4b3528caeaa633aa46ca98e70c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4656-00",
+      "device": "approachs50",
+      "api": "5.1.0",
+      "sha256": "1c1a4c05fc5452c869cfe18cff981d64b23f9c8c71c1c8b7ee180e9638830dcf",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4314-00",
+      "device": "epix2pro51mm",
+      "api": "5.2.0",
+      "sha256": "60822d9f067cfa1ceb125c2e51edb5c05728f9a5e2443a9dabd570ad9f92b917",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4556-00",
+      "device": "epix2pro51mm",
+      "api": "5.2.0",
+      "sha256": "60822d9f067cfa1ceb125c2e51edb5c05728f9a5e2443a9dabd570ad9f92b917",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4542-00",
+      "device": "epix2pro51mm",
+      "api": "5.2.0",
+      "sha256": "60822d9f067cfa1ceb125c2e51edb5c05728f9a5e2443a9dabd570ad9f92b917",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4875-00",
+      "device": "approachs7247mm",
+      "api": "6.0.3",
+      "sha256": "a15f0ad7d522c145790c349ccf83c00c61b7f9286689445fadbca2ac4f8e499a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4433-00",
+      "device": "fr165m",
+      "api": "5.2.0",
+      "sha256": "68d694eab25f3547c4d9be17df40b9e34eb337a0af8e6626bae5b6d09ff70c8e",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4953-00",
+      "device": "fenix9pro47mm",
+      "api": "6.0.3",
+      "sha256": "a15f0ad7d522c145790c349ccf83c00c61b7f9286689445fadbca2ac4f8e499a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4574-00",
+      "device": "fr57042mm",
+      "api": "6.0.3",
+      "sha256": "f4d7aea119645706d225ca0c153ba3469e5351eff50ed740b4e2b08d6625c532",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4952-00",
+      "device": "fenix9pro43mm",
+      "api": "6.0.3",
+      "sha256": "dfc91028dd7c5dfc7dce7d886d3adfa6dbb8e11d0c7d87cc048f7e7cdd22889c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4874-00",
+      "device": "approachs7243mm",
+      "api": "6.0.3",
+      "sha256": "dfc91028dd7c5dfc7dce7d886d3adfa6dbb8e11d0c7d87cc048f7e7cdd22889c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B5000-00",
+      "device": "marq3",
+      "api": "6.0.3",
+      "sha256": "a15f0ad7d522c145790c349ccf83c00c61b7f9286689445fadbca2ac4f8e499a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B5056-00",
+      "device": "d2mach2pro",
+      "api": "6.0.3",
+      "sha256": "a15f0ad7d522c145790c349ccf83c00c61b7f9286689445fadbca2ac4f8e499a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4644-00",
+      "device": "venu441mm",
+      "api": "6.0.3",
+      "sha256": "f4d7aea119645706d225ca0c153ba3469e5351eff50ed740b4e2b08d6625c532",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4313-00",
+      "device": "epix2pro47mm",
+      "api": "5.2.0",
+      "sha256": "dfc91028dd7c5dfc7dce7d886d3adfa6dbb8e11d0c7d87cc048f7e7cdd22889c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4257-00",
+      "device": "fr265",
+      "api": "5.2.0",
+      "sha256": "dfc91028dd7c5dfc7dce7d886d3adfa6dbb8e11d0c7d87cc048f7e7cdd22889c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4643-00",
+      "device": "venu445mm",
+      "api": "6.0.3",
+      "sha256": "a15f0ad7d522c145790c349ccf83c00c61b7f9286689445fadbca2ac4f8e499a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4944-00",
+      "device": "venu445mm",
+      "api": "6.0.3",
+      "sha256": "a15f0ad7d522c145790c349ccf83c00c61b7f9286689445fadbca2ac4f8e499a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4666-00",
+      "device": "fenixe",
+      "api": "6.0.3",
+      "sha256": "dfc91028dd7c5dfc7dce7d886d3adfa6dbb8e11d0c7d87cc048f7e7cdd22889c",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4091-00",
+      "device": "instinct2s",
+      "api": "3.2.7",
+      "sha256": "21cd7fa20ebfd8de59dbc157d0c14c0d62ae23b38163c039d18f078b2d2e0d33",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3889-00",
+      "device": "instinct2s",
+      "api": "3.4.2",
+      "sha256": "21cd7fa20ebfd8de59dbc157d0c14c0d62ae23b38163c039d18f078b2d2e0d33",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B3991-00",
+      "device": "fr255sm",
+      "api": "5.2.0",
+      "sha256": "92b74869bfeacddd586c30c0237245ed9d6a5b2a98950d62b847047aa85a876f",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    },
+    {
+      "partNumber": "006-B4375-00",
+      "device": "fenix7pro",
+      "api": "5.2.0",
+      "sha256": "e15754295a0bb4c0088a1ed6801eff0924ca3df0142bd50ed89e4ee37d44b18a",
+      "settings": "passed",
+      "diagnosticStrings": "absent"
+    }
+  ],
+  "runtimeLanguages": [
+    "eng",
+    "zhs"
+  ],
+  "auditFolder": "/Users/jiayi/Documents/instinct/worktrees/alpine-device-expansion-20261116/alpine/dist/iq-audit-_pbjkqux",
+  "signatureVerification": "separate Garmin SDK VerifyIq result required"
+}

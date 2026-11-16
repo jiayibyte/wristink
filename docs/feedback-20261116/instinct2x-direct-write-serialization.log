@@ -1,0 +1,11 @@
+RECOVERY_STOP free=4552
+RECOVERY_PHASE1_OK free=4544
+Unable to serialize app data
+
+Error: Array Out Of Bounds Error
+Details: Failed invoking <symbol>
+Stack: 
+  - 0x10005281 
+  - 0x10008602 
+  - 0x10002b5e 
+Encountered an app crash.

@@ -1,0 +1,23 @@
+[
+  {
+    "device": "venu2s",
+    "passed": true,
+    "returncode": 1,
+    "tests": 23,
+    "sha256": "a0911e1e6df6080b8d46112b8157805d39ba106dd44b9fdf1fba240273ffd325"
+  },
+  {
+    "device": "instinct2s",
+    "passed": true,
+    "returncode": 1,
+    "tests": 23,
+    "sha256": "c20d0caa78c7023380cdf03c9c5753bbe9381a2edc99e0a4491727a41d308b62"
+  },
+  {
+    "device": "instinct3amoled50mm",
+    "passed": true,
+    "returncode": 1,
+    "tests": 23,
+    "sha256": "7d9b95ea0b0c24b80d7f7ee6dc1095556f1c48b4de51490133f218eb2dfd3402"
+  }
+]

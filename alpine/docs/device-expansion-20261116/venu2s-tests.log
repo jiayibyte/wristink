@@ -1,0 +1,143 @@
+------------------------------------------------------------------------------
+Executing test timeFormatBoundaries...
+PASS
+------------------------------------------------------------------------------
+Executing test freshnessRejectsMissingStaleFuture...
+PASS
+------------------------------------------------------------------------------
+Executing test heartRejectsSentinels...
+PASS
+------------------------------------------------------------------------------
+Executing test sunriseTransitionsAndMissingLocation...
+PASS
+------------------------------------------------------------------------------
+Executing test scenesRespectPriorityAndExplicitChoice...
+PASS
+------------------------------------------------------------------------------
+Executing test zerosNegativeAltitudeAndUnits...
+PASS
+------------------------------------------------------------------------------
+Executing test absentValuesNeverBecomeFixtures...
+PASS
+------------------------------------------------------------------------------
+Executing test sleepStopsSecondPaintingAndWakeInvalidates...
+PASS
+------------------------------------------------------------------------------
+Executing test defaultCircleIsWeatherAndHeartRemainsBelow...
+PASS
+------------------------------------------------------------------------------
+Executing test moonCycleIsBounded...
+PASS
+------------------------------------------------------------------------------
+Executing test batteryEstimateUsesOnlySystemDays...
+PASS
+------------------------------------------------------------------------------
+Executing test everestBackgroundCachesAndAllScenesRender...
+PASS
+------------------------------------------------------------------------------
+Executing test pinnedSkinsWinOverHealthAndCalendar...
+PASS
+------------------------------------------------------------------------------
+Executing test weatherLinkChangesEffectsWithoutChangingPinnedSkin...
+PASS
+------------------------------------------------------------------------------
+Executing test backgroundsAndOrnamentsPersistIndependently...
+PASS
+------------------------------------------------------------------------------
+Executing test auroraAssetsCoverEveryLightingAndWeather...
+PASS
+------------------------------------------------------------------------------
+Executing test ornamentsDefaultOffAndStayAboveRidgesAndCircle...
+PASS
+------------------------------------------------------------------------------
+Executing test monochromeCloudsStayAboveRidgesWithoutExtraBitmap...
+PASS
+------------------------------------------------------------------------------
+Executing test festivalsUseLunarDatesAndWindowEdges...
+PASS
+------------------------------------------------------------------------------
+Executing test festivalsRespectOffAndManualWithoutChangingWeather...
+PASS
+------------------------------------------------------------------------------
+Executing test festivalAssetsCoverWeatherAndLighting...
+PASS
+------------------------------------------------------------------------------
+Executing test disabledSecondsAndSleepingTicksDoNoPainting...
+PASS
+------------------------------------------------------------------------------
+Executing test aodReleasesLandscapeAndUsesOnlyMinuteClock...
+PASS
+------------------------------------------------------------------------------
+Executing test heartPatchTouchesOnlyConfiguredValueBoxes...
+PASS
+------------------------------------------------------------------------------
+Executing test celestialMatchesPinnedReference...
+PASS
+------------------------------------------------------------------------------
+Executing test risingSettingAndPolarVisibility...
+PASS
+------------------------------------------------------------------------------
+Executing test fallbackMoonCrossesMidnightAndDoesNotClaimLocation...
+PASS
+------------------------------------------------------------------------------
+Executing test clearWeatherHasNoCloudsAndOtherWeatherChangesMountains...
+PASS
+------------------------------------------------------------------------------
+Executing test moonDisplaySeparatesDayNightFromTrueAstronomy...
+PASS
+------------------------------------------------------------------------------
+Executing test dataSlotMappingsAndWeatherUnits...
+PASS
+------------------------------------------------------------------------------
+Executing test slotChoicesPersistAndDoNotOverwriteOtherSlots...
+PASS
+------------------------------------------------------------------------------
+Executing test legacyCircleAndDefaultsHaveStableMeaning...
+PASS
+------------------------------------------------------------------------------
+Executing test headerDefaultsHideOnceWithoutResettingCustomChoices...
+PASS
+------------------------------------------------------------------------------
+Executing test timeAndSkyChoicesPersistWithoutChangingDataSlots...
+PASS
+
+==============================================================================
+RESULTS
+Test:                                                  Status:
+timeFormatBoundaries                                   PASS
+freshnessRejectsMissingStaleFuture                     PASS
+heartRejectsSentinels                                  PASS
+sunriseTransitionsAndMissingLocation                   PASS
+scenesRespectPriorityAndExplicitChoice                 PASS
+zerosNegativeAltitudeAndUnits                          PASS
+absentValuesNeverBecomeFixtures                        PASS
+sleepStopsSecondPaintingAndWakeInvalidates             PASS
+defaultCircleIsWeatherAndHeartRemainsBelow             PASS
+moonCycleIsBounded                                     PASS
+batteryEstimateUsesOnlySystemDays                      PASS
+everestBackgroundCachesAndAllScenesRender              PASS
+pinnedSkinsWinOverHealthAndCalendar                    PASS
+weatherLinkChangesEffectsWithoutChangingPinnedSkin     PASS
+backgroundsAndOrnamentsPersistIndependently            PASS
+auroraAssetsCoverEveryLightingAndWeather               PASS
+ornamentsDefaultOffAndStayAboveRidgesAndCircle         PASS
+monochromeCloudsStayAboveRidgesWithoutExtraBitmap      PASS
+festivalsUseLunarDatesAndWindowEdges                   PASS
+festivalsRespectOffAndManualWithoutChangingWeather     PASS
+festivalAssetsCoverWeatherAndLighting                  PASS
+disabledSecondsAndSleepingTicksDoNoPainting            PASS
+aodReleasesLandscapeAndUsesOnlyMinuteClock             PASS
+heartPatchTouchesOnlyConfiguredValueBoxes              PASS
+celestialMatchesPinnedReference                        PASS
+risingSettingAndPolarVisibility                        PASS
+fallbackMoonCrossesMidnightAndDoesNotClaimLocation     PASS
+clearWeatherHasNoCloudsAndOtherWeatherChangesMountains PASS
+moonDisplaySeparatesDayNightFromTrueAstronomy          PASS
+dataSlotMappingsAndWeatherUnits                        PASS
+slotChoicesPersistAndDoNotOverwriteOtherSlots          PASS
+legacyCircleAndDefaultsHaveStableMeaning               PASS
+headerDefaultsHideOnceWithoutResettingCustomChoices    PASS
+timeAndSkyChoicesPersistWithoutChangingDataSlots       PASS
+Ran 34 tests
+
+PASSED (passed=34, failed=0, errors=0)

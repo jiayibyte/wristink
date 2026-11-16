@@ -1,0 +1,107 @@
+------------------------------------------------------------------------------
+Executing test refreshIntervals...
+PASS
+------------------------------------------------------------------------------
+Executing test secondsSleepPolicy...
+PASS
+------------------------------------------------------------------------------
+Executing test budgetFallbackPreservesVisibility...
+PASS
+------------------------------------------------------------------------------
+Executing test invalidSettingRecovery...
+PASS
+------------------------------------------------------------------------------
+Executing test settingsBoundsMatchCatalog...
+PASS
+------------------------------------------------------------------------------
+Executing test changedSettingsSurviveLifecycle...
+PASS
+------------------------------------------------------------------------------
+Executing test visualUpgradePreservesCustomSettings...
+PASS
+------------------------------------------------------------------------------
+Executing test rootMenuPagination...
+PASS
+------------------------------------------------------------------------------
+Executing test historyGapsAndInvalidValues...
+PASS
+------------------------------------------------------------------------------
+Executing test sparseHeartHistoryConnects...
+PASS
+------------------------------------------------------------------------------
+Executing test heartHistoryPreservesTrueGaps...
+PASS
+------------------------------------------------------------------------------
+Executing test batteryStylePreservesLevels...
+PASS
+------------------------------------------------------------------------------
+Executing test shaftArrowKeepsDirectionAndAnchor...
+PASS
+------------------------------------------------------------------------------
+Executing test whiteHeartUpgradeAppliesOnce...
+PASS
+------------------------------------------------------------------------------
+Executing test whiteHeartPartialUpdateKeepsWhiteDisc...
+PASS
+------------------------------------------------------------------------------
+Executing test sparseHeartHistoryDrawsLine...
+PASS
+------------------------------------------------------------------------------
+Executing test suspendReleasesRenderResources...
+PASS
+------------------------------------------------------------------------------
+Executing test exclusiveCardsAndSeconds...
+PASS
+------------------------------------------------------------------------------
+Executing test packedMenuCaptions...
+PASS
+------------------------------------------------------------------------------
+Executing test demandSources...
+PASS
+------------------------------------------------------------------------------
+Executing test currentHeartEveryFiveSeconds...
+PASS
+------------------------------------------------------------------------------
+Executing test currentHeartValidation...
+PASS
+------------------------------------------------------------------------------
+Executing test hiddenAndMinuteReuse...
+PASS
+------------------------------------------------------------------------------
+Executing test bilingualDateAndUnits...
+PASS
+------------------------------------------------------------------------------
+Executing test missingWeatherConditionUsesUnknownIcon...
+PASS
+
+==============================================================================
+RESULTS
+Test:                                  Status:
+refreshIntervals                       PASS
+secondsSleepPolicy                     PASS
+budgetFallbackPreservesVisibility      PASS
+invalidSettingRecovery                 PASS
+settingsBoundsMatchCatalog             PASS
+changedSettingsSurviveLifecycle        PASS
+visualUpgradePreservesCustomSettings   PASS
+rootMenuPagination                     PASS
+historyGapsAndInvalidValues            PASS
+sparseHeartHistoryConnects             PASS
+heartHistoryPreservesTrueGaps          PASS
+batteryStylePreservesLevels            PASS
+shaftArrowKeepsDirectionAndAnchor      PASS
+whiteHeartUpgradeAppliesOnce           PASS
+whiteHeartPartialUpdateKeepsWhiteDisc  PASS
+sparseHeartHistoryDrawsLine            PASS
+suspendReleasesRenderResources         PASS
+exclusiveCardsAndSeconds               PASS
+packedMenuCaptions                     PASS
+demandSources                          PASS
+currentHeartEveryFiveSeconds           PASS
+currentHeartValidation                 PASS
+hiddenAndMinuteReuse                   PASS
+bilingualDateAndUnits                  PASS
+missingWeatherConditionUsesUnknownIcon PASS
+Ran 25 tests
+
+PASSED (passed=25, failed=0, errors=0)

@@ -12,6 +12,10 @@ module FaceDraw {
     var _hrPlainTop=23;var _hrPlainHeight=29;var _hrCenterY=38;
     function initialize(){}
     function enterSettings(){FontCatalog.reset();NativeStyle.reset();_energyBitmap=null;_energyCount=0;_energyKey=-1;_chart=null;_topCard=null;_bottomCard=null;_topCardKey=-1;_bottomCardKey=-1;_secondsFont=null;releaseLiveHeart();}
+    function finishFrame(){
+        // Retain only resources required by partial seconds/heart updates.
+        FontCatalog.reset();NativeStyle.reset();_chart=null;_topCard=null;_bottomCard=null;
+    }
     function releaseLiveHeart(){_hrFontTwo=null;_hrFontThree=null;_hrPlain=false;}
     function prepareLiveHeart(dc,ink,paper){
         releaseLiveHeart();_hrInk=ink;_hrPaper=paper;

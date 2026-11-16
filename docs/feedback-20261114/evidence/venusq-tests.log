@@ -1,0 +1,119 @@
+------------------------------------------------------------------------------
+Executing test batteryDaysUseGarminEstimateWithoutConvertingPercent...
+PASS
+------------------------------------------------------------------------------
+Executing test missingAndStaleHeartMustNotBecomeLive...
+PASS
+------------------------------------------------------------------------------
+Executing test garminDistanceUsesCentimetersAndMissingIsDistinctFromZero...
+PASS
+------------------------------------------------------------------------------
+Executing test dayNightBoundaryUsesUtcAndLeapYears...
+PASS
+------------------------------------------------------------------------------
+Executing test locationUsesRecentFixThenWeatherAndNeverInventsZeroCoordinates...
+PASS
+------------------------------------------------------------------------------
+Executing test worldCrossMatchesEquirectangularProjectionAndBounds...
+PASS
+------------------------------------------------------------------------------
+Executing test localWeatherThemesAndMissingDataAreDistinct...
+PASS
+------------------------------------------------------------------------------
+Executing test environmentPollIsLowFrequencyAndRejectsFutureSamples...
+PASS
+------------------------------------------------------------------------------
+Executing test solarFallbackCoversEquinoxPolarAndSignedUtcDates...
+PASS
+------------------------------------------------------------------------------
+Executing test solarLocationOutlivesWeatherButRejectsExpiredOrFutureSources...
+PASS
+------------------------------------------------------------------------------
+Executing test nightSpansFollowSolarNoonAndWrapAtDateLine...
+PASS
+------------------------------------------------------------------------------
+Executing test allSkinResourcesRenderWithoutKeepingTheWholeLibraryInMemory...
+PASS
+------------------------------------------------------------------------------
+Executing test automaticSkinScheduleReachesAllSixteenAndHandlesWrappedDaylight...
+PASS
+------------------------------------------------------------------------------
+Executing test cachedPositionHandlesPolarSeasonsWhenSunTimesAreMissing...
+PASS
+------------------------------------------------------------------------------
+Executing test fractionalScaleUsesActualAtlasStrideWithoutAdjacentDigitBleed...
+PASS
+------------------------------------------------------------------------------
+Executing test alwaysOnRestMaskResetsInheritedAnalogPenWidth...
+PASS
+------------------------------------------------------------------------------
+Executing test legacyBufferedBitmapDimensionsComeFromItsDrawingContext...
+PASS
+------------------------------------------------------------------------------
+Executing test sleepHidesGestureSecondsAndWakeRequestsFullFrame...
+PASS
+------------------------------------------------------------------------------
+Executing test continuousMipTicksUseCachedFrameAndStopOnBudgetExceeded...
+PASS
+------------------------------------------------------------------------------
+Executing test cachedSecondSpriteCoordinatesMatchNativeResources...
+PASS
+------------------------------------------------------------------------------
+Executing test partialSecondsDoNotPollHeartEverySecond...
+PASS
+------------------------------------------------------------------------------
+Executing test budgetFallbackWaitsForWakeAndRestoresSeconds...
+PASS
+------------------------------------------------------------------------------
+Executing test settingsControlTimeFieldsAndValidatePersistedValues...
+PASS
+------------------------------------------------------------------------------
+Executing test phonePropertiesLoadAndInvalidateTheExistingView...
+PASS
+------------------------------------------------------------------------------
+Executing test fullCallbacksRestoreStaticContentButGestureSleepOmitsSeconds...
+PASS
+------------------------------------------------------------------------------
+Executing test weatherIconsKeepDistinctConditionsAndNightVariants...
+PASS
+------------------------------------------------------------------------------
+Executing test weatherDayNightUsesExactSunBoundariesAndPolarFallback...
+PASS
+------------------------------------------------------------------------------
+Executing test allOfficialWeatherCellsFitAndRenderInNativeSlot...
+PASS
+
+==============================================================================
+RESULTS
+Test:                                                           Status:
+batteryDaysUseGarminEstimateWithoutConvertingPercent            PASS
+missingAndStaleHeartMustNotBecomeLive                           PASS
+garminDistanceUsesCentimetersAndMissingIsDistinctFromZero       PASS
+dayNightBoundaryUsesUtcAndLeapYears                             PASS
+locationUsesRecentFixThenWeatherAndNeverInventsZeroCoordinates  PASS
+worldCrossMatchesEquirectangularProjectionAndBounds             PASS
+localWeatherThemesAndMissingDataAreDistinct                     PASS
+environmentPollIsLowFrequencyAndRejectsFutureSamples            PASS
+solarFallbackCoversEquinoxPolarAndSignedUtcDates                PASS
+solarLocationOutlivesWeatherButRejectsExpiredOrFutureSources    PASS
+nightSpansFollowSolarNoonAndWrapAtDateLine                      PASS
+allSkinResourcesRenderWithoutKeepingTheWholeLibraryInMemory     PASS
+automaticSkinScheduleReachesAllSixteenAndHandlesWrappedDaylight PASS
+cachedPositionHandlesPolarSeasonsWhenSunTimesAreMissing         PASS
+fractionalScaleUsesActualAtlasStrideWithoutAdjacentDigitBleed   PASS
+alwaysOnRestMaskResetsInheritedAnalogPenWidth                   PASS
+legacyBufferedBitmapDimensionsComeFromItsDrawingContext         PASS
+sleepHidesGestureSecondsAndWakeRequestsFullFrame                PASS
+continuousMipTicksUseCachedFrameAndStopOnBudgetExceeded         PASS
+cachedSecondSpriteCoordinatesMatchNativeResources               PASS
+partialSecondsDoNotPollHeartEverySecond                         PASS
+budgetFallbackWaitsForWakeAndRestoresSeconds                    PASS
+settingsControlTimeFieldsAndValidatePersistedValues             PASS
+phonePropertiesLoadAndInvalidateTheExistingView                 PASS
+fullCallbacksRestoreStaticContentButGestureSleepOmitsSeconds    PASS
+weatherIconsKeepDistinctConditionsAndNightVariants              PASS
+weatherDayNightUsesExactSunBoundariesAndPolarFallback           PASS
+allOfficialWeatherCellsFitAndRenderInNativeSlot                 PASS
+Ran 28 tests
+
+PASSED (passed=28, failed=0, errors=0)

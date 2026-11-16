@@ -1,0 +1,17 @@
+{
+  "device": "instinct2",
+  "app_id": "25c3beca3a274b64b07b336a66012ca2",
+  "phases": [
+    {
+      "phase": 1,
+      "passed": true,
+      "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/moke/bin/settings-recovery/instinct2/phase1.log"
+    },
+    {
+      "phase": 2,
+      "passed": true,
+      "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/moke/bin/settings-recovery/instinct2/phase2.log"
+    }
+  ],
+  "scope": "SDK simulator; production data; six setting values, redraw and separate-process persistence; not physical-device proof"
+}

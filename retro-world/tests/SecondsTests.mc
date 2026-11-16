@@ -11,26 +11,17 @@ class SecondsDrawingProbe extends RetroWorldView {
     function seconds(dc,s) {digitWrites++;writtenSecond=s;}
     function paintCircle(dc,s) {needleWrites++;}
     function header(dc) {}
+    function heartFields(dc) {}
 }
 
 (:test)
-function sleepStopsBothSecondWritesAndWakeResumesThem(logger) {
+function sleepHidesGestureSecondsAndWakeRequestsFullFrame(logger) {
     FaceSettings.continuous=false;
-    var view=new SecondsDrawingProbe();var now=Time.now().value();
-    view._minute=(now/60).toNumber();LiveData.heartAt=now;
-    view.onUpdate(null);
-    Test.assertEqual(view.digitWrites,1);Test.assertEqual(view.needleWrites,1);
-    var held=view._visibleSecond;
-    view.onEnterSleep();view._minute=(Time.now().value()/60).toNumber();
-    view.onUpdate(null);view.onUpdate(null);
-    Test.assertEqual(view.digitWrites,1);Test.assertEqual(view.needleWrites,1);
-    Test.assertEqual(view._visibleSecond,held);
+    var view=new SecondsDrawingProbe();
+    view._visibleSecond=17;view._minute=100;
+    view.onEnterSleep();
+    Test.assert(view._sleeping);Test.assertEqual(view._minute,-1);
     view.onExitSleep();Test.assert(!view._sleeping);Test.assertEqual(view._minute,-1);
-    // Simulate completion of the requested full-frame refresh, then test awake ticks.
-    view._minute=(Time.now().value()/60).toNumber();LiveData.heartAt=Time.now().value();
-    view.onUpdate(null);
-    Test.assertEqual(view.digitWrites,2);Test.assertEqual(view.needleWrites,2);
-    Test.assert(view.writtenSecond>=0 && view.writtenSecond<=59);
     FaceSettings.continuous=true;return true;
 }
 
@@ -44,10 +35,68 @@ function continuousMipTicksUseCachedFrameAndStopOnBudgetExceeded(logger) {
     view.partialAt(null,stamp,17);
     Test.assertEqual(view.writtenSecond,17);Test.assertEqual(view.needleWrites,1);
     Test.assertEqual(SolarMap.builds,builds);Test.assertEqual(Environment.reads,reads);
-    view._partialBlocked=true;
+    var delegate=new RetroWorldDelegate(view);delegate.onPowerBudgetExceeded(new WatchUi.WatchFacePowerInfo());
+    Test.assert(view._partialBlocked);Test.assert(!view._partialHeartAllowed);
+    Test.assertEqual(view._minute,-1);Test.assertEqual(view._lastSecond,-1);Test.assertEqual(view._oldSecond,-1);
     view.partialAt(null,stamp,18);Test.assertEqual(view.digitWrites,1);
     view.settingsChanged();Test.assert(!view._partialBlocked);
     view.partialAt(null,stamp,19);Test.assertEqual(view.digitWrites,1);
+    return true;
+}
+
+// Exercise the native seconds sprite path without repeated bitmap metadata reads.
+class SecondsSpriteDc {
+    var clips=0;var writes=0;var x=-1;var y=-1;var width=-1;var height=-1;
+    function clearClip() {}
+    function setClip(xx,yy,w,h) {x=xx;y=yy;width=w;height=h;clips++;}
+    function drawBitmap(xx,yy,bitmap) {Test.assertEqual(xx,x);Test.assertEqual(yy,y);writes++;}
+}
+
+(:test)
+function cachedSecondSpriteCoordinatesMatchNativeResources(logger) {
+    var view=new RetroWorldView();var dc=new SecondsSpriteDc();
+    var previous=new SecondsSpriteDc();
+    DeviceDrawing.sprite(DeviceDrawing.target(previous),view._secSprites[9],0,132,122,13,24,1);
+    view.secondDigit(dc,9,132);
+    Test.assertEqual(dc.x,previous.x);Test.assertEqual(dc.y,previous.y);
+    Test.assertEqual(dc.width,previous.width);Test.assertEqual(dc.height,previous.height);
+    var wrapped=new NativeFaceDc(DeviceProfile.SCALE,DeviceProfile.X,DeviceProfile.Y);wrapped.bind(dc);
+    view.secondDigit(wrapped,0,146);Test.assertEqual(dc.x,view._secondOnesX);
+    Test.assertEqual(dc.clips,2);Test.assertEqual(dc.writes,2);
+    return true;
+}
+
+(:test)
+function partialSecondsDoNotPollHeartEverySecond(logger) {
+    if(DeviceProfile.COLOR) {return true;}
+    var view=new SecondsDrawingProbe();var stamp=Time.now().value();stamp-=stamp%60;
+    FaceSettings.continuous=true;view._minute=(stamp/60).toNumber();view._sleeping=true;
+    LiveData.heartAt=stamp;
+    for(var i=1;i<5;i++) {view.partialAt(null,stamp+i,i);}
+    Test.assertEqual(view.digitWrites,4);Test.assertEqual(view.needleWrites,4);
+    Test.assertEqual(LiveData.heartAt,stamp);
+    view.partialAt(null,stamp+5,5);Test.assertEqual(LiveData.heartAt,stamp+5);
+    view.partialAt(null,stamp+6,6);Test.assertEqual(LiveData.heartAt,stamp+5);
+    view._partialHeartAllowed=false;
+    view.partialAt(null,stamp+10,10);Test.assertEqual(LiveData.heartAt,stamp+5);
+    Test.assertEqual(view.digitWrites,7);Test.assertEqual(view.needleWrites,7);
+    view.partialAt(null,stamp+60,0);Test.assertEqual(view.digitWrites,7);
+    return true;
+}
+
+(:test)
+function budgetFallbackWaitsForWakeAndRestoresSeconds(logger) {
+    var view=new SecondsDrawingProbe();
+    var delegate=new RetroWorldDelegate(view);
+    delegate.onPowerBudgetExceeded(new WatchUi.WatchFacePowerInfo());
+    Test.assert(view._partialBlocked);Test.assert(!view._partialHeartAllowed);
+    // User wake recovers seconds without settings edits or repeatedly retrying
+    // the rejected drawing work from inside a restricted partial callback.
+    view.onExitSleep();Test.assert(!view._partialBlocked);
+    delegate.onPowerBudgetExceeded(new WatchUi.WatchFacePowerInfo());
+    Test.assert(view._partialBlocked);Test.assert(!view._partialHeartAllowed);
+    view.onExitSleep();Test.assert(!view._partialBlocked);Test.assertEqual(view._minute,-1);
+    view.settingsChanged();Test.assert(view._partialHeartAllowed);
     return true;
 }
 
@@ -79,4 +128,46 @@ function phonePropertiesLoadAndInvalidateTheExistingView(logger) {
     Test.assertEqual(view._minute,-1);Test.assert(!view._partialBlocked);Test.assert(view._environmentWake);
     for(var j=0;j<keys.size();j++) {Application.Properties.setValue(keys[j],old[j]);}
     FaceSettings.load();return true;
+}
+
+// A complete frame must be redrawn even if the minute has not changed.
+// This emulates an LCD/AMOLED back buffer discarded by the OS, and the
+// separately refreshed Instinct sub-screen after returning to the face.
+class FullFrameDcProbe {
+    var clears=0;
+    function clearClip() {}
+    function setClip(x,y,w,h) {}
+    function setColor(ink,paper) {}
+    function setPenWidth(width) {}
+    function clear() {clears++;}
+    function drawBitmap(x,y,bitmap) {}
+    function fillRectangle(x,y,w,h) {}
+    function drawLine(x,y,xx,yy) {}
+}
+class FullFrameViewProbe extends SecondsDrawingProbe {
+    var frames=0;
+    function initialize() {SecondsDrawingProbe.initialize();}
+    function number(dc,atlas,n,x,y,w,h) {}
+    function letters(dc,word,x,y,spacing) {}
+    function metrics(dc) {frames++;}
+    function buildCircle() {_lastSecond=-1;_oldSecond=-1;}
+}
+class FrameClockProbe {
+    var hour=14;var min=20;var sec=17;
+}
+(:test)
+function fullCallbacksRestoreStaticContentButGestureSleepOmitsSeconds(logger) {
+    var savedSlots=FaceSettings.slots;
+    FaceSettings.slots=[0,0,0,0,0,0,0,0,0];FaceSettings.showDate=false;FaceSettings.showMap=false;
+    var now=Time.now();var view=new FullFrameViewProbe();var dc=new FullFrameDcProbe();var clock=new FrameClockProbe();
+    view._dataMinute=(now.value()/60).toNumber();
+    view.updateAt(dc,now,clock);view.updateAt(dc,now,clock);
+    Test.assertEqual(view.frames,2);Test.assertEqual(dc.clears,2);
+    Test.assertEqual(view.digitWrites,2);Test.assertEqual(view.needleWrites,2);
+    FaceSettings.continuous=false;view._sleeping=true;
+    if(!DeviceProfile.COLOR) {
+        view.updateAt(dc,now,clock);Test.assertEqual(view.frames,3);
+        Test.assertEqual(view.digitWrites,2);Test.assertEqual(view.needleWrites,3);
+    }
+    FaceSettings.slots=savedSlots;FaceSettings.load();return true;
 }

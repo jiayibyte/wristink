@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "native_target": "fr55",
+  "cases": "29 metric IDs including hidden, both themes",
+  "comparison": "Original vector methods versus compact interpreter; exact ordered primitive names and all numeric coordinates/color arguments",
+  "test": "compactIconsPreserveEveryDrawingCommand",
+  "result": "PASSED (passed=1, failed=0, errors=0)"
+}

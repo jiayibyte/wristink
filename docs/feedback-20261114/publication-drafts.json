@@ -1,0 +1,90 @@
+{
+  "version": "2.1.2",
+  "whatsNew": {
+    "en": "2.1.2\n• Restores complete screen redraws and improves clock-window/map recovery when returning to the face.\n• In gesture-only mode, digital seconds hide during sleep and return on wake.\n• Sunrise/sunset can use a valid last-known location up to 7 days old. Weather freshness is checked separately; update your location after travel.",
+    "zh_CN": "2.1.2\n• 修复画面刷新不完整的问题，改善返回表盘时圆窗和地图的恢复。\n• 选择“仅抬腕刷新”时，休眠隐藏数字秒数，抬腕后恢复。\n• 日出日落可使用7天内有效的最后已知位置；天气新鲜度单独判断，旅行后请更新位置。",
+    "zh_TW": "2.1.2\n• 修正畫面更新不完整的問題，改善返回錶盤時圓窗與地圖的恢復。\n• 選擇「僅抬腕更新」時，休眠隱藏數位秒數，抬腕後恢復。\n• 日出日落可使用7天內有效的最後已知位置；天氣新鮮度另行判斷，旅行後請更新位置。",
+    "de": "2.1.2\n• Stellt vollständige Bildschirmaktualisierungen wieder her und verbessert die Wiederherstellung von Uhrfenster und Karte bei der Rückkehr zum Zifferblatt.\n• Im Gestenmodus werden digitale Sekunden im Ruhezustand ausgeblendet und beim Aufwecken wieder angezeigt.\n• Sonnenauf- und -untergang können einen gültigen letzten Standort bis zu 7 Tage lang nutzen. Wetterdaten werden separat auf Aktualität geprüft. Bitte den Standort nach Reisen aktualisieren.",
+    "fr": "2.1.2\n• Rétablit le rafraîchissement complet de l’écran et améliore la restauration du cadran analogique et de la carte au retour sur le cadran.\n• En mode geste uniquement, les secondes numériques sont masquées au repos et réapparaissent au réveil.\n• Le lever et le coucher du soleil peuvent utiliser une dernière position valide datant de 7 jours au maximum. La fraîcheur de la météo est vérifiée séparément ; actualisez la position après un voyage.",
+    "es": "2.1.2\n• Restablece el redibujado completo de la pantalla y mejora la recuperación del reloj analógico y el mapa al volver a la esfera.\n• En el modo solo por gesto, los segundos digitales se ocultan en reposo y reaparecen al despertar.\n• El amanecer y el atardecer pueden usar una última ubicación válida de hasta 7 días. La vigencia del tiempo se comprueba por separado; actualiza la ubicación después de viajar.",
+    "it": "2.1.2\n• Ripristina il ridisegno completo dello schermo e migliora il ripristino del quadrante analogico e della mappa tornando al quadrante.\n• In modalità solo gesto, i secondi digitali si nascondono a riposo e ricompaiono al risveglio.\n• Alba e tramonto possono usare un’ultima posizione valida fino a 7 giorni prima. L’aggiornamento del meteo viene verificato separatamente; aggiorna la posizione dopo un viaggio.",
+    "ja": "2.1.2\n• 画面全体の再描画を復元し、ウォッチフェイスに戻った際の時計ウィンドウと地図の復帰を改善しました。\n• ジェスチャー時のみのモードでは、スリープ中にデジタル秒を非表示にし、復帰時に再表示します。\n• 日の出・日の入りは、過去7日以内の有効な最終位置を使用できます。天気の鮮度は別途確認します。旅行後は位置を更新してください。",
+    "ko": "2.1.2\n• 전체 화면 다시 그리기를 복구하고 워치페이스로 돌아올 때 시계 창과 지도의 복원을 개선했습니다.\n• 제스처 전용 모드에서는 절전 중 디지털 초를 숨기고 깨어나면 다시 표시합니다.\n• 일출·일몰은 최대 7일 이내의 유효한 마지막 위치를 사용할 수 있습니다. 날씨의 최신 여부는 별도로 확인합니다. 여행 후 위치를 갱신하세요.",
+    "in": "2.1.2\n• Memulihkan gambar ulang seluruh layar serta pemulihan jendela jam dan peta saat kembali ke tampilan jam.\n• Dalam mode hanya gerakan, detik digital disembunyikan saat tidur dan ditampilkan lagi saat bangun.\n• Matahari terbit/terbenam dapat memakai lokasi terakhir yang valid hingga 7 hari. Kesegaran cuaca diperiksa terpisah; perbarui lokasi setelah bepergian.",
+    "ms": "2.1.2\n• Memulihkan lukisan semula skrin penuh dan pemulihan tetingkap jam/peta apabila kembali ke muka jam.\n• Dalam mod gerak isyarat sahaja, saat digital disembunyikan semasa tidur dan dipaparkan semula apabila bangun.\n• Waktu matahari terbit/terbenam boleh menggunakan lokasi terakhir yang sah sehingga 7 hari. Kesegaran cuaca diperiksa secara berasingan; kemas kini lokasi selepas perjalanan.",
+    "cs": "2.1.2\n• Obnovuje překreslení celé obrazovky a zlepšuje obnovu okénka hodin a mapy při návratu na ciferník.\n• V režimu pouze při gestu se digitální sekundy při spánku skryjí a po probuzení znovu zobrazí.\n• Východ a západ slunce mohou používat poslední platnou polohu až 7 dní starou. Aktuálnost počasí se posuzuje zvlášť; po cestování aktualizujte polohu.",
+    "da": "2.1.2\n• Gendanner fuld skærmopdatering og forbedrer gendannelsen af urvinduet og kortet, når du vender tilbage til urskiven.\n• I tilstanden kun ved gestus skjules digitale sekunder under hvile og vises igen ved opvågning.\n• Solopgang og solnedgang kan bruge en gyldig seneste position, der er op til 7 dage gammel. Vejrets aktualitet kontrolleres separat; opdater positionen efter rejser.",
+    "nl": "2.1.2\n• Herstelt het volledig opnieuw tekenen van het scherm en verbetert het herstel van het klokvenster en de kaart bij terugkeer naar de wijzerplaat.\n• In de modus alleen bij gebaar verdwijnen digitale seconden tijdens de slaap en keren ze terug bij het ontwaken.\n• Zonsopgang en zonsondergang kunnen een geldige laatst bekende locatie van maximaal 7 dagen oud gebruiken. Het weer wordt apart op actualiteit gecontroleerd; werk de locatie bij na een reis.",
+    "nb": "2.1.2\n• Gjenoppretter full opptegning av skjermen og forbedrer gjenoppretting av klokkevindu og kart når du går tilbake til urskiven.\n• I modus kun ved håndleddsgest skjules digitale sekunder i hvile og vises igjen ved oppvåkning.\n• Soloppgang og solnedgang kan bruke en gyldig sist kjente posisjon som er opptil 7 dager gammel. Værets aktualitet kontrolleres separat; oppdater posisjonen etter reiser.",
+    "pl": "2.1.2\n• Przywraca pełne odrysowywanie ekranu i poprawia przywracanie okienka zegara oraz mapy po powrocie do tarczy.\n• W trybie tylko po geście cyfrowe sekundy są ukrywane podczas uśpienia i wracają po wybudzeniu.\n• Wschód i zachód słońca mogą korzystać z ostatniej prawidłowej lokalizacji sprzed maksymalnie 7 dni. Aktualność pogody jest sprawdzana osobno; po podróży odśwież lokalizację.",
+    "pt_BR": "2.1.2\n• Restaura o redesenho completo da tela e melhora a recuperação da janela do relógio e do mapa ao voltar ao mostrador.\n• No modo apenas por gesto, os segundos digitais ficam ocultos em repouso e reaparecem ao despertar.\n• O nascer e o pôr do sol podem usar uma última localização válida de até 7 dias. A atualização do clima é verificada separadamente; atualize a localização após viajar.",
+    "pt_PT": "2.1.2\n• Restaura o redesenho completo do ecrã e melhora a recuperação da janela do relógio e do mapa ao regressar ao mostrador.\n• No modo apenas por gesto, os segundos digitais ficam ocultos em repouso e reaparecem ao despertar.\n• O nascer e o pôr do sol podem usar uma última localização válida de até 7 dias. A atualidade do tempo é verificada separadamente; atualize a localização após viajar.",
+    "sk": "2.1.2\n• Obnovuje prekreslenie celej obrazovky a zlepšuje obnovu okienka hodín a mapy pri návrate na ciferník.\n• V režime iba pri geste sa digitálne sekundy počas spánku skryjú a po prebudení znova zobrazia.\n• Východ a západ slnka môžu používať poslednú platnú polohu starú najviac 7 dní. Aktuálnosť počasia sa kontroluje samostatne; po cestovaní obnovte polohu.",
+    "sl": "2.1.2\n• Obnovi izris celotnega zaslona in izboljša obnovo okna ure in zemljevida ob vrnitvi na številčnico.\n• V načinu samo ob kretnji se digitalne sekunde med mirovanjem skrijejo in se ob prebujanju znova prikažejo.\n• Sončni vzhod in zahod lahko uporabita zadnjo veljavno lokacijo, staro največ 7 dni. Svežina vremena se preverja ločeno; po potovanju posodobite lokacijo.",
+    "fi": "2.1.2\n• Palauttaa koko näytön uudelleenpiirron ja parantaa kelloikkunan ja kartan palautumista kellotauluun palattaessa.\n• Vain eleestä -tilassa digitaaliset sekunnit piilotetaan lepotilassa ja näytetään taas herätessä.\n• Auringonnousu ja -lasku voivat käyttää enintään 7 päivää vanhaa kelvollista viimeisintä sijaintia. Sään ajantasaisuus tarkistetaan erikseen; päivitä sijainti matkan jälkeen.",
+    "sv": "2.1.2\n• Återställer fullständig omritning av skärmen och förbättrar återställning av klockfönster och karta när du återgår till urtavlan.\n• I läget endast vid gest döljs digitala sekunder under vila och visas igen vid uppvaknande.\n• Soluppgång och solnedgång kan använda en giltig senast känd plats som är upp till 7 dagar gammal. Vädrets aktualitet kontrolleras separat; uppdatera platsen efter resor.",
+    "el": "2.1.2\n• Επαναφέρει την πλήρη σχεδίαση της οθόνης και βελτιώνει την αποκατάσταση του παραθύρου ρολογιού και του χάρτη κατά την επιστροφή στο καντράν.\n• Στη λειτουργία μόνο με χειρονομία, τα ψηφιακά δευτερόλεπτα κρύβονται στην αναμονή και επανεμφανίζονται στην αφύπνιση.\n• Η ανατολή και η δύση μπορούν να χρησιμοποιούν έγκυρη τελευταία θέση έως 7 ημερών. Η επικαιρότητα του καιρού ελέγχεται χωριστά· ενημερώστε τη θέση μετά από ταξίδι.",
+    "ru": "2.1.2\n• Восстановлена полная перерисовка экрана и улучшено восстановление окна часов и карты при возврате к циферблату.\n• В режиме только по жесту цифровые секунды скрываются во сне и возвращаются при пробуждении.\n• Для восхода и заката можно использовать последнюю действительную позицию давностью до 7 дней. Свежесть погоды проверяется отдельно; обновляйте позицию после поездок.",
+    "iw": "2.1.2\n• שוחזר ציור מלא של המסך ושופר שחזור חלון השעון והמפה בחזרה ללוח השעון.\n• במצב מחווה בלבד, השניות הדיגיטליות מוסתרות במנוחה ומוצגות שוב בהתעוררות.\n• זריחה ושקיעה יכולות להשתמש במיקום האחרון התקף מלפני עד 7 ימים. עדכניות מזג האוויר נבדקת בנפרד; יש לעדכן מיקום אחרי נסיעה.",
+    "th": "2.1.2\n• แก้ไขการวาดหน้าจอให้ครบถ้วน และปรับปรุงการคืนค่าหน้าต่างนาฬิกาและแผนที่เมื่อกลับมาที่หน้าปัด\n• ในโหมดแสดงเมื่อยกข้อมือเท่านั้น ตัวเลขวินาทีจะซ่อนขณะพักและกลับมาเมื่อปลุก\n• พระอาทิตย์ขึ้นและตกใช้ตำแหน่งล่าสุดที่ถูกต้องย้อนหลังได้ไม่เกิน 7 วัน ตรวจสอบความใหม่ของอากาศแยกต่างหาก โปรดอัปเดตตำแหน่งหลังเดินทาง",
+    "hr": "2.1.2\n• Vraća potpuno iscrtavanje zaslona i poboljšava obnovu prozora sata i karte pri povratku na brojčanik.\n• U načinu rada samo na pokret digitalne sekunde skrivaju se tijekom mirovanja i vraćaju pri buđenju.\n• Izlazak i zalazak sunca mogu koristiti posljednju valjanu lokaciju staru do 7 dana. Svježina vremena provjerava se zasebno; ažurirajte lokaciju nakon putovanja.",
+    "hu": "2.1.2\n• Visszaállítja a teljes képernyő újrarajzolását, és javítja az óraablak és a térkép helyreállítását a számlaphoz való visszatéréskor.\n• Csak kézmozdulatra módban a digitális másodpercek alváskor eltűnnek, ébredéskor pedig újra megjelennek.\n• A napkelte és napnyugta legfeljebb 7 napos, érvényes utolsó helyzetet is használhat. Az időjárás frissességét külön ellenőrzi; utazás után frissítse a helyzetet."
+  },
+  "china_replies": [
+    {
+      "app": "Retro World",
+      "author": "Ma GL",
+      "text": "謝謝支持與建議！2.1.2 已加入您希望的行為：選擇「僅抬腕更新」時，休眠隱藏數位秒數，喚醒後恢復。修復包已準備並通過模擬器回歸，目前尚未確認商店可更新；請以商店實際顯示的版本為準。",
+      "status": "draft; China login required"
+    },
+    {
+      "app": "Retro World",
+      "author": "梁亚飞",
+      "text": "谢谢反馈！已修正返回表盘时的完整重画和圆窗缓存恢复逻辑，相关本能2模拟器回归已通过，改动包含在2.1.2修复包中。目前尚未确认商店可更新，也没有您的真机复核结果。如后续仍延迟，请通过“联系开发者”告知固件版本和触发步骤。",
+      "status": "draft; China login required"
+    },
+    {
+      "app": "Retro World",
+      "author": "21038",
+      "text": "谢谢反馈！已检查本能地区固件的太阳时间兼容路径，并在2.1.2中放宽有效位置的使用期限：无新鲜定位时，可使用7天内最后已知的有效位置计算日出日落；天气有效期仍单独判断。当前尚未确认商店可更新。请先同步手表天气或获得一次定位；旅行后请更新位置。完全没有有效位置、极昼或极夜时仍可能显示--:--。如仍缺失，请通过“联系开发者”告知准确型号和固件版本，不必公开个人经纬度。",
+      "status": "draft; China login required"
+    },
+    {
+      "app": "Retro World",
+      "author": "jiayi",
+      "text": "谢谢支持！后续使用中如遇到显示或数据问题，欢迎通过“联系开发者”告诉我手表型号、固件和触发步骤。",
+      "status": "draft; China login required"
+    },
+    {
+      "app": "Moke",
+      "author": "张政毅",
+      "text": "谢谢反馈。已在本能2系列兼容路径复现并修正一处设置冻结缺陷：没有本地菜单时误暂停表盘，导致后续手机设置刷新被挡住。修复包含在1.2.1候选包中，完成运行验证后再提交商店。请以商店实际版本为准。若您使用其他型号，或新版仍有问题，请通过“联系开发者”提供准确型号、固件、修改入口和失效步骤。",
+      "status": "draft; final native validation and China developer reply capability required"
+    },
+    {
+      "app": "Moke",
+      "author": "星星",
+      "text": "谢谢反馈。已在本能2系列兼容路径复现并修正一处设置冻结缺陷：没有本地菜单时误暂停表盘，导致后续手机设置刷新被挡住。修复包含在1.2.1候选包中，完成运行验证后再提交商店。请以商店实际版本为准。若您使用其他型号，或新版仍有问题，请通过“联系开发者”提供准确型号、固件、修改入口和失效步骤。",
+      "status": "draft; final native validation and China developer reply capability required"
+    },
+    {
+      "app": "Moke",
+      "author": "勇敢大牛牛",
+      "text": "谢谢报告本能2X战术版兼容问题。您的评论对应1.0.0，当前商店版本为1.2.0，包含后续兼容性改进，但尚未确认能解决您的真机故障。请先核对并更新至商店实际可用的最新版本；如仍无法使用，请通过“联系开发者”提供准确型号、地区和固件版本，并说明是安装失败、IQ图标还是黑屏，以及出现的时机。",
+      "status": "draft; China login required"
+    },
+    {
+      "app": "Moke",
+      "author": "refraining.",
+      "text": "谢谢反馈。评论对应旧版1.0.0，当前商店版本为1.2.0，但尚无您的真机验证结果，不能保证更新即可解决。请核对最新版本；若本能2X战术版仍不能运行，请通过“联系开发者”告知地区、固件版本，及安装失败、IQ图标或黑屏等具体表现和触发步骤。",
+      "status": "draft; China login required"
+    },
+    {
+      "app": "Moke",
+      "author": "21038",
+      "text": "谢谢反馈！您报告的是1.0.0安装后显示IQ的问题，当前商店版本为1.2.0，已有后续兼容性改进；尚未确认您的真机问题已解决。请核对实际可用的新版本。如仍出现IQ，请通过“联系开发者”提供本能的准确型号、地区固件版本，并说明是选中表盘后立即出现，还是休眠或切换页面后出现，不需要公开健康或位置数据。",
+      "status": "draft; China login required"
+    }
+  ],
+  "moke_followup_version": "1.2.1 candidate"
+}

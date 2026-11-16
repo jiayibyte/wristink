@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "package": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/moke/dist/Moke-1.2.1.iq",
+  "sha256": "a7200e6006bb33f49180522c9a5936adef206178054b10e87b33378794ccd6cd",
+  "size": 13818877,
+  "device_targets": 90,
+  "part_number_variants": 184,
+  "settings_per_variant": 94,
+  "font_notices": 184,
+  "bilingual_settings_variants": 184,
+  "scope": "Signed archive manifest, variant coverage, firmware floors, application identity, settings and bundled font notices; no runtime claim."
+}

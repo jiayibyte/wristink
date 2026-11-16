@@ -1,0 +1,30 @@
+{
+  "device": "venu2s",
+  "kind": "conservative offline bitmap-font mask audit",
+  "frames": 2880,
+  "fontHeight": 29,
+  "minuteRows": [
+    89,
+    145,
+    202,
+    259
+  ],
+  "adjacentRowsDoNotOverlap": true,
+  "results": [
+    {
+      "format": 12,
+      "maximumNonzeroAlphaPixels": 1130,
+      "maximumCanvasPercent": 0.872,
+      "largestInkExample": "08:28",
+      "maximumAdvance": 91
+    },
+    {
+      "format": 24,
+      "maximumNonzeroAlphaPixels": 1130,
+      "maximumCanvasPercent": 0.872,
+      "largestInkExample": "08:28",
+      "maximumAdvance": 91
+    }
+  ],
+  "limits": "Not an actual framebuffer capture, device battery measurement or burn-in certification."
+}

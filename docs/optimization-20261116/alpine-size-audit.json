@@ -1,0 +1,395 @@
+{
+  "package": "/Users/jiayi/Documents/instinct/worktrees/watchface-size-power-20261116/alpine/dist/Alpine-1.1.1.iq",
+  "sha256": "37d9c387c8d33c9e9723c8d0130d60fe6962436de13bc9e9ed6e177cfd807e25",
+  "limit_bytes": 100000,
+  "variants": 96,
+  "minimum_bytes": 47004,
+  "maximum_bytes": 409548,
+  "passed": false,
+  "devices": [
+    {
+      "hardware": "006-B4776-00",
+      "bytes": 52940
+    },
+    {
+      "hardware": "006-B4533-00",
+      "bytes": 52940
+    },
+    {
+      "hardware": "006-B4258-00",
+      "bytes": 65260
+    },
+    {
+      "hardware": "006-B4586-00",
+      "bytes": 366300
+    },
+    {
+      "hardware": "006-B4585-00",
+      "bytes": 47004
+    },
+    {
+      "hardware": "006-B4759-00",
+      "bytes": 47004
+    },
+    {
+      "hardware": "006-B4233-00",
+      "bytes": 66684
+    },
+    {
+      "hardware": "006-B4587-00",
+      "bytes": 409548
+    },
+    {
+      "hardware": "006-B4105-00",
+      "bytes": 66684
+    },
+    {
+      "hardware": "006-B4472-00",
+      "bytes": 66684
+    },
+    {
+      "hardware": "006-B3703-00",
+      "bytes": 71500
+    },
+    {
+      "hardware": "006-B3950-00",
+      "bytes": 71500
+    },
+    {
+      "hardware": "006-B4171-00",
+      "bytes": 71500
+    },
+    {
+      "hardware": "006-B4180-00",
+      "bytes": 71500
+    },
+    {
+      "hardware": "006-B4260-00",
+      "bytes": 73772
+    },
+    {
+      "hardware": "006-B5214-00",
+      "bytes": 364924
+    },
+    {
+      "hardware": "006-B4916-00",
+      "bytes": 364924
+    },
+    {
+      "hardware": "006-B4223-00",
+      "bytes": 70252
+    },
+    {
+      "hardware": "006-B3944-00",
+      "bytes": 67980
+    },
+    {
+      "hardware": "006-B3943-00",
+      "bytes": 67980
+    },
+    {
+      "hardware": "006-B4575-00",
+      "bytes": 52940
+    },
+    {
+      "hardware": "006-B5169-00",
+      "bytes": 52940
+    },
+    {
+      "hardware": "006-B4024-00",
+      "bytes": 52508
+    },
+    {
+      "hardware": "006-B4879-00",
+      "bytes": 72972
+    },
+    {
+      "hardware": "006-B4079-00",
+      "bytes": 67980
+    },
+    {
+      "hardware": "006-B4596-00",
+      "bytes": 52940
+    },
+    {
+      "hardware": "006-B4374-00",
+      "bytes": 51180
+    },
+    {
+      "hardware": "006-B3906-00",
+      "bytes": 52508
+    },
+    {
+      "hardware": "006-B3909-00",
+      "bytes": 52508
+    },
+    {
+      "hardware": "006-B5133-00",
+      "bytes": 67980
+    },
+    {
+      "hardware": "006-B4956-00",
+      "bytes": 52940
+    },
+    {
+      "hardware": "006-B3704-00",
+      "bytes": 65388
+    },
+    {
+      "hardware": "006-B4175-00",
+      "bytes": 65388
+    },
+    {
+      "hardware": "006-B3949-00",
+      "bytes": 65388
+    },
+    {
+      "hardware": "006-B4181-00",
+      "bytes": 65388
+    },
+    {
+      "hardware": "006-B4125-00",
+      "bytes": 64972
+    },
+    {
+      "hardware": "006-B4532-00",
+      "bytes": 52508
+    },
+    {
+      "hardware": "006-B4631-00",
+      "bytes": 72972
+    },
+    {
+      "hardware": "006-B5134-00",
+      "bytes": 72972
+    },
+    {
+      "hardware": "006-B4570-00",
+      "bytes": 72972
+    },
+    {
+      "hardware": "006-B4815-00",
+      "bytes": 65916
+    },
+    {
+      "hardware": "006-B4625-00",
+      "bytes": 65916
+    },
+    {
+      "hardware": "006-B4426-00",
+      "bytes": 72124
+    },
+    {
+      "hardware": "006-B4432-00",
+      "bytes": 364924
+    },
+    {
+      "hardware": "006-B4124-00",
+      "bytes": 66684
+    },
+    {
+      "hardware": "006-B4775-00",
+      "bytes": 72972
+    },
+    {
+      "hardware": "006-B4536-00",
+      "bytes": 72972
+    },
+    {
+      "hardware": "006-B3888-00",
+      "bytes": 53116
+    },
+    {
+      "hardware": "006-B4071-00",
+      "bytes": 53116
+    },
+    {
+      "hardware": "006-B4312-00",
+      "bytes": 66684
+    },
+    {
+      "hardware": "006-B4222-00",
+      "bytes": 66684
+    },
+    {
+      "hardware": "006-B4534-00",
+      "bytes": 67980
+    },
+    {
+      "hardware": "006-B3851-00",
+      "bytes": 71500
+    },
+    {
+      "hardware": "006-B4017-00",
+      "bytes": 71500
+    },
+    {
+      "hardware": "006-B4315-00",
+      "bytes": 72972
+    },
+    {
+      "hardware": "006-B3993-00",
+      "bytes": 51340
+    },
+    {
+      "hardware": "006-B4814-00",
+      "bytes": 65916
+    },
+    {
+      "hardware": "006-B4394-00",
+      "bytes": 53116
+    },
+    {
+      "hardware": "006-B4261-00",
+      "bytes": 70204
+    },
+    {
+      "hardware": "006-B4234-00",
+      "bytes": 73772
+    },
+    {
+      "hardware": "006-B3910-00",
+      "bytes": 52940
+    },
+    {
+      "hardware": "006-B4341-00",
+      "bytes": 52940
+    },
+    {
+      "hardware": "006-B3907-00",
+      "bytes": 52940
+    },
+    {
+      "hardware": "006-B4135-00",
+      "bytes": 52940
+    },
+    {
+      "hardware": "006-B3990-00",
+      "bytes": 53196
+    },
+    {
+      "hardware": "006-B4595-00",
+      "bytes": 52508
+    },
+    {
+      "hardware": "006-B3908-00",
+      "bytes": 51180
+    },
+    {
+      "hardware": "006-B3905-00",
+      "bytes": 51180
+    },
+    {
+      "hardware": "006-B4954-00",
+      "bytes": 73468
+    },
+    {
+      "hardware": "006-B4955-00",
+      "bytes": 52508
+    },
+    {
+      "hardware": "006-B4588-00",
+      "bytes": 366300
+    },
+    {
+      "hardware": "006-B4565-00",
+      "bytes": 72972
+    },
+    {
+      "hardware": "006-B3992-00",
+      "bytes": 53196
+    },
+    {
+      "hardware": "006-B4376-00",
+      "bytes": 52940
+    },
+    {
+      "hardware": "006-B4656-00",
+      "bytes": 72124
+    },
+    {
+      "hardware": "006-B4314-00",
+      "bytes": 70252
+    },
+    {
+      "hardware": "006-B4556-00",
+      "bytes": 70252
+    },
+    {
+      "hardware": "006-B4542-00",
+      "bytes": 70252
+    },
+    {
+      "hardware": "006-B4875-00",
+      "bytes": 72972
+    },
+    {
+      "hardware": "006-B4433-00",
+      "bytes": 71676
+    },
+    {
+      "hardware": "006-B4953-00",
+      "bytes": 72972
+    },
+    {
+      "hardware": "006-B4574-00",
+      "bytes": 65916
+    },
+    {
+      "hardware": "006-B4952-00",
+      "bytes": 67980
+    },
+    {
+      "hardware": "006-B4874-00",
+      "bytes": 67980
+    },
+    {
+      "hardware": "006-B5000-00",
+      "bytes": 72972
+    },
+    {
+      "hardware": "006-B5056-00",
+      "bytes": 72972
+    },
+    {
+      "hardware": "006-B4644-00",
+      "bytes": 65916
+    },
+    {
+      "hardware": "006-B4313-00",
+      "bytes": 67980
+    },
+    {
+      "hardware": "006-B4257-00",
+      "bytes": 67980
+    },
+    {
+      "hardware": "006-B4643-00",
+      "bytes": 72972
+    },
+    {
+      "hardware": "006-B4944-00",
+      "bytes": 72972
+    },
+    {
+      "hardware": "006-B4666-00",
+      "bytes": 67980
+    },
+    {
+      "hardware": "006-B4091-00",
+      "bytes": 52652
+    },
+    {
+      "hardware": "006-B3889-00",
+      "bytes": 52652
+    },
+    {
+      "hardware": "006-B3991-00",
+      "bytes": 51340
+    },
+    {
+      "hardware": "006-B4375-00",
+      "bytes": 52508
+    }
+  ]
+}

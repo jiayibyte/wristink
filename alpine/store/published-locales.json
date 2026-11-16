@@ -1,0 +1,198 @@
+[
+  {
+    "key": "zh_TW",
+    "title": "山境 · Alpine",
+    "descriptionChars": 535,
+    "whatsNewChars": 113,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/zh_TW"
+  },
+  {
+    "key": "zh_CN",
+    "title": "山境 · Alpine",
+    "descriptionChars": 520,
+    "whatsNewChars": 112,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/zh_CN"
+  },
+  {
+    "key": "ja",
+    "title": "Alpine · 山岳ウォッチフェイス",
+    "descriptionChars": 638,
+    "whatsNewChars": 128,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/ja"
+  },
+  {
+    "key": "in",
+    "title": "Alpine · Panorama Pegunungan",
+    "descriptionChars": 1535,
+    "whatsNewChars": 285,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/in"
+  },
+  {
+    "key": "ms",
+    "title": "Alpine · Pemandangan Gunung",
+    "descriptionChars": 1605,
+    "whatsNewChars": 298,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/ms"
+  },
+  {
+    "key": "cs",
+    "title": "Alpine · Horské scenérie",
+    "descriptionChars": 1488,
+    "whatsNewChars": 280,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/cs"
+  },
+  {
+    "key": "da",
+    "title": "Alpine · Bjerglandskaber",
+    "descriptionChars": 1509,
+    "whatsNewChars": 263,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/da"
+  },
+  {
+    "key": "de",
+    "title": "Alpine · Berglandschaften",
+    "descriptionChars": 1622,
+    "whatsNewChars": 309,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/de"
+  },
+  {
+    "key": "en",
+    "title": "Alpine · Mountain Watch Face",
+    "descriptionChars": 1498,
+    "whatsNewChars": 343,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/en"
+  },
+  {
+    "key": "es",
+    "title": "Alpine · Paisajes de montaña",
+    "descriptionChars": 1614,
+    "whatsNewChars": 282,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/es"
+  },
+  {
+    "key": "fr",
+    "title": "Alpine · Paysages de montagne",
+    "descriptionChars": 1694,
+    "whatsNewChars": 314,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/fr"
+  },
+  {
+    "key": "hr",
+    "title": "Alpine · Planinski krajolici",
+    "descriptionChars": 1590,
+    "whatsNewChars": 282,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/hr"
+  },
+  {
+    "key": "it",
+    "title": "Alpine · Paesaggi di montagna",
+    "descriptionChars": 1637,
+    "whatsNewChars": 289,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/it"
+  },
+  {
+    "key": "hu",
+    "title": "Alpine · Hegyi tájak",
+    "descriptionChars": 1527,
+    "whatsNewChars": 286,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/hu"
+  },
+  {
+    "key": "nl",
+    "title": "Alpine · Berglandschappen",
+    "descriptionChars": 1595,
+    "whatsNewChars": 291,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/nl"
+  },
+  {
+    "key": "nb",
+    "title": "Alpine · Fjellandskap",
+    "descriptionChars": 1484,
+    "whatsNewChars": 276,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/nb"
+  },
+  {
+    "key": "pl",
+    "title": "Alpine · Górskie krajobrazy",
+    "descriptionChars": 1573,
+    "whatsNewChars": 296,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/pl"
+  },
+  {
+    "key": "pt_BR",
+    "title": "Alpine · Paisagens de montanha",
+    "descriptionChars": 1597,
+    "whatsNewChars": 279,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/pt_BR"
+  },
+  {
+    "key": "pt_PT",
+    "title": "Alpine · Paisagens de montanha",
+    "descriptionChars": 1632,
+    "whatsNewChars": 284,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/pt_PT"
+  },
+  {
+    "key": "sk",
+    "title": "Alpine · Horské scenérie",
+    "descriptionChars": 1496,
+    "whatsNewChars": 282,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/sk"
+  },
+  {
+    "key": "sl",
+    "title": "Alpine · Gorske pokrajine",
+    "descriptionChars": 1527,
+    "whatsNewChars": 270,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/sl"
+  },
+  {
+    "key": "fi",
+    "title": "Alpine · Vuoristomaisemat",
+    "descriptionChars": 1600,
+    "whatsNewChars": 297,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/fi"
+  },
+  {
+    "key": "sv",
+    "title": "Alpine · Bergslandskap",
+    "descriptionChars": 1473,
+    "whatsNewChars": 280,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/sv"
+  },
+  {
+    "key": "el",
+    "title": "Alpine · Ορεινά τοπία",
+    "descriptionChars": 1651,
+    "whatsNewChars": 302,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/el"
+  },
+  {
+    "key": "ru",
+    "title": "Alpine · Горные пейзажи",
+    "descriptionChars": 1552,
+    "whatsNewChars": 284,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/ru"
+  },
+  {
+    "key": "iw",
+    "title": "Alpine · נופי הרים",
+    "descriptionChars": 1237,
+    "whatsNewChars": 236,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/iw"
+  },
+  {
+    "key": "th",
+    "title": "Alpine · วิวภูเขา",
+    "descriptionChars": 1297,
+    "whatsNewChars": 251,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/th"
+  },
+  {
+    "key": "ko",
+    "title": "Alpine · 산 풍경 워치 페이스",
+    "descriptionChars": 823,
+    "whatsNewChars": 148,
+    "hero": "https://services.garmin.com/appsLibraryBusinessServices_v0/rest/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb/heroimagefile/ko"
+  }
+]

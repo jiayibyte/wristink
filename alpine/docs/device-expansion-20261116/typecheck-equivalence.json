@@ -1,0 +1,8 @@
+{
+  "source_typecheck": "Passed gradual type checking on full source and fr255s profile; no typecheck errors",
+  "typechecked_prg_sha256": "cca218f0406749373badafb04ec1c36896dbd92e316b18b18a50acb472bb283f",
+  "no_repeat_typecheck_prg_sha256": "cca218f0406749373badafb04ec1c36896dbd92e316b18b18a50acb472bb283f",
+  "exact_bytes_equal": true,
+  "export": "All variants use same frozen source; skip repeated static inference in export; preserve runtime API guards",
+  "tests": "Three native targets each passed 34 tests"
+}

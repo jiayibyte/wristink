@@ -1,0 +1,2 @@
+VALUES direct=true old=true dark=true time=0 top=7 side=19 circle=6 wind=false suspended=false
+RECOVERY_FAIL values_or_visibility

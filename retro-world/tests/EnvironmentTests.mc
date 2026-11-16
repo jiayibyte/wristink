@@ -22,7 +22,7 @@ function locationUsesRecentFixThenWeatherAndNeverInventsZeroCoordinates(logger) 
     var result=Environment.chooseLocation(fix,wx,now);Test.assertEqual(result[:source],1);
     result=Environment.chooseLocation(new FixFixture(10000,39.9,116.4,4),wx,now);Test.assertEqual(result[:source],2);
     result=Environment.chooseLocation(new FixFixture(19900,39.9,116.4,0),wx,now);Test.assertEqual(result[:source],2);
-    Test.assert(Environment.chooseLocation(null,new WeatherFixture(1000,35.7,139.7),now)==null);
+    Test.assertEqual(Environment.chooseLocation(null,new WeatherFixture(1000,35.7,139.7),now)[:source],5);
     Test.assert(Environment.chooseLocation(new FixFixture(21000,39.9,116.4,4),null,now)==null);
     Test.assert(Environment.chooseLocation(new FixFixture(19900,91,0,4),null,now)==null);
     Test.assert(Environment.chooseLocation(null,null,now)==null);
@@ -76,5 +76,20 @@ function solarFallbackCoversEquinoxPolarAndSignedUtcDates(logger) {
     Test.assert(SolarTimes.utcMinutes(2026,12,21,89,0,false)==null);
     Test.assert(SolarTimes.utcMinutes(2026,3,20,0,170,true)<0);
     Test.assert(SolarTimes.utcMinutes(2026,3,20,91,0,true)==null);
+    return true;
+}
+
+(:test)
+function solarLocationOutlivesWeatherButRejectsExpiredOrFutureSources(logger) {
+    var stamp=1000000;
+    var oldWeather=new WeatherFixture(stamp-14400,35.7,139.7);
+    Test.assert(!Environment.weatherFresh(oldWeather,stamp));
+    Test.assertEqual(Environment.chooseLocation(null,oldWeather,stamp)[:source],5);
+    var olderFix=new FixFixture(stamp-18000,39.9,116.4,4);
+    Test.assertEqual(Environment.chooseLocation(olderFix,oldWeather,stamp)[:source],5);
+    var newerFix=new FixFixture(stamp-10800,39.9,116.4,4);
+    Test.assertEqual(Environment.chooseLocation(newerFix,oldWeather,stamp)[:source],4);
+    Test.assert(Environment.chooseLocation(new FixFixture(stamp-604801,39.9,116.4,4),new WeatherFixture(stamp-604801,35.7,139.7),stamp)==null);
+    Test.assert(Environment.chooseLocation(new FixFixture(stamp+1,39.9,116.4,4),new WeatherFixture(stamp+1,35.7,139.7),stamp)==null);
     return true;
 }

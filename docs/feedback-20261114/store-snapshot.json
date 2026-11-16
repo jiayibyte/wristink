@@ -1,0 +1,70 @@
+{
+  "observed_date": "2026-11-14",
+  "timezone": "Asia/Shanghai",
+  "method": "Existing international owner login and China public pages, all visible historical comments; ratings can include entries without text",
+  "apps": [
+    {
+      "name": "Moke",
+      "id": "08e3601d-b0b1-451a-a390-67543e39ae02",
+      "version": "1.2.0",
+      "international": {
+        "rating": 3.3,
+        "ratings": 3,
+        "comments": 3,
+        "downloads": "100+"
+      },
+      "china": {
+        "rating": 4.0,
+        "ratings": 6,
+        "comments": 5,
+        "downloads": "100+"
+      },
+      "urls": {
+        "international": "https://apps.garmin.com/apps/08e3601d-b0b1-451a-a390-67543e39ae02",
+        "china": "https://apps.garmin.cn/apps/08e3601d-b0b1-451a-a390-67543e39ae02"
+      }
+    },
+    {
+      "name": "Retro World",
+      "id": "76e1c5f4-abe8-49ab-bcc0-44c2b1c1a267",
+      "version": "2.1.1",
+      "international": {
+        "rating": 2.5,
+        "ratings": 4,
+        "comments": 4,
+        "downloads": "100+"
+      },
+      "china": {
+        "rating": 5.0,
+        "ratings": 4,
+        "comments": 4,
+        "downloads": "100+"
+      },
+      "urls": {
+        "international": "https://apps.garmin.com/apps/76e1c5f4-abe8-49ab-bcc0-44c2b1c1a267",
+        "china": "https://apps.garmin.cn/apps/76e1c5f4-abe8-49ab-bcc0-44c2b1c1a267"
+      }
+    },
+    {
+      "name": "Alpine",
+      "id": "8fdd0374-78f0-4452-bfd7-9bfa9c1229eb",
+      "version": "1.0.0",
+      "international": {
+        "rating": null,
+        "ratings": 0,
+        "comments": 0,
+        "downloads": "10+"
+      },
+      "china": {
+        "rating": null,
+        "ratings": 0,
+        "comments": 0,
+        "downloads": "10+"
+      },
+      "urls": {
+        "international": "https://apps.garmin.com/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb",
+        "china": "https://apps.garmin.cn/apps/8fdd0374-78f0-4452-bfd7-9bfa9c1229eb"
+      }
+    }
+  ]
+}
