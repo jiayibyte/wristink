@@ -1,0 +1,17 @@
+{
+  "device": "instinct3solar45mm",
+  "app_id": "152d437996ff408984c62b4e3329df9c",
+  "phases": [
+    {
+      "phase": 1,
+      "passed": true,
+      "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/moke/bin/settings-recovery/instinct3solar45mm/phase1.log"
+    },
+    {
+      "phase": 2,
+      "passed": true,
+      "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-feedback-20261114/moke/bin/settings-recovery/instinct3solar45mm/phase2.log"
+    }
+  ],
+  "scope": "SDK simulator; production data; six setting values, redraw and separate-process persistence; not physical-device proof"
+}

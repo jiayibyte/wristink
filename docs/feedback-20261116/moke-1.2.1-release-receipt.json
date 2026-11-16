@@ -1,0 +1,24 @@
+{
+  "app": "Moke",
+  "version": "1.2.1",
+  "store_id": "08e3601d-b0b1-451a-a390-67543e39ae02",
+  "manifest_id": "e4c16f1eb76d4c88a6de6aa791adf801",
+  "source_commit": "fbea84c8ddfedb225d2d805e48d9f477ceafa4fa",
+  "package_sha256": "81c3c8bfe0cea786226588a1870440369069023f2fd2f809817a035c13e1cb78",
+  "sdk": "9.2.0-2026-06-09-92a1605b2",
+  "targets": 90,
+  "variants": 184,
+  "settings": 94,
+  "native_power_tests": 25,
+  "icon_parity_cases": 58,
+  "phone_save_verified": [
+    "instinct2s",
+    "instinct2x",
+    "instinct3solar45mm"
+  ],
+  "physical_device_tested": false,
+  "upload_status": "prepared-awaiting-per-submission-legal-confirmation",
+  "details_submitted": false,
+  "public_version_observed": "1.2.0",
+  "china_release_verified": false
+}

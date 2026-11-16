@@ -1,0 +1,11 @@
+------------------------------------------------------------------------------
+Executing test compactIconsPreserveEveryDrawingCommand...
+PASS
+
+==============================================================================
+RESULTS
+Test:                                   Status:
+compactIconsPreserveEveryDrawingCommand PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

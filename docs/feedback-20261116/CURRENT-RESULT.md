@@ -1,13 +1,30 @@
-# 本轮设置保存专项结果
+# 墨刻1.2.1设置保存修复 — 2026-11-16
 
-未提交墨刻商店更新。
+当前：修复后的官方手机设置通道已验证成功，最后索引压缩后的2S/2X生命周期、48KB FR45运行与图标一致性已通过，最终包构建、184硬件变体元数据及官方签名验证通过；上传表单已填好，等待本次墨刻1.2.1开发者协议确认，尚未上传。
 
-通过：空本地菜单不再挂起表盘；本能2/2S/2X/3的六项属性程序内写入、独立进程重启、切页与休眠恢复；原始与紧凑图标29种指标（含隐藏）两主题绘图命令完全一致；一轮90目标/184硬件变体导出与签名通过。
+## 已确认修复
 
-仍失败：官方编辑器保存完整墨刻配置后，UI提示Settings Saved，但PHONE_CHANGED与PHONE_AFTER仍为旧的darkTheme=true。独立最小应用的一项设置及同样94项设置表都能收到false，说明不能把失败归结于编辑器普遍故障或设置表本身。原始、紧凑代码、移除恒等坐标包装以及现代Properties读取路径均未最终消除此真实外部同步失败。此项阻止发布。
+- 仅支持手机设置的机型，空的 getSettingsView 不再挂起表盘。
+- 64KB兼容渲染器移除常驻能量位图索引，采用已有矢量分段；释放只用于完整一帧的卡片/字体引用。
+- 图标命令索引合并为一段字符串及偏移表，避免29项字符串数组常驻；字体资源ID仅在查找时创建。图标29项×两主题的逐条原生绘图命令与原版完全一致。
+- 现代渲染器完整帧结束后释放图标、月相、箭头、卡片和图表字体缓存；保留局部秒数及心率刷新需要的字体和能量资源。
+- 天气状态null保护。94项设置和中英文支持保持。
 
-临时loadProperties和现代读取API尝试未保留。保留已验证的内存压缩、空天气保护与测试工作；恒等坐标包装移除仅验证编译与额外内存，不是完整发布验证。当前dist候选与最新工作树可能不一致，必须在剩余同步缺陷解决后重新构建和验签。
+## 实际手机通道验证
 
-独立重启探针会在退出前按生产停止时相同的方式释放缓存；在2S上生命周期恢复采用不同回调，避免探针在单回调中重复整帧绘制触发看门狗。不得把程序内属性写入通过当成手机同步通过。
+通过Garmin官方 App Settings Editor → Application.Properties，使用独立应用ID、正式源代码和O3z参数。不是测试程序内部setValue代替手机写入。
 
-关键日志：phone-settings-live.log、phone-settings-reload.log、phone-settings-native-coordinates.log、phone-settings-properties-api.log、settings-control.log、settings-control-94.log；四个目标的final-phase与result文件保留。
+- 本能2X：背景true→false、timeFormat 0→1；回调、下一帧读取均为新值；退出并重新运行同一PRG后仍为false/1。对应 formal-phone-instinct2x*.log/png。
+- 本能2S：初版剩余9872字节仍丢弃外部保存；仅压缩字体后10080字节仍失败；合并图标索引后11568字节，回调和渲染变为false，独立重启保持false。对应 packed-icon-phone-instinct2s.log、packed-phone-instinct2s-restart.log及截图。此前失败日志保留。
+- 本能3 Solar：官方SDK目标同时覆盖45mm/50mm两个硬件编号。手机保存false立即生效；原生菜单再改true，退出菜单后黑底生效，独立重启保持true。对应 formal-phone-instinct3.log、formal-native-instinct3-restart.log及截图。
+
+## 其他验证
+
+- 2、2S、2X、3六项设置跨进程恢复及onHide/onShow/睡眠唤醒通过；最后索引压缩后2S/2X再次通过。
+- 心率99→100在完整帧缓存释放后继续正确绘制；25项原生power回归通过。首次模拟器实例无响应，重启模拟器后对同一测试PRG重跑通过，日志formal-power-rerun.log。
+- 最新紧凑图标原生一致性测试通过，日志packed-icon-parity.log。
+- 生成过程中76个PNG编码字节变化，逐张解码RGBA像素与原版完全相同，未改变图像。
+
+全部为官方SDK模拟器证据，无实体手表验证。不承诺未知固件或所有自定义组合绝无问题。源码提交fbea84c。最终IQ哈希与商店状态以最终交付记录为准，旧候选校验记录不能替代最新包。
+
+最终包：moke/dist/Moke-1.2.1.iq，13,821,122字节；SHA256 81c3c8bfe0cea786226588a1870440369069023f2fd2f809817a035c13e1cb78。源码提交fbea84c。

@@ -1,0 +1,5 @@
+1.2.1
+• Fixes settings changes that could fail to apply or persist on memory-constrained watches.
+• Fixes a frozen watch face after entering an unavailable on-watch settings screen on phone-settings-only models.
+• Reduces retained graphics memory while preserving seconds and current heart-rate updates. Memory-constrained models use compact vector energy segments.
+• Handles missing weather conditions safely and retains all 94 settings and Chinese/English support.
