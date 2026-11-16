@@ -268,6 +268,9 @@ function whiteHeartPartialUpdateKeepsWhiteDisc(logger){
     FaceDraw.prepareLiveHeart(bitmap.get().getDc(),Graphics.COLOR_BLACK,Graphics.COLOR_WHITE);
     Test.assert(FaceDraw._hrPlain);Test.assertEqual(bitmap.get().getDc().getFontHeight(FaceDraw._hrFontTwo),26);
     var progress=FaceDraw.cellsProgress;FaceDraw.cellsProgress=.75;var dc=new WhiteHeartFixtureDc();
+    // A completed full frame frees cold caches; the next partial HR update
+    // must still draw a 2-to-3 digit transition with its retained font.
+    FaceDraw.finishFrame();
     FaceDraw.refreshLiveHeart(dc,99);FaceDraw.refreshLiveHeart(dc,100);
     Test.assertEqual(dc.code,"100");Test.assertEqual(dc.clearInk,Graphics.COLOR_WHITE);Test.assertEqual(dc.textInk,Graphics.COLOR_BLACK);
     Test.assertEqual(dc.bitmapCalls,0);Test.assertEqual(dc.arcCalls,0);Test.assertEqual(dc.y,25);

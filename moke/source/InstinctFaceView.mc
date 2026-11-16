@@ -151,7 +151,7 @@ class InstinctFaceView extends WatchUi.WatchFace {
         }else{slot(dc,"bottomRight",FaceLayout.LOWER_RIGHT_X,FaceLayout.LOWER_Y,FaceLayout.LOWER_RIGHT_WIDTH,20);}
         FaceDraw.footerRow(dc,slotLabel("footerLeft"),slotRatio("footerLeft"),slotLabel("footerRight"),slotRatio("footerRight"));
         if(FacePrefs.flag("showCircle")){FaceDraw.circle(DeviceDrawing.circleTarget(dc),FacePrefs.get("circle"),slotLabel("circle"),_heartValue);_paintedHeart=_heartValue;}
-        _frameMinute=frameStamp;_forceFrame=false;
+        _frameMinute=frameStamp;_forceFrame=false;FaceDraw.finishFrame();
     }
     function slot(dc,key,x,y,width,height){FaceDraw.slot(dc,key,slotLabel(key),slotRatio(key),x,y,width,height,null);}
     function slotLabel(key){

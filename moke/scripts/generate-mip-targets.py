@@ -88,14 +88,16 @@ def legacy_core():
         prefix={'data':'Data','time':'Time','liveheart':'LiveHeart'}[group]
         groups[group]=[f'Rez.Fonts.{prefix}F{f}S{size}' for f in range(3) for size in sizes]
     source='import Toybox.Lang;\nimport Toybox.WatchUi;\nmodule FontCatalog {\n'
-    for key,values in groups.items():source+=f'    const {key.upper()} = ['+','.join(values)+'];\n'
+    # Resource lookup arrays are only needed during a full frame. Keeping all
+    # 27 IDs resident starves incoming phone-settings deserialization on 2S.
+    for key,values in groups.items():source+=f'    function {key.upper()}(i) {{var ids=['+','.join(values)+'];return ids[i];}\n'
     source+='''    var _id;var _font;
     function reset(){_id=null;_font=null;}
     function load(id){if(_id!=id || _font==null){_font=null;_id=id;_font=WatchUi.loadResource(id);}return _font;}
     function id(group,family,size){
-        if(group.equals("time")){return TIME[family*3+(size>2 ? 2 : size)];}
-        if(group.equals("liveheart")){return LIVEHEART[family*2+(size>0 ? 1 : 0)];}
-        return DATA[family*4+(size<2 ? 0 : (size>4 ? 3 : size-1))];
+        if(group.equals("time")){return TIME(family*3+(size>2 ? 2 : size));}
+        if(group.equals("liveheart")){return LIVEHEART(family*2+(size>0 ? 1 : 0));}
+        return DATA(family*4+(size<2 ? 0 : (size>4 ? 3 : size-1)));
     }
     function data(family,size){return load(id("data",family,size));}
     function fit(dc,group,family,size,text,width,height){
@@ -110,6 +112,10 @@ def legacy_extras(folder,api,analog,native_menu,memory,g):
     drawing=(ROOT/'source/DeviceDrawing.mc').read_text().replace('_dc.getTextWidthInPixels(text,font)','_dc.getTextWidthInPixels(LegacyText.encode(text),font)').replace('_dc.drawText(px(x),py(y),font,text,justify)','_dc.drawText(px(x),py(y),font,LegacyText.encode(text),justify)')
     if all(g[k]==v for k,v in dict(scale=1,x=0,y=0,circle_scale=1,circle_x=0,circle_y=0).items()):
         drawing='module DeviceDrawing {function target(dc){return dc;}function circleTarget(dc){return dc;}}\n'
+    if api>=(2,3):
+        drawing=drawing.replace('if(Math has :round){return Math.round(v);}var shifted=v+0.5;var n=shifted.toNumber();return shifted<n ? n-1 : n;', 'return Math.round(v);')
+        drawing=drawing.replace('if(_dc has :clearClip){_dc.clearClip();}', '_dc.clearClip();')
+        drawing=drawing.replace('if(_dc has :setClip){_dc.setClip(px(x),py(y),px(x+w)-px(x),py(y+h)-py(y));}', '_dc.setClip(px(x),py(y),px(x+w)-px(x),py(y+h)-py(y));')
     folder.joinpath('DeviceDrawing.mc').write_text(drawing)
     if memory<65536:
         folder.joinpath('LegacyText.mc').write_text('module LegacyText {var _last;var _encoded;function encode(text){if(_last!=null && _last.equals(text)){return _encoded;}var chinese="年月日周一二三四五六天上午下";var codes="!#$&()*+;<=>?@";var out=null;for(var i=0;i<text.length();i++){var char=text.substring(i,i+1);var index=chinese.find(char);if(index!=null){if(out==null){out=text.substring(0,i);}out+=codes.substring(index,index+1);}else if(out!=null){out+=char;}}if(out==null){return text;}_last=text;_encoded=out;return out;}}\n')
@@ -148,6 +154,15 @@ function fontSize(key){var n=get(key+"Size");return n==0 ? get("dataSize") : n-1
     if api<(1,3):
         face=face.replace('Math.floor(', 'CompatMath.floor(').replace('Math.ceil(', 'CompatMath.ceil(')
         folder.joinpath('CompatMath.mc').write_text('module CompatMath {function floor(v){var n=v.toNumber();return v<n ? n-1 : n;}function ceil(v){var n=v.toNumber();return v>n ? n+1 : n;}}\n')
+    if memory<=65536:
+        # Keep phone-setting deserialization headroom. These targets already
+        # have a vector fallback; do not retain the 32-entry bitmap catalog.
+        a=face.index('        if(_cells!=null && _cells>0 && _cellsStyle!=2)')
+        b=face.index('cells(dc);',a)+len('cells(dc);')
+        face=face[:a]+'        cells(dc);'+face[b:]
+        face=face.replace('        else if(_energy!=null){dc.drawBitmap(113+EnergyCatalog.X[_energyCount-1],EnergyCatalog.Y[_energyCount-1],_energy);}', '')
+        face=face.replace('var _energy;var _energyKey=-1;var _energyCount=0;', '')
+        face=face.replace('_energy=null;_energyKey=-1;', '')
     folder.joinpath('LegacyFace.mc').write_text(face)
     icons=ROOT.joinpath('compat/legacy/LegacyIcons.mc').read_text()
     if api<(3,2):
@@ -187,14 +202,11 @@ function fontSize(key){var n=get(key+"Size");return n==0 ? get("dataSize") : n-1
     else:card+='return CardArtwork.resource(kind,light);'
     folder.joinpath('LegacyCardArtwork.mc').write_text(card+'}}\n')
     if api>=(2,1):shutil.copy2(ROOT/'source/TrendData.mc',folder/'TrendData.mc')
-    if api>=(3,0):
+    if api>=(3,0) and memory>65536:
         energy=ROOT.joinpath('source/EnergyCatalog.mc').read_text().replace(' as Graphics.BitmapReference','')
-        if memory<=65536:
-            ids=re.findall(r'case \d+:return (Rez.Drawables.\w+);',energy)
-            begin=energy.index('    function id(');finish=energy.index('    const X',begin)
-            energy=energy[:begin]+'    const IDS=['+','.join(ids)+'];\n    function id(style,index) as ResourceId {var n=style*8+index;return IDS[n>=0 && n<IDS.size() ? n : 0];}\n'+energy[finish:]
         folder.joinpath('EnergyCatalog.mc').write_text(energy)
-    else:folder.joinpath('EnergyCatalog.mc').write_text('module EnergyCatalog {const X=[0,0,0,0,0,0,0,0];const Y=[0,0,0,0,0,0,0,0];function load(style,count){return null;}}\n')
+    elif memory>65536:
+        folder.joinpath('EnergyCatalog.mc').write_text('module EnergyCatalog {const X=[0,0,0,0,0,0,0,0];const Y=[0,0,0,0,0,0,0,0];function load(style,count){return null;}}\n')
     if native_menu:
         folder.joinpath('FaceSettings.mc').write_text(ROOT.joinpath('source/FaceSettings.mc').read_text().replace('(:extendedCode)',''))
         folder.joinpath('SettingsCatalog.mc').write_text(ROOT.joinpath('source/SettingsCatalog.mc').read_text().replace('(:extendedCode)',''))

@@ -25,12 +25,16 @@ def compact(source):
                 out.append(eval(value,{'__builtins__':{}},{}))
         packed=''.join(chr(v+32) for v in out)
         for i in ids:paths[i]=packed
+    offsets=[0]
+    for path in paths:offsets.append(offsets[-1]+len(path))
     replacement='''        switch(kind){DYNAMIC default: commands(dc,kind,x,y,ink,paper);}
     }
     const PATHS=PATH_DATA;
+    const OFFSETS=OFFSET_DATA;
     function commands(dc,kind,x,y,ink,paper){
-        if(kind<0 || kind>=PATHS.size()){return;}
-        var c=PATHS[kind].toCharArray();var i=0;
+        if(kind<0 || kind>=29){return;}
+        var bounds=OFFSETS.substring(kind,kind+2).toCharArray();
+        var c=PATHS.substring(bounds[0].toNumber()-32,bounds[1].toNumber()-32).toCharArray();var i=0;
         while(i<c.size()){
             var op=c[i].toNumber()-32;i++;
             if(op==9){sun(dc,x,y);continue;}
@@ -42,5 +46,5 @@ def compact(source):
             var h=c[i].toNumber()-32;i++;
             switch(op){case 0:dc.drawLine(a,b,x+w,y+h);break;case 1:dc.drawRectangle(a,b,w,h);break;case 2:dc.fillRectangle(a,b,w,h);break;case 5:dc.fillEllipse(a,b,w,h);break;}
         }
-'''.replace('DYNAMIC',''.join(dynamic)).replace('PATH_DATA',json.dumps(paths,ensure_ascii=True))
+'''.replace('DYNAMIC',''.join(dynamic)).replace('PATH_DATA',json.dumps(''.join(paths),ensure_ascii=True)).replace('OFFSET_DATA',json.dumps(''.join(chr(v+32) for v in offsets),ensure_ascii=True))
     return source[:start]+replacement+'    }\n}\n'
