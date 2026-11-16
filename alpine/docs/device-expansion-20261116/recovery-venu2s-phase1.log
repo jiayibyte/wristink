@@ -1,0 +1,12 @@
+------------------------------------------------------------------------------
+Executing test restoreFaceAndPersistAcrossRestart...
+RECOVERY_PROBE=saved_for_restart
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+restoreFaceAndPersistAcrossRestart  PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

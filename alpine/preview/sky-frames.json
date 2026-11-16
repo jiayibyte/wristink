@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Clear noon",
+    "stamp": 1782014400,
+    "minutes": 720,
+    "weather": 1,
+    "date": "SUN 06/21"
+  },
+  {
+    "title": "Sunrise",
+    "stamp": 1781988600,
+    "minutes": 290,
+    "weather": 1,
+    "date": "SUN 06/21"
+  },
+  {
+    "title": "Sunset",
+    "stamp": 1782042000,
+    "minutes": 1180,
+    "weather": 1,
+    "date": "SUN 06/21"
+  },
+  {
+    "title": "Full moon night",
+    "stamp": 1793026800,
+    "minutes": 1380,
+    "weather": 1,
+    "date": "MON 10/26"
+  },
+  {
+    "title": "Moonrise",
+    "stamp": 1793005020,
+    "minutes": 1017,
+    "weather": 1,
+    "date": "MON 10/26"
+  },
+  {
+    "title": "Moonset",
+    "stamp": 1793058300,
+    "minutes": 465,
+    "weather": 1,
+    "date": "TUE 10/27"
+  },
+  {
+    "title": "Rain",
+    "stamp": 1782014400,
+    "minutes": 720,
+    "weather": 4,
+    "date": "SUN 06/21"
+  },
+  {
+    "title": "Snow",
+    "stamp": 1782014400,
+    "minutes": 720,
+    "weather": 5,
+    "date": "SUN 06/21"
+  },
+  {
+    "title": "Overcast",
+    "stamp": 1782014400,
+    "minutes": 720,
+    "weather": 3,
+    "date": "SUN 06/21"
+  },
+  {
+    "title": "Fog",
+    "stamp": 1782014400,
+    "minutes": 720,
+    "weather": 7,
+    "date": "SUN 06/21"
+  }
+]

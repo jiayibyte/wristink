@@ -1,0 +1,9 @@
+{
+  "targets": 73,
+  "hardware_variants_built": 96,
+  "compiler_typecheck_reference": "docs/device-expansion-20261116/typecheck-equivalence.json",
+  "runtime_tests": 136,
+  "source_commit": "158f8b4",
+  "known_warning": "D2 Air X10 has no zhs runtime language; default English retained",
+  "status": "BUILD SUCCESSFUL; all96 variants exported and package verified"
+}

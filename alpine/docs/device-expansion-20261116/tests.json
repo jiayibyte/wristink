@@ -1,0 +1,30 @@
+[
+  {
+    "device": "fr255s",
+    "passed": true,
+    "returncode": 1,
+    "tests": 34,
+    "sha256": "2efd7810c831557f5a28dd11b91510e30b2e826c1781b48227c9e362af54107e"
+  },
+  {
+    "device": "venu2s",
+    "passed": true,
+    "returncode": 1,
+    "tests": 34,
+    "sha256": "f74669a941df6cc8de03ba3425890fa3e60bf641bcac8c2a9c36ac06be7ebdc7"
+  },
+  {
+    "device": "fenix9pro51mm",
+    "passed": true,
+    "returncode": 1,
+    "tests": 34,
+    "sha256": "f5350d1d347a20e2b78e7ec449aefc5c03a77ee4216b10b2d63509b972f83b1b"
+  },
+  {
+    "device": "instinct2s",
+    "passed": true,
+    "returncode": 1,
+    "tests": 34,
+    "sha256": "f9b5b1bb3b5f4b9f8c83a02f323076fa988884cb61f8c7acdc4ff3b973c4a797"
+  }
+]
