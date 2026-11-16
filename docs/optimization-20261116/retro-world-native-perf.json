@@ -1,0 +1,30 @@
+[
+  {
+    "device": "instinct3solar45mm",
+    "passed": true,
+    "mode": "perf",
+    "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-size-power-20261116/retro-world/bin/probes/perf/instinct3solar45mm.log",
+    "prg_sha256": "93d14d015705a40a942f94e8a5de8122f262c70cc2894134ba01c72606545134",
+    "measurements": {
+      "version": "2.0.0",
+      "width": 176,
+      "height": 176,
+      "dc_width": 176,
+      "dc_height": 176,
+      "color": false,
+      "frames": 8,
+      "total": 61256,
+      "initial_free": 14192,
+      "min_free": 12408,
+      "final_free": 12448,
+      "heavy_max_ms": 98,
+      "heavy_total_ms": 203,
+      "awake_max_ms": 10,
+      "awake_total_ms": 14,
+      "sleep_max_ms": 10,
+      "sleep_total_ms": 12,
+      "awake_map_builds": 0,
+      "awake_weather_reads": 0
+    }
+  }
+]

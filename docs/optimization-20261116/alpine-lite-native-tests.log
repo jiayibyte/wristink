@@ -1,0 +1,104 @@
+venu2s 1 -------------------------------------------------------------
+Executing test clearWeatherHasNoCloudsAndOtherWeatherChangesMountains...
+PASS
+------------------------------------------------------------------------------
+Executing test moonDisplaySeparatesDayNightFromTrueAstronomy...
+PASS
+------------------------------------------------------------------------------
+Executing test dataSlotMappingsAndWeatherUnits...
+PASS
+------------------------------------------------------------------------------
+Executing test slotChoicesPersistAndDoNotOverwriteOtherSlots...
+PASS
+------------------------------------------------------------------------------
+Executing test legacyCircleAndDefaultsHaveStableMeaning...
+PASS
+------------------------------------------------------------------------------
+Executing test headerDefaultsHideOnceWithoutResettingCustomChoices...
+PASS
+------------------------------------------------------------------------------
+Executing test timeChoicesPersistAndRemovedOptionsAreRejected...
+PASS
+
+==============================================================================
+RESULTS
+Test:                                                  Status:
+timeFormatBoundaries                                   PASS
+freshnessRejectsMissingStaleFuture                     PASS
+heartRejectsSentinels                                  PASS
+zerosNegativeAltitudeAndUnits                          PASS
+absentValuesNeverBecomeFixtures                        PASS
+sleepStopsSecondPaintingAndWakeInvalidates             PASS
+defaultCircleIsWeatherAndHeartRemainsBelow             PASS
+batteryEstimateUsesOnlySystemDays                      PASS
+classicBackgroundIsNativeAndExclusive                  PASS
+classicLandscapeCacheSurvivesRepeatedPaints            PASS
+disabledSecondsAndSleepingTicksDoNoPainting            PASS
+aodReleasesLandscapeAndUsesOnlyMinuteClock             PASS
+heartPatchTouchesOnlyConfiguredValueBoxes              PASS
+celestialMatchesPinnedReference                        PASS
+risingSettingAndPolarVisibility                        PASS
+fallbackMoonCrossesMidnightAndDoesNotClaimLocation     PASS
+clearWeatherHasNoCloudsAndOtherWeatherChangesMountains PASS
+moonDisplaySeparatesDayNightFromTrueAstronomy          PASS
+dataSlotMappingsAndWeatherUnits                        PASS
+slotChoicesPersistAndDoNotOverwriteOtherSlots          PASS
+legacyCircleAndDefaultsHaveStableMeaning               PASS
+headerDefaultsHideOnceWithoutResettingCustomChoices    PASS
+timeChoicesPersistAndRemovedOptionsAreRejected         PASS
+Ran 23 tests
+
+PASSED (passed=23, failed=0, errors=0)
+
+instinct2s 1 -------------------------------------------------------------
+Executing test clearWeatherHasNoCloudsAndOtherWeatherChangesMountains...
+PASS
+------------------------------------------------------------------------------
+Executing test moonDisplaySeparatesDayNightFromTrueAstronomy...
+PASS
+------------------------------------------------------------------------------
+Executing test dataSlotMappingsAndWeatherUnits...
+PASS
+------------------------------------------------------------------------------
+Executing test slotChoicesPersistAndDoNotOverwriteOtherSlots...
+PASS
+------------------------------------------------------------------------------
+Executing test legacyCircleAndDefaultsHaveStableMeaning...
+PASS
+------------------------------------------------------------------------------
+Executing test headerDefaultsHideOnceWithoutResettingCustomChoices...
+PASS
+------------------------------------------------------------------------------
+Executing test timeChoicesPersistAndRemovedOptionsAreRejected...
+PASS
+
+==============================================================================
+RESULTS
+Test:                                                  Status:
+timeFormatBoundaries                                   PASS
+freshnessRejectsMissingStaleFuture                     PASS
+heartRejectsSentinels                                  PASS
+zerosNegativeAltitudeAndUnits                          PASS
+absentValuesNeverBecomeFixtures                        PASS
+sleepStopsSecondPaintingAndWakeInvalidates             PASS
+defaultCircleIsWeatherAndHeartRemainsBelow             PASS
+batteryEstimateUsesOnlySystemDays                      PASS
+classicBackgroundIsNativeAndExclusive                  PASS
+classicLandscapeCacheSurvivesRepeatedPaints            PASS
+disabledSecondsAndSleepingTicksDoNoPainting            PASS
+aodReleasesLandscapeAndUsesOnlyMinuteClock             PASS
+heartPatchTouchesOnlyConfiguredValueBoxes              PASS
+celestialMatchesPinnedReference                        PASS
+risingSettingAndPolarVisibility                        PASS
+fallbackMoonCrossesMidnightAndDoesNotClaimLocation     PASS
+clearWeatherHasNoCloudsAndOtherWeatherChangesMountains PASS
+moonDisplaySeparatesDayNightFromTrueAstronomy          PASS
+dataSlotMappingsAndWeatherUnits                        PASS
+slotChoicesPersistAndDoNotOverwriteOtherSlots          PASS
+legacyCircleAndDefaultsHaveStableMeaning               PASS
+headerDefaultsHideOnceWithoutResettingCustomChoices    PASS
+timeChoicesPersistAndRemovedOptionsAreRejected         PASS
+Ran 23 tests
+
+PASSED (passed=23, failed=0, errors=0)
+

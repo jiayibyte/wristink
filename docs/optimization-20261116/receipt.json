@@ -1,0 +1,77 @@
+{
+  "source_commit": "f4038200ba7d216358cebe9751cd64c0a92f068e",
+  "sdk": "9.2.0-2026-06-09-92a1605b2",
+  "store_submitted": false,
+  "physical_battery_measurement": false,
+  "alpine_limit_bytes": 100000,
+  "alpine_all_96_pass": true,
+  "native_tests": {
+    "Alpine": {
+      "venu2s": 23,
+      "instinct2s": 23,
+      "instinct3amoled50mm": 23
+    },
+    "Moke": 25,
+    "Retro": 29
+  },
+  "moke_phone_settings": "official editor darkTheme true->false, read and rendered false; independent-process six-setting recovery passed",
+  "retro_performance": [
+    {
+      "device": "instinct3solar45mm",
+      "passed": true,
+      "mode": "perf",
+      "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-size-power-20261116/retro-world/bin/probes/perf/instinct3solar45mm.log",
+      "prg_sha256": "93d14d015705a40a942f94e8a5de8122f262c70cc2894134ba01c72606545134",
+      "measurements": {
+        "version": "2.0.0",
+        "width": 176,
+        "height": 176,
+        "dc_width": 176,
+        "dc_height": 176,
+        "color": false,
+        "frames": 8,
+        "total": 61256,
+        "initial_free": 14192,
+        "min_free": 12408,
+        "final_free": 12448,
+        "heavy_max_ms": 98,
+        "heavy_total_ms": 203,
+        "awake_max_ms": 10,
+        "awake_total_ms": 14,
+        "sleep_max_ms": 10,
+        "sleep_total_ms": 12,
+        "awake_map_builds": 0,
+        "awake_weather_reads": 0
+      }
+    }
+  ],
+  "packages": {
+    "Alpine": {
+      "path": "/Users/jiayi/Documents/instinct/worktrees/watchface-size-power-20261116/alpine/dist/Alpine-1.2.0.iq",
+      "sha256": "73350d8ad0c41e2338a5299fcceb685a6fe6617efb6d2db56d3ea9cd1b7d34d3",
+      "signature_verified": true,
+      "min_device_bytes": 47004,
+      "max_device_bytes": 83292,
+      "hardware_variants": 96,
+      "all_not_larger": true
+    },
+    "Moke": {
+      "path": "/Users/jiayi/Documents/instinct/worktrees/watchface-size-power-20261116/moke/dist/Moke-1.2.2.iq",
+      "sha256": "8a90274909aa41aef24333898b7e0ee93469a71ab5f47c607f1190ca62fb9042",
+      "signature_verified": true,
+      "min_device_bytes": 73548,
+      "max_device_bytes": 175660,
+      "hardware_variants": 184,
+      "all_not_larger": true
+    },
+    "Retro": {
+      "path": "/Users/jiayi/Documents/instinct/worktrees/watchface-size-power-20261116/retro-world/dist/RetroWorld-2.1.3.iq",
+      "sha256": "368e26acface0e212c9af189ba802f1aa6d3fad49e48e68ec7acab9865308c35",
+      "signature_verified": true,
+      "min_device_bytes": 57356,
+      "max_device_bytes": 134972,
+      "hardware_variants": 183,
+      "all_not_larger": true
+    }
+  }
+}

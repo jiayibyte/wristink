@@ -1,0 +1,1 @@
+{'status': 'passed', 'garmin_sdk_verifyIqFile': True, 'method': 'com.garmin.connectiq.common.signing.VerifyingUtils.verifyIqFile(File, embeddedPublicKey)', 'package_sha256': '368e26acface0e212c9af189ba802f1aa6d3fad49e48e68ec7acab9865308c35', 'scope': 'Full signed archive verification using the official SDK; store review remains separate.'}

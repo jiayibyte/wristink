@@ -1,0 +1,17 @@
+{
+  "device": "instinct2s",
+  "app_id": "94a1c83f41f14c02a30f819d010c1373",
+  "phases": [
+    {
+      "phase": 1,
+      "passed": true,
+      "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-size-power-20261116/moke/bin/settings-recovery/instinct2s/phase1.log"
+    },
+    {
+      "phase": 2,
+      "passed": true,
+      "log": "/Users/jiayi/Documents/instinct/worktrees/watchface-size-power-20261116/moke/bin/settings-recovery/instinct2s/phase2.log"
+    }
+  ],
+  "scope": "SDK simulator; production data; six setting values, redraw and separate-process persistence; not physical-device proof"
+}
