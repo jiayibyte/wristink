@@ -1,0 +1,207 @@
+- navigation:
+  - link "GarminConnect IQDEVELOPER":
+    - /url: /developer/dashboard
+    - generic: GarminConnect IQDEVELOPER
+  - textbox "Search by App Title or Description"
+  - button "Search":
+    - generic: 
+  - generic: ☰
+  - list:
+    - generic: cherryeveli
+    - link "Dashboard":
+      - /url: /developer/dashboard
+    - link "Resources":
+      - /url: https://developer.garmin.com/connect-iq/overview
+    - link "Help":
+      - /url: https://support.garmin.com/en-US/?productID=616398&tab=topics
+    - button "Sign Out"
+    - combobox "Select a Language":
+      - option "繁體中文"
+      - option "简体中文"
+      - option "日本語"
+      - option "Bahasa Indonesia"
+      - option "Bahasa Melayu"
+      - option "Čeština"
+      - option "Dansk"
+      - option "Deutsch"
+      - option "English" [selected]
+      - option "Español"
+      - option "Français"
+      - option "Hrvatski"
+      - option "Italiano"
+      - option "Magyar"
+      - option "Nederlands"
+      - option "Norsk"
+      - option "Polski"
+      - option "Português (Brasil)"
+      - option "Português (Portugal)"
+      - option "Slovenčina"
+      - option "Slovenščina"
+      - option "Suomi"
+      - option "Svenska"
+      - option "Ελληνικά"
+      - option "Русский"
+      - option "עברית"
+      - option "ไทย"
+      - option "한국어"
+  - link "Terms of Use":
+    - /url: https://www.garmin.com/en-US/legal/terms-of-use/
+  - text: •
+  - link "Privacy":
+    - /url: https://www.garmin.com/en-US/privacy/connectiq/policy/
+  - text: •
+  - link "Security":
+    - /url: https://www.garmin.com/en-US/legal/security/
+  - generic: Copyright © 1996-2026 Garmin Ltd. or its subsidiaries
+- main:
+  - text: To install this app, please visit the
+  - link "Connect IQ app":
+    - /url: https://www.garmin.com/en-US/p/616398/pn/010-CONIQ-00
+  - text: on your mobile device.
+  - generic: Version update pending
+  - generic: This app has a version update pending. Changes will not be visible until the approval is complete. This process could take up to 2 hours.
+  - heading "Manage Your App" [level=2]
+  - button "Upload New Version":
+    - generic: 
+    - generic: Upload New Version
+  - button "Edit Details":
+    - generic "edit": 
+    - generic: Edit Details
+  - button "Remove":
+    - generic: 
+    - generic: Remove
+  - button "Download icon Download":
+    - img "Download icon"
+    - generic: Download
+  - img "Moke · Custom Data Watch Face App Icon"
+  - img "App Type Icon"
+  - generic: Watch face
+  - heading "Moke · Custom Data Watch Face" [level=1]
+  - link "cherryeveli":
+    - /url: /developer/5478400c-5a15-4d78-a708-fab405655e6b/apps
+    - generic "cherryeveli"
+  - generic: Free
+  - generic: "3.3"
+  - generic: 
+  - generic: 3 Reviews
+  - generic: 100+ Downloads
+  - tablist:
+    - tab "App Info" [selected]:
+      - generic: App Info
+    - tab "Compatible Devices":
+      - generic: Compatible Devices
+    - tab "Statistics":
+      - generic: Statistics
+  - heading "Description" [level=2]
+  - paragraph: High-contrast rounded numerals and configurable data for compatible Garmin MIP watches. Free to use, with no subscription or developer account.
+  - paragraph
+  - paragraph: • 94 settings and 28 data choices. Customize or hide data areas, fonts, sizes, units, charts and progress indicators.
+  - paragraph: • The watch face and settings support Simplified Chinese and English. Other watch languages use English.
+  - paragraph:
+    - text: • 12/24-hour time, light/dark themes and optional seconds. The cleaner default layout shows Body Battery when available; decorative cards, moon phase, wind arrow and activity indicators can be enabled or disabled.…
+    - button "More"
+  - generic: Preview
+  - img "Moke · Custom Data Watch Face preview image"
+  - img "Moke · Custom Data Watch Face preview image"
+  - img "Moke · Custom Data Watch Face preview image"
+  - heading "What’s New" [level=2]
+  - generic: Version 1.2.1
+  - paragraph: 1.2.1
+  - paragraph: • Fixes settings changes that could fail to apply or persist on memory-constrained watches.
+  - paragraph: • Fixes a frozen watch face after entering an unavailable on-watch settings screen on phone-settings-only models.
+  - paragraph: • Reduces retained graphics memory while preserving seconds and current heart-rate updates. Memory-constrained models use compact vector energy segments.
+  - paragraph:
+    - text: • Handles missing weather conditions safely and retains all 94 settings and Chinese/English support.…
+    - button "More"
+  - separator
+  - heading "Ratings and Reviews See All" [level=2]:
+    - generic: Ratings and Reviews
+    - generic: See All
+  - generic: "3.3"
+  - generic: 
+  - generic: 
+  - generic: 
+  - generic: 
+  - generic: 
+  - generic: Based on 3 reviews
+  - generic: 5 stars
+  - generic "0"
+  - generic: 4 stars
+  - generic "2"
+  - generic: 3 stars
+  - generic "0"
+  - generic: 2 stars
+  - generic "1"
+  - generic: 1 stars
+  - generic "0"
+  - heading "Paolo" [level=4]
+  - button "Toggle Menu":
+  - generic: "Rating:"
+  - generic: 
+  - generic: 
+  - generic: 
+  - generic: 
+  - generic: 
+  - generic: Nov 4, 2026 • Version 1.2.0
+  - paragraph: non cambia le impostazioni
+  - strong: Developer Reply
+  - button "Toggle Menu":
+  - generic: Nov 5, 2026Paolo
+  - text: Grazie per la segnalazione, Paolo. Mi dispiace per il problema. Puoi usare «Contatta sviluppatore» per inviarmi il modello esatto dell'orologio, la versione del software e quale impostazione stai provando a cambiare? Indica anche se usi l'app Connect IQ o il menu dell'orologio e se, dopo aver salvato, la modifica non compare mai oppure viene applicata e poi torna al valore precedente. Come prima prova, riavvia l'orologio e riprova a cambiare una sola opzione, ad esempio lo sfondo. Questi dettagli mi aiuteranno a individuare la causa.
+  - heading "Leo Vasquez" [level=4]
+  - button "Toggle Menu":
+  - generic: "Rating:"
+  - generic: 
+  - generic: 
+  - generic: 
+  - generic: 
+  - generic: 
+  - generic: Nov 3, 2026 • Version 1.1.1
+  - paragraph: Really like the watch face but changing the background won’t save. Anything I try to change whether on the app or through the watch won’t save on my garmin instinct 3 51mm solar.
+  - strong: Developer Reply
+  - button "Toggle Menu":
+  - generic: Nov 4, 2026Leo Vasquez
+  - text: Thank you, Leo. I am investigating the settings issue on Instinct 3 Solar. In the simulator, background changes apply and survive restarting the face, so I have not yet reproduced the behavior on your watch. Please use Contact Developer to send your exact watch model and software version, and let me know whether settings revert immediately or only after leaving or restarting the face. For a quick check, please restart the watch, sync Connect IQ, then try changing only Dark background. I will use your details to narrow down the cause.
+  - heading "Cristi" [level=4]
+  - button "Toggle Menu":
+  - generic: "Rating:"
+  - generic: 
+  - generic: 
+  - generic: 
+  - generic: 
+  - generic: 
+  - generic: Nov 1, 2026 • Version 1.1.0
+  - paragraph: Hi, nice face , can you translate it to English? Thx!
+  - strong: Developer Reply
+  - button "Toggle Menu":
+  - generic: Nov 2, 2026Cristi
+  - text: "Thank you, Cristi! Version 1.1.0 already includes English. It follows the watch system language: please set your watch language to English, then reselect Moke. If any labels remain Chinese, please use Contact Developer to share your watch model and which labels you see. I am also checking the language fallback for watches set to other languages."
+  - heading "App Permissions See Details" [level=3]:
+    - generic: App Permissions
+    - button "See Details"
+  - paragraph: "This app requires the following:"
+  - list:
+    - text: Location & Tracking
+    - text: Fitness & Sensor Data
+  - heading "Additional Information" [level=3]
+  - list:
+    - paragraph: Initial Release
+    - text: October 23, 2026
+    - paragraph: Latest Release
+    - text: November 16, 2026
+    - paragraph: Version
+    - generic: "1.2.1 (Internal: 5)"
+    - text: Size
+    - text: 125 KB
+  - button "Report a Problem":
+    - text: Report a Problem
+  - button "Contact Developer":
+    - text: Contact Developer
+  - heading "More from this Developer See All" [level=3]:
+    - generic: More from this Developer
+    - button "See All"
+  - img "Alpine · Mountain Watch Face"
+  - generic "Alpine · Mountain Watch Face"
+  - img "Retro World · Map Watch Face"
+  - generic "Retro World · Map Watch Face"
+- alert: Moke · Custom Data Watch Face | Connect IQ Store

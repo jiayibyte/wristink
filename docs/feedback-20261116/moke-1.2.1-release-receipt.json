@@ -17,8 +17,16 @@
     "instinct3solar45mm"
   ],
   "physical_device_tested": false,
-  "upload_status": "prepared-awaiting-per-submission-legal-confirmation",
-  "details_submitted": false,
-  "public_version_observed": "1.2.0",
-  "china_release_verified": false
+  "upload_status": "verified-by-Garmin",
+  "details_submitted": true,
+  "china_release_verified": false,
+  "legal_confirmation": "User explicitly agreed to this Moke 1.2.1 submission in the current conversation",
+  "signature_status": "Verified",
+  "store_version": "1.2.1",
+  "internal_version": 5,
+  "store_status": "Version update pending",
+  "store_status_text": "This app has a version update pending. Changes will not be visible until the approval is complete. This process could take up to 2 hours.",
+  "languages_updated": 28,
+  "public_availability_confirmed": false,
+  "completed_at": "2026-11-16T13:50:09.072731+08:00"
 }
