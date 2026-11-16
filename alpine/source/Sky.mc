@@ -10,6 +10,7 @@ module Sky {
     var sunVisible=false;var moonVisible=false;var sunProgress=0.5;var moonProgress=0.5;
     var sunAltitude=0.0;var moonAltitude=0.0;
     var _stamp=-1;var _minutes=-1;var _lat=null;var _lon=null;var _rise=null;var _set=null;
+    function clockPhase(minutes,rise,set){var r=rise==null ? 360 : rise;var s=set==null ? 1080 : set;if(r>=s){r=360;s=1080;}if(minutes>=r-30 && minutes<r+45){return 1;}if(minutes>=s-45 && minutes<s+30){return 3;}return minutes>=r && minutes<s ? 2 : 4;}
     function clamp(v as Numeric,lo as Numeric,hi as Numeric) as Double {return (v<lo ? lo : (v>hi ? hi : v)).toDouble();}
     function wrap(v as Numeric,period as Numeric) as Double {return (v-Math.floor(v/period)*period).toDouble();}
     function radians(degrees as Numeric) as Double {return wrap(degrees,360.0d)*RAD;}
@@ -79,7 +80,7 @@ module Sky {
             // Location-free clock/phase illustration; never presented as measured rise/set times.
             var sr=rise==null ? 360 : rise;var ss=set==null ? 1080 : set;
             var sp=interval(minutes,sr,ss);sunVisible=sp!=null;sunProgress=sp==null ? 0.5 : sp;
-            phase=Scene.phase(minutes,rise,set);
+            phase=clockPhase(minutes,rise,set);
             var mr=wrap(360+moonPhase*1440,1440.0d);var mp=interval(minutes,mr,wrap(mr+720,1440.0d));
             moonVisible=mp!=null;moonProgress=mp==null ? 0.5 : mp;
             sunAltitude=sunVisible ? Math.sin(sunProgress*PI) : -1;

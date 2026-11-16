@@ -13,7 +13,7 @@ FONT=ROOT/'assets/fonts/Rajdhani-SemiBold.ttf'
 def generate():
     from panels import generate as generate_panels
     from festivals import generate as generate_festivals
-    generate_festivals()
+    # Lite release: one classic mountain, no bundled seasonal backgrounds.
     jungle=['project.manifest = manifest.xml','base.sourcePath = source;live','base.resourcePath = resources']
     profiles=[];resource_families={}
     for device in DEVICES:
@@ -32,39 +32,23 @@ def generate():
         icons=res/'drawables';icons.mkdir(exist_ok=True)
         iw=c['launcherIcon']['width'];ih=c['launcherIcon']['height']
         (icons/'icon.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{iw}" height="{ih}" viewBox="0 0 40 40"><rect width="40" height="40" fill="black"/><path d="M3 31 L18 8 L25 18 L29 13 L38 31 Z" fill="white"/><path d="M12 27 L18 13 L21 21 L18 19 Z" fill="black"/></svg>')
-        if not reuse:generate_resources(icons,w,h,mono,c['bitsPerPixel']==16)
-        if not reuse:generate_ornaments(icons,scale,mono,c['bitsPerPixel']==16)
-        resource_families.setdefault(family,res)
-        entries=['<bitmap id="LauncherIcon" filename="icon.svg"/>','<bitmap id="SkyFront" filename="sky-front.png" dithering="none" compress="true"/>']
-        for i in range(1,21):
-            if mono:
-                entries.append(f'<bitmap id="Sky{i}" filename="sky-{i}.png" dithering="none" compress="true"><palette disableTransparency="true"><color>000000</color><color>FFFFFF</color></palette></bitmap>')
-            else:
-                attrs='automaticPalette="false" packingFormat="png"' if c['bitsPerPixel']==16 else 'compress="true"'
-                entries.append(f'<bitmap id="Sky{i}" filename="sky-{i}.png" dithering="none" {attrs}/>')
-        for i in range(1,21 if mono else 81):
-            if mono:
-                entries.append(f'<bitmap id="Festival{i}" filename="festival-{i}.png" dithering="none" compress="true"><palette disableTransparency="true"><color>000000</color><color>FFFFFF</color></palette></bitmap>')
-            else:
-                attrs='automaticPalette="false" packingFormat="png"' if c['bitsPerPixel']==16 else 'compress="true"'
-                entries.append(f'<bitmap id="Festival{i}" filename="festival-{i}.png" dithering="none" {attrs}/>')
-        for i in range(1,6 if mono else 21):
-            if mono:
-                entries.append(f'<bitmap id="Aurora{i}" filename="aurora-{i}.png" dithering="none" compress="true"><palette disableTransparency="true"><color>000000</color><color>FFFFFF</color></palette></bitmap>')
-            else:
-                attrs='automaticPalette="false" packingFormat="png"' if c['bitsPerPixel']==16 else 'compress="true"'
-                entries.append(f'<bitmap id="Aurora{i}" filename="aurora-{i}.png" dithering="none" {attrs}/>')
-        for name in ['Bird','Plane']:
-            for state in ['Day','Night']:
-                entries.append(f'<bitmap id="{name}{state}" filename="{name.lower()}-{state.lower()}.png" dithering="none"/>')
-        (icons/'drawables.xml').write_text('<drawables>'+''.join(entries)+'</drawables>')
-        # A compact resource-ID table avoids ~4.5 KB of switch bytecode on legacy
-        # Instinct. IDs are small handles: this does NOT load the bitmap resources.
-        resources=[f'Rez.Drawables.Sky{i}' for i in range(1,6 if mono else 21)]+[f'Rez.Drawables.Festival{i}' for i in range(1,21 if mono else 81)]+[f'Rez.Drawables.Aurora{i}' for i in range(1,6 if mono else 21)]
-        lookup=['import Toybox.Lang;','module LandscapeArt {',' var ids as Array<ResourceId> = ['+','.join(resources)+'];',' function id(key as Number) as ResourceId {']
-        lookup.append('  var index=key>=101 ? 25+(key-101)%5 : (key<=20 ? (key-1)%5 : 5+((key-21)/20).toNumber()*5+(key-21)%5);' if mono else '  var index=key-1;')
-        lookup.extend(['  return ids[index];',' }','}'])
-        (out/'LandscapeArt.mc').write_text('\n'.join(lookup)+'\n')
+        if not reuse:
+            from everest_art import render
+            render(w,h,2,mono,c['bitsPerPixel']==16,0).save(icons/'classic.png')
+        filename='classic.png';palette=''
+        if 'jpg' in c.get('imageFormats',[]):
+            attrs='automaticPalette="false" packingFormat="jpg"'
+        elif c['bitsPerPixel']==16:
+            # These entry AMOLED devices expand unsupported JPGs to full RGB565.
+            # An explicit opaque 64-colour palette keeps every binary <100KB.
+            image=Image.open(icons/'classic.png').convert('RGB').quantize(64,method=Image.Quantize.MEDIANCUT,dither=Image.Dither.NONE)
+            filename='classic-low.png';image.save(icons/filename,optimize=True)
+            colors=sorted(set(image.convert('RGB').getdata()))
+            palette='<palette disableTransparency="true">'+''.join('<color>'+''.join(f'{v:02X}' for v in color)+'</color>' for color in colors)+'</palette>'
+            attrs='automaticPalette="false" compress="true"'
+        else:attrs='compress="true"'
+        (icons/'drawables.xml').write_text('<drawables><bitmap id="LauncherIcon" filename="icon.svg"/><bitmap id="Classic" filename="'+filename+'" dithering="none" '+attrs+'>'+palette+'</bitmap></drawables>')
+        (out/'LandscapeArt.mc').write_text('module LandscapeArt {function id(key){return Rez.Drawables.Classic;}}\n')
         heights=skyline(w,h,mono)
         # Printable ASCII preserves every native elevation while replacing a long
         # sequence of bytecode array assignments. String.toUtf8Array is API 1.3.

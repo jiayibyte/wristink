@@ -37,6 +37,10 @@ def scaled_assets(key,g,icon,noclip=False,compact=False):
                     filename=f'card-single-{theme}-{kind}.png';atlas.crop(((kind-3)*28,0,(kind-2)*28,13)).save(dest/'drawables'/filename)
                     ET.SubElement(tree.getroot(),'bitmap',id=f'CardSingle{theme.title()}{kind}',filename=filename)
         tree.write(dest/'drawables/drawables.xml',encoding='utf-8')
+    if noclip:
+        tree=ET.parse(dest/'drawables/drawables.xml')
+        for item in tree.getroot():item.attrib.pop('compress',None)
+        tree.write(dest/'drawables/drawables.xml',encoding='utf-8')
     def n(v):return round(int(v)*scale)
     for path in (dest/'drawables').glob('*.png'):
         scale=g['circle_scale'] if path.name.startswith('energy-') else g['scale']

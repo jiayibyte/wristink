@@ -97,67 +97,20 @@ class AlpineView extends WatchUi.WatchFace {
         var angle=Sky.moonPhase*2*Math.PI;var flip=Data.latitude!=null && Data.latitude<0 ? -1 : 1;
         var sine=isMoon ? Math.sin(angle) : 0;var cosine=isMoon ? Math.cos(angle) : 0;
         color(dc,Device.MONO ? 0xFFFFFF : (isMoon ? 0xF6E9C7 : 0xFFF2CC));
-        for(var yy=-radius;yy<=radius;yy++) {for(var xx=-radius;xx<=radius;xx++) {
+        for(var yy=-radius;yy<=radius;yy++) {var run=null;for(var xx=-radius;xx<=radius+1;xx++) {
             var rr=(xx*xx+yy*yy).toFloat()/(radius*radius);
-            if(rr<=1 && skyPixel(cx+xx,cy+yy) && (!isMoon || flip*xx.toFloat()/radius*sine-Math.sqrt(1-rr)*cosine>0)) {dc.drawPoint(cx+xx,cy+yy);}
+            var lit=xx<=radius && rr<=1 && skyPixel(cx+xx,cy+yy) && (!isMoon || flip*xx.toFloat()/radius*sine-Math.sqrt(1-rr)*cosine>0);
+            if(lit && run==null) {run=xx;}
+            if(!lit && run!=null) {dc.drawLine(cx+run,cy+yy,cx+xx-1,cy+yy);run=null;}
         }}
     }
     function prepareBackground() {
-        var key=Scene.resourceKey(_scene,_holiday);
+        var key=1;
         if(_artScene!=key || _background==null) {
             _background=null;_background=WatchUi.loadResource(LandscapeArt.id(key));_artScene=key;
         }
     }
-    function landscape(dc,minutes,stamp) {
-        Sky.refresh(stamp,minutes,Data.latitude,Data.longitude,Data.rise,Data.set);
-        prepareBackground();
-        dc.drawBitmap(0,0,_background);
-        SkyOrnaments.draw(dc,Settings.skyDecor,stamp);
-        var weather=Scene.effectiveWeather(_scene);var cover=Scene.clouds(_scene);
-        if(Sky.phase==4 && cover<70) {
-            var count=(Device.MONO ? 15 : 42)*(100-cover)/100;
-            for(var i=0;i<count;i++) {
-                var sx=p(8+(i*47)%(Device.MONO ? 100 : 244));var sy=p(8+(i*17)%(Device.MONO ? 28 : 45));
-                if(skyPixel(sx,sy)) {color(dc,Device.MONO ? 0xFFFFFF : 0xAACCDD);dc.drawPoint(sx,sy);}
-            }
-        }
-        // Horizon positions stay astronomical; daytime Moon is opt-in.
-        if(cover<85) {
-            if(Sky.sunVisible) {body(dc,Sky.sunProgress,false,stamp);}
-            if(Sky.showMoon(Settings.skyDisplay)) {body(dc,Sky.moonProgress,true,stamp);}
-        }
-        // Clouds are entirely dynamic: a clear or unknown weather state paints none.
-        if(cover>0) {
-            var c=Device.MONO ? 0xFFFFFF : (Sky.phase==4 ? 0x476375 : (cover>=70 ? 0x91AAB3 : 0xCDDDE0));
-            var drift=((stamp/300).toNumber()%7)-3;
-            cloud(dc,(Device.MONO ? 10 : 20)+drift,Device.MONO ? 35 : 45,Device.MONO ? 29 : 51,c);
-            if(cover>=30) {cloud(dc,(Device.MONO ? 77 : 176)-drift,Device.MONO ? 24 : 44,Device.MONO ? 30 : 60,c);}
-            if(cover>=70) {cloud(dc,Device.MONO ? 43 : 98,Device.MONO ? 36 : 45,Device.MONO ? 37 : 65,c);}
-        }
-        if(weather==WeatherStyle.RAIN || weather==WeatherStyle.STORM || weather==WeatherStyle.SNOW) {
-            for(var r=0;r<18;r++) {
-                var rx=p(8+(r*29)%(Device.MONO ? 104 : 244));var ry=p(26+(r*13)%(Device.MONO ? 31 : 60));
-                var c=Device.MONO ? 0xFFFFFF : (weather==WeatherStyle.SNOW ? 0xEEF4F0 : 0xA2BAC6);
-                if(weather==WeatherStyle.SNOW) {for(var k=-1;k<=1;k++) {if(skyPixel(rx+k,ry)) {color(dc,c);dc.drawPoint(rx+k,ry);}}if(skyPixel(rx,ry-1)) {color(dc,c);dc.drawPoint(rx,ry-1);}if(skyPixel(rx,ry+1)) {dc.drawPoint(rx,ry+1);}}
-                else {for(var j=0;j<p(4);j++) {if(skyPixel(rx-j/2,ry+j)) {color(dc,c);dc.drawPoint(rx-j/2,ry+j);}}}
-            }
-        }
-        if(weather==WeatherStyle.STORM) {
-            if(Device.MONO) {poly(dc,[[p(30),p(20)],[p(22),p(36)],[p(28),p(34)],[p(23),p(46)],[p(38),p(29)],[p(30),p(30)]],0xFFFFFF);}
-            else {poly(dc,[[p(218),p(26)],[p(200),p(51)],[p(213),p(48)],[p(201),p(69)],[p(227),p(41)],[p(215),p(43)]],0xDAF4F5);}
-        }
-        if(_scene==8 && _holiday==0) {
-            var colors=[0xEE9966,0xDDCC88,0x88BBAA];
-            for(var a=0;a<3;a++) {color(dc,Device.MONO ? 0xFFFFFF : colors[a]);dc.drawArc(p(Device.MONO ? 67 : 130),p(Device.MONO ? 87 : 145),p((Device.MONO ? 70 : 123)-a*3),Graphics.ARC_CLOCKWISE,160,20);}
-        }
-        if(_scene==9 && _holiday==0) {firework(dc,Device.MONO ? 33 : 63,Device.MONO ? 40 : 44,Device.MONO ? 0xFFFFFF : 0xEECC99);if(!Device.MONO) {firework(dc,182,50,0x99CCDD);}}
-        headers(dc);
-        // A tiny lit tent represents unread notifications in the foreground valley.
-        if(Data.notifications!=null && Data.notifications>0) {
-            var tx=Device.MONO ? 150 : 220;var ty=Device.MONO ? 84 : 132;
-            poly(dc,[[p(tx-4),p(ty)],[p(tx),p(ty-4)],[p(tx+4),p(ty)]],Device.MONO ? 0xFFFFFF : 0xDBAE62);
-        }
-    }
+    function landscape(dc,minutes,stamp) {prepareBackground();dc.drawBitmap(0,0,_background);}
     function firework(dc,x as Numeric,y as Numeric,c as Number) {for(var i=0;i<12;i++) {var a=i*Math.PI/6;line(dc,x+4*Math.cos(a),y+4*Math.sin(a),x+11*Math.cos(a),y+11*Math.sin(a),c);}}
     function slotHeader(dc,x as Numeric,y as Numeric,width as Numeric,kind as Number) {
         if(kind==11) {return;}
@@ -271,9 +224,9 @@ class AlpineView extends WatchUi.WatchFace {
         var h=Mode.DEMO ? (Mode.MINUTES/60).toNumber() : clock.hour;var m=Mode.DEMO ? Mode.MINUTES%60 : clock.min;var sec=Mode.DEMO ? 16 : clock.sec;
         var is24=Settings.is24(sys.is24Hour);
         if(Device.AMOLED && _sleep) {if(_aod==null) {_aod=WatchUi.loadResource(Rez.Fonts.Aod);}aod(dc,h,m,is24);_minute=minute;return;}
-        Data.refresh(now,sys);Sky.refresh(now.value(),h*60+m,Data.latitude,Data.longitude,Data.rise,Data.set);_scene=Scene.choose(h*60+m);
+        Data.refresh(now,sys);_scene=2;
         var d=Gregorian.info(now,Time.FORMAT_SHORT);
-        _holiday=Scene.holiday(d.year,d.month,d.day);_accent=Festival.accent(_holiday,accent(_scene));
+        _holiday=0;_accent=accent(2);
         // Reuse the background while menus are shown. If a skin changed, obtain
         // its largest allocation before rebuilding the smaller font objects.
         prepareBackground();if(_time==null) {loadFonts();}

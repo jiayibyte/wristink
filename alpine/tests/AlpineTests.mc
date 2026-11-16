@@ -17,22 +17,8 @@ function freshnessRejectsMissingStaleFuture(logger) {
 }
 (:test)
 function heartRejectsSentinels(logger) {Test.assert(!Data.validHeart(null));Test.assert(!Data.validHeart(0));Test.assert(!Data.validHeart(301));Test.assert(Data.validHeart(80));return true;}
-(:test)
-function sunriseTransitionsAndMissingLocation(logger) {
- Test.assertEqual(Scene.phase(329,null,null),4);Test.assertEqual(Scene.phase(330,null,null),1);
- Test.assertEqual(Scene.phase(405,null,null),2);Test.assertEqual(Scene.phase(1035,null,null),3);Test.assertEqual(Scene.phase(1110,null,null),4);
- Test.assertEqual(Scene.phase(400,420,1080),1);Test.assertEqual(Scene.phase(800,1200,400),2);return true;
-}
-(:test)
-function scenesRespectPriorityAndExplicitChoice(logger) {
- Sky.ready=false;Data.weather=0;Data.cloudCover=0;Settings.scene=0;Settings.smart=true;Data.rise=null;Data.set=null;
- Data.battery=10;Data.stress=90;Data.rainy=true;Data.steps=11000;Data.stepGoal=10000;
- Test.assertEqual(Scene.choose(800),7);Data.battery=80;Test.assertEqual(Scene.choose(800),6);
- Data.stress=0;Test.assertEqual(Scene.choose(800),5);Data.rainy=false;
- Test.assertEqual(Scene.choose(800),8);Test.assertEqual(Scene.choose(30),9);
- Settings.smart=false;Test.assertEqual(Scene.choose(800),2);Settings.scene=3;Test.assertEqual(Scene.choose(800),3);
- Settings.scene=0;Settings.smart=true;Data.steps=null;Data.battery=null;Data.stress=null;return true;
-}
+
+
 (:test)
 function zerosNegativeAltitudeAndUnits(logger) {
  Data.altitude=-59;Data.imperialAlt=false;Test.assertEqual(Data.value(3),"-59");
@@ -69,8 +55,7 @@ function sleepStopsSecondPaintingAndWakeInvalidates(logger) {
 }
 (:test)
 function defaultCircleIsWeatherAndHeartRemainsBelow(logger) {Settings.load();Test.assertEqual(Settings.circle,6);Test.assertEqual(Settings.middle,1);Test.assertEqual(Settings.top,11);Test.assertEqual(Settings.upperLeft,11);Test.assertEqual(Settings.upperRight,11);return true;}
-(:test)
-function moonCycleIsBounded(logger) {Test.assert(Scene.moon(0)>=0);Test.assert(Scene.moon(0)<29.53059);Test.assert(Scene.moon(Time.now().value())<29.53059);return true;}
+
 
 class BatteryDaysFixture {var batteryInDays=null;function initialize(v) {batteryInDays=v;}}
 class LegacyBatteryFixture {var battery=76;}
@@ -84,22 +69,4 @@ function batteryEstimateUsesOnlySystemDays(logger) {
  Data.batteryDays=Data.remainingDays(new BatteryDaysFixture(2.5));Test.assertEqual(Data.daysText(),"2.5D");
  Data.batteryDays=Data.remainingDays(new BatteryDaysFixture(0.0));Test.assertEqual(Data.daysText(),"0.0D");
  Data.batteryDays=null;Data.battery=100;Test.assertEqual(Data.value(4),"--D");return true;
-}
-
-(:test)
-function everestBackgroundCachesAndAllScenesRender(logger) {
- var ref=null;var bitmap;
- if(Graphics has :createBufferedBitmap) {ref=Graphics.createBufferedBitmap({:width=>1,:height=>1});bitmap=ref.get();}
- else {bitmap=new Graphics.BufferedBitmap({:width=>1,:height=>1});}
- var dc=bitmap.getDc();var view=new AlpineView();var stamp=Time.now().value();
- Data.heart=80;Data.altitude=1280;Data.batteryDays=18.4;Data.notifications=0;
- view._scene=2;view.landscape(dc,840,stamp);
- var first=view._background;view.landscape(dc,841,stamp);
- Test.assert(view._background==first);Test.assertEqual(view._artScene,Scene.artKey(2));first=null;
- for(var scene=1;scene<=17;scene++) {
-  view._scene=scene;view.landscape(dc,840,stamp);
-  Test.assertEqual(view._artScene,Scene.artKey(scene));Test.assert(view._background!=null);
-  view.restore(dc,12,12,20,10);
- }
- return true;
 }

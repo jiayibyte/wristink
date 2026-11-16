@@ -66,3 +66,13 @@ function dayNightBoundaryUsesUtcAndLeapYears(logger) {
     Test.assertEqual(SolarMap.subsolarLongitude(21600),90.0);
     return true;
 }
+
+(:test)
+function awakeHeartReadsRespectFiveSecondCadence(logger) {
+ var at=LiveData.heartAt;var heart=LiveData.heart;var valid=LiveData.heartValidAt;
+ var stamp=Time.now().value();LiveData.heartAt=stamp;
+ Test.assert(!LiveData.refreshTickHeart(stamp+1));Test.assert(!LiveData.refreshTickHeart(stamp+4));
+ Test.assertEqual(LiveData.heartAt,stamp);
+ LiveData.refreshTickHeart(stamp+5);Test.assertEqual(LiveData.heartAt,stamp+5);
+ LiveData.heartAt=at;LiveData.heart=heart;LiveData.heartValidAt=valid;return true;
+}

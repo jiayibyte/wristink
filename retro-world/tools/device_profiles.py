@@ -119,7 +119,7 @@ def resource_set(key,g,color,icon):
     shutil.copytree(ROOT/'resources/settings',dest/'settings',dirs_exist_ok=True)
     tree=ET.parse(ROOT/'resources/drawables/drawables.xml');ET.SubElement(tree.getroot(),'bitmap',id='Aod',filename='aod.png')
     for bitmap in tree.getroot():
-        bitmap.set('dithering','none');bitmap.set('compress','false')
+        bitmap.set('dithering','none');bitmap.set('compress','false' if bitmap.get('id','').startswith(('LauncherIcon','Map','Weather')) else 'true')
         image=Image.open(out/bitmap.get('filename')).convert('RGB') if bitmap.get('filename')!='icon.png' else face.convert('RGB')
         colors=sorted(set(image.getdata()))
         palette=ET.SubElement(bitmap,'palette',disableTransparency='true')

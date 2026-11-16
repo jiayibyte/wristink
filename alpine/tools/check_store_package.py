@@ -29,7 +29,7 @@ for entry in products:
   assert all('/'+d+'/' not in s for d in ['preview','tests','gallery','recovery']),pn
  settings=list(path.parent.glob('*settings.json'));assert len(settings)==1,(pn,settings)
  data=json.loads(settings[0].read_text());items={i['key']:i for i in data['settings']}
- for key,default,count in [('Scene',0,18),('SkyDecor',0,4),('WeatherLink',0,2),('TimeFormat',0,3),('SkyDisplay',0,2),('PanelStyle',1,4)]:
+ for key,default,count in [('TimeFormat',0,3),('PanelStyle',1,4)]:
   assert items[key]['defaultValue']==default
   assert [x['value'] for x in items[key]['configOptions']]==list(range(count))
  for lang in ['valyrian','zhs']:

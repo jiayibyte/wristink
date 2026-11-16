@@ -49,7 +49,7 @@ function headerDefaultsHideOnceWithoutResettingCustomChoices(logger) {
 }
 
 (:test)
-function timeAndSkyChoicesPersistWithoutChangingDataSlots(logger) {
+function timeChoicesPersistAndRemovedOptionsAreRejected(logger) {
  Settings.load();var oldTime=Settings.timeFormat;var oldSky=Settings.skyDisplay;
  var left=Settings.left;var festival=Settings.festival;
  Test.assert(Settings.setChoice("TimeFormat",1));Settings.load();Test.assert(!Settings.is24(true));
@@ -57,7 +57,7 @@ function timeAndSkyChoicesPersistWithoutChangingDataSlots(logger) {
  Test.assert(Settings.setChoice("TimeFormat",2));Settings.load();Test.assert(Settings.is24(false));
  Test.assertEqual(Settings.shownHour(0,true),0);Test.assertEqual(Settings.shownHour(23,true),23);
  Test.assert(Settings.setChoice("TimeFormat",0));Test.assert(Settings.is24(true));Test.assert(!Settings.is24(false));
- Test.assert(Settings.setChoice("SkyDisplay",1));Settings.load();Test.assertEqual(Settings.skyDisplay,1);
+ Test.assert(!Settings.setChoice("SkyDisplay",1));
  Test.assert(!Settings.setChoice("SkyDisplay",2));Test.assert(!Settings.setChoice("TimeFormat",-1));
  Test.assert(!Settings.setChoice("TimeFormat",3));Test.assert(!Settings.setChoice("Left",0));
  Test.assertEqual(Settings.left,left);Test.assertEqual(Settings.festival,festival);
@@ -65,5 +65,5 @@ function timeAndSkyChoicesPersistWithoutChangingDataSlots(logger) {
   var key=SlotCatalog.choiceKeys[i];var choices=SlotCatalog.choices(key);
   for(var j=0;j<choices.size();j++) {Test.assert(SlotCatalog.choiceName(key,j).length()>0);}
  }
- Settings.setChoice("TimeFormat",oldTime);Settings.setChoice("SkyDisplay",oldSky);return true;
+ Settings.setChoice("TimeFormat",oldTime);return true;
 }

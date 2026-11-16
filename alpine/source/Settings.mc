@@ -29,15 +29,15 @@ module Settings {
     }
     function load() {
         migrateSlots();migrateHeaderDefaults();
-        timeFormat=number("TimeFormat",0,0,2);scene=number("Scene",0,0,17);circle=number("CircleData",6,0,11);
+        timeFormat=number("TimeFormat",0,0,2);scene=2;circle=number("CircleData",6,0,11);
         top=number("HeaderTop",11,0,11);upperLeft=number("HeaderLeft",11,0,11);upperRight=number("HeaderRight",11,0,11);
-        lowBattery=number("LowBattery",20,5,50);stressLimit=number("StressLimit",75,25,100);
+        lowBattery=20;stressLimit=75;
         left=number("Left",0,0,11);middle=number("Middle",1,0,11);right=number("Right",2,0,11);
-        smart=flag("Smart",true);seconds=flag("Seconds",true);
+        smart=false;seconds=flag("Seconds",true);
         panelStyle=number("PanelStyle",1,0,3);
-        festival=number("Festival",0,0,5);
-        skyDisplay=number("SkyDisplay",0,0,1);
-        weatherLink=number("WeatherLink",0,0,1);skyDecor=number("SkyDecor",0,0,3);
+        festival=1;
+        skyDisplay=0;
+        weatherLink=1;skyDecor=0;
     }
     function getSlot(key as String) as Number {
         switch(key) {case "CircleData":return circle;case "HeaderTop":return top;case "HeaderLeft":return upperLeft;case "HeaderRight":return upperRight;case "Left":return left;case "Middle":return middle;case "Right":return right;}
@@ -62,7 +62,7 @@ module Settings {
     }
     function setChoice(key as String,value) as Boolean {
         if(key.equals("PanelStyle")) {return setPanelStyle(value);}
-        if(key.equals("Festival")) {return setFestival(value);}
+        if(!SlotCatalog.isChoice(key)) {return false;}
         var limit=-1;
         switch(key) {case "Scene":limit=17;break;case "WeatherLink":case "SkyDisplay":limit=1;break;case "SkyDecor":limit=3;break;case "TimeFormat":limit=2;break;}
         if(!(value instanceof Number) || value<0 || value>limit) {return false;}
