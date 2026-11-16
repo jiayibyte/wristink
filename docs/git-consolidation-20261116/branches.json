@@ -1,0 +1,96 @@
+{
+  "base_main": "82e49250693e3035fd1979613caf0f56484a7d06",
+  "runtime_tree_unchanged": true,
+  "refs": [
+    {
+      "ref": "origin/codex/alpine-device-expansion-20261116",
+      "commit": "a2d1b694f98f72f33603935016a8d540efcec497",
+      "already_ancestor": false,
+      "disposition": "Alpine implementation was imported in 60566ad and finalized in f403820. Preserve the user-requested classic <100000-byte version; seasonal and sky features were intentionally retired. Earlier source versions remain available through Git history."
+    },
+    {
+      "ref": "origin/codex/alpine-local-snapshot-20261116",
+      "commit": "9964e992992691d615a454930830795ac8c715e6",
+      "already_ancestor": false,
+      "disposition": "Alpine implementation was imported in 60566ad and finalized in f403820. Preserve the user-requested classic <100000-byte version; seasonal and sky features were intentionally retired. Earlier source versions remain available through Git history."
+    },
+    {
+      "ref": "origin/codex/alpine-watchface",
+      "commit": "9c22371ce60403287b1c83528e419fdf7364f2c6",
+      "already_ancestor": false,
+      "disposition": "Alpine implementation was imported in 60566ad and finalized in f403820. Preserve the user-requested classic <100000-byte version; seasonal and sky features were intentionally retired. Earlier source versions remain available through Git history."
+    },
+    {
+      "ref": "origin/codex/local-beijing-map-20261116",
+      "commit": "d84495d1295302e111007f63cf6e19a8d58fcfd4",
+      "already_ancestor": false,
+      "disposition": "Packaging file is byte-identical to main; its cherry-picked change was merged in PR #6."
+    },
+    {
+      "ref": "origin/codex/retro-official-weather",
+      "commit": "a610eae0de93e9013f3240dc52e2eeed5bd3f6f6",
+      "already_ancestor": true,
+      "disposition": "Already merged into main; no source changes needed."
+    },
+    {
+      "ref": "origin/codex/retro-review-settings",
+      "commit": "b39af69706b2d84cc6b79414010826470b7eae3d",
+      "already_ancestor": true,
+      "disposition": "Already merged into main; no source changes needed."
+    },
+    {
+      "ref": "origin/codex/retro-venu-x1-fix",
+      "commit": "6472723e80f23118199d9392042d2940171297c6",
+      "already_ancestor": true,
+      "disposition": "Already merged into main; no source changes needed."
+    },
+    {
+      "ref": "origin/codex/watchface-feedback-fixes-20261114",
+      "commit": "897ee9bda69d5a252ef28a9906fd209ca0ae474f",
+      "already_ancestor": true,
+      "disposition": "Already merged into main; no source changes needed."
+    },
+    {
+      "ref": "origin/codex/watchface-global-languages",
+      "commit": "9ca4b57a99994dd5501ceb48f04f53f3f8067423",
+      "already_ancestor": true,
+      "disposition": "Already merged into main; no source changes needed."
+    },
+    {
+      "ref": "origin/codex/watchface-official-data",
+      "commit": "810ce9687664685283e61d79ff074472edda3642",
+      "already_ancestor": true,
+      "disposition": "Already merged into main; no source changes needed."
+    },
+    {
+      "ref": "origin/codex/watchface-size-power-20261116",
+      "commit": "836b7105b3eb307e7883ace1ba0b115970c18c88",
+      "already_ancestor": true,
+      "disposition": "Already merged into main; no source changes needed."
+    },
+    {
+      "ref": "origin/codex/watchface-skill-operations",
+      "commit": "66c93b04de8ede6e6f3a9dd2c670eecd62a2d483",
+      "already_ancestor": true,
+      "disposition": "Already merged into main; no source changes needed."
+    },
+    {
+      "ref": "archive/20261116/retro-continuous-seconds",
+      "commit": "010f6c4ec2f6fa13d68d7f46bffd4a8f4eddd79c",
+      "already_ancestor": false,
+      "disposition": "Every branch patch is equivalent to a patch already in main."
+    },
+    {
+      "ref": "archive/20261116/watchface-feedback-20261114",
+      "commit": "82e5b26159de7113fafe22599da5fa0eea29e4e3",
+      "already_ancestor": false,
+      "disposition": "Feedback fixes are already in main; remaining Retro differences are later compression and five-second heart-rate optimizations. Alpine history is superseded by the size-capped release."
+    },
+    {
+      "ref": "archive/20261116/alpine-bright-festivals",
+      "commit": "91198293d9227fc3ecbd807a493f584e6bd669b4",
+      "already_ancestor": false,
+      "disposition": "Alpine implementation was imported in 60566ad and finalized in f403820. Preserve the user-requested classic <100000-byte version; seasonal and sky features were intentionally retired. Earlier source versions remain available through Git history."
+    }
+  ]
+}
