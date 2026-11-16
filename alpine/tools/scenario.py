@@ -17,4 +17,6 @@ rel=dest.relative_to(ROOT);j=ROOT/'scenario.jungle'
 j.write_text((ROOT/'monkey.jungle').read_text().replace('project.manifest = manifest.xml',f'project.manifest = {rel}/manifest.xml').replace('base.sourcePath = source;live',f'base.sourcePath = source;{rel}'))
 sdk=Path((Path.home()/'Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg').read_text().strip())
 env=dict(os.environ,JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home');env['PATH']=env['JAVA_HOME']+'/bin:'+env['PATH']
-subprocess.run([str(sdk/'bin/monkeyc'),'-f',str(j),'-d',a.device,'-o',str(ROOT/f'bin/Alpine-{a.device}-{name}.prg'),'-y',str(Path.home()/'.Garmin/keys/developer_key.der'),'-r','-O','0','-w','--no-gen-styles'],cwd=ROOT,env=env,check=True)
+optimization='2z' if a.device in ('instinct2','instinct2s','instinct2x') else '0'
+compat=['--disable-api-has-check-removal'] if optimization=='2z' else []
+subprocess.run([str(sdk/'bin/monkeyc'),'-f',str(j),'-d',a.device,'-o',str(ROOT/f'bin/Alpine-{a.device}-{name}.prg'),'-y',str(Path.home()/'.Garmin/keys/developer_key.der'),'-r','-O',optimization,'-w','--no-gen-styles']+compat,cwd=ROOT,env=env,check=True)

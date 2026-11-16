@@ -3,7 +3,7 @@ import Toybox.Lang;
 module Settings {
     var timeFormat=0;var scene=0;var circle=6;var smart=true;var seconds=true;
     var lowBattery=20;var stressLimit=75;var left=0;var middle=1;var right=2;
-    var top=11;var upperLeft=11;var upperRight=11;
+    var top=11;var upperLeft=11;var upperRight=11;var panelStyle=1;var festival=0;
     function number(key as String,fallback as Number,lo as Number,hi as Number) as Number {
         var v=Application.Properties.getValue(key);
         return v instanceof Number && v>=lo && v<=hi ? v : fallback;
@@ -33,6 +33,8 @@ module Settings {
         lowBattery=number("LowBattery",20,5,50);stressLimit=number("StressLimit",75,25,100);
         left=number("Left",0,0,11);middle=number("Middle",1,0,11);right=number("Right",2,0,11);
         smart=flag("Smart",true);seconds=flag("Seconds",true);
+        panelStyle=number("PanelStyle",1,0,3);
+        festival=number("Festival",0,0,5);
     }
     function getSlot(key as String) as Number {
         switch(key) {case "CircleData":return circle;case "HeaderTop":return top;case "HeaderLeft":return upperLeft;case "HeaderRight":return upperRight;case "Left":return left;case "Middle":return middle;case "Right":return right;}
@@ -43,6 +45,14 @@ module Settings {
         Application.Properties.setValue(key,value);Application.Storage.setValue("DataSlotsVersion",2);load();return true;
     }
     function headersUse(kind) {return top==kind || upperLeft==kind || (!Device.MONO && upperRight==kind);}
+    function setPanelStyle(value) as Boolean {
+        if(!(value instanceof Number) || value<0 || value>3) {return false;}
+        Application.Properties.setValue("PanelStyle",value);load();return true;
+    }
+    function setFestival(value) as Boolean {
+        if(!(value instanceof Number) || value<0 || value>5) {return false;}
+        Application.Properties.setValue("Festival",value);load();return true;
+    }
     function uses(kind) {return circle==kind || left==kind || middle==kind || right==kind || headersUse(kind);}
     function is24(system) {return timeFormat==0 ? system : timeFormat==2;}
     function shownHour(h,is24) {return is24 ? h : (h%12==0 ? 12 : h%12);}

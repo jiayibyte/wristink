@@ -9,7 +9,13 @@ env=dict(os.environ,JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-19.jdk/Cont
 def build(device):
  out=ROOT/'bin/isolated'/a.mode/device;out.mkdir(parents=True,exist_ok=True);prg=out/'Alpine.prg';log=ROOT/f'bin/{device}-{a.mode}-build.log'
  jungle='monkey.jungle' if a.mode=='live' else f'{a.mode}-{device}.jungle'
- cmd=[str(sdk/'bin/monkeyc'),'-f',jungle,'-d',device,'-o',str(prg),'-y',str(key),'-w','--no-gen-styles']+(['-t'] if a.mode=='tests' else ['-r','-O','0'])
+ # Legacy Instinct bytecode lives in the same 60 KB pool as bitmap resources.
+ # Fast code-space optimisation keeps the complete face and menus in budget.
+ opt='2z' if device in ('instinct2','instinct2s','instinct2x') else '0'
+ flags=(['-t','-O',opt] if opt=='2z' else ['-t']) if a.mode=='tests' else ['-r','-O',opt]
+ # Keep runtime API guards for regional firmware below the default SDK device API.
+ compat=['--disable-api-has-check-removal'] if opt=='2z' else []
+ cmd=[str(sdk/'bin/monkeyc'),'-f',jungle,'-d',device,'-o',str(prg),'-y',str(key),'-w','--no-gen-styles']+flags+compat
  start=time.monotonic()
  with log.open('w') as f:r=subprocess.run(cmd,cwd=ROOT,env=env,stdout=f,stderr=subprocess.STDOUT)
  if r.returncode:print(log.read_text()[-6000:],flush=True)

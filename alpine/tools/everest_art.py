@@ -2,6 +2,7 @@
 Original artwork; references and stylization boundary: assets/everest/SOURCES.md.
 """
 from PIL import Image,ImageDraw
+from festival_art import PALETTES,decorate
 
 RIDGE=[(-.08,.72),(.04,.62),(.14,.51),(.20,.445),(.25,.395),(.33,.377),(.40,.35),(.455,.303),(.48,.26),(.505,.235),(.53,.26),(.55,.294),(.585,.322),(.61,.35),(.65,.397),(.70,.44),(.75,.48),(.82,.565),(.92,.63),(1.08,.72)]
 
@@ -33,8 +34,8 @@ def monochrome(width,height,weather=0):
         ridge([(0,74),(28,71),(55,75),(80,72)])
     return im
 
-def render(width,height,scene,mono=False,amoled=False,weather=0):
-    if mono:return monochrome(width,height,weather)
+def render(width,height,scene,mono=False,amoled=False,weather=0,holiday=0):
+    if mono:return decorate(monochrome(width,height,weather),holiday,True)
     ss=4 if amoled else 1;W,H=width*ss,height*ss
     im=Image.new('RGB',(W,H));d=ImageDraw.Draw(im);night=scene in (4,9)
     def rgb(c):return ((c>>16)&255,(c>>8)&255,c&255)
@@ -49,6 +50,12 @@ def render(width,height,scene,mono=False,amoled=False,weather=0):
     def tint(c,target,amount):
         a=rgb(c);b=rgb(target);v=[round(x*(1-amount)+y*amount) for x,y in zip(a,b)]
         return (v[0]<<16)|(v[1]<<8)|v[2]
+    if holiday:
+        # Keep dawn/day/dusk/night differences and weather shading within each palette.
+        palette=PALETTES[holiday]
+        top,bottom,snow,ice,shade,rock=[tint(c,t,.9 if i<2 else .68) for i,(c,t) in enumerate(zip((top,bottom,snow,ice,shade,rock),palette))]
+        if night:
+            top=tint(top,0x030819,.45);bottom=tint(bottom,0x08182D,.35)
     if weather:
         target=(0x354C60 if night else 0x768D96)
         if weather==2:target=0x223B50 if night else 0x486574
@@ -106,11 +113,13 @@ def render(width,height,scene,mono=False,amoled=False,weather=0):
             k=max(0,min(1,(y/H-.46)/.48));alpha=round(115*k*k*(3-2*k))
             ld.line((0,y,W,y),fill=(0,5,13,alpha))
         im=Image.alpha_composite(im.convert('RGBA'),layer).convert('RGB')
+    decorate(im,holiday,False)
     if ss!=1:im=im.resize((width,height),Image.Resampling.LANCZOS)
     if mono:return im.convert('1',dither=Image.Dither.NONE)
     if not amoled:
         palette=Image.new('P',(1,1))
-        palette.putpalette([0,0,0,85,85,85,170,170,170,255,255,255,85,170,170]+[0,0,0]*251)
+        colors=([r,g,b] for r in (0,85,170,255) for g in (0,85,170,255) for b in (0,85,170,255)) if holiday else iter([[0,0,0],[85,85,85],[170,170,170],[255,255,255],[85,170,170]])
+        flat=[c for color in colors for c in color];palette.putpalette(flat+[0]*(768-len(flat)))
         return im.quantize(palette=palette,dither=Image.Dither.NONE)
     return im
 
@@ -134,13 +143,19 @@ def generate_resources(folder,width,height,mono,amoled):
     from pathlib import Path
     import hashlib
     folder.mkdir(exist_ok=True)
-    digest=hashlib.sha256(Path(__file__).read_bytes()+str((width,height,mono,amoled)).encode()).hexdigest()
+    digest=hashlib.sha256(Path(__file__).read_bytes()+Path(__file__).with_name('festival_art.py').read_bytes()+str((width,height,mono,amoled)).encode()).hexdigest()
     cache=folder/'sky-art.sha256'
-    if cache.exists() and cache.read_text()==digest and all((folder/f'sky-{i}.png').exists() for i in range(1,21)) and (folder/'sky-front.png').exists():return
+    count=20 if mono else 80
+    if cache.exists() and cache.read_text()==digest and all((folder/f'sky-{i}.png').exists() for i in range(1,21)) and all((folder/f'festival-{i}.png').exists() for i in range(1,count+1)) and (folder/'sky-front.png').exists():return
     for light in range(1,5):
         for weather in range(5):
             key=(light-1)*5+weather+1
             render(width,height,light,mono,amoled,weather).save(folder/f'sky-{key}.png')
+    for holiday in range(1,5):
+        for light in ([2] if mono else range(1,5)):
+            for weather in range(5):
+                key=(holiday-1)*(5 if mono else 20)+(0 if mono else (light-1)*5)+weather+1
+                render(width,height,light,mono,amoled,weather,holiday).save(folder/f'festival-{key}.png')
     # Only the top 48 logical pixels can overlap cloud primitives on Instinct.
     # A 2-bit transparent foreground mask is much smaller than a full-frame overlay.
     if mono:
