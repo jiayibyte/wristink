@@ -1,0 +1,35 @@
+{
+ "moke": {
+  "en": {
+   "look": {"title": "Pixel-sharp. Six time styles.", "sub": "Every font is redrawn on your watch's pixel grid, so even small text stays crisp. Switch time styles on the watch or in the app."},
+   "data": {"title": "29 data choices. Easy on battery.", "sub": "Change, restyle or hide every field. No GPS, no network, and data you don't show is never read."}
+  },
+  "zh": {
+   "look": {"title": "像素级清晰，6 种大时间字体", "sub": "所有字体按手表像素网格重绘，小字也锐利不发虚；时间字体在手表或手机上一键切换。"},
+   "data": {"title": "29 种数据随心配，省电不打折", "sub": "每个数据位都能换数据、换样式或隐藏；不开 GPS、不联网，没显示的数据一项不读。"}
+  },
+  "devices": "Instinct · fēnix · Forerunner · Enduro · MARQ"
+ },
+ "retro": {
+  "en": {
+   "look": {"title": "Six colour themes, native on every screen", "sub": "Classic, Amber, Glacier, Mint, Night glow and Sakura. AMOLED, colour MIP, mono Instinct and square screens each get native artwork."},
+   "data": {"title": "A whole world of data in 62 KB", "sub": "Digital time, an analogue dial and a live day-and-night world map, with nine configurable data areas."}
+  },
+  "zh": {
+   "look": {"title": "6 套配色，每种屏幕原生绘制", "sub": "经典、琥珀、冰川、薄荷、夜光、樱花；AMOLED、彩色 MIP、黑白本能和方屏都按原生分辨率绘制。"},
+   "data": {"title": "62 KB 装下整个世界", "sub": "数字时间、模拟小表盘、实时昼夜世界地图，再加 9 个可自定数据区。"}
+  },
+  "devices": "Venu · fēnix · Forerunner · Instinct · vívoactive"
+ },
+ "alpine": {
+  "en": {
+   "look": {"title": "Four mountains, made for every screen", "sub": "Summit, Ranges, Fuji and Everest, drawn separately for AMOLED, colour MIP and monochrome screens."},
+   "data": {"title": "Bold time, your data, under 100 KB", "sub": "Seven fields, each changeable or hidden, including one left of the time on Instinct. Under 100 KB on every watch."}
+  },
+  "zh": {
+   "look": {"title": "4 款山峰，每种屏幕独立绘制", "sub": "雪峰、群峰、富士、珠峰；AMOLED、彩色 MIP、黑白屏各自绘制，各有各的样子。"},
+   "data": {"title": "大字时间，数据随你，不到 100 KB", "sub": "7 个数据位都能更换或隐藏，本能系列新增时间左侧数据位；每台手表的安装包都小于 100 KB。"}
+  },
+  "devices": "epix · fēnix · Forerunner · Instinct · Venu"
+ }
+}

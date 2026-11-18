@@ -307,6 +307,91 @@ def build_heroes(app, locales=None):
                1440, 720, 1_000_000)
 
 
+# ---------------------------------------------------------------- 5-slot store set
+# Garmin allows five screenshots shared by every language, so each face gets two dense
+# English/Chinese pairs plus one language-neutral device collage: en, zh, en, zh, devices.
+COMBO = json.loads((HERE / 'i18n' / 'combo.json').read_text(encoding='utf-8'))
+
+
+def combo_page(app, lang, eyebrow, title, sub, inner, note, title_size=58):
+    head = (f'<div class="abs" style="left:80px;top:60px;width:1280px">'
+            f'<div class="eyebrow">{esc(eyebrow)}</div>'
+            f'<div class="headline" style="font-size:{title_size}px;margin-top:12px">{esc(title)}</div>'
+            + (f'<div class="sub" style="font-size:27px;margin-top:14px;max-width:1240px">{esc(sub)}</div>' if sub else '') + '</div>')
+    foot = f'<div class="abs note" style="left:80px;bottom:30px">{esc(note)}</div>' if note else ''
+    return page(app, 1440, 1280, head + inner + foot, lang)
+
+
+def stat_cards(stats):
+    return ''.join(
+        f'<div style="background:rgba(255,255,255,.05);border:1.5px solid var(--line);border-radius:22px;padding:24px 24px 22px">'
+        f'<div style="font-size:52px;font-weight:700;color:var(--accent);line-height:1.05;white-space:nowrap">{esc(v)}</div>'
+        f'<div class="sub" style="font-size:22px;margin-top:10px">{esc(c)}</div></div>' for v, c in stats)
+
+
+def data_inner(watch_markup, pw, s):
+    """Watch on the left; power/size cards, every data option and the extra note on the right; power tip across the foot."""
+    style = 'font-size:20px;padding:7px 14px' if len(s['chips']) > 14 else 'font-size:23px;padding:9px 18px'
+    chips = ''.join(f'<span class="chip" style="{style}">{esc(c)}</span>' for c in s['chips'])
+    right = (f'<div class="abs" style="left:680px;top:295px;width:690px;display:flex;flex-direction:column;gap:30px">'
+             f'<div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">{stat_cards(pw["stats"])}</div>'
+             f'<div class="chips" style="gap:12px">{chips}</div>'
+             f'<div class="sub" style="font-size:25px">{esc(s["extra"])}</div></div>')
+    tip = (f'<div class="abs" style="left:80px;top:1120px;width:1280px;padding:18px 26px;border-radius:18px;'
+           f'background:rgba(255,255,255,.05);border:1.5px solid var(--line)"><span class="sub" style="font-size:23px">{esc(pw["tip"])}</span></div>')
+    return watch_markup + right + tip
+
+
+def row(names, labels, device_w, cy, x0, x1):
+    """One evenly spaced row of watches with labels between x0 and x1 (centres)."""
+    n = len(names)
+    step = (x1 - x0) / (n - 1) if n > 1 else 0
+    return devs([(name, device_w, round(x0 + i * step), cy, lab) for i, (name, lab) in enumerate(zip(names, labels))])
+
+
+def build_combo(app):
+    key = 'retro' if app == 'retro' else app
+    folder = {'moke': 'moke', 'retro': 'retro-world', 'alpine': 'alpine'}[app]
+    o = OUT / folder
+    for lang in ('en', 'zh'):
+        t, c = TEXT[key][lang], COMBO[key][lang]
+        s, pw, eb = t['screens'], t['power'], t['power']['eyebrow']
+        if app == 'moke':
+            src = cap(f'moke-{lang}-i3-dark').as_uri()
+            zoom = (f'<div class="abs" style="left:780px;top:300px;width:480px;height:480px;border-radius:28px;overflow:hidden;'
+                    f'box-shadow:0 0 0 2px var(--line),0 30px 50px rgba(0,0,0,.5);background:#000">'
+                    f'<img src="{src}" style="position:absolute;width:{176 * 4}px;height:{176 * 4}px;left:{-8 * 4}px;top:{-64 * 4}px;image-rendering:pixelated"></div>'
+                    + label(s[0]['zoom'], 1020, 796, 520))
+            look = devs([(f'moke-{lang}-i3-dark', 500, 400, 545, None)]) + zoom
+            look += row([f'moke-{lang}-i3-dark'] + [f'moke-en-i3-font{i}' for i in range(1, 6)], s[1]['labels'], 190, 1005, 140, 1300)
+            data = data_inner(devs([(f'moke-{lang}-i3-dark', 580, 340, 690, None)]), pw, s[3])
+            note = s[1]['note']
+        elif app == 'retro':
+            look = row([f'retro-venu3-t{i}' for i in range(6)], s[0]['labels'], 225, 465, 140, 1300)
+            look += row(['retro-venu3-t0', 'retro-fenix7-t0', 'retro-instinct3solar45mm-t0', 'retro-venusq2-t1'], s[1]['labels'], 310, 880, 220, 1220)
+            data = data_inner(devs([('retro-venu3-t2', 580, 340, 690, None)]), pw, s[2])
+            note = s[1]['note']
+        else:
+            look = row([f'alpine-epix2-m{i}' for i in range(4)], s[0]['labels'], 290, 500, 200, 1240)
+            look += row(['alpine-epix2-m0', 'alpine-fenix7-m2', 'alpine-instinct3solar45mm-m0'], s[1]['labels'], 320, 945, 280, 1160)
+            data = data_inner(devs([('alpine-instinct3solar45mm-tl', 580, 340, 690, None)]), pw, s[2])
+            note = s[1]['note']
+        render(combo_page(key, lang, eb, c['look']['title'], c['look']['sub'], look, note), o / f'c1-look-{lang}.jpg', 1440, 1280, 148_000)
+        render(combo_page(key, lang, eb, c['data']['title'], c['data']['sub'], data, pw['note']), o / f'c2-data-{lang}.jpg', 1440, 1280, 148_000)
+    collage = {
+        'moke': [[('moke-en-i3-dark', 'Instinct 3'), ('moke-en-i3-font3', 'Instinct 3'), ('moke-en-i3-light', 'Instinct 3')],
+                 [('moke-en-f7-dark', 'fēnix 7'), ('moke-en-i3-font5', 'Instinct 3'), ('moke-en-f7-light', 'fēnix 7')]],
+        'retro': [[('retro-fenix7-t0', 'fēnix 7'), ('retro-venu3-t1', 'Venu 3'), ('retro-instinct3solar45mm-t0', 'Instinct 3')],
+                  [('retro-venusq2-t1', 'Venu Sq 2'), ('retro-venu3-t4', 'Venu 3'), ('retro-fenix7-t3', 'fēnix 7')]],
+        'alpine': [[('alpine-epix2-m0', 'epix 2'), ('alpine-fenix7-m2', 'fēnix 7'), ('alpine-instinct3solar45mm-m0', 'Instinct 3')],
+                   [('alpine-epix2-m1', 'epix 2'), ('alpine-instinct3solar45mm-m1', 'Instinct 3'), ('alpine-epix2-m3', 'epix 2')]],
+    }[app]
+    inner = ''.join(row([n for n, _ in r], [l for _, l in r], 360, cy, 270, 1170) for r, cy in zip(collage, (520, 975)))
+    eyebrow = TEXT[key]['en']['hero']['eyebrow']
+    render(combo_page(key, 'en', eyebrow, COMBO[key]['devices'], None, inner, 'Simulator captures · demo data', 52),
+           o / 'c3-devices.jpg', 1440, 1280, 148_000)
+
+
 def screenshot(app, lang, s, inner):
     body = (f'<div class="abs" style="left:80px;top:64px;width:1280px">'
             f'<div class="eyebrow">{esc(s.get("eyebrow", ""))}</div>'
@@ -429,4 +514,6 @@ if __name__ == '__main__':
     apps = sys.argv[1:] or ['moke', 'retro', 'alpine']
     for app in apps:
         {'moke': build_moke, 'retro': build_retro, 'alpine': build_alpine,
-         'moke-heroes': lambda: build_heroes('moke'), 'retro-heroes': lambda: build_heroes('retro')}[app]()
+         'moke-heroes': lambda: build_heroes('moke'), 'retro-heroes': lambda: build_heroes('retro'),
+         'moke-combo': lambda: build_combo('moke'), 'retro-combo': lambda: build_combo('retro'),
+         'alpine-combo': lambda: build_combo('alpine')}[app]()
