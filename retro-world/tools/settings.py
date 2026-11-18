@@ -36,6 +36,8 @@ def generate():
     setting("RefreshMode",("Seconds refresh (continuous on supported MIP)","秒刷新（支持的 MIP 可持续）"),1,[(0,("Gesture only","仅抬腕")),(1,("Continuous partial updates","持续局部刷新"))])
     for key,en,zh in [("ShowSeconds","Digital seconds","数字秒数"),("ShowNeedle","Second hand","秒针"),("ShowDate","Date and weekday","日期与星期"),("ShowMap","World map","世界地图"),("ShowMarker","Map location marker","地图定位点")]:
         setting(key,(en,zh),True)
+    # Colour themes apply to AMOLED and colour MIP screens; monochrome stays black and white.
+    setting("ColorTheme",("Colour theme (colour screens)","配色主题（彩色屏）"),0,[(0,("Classic","经典")),(1,("Amber","琥珀")),(2,("Glacier","冰川")),(3,("Mint","薄荷")),(4,("Night glow","夜光")),(5,("Sakura","樱花"))])
     setting("MapSkin",("Map style","地图样式"),-1,[(-1,("Automatic / weather","自动／天气"))]+[(i,(f"Style {i+1:02d}",f"样式 {i+1:02d}")) for i in range(16)])
     for i,labels in enumerate(SLOTS): setting(f"Field{i+1}",labels,i+1,list(enumerate(FIELDS)))
     setting("ManualLocation",("Use manual location for map / sun times","地图／日出日落使用手动位置"),False)

@@ -57,7 +57,7 @@ def compare(reference, actual, out, scale=4, regions=None, mask=None):
     return result
 
 
-def atlas(font, out, ink='dark'):
+def atlas(font, out, ink='dark', one_bit=False):
     font = Path(font)
     pages, chars = {}, {}
     for line in font.read_text().splitlines():
@@ -71,14 +71,19 @@ def atlas(font, out, ink='dark'):
             chars[row['id']] = row
     if not pages or not chars:
         raise ValueError('Expected text BMFont with page and char entries.')
-    errors, glyphs, signatures = [], {}, {}
+    errors, warnings, glyphs, signatures, spans = [], [], {}, {}, {}
+    levels = set()
+    for page in pages.values():
+        levels |= set(page.getchannel('A').getdata())
+    if one_bit and levels - {0, 255}:
+        # The compiler thresholds grey coverage on a 1-bit target; the result
+        # is not the shape that was reviewed.
+        errors.append('Atlas has grey coverage but the target is 1-bit.')
     for code, row in chars.items():
         page = pages.get(row.get('page', 0))
         x,y,w,h = (row[k] for k in ('x','y','width','height'))
         if page is None or min(x,y,w,h) < 0 or x+w > page.width or y+h > page.height:
             errors.append(f'Glyph {code} has an invalid page or rectangle.')
-            continue
-        if code not in range(48,58):
             continue
         tile = page.crop((x,y,x+w,y+h))
         # Transparent atlases use coverage; opaque ones need explicit ink polarity.
@@ -88,6 +93,11 @@ def atlas(font, out, ink='dark'):
         else:
             shape = tile.convert('L').point(lambda p:255 if ((p<128) if ink=='dark' else (p>=128)) else 0)
         box = shape.getbbox()
+        if box and 'xadvance' in row:
+            # Ink columns relative to the pen, as drawText places them.
+            spans[code] = (row.get('xoffset', 0)+box[0], row.get('xoffset', 0)+box[2], row['xadvance'])
+        if code not in range(48,58):
+            continue
         glyphs[chr(code)] = {'box':[x,y,w,h], 'ink_bbox':list(box) if box else None,
                             'advance':row.get('xadvance'), 'yoffset':row.get('yoffset')}
         if box is None:
@@ -101,7 +111,21 @@ def atlas(font, out, ink='dark'):
     missing = sorted(set('0123456789')-glyphs.keys())
     if missing:
         errors.append('Missing digits: '+''.join(missing))
-    result = {'font':font.name,'glyphs':glyphs,'errors':errors,'passed':not errors}
+    # Isolated tiles hide the commonest legibility defect: ink wider than the
+    # advance, so neighbours touch once the glyphs are set as running text.
+    def gap(left, right):
+        return spans[left][2]+spans[right][0]-spans[left][1]
+    digits = [code for code in range(48,58) if code in spans]
+    touching = [chr(a)+chr(b) for a in digits for b in digits if gap(a,b) < 1]
+    if touching:
+        errors.append('Digits touch or overlap in running text: '+' '.join(touching[:12])+
+                      (f' (+{len(touching)-12} more)' if len(touching) > 12 else ''))
+    crowded = [chr(code) for code in spans if code not in range(48,58) and gap(code,code) < 1]
+    if crowded:
+        warnings.append('Glyphs touch a repeat of themselves: '+''.join(crowded))
+    result = {'font':font.name,'glyphs':glyphs,'alpha_levels':len(levels),
+              'min_digit_gap':min((gap(a,b) for a in digits for b in digits), default=None),
+              'warnings':warnings,'errors':errors,'passed':not errors}
     Path(out).parent.mkdir(parents=True,exist_ok=True)
     Path(out).write_text(json.dumps(result,indent=2)+'\n')
     return result
@@ -116,12 +140,13 @@ def main():
     a = sub.add_parser('atlas')
     a.add_argument('font'); a.add_argument('--out',required=True)
     a.add_argument('--ink',choices=['dark','light'],default='dark')
+    a.add_argument('--one-bit',action='store_true',help='fail on grey coverage (two-colour panels)')
     args = p.parse_args()
     if args.mode == 'compare':
         regions = json.loads(Path(args.regions).read_text()) if args.regions else None
         result = compare(args.reference,args.actual,args.out,args.scale,regions,args.mask)
     else:
-        result = atlas(args.font,args.out,args.ink)
+        result = atlas(args.font,args.out,args.ink,args.one_bit)
     print(json.dumps(result,indent=2))
     return 1 if result.get('errors') else 0
 

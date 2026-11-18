@@ -35,6 +35,18 @@ module FontCatalog {
             case 9:return Rez.Fonts.TimeF2S58;
             case 10:return Rez.Fonts.TimeF2S64;
             case 11:return Rez.Fonts.TimeF2S68;
+            case 12:return Rez.Fonts.TimeF3S54;
+            case 13:return Rez.Fonts.TimeF3S58;
+            case 14:return Rez.Fonts.TimeF3S64;
+            case 15:return Rez.Fonts.TimeF3S68;
+            case 16:return Rez.Fonts.TimeF4S54;
+            case 17:return Rez.Fonts.TimeF4S58;
+            case 18:return Rez.Fonts.TimeF4S64;
+            case 19:return Rez.Fonts.TimeF4S68;
+            case 20:return Rez.Fonts.TimeF5S54;
+            case 21:return Rez.Fonts.TimeF5S58;
+            case 22:return Rez.Fonts.TimeF5S64;
+            case 23:return Rez.Fonts.TimeF5S68;
         }}
         if(group.equals("circle")){switch(family*4+size){
             case 0:return Rez.Fonts.CircleF0S18;

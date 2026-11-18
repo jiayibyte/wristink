@@ -38,7 +38,9 @@ for folder in folders:
         if folder == ROOT/'resources/fonts':
             old = METRICS[name]['chars']
             actual = [dict((k,int(v)) for k,v in re.findall(r'(\w+)=(-?\d+)',line)) for line in text.splitlines() if line.startswith('char id=')]
-            assert actual == [{k:v for k,v in e.items() if k!='ink'} for e in old], name
+            # Data and circle fonts may append English letters after the published glyphs.
+            assert actual[:len(old)] == [{k:v for k,v in e.items() if k!='ink'} for e in old], name
+            assert len(actual)==len(old) or name.startswith(('dataf','circlef')), name
 
 with tempfile.TemporaryDirectory() as tmp:
     for name, scale in [('timef0s64',1.0), ('dataf0s14',1.122727), ('liveheartf0s22',.838710)]:

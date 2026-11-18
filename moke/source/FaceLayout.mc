@@ -3,6 +3,7 @@ module FaceLayout {
     const WIND_X = 88;
     const MOON_X = 92;
     const MOON_Y = 37;
+    const MOON_AFTER_TEXT = 15;
     const POWER_ROW_Y = 29;
     const POWER_ROW_WIDTH = 58;
     const MOVE_X = 70;
@@ -17,6 +18,7 @@ module FaceLayout {
     const SECONDS_LEFT = 140;
     const SECONDS_WIDTH = 28;
     const SECONDS_Y = 90;
+    const SIDE_Y = 79;
     const CARD_TOP_Y = 84;
     const CARD_BOTTOM_Y = 104;
     const CARD_SINGLE_Y = 94;
@@ -28,12 +30,19 @@ module FaceLayout {
     const LOWER_Y = 128;
     const FOOTER_Y = 149;
     const FOOTER_RIGHT_WIDTH = 58;
-    const FEELS_X = 61;
-    const GRAPH_X = 98;
+    // The bezel of the heart window hides the main screen beyond x=100 on this row.
+    const FEELS_X = 55;
+    const STATUS_RIGHT = 100;
+    // Centred on the date digits; right edge on the status column above it.
+    const MOON_BESIDE_DATE_X = 92;
+    const MOON_BESIDE_DATE_Y = 55;
+    const GRAPH_X = 84;
     const GRAPH_Y = 126;
-    const GRAPH_WIDTH = 66;
+    const GRAPH_WIDTH = 74;
     const GRAPH_HEIGHT = 21;
-    const GRAPH_LOW_LABEL_OFFSET = 12;
+    const GRAPH_LOW_LABEL_OFFSET = 11;
+    const GRAPH_LABEL_RIGHT = 21;
+    const GRAPH_PLOT_X = 25;
     const GRAPH_BOTTOM_INSET = 4;
     const HEART_ICON_Y = 11;
     const HEART_VALUE_Y = 26;

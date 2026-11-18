@@ -1,4 +1,5 @@
 import Toybox.Test;
+import Toybox.Math;
 import Toybox.System;
 import Toybox.Time;
 import Toybox.WatchUi;
@@ -27,7 +28,7 @@ function sleepHidesGestureSecondsAndWakeRequestsFullFrame(logger) {
 
 (:test)
 function continuousMipTicksUseCachedFrameAndStopOnBudgetExceeded(logger) {
-    if(DeviceProfile.COLOR) {return true;}
+    if(DeviceProfile.AMOLED) {return true;}
     var view=new SecondsDrawingProbe();var stamp=Time.now().value();
     FaceSettings.continuous=true;view._minute=(stamp/60).toNumber();view._sleeping=true;
     LiveData.heartAt=stamp;
@@ -36,11 +37,14 @@ function continuousMipTicksUseCachedFrameAndStopOnBudgetExceeded(logger) {
     Test.assertEqual(view.writtenSecond,17);Test.assertEqual(view.needleWrites,1);
     Test.assertEqual(SolarMap.builds,builds);Test.assertEqual(Environment.reads,reads);
     var delegate=new RetroWorldDelegate(view);delegate.onPowerBudgetExceeded(new WatchUi.WatchFacePowerInfo());
-    Test.assert(view._partialBlocked);Test.assert(!view._partialHeartAllowed);
+    // First overrun: optional work is dropped, the seconds keep going after the next full frame.
+    Test.assert(!view._partialBlocked);Test.assert(!view._partialHeartAllowed);
     Test.assertEqual(view._minute,-1);Test.assertEqual(view._lastSecond,-1);Test.assertEqual(view._oldSecond,-1);
     view.partialAt(null,stamp,18);Test.assertEqual(view.digitWrites,1);
-    view.settingsChanged();Test.assert(!view._partialBlocked);
-    view.partialAt(null,stamp,19);Test.assertEqual(view.digitWrites,1);
+    view._minute=(stamp/60).toNumber();
+    view.partialAt(null,stamp,19);Test.assertEqual(view.digitWrites,2);Test.assertEqual(view.needleWrites,1);
+    view.settingsChanged();Test.assert(!view._partialBlocked);Test.assertEqual(view._budgetStrikes,0);
+    view.partialAt(null,stamp,20);Test.assertEqual(view.digitWrites,2);
     return true;
 }
 
@@ -49,17 +53,18 @@ class SecondsSpriteDc {
     var clips=0;var writes=0;var x=-1;var y=-1;var width=-1;var height=-1;
     function clearClip() {}
     function setClip(xx,yy,w,h) {x=xx;y=yy;width=w;height=h;clips++;}
-    function drawBitmap(xx,yy,bitmap) {Test.assertEqual(xx,x);Test.assertEqual(yy,y);writes++;}
+    function setColor(ink,paper) {}
+    function fillRectangle(xx,yy,w,h) {Test.assertEqual(xx,x);Test.assertEqual(yy,y);Test.assertEqual(w,width);Test.assertEqual(h,height);}
+    function drawText(xx,yy,font,text,justify) {Test.assertEqual(xx,x);Test.assertEqual(yy,y);writes++;}
 }
 
 (:test)
 function cachedSecondSpriteCoordinatesMatchNativeResources(logger) {
+    // Seconds glyphs sit at the native position of logical (132|146, 122), cell 13 x 24.
     var view=new RetroWorldView();var dc=new SecondsSpriteDc();
-    var previous=new SecondsSpriteDc();
-    DeviceDrawing.sprite(DeviceDrawing.target(previous),view._secSprites[9],0,132,122,13,24,1);
     view.secondDigit(dc,9,132);
-    Test.assertEqual(dc.x,previous.x);Test.assertEqual(dc.y,previous.y);
-    Test.assertEqual(dc.width,previous.width);Test.assertEqual(dc.height,previous.height);
+    Test.assertEqual(dc.x,Math.round(DeviceProfile.X+132*DeviceProfile.SCALE).toNumber());Test.assertEqual(dc.y,Math.round(DeviceProfile.Y+122*DeviceProfile.SCALE).toNumber());
+    Test.assertEqual(dc.width,DeviceDrawing.size(13,DeviceProfile.SCALE));Test.assertEqual(dc.height,DeviceDrawing.size(24,DeviceProfile.SCALE));
     var wrapped=new NativeFaceDc(DeviceProfile.SCALE,DeviceProfile.X,DeviceProfile.Y);wrapped.bind(dc);
     view.secondDigit(wrapped,0,146);Test.assertEqual(dc.x,view._secondOnesX);
     Test.assertEqual(dc.clips,2);Test.assertEqual(dc.writes,2);
@@ -68,7 +73,7 @@ function cachedSecondSpriteCoordinatesMatchNativeResources(logger) {
 
 (:test)
 function partialSecondsDoNotPollHeartEverySecond(logger) {
-    if(DeviceProfile.COLOR) {return true;}
+    if(DeviceProfile.AMOLED) {return true;}
     var view=new SecondsDrawingProbe();var stamp=Time.now().value();stamp-=stamp%60;
     FaceSettings.continuous=true;view._minute=(stamp/60).toNumber();view._sleeping=true;
     LiveData.heartAt=stamp;
@@ -80,7 +85,8 @@ function partialSecondsDoNotPollHeartEverySecond(logger) {
     view._partialHeartAllowed=false;
     view.partialAt(null,stamp+10,10);Test.assertEqual(LiveData.heartAt,stamp+5);
     Test.assertEqual(view.digitWrites,7);Test.assertEqual(view.needleWrites,7);
-    view.partialAt(null,stamp+60,0);Test.assertEqual(view.digitWrites,7);
+    // A late minute frame no longer freezes the digits; the needle waits for it.
+    view.partialAt(null,stamp+60,0);Test.assertEqual(view.digitWrites,8);Test.assertEqual(view.needleWrites,7);
     return true;
 }
 
@@ -89,9 +95,11 @@ function budgetFallbackWaitsForWakeAndRestoresSeconds(logger) {
     var view=new SecondsDrawingProbe();
     var delegate=new RetroWorldDelegate(view);
     delegate.onPowerBudgetExceeded(new WatchUi.WatchFacePowerInfo());
-    Test.assert(view._partialBlocked);Test.assert(!view._partialHeartAllowed);
-    // User wake recovers seconds without settings edits or repeatedly retrying
-    // the rejected drawing work from inside a restricted partial callback.
+    Test.assert(!view._partialBlocked);Test.assert(!view._partialHeartAllowed);
+    // A second overrun waits for the user's wake; wake recovers the seconds
+    // without settings edits or retrying the rejected work in the callback.
+    delegate.onPowerBudgetExceeded(new WatchUi.WatchFacePowerInfo());
+    Test.assert(view._partialBlocked);
     view.onExitSleep();Test.assert(!view._partialBlocked);
     delegate.onPowerBudgetExceeded(new WatchUi.WatchFacePowerInfo());
     Test.assert(view._partialBlocked);Test.assert(!view._partialHeartAllowed);
@@ -143,6 +151,8 @@ class FullFrameDcProbe {
     function drawBitmap(x,y,bitmap) {}
     function fillRectangle(x,y,w,h) {}
     function drawLine(x,y,xx,yy) {}
+    function drawText(x,y,font,text,justify) {}
+    function fillRoundedRectangle(x,y,w,h,r) {}
 }
 class FullFrameViewProbe extends SecondsDrawingProbe {
     var frames=0;
@@ -165,7 +175,7 @@ function fullCallbacksRestoreStaticContentButGestureSleepOmitsSeconds(logger) {
     Test.assertEqual(view.frames,2);Test.assertEqual(dc.clears,2);
     Test.assertEqual(view.digitWrites,2);Test.assertEqual(view.needleWrites,2);
     FaceSettings.continuous=false;view._sleeping=true;
-    if(!DeviceProfile.COLOR) {
+    if(!DeviceProfile.AMOLED) {
         view.updateAt(dc,now,clock);Test.assertEqual(view.frames,3);
         Test.assertEqual(view.digitWrites,2);Test.assertEqual(view.needleWrites,3);
     }

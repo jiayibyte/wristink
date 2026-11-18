@@ -48,12 +48,14 @@ class LegacyFace extends WatchUi.WatchFace {
     var _heartMode=0;var _heartSource=0;var _heartOn=false;var _partial=true;var _secondsMode=0;var _secondsOn=false;
     var _top=0;var _bottom=0;var _side=0;var _topImage;var _bottomImage;
     var _stepGoal=null;var _floorGoal=null;var _weekGoal=null;var _cells=null;var _ring=null;
-    var _wind=null;var _condition=0;var _sunrise="--:--";var _sunset="--:--";var _moon=0.0;var _weather as Array=[];
+    var _wind=null;var _condition=0;var _sunrise="--:--";var _sunset="--:--";var _moon=0.0;var _weather as Array=[];var _solar=false;
     var _secondsVisible=false;
     var _heartStyle=0;var _heartGoal=0;var _cellsStyle=0;
     var _suspended=false;var _revision=-1;
     var _heartRange as Array<Numeric or Null> =[null,null];var _energy;var _energyKey=-1;var _energyCount=0;var _footerSize=-1;
-    function initialize(){WatchFace.initialize();_values=new [29];}
+    function initialize(){WatchFace.initialize();_values=new [30];var stats=System.getSystemStats();_solar=(stats has :solarIntensity) && stats.solarIntensity!=null;}
+    // Solar intensity exists only on solar models; elsewhere that choice shows humidity.
+    function metricKind(key){var k=FacePrefs.get(key);return k==29 && !_solar ? 10 : k;}
     function invalidate(){_force=true;_minute=-1;_weatherAt=-1;_historyAt=-1;_history=[];_topImage=null;_bottomImage=null;_heartFont=null;_secondsFont=null;_energy=null;_energyKey=-1;FontCatalog.reset();}
     function suspend(){_suspended=true;invalidate();}
     function onShow(){_suspended=false;_force=true;DeviceProfile.hands(self,!_sleeping);}
@@ -69,7 +71,8 @@ class LegacyFace extends WatchUi.WatchFace {
     function readData(now){
         _heartSource=FacePrefs.get("heartSource");
         var a=ActivityMonitor.getInfo();var stats=System.getSystemStats();var info=Activity.getActivityInfo();
-        for(var k=1;k<29;k++){_values[k]=PreviewMode.ENABLED ? PreviewMode.number(k) : null;}
+        _solar=(stats has :solarIntensity) && stats.solarIntensity!=null;
+        for(var k=1;k<30;k++){_values[k]=PreviewMode.ENABLED ? PreviewMode.number(k) : null;}
         if(!PreviewMode.ENABLED){
             _values[1]=stats.battery;_values[2]=a.steps;_values[3]=a.distance!=null ? a.distance/100000.0 : null;_values[5]=a.calories;
             if(a has :floorsClimbed){_values[4]=a.floorsClimbed;}
@@ -82,6 +85,7 @@ class LegacyFace extends WatchUi.WatchFace {
             _stepGoal=a.stepGoal;_floorGoal=(a has :floorsClimbedGoal) ? a.floorsClimbedGoal : null;
             _weekGoal=(a has :activeMinutesWeekGoal) ? a.activeMinutesWeekGoal : null;
             _values[17]=(stats has :batteryInDays) ? stats.batteryInDays : null;
+            if(stats has :solarIntensity){var solar=stats.solarIntensity;_values[29]=solar!=null && solar<0 ? 0 : solar;}
             _values[18]=info.altitude;_values[28]=(info has :ambientPressure) && info.ambientPressure!=null ? info.ambientPressure/100.0 : null;
             _values[19]=LegacyExtras.body();
             _values[11]=System.getDeviceSettings().notificationCount;
@@ -130,7 +134,7 @@ class LegacyFace extends WatchUi.WatchFace {
     function progress(source){
         switch(source){case 1:return ratio(_values[19],100);case 2:return ratio(_values[1],100);case 3:return ratio(_values[2],_stepGoal);case 4:return ratio(_values[20],_weekGoal!=null ? _weekGoal/7.0 : null);case 5:return ratio(_values[21],_weekGoal);case 6:return ratio(_values[24],5);case 7:return ratio(_values[4],_floorGoal);}return null;
     }
-    function goal(key){var v=FacePrefs.get(key+"Goal");if(v>0){return v;}var k=FacePrefs.get(key);if(k==2){return _stepGoal;}if(k==4){return _floorGoal;}if(k==20){return _weekGoal!=null ? _weekGoal/7.0 : null;}if(k==21){return _weekGoal;}if(k==24){return 5;}return k==1 || k==10 || k==12 || k==14 || k==19 || k==22 || k==23 ? 100 : null;}
+    function goal(key){var v=FacePrefs.get(key+"Goal");if(v>0){return v;}var k=metricKind(key);if(k==2){return _stepGoal;}if(k==4){return _floorGoal;}if(k==20){return _weekGoal!=null ? _weekGoal/7.0 : null;}if(k==21){return _weekGoal;}if(k==24){return 5;}return k==1 || k==10 || k==12 || k==14 || k==19 || k==22 || k==23 || k==29 ? 100 : null;}
     function number(kind){
         var v=_values[kind];if(v==null){return null;}
         if(kind==17 && v<0){return null;}
@@ -145,6 +149,7 @@ class LegacyFace extends WatchUi.WatchFace {
             case 3:return v.format("%.1f")+(units ? (FacePrefs.get("distanceUnit")==0 ? "km" : "mi") : "");
             case 7:case 16:return v.format("%.0f")+(units ? (FacePrefs.get("temperatureUnit")==0 ? "°" : "°F") : "");
             case 10:case 12:case 14:case 22:case 23:return v.format("%.0f")+"%";
+            case 29:return (v/2.0).format("%.0f")+"k";
             case 17:return Math.floor(v).format("%d")+(units ? FaceLocale.days() : "");
             case 18:return v.format("%.0f")+(units ? (FacePrefs.get("altitudeUnit")==0 ? "m" : "ft") : "");
             case 25:return v.format("%.0f")+(units ? "h" : "");case 28:return v.format("%.0f")+(units ? "hPa" : "");
@@ -152,14 +157,16 @@ class LegacyFace extends WatchUi.WatchFace {
         }return v.format("%.0f");
     }
     function slotText(key){
-        var kind=FacePrefs.get(key);if(kind==0){return "";}var style=FacePrefs.get(key+"Style");var r=ratio(number(kind),goal(key));var text=label(kind);
+        var kind=metricKind(key);if(kind==0){return "";}var style=FacePrefs.get(key+"Style");var r=ratio(number(kind),goal(key));var text=label(kind);
         if(style==2){text=r!=null ? (r*100).format("%.0f")+"%" : "--";}
         if(style==3){var v=number(kind);var g=goal(key);text=v!=null && g!=null ? FaceFormat.shortNumber(v)+"/"+FaceFormat.shortNumber(g) : "--";}
         return text;
     }
     function slot(dc,key,x,y,w,h){
-        var kind=FacePrefs.get(key);if(kind==0){return;}var style=FacePrefs.get(key+"Style");var r=ratio(number(kind),goal(key));var text=slotText(key);
-        var show=style!=1 && FacePrefs.flag("showIcons");var offset=show ? 19 : 0;
+        var kind=metricKind(key);if(kind==0){return;}var style=FacePrefs.get(key+"Style");var r=ratio(number(kind),goal(key));var text=slotText(key);
+        // The status row stops at the round window bezel: a tighter icon gap keeps
+        // "56%" in the regular bold size instead of falling back to the thin one.
+        var show=style!=1 && FacePrefs.flag("showIcons");var offset=show ? (key.equals("topThree") ? (kind==29 ? 18 : 17) : 19) : 0;
         var size=FacePrefs.fontSize(key)+2;if(_footerSize>=0 && (key.equals("footerLeft") || key.equals("footerRight")) && size>_footerSize){size=_footerSize;}
         var font=FontCatalog.fit(dc,"data",FacePrefs.fontFamily(key),size,text,w-offset,style>=4 ? h-4 : h-1);
         dc.setClip(x,y,w,h);dc.setColor(_ink,_paper);if(show){LegacyIcons.draw(dc,kind,x,y+2,_ink,_paper,_values[1],_condition);}
@@ -193,16 +200,16 @@ class LegacyFace extends WatchUi.WatchFace {
         if(_cells!=null && _cells>0 && _cellsStyle!=2){var count=Math.ceil(clamp(_cells)*8).toNumber();var variant=_cellsStyle*2+(_circleInk==Graphics.COLOR_BLACK ? 1 : 0);var key=variant*9+count;if(key!=_energyKey){_energy=null;_energy=EnergyCatalog.load(variant,count);_energyKey=key;_energyCount=count;}}
         else{_energy=null;_energyKey=-1;}cells(dc);
         dc.setColor(_circleInk,_circlePaper);if(_ring!=null && _ring>0){var p=clamp(_ring);var start=[90,0,270,180][FacePrefs.get("ringStart")];var style=FacePrefs.get("ringStyle");dc.setPenWidth(style==0 ? 1 : (style==2 ? 3 : 2));if(style==3){for(var i=0;i<Math.ceil(p*8);i++){dc.drawArc(144,31,29,Graphics.ARC_CLOCKWISE,start-i*45-2,start-i*45-43);}}else if(p>=1){dc.drawCircle(144,31,29);}else{dc.drawArc(144,31,29,Graphics.ARC_CLOCKWISE,start,start-360*p);}dc.setPenWidth(1);}
-        var kind=FacePrefs.get("circle");if(kind==0){return;}if(FacePrefs.flag("showCircleIcon") && FacePrefs.get("circleStyle")!=1){LegacyIcons.draw(dc,kind,137,11,_circleInk,_circlePaper,_values[1],_condition);}
+        var kind=metricKind("circle");if(kind==0){return;}if(FacePrefs.flag("showCircleIcon") && FacePrefs.get("circleStyle")!=1){LegacyIcons.draw(dc,kind,137,11,_circleInk,_circlePaper,_values[1],_condition);}
         var text=label(kind);var style=FacePrefs.get("circleStyle");var r=ratio(number(kind),goal("circle"));if(style==2){text=r!=null ? (r*100).format("%.0f")+"%" : "--";}if(style==3){var g=goal("circle");text=g!=null && number(kind)!=null ? FaceFormat.shortNumber(number(kind))+"/"+FaceFormat.shortNumber(g) : "--";}
         _heartStyle=style;var target=goal("circle");_heartGoal=target!=null ? target : 0;
         _heartFont=FontCatalog.fit(dc,kind==6 && style<=1 ? "liveheart" : "data",FacePrefs.get("circleFont"),kind==6 && style<=1 ? FacePrefs.get("circleSize") : FacePrefs.get("circleSize")+2,kind==6 ? LiveHeart.text(300,style,_heartGoal) : text,34,23);dc.drawText(144,26,_heartFont,text,Graphics.TEXT_JUSTIFY_CENTER);_painted=_values[6];
     }
     function graph(dc){
-        var low=_range[0];var high=_range[1];var chartStyle=FacePrefs.get("chartStyle");dc.setColor(_ink,_paper);dc.setClip(98,126,66,21);var labels=FacePrefs.flag("showChartLabels");var x=labels ? 116 : 99;var width=labels ? 46 : 63;
-        if(labels){var selected=FacePrefs.get("chartLabelFont");var font=selected==0 ? WatchUi.loadResource(Rez.Fonts.Chart) : FontCatalog.fit(dc,"data",selected-1,1,"888",15,10);dc.drawText(113,126,font,high!=null ? high.toString() : "--",Graphics.TEXT_JUSTIFY_RIGHT);dc.drawText(113,137,font,low!=null ? low.toString() : "--",Graphics.TEXT_JUSTIFY_RIGHT);}
-        dc.drawLine(x,127,x,143);dc.drawLine(x,143,x+width,143);var px=null;var py=null;
-        if(low!=null && high!=null){for(var i=0;i<_history.size();i++){var value=_history[i];if(value==null){px=null;continue;}var xx=x+i.toFloat()*width/(_history.size()>1 ? _history.size()-1 : 1);var yy=high==low ? 135 : 143-(value-low).toFloat()*16/(high-low);if(chartStyle!=0){dc.drawLine(xx,yy,xx,143);}if(px!=null && chartStyle!=2){dc.drawLine(px,py,xx,yy);}px=xx;py=yy;}}
+        var low=_range[0];var high=_range[1];var chartStyle=FacePrefs.get("chartStyle");dc.setColor(_ink,_paper);dc.setClip(84,126,74,21);var labels=FacePrefs.flag("showChartLabels");var x=labels ? 109 : 85;var width=labels ? 47 : 71;
+        if(labels){var selected=FacePrefs.get("chartLabelFont");var font=selected==0 ? WatchUi.loadResource(Rez.Fonts.Chart) : FontCatalog.fit(dc,"data",selected-1,1,"888",21,10);dc.drawText(105,126,font,high!=null ? high.toString() : "--",Graphics.TEXT_JUSTIFY_RIGHT);dc.drawText(105,136,font,low!=null ? low.toString() : "--",Graphics.TEXT_JUSTIFY_RIGHT);}
+        dc.drawLine(x,143,x+width,143);var px=null;var py=0;
+        if(low!=null && high!=null){for(var i=0;i<_history.size();i++){var value=_history[i];if(value==null){px=null;continue;}var xx=x+i.toFloat()*width/(_history.size()>1 ? _history.size()-1 : 1);var yy=high==low ? 135 : 141-(value-low).toFloat()*14/(high-low);if(chartStyle!=0){dc.drawLine(xx,yy,xx,143);}if(px!=null && chartStyle!=2){dc.drawLine(px,py,xx,yy);if(chartStyle==0){dc.drawLine(px,py+1,xx,yy+1);}}px=xx;py=yy;}}
         dc.clearClip();
     }
     function onUpdate(nativeDc){
@@ -212,18 +219,18 @@ class LegacyFace extends WatchUi.WatchFace {
         if(!_force && minute==_minute){partial(dc,now);return;}_force=false;_minute=minute;_heartFont=null;_secondsFont=null;_topImage=null;_bottomImage=null;FontCatalog.reset();_energy=null;_energyKey=-1;LegacyPower.prepare();
         _ink=FacePrefs.flag("darkTheme") ? Graphics.COLOR_WHITE : Graphics.COLOR_BLACK;_paper=_ink==Graphics.COLOR_WHITE ? Graphics.COLOR_BLACK : Graphics.COLOR_WHITE;
         _heartMode=FacePrefs.get("heartRefresh");_heartOn=FacePrefs.flag("showCircle") && FacePrefs.get("circle")==6;_cellsStyle=FacePrefs.get("cellsStyle");
-        _side=FacePrefs.flag("showStatus") ? FacePrefs.get("sideData") : 0;_top=0;_bottom=0;
+        _side=FacePrefs.flag("showStatus") ? metricKind("sideData") : 0;_top=0;_bottom=0;
         if(FacePrefs.flag("showStatus") && _side==0){_top=FacePrefs.flag("showBeijingCard") ? FacePrefs.get("topCardImage") : 0;_bottom=FacePrefs.flag("showAlipayCard") ? FacePrefs.get("bottomCardImage") : 0;}
         _secondsMode=SidePanel.secondsMode(FacePrefs.get("secondsMode"),_top,_bottom,_side);_secondsOn=FacePrefs.flag("showSeconds");
-        dc.clearClip();dc.setColor(_ink,_paper);dc.clear();if(!DeviceProfile.ANALOG){drawTime(dc);}readData(now);if(DeviceProfile.ANALOG){analog(dc,now);return;}slot(dc,"topOne",34,5,48,20);slot(dc,"topTwo",10,28,FacePrefs.get("topThree")==0 ? 58 : 48,20);slot(dc,"topThree",61,28,48,20);
+        dc.clearClip();dc.setColor(_ink,_paper);dc.clear();if(!DeviceProfile.ANALOG){drawTime(dc);}readData(now);if(DeviceProfile.ANALOG){analog(dc,now);return;}slot(dc,"topOne",34,5,48,20);slot(dc,"topTwo",10,28,FacePrefs.get("topThree")==0 ? 58 : 45,20);slot(dc,"topThree",55,28,45,20);
         if(FacePrefs.flag("showWind") && _wind!=null){var a=(_wind-90)*Math.PI/180;var x=88+6*Math.cos(a);var y=14+6*Math.sin(a);dc.drawLine(88-5*Math.cos(a),14-5*Math.sin(a),x,y);dc.drawLine(x,y,x-4*Math.cos(a-.7),y-4*Math.sin(a-.7));dc.drawLine(x,y,x-4*Math.cos(a+.7),y-4*Math.sin(a+.7));}
-        if(FacePrefs.flag("showMoon")){LegacyIcons.moon(dc,FacePrefs.get("topThree")==0 ? 76 : 102,FacePrefs.get("topThree")==0 ? 37 : 54,_moon,_ink,_paper);}
+        if(FacePrefs.flag("showMoon")){LegacyIcons.moon(dc,FacePrefs.get("topThree")==0 ? 76 : 92,FacePrefs.get("topThree")==0 ? 37 : 55,_moon,_ink,_paper);}
         var date=Gregorian.info(now,Time.FORMAT_SHORT);if(FacePrefs.flag("showDate")){var text=FaceFormat.dateText(date);var font=FontCatalog.fit(dc,"data",FacePrefs.fontFamily("date"),FacePrefs.fontSize("date")+2,text,FacePrefs.flag("showMoveBar") ? 59 : 100,FacePrefs.get("timeFormat")==1 ? 13 : 18);dc.drawText(8,49,font,text,Graphics.TEXT_JUSTIFY_LEFT);font=null;FontCatalog.reset();}
         if(FacePrefs.flag("showMoveBar") && FacePrefs.get("moveSource")!=0){move(dc,FacePrefs.get("topThree")!=0 && FacePrefs.flag("showMoon") ? 67 : 70,50,FacePrefs.get("topThree")!=0 && FacePrefs.flag("showMoon"));}
 
         if(_side!=0){var text=label(_side);dc.setClip(136,73,35,30);if(FacePrefs.flag("showIcons")){LegacyIcons.draw(dc,_side,146,73,_ink,_paper,_values[1],_condition);}dc.drawText(153,89,FontCatalog.fit(dc,"data",FacePrefs.fontFamily("side"),FacePrefs.fontSize("side")+1,text,32,14),text,Graphics.TEXT_JUSTIFY_CENTER);dc.clearClip();}
         else{if(_top!=0){_topImage=WatchUi.loadResource(LegacyCardArtwork.resource(_top,_paper==Graphics.COLOR_WHITE));card(dc,_top,SidePanel.cardY(_top,_bottom,true),_topImage,true);}if(_bottom!=0){_bottomImage=DeviceProfile.CLIP && _bottom>=3 && _top>=3 ? _topImage : WatchUi.loadResource(LegacyCardArtwork.resource(_bottom,_paper==Graphics.COLOR_WHITE));card(dc,_bottom,SidePanel.cardY(_top,_bottom,false),_bottomImage,false);}}
-        slot(dc,"bottomLeft",12,128,82,20);var right=FacePrefs.get("bottomRight");if((right==6 || right==15 || right==18 || right==19 || right==28) && FacePrefs.flag("showHeartGraph") && FacePrefs.get("bottomRightStyle")==6){graph(dc);}else{slot(dc,"bottomRight",98,128,68,20);}
+        var right=FacePrefs.get("bottomRight");var trend=(right==6 || right==15 || right==18 || right==19 || right==28) && FacePrefs.flag("showHeartGraph") && FacePrefs.get("bottomRightStyle")==6;slot(dc,"bottomLeft",12,128,trend ? 70 : 82,20);if(trend){graph(dc);}else{slot(dc,"bottomRight",98,128,68,20);}
         footer(dc);if(FacePrefs.flag("showCircle")){circle(DeviceDrawing.circleTarget(dc));}
         if(_secondsOn && _secondsMode!=0){_secondsFont=FontCatalog.fit(dc,"data",FacePrefs.get("secondsFont"),4,"88",DeviceProfile.SECONDS_WIDTH-1,DeviceProfile.SECONDS_HEIGHT);}partial(dc,now);
         // Cards and the last full-frame font are not used by partial updates.
@@ -261,7 +268,7 @@ class LegacyFace extends WatchUi.WatchFace {
         if(FacePrefs.flag("showCircle")){circle(DeviceDrawing.circleTarget(dc));}
         if(_side!=0){var text=label(_side);dc.drawText(146,63,FontCatalog.fit(dc,"data",FacePrefs.fontFamily("side"),FacePrefs.fontSize("side")+1,text,58,14),text,Graphics.TEXT_JUSTIFY_CENTER);}
         else{if(_top!=0){_topImage=WatchUi.loadResource(LegacyCardArtwork.resource(_top,_paper==Graphics.COLOR_WHITE));card(dc,_top,63,_topImage,true);}if(_bottom!=0){_bottomImage=DeviceProfile.CLIP && _bottom>=3 && _top>=3 ? _topImage : WatchUi.loadResource(LegacyCardArtwork.resource(_bottom,_paper==Graphics.COLOR_WHITE));card(dc,_bottom,63,_bottomImage,false);}}
-        slot(dc,"bottomLeft",12,128,82,20);var right=FacePrefs.get("bottomRight");if((right==6 || right==15 || right==18 || right==19 || right==28) && FacePrefs.flag("showHeartGraph") && FacePrefs.get("bottomRightStyle")==6){graph(dc);}else{slot(dc,"bottomRight",98,128,68,20);}footer(dc);
+        var right=FacePrefs.get("bottomRight");var trend=(right==6 || right==15 || right==18 || right==19 || right==28) && FacePrefs.flag("showHeartGraph") && FacePrefs.get("bottomRightStyle")==6;slot(dc,"bottomLeft",12,128,trend ? 70 : 82,20);if(trend){graph(dc);}else{slot(dc,"bottomRight",98,128,68,20);}footer(dc);
         slot(dc,"topTwo",22,164,48,16);slot(dc,"topThree",128,164,36,16);
         if(FacePrefs.flag("showMoon")){LegacyIcons.moon(dc,80,171,_moon,_ink,_paper);}if(FacePrefs.flag("showMoveBar") && FacePrefs.get("moveSource")!=0){move(dc,90,164,true);}
         if(_secondsOn && _secondsMode!=0){_secondsFont=FontCatalog.fit(dc,"data",FacePrefs.get("secondsFont"),4,"88",DeviceProfile.SECONDS_WIDTH-1,DeviceProfile.SECONDS_HEIGHT);}partial(dc,now);

@@ -191,7 +191,7 @@ function heartHistoryPreservesTrueGaps(logger){
 (:test)
 class HeartPlotFixtureDc {
     var lines=0;var points=0;
-    function setClip(x,y,w,h){}function clearClip(){}function setColor(ink,paper){}
+    function setClip(x,y,w,h){}function clearClip(){}function setColor(ink,paper){}function setPenWidth(w){}
     function drawLine(x1,y1,x2,y2){lines++;}function drawPoint(x,y){points++;}
     function drawText(x,y,font,text,justify){}function getFontHeight(font){return 7;}
 }
@@ -351,6 +351,22 @@ function packedMenuCaptions(logger){
         }
         if(row[0].equals("sideData")){Test.assert(SettingsCatalog.label(row[4],6).find(FaceLocale.english() ? "Heart rate" : "心率")==0);}
     }
+    return true;
+}
+
+(:test)
+function solarIntensityDefaultsWithHumidityFallback(logger){
+    // The second-row default is solar intensity; models without solar show
+    // humidity instead of "--". Goals of 29 are numbers, not data kinds.
+    var previous=Application.Properties.getValue("topThree");var goal=Application.Properties.getValue("circleGoal");
+    Application.Properties.setValue("topThree",29);Application.Properties.setValue("circleGoal",29);
+    Test.assertEqual(FacePrefs.get("topThree"),FacePrefs.solar() ? 29 : 10);
+    Test.assertEqual(FacePrefs.get("circleGoal"),29);
+    Test.assertEqual(PrefsDefaults.value("topThree"),29);
+    Test.assertEqual(PrefsDefaults.max("topThree"),29);
+    Test.assertEqual(PowerPolicy.metric(29),PowerPolicy.STATS);
+    Test.assert(NativeStyle.glyph(29));
+    Application.Properties.setValue("topThree",previous);Application.Properties.setValue("circleGoal",goal);
     return true;
 }
 

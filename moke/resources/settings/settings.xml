@@ -92,6 +92,9 @@
       <listEntry value="0">@Strings.Option_26</listEntry>
       <listEntry value="1">@Strings.Option_0</listEntry>
       <listEntry value="2">@Strings.Option_27</listEntry>
+      <listEntry value="3">@Strings.Option_28</listEntry>
+      <listEntry value="4">@Strings.Option_29</listEntry>
+      <listEntry value="5">@Strings.Option_30</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.timeSize" title="@Strings.Setting_timeSize">
@@ -120,19 +123,19 @@
   </setting>
   <setting propertyKey="@Properties.dateFormat" title="@Strings.Setting_dateFormat">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_28</listEntry>
-      <listEntry value="1">@Strings.Option_29</listEntry>
-      <listEntry value="2">@Strings.Option_30</listEntry>
-      <listEntry value="3">@Strings.Option_31</listEntry>
-      <listEntry value="4">@Strings.Option_32</listEntry>
-      <listEntry value="5">@Strings.Option_33</listEntry>
-      <listEntry value="6">@Strings.Option_34</listEntry>
-      <listEntry value="7">@Strings.Option_35</listEntry>
+      <listEntry value="0">@Strings.Option_31</listEntry>
+      <listEntry value="1">@Strings.Option_32</listEntry>
+      <listEntry value="2">@Strings.Option_33</listEntry>
+      <listEntry value="3">@Strings.Option_34</listEntry>
+      <listEntry value="4">@Strings.Option_35</listEntry>
+      <listEntry value="5">@Strings.Option_36</listEntry>
+      <listEntry value="6">@Strings.Option_37</listEntry>
+      <listEntry value="7">@Strings.Option_38</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.dateFont" title="@Strings.Setting_dateFont">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_0</listEntry>
       <listEntry value="2">@Strings.Option_1</listEntry>
       <listEntry value="3">@Strings.Option_2</listEntry>
@@ -140,7 +143,7 @@
   </setting>
   <setting propertyKey="@Properties.dateSize" title="@Strings.Setting_dateSize">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_3</listEntry>
       <listEntry value="2">@Strings.Option_4</listEntry>
       <listEntry value="3">@Strings.Option_5</listEntry>
@@ -151,26 +154,26 @@
   </setting>
   <setting propertyKey="@Properties.moveSource" title="@Strings.Setting_moveSource">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_37</listEntry>
-      <listEntry value="1">@Strings.Option_38</listEntry>
-      <listEntry value="2">@Strings.Option_39</listEntry>
-      <listEntry value="3">@Strings.Option_40</listEntry>
-      <listEntry value="4">@Strings.Option_41</listEntry>
-      <listEntry value="5">@Strings.Option_42</listEntry>
-      <listEntry value="6">@Strings.Option_43</listEntry>
-      <listEntry value="7">@Strings.Option_44</listEntry>
+      <listEntry value="0">@Strings.Option_40</listEntry>
+      <listEntry value="1">@Strings.Option_41</listEntry>
+      <listEntry value="2">@Strings.Option_42</listEntry>
+      <listEntry value="3">@Strings.Option_43</listEntry>
+      <listEntry value="4">@Strings.Option_44</listEntry>
+      <listEntry value="5">@Strings.Option_45</listEntry>
+      <listEntry value="6">@Strings.Option_46</listEntry>
+      <listEntry value="7">@Strings.Option_47</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.moveStyle" title="@Strings.Setting_moveStyle">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_45</listEntry>
-      <listEntry value="1">@Strings.Option_46</listEntry>
-      <listEntry value="2">@Strings.Option_47</listEntry>
+      <listEntry value="0">@Strings.Option_48</listEntry>
+      <listEntry value="1">@Strings.Option_49</listEntry>
+      <listEntry value="2">@Strings.Option_50</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.moveFont" title="@Strings.Setting_moveFont">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_0</listEntry>
       <listEntry value="2">@Strings.Option_1</listEntry>
       <listEntry value="3">@Strings.Option_2</listEntry>
@@ -187,56 +190,57 @@
   </setting>
   <setting propertyKey="@Properties.heartRefresh" title="@Strings.Setting_heartRefresh">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_48</listEntry>
-      <listEntry value="1">@Strings.Option_49</listEntry>
-      <listEntry value="2">@Strings.Option_50</listEntry>
+      <listEntry value="0">@Strings.Option_51</listEntry>
+      <listEntry value="1">@Strings.Option_52</listEntry>
+      <listEntry value="2">@Strings.Option_53</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.heartSource" title="@Strings.Setting_heartSource">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_51</listEntry>
-      <listEntry value="1">@Strings.Option_52</listEntry>
+      <listEntry value="0">@Strings.Option_54</listEntry>
+      <listEntry value="1">@Strings.Option_55</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.circle" title="@Strings.Setting_circle">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_37</listEntry>
-      <listEntry value="1">@Strings.Option_39</listEntry>
-      <listEntry value="2">@Strings.Option_53</listEntry>
-      <listEntry value="3">@Strings.Option_54</listEntry>
-      <listEntry value="4">@Strings.Option_55</listEntry>
-      <listEntry value="5">@Strings.Option_56</listEntry>
-      <listEntry value="6">@Strings.Option_57</listEntry>
-      <listEntry value="7">@Strings.Option_58</listEntry>
-      <listEntry value="8">@Strings.Option_59</listEntry>
-      <listEntry value="9">@Strings.Option_60</listEntry>
-      <listEntry value="10">@Strings.Option_61</listEntry>
-      <listEntry value="11">@Strings.Option_62</listEntry>
-      <listEntry value="12">@Strings.Option_63</listEntry>
-      <listEntry value="13">@Strings.Option_64</listEntry>
-      <listEntry value="14">@Strings.Option_65</listEntry>
-      <listEntry value="15">@Strings.Option_66</listEntry>
-      <listEntry value="16">@Strings.Option_67</listEntry>
-      <listEntry value="17">@Strings.Option_68</listEntry>
-      <listEntry value="18">@Strings.Option_69</listEntry>
-      <listEntry value="19">@Strings.Option_38</listEntry>
-      <listEntry value="20">@Strings.Option_70</listEntry>
-      <listEntry value="21">@Strings.Option_71</listEntry>
-      <listEntry value="22">@Strings.Option_72</listEntry>
-      <listEntry value="23">@Strings.Option_73</listEntry>
-      <listEntry value="24">@Strings.Option_43</listEntry>
-      <listEntry value="25">@Strings.Option_74</listEntry>
-      <listEntry value="26">@Strings.Option_75</listEntry>
-      <listEntry value="27">@Strings.Option_76</listEntry>
-      <listEntry value="28">@Strings.Option_77</listEntry>
+      <listEntry value="0">@Strings.Option_40</listEntry>
+      <listEntry value="1">@Strings.Option_42</listEntry>
+      <listEntry value="2">@Strings.Option_56</listEntry>
+      <listEntry value="3">@Strings.Option_57</listEntry>
+      <listEntry value="4">@Strings.Option_58</listEntry>
+      <listEntry value="5">@Strings.Option_59</listEntry>
+      <listEntry value="6">@Strings.Option_60</listEntry>
+      <listEntry value="7">@Strings.Option_61</listEntry>
+      <listEntry value="8">@Strings.Option_62</listEntry>
+      <listEntry value="9">@Strings.Option_63</listEntry>
+      <listEntry value="10">@Strings.Option_64</listEntry>
+      <listEntry value="11">@Strings.Option_65</listEntry>
+      <listEntry value="12">@Strings.Option_66</listEntry>
+      <listEntry value="13">@Strings.Option_67</listEntry>
+      <listEntry value="14">@Strings.Option_68</listEntry>
+      <listEntry value="15">@Strings.Option_69</listEntry>
+      <listEntry value="16">@Strings.Option_70</listEntry>
+      <listEntry value="17">@Strings.Option_71</listEntry>
+      <listEntry value="18">@Strings.Option_72</listEntry>
+      <listEntry value="19">@Strings.Option_41</listEntry>
+      <listEntry value="20">@Strings.Option_73</listEntry>
+      <listEntry value="21">@Strings.Option_74</listEntry>
+      <listEntry value="22">@Strings.Option_75</listEntry>
+      <listEntry value="23">@Strings.Option_76</listEntry>
+      <listEntry value="24">@Strings.Option_46</listEntry>
+      <listEntry value="25">@Strings.Option_77</listEntry>
+      <listEntry value="26">@Strings.Option_78</listEntry>
+      <listEntry value="27">@Strings.Option_79</listEntry>
+      <listEntry value="28">@Strings.Option_80</listEntry>
+      <listEntry value="29">@Strings.Option_81</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.circleStyle" title="@Strings.Setting_circleStyle">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_78</listEntry>
-      <listEntry value="1">@Strings.Option_79</listEntry>
-      <listEntry value="2">@Strings.Option_47</listEntry>
-      <listEntry value="3">@Strings.Option_80</listEntry>
+      <listEntry value="0">@Strings.Option_82</listEntry>
+      <listEntry value="1">@Strings.Option_83</listEntry>
+      <listEntry value="2">@Strings.Option_50</listEntry>
+      <listEntry value="3">@Strings.Option_84</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.circleGoal" title="@Strings.Setting_circleGoal">
@@ -261,56 +265,56 @@
   </setting>
   <setting propertyKey="@Properties.circleBackground" title="@Strings.Setting_circleBackground">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_81</listEntry>
-      <listEntry value="1">@Strings.Option_82</listEntry>
-      <listEntry value="2">@Strings.Option_83</listEntry>
+      <listEntry value="0">@Strings.Option_85</listEntry>
+      <listEntry value="1">@Strings.Option_86</listEntry>
+      <listEntry value="2">@Strings.Option_87</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.cellsSource" title="@Strings.Setting_cellsSource">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_37</listEntry>
-      <listEntry value="1">@Strings.Option_38</listEntry>
-      <listEntry value="2">@Strings.Option_39</listEntry>
-      <listEntry value="3">@Strings.Option_40</listEntry>
-      <listEntry value="4">@Strings.Option_41</listEntry>
-      <listEntry value="5">@Strings.Option_42</listEntry>
-      <listEntry value="6">@Strings.Option_43</listEntry>
-      <listEntry value="7">@Strings.Option_44</listEntry>
+      <listEntry value="0">@Strings.Option_40</listEntry>
+      <listEntry value="1">@Strings.Option_41</listEntry>
+      <listEntry value="2">@Strings.Option_42</listEntry>
+      <listEntry value="3">@Strings.Option_43</listEntry>
+      <listEntry value="4">@Strings.Option_44</listEntry>
+      <listEntry value="5">@Strings.Option_45</listEntry>
+      <listEntry value="6">@Strings.Option_46</listEntry>
+      <listEntry value="7">@Strings.Option_47</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.cellsStyle" title="@Strings.Setting_cellsStyle">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_84</listEntry>
-      <listEntry value="1">@Strings.Option_85</listEntry>
-      <listEntry value="2">@Strings.Option_86</listEntry>
+      <listEntry value="0">@Strings.Option_88</listEntry>
+      <listEntry value="1">@Strings.Option_89</listEntry>
+      <listEntry value="2">@Strings.Option_90</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.ringSource" title="@Strings.Setting_ringSource">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_37</listEntry>
-      <listEntry value="1">@Strings.Option_38</listEntry>
-      <listEntry value="2">@Strings.Option_39</listEntry>
-      <listEntry value="3">@Strings.Option_40</listEntry>
-      <listEntry value="4">@Strings.Option_41</listEntry>
-      <listEntry value="5">@Strings.Option_42</listEntry>
-      <listEntry value="6">@Strings.Option_43</listEntry>
-      <listEntry value="7">@Strings.Option_44</listEntry>
+      <listEntry value="0">@Strings.Option_40</listEntry>
+      <listEntry value="1">@Strings.Option_41</listEntry>
+      <listEntry value="2">@Strings.Option_42</listEntry>
+      <listEntry value="3">@Strings.Option_43</listEntry>
+      <listEntry value="4">@Strings.Option_44</listEntry>
+      <listEntry value="5">@Strings.Option_45</listEntry>
+      <listEntry value="6">@Strings.Option_46</listEntry>
+      <listEntry value="7">@Strings.Option_47</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.ringStyle" title="@Strings.Setting_ringStyle">
-    <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_87</listEntry>
-      <listEntry value="1">@Strings.Option_88</listEntry>
-      <listEntry value="2">@Strings.Option_89</listEntry>
-      <listEntry value="3">@Strings.Option_90</listEntry>
-    </settingConfig>
-  </setting>
-  <setting propertyKey="@Properties.ringStart" title="@Strings.Setting_ringStart">
     <settingConfig type="list">
       <listEntry value="0">@Strings.Option_91</listEntry>
       <listEntry value="1">@Strings.Option_92</listEntry>
       <listEntry value="2">@Strings.Option_93</listEntry>
       <listEntry value="3">@Strings.Option_94</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.ringStart" title="@Strings.Setting_ringStart">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.Option_95</listEntry>
+      <listEntry value="1">@Strings.Option_96</listEntry>
+      <listEntry value="2">@Strings.Option_97</listEntry>
+      <listEntry value="3">@Strings.Option_98</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.showStatus" title="@Strings.Setting_showStatus">
@@ -324,90 +328,91 @@
   </setting>
   <setting propertyKey="@Properties.topCardImage" title="@Strings.Setting_topCardImage">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_37</listEntry>
-      <listEntry value="1">@Strings.Option_95</listEntry>
-      <listEntry value="2">@Strings.Option_96</listEntry>
-      <listEntry value="3">@Strings.Option_97</listEntry>
-      <listEntry value="4">@Strings.Option_98</listEntry>
-      <listEntry value="5">@Strings.Option_99</listEntry>
-      <listEntry value="6">@Strings.Option_100</listEntry>
-      <listEntry value="7">@Strings.Option_101</listEntry>
-      <listEntry value="8">@Strings.Option_102</listEntry>
-      <listEntry value="9">@Strings.Option_103</listEntry>
-      <listEntry value="10">@Strings.Option_104</listEntry>
-      <listEntry value="11">@Strings.Option_105</listEntry>
-      <listEntry value="12">@Strings.Option_106</listEntry>
-      <listEntry value="13">@Strings.Option_107</listEntry>
-      <listEntry value="14">@Strings.Option_108</listEntry>
-      <listEntry value="15">@Strings.Option_109</listEntry>
-      <listEntry value="16">@Strings.Option_110</listEntry>
-      <listEntry value="17">@Strings.Option_111</listEntry>
-      <listEntry value="18">@Strings.Option_112</listEntry>
-      <listEntry value="19">@Strings.Option_113</listEntry>
-      <listEntry value="20">@Strings.Option_114</listEntry>
+      <listEntry value="0">@Strings.Option_40</listEntry>
+      <listEntry value="1">@Strings.Option_99</listEntry>
+      <listEntry value="2">@Strings.Option_100</listEntry>
+      <listEntry value="3">@Strings.Option_101</listEntry>
+      <listEntry value="4">@Strings.Option_102</listEntry>
+      <listEntry value="5">@Strings.Option_103</listEntry>
+      <listEntry value="6">@Strings.Option_104</listEntry>
+      <listEntry value="7">@Strings.Option_105</listEntry>
+      <listEntry value="8">@Strings.Option_106</listEntry>
+      <listEntry value="9">@Strings.Option_107</listEntry>
+      <listEntry value="10">@Strings.Option_108</listEntry>
+      <listEntry value="11">@Strings.Option_109</listEntry>
+      <listEntry value="12">@Strings.Option_110</listEntry>
+      <listEntry value="13">@Strings.Option_111</listEntry>
+      <listEntry value="14">@Strings.Option_112</listEntry>
+      <listEntry value="15">@Strings.Option_113</listEntry>
+      <listEntry value="16">@Strings.Option_114</listEntry>
+      <listEntry value="17">@Strings.Option_115</listEntry>
+      <listEntry value="18">@Strings.Option_116</listEntry>
+      <listEntry value="19">@Strings.Option_117</listEntry>
+      <listEntry value="20">@Strings.Option_118</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.bottomCardImage" title="@Strings.Setting_bottomCardImage">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_37</listEntry>
-      <listEntry value="1">@Strings.Option_95</listEntry>
-      <listEntry value="2">@Strings.Option_96</listEntry>
-      <listEntry value="3">@Strings.Option_97</listEntry>
-      <listEntry value="4">@Strings.Option_98</listEntry>
-      <listEntry value="5">@Strings.Option_99</listEntry>
-      <listEntry value="6">@Strings.Option_100</listEntry>
-      <listEntry value="7">@Strings.Option_101</listEntry>
-      <listEntry value="8">@Strings.Option_102</listEntry>
-      <listEntry value="9">@Strings.Option_103</listEntry>
-      <listEntry value="10">@Strings.Option_104</listEntry>
-      <listEntry value="11">@Strings.Option_105</listEntry>
-      <listEntry value="12">@Strings.Option_106</listEntry>
-      <listEntry value="13">@Strings.Option_107</listEntry>
-      <listEntry value="14">@Strings.Option_108</listEntry>
-      <listEntry value="15">@Strings.Option_109</listEntry>
-      <listEntry value="16">@Strings.Option_110</listEntry>
-      <listEntry value="17">@Strings.Option_111</listEntry>
-      <listEntry value="18">@Strings.Option_112</listEntry>
-      <listEntry value="19">@Strings.Option_113</listEntry>
-      <listEntry value="20">@Strings.Option_114</listEntry>
+      <listEntry value="0">@Strings.Option_40</listEntry>
+      <listEntry value="1">@Strings.Option_99</listEntry>
+      <listEntry value="2">@Strings.Option_100</listEntry>
+      <listEntry value="3">@Strings.Option_101</listEntry>
+      <listEntry value="4">@Strings.Option_102</listEntry>
+      <listEntry value="5">@Strings.Option_103</listEntry>
+      <listEntry value="6">@Strings.Option_104</listEntry>
+      <listEntry value="7">@Strings.Option_105</listEntry>
+      <listEntry value="8">@Strings.Option_106</listEntry>
+      <listEntry value="9">@Strings.Option_107</listEntry>
+      <listEntry value="10">@Strings.Option_108</listEntry>
+      <listEntry value="11">@Strings.Option_109</listEntry>
+      <listEntry value="12">@Strings.Option_110</listEntry>
+      <listEntry value="13">@Strings.Option_111</listEntry>
+      <listEntry value="14">@Strings.Option_112</listEntry>
+      <listEntry value="15">@Strings.Option_113</listEntry>
+      <listEntry value="16">@Strings.Option_114</listEntry>
+      <listEntry value="17">@Strings.Option_115</listEntry>
+      <listEntry value="18">@Strings.Option_116</listEntry>
+      <listEntry value="19">@Strings.Option_117</listEntry>
+      <listEntry value="20">@Strings.Option_118</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.sideData" title="@Strings.Setting_sideData">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_37</listEntry>
-      <listEntry value="1">@Strings.Option_39</listEntry>
-      <listEntry value="2">@Strings.Option_53</listEntry>
-      <listEntry value="3">@Strings.Option_54</listEntry>
-      <listEntry value="4">@Strings.Option_55</listEntry>
-      <listEntry value="5">@Strings.Option_56</listEntry>
-      <listEntry value="6">@Strings.Option_57</listEntry>
-      <listEntry value="7">@Strings.Option_58</listEntry>
-      <listEntry value="8">@Strings.Option_59</listEntry>
-      <listEntry value="9">@Strings.Option_60</listEntry>
-      <listEntry value="10">@Strings.Option_61</listEntry>
-      <listEntry value="11">@Strings.Option_62</listEntry>
-      <listEntry value="12">@Strings.Option_63</listEntry>
-      <listEntry value="13">@Strings.Option_64</listEntry>
-      <listEntry value="14">@Strings.Option_65</listEntry>
-      <listEntry value="15">@Strings.Option_66</listEntry>
-      <listEntry value="16">@Strings.Option_67</listEntry>
-      <listEntry value="17">@Strings.Option_68</listEntry>
-      <listEntry value="18">@Strings.Option_69</listEntry>
-      <listEntry value="19">@Strings.Option_38</listEntry>
-      <listEntry value="20">@Strings.Option_70</listEntry>
-      <listEntry value="21">@Strings.Option_71</listEntry>
-      <listEntry value="22">@Strings.Option_72</listEntry>
-      <listEntry value="23">@Strings.Option_73</listEntry>
-      <listEntry value="24">@Strings.Option_43</listEntry>
-      <listEntry value="25">@Strings.Option_74</listEntry>
-      <listEntry value="26">@Strings.Option_75</listEntry>
-      <listEntry value="27">@Strings.Option_76</listEntry>
-      <listEntry value="28">@Strings.Option_77</listEntry>
+      <listEntry value="0">@Strings.Option_40</listEntry>
+      <listEntry value="1">@Strings.Option_42</listEntry>
+      <listEntry value="2">@Strings.Option_56</listEntry>
+      <listEntry value="3">@Strings.Option_57</listEntry>
+      <listEntry value="4">@Strings.Option_58</listEntry>
+      <listEntry value="5">@Strings.Option_59</listEntry>
+      <listEntry value="6">@Strings.Option_60</listEntry>
+      <listEntry value="7">@Strings.Option_61</listEntry>
+      <listEntry value="8">@Strings.Option_62</listEntry>
+      <listEntry value="9">@Strings.Option_63</listEntry>
+      <listEntry value="10">@Strings.Option_64</listEntry>
+      <listEntry value="11">@Strings.Option_65</listEntry>
+      <listEntry value="12">@Strings.Option_66</listEntry>
+      <listEntry value="13">@Strings.Option_67</listEntry>
+      <listEntry value="14">@Strings.Option_68</listEntry>
+      <listEntry value="15">@Strings.Option_69</listEntry>
+      <listEntry value="16">@Strings.Option_70</listEntry>
+      <listEntry value="17">@Strings.Option_71</listEntry>
+      <listEntry value="18">@Strings.Option_72</listEntry>
+      <listEntry value="19">@Strings.Option_41</listEntry>
+      <listEntry value="20">@Strings.Option_73</listEntry>
+      <listEntry value="21">@Strings.Option_74</listEntry>
+      <listEntry value="22">@Strings.Option_75</listEntry>
+      <listEntry value="23">@Strings.Option_76</listEntry>
+      <listEntry value="24">@Strings.Option_46</listEntry>
+      <listEntry value="25">@Strings.Option_77</listEntry>
+      <listEntry value="26">@Strings.Option_78</listEntry>
+      <listEntry value="27">@Strings.Option_79</listEntry>
+      <listEntry value="28">@Strings.Option_80</listEntry>
+      <listEntry value="29">@Strings.Option_81</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.sideFont" title="@Strings.Setting_sideFont">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_0</listEntry>
       <listEntry value="2">@Strings.Option_1</listEntry>
       <listEntry value="3">@Strings.Option_2</listEntry>
@@ -415,7 +420,7 @@
   </setting>
   <setting propertyKey="@Properties.sideSize" title="@Strings.Setting_sideSize">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_3</listEntry>
       <listEntry value="2">@Strings.Option_4</listEntry>
       <listEntry value="3">@Strings.Option_5</listEntry>
@@ -423,50 +428,51 @@
   </setting>
   <setting propertyKey="@Properties.topOne" title="@Strings.Setting_topOne">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_37</listEntry>
-      <listEntry value="1">@Strings.Option_39</listEntry>
-      <listEntry value="2">@Strings.Option_53</listEntry>
-      <listEntry value="3">@Strings.Option_54</listEntry>
-      <listEntry value="4">@Strings.Option_55</listEntry>
-      <listEntry value="5">@Strings.Option_56</listEntry>
-      <listEntry value="6">@Strings.Option_57</listEntry>
-      <listEntry value="7">@Strings.Option_58</listEntry>
-      <listEntry value="8">@Strings.Option_59</listEntry>
-      <listEntry value="9">@Strings.Option_60</listEntry>
-      <listEntry value="10">@Strings.Option_61</listEntry>
-      <listEntry value="11">@Strings.Option_62</listEntry>
-      <listEntry value="12">@Strings.Option_63</listEntry>
-      <listEntry value="13">@Strings.Option_64</listEntry>
-      <listEntry value="14">@Strings.Option_65</listEntry>
-      <listEntry value="15">@Strings.Option_66</listEntry>
-      <listEntry value="16">@Strings.Option_67</listEntry>
-      <listEntry value="17">@Strings.Option_68</listEntry>
-      <listEntry value="18">@Strings.Option_69</listEntry>
-      <listEntry value="19">@Strings.Option_38</listEntry>
-      <listEntry value="20">@Strings.Option_70</listEntry>
-      <listEntry value="21">@Strings.Option_71</listEntry>
-      <listEntry value="22">@Strings.Option_72</listEntry>
-      <listEntry value="23">@Strings.Option_73</listEntry>
-      <listEntry value="24">@Strings.Option_43</listEntry>
-      <listEntry value="25">@Strings.Option_74</listEntry>
-      <listEntry value="26">@Strings.Option_75</listEntry>
-      <listEntry value="27">@Strings.Option_76</listEntry>
-      <listEntry value="28">@Strings.Option_77</listEntry>
+      <listEntry value="0">@Strings.Option_40</listEntry>
+      <listEntry value="1">@Strings.Option_42</listEntry>
+      <listEntry value="2">@Strings.Option_56</listEntry>
+      <listEntry value="3">@Strings.Option_57</listEntry>
+      <listEntry value="4">@Strings.Option_58</listEntry>
+      <listEntry value="5">@Strings.Option_59</listEntry>
+      <listEntry value="6">@Strings.Option_60</listEntry>
+      <listEntry value="7">@Strings.Option_61</listEntry>
+      <listEntry value="8">@Strings.Option_62</listEntry>
+      <listEntry value="9">@Strings.Option_63</listEntry>
+      <listEntry value="10">@Strings.Option_64</listEntry>
+      <listEntry value="11">@Strings.Option_65</listEntry>
+      <listEntry value="12">@Strings.Option_66</listEntry>
+      <listEntry value="13">@Strings.Option_67</listEntry>
+      <listEntry value="14">@Strings.Option_68</listEntry>
+      <listEntry value="15">@Strings.Option_69</listEntry>
+      <listEntry value="16">@Strings.Option_70</listEntry>
+      <listEntry value="17">@Strings.Option_71</listEntry>
+      <listEntry value="18">@Strings.Option_72</listEntry>
+      <listEntry value="19">@Strings.Option_41</listEntry>
+      <listEntry value="20">@Strings.Option_73</listEntry>
+      <listEntry value="21">@Strings.Option_74</listEntry>
+      <listEntry value="22">@Strings.Option_75</listEntry>
+      <listEntry value="23">@Strings.Option_76</listEntry>
+      <listEntry value="24">@Strings.Option_46</listEntry>
+      <listEntry value="25">@Strings.Option_77</listEntry>
+      <listEntry value="26">@Strings.Option_78</listEntry>
+      <listEntry value="27">@Strings.Option_79</listEntry>
+      <listEntry value="28">@Strings.Option_80</listEntry>
+      <listEntry value="29">@Strings.Option_81</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.topOneStyle" title="@Strings.Setting_topOneStyle">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_78</listEntry>
-      <listEntry value="1">@Strings.Option_79</listEntry>
-      <listEntry value="2">@Strings.Option_47</listEntry>
-      <listEntry value="3">@Strings.Option_80</listEntry>
-      <listEntry value="4">@Strings.Option_115</listEntry>
-      <listEntry value="5">@Strings.Option_116</listEntry>
+      <listEntry value="0">@Strings.Option_82</listEntry>
+      <listEntry value="1">@Strings.Option_83</listEntry>
+      <listEntry value="2">@Strings.Option_50</listEntry>
+      <listEntry value="3">@Strings.Option_84</listEntry>
+      <listEntry value="4">@Strings.Option_119</listEntry>
+      <listEntry value="5">@Strings.Option_120</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.topOneFont" title="@Strings.Setting_topOneFont">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_0</listEntry>
       <listEntry value="2">@Strings.Option_1</listEntry>
       <listEntry value="3">@Strings.Option_2</listEntry>
@@ -474,7 +480,7 @@
   </setting>
   <setting propertyKey="@Properties.topOneSize" title="@Strings.Setting_topOneSize">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_3</listEntry>
       <listEntry value="2">@Strings.Option_4</listEntry>
       <listEntry value="3">@Strings.Option_5</listEntry>
@@ -485,50 +491,51 @@
   </setting>
   <setting propertyKey="@Properties.topTwo" title="@Strings.Setting_topTwo">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_37</listEntry>
-      <listEntry value="1">@Strings.Option_39</listEntry>
-      <listEntry value="2">@Strings.Option_53</listEntry>
-      <listEntry value="3">@Strings.Option_54</listEntry>
-      <listEntry value="4">@Strings.Option_55</listEntry>
-      <listEntry value="5">@Strings.Option_56</listEntry>
-      <listEntry value="6">@Strings.Option_57</listEntry>
-      <listEntry value="7">@Strings.Option_58</listEntry>
-      <listEntry value="8">@Strings.Option_59</listEntry>
-      <listEntry value="9">@Strings.Option_60</listEntry>
-      <listEntry value="10">@Strings.Option_61</listEntry>
-      <listEntry value="11">@Strings.Option_62</listEntry>
-      <listEntry value="12">@Strings.Option_63</listEntry>
-      <listEntry value="13">@Strings.Option_64</listEntry>
-      <listEntry value="14">@Strings.Option_65</listEntry>
-      <listEntry value="15">@Strings.Option_66</listEntry>
-      <listEntry value="16">@Strings.Option_67</listEntry>
-      <listEntry value="17">@Strings.Option_68</listEntry>
-      <listEntry value="18">@Strings.Option_69</listEntry>
-      <listEntry value="19">@Strings.Option_38</listEntry>
-      <listEntry value="20">@Strings.Option_70</listEntry>
-      <listEntry value="21">@Strings.Option_71</listEntry>
-      <listEntry value="22">@Strings.Option_72</listEntry>
-      <listEntry value="23">@Strings.Option_73</listEntry>
-      <listEntry value="24">@Strings.Option_43</listEntry>
-      <listEntry value="25">@Strings.Option_74</listEntry>
-      <listEntry value="26">@Strings.Option_75</listEntry>
-      <listEntry value="27">@Strings.Option_76</listEntry>
-      <listEntry value="28">@Strings.Option_77</listEntry>
+      <listEntry value="0">@Strings.Option_40</listEntry>
+      <listEntry value="1">@Strings.Option_42</listEntry>
+      <listEntry value="2">@Strings.Option_56</listEntry>
+      <listEntry value="3">@Strings.Option_57</listEntry>
+      <listEntry value="4">@Strings.Option_58</listEntry>
+      <listEntry value="5">@Strings.Option_59</listEntry>
+      <listEntry value="6">@Strings.Option_60</listEntry>
+      <listEntry value="7">@Strings.Option_61</listEntry>
+      <listEntry value="8">@Strings.Option_62</listEntry>
+      <listEntry value="9">@Strings.Option_63</listEntry>
+      <listEntry value="10">@Strings.Option_64</listEntry>
+      <listEntry value="11">@Strings.Option_65</listEntry>
+      <listEntry value="12">@Strings.Option_66</listEntry>
+      <listEntry value="13">@Strings.Option_67</listEntry>
+      <listEntry value="14">@Strings.Option_68</listEntry>
+      <listEntry value="15">@Strings.Option_69</listEntry>
+      <listEntry value="16">@Strings.Option_70</listEntry>
+      <listEntry value="17">@Strings.Option_71</listEntry>
+      <listEntry value="18">@Strings.Option_72</listEntry>
+      <listEntry value="19">@Strings.Option_41</listEntry>
+      <listEntry value="20">@Strings.Option_73</listEntry>
+      <listEntry value="21">@Strings.Option_74</listEntry>
+      <listEntry value="22">@Strings.Option_75</listEntry>
+      <listEntry value="23">@Strings.Option_76</listEntry>
+      <listEntry value="24">@Strings.Option_46</listEntry>
+      <listEntry value="25">@Strings.Option_77</listEntry>
+      <listEntry value="26">@Strings.Option_78</listEntry>
+      <listEntry value="27">@Strings.Option_79</listEntry>
+      <listEntry value="28">@Strings.Option_80</listEntry>
+      <listEntry value="29">@Strings.Option_81</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.topTwoStyle" title="@Strings.Setting_topTwoStyle">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_78</listEntry>
-      <listEntry value="1">@Strings.Option_79</listEntry>
-      <listEntry value="2">@Strings.Option_47</listEntry>
-      <listEntry value="3">@Strings.Option_80</listEntry>
-      <listEntry value="4">@Strings.Option_115</listEntry>
-      <listEntry value="5">@Strings.Option_116</listEntry>
+      <listEntry value="0">@Strings.Option_82</listEntry>
+      <listEntry value="1">@Strings.Option_83</listEntry>
+      <listEntry value="2">@Strings.Option_50</listEntry>
+      <listEntry value="3">@Strings.Option_84</listEntry>
+      <listEntry value="4">@Strings.Option_119</listEntry>
+      <listEntry value="5">@Strings.Option_120</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.topTwoFont" title="@Strings.Setting_topTwoFont">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_0</listEntry>
       <listEntry value="2">@Strings.Option_1</listEntry>
       <listEntry value="3">@Strings.Option_2</listEntry>
@@ -536,7 +543,7 @@
   </setting>
   <setting propertyKey="@Properties.topTwoSize" title="@Strings.Setting_topTwoSize">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_3</listEntry>
       <listEntry value="2">@Strings.Option_4</listEntry>
       <listEntry value="3">@Strings.Option_5</listEntry>
@@ -547,50 +554,51 @@
   </setting>
   <setting propertyKey="@Properties.topThree" title="@Strings.Setting_topThree">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_37</listEntry>
-      <listEntry value="1">@Strings.Option_39</listEntry>
-      <listEntry value="2">@Strings.Option_53</listEntry>
-      <listEntry value="3">@Strings.Option_54</listEntry>
-      <listEntry value="4">@Strings.Option_55</listEntry>
-      <listEntry value="5">@Strings.Option_56</listEntry>
-      <listEntry value="6">@Strings.Option_57</listEntry>
-      <listEntry value="7">@Strings.Option_58</listEntry>
-      <listEntry value="8">@Strings.Option_59</listEntry>
-      <listEntry value="9">@Strings.Option_60</listEntry>
-      <listEntry value="10">@Strings.Option_61</listEntry>
-      <listEntry value="11">@Strings.Option_62</listEntry>
-      <listEntry value="12">@Strings.Option_63</listEntry>
-      <listEntry value="13">@Strings.Option_64</listEntry>
-      <listEntry value="14">@Strings.Option_65</listEntry>
-      <listEntry value="15">@Strings.Option_66</listEntry>
-      <listEntry value="16">@Strings.Option_67</listEntry>
-      <listEntry value="17">@Strings.Option_68</listEntry>
-      <listEntry value="18">@Strings.Option_69</listEntry>
-      <listEntry value="19">@Strings.Option_38</listEntry>
-      <listEntry value="20">@Strings.Option_70</listEntry>
-      <listEntry value="21">@Strings.Option_71</listEntry>
-      <listEntry value="22">@Strings.Option_72</listEntry>
-      <listEntry value="23">@Strings.Option_73</listEntry>
-      <listEntry value="24">@Strings.Option_43</listEntry>
-      <listEntry value="25">@Strings.Option_74</listEntry>
-      <listEntry value="26">@Strings.Option_75</listEntry>
-      <listEntry value="27">@Strings.Option_76</listEntry>
-      <listEntry value="28">@Strings.Option_77</listEntry>
+      <listEntry value="0">@Strings.Option_40</listEntry>
+      <listEntry value="1">@Strings.Option_42</listEntry>
+      <listEntry value="2">@Strings.Option_56</listEntry>
+      <listEntry value="3">@Strings.Option_57</listEntry>
+      <listEntry value="4">@Strings.Option_58</listEntry>
+      <listEntry value="5">@Strings.Option_59</listEntry>
+      <listEntry value="6">@Strings.Option_60</listEntry>
+      <listEntry value="7">@Strings.Option_61</listEntry>
+      <listEntry value="8">@Strings.Option_62</listEntry>
+      <listEntry value="9">@Strings.Option_63</listEntry>
+      <listEntry value="10">@Strings.Option_64</listEntry>
+      <listEntry value="11">@Strings.Option_65</listEntry>
+      <listEntry value="12">@Strings.Option_66</listEntry>
+      <listEntry value="13">@Strings.Option_67</listEntry>
+      <listEntry value="14">@Strings.Option_68</listEntry>
+      <listEntry value="15">@Strings.Option_69</listEntry>
+      <listEntry value="16">@Strings.Option_70</listEntry>
+      <listEntry value="17">@Strings.Option_71</listEntry>
+      <listEntry value="18">@Strings.Option_72</listEntry>
+      <listEntry value="19">@Strings.Option_41</listEntry>
+      <listEntry value="20">@Strings.Option_73</listEntry>
+      <listEntry value="21">@Strings.Option_74</listEntry>
+      <listEntry value="22">@Strings.Option_75</listEntry>
+      <listEntry value="23">@Strings.Option_76</listEntry>
+      <listEntry value="24">@Strings.Option_46</listEntry>
+      <listEntry value="25">@Strings.Option_77</listEntry>
+      <listEntry value="26">@Strings.Option_78</listEntry>
+      <listEntry value="27">@Strings.Option_79</listEntry>
+      <listEntry value="28">@Strings.Option_80</listEntry>
+      <listEntry value="29">@Strings.Option_81</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.topThreeStyle" title="@Strings.Setting_topThreeStyle">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_78</listEntry>
-      <listEntry value="1">@Strings.Option_79</listEntry>
-      <listEntry value="2">@Strings.Option_47</listEntry>
-      <listEntry value="3">@Strings.Option_80</listEntry>
-      <listEntry value="4">@Strings.Option_115</listEntry>
-      <listEntry value="5">@Strings.Option_116</listEntry>
+      <listEntry value="0">@Strings.Option_82</listEntry>
+      <listEntry value="1">@Strings.Option_83</listEntry>
+      <listEntry value="2">@Strings.Option_50</listEntry>
+      <listEntry value="3">@Strings.Option_84</listEntry>
+      <listEntry value="4">@Strings.Option_119</listEntry>
+      <listEntry value="5">@Strings.Option_120</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.topThreeFont" title="@Strings.Setting_topThreeFont">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_0</listEntry>
       <listEntry value="2">@Strings.Option_1</listEntry>
       <listEntry value="3">@Strings.Option_2</listEntry>
@@ -598,7 +606,7 @@
   </setting>
   <setting propertyKey="@Properties.topThreeSize" title="@Strings.Setting_topThreeSize">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_3</listEntry>
       <listEntry value="2">@Strings.Option_4</listEntry>
       <listEntry value="3">@Strings.Option_5</listEntry>
@@ -609,50 +617,51 @@
   </setting>
   <setting propertyKey="@Properties.bottomLeft" title="@Strings.Setting_bottomLeft">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_37</listEntry>
-      <listEntry value="1">@Strings.Option_39</listEntry>
-      <listEntry value="2">@Strings.Option_53</listEntry>
-      <listEntry value="3">@Strings.Option_54</listEntry>
-      <listEntry value="4">@Strings.Option_55</listEntry>
-      <listEntry value="5">@Strings.Option_56</listEntry>
-      <listEntry value="6">@Strings.Option_57</listEntry>
-      <listEntry value="7">@Strings.Option_58</listEntry>
-      <listEntry value="8">@Strings.Option_59</listEntry>
-      <listEntry value="9">@Strings.Option_60</listEntry>
-      <listEntry value="10">@Strings.Option_61</listEntry>
-      <listEntry value="11">@Strings.Option_62</listEntry>
-      <listEntry value="12">@Strings.Option_63</listEntry>
-      <listEntry value="13">@Strings.Option_64</listEntry>
-      <listEntry value="14">@Strings.Option_65</listEntry>
-      <listEntry value="15">@Strings.Option_66</listEntry>
-      <listEntry value="16">@Strings.Option_67</listEntry>
-      <listEntry value="17">@Strings.Option_68</listEntry>
-      <listEntry value="18">@Strings.Option_69</listEntry>
-      <listEntry value="19">@Strings.Option_38</listEntry>
-      <listEntry value="20">@Strings.Option_70</listEntry>
-      <listEntry value="21">@Strings.Option_71</listEntry>
-      <listEntry value="22">@Strings.Option_72</listEntry>
-      <listEntry value="23">@Strings.Option_73</listEntry>
-      <listEntry value="24">@Strings.Option_43</listEntry>
-      <listEntry value="25">@Strings.Option_74</listEntry>
-      <listEntry value="26">@Strings.Option_75</listEntry>
-      <listEntry value="27">@Strings.Option_76</listEntry>
-      <listEntry value="28">@Strings.Option_77</listEntry>
+      <listEntry value="0">@Strings.Option_40</listEntry>
+      <listEntry value="1">@Strings.Option_42</listEntry>
+      <listEntry value="2">@Strings.Option_56</listEntry>
+      <listEntry value="3">@Strings.Option_57</listEntry>
+      <listEntry value="4">@Strings.Option_58</listEntry>
+      <listEntry value="5">@Strings.Option_59</listEntry>
+      <listEntry value="6">@Strings.Option_60</listEntry>
+      <listEntry value="7">@Strings.Option_61</listEntry>
+      <listEntry value="8">@Strings.Option_62</listEntry>
+      <listEntry value="9">@Strings.Option_63</listEntry>
+      <listEntry value="10">@Strings.Option_64</listEntry>
+      <listEntry value="11">@Strings.Option_65</listEntry>
+      <listEntry value="12">@Strings.Option_66</listEntry>
+      <listEntry value="13">@Strings.Option_67</listEntry>
+      <listEntry value="14">@Strings.Option_68</listEntry>
+      <listEntry value="15">@Strings.Option_69</listEntry>
+      <listEntry value="16">@Strings.Option_70</listEntry>
+      <listEntry value="17">@Strings.Option_71</listEntry>
+      <listEntry value="18">@Strings.Option_72</listEntry>
+      <listEntry value="19">@Strings.Option_41</listEntry>
+      <listEntry value="20">@Strings.Option_73</listEntry>
+      <listEntry value="21">@Strings.Option_74</listEntry>
+      <listEntry value="22">@Strings.Option_75</listEntry>
+      <listEntry value="23">@Strings.Option_76</listEntry>
+      <listEntry value="24">@Strings.Option_46</listEntry>
+      <listEntry value="25">@Strings.Option_77</listEntry>
+      <listEntry value="26">@Strings.Option_78</listEntry>
+      <listEntry value="27">@Strings.Option_79</listEntry>
+      <listEntry value="28">@Strings.Option_80</listEntry>
+      <listEntry value="29">@Strings.Option_81</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.bottomLeftStyle" title="@Strings.Setting_bottomLeftStyle">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_78</listEntry>
-      <listEntry value="1">@Strings.Option_79</listEntry>
-      <listEntry value="2">@Strings.Option_47</listEntry>
-      <listEntry value="3">@Strings.Option_80</listEntry>
-      <listEntry value="4">@Strings.Option_115</listEntry>
-      <listEntry value="5">@Strings.Option_116</listEntry>
+      <listEntry value="0">@Strings.Option_82</listEntry>
+      <listEntry value="1">@Strings.Option_83</listEntry>
+      <listEntry value="2">@Strings.Option_50</listEntry>
+      <listEntry value="3">@Strings.Option_84</listEntry>
+      <listEntry value="4">@Strings.Option_119</listEntry>
+      <listEntry value="5">@Strings.Option_120</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.bottomLeftFont" title="@Strings.Setting_bottomLeftFont">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_0</listEntry>
       <listEntry value="2">@Strings.Option_1</listEntry>
       <listEntry value="3">@Strings.Option_2</listEntry>
@@ -660,7 +669,7 @@
   </setting>
   <setting propertyKey="@Properties.bottomLeftSize" title="@Strings.Setting_bottomLeftSize">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_3</listEntry>
       <listEntry value="2">@Strings.Option_4</listEntry>
       <listEntry value="3">@Strings.Option_5</listEntry>
@@ -671,51 +680,52 @@
   </setting>
   <setting propertyKey="@Properties.bottomRight" title="@Strings.Setting_bottomRight">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_37</listEntry>
-      <listEntry value="1">@Strings.Option_39</listEntry>
-      <listEntry value="2">@Strings.Option_53</listEntry>
-      <listEntry value="3">@Strings.Option_54</listEntry>
-      <listEntry value="4">@Strings.Option_55</listEntry>
-      <listEntry value="5">@Strings.Option_56</listEntry>
-      <listEntry value="6">@Strings.Option_57</listEntry>
-      <listEntry value="7">@Strings.Option_58</listEntry>
-      <listEntry value="8">@Strings.Option_59</listEntry>
-      <listEntry value="9">@Strings.Option_60</listEntry>
-      <listEntry value="10">@Strings.Option_61</listEntry>
-      <listEntry value="11">@Strings.Option_62</listEntry>
-      <listEntry value="12">@Strings.Option_63</listEntry>
-      <listEntry value="13">@Strings.Option_64</listEntry>
-      <listEntry value="14">@Strings.Option_65</listEntry>
-      <listEntry value="15">@Strings.Option_66</listEntry>
-      <listEntry value="16">@Strings.Option_67</listEntry>
-      <listEntry value="17">@Strings.Option_68</listEntry>
-      <listEntry value="18">@Strings.Option_69</listEntry>
-      <listEntry value="19">@Strings.Option_38</listEntry>
-      <listEntry value="20">@Strings.Option_70</listEntry>
-      <listEntry value="21">@Strings.Option_71</listEntry>
-      <listEntry value="22">@Strings.Option_72</listEntry>
-      <listEntry value="23">@Strings.Option_73</listEntry>
-      <listEntry value="24">@Strings.Option_43</listEntry>
-      <listEntry value="25">@Strings.Option_74</listEntry>
-      <listEntry value="26">@Strings.Option_75</listEntry>
-      <listEntry value="27">@Strings.Option_76</listEntry>
-      <listEntry value="28">@Strings.Option_77</listEntry>
+      <listEntry value="0">@Strings.Option_40</listEntry>
+      <listEntry value="1">@Strings.Option_42</listEntry>
+      <listEntry value="2">@Strings.Option_56</listEntry>
+      <listEntry value="3">@Strings.Option_57</listEntry>
+      <listEntry value="4">@Strings.Option_58</listEntry>
+      <listEntry value="5">@Strings.Option_59</listEntry>
+      <listEntry value="6">@Strings.Option_60</listEntry>
+      <listEntry value="7">@Strings.Option_61</listEntry>
+      <listEntry value="8">@Strings.Option_62</listEntry>
+      <listEntry value="9">@Strings.Option_63</listEntry>
+      <listEntry value="10">@Strings.Option_64</listEntry>
+      <listEntry value="11">@Strings.Option_65</listEntry>
+      <listEntry value="12">@Strings.Option_66</listEntry>
+      <listEntry value="13">@Strings.Option_67</listEntry>
+      <listEntry value="14">@Strings.Option_68</listEntry>
+      <listEntry value="15">@Strings.Option_69</listEntry>
+      <listEntry value="16">@Strings.Option_70</listEntry>
+      <listEntry value="17">@Strings.Option_71</listEntry>
+      <listEntry value="18">@Strings.Option_72</listEntry>
+      <listEntry value="19">@Strings.Option_41</listEntry>
+      <listEntry value="20">@Strings.Option_73</listEntry>
+      <listEntry value="21">@Strings.Option_74</listEntry>
+      <listEntry value="22">@Strings.Option_75</listEntry>
+      <listEntry value="23">@Strings.Option_76</listEntry>
+      <listEntry value="24">@Strings.Option_46</listEntry>
+      <listEntry value="25">@Strings.Option_77</listEntry>
+      <listEntry value="26">@Strings.Option_78</listEntry>
+      <listEntry value="27">@Strings.Option_79</listEntry>
+      <listEntry value="28">@Strings.Option_80</listEntry>
+      <listEntry value="29">@Strings.Option_81</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.bottomRightStyle" title="@Strings.Setting_bottomRightStyle">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_78</listEntry>
-      <listEntry value="1">@Strings.Option_79</listEntry>
-      <listEntry value="2">@Strings.Option_47</listEntry>
-      <listEntry value="3">@Strings.Option_80</listEntry>
-      <listEntry value="4">@Strings.Option_115</listEntry>
-      <listEntry value="5">@Strings.Option_116</listEntry>
-      <listEntry value="6">@Strings.Option_117</listEntry>
+      <listEntry value="0">@Strings.Option_82</listEntry>
+      <listEntry value="1">@Strings.Option_83</listEntry>
+      <listEntry value="2">@Strings.Option_50</listEntry>
+      <listEntry value="3">@Strings.Option_84</listEntry>
+      <listEntry value="4">@Strings.Option_119</listEntry>
+      <listEntry value="5">@Strings.Option_120</listEntry>
+      <listEntry value="6">@Strings.Option_121</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.bottomRightFont" title="@Strings.Setting_bottomRightFont">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_0</listEntry>
       <listEntry value="2">@Strings.Option_1</listEntry>
       <listEntry value="3">@Strings.Option_2</listEntry>
@@ -723,7 +733,7 @@
   </setting>
   <setting propertyKey="@Properties.bottomRightSize" title="@Strings.Setting_bottomRightSize">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_3</listEntry>
       <listEntry value="2">@Strings.Option_4</listEntry>
       <listEntry value="3">@Strings.Option_5</listEntry>
@@ -734,50 +744,51 @@
   </setting>
   <setting propertyKey="@Properties.footerLeft" title="@Strings.Setting_footerLeft">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_37</listEntry>
-      <listEntry value="1">@Strings.Option_39</listEntry>
-      <listEntry value="2">@Strings.Option_53</listEntry>
-      <listEntry value="3">@Strings.Option_54</listEntry>
-      <listEntry value="4">@Strings.Option_55</listEntry>
-      <listEntry value="5">@Strings.Option_56</listEntry>
-      <listEntry value="6">@Strings.Option_57</listEntry>
-      <listEntry value="7">@Strings.Option_58</listEntry>
-      <listEntry value="8">@Strings.Option_59</listEntry>
-      <listEntry value="9">@Strings.Option_60</listEntry>
-      <listEntry value="10">@Strings.Option_61</listEntry>
-      <listEntry value="11">@Strings.Option_62</listEntry>
-      <listEntry value="12">@Strings.Option_63</listEntry>
-      <listEntry value="13">@Strings.Option_64</listEntry>
-      <listEntry value="14">@Strings.Option_65</listEntry>
-      <listEntry value="15">@Strings.Option_66</listEntry>
-      <listEntry value="16">@Strings.Option_67</listEntry>
-      <listEntry value="17">@Strings.Option_68</listEntry>
-      <listEntry value="18">@Strings.Option_69</listEntry>
-      <listEntry value="19">@Strings.Option_38</listEntry>
-      <listEntry value="20">@Strings.Option_70</listEntry>
-      <listEntry value="21">@Strings.Option_71</listEntry>
-      <listEntry value="22">@Strings.Option_72</listEntry>
-      <listEntry value="23">@Strings.Option_73</listEntry>
-      <listEntry value="24">@Strings.Option_43</listEntry>
-      <listEntry value="25">@Strings.Option_74</listEntry>
-      <listEntry value="26">@Strings.Option_75</listEntry>
-      <listEntry value="27">@Strings.Option_76</listEntry>
-      <listEntry value="28">@Strings.Option_77</listEntry>
+      <listEntry value="0">@Strings.Option_40</listEntry>
+      <listEntry value="1">@Strings.Option_42</listEntry>
+      <listEntry value="2">@Strings.Option_56</listEntry>
+      <listEntry value="3">@Strings.Option_57</listEntry>
+      <listEntry value="4">@Strings.Option_58</listEntry>
+      <listEntry value="5">@Strings.Option_59</listEntry>
+      <listEntry value="6">@Strings.Option_60</listEntry>
+      <listEntry value="7">@Strings.Option_61</listEntry>
+      <listEntry value="8">@Strings.Option_62</listEntry>
+      <listEntry value="9">@Strings.Option_63</listEntry>
+      <listEntry value="10">@Strings.Option_64</listEntry>
+      <listEntry value="11">@Strings.Option_65</listEntry>
+      <listEntry value="12">@Strings.Option_66</listEntry>
+      <listEntry value="13">@Strings.Option_67</listEntry>
+      <listEntry value="14">@Strings.Option_68</listEntry>
+      <listEntry value="15">@Strings.Option_69</listEntry>
+      <listEntry value="16">@Strings.Option_70</listEntry>
+      <listEntry value="17">@Strings.Option_71</listEntry>
+      <listEntry value="18">@Strings.Option_72</listEntry>
+      <listEntry value="19">@Strings.Option_41</listEntry>
+      <listEntry value="20">@Strings.Option_73</listEntry>
+      <listEntry value="21">@Strings.Option_74</listEntry>
+      <listEntry value="22">@Strings.Option_75</listEntry>
+      <listEntry value="23">@Strings.Option_76</listEntry>
+      <listEntry value="24">@Strings.Option_46</listEntry>
+      <listEntry value="25">@Strings.Option_77</listEntry>
+      <listEntry value="26">@Strings.Option_78</listEntry>
+      <listEntry value="27">@Strings.Option_79</listEntry>
+      <listEntry value="28">@Strings.Option_80</listEntry>
+      <listEntry value="29">@Strings.Option_81</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.footerLeftStyle" title="@Strings.Setting_footerLeftStyle">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_78</listEntry>
-      <listEntry value="1">@Strings.Option_79</listEntry>
-      <listEntry value="2">@Strings.Option_47</listEntry>
-      <listEntry value="3">@Strings.Option_80</listEntry>
-      <listEntry value="4">@Strings.Option_115</listEntry>
-      <listEntry value="5">@Strings.Option_116</listEntry>
+      <listEntry value="0">@Strings.Option_82</listEntry>
+      <listEntry value="1">@Strings.Option_83</listEntry>
+      <listEntry value="2">@Strings.Option_50</listEntry>
+      <listEntry value="3">@Strings.Option_84</listEntry>
+      <listEntry value="4">@Strings.Option_119</listEntry>
+      <listEntry value="5">@Strings.Option_120</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.footerLeftFont" title="@Strings.Setting_footerLeftFont">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_0</listEntry>
       <listEntry value="2">@Strings.Option_1</listEntry>
       <listEntry value="3">@Strings.Option_2</listEntry>
@@ -785,7 +796,7 @@
   </setting>
   <setting propertyKey="@Properties.footerLeftSize" title="@Strings.Setting_footerLeftSize">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_3</listEntry>
       <listEntry value="2">@Strings.Option_4</listEntry>
       <listEntry value="3">@Strings.Option_5</listEntry>
@@ -796,50 +807,51 @@
   </setting>
   <setting propertyKey="@Properties.footerRight" title="@Strings.Setting_footerRight">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_37</listEntry>
-      <listEntry value="1">@Strings.Option_39</listEntry>
-      <listEntry value="2">@Strings.Option_53</listEntry>
-      <listEntry value="3">@Strings.Option_54</listEntry>
-      <listEntry value="4">@Strings.Option_55</listEntry>
-      <listEntry value="5">@Strings.Option_56</listEntry>
-      <listEntry value="6">@Strings.Option_57</listEntry>
-      <listEntry value="7">@Strings.Option_58</listEntry>
-      <listEntry value="8">@Strings.Option_59</listEntry>
-      <listEntry value="9">@Strings.Option_60</listEntry>
-      <listEntry value="10">@Strings.Option_61</listEntry>
-      <listEntry value="11">@Strings.Option_62</listEntry>
-      <listEntry value="12">@Strings.Option_63</listEntry>
-      <listEntry value="13">@Strings.Option_64</listEntry>
-      <listEntry value="14">@Strings.Option_65</listEntry>
-      <listEntry value="15">@Strings.Option_66</listEntry>
-      <listEntry value="16">@Strings.Option_67</listEntry>
-      <listEntry value="17">@Strings.Option_68</listEntry>
-      <listEntry value="18">@Strings.Option_69</listEntry>
-      <listEntry value="19">@Strings.Option_38</listEntry>
-      <listEntry value="20">@Strings.Option_70</listEntry>
-      <listEntry value="21">@Strings.Option_71</listEntry>
-      <listEntry value="22">@Strings.Option_72</listEntry>
-      <listEntry value="23">@Strings.Option_73</listEntry>
-      <listEntry value="24">@Strings.Option_43</listEntry>
-      <listEntry value="25">@Strings.Option_74</listEntry>
-      <listEntry value="26">@Strings.Option_75</listEntry>
-      <listEntry value="27">@Strings.Option_76</listEntry>
-      <listEntry value="28">@Strings.Option_77</listEntry>
+      <listEntry value="0">@Strings.Option_40</listEntry>
+      <listEntry value="1">@Strings.Option_42</listEntry>
+      <listEntry value="2">@Strings.Option_56</listEntry>
+      <listEntry value="3">@Strings.Option_57</listEntry>
+      <listEntry value="4">@Strings.Option_58</listEntry>
+      <listEntry value="5">@Strings.Option_59</listEntry>
+      <listEntry value="6">@Strings.Option_60</listEntry>
+      <listEntry value="7">@Strings.Option_61</listEntry>
+      <listEntry value="8">@Strings.Option_62</listEntry>
+      <listEntry value="9">@Strings.Option_63</listEntry>
+      <listEntry value="10">@Strings.Option_64</listEntry>
+      <listEntry value="11">@Strings.Option_65</listEntry>
+      <listEntry value="12">@Strings.Option_66</listEntry>
+      <listEntry value="13">@Strings.Option_67</listEntry>
+      <listEntry value="14">@Strings.Option_68</listEntry>
+      <listEntry value="15">@Strings.Option_69</listEntry>
+      <listEntry value="16">@Strings.Option_70</listEntry>
+      <listEntry value="17">@Strings.Option_71</listEntry>
+      <listEntry value="18">@Strings.Option_72</listEntry>
+      <listEntry value="19">@Strings.Option_41</listEntry>
+      <listEntry value="20">@Strings.Option_73</listEntry>
+      <listEntry value="21">@Strings.Option_74</listEntry>
+      <listEntry value="22">@Strings.Option_75</listEntry>
+      <listEntry value="23">@Strings.Option_76</listEntry>
+      <listEntry value="24">@Strings.Option_46</listEntry>
+      <listEntry value="25">@Strings.Option_77</listEntry>
+      <listEntry value="26">@Strings.Option_78</listEntry>
+      <listEntry value="27">@Strings.Option_79</listEntry>
+      <listEntry value="28">@Strings.Option_80</listEntry>
+      <listEntry value="29">@Strings.Option_81</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.footerRightStyle" title="@Strings.Setting_footerRightStyle">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_78</listEntry>
-      <listEntry value="1">@Strings.Option_79</listEntry>
-      <listEntry value="2">@Strings.Option_47</listEntry>
-      <listEntry value="3">@Strings.Option_80</listEntry>
-      <listEntry value="4">@Strings.Option_115</listEntry>
-      <listEntry value="5">@Strings.Option_116</listEntry>
+      <listEntry value="0">@Strings.Option_82</listEntry>
+      <listEntry value="1">@Strings.Option_83</listEntry>
+      <listEntry value="2">@Strings.Option_50</listEntry>
+      <listEntry value="3">@Strings.Option_84</listEntry>
+      <listEntry value="4">@Strings.Option_119</listEntry>
+      <listEntry value="5">@Strings.Option_120</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.footerRightFont" title="@Strings.Setting_footerRightFont">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_0</listEntry>
       <listEntry value="2">@Strings.Option_1</listEntry>
       <listEntry value="3">@Strings.Option_2</listEntry>
@@ -847,7 +859,7 @@
   </setting>
   <setting propertyKey="@Properties.footerRightSize" title="@Strings.Setting_footerRightSize">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_36</listEntry>
+      <listEntry value="0">@Strings.Option_39</listEntry>
       <listEntry value="1">@Strings.Option_3</listEntry>
       <listEntry value="2">@Strings.Option_4</listEntry>
       <listEntry value="3">@Strings.Option_5</listEntry>
@@ -861,16 +873,16 @@
   </setting>
   <setting propertyKey="@Properties.chartStyle" title="@Strings.Setting_chartStyle">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_118</listEntry>
-      <listEntry value="1">@Strings.Option_119</listEntry>
-      <listEntry value="2">@Strings.Option_120</listEntry>
+      <listEntry value="0">@Strings.Option_122</listEntry>
+      <listEntry value="1">@Strings.Option_123</listEntry>
+      <listEntry value="2">@Strings.Option_124</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.chartMinutes" title="@Strings.Setting_chartMinutes">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_121</listEntry>
-      <listEntry value="1">@Strings.Option_122</listEntry>
-      <listEntry value="2">@Strings.Option_123</listEntry>
+      <listEntry value="0">@Strings.Option_125</listEntry>
+      <listEntry value="1">@Strings.Option_126</listEntry>
+      <listEntry value="2">@Strings.Option_127</listEntry>
     </settingConfig>
   </setting>
   <setting propertyKey="@Properties.showChartLabels" title="@Strings.Setting_showChartLabels">
@@ -878,7 +890,7 @@
   </setting>
   <setting propertyKey="@Properties.chartLabelFont" title="@Strings.Setting_chartLabelFont">
     <settingConfig type="list">
-      <listEntry value="0">@Strings.Option_124</listEntry>
+      <listEntry value="0">@Strings.Option_128</listEntry>
       <listEntry value="1">@Strings.Option_0</listEntry>
       <listEntry value="2">@Strings.Option_1</listEntry>
       <listEntry value="3">@Strings.Option_2</listEntry>

@@ -7,7 +7,7 @@
 <bitmap id="WeatherSmall" filename="weather-small.png" compress="false" />
 <bitmap id="Large" filename="large.png" compress="true" />
 <bitmap id="Date" filename="date.png" compress="true" />
-<bitmap id="Letters" filename="letters.png" compress="true" />
+<bitmap id="Letters" filename="letters.png" compress="false" />
 <bitmap id="Weekdays" filename="weekdays.png" compress="true" />
 <bitmap id="LauncherIcon" filename="icon.png" />
 <bitmap id="Sec0" filename="second-0.png" compress="true" />

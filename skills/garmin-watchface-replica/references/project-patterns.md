@@ -4,7 +4,7 @@
 
 | 需求 | Moke 墨刻 | Retro World 寰游时刻 |
 | --- | --- | --- |
-| 布局/字体 | `source/FaceLayout.mc`、`scripts/font_rasterizer.py`、`assets/fonts/layout-metrics.json` | `tools/retro_style.py`、`tools/assets.py`、`tools/device_profiles.py` |
+| 布局/字体 | `source/FaceLayout.mc`、`scripts/pixel_glyphs.py`（网格字形）、`scripts/font_rasterizer.py`、`assets/fonts/layout-metrics.json` | `tools/retro_style.py`、`tools/assets.py`、`tools/device_profiles.py` |
 | 屏幕适配 | `scripts/generate-mip-targets.py`、`source/DeviceDrawing.mc` | `tools/device_profiles.py`、`source/DeviceDrawing.mc` |
 | 数据刷新 | `source/PowerPolicy.mc`、`source/LiveHeart.mc`、`source/InstinctFaceView.mc` | `source/LiveData.mc`、`source/Environment.mc`、`source/RetroWorld.mc` |
 | 配置/语言 | `scripts/generate-mip-targets.py`、`resources-eng/`、`scripts/check-iq-package.py` | `source/FaceSettings.mc`、`source/DataFields.mc`、`tools/settings.py`、`tools/check_settings_package.py` |
@@ -37,6 +37,20 @@ Retro World 2.0.0记录过112 SDK目标/183变体编译、17代表设备8帧原�
 Retro World 2.1.0 使用21项中英文设置、9个可选数据槽、MIP局部秒刷新和独立12/24小时制；`tests/SecondsTests.mc` 检查生命周期/设置/降级，`tools/build_scenario.py` 使用独立ID验证设置画面。圆窗新结论见 [设备适配](devices.md)，不要继续套用2.0的装饰圈偏移。
 
 Moke 1.1.1 按最低地区API生成，默认英文并用简体中文覆盖；`scripts/probe-mip-runtime.py --live --locale eng|zhs` 区分正式/演示测试状态。实际源代码及当前目标包仍需现场核对。
+
+## 2026-11 Moke 字体锯齿案例
+
+反馈是“字体锯齿感强、小字看不清”。病因不在渲染代码，在字体生成：
+
+- 1.2.0 起数字由 Dosis 轮廓字体生成：先非等比压进字盒（原宽高比约 0.7，压到 0.48），再按 128 阈值二值化。同一个数字里竖笔出现 6、7、9px 三种宽度，2/4/7 的斜线台阶不规则。
+- 小号粗体用描边加粗，墨迹比 `xadvance` 宽 2px，数字连排时互相重叠。孤立字格看不出来。
+- 趋势图刻度按各自墨迹压缩，1 被压到三列，看起来像小写 l。
+- 趋势图 48 个桶画在 46px 宽里，逐点连线成了一片毛刺。
+- 离线预览脚本写死了旧布局，右上角圆窗和右侧数据区与当前默认设置不符。
+
+处理：数字、单位字母、日期汉字改为在像素网格上直接构造（`moke/scripts/pixel_glyphs.py`），度量逐项不变；趋势图改整数列加竖直游程连线，1-2-1 平均并保留极值；预览改为读取设置默认值。通用规则已写入 [像素字体与小图形](pixel-fonts.md)，`pixel_review.py atlas` 增加了连排重叠检查。
+
+这次改动只有离线预览和脚本检查作证据，**未经模拟器编译和真机确认**；`FaceDraw.heartPanel` 的 Monkey C 改动需在装有 SDK 的机器上编译并跑 `tests/power`。彩色 MIP 机型的灰阶抗锯齿没有做。
 
 已知商店ID仅用于定位，使用时核对当前作者/标题/版本：
 - Retro World：`76e1c5f4-abe8-49ab-bcc0-44c2b1c1a267`。

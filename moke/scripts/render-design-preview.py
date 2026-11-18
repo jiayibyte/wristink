@@ -41,6 +41,43 @@ class Font:
 
 
 FONTS = {name: Font(name) for name in ("compact", "data", "compact-small", "date", "time", "heart", "heart-small", "circle-value", "circle-value-small", "seconds", "days", "chart")}
+# The preview follows the shipped setting defaults instead of a frozen layout,
+# so a changed default (white heart window, side data, hidden move bar) shows up here.
+DEFAULTS = {s["key"]: s["default"] for s in json.loads((ROOT / "config/settings-catalog.json").read_text())["settings"]}
+NATIVE = ROOT / "resources/native"
+
+
+def native_fonts(root=None):
+    root = root or NATIVE
+    return {"upper": Font("upper-details", root), "icons": Font("garmin-icons", root),
+            "heart": Font(f"white-heart-f{DEFAULTS['circleFont']}-s{(22, 26, 28)[DEFAULTS['circleSize']]}", root)}
+
+
+NATIVE_FONTS = native_fonts()
+
+
+def trace(values, low, high, px, py, w, h):
+    """Pixels of the trend line, mirroring FaceDraw.heartPanel: whole-pixel columns,
+    1-2-1 smoothing that keeps the labelled extremes, drawn with a two-pixel pen."""
+    span = (high - low) or 1
+    count = len(values)
+    last = count - 1 if count > 1 else 1
+    canvas = Image.new("L", (176, 176))
+    pen = ImageDraw.Draw(canvas)
+    prev = None
+    for i, rate in enumerate(values):
+        if rate is None:
+            prev = None
+            continue
+        if 0 < i < last and rate not in (low, high) and values[i-1] is not None and values[i+1] is not None:
+            rate = (values[i-1] + rate*2 + values[i+1] + 2) // 4
+        x = px + ((i*w + last//2)//last if count > 1 else w//2)
+        y = py + h//2 if high == low else py + h - 2 - ((rate-low)*(h-2) + span//2)//span
+        if prev:
+            pen.line((prev, (x, y)), fill=255, width=2)
+        pen.rectangle((x, y, x, y+1), fill=255)
+        prev = (x, y)
+    return [(x, y) for y in range(176) for x in range(176) if canvas.getpixel((x, y))]
 
 
 def icon(d, kind, x, y, fg, bg):
@@ -110,47 +147,74 @@ def render(dark, seconds=False):
         if fixed_font is None and font.width(VALUES[kind]) > available:font=FONTS["compact-small"]
         font.draw(image,x+text_offset,y+1,VALUES[kind],(fg,)*3)
     metric(7,34,5)
-    d.line((83,14,94,14),fill=(fg,)*3,width=2)
-    d.line((94,14,90,10),fill=(fg,)*3,width=2)
-    d.line((94,14,90,18),fill=(fg,)*3,width=2)
+    if DEFAULTS["showWind"]:
+        d.line((83,14,94,14),fill=(fg,)*3,width=2)
+        d.line((94,14,90,10),fill=(fg,)*3,width=2)
+        d.line((94,14,90,18),fill=(fg,)*3,width=2)
     metric(17,10,LAYOUT["POWER_ROW_Y"])
-    mx,my=LAYOUT["MOON_X"],LAYOUT["MOON_Y"]
+    # InstinctFaceView: the moon follows the status text instead of a fixed column.
+    mx,my=min(LAYOUT["MOON_X"],10+17+FONTS["data"].width(VALUES[17])+LAYOUT["MOON_AFTER_TEXT"]),LAYOUT["MOON_Y"]
+    if DEFAULTS["topThree"]:
+        # A third status value takes the rest of the row; the moon moves beside the date.
+        metric(DEFAULTS["topThree"],LAYOUT["FEELS_X"],LAYOUT["POWER_ROW_Y"])
+        mx,my=LAYOUT["MOON_BESIDE_DATE_X"],LAYOUT["MOON_BESIDE_DATE_Y"]
     d.ellipse((mx-7,my-7,mx+7,my+7),outline=(fg,)*3,fill=(fg,)*3)
     d.pieslice((mx-6,my-6,mx+6,my+6),270,90,fill=(bg,)*3)
-    d.ellipse((113,0,175,62),fill="black")
-    count=min(8,max(0,__import__('math').ceil(BODY_BATTERY*8/100)))
-    for i in range(count):
-        tile=Image.open(ROOT/f'resources/drawables/energy-sector-{i}.png')
-        image.paste(tile,(113,0),tile)
-    ratio=min(1,max(0,INTENSITY_MINUTES/INTENSITY_GOAL)) if INTENSITY_GOAL>0 else 0
-    if ratio:d.arc((115,2,173,60),-90,-90+360*ratio,fill="white",width=2)
-    icon(d,6,137,LAYOUT["HEART_ICON_Y"],255,0)
-    FONTS["circle-value"].draw(image,144,LAYOUT["HEART_VALUE_Y"],VALUES[6],(255,255,255),center=True)
+    # FaceDraw.circle: paper/ink come from circleBackground, sectors and the
+    # outer ring only exist while their data source is enabled.
+    paper=255 if DEFAULTS["circleBackground"]==1 or (DEFAULTS["circleBackground"]==2 and not dark) else 0
+    ink=255-paper
+    plain=paper==255 and DEFAULTS["cellsSource"]==0 and DEFAULTS["ringSource"]==0
+    d.ellipse((113,0,175,62),fill=(paper,)*3)
+    if DEFAULTS["cellsSource"]:
+        count=min(8,max(0,__import__('math').ceil(BODY_BATTERY*8/100)))
+        for i in range(count):
+            tile=Image.open(ROOT/f'resources/drawables/energy-sector-{i}.png')
+            image.paste(tile,(113,0),tile)
+    ratio=min(1,max(0,INTENSITY_MINUTES/INTENSITY_GOAL)) if INTENSITY_GOAL>0 and DEFAULTS["ringSource"] else 0
+    if ratio:d.arc((115,2,173,60),-90,-90+360*ratio,fill=(ink,)*3,width=2)
+    if DEFAULTS["showCircleIcon"]:
+        # NativeStyle.circleIcon: the compact heart on a plain white window.
+        NATIVE_FONTS["upper"].draw(image,144-6,LAYOUT["HEART_ICON_Y"],"m" if plain else "l",(ink,)*3)
+    if plain:
+        heart=NATIVE_FONTS["heart"]
+        height=max(g["height"] for g in heart.chars.values())
+        heart.draw(image,144,(38 if DEFAULTS["showCircleIcon"] else 31)-height//2,VALUES[6],(ink,)*3,center=True)
+    else:
+        FONTS["circle-value"].draw(image,144,LAYOUT["HEART_VALUE_Y"],VALUES[6],(ink,)*3,center=True)
     FONTS["data"].draw(image,8,49,"10/19 一",(fg,)*3)
-    x,y=LAYOUT["MOVE_X"],LAYOUT["MOVE_Y"]
-    d.ellipse((x+3,y,x+5,y+2),fill=(fg,)*3)
-    for line in ((x+4,y+4,x+4,y+8),(x+1,y+7,x+4,y+4),(x+4,y+4,x+7,y+7),
-                 (x+4,y+8,x+2,y+12),(x+4,y+8,x+6,y+12)):
-        d.line(line,fill=(fg,)*3)
-    for i in range(5):
-        left=x+12+i*5
-        d.rectangle((left,y+4,left+3,y+9),outline=(fg,)*3)
-        if i<MOVE_LEVEL:d.rectangle((left+1,y+5,left+2,y+8),fill=(fg,)*3)
+    if DEFAULTS["showMoveBar"] and DEFAULTS["moveSource"]:
+        x,y=LAYOUT["MOVE_X"],LAYOUT["MOVE_Y"]
+        d.ellipse((x+3,y,x+5,y+2),fill=(fg,)*3)
+        for line in ((x+4,y+4,x+4,y+8),(x+1,y+7,x+4,y+4),(x+4,y+4,x+7,y+7),
+                     (x+4,y+8,x+2,y+12),(x+4,y+8,x+6,y+12)):
+            d.line(line,fill=(fg,)*3)
+        for i in range(5):
+            left=x+12+i*5
+            d.rectangle((left,y+4,left+3,y+9),outline=(fg,)*3)
+            if i<MOVE_LEVEL:d.rectangle((left+1,y+5,left+2,y+8),fill=(fg,)*3)
     FONTS["time"].draw(image,9,LAYOUT["TIME_Y"],"18:58",(fg,)*3)
+    side=DEFAULTS["sideData"]
     if seconds:
         FONTS["seconds"].draw(image,LAYOUT["SECONDS_X"],LAYOUT["SECONDS_Y"],"48",(fg,)*3,center=True)
+    elif side:
+        # FaceDraw.sideData: icon above a centred value replaces the wallet cards.
+        glyph={19:"A",2:"Ä",5:"X",6:"l"}.get(side)
+        if glyph:NATIVE_FONTS["icons"].draw(image,146,LAYOUT["SIDE_Y"]+1,glyph,(fg,)*3)
+        else:icon(d,side,146,LAYOUT["SIDE_Y"]+1,fg,bg)
+        FONTS["data"].draw(image,153,LAYOUT["SIDE_Y"]+20,VALUES[side],(fg,)*3,center=True)
     else:
         for kind,y in (("beijing",LAYOUT["CARD_TOP_Y"]),("alipay",LAYOUT["CARD_BOTTOM_Y"])):
             tile=card(kind);image.paste(tile,(LAYOUT["CARD_X"],y),tile)
     metric(2,LAYOUT["STEP_X"],LAYOUT["LOWER_Y"])
     left,top=LAYOUT["GRAPH_X"],LAYOUT["GRAPH_Y"]
-    px,py,w,h=left+18,top+1,LAYOUT["GRAPH_WIDTH"]-20,LAYOUT["GRAPH_HEIGHT"]-LAYOUT["GRAPH_BOTTOM_INSET"]
+    px,py,w,h=left+LAYOUT["GRAPH_PLOT_X"],top+1,LAYOUT["GRAPH_WIDTH"]-LAYOUT["GRAPH_PLOT_X"]-2,LAYOUT["GRAPH_HEIGHT"]-LAYOUT["GRAPH_BOTTOM_INSET"]
     low,high=min(HISTORY),max(HISTORY)
-    FONTS["chart"].draw(image,left+15-FONTS["chart"].width(str(high)),top,str(high),(fg,)*3)
-    FONTS["chart"].draw(image,left+15-FONTS["chart"].width(str(low)),top+LAYOUT["GRAPH_LOW_LABEL_OFFSET"],str(low),(fg,)*3)
-    points=[(round(px+i*w/(len(HISTORY)-1)),round(py+h-(v-low)*h/(high-low))) for i,v in enumerate(HISTORY)]
-    d.line((px,py,px,py+h),fill=(fg,)*3)
-    d.line((px,py+h,px+w,py+h),fill=(fg,)*3);d.line(points,fill=(fg,)*3)
+    right=left+LAYOUT["GRAPH_LABEL_RIGHT"]
+    FONTS["chart"].draw(image,right-FONTS["chart"].width(str(high)),top,str(high),(fg,)*3)
+    FONTS["chart"].draw(image,right-FONTS["chart"].width(str(low)),top+LAYOUT["GRAPH_LOW_LABEL_OFFSET"],str(low),(fg,)*3)
+    d.line((px,py+h,px+w,py+h),fill=(fg,)*3)
+    for point in trace(HISTORY,low,high,px,py,w,h):d.point(point,fill=(fg,)*3)
     footer_font=FONTS["data"]
     if footer_font.width(VALUES[5])>LAYOUT["LOWER_LEFT_WIDTH"]-LAYOUT["LOWER_TEXT_OFFSET"] or footer_font.width(VALUES[18])>LAYOUT["FOOTER_RIGHT_WIDTH"]-LAYOUT["LOWER_TEXT_OFFSET"]:
         footer_font=FONTS["compact-small"]

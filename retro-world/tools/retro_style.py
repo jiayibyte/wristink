@@ -1,6 +1,7 @@
 from pathlib import Path
 from PIL import Image, ImageDraw
 import math
+import pixel_glyphs as pg
 ROOT=Path(__file__).resolve().parents[1]
 
 
@@ -28,11 +29,28 @@ GLYPHS = {
  '.':['0','0','0','0','1'], '/':['001','001','010','100','100'],
 }
 
+def native(char, w, h, stroke):
+    """Label glyph constructed at its final pixel size (never an enlarged 3x5).
+
+    Returns None where the box is too small for a native design; callers then
+    keep the 3x5 master, which is already exact at that size.
+    """
+    if char == ' ':return Image.new('L',(w,h))
+    if w < 4 or h < 6:return None
+    if char.isdigit():return pg.digit(char,w,h,0,stroke)
+    if char in pg.CAPS:return pg.caps(char,w,h,stroke)
+    if char in ':.-/%':return pg.latin(char,w,h,stroke)
+    return None
+
 def text(im, x, y, s, color=0, sx=1, sy=1, center=False):
     width = sum((len(GLYPHS[c][0])+1)*sx for c in s)-sx
     if center: x -= width//2
     d=ImageDraw.Draw(im)
     for c in s:
+        glyph = native(c,len(GLYPHS[c][0])*sx,5*sy,sx) if sx == sy and sx > 1 else None
+        if glyph is not None:
+            # Same cell and advance as the doubled 3x5, drawn at native resolution.
+            im.paste(color,(x,y),glyph);x += (len(GLYPHS[c][0])+1)*sx;continue
         for row, bits in enumerate(GLYPHS[c]):
             for col, bit in enumerate(bits):
                 if bit=='1': d.rectangle((x+col*sx,y+row*sy,x+(col+1)*sx-1,y+(row+1)*sy-1),fill=color)
@@ -117,6 +135,8 @@ def fonts():
     (folder/'fonts.xml').write_text('<fonts><font id="Tiny" filename="tiny.fnt"/><font id="Medium" filename="medium.fnt"/><font id="WeatherSmall" filename="weather-small.fnt"/></fonts>\n')
 
 def weather_glyph(char):
+    glyph=native(char,5,8,2)
+    if glyph is not None:return glyph.convert('1')
     mask=Image.new('1',(5,8),0);d=ImageDraw.Draw(mask)
     for row,bits in enumerate(GLYPHS[char]):
         for col,bit in enumerate(bits):

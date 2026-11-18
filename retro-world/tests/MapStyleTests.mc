@@ -9,8 +9,10 @@ import Toybox.WatchUi;
 function allSkinResourcesRenderWithoutKeepingTheWholeLibraryInMemory(logger) {
     var buffer=DeviceDrawing.buffer(89,29,DeviceProfile.SCALE);var dc=DeviceDrawing.resolve(buffer).getDc();
     for(var skin=0;skin<MapStyle.COUNT;skin++) {
-        var day=WatchUi.loadResource(MapSkinResources.get(skin,false));dc.drawBitmap(0,0,day);day=null;
-        var night=WatchUi.loadResource(MapSkinResources.get(skin,true));dc.drawBitmap(0,0,night);night=null;
+        // One font per skin: 'd' day map, 'n' night map, in the theme's map colour.
+        var font=WatchUi.loadResource(MapSkinResources.get(skin));
+        dc.setColor(Theme.map,Graphics.COLOR_TRANSPARENT);dc.drawText(0,0,font,"d",Graphics.TEXT_JUSTIFY_LEFT);dc.drawText(0,0,font,"n",Graphics.TEXT_JUSTIFY_LEFT);
+        Test.assertEqual(dc.getFontHeight(font),DeviceDrawing.size(29,DeviceProfile.SCALE));font=null;
     }
     return true;
 }

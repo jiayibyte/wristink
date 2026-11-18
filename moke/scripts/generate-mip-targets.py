@@ -10,15 +10,27 @@ DEVICES=Path.home()/'Library/Application Support/Garmin/ConnectIQ/Devices'
 NS={'iq':'http://www.garmin.com/xml/connectiq'}
 ET.register_namespace('iq',NS['iq'])
 
-def geometry(c,s):
+# Modern round screens: the Instinct layout fills 86% of the diameter instead of
+# 76%. The rows that would reach the bezel move in (weather +8, status/date +6,
+# footer narrower) and the heart window moves inward on its own transform.
+ROUND_LAYOUT=dict(side=.86,circle_cx=136,circle_cy=38,circle_r=25,weather_shift=8,upper_shift=6,footer_left_width=56,footer_right_x=88,footer_right_width=56,lower_right_width=60)
+def geometry(c,s,round_layout=False):
     location=s['display']['location'];w,h=location['width'],location['height']
     family=c['deviceFamily'];shape=s['display']['shape']
+    roundish=shape in ['round','semi-round','semiround','semi-octagon'] or 'round' in family
+    tuned=round_layout and roundish and not s.get('subscreen') and not s.get('analogHands')
     if 'semioctagon' in family and 'subscreen' in s:side=min(w,h)
-    elif shape in ['round','semi-round','semiround','semi-octagon'] or 'round' in family:side=min(w,h)*.76
+    elif tuned:side=min(w,h)*ROUND_LAYOUT['side']
+    elif roundish:side=min(w,h)*.76
     else:side=min(w,h)-8
     scale=round(side/176,6)
     g=dict(width=w,height=h,shape=shape,scale=scale,x=round((w-side)/2),y=round((h-side)/2),analog=bool(s.get('analogHands')))
     g.update(circle_scale=scale,circle_x=g['x'],circle_y=g['y'],time_scale=round(scale*(.92 if g['analog'] else 1),6))
+    g.update(weather_shift=0,upper_shift=0,footer_left_width=64,footer_right_x=98,footer_right_width=58,lower_right_width=68)
+    if tuned:
+        L=ROUND_LAYOUT;cs=round(scale*L['circle_r']/31,6)
+        g.update(circle_scale=cs,circle_x=round(g['x']+scale*L['circle_cx']-144*cs,6),circle_y=round(g['y']+scale*L['circle_cy']-31*cs,6))
+        g.update({k:L[k] for k in ('weather_shift','upper_shift','footer_left_width','footer_right_x','footer_right_width','lower_right_width')})
     if s.get('subscreen'):
         sub=s['subscreen']['location'];cs=round(sub['width']/62,6)
         g.update(circle_scale=cs,circle_x=round(sub['x']-location['x']+sub['width']/2-144*cs,6),circle_y=round(sub['y']-location['y']+sub['height']/2-31*cs,6))
@@ -60,7 +72,9 @@ def scaled_assets(key,g,icon,noclip=False,compact=False):
     from english_fonts import generate
     english=dest.parent/'resources-eng'
     shutil.copytree(ROOT/'resources-eng',english,dirs_exist_ok=True)
-    generate(english,g['scale'],g['circle_scale'])
+    # One Latin-extended font set for both languages (see generate-english.py).
+    generate(dest,g['scale'],g['circle_scale'],shared=True)
+    shutil.rmtree(english/'fonts',ignore_errors=True)
     if compact:
         # These 48KB API-1.4 models use vector rings and phone-only settings.
         tree=ET.parse(dest/'drawables/drawables.xml')
@@ -187,7 +201,7 @@ function fontSize(key){var n=get(key+"Size");return n==0 ? get("dataSize") : n-1
         for match in re.finditer(r'((?:\s*case \d+:)+)(.*?)(?=\s*case \d+:|\n        }\n    }\n})',icons,re.S):
             kinds=set(map(int,re.findall(r'case (\d+):',match[1])))
             if kinds & {1,2,3,5,6,7,14,18}:cases.append(match[0])
-        icons='import Toybox.Graphics;\nimport Toybox.Math;\nmodule LegacyIcons {\n'+weather+moon+'function draw(dc,kind,x,y,ink,paper,battery,condition){dc.setColor(ink,paper);switch(kind){'+''.join(cases)+'default:var text=kind==4 ? "F" : (kind==10 || kind==12 || kind==22 || kind==23 ? "%" : (kind==11 || kind==24 ? "!" : (kind==16 ? "T" : (kind==19 ? "B" : (kind==20 || kind==21 ? "M" : (kind==26 ? "S" : (kind==28 ? "P" : "R")))))));dc.drawText(x,y,Graphics.FONT_XTINY,text,Graphics.TEXT_JUSTIFY_LEFT);break;}}}\n'
+        icons='import Toybox.Graphics;\nimport Toybox.Math;\nmodule LegacyIcons {\n'+weather+moon+'function draw(dc,kind,x,y,ink,paper,battery,condition){dc.setColor(ink,paper);switch(kind){'+''.join(cases)+'default:var text=kind==4 ? "F" : (kind==10 || kind==12 || kind==22 || kind==23 ? "%" : (kind==11 || kind==24 ? "!" : (kind==16 ? "T" : (kind==19 ? "B" : (kind==20 || kind==21 ? "M" : (kind==26 ? "S" : (kind==28 ? "P" : (kind==29 ? "L" : "R"))))))));dc.drawText(x,y,Graphics.FONT_XTINY,text,Graphics.TEXT_JUSTIFY_LEFT);break;}}}\n'
         icons=re.sub(r'case 5:.*?break;', 'case 5:dc.fillEllipse(x+7,y+9,4,5);for(var i=0;i<7;i++){dc.drawLine(x+7-i*.5,y+i,x+7+i*.4,y+i);}dc.setColor(paper,paper);dc.fillCircle(x+7,y+11,1);dc.setColor(ink,paper);break;',icons,flags=re.S)
         icons=re.sub(r'case 6:.*?break;', 'case 6:dc.fillCircle(x+4,y+4,3);dc.fillCircle(x+10,y+4,3);for(var i=0;i<9;i++){dc.drawLine(x+1+i*.75,y+5+i,x+13-i*.75,y+5+i);}break;',icons,flags=re.S)
         icons=re.sub(r'case 18:.*?break;', 'case 18:for(var i=0;i<11;i++){dc.drawLine(x+6-i*.6,y+2+i,x+6+i,y+2+i);}break;',icons,flags=re.S)
@@ -253,7 +267,9 @@ def main():
         if args.only and c['deviceId'] not in args.only:continue
         # Regional hardware may expose an older API than the device group.
         api=min(tuple(map(int,part['connectIQVersion'].split('.'))) for part in c['partNumbers'])
-        g=geometry(c,s);icon=c.get('launcherIcon',dict(width=40,height=40));key=c['deviceFamily']+'-'+str(round(g['scale']*1000000))+f'-c{round(g["circle_scale"]*1000000)}-t{round(g["time_scale"]*1000000)}-icon{icon["width"]}x{icon["height"]}'
+        api=min(tuple(map(int,part['connectIQVersion'].split('.'))) for part in c['partNumbers'])
+        modern=api>=(3,3) and (types['watchFace']>65536 or c.get('codePageSize',0)>0)
+        g=geometry(c,s,modern);icon=c.get('launcherIcon',dict(width=40,height=40));key=c['deviceFamily']+'-'+str(round(g['scale']*1000000))+f'-c{round(g["circle_scale"]*1000000)}-t{round(g["time_scale"]*1000000)}-icon{icon["width"]}x{icon["height"]}'
         paging=c.get('codePageSize',0)>0
         renderer='modern' if api>=(3,3) and (types['watchFace']>65536 or paging) else 'legacy'
         mode='完整' if api>=(3,3) else '轻量兼容'
@@ -269,6 +285,7 @@ def main():
         api=tuple(map(int,row['api'].split('.')))
         profile=f'// Generated from Garmin {row["family"]}.\nimport Toybox.WatchUi;\nmodule DeviceProfile {{const SCALE={g["scale"]};const X={g["x"]};const Y={g["y"]};const CIRCLE_SCALE={g["circle_scale"]};const CIRCLE_X={g["circle_x"]};const CIRCLE_Y={g["circle_y"]};const ANALOG={str(g["analog"]).lower()};const CLIP={str(api>=(2,3)).lower()};const BODY={str(api>=(3,3)).lower()};const WEATHER={str(api>=(3,2)).lower()};'
         profile+=('const SECONDS_X=146;const SECONDS_Y=63;const SECONDS_LEFT=116;const SECONDS_WIDTH=58;const SECONDS_HEIGHT=14;' if g['analog'] else 'const SECONDS_X=153;const SECONDS_Y=90;const SECONDS_LEFT=140;const SECONDS_WIDTH=28;const SECONDS_HEIGHT=21;')
+        profile+=''.join(f'const {k.upper()}={g[k]};' for k in ('weather_shift','upper_shift','footer_left_width','footer_right_x','footer_right_width','lower_right_width'))
         if g['analog']:
             profile+='var _holding=false;function hands(view,awake){var mode=FacePrefs.get("analogHandMode");var want=mode==2 || (mode==1 && awake);if(want==_holding){return;}view.setClockHandPosition({:clockState=>want ? WatchUi.ANALOG_CLOCK_STATE_HOLDING : WatchUi.ANALOG_CLOCK_STATE_SYSTEM_TIME,:hour=>270,:minute=>90});_holding=want;}function releaseHands(view){if(_holding){view.setClockHandPosition({:clockState=>WatchUi.ANALOG_CLOCK_STATE_SYSTEM_TIME});_holding=false;}}'
         else:profile+='function hands(view,awake){}function releaseHands(view){}'
@@ -281,7 +298,10 @@ def main():
             if row['renderer']=='legacy':
                 allowed={'Chart'}|{f'DataF{f}S{s}' for f in range(3) for s in [8,12,14,16]}|{f'TimeF{f}S{s}' for f in range(3) for s in [54,58,64]}|{f'LiveHeartF{f}S{s}' for f in range(3) for s in [18,22]}
                 for res in [resource,resource.parent/'resources-eng']:
-                    fonts=res/'fonts/fonts.xml';tree=ET.parse(fonts)
+                    # English shares the Chinese folder's superset fonts and has no fonts.xml of its own.
+                    fonts=res/'fonts/fonts.xml'
+                    if not fonts.exists():continue
+                    tree=ET.parse(fonts)
                     for item in list(tree.getroot()):
                         if item.get('id') not in allowed:tree.getroot().remove(item)
                     tree.write(fonts,encoding='utf-8')

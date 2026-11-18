@@ -1,5 +1,5 @@
 info face="Moke Rounded dataf1s12" size=12 bold=1 italic=0 charset="" unicode=1 stretchH=100 smooth=0 aa=1 padding=0,0,0,0 spacing=1,1
-common lineHeight=16 base=16 scaleW=502 scaleH=33 pages=1 packed=0
+common lineHeight=16 base=16 scaleW=617 scaleH=33 pages=1 packed=0
 page id=0 file="dataf1s12.png"
 chars count=42
 char id=48 x=0 y=0 width=11 height=16 xoffset=-2 yoffset=0 xadvance=7 page=0 chnl=15
@@ -44,3 +44,14 @@ char id=19978 x=486 y=0 width=16 height=16 xoffset=-2 yoffset=0 xadvance=12 page
 char id=21320 x=0 y=17 width=16 height=16 xoffset=-2 yoffset=0 xadvance=12 page=0 chnl=15
 char id=19979 x=17 y=17 width=16 height=16 xoffset=-2 yoffset=0 xadvance=12 page=0 chnl=15
 char id=21320 x=34 y=17 width=16 height=16 xoffset=-2 yoffset=0 xadvance=12 page=0 chnl=15
+char id=83 x=502 y=0 width=9 height=16 xoffset=-1 yoffset=0 xadvance=7 page=0 chnl=15
+char id=117 x=512 y=0 width=9 height=16 xoffset=-1 yoffset=0 xadvance=7 page=0 chnl=15
+char id=110 x=522 y=0 width=9 height=16 xoffset=-1 yoffset=0 xadvance=7 page=0 chnl=15
+char id=77 x=532 y=0 width=12 height=16 xoffset=-1 yoffset=0 xadvance=10 page=0 chnl=15
+char id=111 x=545 y=0 width=9 height=16 xoffset=-1 yoffset=0 xadvance=7 page=0 chnl=15
+char id=84 x=555 y=0 width=9 height=16 xoffset=-1 yoffset=0 xadvance=7 page=0 chnl=15
+char id=101 x=565 y=0 width=9 height=16 xoffset=-1 yoffset=0 xadvance=7 page=0 chnl=15
+char id=87 x=575 y=0 width=13 height=16 xoffset=-1 yoffset=0 xadvance=11 page=0 chnl=15
+char id=100 x=589 y=0 width=9 height=16 xoffset=-1 yoffset=0 xadvance=7 page=0 chnl=15
+char id=114 x=599 y=0 width=7 height=16 xoffset=-1 yoffset=0 xadvance=5 page=0 chnl=15
+char id=65 x=607 y=0 width=9 height=16 xoffset=-1 yoffset=0 xadvance=7 page=0 chnl=15

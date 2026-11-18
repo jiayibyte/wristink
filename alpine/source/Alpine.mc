@@ -69,43 +69,9 @@ class AlpineView extends WatchUi.WatchFace {
         if(scene==1) {return 0xCCCCFF;}if(scene==3 || scene==6 || scene==7) {return 0xFFAA55;}
         if(scene==4 || scene==9) {return 0x9999FF;}if(scene==5) {return 0x99BBBB;}return 0x66DDDD;
     }
-    function skyPixel(x,y) {return x>=0 && y>=0 && x<Device.W && y<Device.H && y<Device.SKYLINE[x]-Device.SKYSHIFT;}
-    function cloud(dc,x as Numeric,y as Numeric,width as Numeric,c as Number) {
-        // Native filled primitives avoid per-pixel VM loops in a watch-face callback.
-        var w=p(width);var xx=p(x);var yy=p(y);var r=(w*.20).toNumber();
-        var top=yy-r;var bottom=yy+r+1;
-        if(Device.MONO) {
-            // Keep clouds above the highest ridge in their span. This avoids a
-            // second full-width foreground bitmap in the tiny watch-face heap.
-            var edge=Device.H;
-            for(var i=xx;i<xx+w;i++) {if(i>=0 && i<Device.W) {var e=Device.SKYLINE[i]-Device.SKYSHIFT;if(e<edge) {edge=e;}}}
-            if(bottom>edge) {yy-=bottom-edge;top=yy-r;bottom=edge;}
-            if(Settings.top!=11 && top<p(20)) {top=p(20);}
-        }
-        if(bottom<=top) {return;}
-        dc.setClip(xx,top,w,bottom-top);color(dc,c);
-        dc.fillCircle(xx+r,yy+r,r);
-        dc.fillCircle(xx+(w*.47).toNumber(),yy+(w*.15).toNumber(),(w*.25).toNumber());
-        dc.fillCircle(xx+(w*.76).toNumber(),yy+r,r);
-        dc.clearClip();
-    }
-    function body(dc,progress,isMoon,stamp) {
-        var x=(Device.MONO ? 10 : 12)+(Device.MONO ? 98 : 236)*progress;
-        var leftEdge=(Device.SKYLINE[p(Device.MONO ? 10 : 12)]-Device.SKYSHIFT)/Device.S;var rightEdge=(Device.SKYLINE[p(Device.MONO ? 108 : 248)]-Device.SKYSHIFT)/Device.S;
-        var baseline=leftEdge+(rightEdge-leftEdge)*progress;var y=baseline-(baseline-(Device.MONO ? 24 : 48))*Math.sin(progress*Math.PI);
-        var radius=p(isMoon ? (Device.MONO ? 4 : 7) : (Device.MONO ? 3 : 6));var cx=p(x);var cy=p(y);
-        var angle=Sky.moonPhase*2*Math.PI;var flip=Data.latitude!=null && Data.latitude<0 ? -1 : 1;
-        var sine=isMoon ? Math.sin(angle) : 0;var cosine=isMoon ? Math.cos(angle) : 0;
-        color(dc,Device.MONO ? 0xFFFFFF : (isMoon ? 0xF6E9C7 : 0xFFF2CC));
-        for(var yy=-radius;yy<=radius;yy++) {var run=null;for(var xx=-radius;xx<=radius+1;xx++) {
-            var rr=(xx*xx+yy*yy).toFloat()/(radius*radius);
-            var lit=xx<=radius && rr<=1 && skyPixel(cx+xx,cy+yy) && (!isMoon || flip*xx.toFloat()/radius*sine-Math.sqrt(1-rr)*cosine>0);
-            if(lit && run==null) {run=xx;}
-            if(!lit && run!=null) {dc.drawLine(cx+run,cy+yy,cx+xx-1,cy+yy);run=null;}
-        }}
-    }
     function prepareBackground() {
-        var key=1;
+        // One background is resident: the selected mountain.
+        var key=Settings.mountain;
         if(_artScene!=key || _background==null) {
             _background=null;_background=WatchUi.loadResource(LandscapeArt.id(key));_artScene=key;
         }
@@ -147,6 +113,16 @@ class AlpineView extends WatchUi.WatchFace {
         var value=Data.value(Settings.circle);var font=dc.getTextWidthInPixels(value,_small)<=p(34) ? _small : _label;
         if(dc.getTextWidthInPixels(value,font)>p(34)) {value="--";}
         text(dc,24,165,font,value,0xFFFFFF);
+    }
+    // Instinct: one data field left of the time, mirroring AM/PM and seconds on the right
+    // (label on the AM/PM row, value on the seconds row). Colour screens use CircleData there.
+    function timeSide(dc) {
+        var kind=Settings.timeLeft;if(!Device.MONO || kind==11) {return;}
+        if(kind==6) {WeatherGlyph.draw(dc,p(19),p(104),0xFFFFFF,0);}
+        else {text(dc,19,101,_label,Data.label(kind),0xFFFFFF);}
+        var value=Data.value(kind);var font=dc.getTextWidthInPixels(value,_small)<=p(32) ? _small : _label;
+        if(dc.getTextWidthInPixels(value,font)>p(32)) {value="--";}
+        text(dc,19,118,font,value,0xFFFFFF);
     }
     function metrics(dc,heartOnly) {
         var keys=[Settings.left,Settings.middle,Settings.right];
@@ -239,6 +215,7 @@ class AlpineView extends WatchUi.WatchFace {
         text(dc,Device.MONO ? 88 : 130,Device.MONO ? 126 : 187,_small,date,0xFFFFFF);
         dateDecor(dc,date);
         if(Device.MONO && !is24) {text(dc,158,99,_small,h>=12 ? "PM" : "AM",0xFFFFFF);}
+        timeSide(dc);
         metrics(dc,false);circle(dc);seconds(dc,sec);_minute=minute;_second=sec;
         if(Mode.DEMO && !_logged) {System.println("ALPINE_READY demo=true free="+System.getSystemStats().freeMemory+" width="+Device.W+" height="+Device.H);_logged=true;}
     }

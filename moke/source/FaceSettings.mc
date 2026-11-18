@@ -1,8 +1,10 @@
 import Toybox.Application;
+import Toybox.System;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
 module FacePrefs {
+    const SOLAR=29;
     var revision=0;
     (:extendedCode)
     function migrate() {
@@ -47,15 +49,38 @@ module FacePrefs {
             }
             Application.Storage.setValue("roundedLayoutV7",true);
         }
+        if(Application.Storage.getValue("windArrowV8")!=true){
+            // The direction arrow is shown by default again. Applied once so
+            // existing installs see it too; hiding it afterwards is respected.
+            Application.Properties.setValue("showWind",true);
+            // Fill the empty second-row slot of an untouched stock layout; a
+            // layout the user already customised keeps its own choice.
+            if(Application.Properties.getValue("topTwo")==17 && Application.Properties.getValue("topThree")==0){Application.Properties.setValue("topThree",29);}
+            Application.Storage.setValue("windArrowV8",true);
+        }
     }
 
     function reload() {
         // Invalidate the render plan without duplicating the property store in RAM.
         revision+=1;
     }
+    var _solar=null;
+    // Solar intensity exists only on solar models; elsewhere that choice
+    // (the stock second-row default) shows humidity instead of "--".
+    function solar() {
+        if(_solar==null){var stats=System.getSystemStats();_solar=(stats has :solarIntensity) && stats.solarIntensity!=null;}
+        return _solar;
+    }
+    // True when a watch that looked solar-less now reports solar intensity.
+    function recheckSolar() {
+        if(_solar!=false){return false;}
+        _solar=null;return solar();
+    }
     function get(key) {
         var v=null;try{v=Application.Properties.getValue(key);}catch(e){}
-        return v instanceof Number && v>=0 && v<=PrefsDefaults.max(key) ? v : PrefsDefaults.value(key);
+        var max=PrefsDefaults.max(key);
+        v=v instanceof Number && v>=0 && v<=max ? v : PrefsDefaults.value(key);
+        return v==SOLAR && max==SOLAR && !solar() ? 10 : v;
     }
     function flag(key) {
         var v=null;try{v=Application.Properties.getValue(key);}catch(e){}return v instanceof Boolean ? v : PrefsDefaults.flag(key);

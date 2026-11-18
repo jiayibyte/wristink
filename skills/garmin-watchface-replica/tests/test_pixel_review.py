@@ -45,4 +45,32 @@ class PixelReviewTests(unittest.TestCase):
             lines[-1]=lines[-1].replace('width=4','width=8');(p/'digits.fnt').write_text('\n'.join(lines))
             self.assertTrue(any('rectangle' in s for s in qa.atlas(p/'digits.fnt',p/'audit.json')['errors']))
 
+    def digits(self,folder,ink_width,advance,alpha=255):
+        # Ten distinct digits whose ink spans ink_width columns from the pen.
+        image=Image.new('RGBA',(10*ink_width,6),(255,255,255,0));lines=['page id=0 file="digits.png"']
+        for i in range(10):
+            for x in range(ink_width):image.putpixel((i*ink_width+x,5),(255,255,255,alpha))
+            for bit in range(4):
+                if (i+1) & (1<<bit):image.putpixel((i*ink_width,bit),(255,255,255,255))
+            lines.append(f'char id={48+i} x={i*ink_width} y=0 width={ink_width} height=6 xoffset=0 xadvance={advance} yoffset=0 page=0')
+        image.save(folder/'digits.png');(folder/'digits.fnt').write_text('\n'.join(lines))
+        return folder/'digits.fnt'
+
+    def test_detects_digits_that_touch_in_running_text(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)
+            # Ink as wide as the advance: every pair touches once set as text.
+            r=qa.atlas(self.digits(p,6,6),p/'audit.json')
+            self.assertFalse(r['passed']);self.assertEqual(r['min_digit_gap'],0)
+            self.assertTrue(any('touch or overlap' in s for s in r['errors']))
+            r=qa.atlas(self.digits(p,6,7),p/'audit.json')
+            self.assertTrue(r['passed']);self.assertEqual(r['min_digit_gap'],1)
+
+    def test_one_bit_target_rejects_grey_coverage(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);font=self.digits(p,6,7,alpha=120)
+            self.assertEqual(qa.atlas(font,p/'audit.json')['alpha_levels'],3)
+            r=qa.atlas(font,p/'audit.json',one_bit=True)
+            self.assertTrue(any('1-bit' in s for s in r['errors']))
+
 if __name__=='__main__':unittest.main()

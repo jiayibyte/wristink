@@ -7,7 +7,7 @@ from PIL import Image, ImageDraw, ImageFont
 import json
 import math
 import shutil
-from retro_style import digit as retro_digit, text as retro_text, fonts as retro_fonts, weather_glyph
+from retro_style import digit as retro_digit, text as retro_text, fonts as retro_fonts, weather_glyph, native as native_glyph, GLYPHS
 from garmin_weather import icon as garmin_icon, generate as generate_weather, COARSE
 from map_skins import NAMES as SKIN_NAMES, bitmap as skin_bitmap, select as select_skin
 
@@ -33,6 +33,28 @@ def date_digit(n):
     for target,source in enumerate(y for y in range(15) if y not in (5,11)):
         result.paste(original.crop((0,source,8,source+1)),(0,target))
     return result
+
+def letter_tile(char,cell_w,h,stroke=1):
+    """One AM/PM letter in its sprite cell, drawn at the cell's own resolution."""
+    tile=Image.new('1',(cell_w,h),1)
+    glyph=native_glyph(char,max(1,cell_w-max(1,stroke)),h,stroke)
+    if glyph is None:retro_text(tile,0,0,char,sy=max(1,h//5))
+    else:tile.paste(0,(0,0),glyph)
+    return tile
+
+def weekday_tile(word,cell_w,h,scale=1):
+    """Centred three-letter weekday at native size; cell geometry is unchanged."""
+    tile=Image.new('1',(cell_w,h),1)
+    unit=max(1,round(2*scale));widths=[max(1,round(len(GLYPHS[c][0])*2*scale)) for c in word]
+    x=(cell_w-(sum(widths)+unit*(len(word)-1)))//2
+    for c,w in zip(word,widths):
+        glyph=native_glyph(c,w,h,unit)
+        if glyph is None:retro_text(tile,x,0,c,sx=max(1,w//len(GLYPHS[c][0])),sy=max(1,h//5))
+        else:tile.paste(0,(x,0),glyph)
+        x+=w+unit
+    return tile
+
+WEEKDAYS=('SUN','MON','TUE','WED','THU','FRI','SAT')
 
 def land_mask():
     im=Image.new('1',(89,29),1);d=ImageDraw.Draw(im)
@@ -105,6 +127,36 @@ def circle_face(inset=0):
     d.line((0,62,62,62),fill=0);d.line((62,0,62,62),fill=0)
     return im
 
+def circle_face_native(size,scale,hardware=False):
+    """The small dial drawn at its final pixel size.
+
+    Screens without a hardware sub-window show the whole bitmap, so the disc
+    must sit inside it: the 63px master clips its disc flat on all four sides,
+    and enlarging it turns that into an octagon with stepped edges. Geometry is
+    laid out in a supersampled canvas and thresholded once at native size.
+    """
+    ss=8;S=size;mask=Image.new('L',(S*ss,S*ss),0);d=ImageDraw.Draw(mask)
+    c=S/2                                   # continuous centre of the bitmap
+    def ring(r,w,fill):d.ellipse(((c-r)*ss,(c-r)*ss,(c+r)*ss,(c+r)*ss),outline=fill,width=max(1,round(w*ss)))
+    def disc(r,fill):d.ellipse(((c-r)*ss,(c-r)*ss,(c+r)*ss,(c+r)*ss),fill=fill)
+    k=S/63                                  # master-to-native factor
+    disc(S/2+(1 if hardware else -.5),255)  # a hardware aperture masks the rim itself
+    ring(29.5*k,max(1,round(k)),0)
+    for i in range(60):
+        a=math.radians(i*6-90);major=i%5==0
+        inner=(25 if major else 27)*k;outer=28.4*k;w=max(1,round(k)) if major else 1
+        d.line(((c+inner*math.cos(a))*ss,(c+inner*math.sin(a))*ss,(c+outer*math.cos(a))*ss,(c+outer*math.sin(a))*ss),fill=0,width=w*ss)
+    im=mask.resize((S,S),Image.Resampling.BOX).point(lambda v:255 if v>=128 else 0).convert('1')
+    gw,gh=max(3,round(3*k)),max(5,round(5*k));stroke=max(1,round(k))
+    for label,(dx,dy) in (('12',(0,-22)),('3',(20,0)),('6',(0,21)),('9',(-20,0))):
+        width=len(label)*gw+(len(label)-1)*stroke;x0=round(c+dx*k-width/2);y0=round(c+dy*k-gh/2)
+        for j,ch in enumerate(label):
+            glyph=native_glyph(ch,gw,gh,stroke)
+            x=x0+j*(gw+stroke)
+            if glyph is None:retro_text(im,x,y0,ch,0)
+            else:im.paste(0,(x,y0),glyph)
+    return im
+
 def base():
     im=Image.new('1',(176,176),0);d=ImageDraw.Draw(im)
     d.rounded_rectangle((16,31,109,49),radius=4,fill=1);d.line((18,40,107,40),fill=0)
@@ -117,6 +169,38 @@ def base():
     d.rounded_rectangle((79,90,165,110),radius=4,outline=1);d.rounded_rectangle((82,93,162,112),radius=2,fill=1)
     d.rectangle((82,105,161,112),fill=1);d.line((83,108,161,108),fill=0);d.line((119,94,119,107),fill=0)
     sun_icon(im,82,163)
+    return im
+
+# Weather window on screens without a hardware sub-window: the space under the
+# dial is free there, so the icon and temperature get a larger panel.
+FULL_WEATHER_BOX=(116,67,170,87)
+
+def base_native(s=1.0,full=False,frames=False):
+    """base() drawn directly at a device's pixel size.
+
+    Enlarging the 176px bitmap by a fractional factor gives outlines of uneven
+    width and stepped corners. Here every box is laid out in native pixels with
+    one stroke width, so a 260px or 454px screen gets clean panels.
+    """
+    X=lambda v:math.floor(v*s+.5)
+    W=max(1,X(176));im=Image.new('1',(W,W),0);d=ImageDraw.Draw(im);lw=max(1,round(s))
+    box=lambda x0,y0,x1,y1:(X(x0),X(y0),X(x1+1)-1,X(y1+1)-1)
+    def rr(b,r,fill=None,outline=None):
+        if frames and outline is None:return
+        d.rounded_rectangle(box(*b),radius=max(1,round(r*s)),fill=fill,outline=outline,width=lw)
+    def rule(x0,x1,y,fill=0):d.rectangle(box(x0,y,x1,y),fill=fill)
+    if frames:
+        # Outlines only, for colour screens that tint the panel frames.
+        rr((13,52,109,88),4,outline=1);rr((10,106,165,150),5,outline=1);rr((79,90,165,110),4,outline=1)
+        return im
+    rr((16,31,109,49),4,fill=1);rule(18,107,40)
+    rr((13,52,109,88),4,outline=1);rr((15,54,107,86),2,fill=1)
+    world_=world();im.paste(world_.resize((X(17+world_.width)-X(17),X(56+world_.height)-X(56)),Image.Resampling.NEAREST),(X(17),X(56)))
+    rr(FULL_WEATHER_BOX if full else (123,74,165,86),4 if full else 3,fill=1)
+    rr((10,106,165,150),5,outline=1);rr((13,109,162,147),3,fill=1)
+    rr((79,90,165,110),4,outline=1);rr((82,93,162,112),2,fill=1)
+    d.rectangle(box(82,105,161,112),fill=1);rule(83,161,108);d.rectangle(box(119,94,119,107),fill=0)
+    sun=sun_mask();im.paste(1,(X(82),X(163)),sun.resize((X(82+13)-X(82),X(163+8)-X(163)),Image.Resampling.NEAREST))
     return im
 
 def marker(im,lat,lon):
@@ -133,8 +217,9 @@ def render(hour=22,minute=8,second=36,day=30,month=6,dow='SUN',mode24=False,weat
     d.rectangle((72,122,74,124),fill=0);d.rectangle((72,133,74,135),fill=0)
     for i,n in enumerate(f'{second:02}'):im.paste(digit(int(n),13,24),(132+i*14,122))
     if not mode24:
-        text(im,17,114,'P' if hour>=12 else 'A',size=8)
-        text(im,17,127,'M',size=8)
+        # The watch draws these from the letters sprite, not the tiny font.
+        im.paste(letter_tile('P' if hour>=12 else 'A',6,10),(17,114))
+        im.paste(letter_tile('M',6,10),(17,127))
     text(im,100,96,dow,size=13,center=True)
     for i,n in enumerate(f'{month:02}{day:02}'):
         if i==0 and month<10:continue
@@ -171,9 +256,9 @@ def main():
     land=land_mask()
     for skin in range(len(SKIN_NAMES)):
         for night in (False,True):skin_bitmap(land,skin,night).save(OUT/f'map-skin-{skin}-{int(night)}.png')
-    code='// Generated bitmap resource lookup; only the selected two bitmaps are loaded.\nmodule MapSkinResources {\nfunction get(skin,night) {switch(skin) {\n'
-    for skin in range(len(SKIN_NAMES)):code+=f'case {skin}:return night ? Rez.Drawables.MapSkin{skin}Night : Rez.Drawables.MapSkin{skin}Day;\n'
-    code+='}return night ? Rez.Drawables.MapSkin0Night : Rez.Drawables.MapSkin0Day;}\n}\n'
+    code='// Generated font lookup; only the selected skin (day + night glyphs) is loaded.\nmodule MapSkinResources {\nfunction get(skin) {switch(skin) {\n'
+    for skin in range(len(SKIN_NAMES)):code+=f'case {skin}:return Rez.Fonts.MapSkin{skin};\n'
+    code+='}return Rez.Fonts.MapSkin0;}\n}\n'
     (ROOT/'source/MapSkinResources.mc').write_text(code)
     for name,w,h in [('large',22,35),('date',8,13)]:
         atlas=Image.new('1',(10*w,h),1)
@@ -181,10 +266,10 @@ def main():
         atlas.save(OUT/(name+'.png'))
     for n in range(10):digit(n,13,24).save(OUT/f'second-{n}.png')
     weekdays=Image.new('1',(7*32,10),1)
-    for i,s in enumerate(('SUN','MON','TUE','WED','THU','FRI','SAT')):text(weekdays,i*32+16,0,s,size=13,center=True)
+    for i,s in enumerate(WEEKDAYS):weekdays.paste(weekday_tile(s,32,10),(i*32,0))
     weekdays.save(OUT/'weekdays.png')
     letters=Image.new('1',(26*6,10),1)
-    for i,c in enumerate('ABCDEFGHIJKLMNOPQRSTUVWXYZ'):retro_text(letters,i*6,0,c,sy=2)
+    for i,c in enumerate('ABCDEFGHIJKLMNOPQRSTUVWXYZ'):letters.paste(letter_tile(c,6,10),(i*6,0))
     letters.save(OUT/'letters.png')
     generate_weather(OUT,dist)
     render().resize((62,62),Image.Resampling.NEAREST).save(OUT/'icon.png')

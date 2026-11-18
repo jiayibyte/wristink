@@ -78,7 +78,7 @@ for theme in ['dark', 'light']:
             assert len(tile.getcolors()) == 2
 assert defaults['ringSource'] == 0 and defaults['cellsSource'] == 0
 assert defaults['circle'] == 6 and defaults['circleBackground'] == 1
-assert len(catalog['metrics']) == 29 and catalog['metrics'][0] == '隐藏'
+assert len(catalog['metrics']) == 30 and catalog['metrics'][0] == '隐藏'
 for font in ET.parse(ROOT / 'resources/fonts/fonts.xml').getroot():
     path = ROOT / 'resources/fonts' / font.get('filename')
     content = path.read_text()

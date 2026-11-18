@@ -1,1 +1,1 @@
-["System current heart rate", "Latest system sample (up to 3 min old)"]
+["Read current heart rate every 5 seconds", "Every 5 seconds while awake", "Every minute (power saving)"]

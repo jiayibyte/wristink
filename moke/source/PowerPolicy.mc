@@ -12,7 +12,7 @@ module PowerPolicy {
     const NOTIFICATIONS=256;
     function metric(kind){
         switch(kind){
-            case 1:case 17:return STATS;
+            case 1:case 17:case 29:return STATS;
             case 2:case 3:case 4:case 5:case 12:case 20:case 21:
             case 22:case 23:case 24:case 25:case 26:case 27:return ACTIVITY;
             case 18:case 28:return LIVE;

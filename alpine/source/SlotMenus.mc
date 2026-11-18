@@ -16,7 +16,7 @@ class SlotMenu extends WatchUi.Menu2 {
             addItem(new WatchUi.MenuItem(SlotCatalog.choiceTitles[c],SlotCatalog.choiceName(choiceKey,Settings.choice(choiceKey)),choiceKey,null));
         }
         for(var i=0;i<SlotCatalog.keys.size();i++) {
-            var key=SlotCatalog.keys[i];if(Device.MONO && key.equals("HeaderRight")) {continue;}
+            var key=SlotCatalog.keys[i];if((Device.MONO && key.equals("HeaderRight")) || (!Device.MONO && key.equals("TimeLeft"))) {continue;}
             var title=key.equals("CircleData") ? (Device.MONO ? Rez.Strings.CircleSlot : Rez.Strings.WeatherSlot) : SlotCatalog.titles[i];
             addItem(new WatchUi.MenuItem(title,SlotCatalog.name(Settings.getSlot(key)),key,null));
         }

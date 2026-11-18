@@ -29,30 +29,31 @@ class RetroWorldView extends WatchUi.WatchFace {
     var _tiny;var _medium;var _weatherFont;var _environmentWake=true;
     var _minute=-1;var _dataMinute=-1;var _logged=false;var _sleeping=false;
     var _hour=0;var _min=0;var _reportedMinute=-1;var _visibleSecond=-1;
-    var _circleBuffer;var _secSprites as Array<WatchUi.BitmapResource> = [];var _xs as Array<Number> = [];var _ys as Array<Number> = [];
+    var _circleBuffer;var _secFont;var _icons;var _xs as Array<Number> = [];var _ys as Array<Number> = [];
     var _oldSecond=-1;var _lastSecond=-1;var _partialBlocked=false;
-    var _partialHeartAllowed=true;
+    var _partialHeartAllowed=true;var _budgetStrikes=0;
     var _secondWidth=13;var _secondHeight=24;var _secondY=122;var _secondTensX=132;var _secondOnesX=146;
     function initialize() {
         WatchFace.initialize();
-        FaceSettings.load();
-        _dial=WatchUi.loadResource(Rez.Drawables.Dial);
-        if(DeviceProfile.COLOR) {_aod=WatchUi.loadResource(Rez.Drawables.Aod);}
-        _large=WatchUi.loadResource(Rez.Drawables.Large);
-        _date=WatchUi.loadResource(Rez.Drawables.Date);
-        _letters=WatchUi.loadResource(Rez.Drawables.Letters);
-        _weekdays=WatchUi.loadResource(Rez.Drawables.Weekdays);
-        _circle=WatchUi.loadResource(Rez.Drawables.Circle);
-        _weather=WatchUi.loadResource(Rez.Drawables.WeatherSmall);
+        FaceSettings.load();Theme.load(FaceSettings.theme);
+        // Colour screens draw vector panels in the theme; monochrome keeps the approved bitmap.
+        if(DeviceProfile.COLOR) {_icons=WatchUi.loadResource(Rez.Fonts.Icons);} else {_dial=WatchUi.loadResource(Rez.Drawables.Dial);}
+        if(DeviceProfile.AMOLED) {_aod=WatchUi.loadResource(Rez.Drawables.Aod);}
+        // Two-tone sprites are fonts, drawn in the theme's ink.
+        _large=WatchUi.loadResource(Rez.Fonts.Seg);
+        _date=WatchUi.loadResource(Rez.Fonts.SegDate);
+        _letters=WatchUi.loadResource(Rez.Fonts.Caps);
+        _weekdays=WatchUi.loadResource(Rez.Fonts.Days);
+        _circle=WatchUi.loadResource(Rez.Fonts.Face);
+        _weather=WatchUi.loadResource(Rez.Fonts.WxIcon);
+        _secFont=WatchUi.loadResource(Rez.Fonts.SegSec);
         _tiny=WatchUi.loadResource(Rez.Fonts.Tiny);_medium=WatchUi.loadResource(Rez.Fonts.Medium);
         _weatherFont=WatchUi.loadResource(Rez.Fonts.WeatherSmall);
         // The native default accepts the resource's transparent palette slots on MIP.
         _circleBuffer=DeviceDrawing.buffer(39,39,DeviceProfile.CIRCLE_SCALE);
-        var sprites=[Rez.Drawables.Sec0,Rez.Drawables.Sec1,Rez.Drawables.Sec2,Rez.Drawables.Sec3,Rez.Drawables.Sec4,Rez.Drawables.Sec5,Rez.Drawables.Sec6,Rez.Drawables.Sec7,Rez.Drawables.Sec8,Rez.Drawables.Sec9];
-        for(var i=0;i<sprites.size();i++) {_secSprites.add(WatchUi.loadResource(sprites[i]));}
-        // These sprites are already generated at the native device size. Do not
-        // query bitmap dimensions or transform their coordinates every second.
-        var shape=DeviceDrawing.metrics(_secSprites[0]);_secondWidth=shape.getWidth();_secondHeight=shape.getHeight();
+        // The seconds glyphs are generated at the native device size. Do not
+        // transform their coordinates every second.
+        _secondWidth=DeviceDrawing.size(13,DeviceProfile.SCALE);_secondHeight=DeviceDrawing.size(24,DeviceProfile.SCALE);
         _secondY=Math.round(DeviceProfile.Y+122*DeviceProfile.SCALE).toNumber();
         _secondTensX=Math.round(DeviceProfile.X+132*DeviceProfile.SCALE).toNumber();
         _secondOnesX=Math.round(DeviceProfile.X+146*DeviceProfile.SCALE).toNumber();
@@ -63,9 +64,21 @@ class RetroWorldView extends WatchUi.WatchFace {
         SolarMap.initialize();
     }
     function onShow() {_minute=-1;_dataMinute=-1;_environmentWake=true;_partialBlocked=false;}
-    function settingsChanged() {_dataMinute=-1;_minute=-1;_environmentWake=true;_partialBlocked=false;_partialHeartAllowed=true;}
+    function settingsChanged() {
+        _dataMinute=-1;_minute=-1;_environmentWake=true;_partialBlocked=false;_partialHeartAllowed=true;_budgetStrikes=0;
+        if(FaceSettings.theme!=Theme.index) {
+            // Cached buffers hold the old theme's palette: recreate them.
+            Theme.load(FaceSettings.theme);_circleBuffer=null;
+            _circleBuffer=DeviceDrawing.buffer(39,39,DeviceProfile.CIRCLE_SCALE);SolarMap.initialize();
+        }
+    }
     function partialBudgetExceeded() {
-        _partialBlocked=true;
+        // Degrade instead of stopping. The first overrun drops the optional
+        // heart redraw and the second hand, keeping only the seconds digits,
+        // the cheapest work in the callback. Only a second overrun waits for
+        // the next wake. (Previously one overrun froze the seconds until wake.)
+        _budgetStrikes++;
+        _partialBlocked=_budgetStrikes>=2;
         // The OS can stop partial callbacks after a violation. Wait for user
         // wake, then continue seconds without optional heart-rate reads/draws.
         _partialHeartAllowed=false;
@@ -79,13 +92,13 @@ class RetroWorldView extends WatchUi.WatchFace {
     }
     function onEnterSleep() {
         _sleeping=true;
-        if(DeviceProfile.COLOR || !FaceSettings.continuous) {_minute=-1;WatchUi.requestUpdate();}
+        if(DeviceProfile.AMOLED || !FaceSettings.continuous) {_minute=-1;WatchUi.requestUpdate();}
         // The OS owns gesture duration. Supported MIP targets continue via
         // onPartialUpdate; AMOLED retains its independent minute-based AOD.
         if(PreviewMode.DIAGNOSTIC) {Performance.log("RETRO_SECONDS_SLEEP held="+_visibleSecond);}
     }
-    function number(dc,atlas,n,x,y,w,h) {
-        DeviceDrawing.sprite(dc,atlas,n,x,y,w,h,atlas==_weekdays ? 7 : 10);
+    function number(dc,font,n,x,y,w,h) {
+        dc.setColor(Theme.ink,Graphics.COLOR_TRANSPARENT);dc.drawText(x,y,font,n.toString(),Graphics.TEXT_JUSTIFY_LEFT);
     }
     function pair(dc,atlas,n,x,y,w,h) {
         number(dc,atlas,(n/10).toNumber(),x,y,w,h);
@@ -94,12 +107,15 @@ class RetroWorldView extends WatchUi.WatchFace {
     function letters(dc,word as String,x,y,spacing) {
         var chars=word.toCharArray();
         for(var i=0;i<chars.size();i++) {
-            var k=chars[i].toNumber()-65;DeviceDrawing.sprite(dc,_letters,k,x+i*spacing,y,6,10,26);
+            dc.setColor(Theme.ink,Graphics.COLOR_TRANSPARENT);dc.drawText(x+i*spacing,y,_letters,chars[i].toString(),Graphics.TEXT_JUSTIFY_LEFT);
         }
     }
     function buildCircle() {
-        var dc=DeviceDrawing.cache(DeviceDrawing.resolve(_circleBuffer).getDc(),true);dc.drawBitmap(-12,-12,_circle);
-        dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_WHITE);
+        var dc=DeviceDrawing.cache(DeviceDrawing.resolve(_circleBuffer).getDc(),true);
+        dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();
+        dc.setColor(Theme.paper,Graphics.COLOR_TRANSPARENT);dc.drawText(-12,-12,_circle,"D",Graphics.TEXT_JUSTIFY_LEFT);
+        dc.setColor(Theme.ink,Graphics.COLOR_TRANSPARENT);dc.drawText(-12,-12,_circle,"M",Graphics.TEXT_JUSTIFY_LEFT);
+        dc.setColor(Theme.ink,Graphics.COLOR_WHITE);
         dc.setPenWidth(3);hand(dc,(_hour%12)*30+_min*0.5,11,19,19);
         dc.setPenWidth(2);hand(dc,_min*6,16,19,19);
         dc.setPenWidth(1);dc.fillCircle(19,19,2);_oldSecond=-1;_lastSecond=-1;
@@ -117,7 +133,9 @@ class RetroWorldView extends WatchUi.WatchFace {
     }
     function secondDigit(dc,n,x) {
         dc=DeviceDrawing.raw(dc);x=x==132 ? _secondTensX : _secondOnesX;
-        dc.setClip(x,_secondY,_secondWidth,_secondHeight);dc.drawBitmap(x,_secondY,_secSprites[n]);dc.clearClip();
+        dc.setClip(x,_secondY,_secondWidth,_secondHeight);
+        dc.setColor(Theme.paper,Theme.paper);dc.fillRectangle(x,_secondY,_secondWidth,_secondHeight);
+        dc.setColor(Theme.ink,Graphics.COLOR_TRANSPARENT);dc.drawText(x,_secondY,_secFont,n.toString(),Graphics.TEXT_JUSTIFY_LEFT);dc.clearClip();
     }
     function needleClip(dc,s) {
         var px=_xs[s];var py=_ys[s];
@@ -129,6 +147,9 @@ class RetroWorldView extends WatchUi.WatchFace {
         dc=DeviceDrawing.circle(dc);
         var circleBuffer=DeviceDrawing.resolve(_circleBuffer);
         if((circleBuffer has :isCached) && !circleBuffer.isCached()) {buildCircle();}
+        // After a budget overrun the standby second hand is dropped: show the
+        // hour/minute dial without a frozen needle.
+        if(_sleeping && _budgetStrikes>0) {dc.setClip(125,12,39,39);dc.drawBitmap(125,12,circleBuffer);dc.clearClip();_oldSecond=-1;return;}
         // Cached hour/minute dial; erase only the OLD needle's small bounding box.
         if(_oldSecond<0) {dc.setClip(125,12,39,39);dc.drawBitmap(125,12,circleBuffer);}
         else {
@@ -137,17 +158,31 @@ class RetroWorldView extends WatchUi.WatchFace {
         }
         // Minute redraws restore the held needle while asleep; only awake ticks change it.
         if(FaceSettings.showNeedle) {
-            needleClip(dc,s);dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_WHITE);dc.setPenWidth(1);
+            needleClip(dc,s);dc.setColor(Theme.hand,Graphics.COLOR_WHITE);dc.setPenWidth(1);
             dc.drawLine(144,31,_xs[s],_ys[s]);
         }
         _oldSecond=s;
         dc.clearClip();
     }
-    function metric(dc,x,y,width,value,font,light) {
+    // Text on the black background takes the colour of its data kind on colour screens.
+    function tone(kind) {
+        if(!DeviceProfile.COLOR) {return Graphics.COLOR_WHITE;}
+        if(Theme.index==4) {return kind==1 ? DeviceProfile.RED : Theme.label;}
+        switch(kind) {
+            case 1:return DeviceProfile.RED;
+            case 2:case 10:return DeviceProfile.GREEN;
+            case 5:case 12:return DeviceProfile.TEAL;
+            case 6:case 3:case 11:case 13:return DeviceProfile.SKY;
+            case 4:case 7:case 8:case 9:return DeviceProfile.AMBER;
+        }
+        return Theme.label;
+    }
+    function metric(dc,x,y,width,value,font,light) {metricTone(dc,x,y,width,value,font,light,Graphics.COLOR_WHITE);}
+    function metricTone(dc,x,y,width,value,font,light,ink) {
         dc.setClip(x,y,width,font==_medium ? 12 : 8);
         dc.setColor(light ? Graphics.COLOR_WHITE : Graphics.COLOR_BLACK,light ? Graphics.COLOR_WHITE : Graphics.COLOR_BLACK);
         dc.fillRectangle(x,y,width,font==_medium ? 12 : 8);
-        dc.setColor(light ? Graphics.COLOR_BLACK : Graphics.COLOR_WHITE,light ? Graphics.COLOR_WHITE : Graphics.COLOR_BLACK);
+        dc.setColor(light ? Theme.ink : ink,light ? Graphics.COLOR_WHITE : Graphics.COLOR_BLACK);
         dc.drawText(x+width/2,y,font,value,Graphics.TEXT_JUSTIFY_CENTER);dc.clearClip();
     }
     function header(dc) {field(dc,0,26,6,83,_medium,false,false);}
@@ -157,19 +192,54 @@ class RetroWorldView extends WatchUi.WatchFace {
         if(dc.getTextWidthInPixels(value,font)>width) {value=DataFields.value(kind);}
         // Narrow weather/sun windows use a compact numeric representation.
         if(dc.getTextWidthInPixels(value,font)>width) {value="--";}
-        metric(dc,x,y,width,value,font,light);
+        metricTone(dc,x,y,width,value,font,light,tone(kind));
     }
     function statusRow(dc,left,y,value) {
         // Both rows share a fixed ink origin, even when the data gains digits.
         // Use the complete 9px aperture. This native bitmap font's visible ink
         // sits one pixel below the SDK vertical-center anchor, so compensate it.
-        dc.setClip(18,y-2,84,9);dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_WHITE);
+        dc.setClip(18,y-2,84,9);dc.setColor(Theme.ink,Graphics.COLOR_WHITE);
         dc.drawText(left,y+1,_tiny,value,Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);dc.clearClip();
     }
+    function icon(dc,kind,x,y) {
+        dc.setColor(Theme.ink,Graphics.COLOR_TRANSPARENT);dc.drawText(x,y,_weather,"abcdefghijklm".substring(kind,kind+1),Graphics.TEXT_JUSTIFY_LEFT);
+    }
+    // Rounded panel inset by `inset` logical pixels; shared outlines are drawn in layers.
+    function slab(dc,x0,y0,x1,y1,r,inset,c) {
+        var w=x1-x0+1-2*inset;var h=y1-y0+1-2*inset;if(w<=0 || h<=0) {return;}
+        dc.setColor(c,c);dc.fillRoundedRectangle(x0+inset,y0+inset,w,h,r>inset ? r-inset : 1);
+    }
+    // Colour screens: panels as vectors in the theme. The time display and the
+    // date tab are one shape: all frame layers first, then the gap, then paper,
+    // so the junction has a single continuous outline.
+    function panels(dc) {
+        var f=Theme.frame;var p=Theme.paper;var k=Graphics.COLOR_BLACK;
+        slab(dc,16,31,109,49,4,0,p);
+        slab(dc,13,52,109,88,4,0,f);slab(dc,13,52,109,88,4,1,k);slab(dc,13,52,109,88,4,2,p);
+        if(DeviceProfile.SUBSCREEN) {slab(dc,123,74,165,86,3,0,p);} else {slab(dc,116,67,170,87,4,0,p);}
+        slab(dc,10,106,165,150,5,0,f);slab(dc,79,90,165,110,4,0,f);
+        slab(dc,10,106,165,150,5,1,k);slab(dc,79,90,165,110,4,1,k);
+        slab(dc,10,106,165,150,5,3,p);slab(dc,79,90,165,110,4,3,p);
+        dc.setColor(Theme.ink,p);dc.fillRectangle(18,40,90,1);dc.fillRectangle(119,94,1,14);
+        dc.setColor(DeviceProfile.AMBER,Graphics.COLOR_TRANSPARENT);dc.fillRectangle(16,151,144,1);
+        dc.drawText(82,163,_icons,"S",Graphics.TEXT_JUSTIFY_LEFT);
+        var c=DeviceDrawing.circle(dc);
+        c.setColor(p,Graphics.COLOR_TRANSPARENT);c.drawText(113,0,_circle,"D",Graphics.TEXT_JUSTIFY_LEFT);
+        c.setColor(Theme.ink,Graphics.COLOR_TRANSPARENT);c.drawText(113,0,_circle,"M",Graphics.TEXT_JUSTIFY_LEFT);
+    }
     function weatherPanel(dc) {
+        if(!DeviceProfile.SUBSCREEN) {
+            // Full screens have room under the dial: 15px icon, medium numerals.
+            if(FaceSettings.slots[6]!=7) {field(dc,6,119,72,49,_medium,true,false);return;}
+            icon(dc,WeatherIcons.current(Time.now()),120,70);
+            var text=(Environment.temperature==null ? "--" : Environment.temperature.format("%.0f"))+"C";
+            var big=dc.getTextWidthInPixels(text,_medium)<=32;
+            metric(dc,136,big ? 72 : 74,32,text,big ? _medium : _tiny,true);
+            return;
+        }
         if(FaceSettings.slots[6]!=7) {field(dc,6,129,77,36,_tiny,true,false);return;}
         var kind=WeatherIcons.current(Time.now());
-        DeviceDrawing.sprite(dc,_weather,kind,129,76,9,9,13);
+        icon(dc,kind,129,76);
         var value=(Environment.temperature==null ? "--" : Environment.temperature.format("%.0f"))+"C";
         var f=dc.getTextWidthInPixels(value,_weatherFont)<=25 ? _weatherFont : _tiny;
         metric(dc,140,77,25,value,f,true);
@@ -204,14 +274,16 @@ class RetroWorldView extends WatchUi.WatchFace {
         seconds(dc,sec);if(FaceSettings.showNeedle) {paintCircle(dc,sec);}
     }
     function partialAt(dc,stamp,sec) {
-        if(DeviceProfile.COLOR || !FaceSettings.continuous || _partialBlocked || _minute<0 || !_sleeping) {return;}
-        // Wait for the top-of-minute full frame before using its cached hands.
-        if(_minute!=(stamp/60).toNumber()) {return;}
+        if(DeviceProfile.AMOLED || !FaceSettings.continuous || _partialBlocked || _minute<0 || !_sleeping) {return;}
+        // Only the second hand depends on the minute frame (its cached hands).
+        // The digits keep running even if that frame arrives late; previously a
+        // late frame froze the seconds for the whole minute.
+        var needle=FaceSettings.showNeedle && _budgetStrikes==0 && _minute==(stamp/60).toNumber();
         // A purged dial must be rebuilt by a full callback, never inside the
-        // restricted partial-update budget.
-        if(FaceSettings.showNeedle && _circleBuffer!=null) {
+        // restricted partial-update budget: skip only the needle meanwhile.
+        if(needle && _circleBuffer!=null) {
             var cached=DeviceDrawing.resolve(_circleBuffer);
-            if((cached has :isCached) && !cached.isCached()) {_minute=-1;return;}
+            if((cached has :isCached) && !cached.isCached()) {needle=false;}
         }
         _visibleSecond=sec;
         dc=DeviceDrawing.target(dc);
@@ -219,7 +291,7 @@ class RetroWorldView extends WatchUi.WatchFace {
         // remains live while awake; at rest sample at most once every 5 seconds,
         // using the current cached sample only (never history in this callback).
         if(_partialHeartAllowed && (LiveData.heartAt<0 || stamp<LiveData.heartAt || stamp-LiveData.heartAt>=5) && FaceSettings.hasHeart() && LiveData.refreshTickHeart(stamp)) {heartFields(dc);}
-        seconds(dc,sec);if(FaceSettings.showNeedle) {paintCircle(dc,sec);}
+        seconds(dc,sec);if(needle) {paintCircle(dc,sec);}
     }
     function onPartialUpdate(dc) {
         // A single timestamp supplies both the minute cache key and seconds.
@@ -239,7 +311,7 @@ class RetroWorldView extends WatchUi.WatchFace {
     }
     function updateAt(dc,now,clock) {
         var stamp=(now.value()/60).toNumber();
-        if(DeviceProfile.COLOR && _sleeping) {
+        if(DeviceProfile.AMOLED && _sleeping) {
             var is24=FaceSettings.is24(System.getDeviceSettings().is24Hour);
             AlwaysOn.draw(dc,_aod,is24 ? clock.hour : (clock.hour%12==0 ? 12 : clock.hour%12),clock.min,stamp);_minute=stamp;
             return;
@@ -264,12 +336,12 @@ class RetroWorldView extends WatchUi.WatchFace {
         var is24=FaceSettings.is24(PreviewMode.ENABLED ? false : settings.is24Hour);
         var shown=FaceSettings.shownHour(hr,is24);
         dc.clearClip();dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();dc.setPenWidth(1);
-        DeviceDrawing.raw(dc).drawBitmap(0,0,_dial);
+        if(DeviceProfile.COLOR) {panels(dc);} else {DeviceDrawing.raw(dc).drawBitmap(0,0,_dial);}
         // Keep the original digit shapes. A 10px gutter to the left of the
         // hour pair holds stacked AM/PM; 12h single digits omit the leading 0.
         if(is24 || FaceSettings.leadingZero || shown>=10) {number(dc,_large,(shown/10).toNumber(),26,111,22,35);}
         number(dc,_large,shown%10,49,111,22,35);pair(dc,_large,mn,79,111,22,35);
-        dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_WHITE);
+        dc.setColor(Theme.ink,Graphics.COLOR_WHITE);
         dc.fillRectangle(72,122,3,3);dc.fillRectangle(72,133,3,3);
         if(!is24) {letters(dc,hr>=12 ? "P" : "A",17,114,6);letters(dc,"M",17,127,6);}
         var day=PreviewMode.ENABLED ? 30 : date.day;
@@ -279,7 +351,7 @@ class RetroWorldView extends WatchUi.WatchFace {
         number(dc,_weekdays,weekday,84,96,32,10);
         if(month>=10) {number(dc,_date,1,123,94,8,13);}
         number(dc,_date,month%10,132,94,8,13);pair(dc,_date,day,144,94,8,13);
-        dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_WHITE);dc.drawLine(140,100,142,100);
+        dc.setColor(Theme.ink,Graphics.COLOR_WHITE);dc.drawLine(140,100,142,100);
         }
         metrics(dc);
         if(FaceSettings.showMap) {SolarMap.paint(dc,now);}
@@ -288,7 +360,7 @@ class RetroWorldView extends WatchUi.WatchFace {
         if(!_sleeping || FaceSettings.continuous) {seconds(dc,sec);}
         _minute=stamp;
         if(PreviewMode.DIAGNOSTIC && !_logged) {
-            Performance.log("RETRO_FRAME_OK version=2.1.2 demo="+PreviewMode.ENABLED+" free="+System.getSystemStats().freeMemory+" hour="+hr+" minute="+mn+" month="+month+" day="+day+" weekday="+weekday+" mode24="+is24+" data="+(PreviewMode.ENABLED ? "fixture" : "garmin")+" configurable_seconds=true map_skin="+SolarMap.skin+" weather_kind="+Environment.category(Environment.condition)+" location_source="+Environment.source+" sunrise="+Environment.sunrise+" sunset="+Environment.sunset);
+            Performance.log("RETRO_FRAME_OK version=2.2.0 demo="+PreviewMode.ENABLED+" free="+System.getSystemStats().freeMemory+" hour="+hr+" minute="+mn+" month="+month+" day="+day+" weekday="+weekday+" mode24="+is24+" data="+(PreviewMode.ENABLED ? "fixture" : "garmin")+" configurable_seconds=true map_skin="+SolarMap.skin+" weather_kind="+Environment.category(Environment.condition)+" location_source="+Environment.source+" sunrise="+Environment.sunrise+" sunset="+Environment.sunset);
             _logged=true;
         }
         if(PreviewMode.DIAGNOSTIC && _reportedMinute!=stamp) {

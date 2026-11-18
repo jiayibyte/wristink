@@ -29,7 +29,7 @@
   <property id="moveSource" type="number">6</property>
   <property id="moveStyle" type="number">0</property>
   <property id="moveFont" type="number">0</property>
-  <property id="showWind" type="boolean">false</property>
+  <property id="showWind" type="boolean">true</property>
   <property id="showMoon" type="boolean">true</property>
   <property id="showCircle" type="boolean">true</property>
   <property id="heartRefresh" type="number">0</property>
@@ -64,7 +64,7 @@
   <property id="topTwoFont" type="number">0</property>
   <property id="topTwoSize" type="number">0</property>
   <property id="topTwoGoal" type="number">0</property>
-  <property id="topThree" type="number">0</property>
+  <property id="topThree" type="number">29</property>
   <property id="topThreeStyle" type="number">0</property>
   <property id="topThreeFont" type="number">0</property>
   <property id="topThreeSize" type="number">0</property>
