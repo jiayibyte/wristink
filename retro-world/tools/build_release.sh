@@ -5,7 +5,7 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 sdk_path="$(tr -d '\r\n' < "$HOME/Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg")"
 python_bin="${RETRO_PYTHON:-python3}"
-version="${1:-2.1.2}"
+version="${1:-2.2.0}"
 mkdir -p bin dist
 "$python_bin" tools/device_profiles.py
 "$python_bin" tools/check_devices.py

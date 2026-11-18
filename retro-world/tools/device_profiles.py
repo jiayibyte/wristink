@@ -68,7 +68,9 @@ def fonts(dest,scale):
             # Construct each glyph at its final size. Enlarging the 176px
             # bitmap by a fractional factor gives columns of uneven width.
             base_stroke=1 if f.stem=='tiny' else 2
-            fresh=native_glyph(chr(v['id']),size[0],size[1],max(1,round(base_stroke*glyph_scale)))
+            # Keep a 2px counter: at 4px wide a 2px stroke fills 0 and 8 into the same block.
+            stroke=min(max(1,round(base_stroke*glyph_scale)),max(1,(size[0]-2)//2))
+            fresh=native_glyph(chr(v['id']),size[0],size[1],stroke)
             if fresh is not None and chr(v['id'])!=' ':
                 glyph=Image.new('RGBA',size,(255,255,255,0));glyph.putalpha(fresh)
                 glyphs.append((v,glyph));continue

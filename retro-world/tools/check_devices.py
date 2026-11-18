@@ -21,7 +21,9 @@ def aod_image(atlas,g,minutes):
 for row in matrix['devices']:
  key=row['profile'];g=row['geometry'];r=ROOT/'generated'/key/'resources'
  if key in seen:continue
- dial=Image.open(r/'drawables/dial.png');assert dial.size==(g['width'],g['height'])
+ dial=Image.open(r/'drawables/dial.png')
+ # Colour screens draw themed vector panels and font sprites; their dial bitmap is a 1x1 placeholder.
+ assert dial.size==(g['width'],g['height']) or (row['color'] and dial.size==(1,1)),(key,dial.size)
  # Adjacent logical rows/spans must tile the native buffer with no gaps.
  for extent in (29,89):
     edges=[math.floor(i*g['scale']+.5) for i in range(extent+1)]
