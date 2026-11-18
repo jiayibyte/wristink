@@ -4,7 +4,7 @@ import Toybox.Lang;
 module FaceSettings {
     var timeFormat=0;var leadingZero=false;var continuous=true;
     var showSeconds=true;var showNeedle=true;var showDate=true;
-    var mapSkin=-1;var showMap=true;var showMarker=true;
+    var mapSkin=-1;var showMap=true;var showMarker=true;var theme=0;
     var manualLocation=false;var latitude=0.0;var longitude=0.0;
     var slots as Array<Number> = [1,2,3,4,5,6,7,8,9];
     function bounded(value,fallback,low,high) {
@@ -20,7 +20,7 @@ module FaceSettings {
         timeFormat=number("TimeFormat",0,0,2);leadingZero=flag("LeadingZero",false);
         continuous=number("RefreshMode",1,0,1)==1;
         showSeconds=flag("ShowSeconds",true);showNeedle=flag("ShowNeedle",true);showDate=flag("ShowDate",true);
-        mapSkin=number("MapSkin",-1,-1,15);showMap=flag("ShowMap",true);showMarker=flag("ShowMarker",true);
+        mapSkin=number("MapSkin",-1,-1,15);theme=number("ColorTheme",0,0,5);showMap=flag("ShowMap",true);showMarker=flag("ShowMarker",true);
         manualLocation=flag("ManualLocation",false);latitude=coordinate("Latitude",90);longitude=coordinate("Longitude",180);
         for(var i=0;i<9;i++) {slots[i]=number("Field"+(i+1),i+1,0,14);}
     }

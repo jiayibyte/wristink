@@ -2,7 +2,8 @@
 from pathlib import Path
 import json, math, uuid, shutil
 from PIL import Image, ImageDraw, ImageFont
-from everest_art import generate_resources, skyline
+from everest_art import generate_resources
+import mountain_art
 from typography import build_fonts
 from sky_ornaments import generate as generate_ornaments
 ROOT=Path(__file__).resolve().parents[1]
@@ -28,35 +29,33 @@ def generate():
         loc=s['display']['location'];sub=s.get('subscreen');cx=cy=radius=0
         if sub:
             q=sub['location'];cx=q['x']-loc['x']+q['width']/2;cy=q['y']-loc['y']+q['height']/2;radius=q['width']/2-3
-        constants={'W':w,'H':h,'S':scale,'MONO':mono,'AMOLED':c['bitsPerPixel']==16,'CX':round(cx),'CY':round(cy),'CR':round(radius),'SKYSHIFT':32 if mono else 0}
+        constants={'W':w,'H':h,'S':scale,'MONO':mono,'AMOLED':c['bitsPerPixel']==16,'CX':round(cx),'CY':round(cy),'CR':round(radius)}
         icons=res/'drawables';icons.mkdir(exist_ok=True)
         iw=c['launcherIcon']['width'];ih=c['launcherIcon']['height']
         (icons/'icon.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{iw}" height="{ih}" viewBox="0 0 40 40"><rect width="40" height="40" fill="black"/><path d="M3 31 L18 8 L25 18 L29 13 L38 31 Z" fill="white"/><path d="M12 27 L18 13 L21 21 L18 19 Z" fill="black"/></svg>')
-        if not reuse:
-            from everest_art import render
-            render(w,h,2,mono,c['bitsPerPixel']==16,0).save(icons/'classic.png')
-        filename='classic.png';palette=''
-        if 'jpg' in c.get('imageFormats',[]):
-            attrs='automaticPalette="false" packingFormat="jpg"'
-        elif c['bitsPerPixel']==16:
-            # These entry AMOLED devices expand unsupported JPGs to full RGB565.
-            # An explicit opaque 64-colour palette keeps every binary <100KB.
-            image=Image.open(icons/'classic.png').convert('RGB').quantize(64,method=Image.Quantize.MEDIANCUT,dither=Image.Dither.NONE)
-            filename='classic-low.png';image.save(icons/filename,optimize=True)
-            colors=sorted(set(image.convert('RGB').getdata()))
-            palette='<palette disableTransparency="true">'+''.join('<color>'+''.join(f'{v:02X}' for v in color)+'</color>' for color in colors)+'</palette>'
-            attrs='automaticPalette="false" compress="true"'
-        else:attrs='compress="true"'
-        (icons/'drawables.xml').write_text('<drawables><bitmap id="LauncherIcon" filename="icon.svg"/><bitmap id="Classic" filename="'+filename+'" dithering="none" '+attrs+'>'+palette+'</bitmap></drawables>')
-        (out/'LandscapeArt.mc').write_text('module LandscapeArt {function id(key){return Rez.Drawables.Classic;}}\n')
-        heights=skyline(w,h,mono)
-        # Printable ASCII preserves every native elevation while replacing a long
-        # sequence of bytecode array assignments. String.toUtf8Array is API 1.3.
-        if mono:
-            assert all(32<=value+32<127 for value in heights)
-            packed=json.dumps(''.join(chr(value+32) for value in heights))+'.toUtf8Array()'
-        else:packed=str(heights)
-        (out/'Device.mc').write_text('import Toybox.Lang;\nmodule Device {\n'+''.join(f' const {k}={str(v).lower()};\n' for k,v in constants.items())+' var SKYLINE as Array<Number> = '+packed+';\n}\n')
+        # Four selectable mountains. Flat colour planes compress to a few KB, so
+        # every device carries all four and stays under the 100,000-byte limit.
+        amoled=c['bitsPerPixel']==16;entries=[]
+        for scene in range(len(mountain_art.NAMES)):
+            filename=f'mountain-{scene}.png'
+            if not reuse:
+                if scene==3:
+                    from everest_art import render
+                    image=render(w,h,2,mono,amoled,0)
+                else:image=mountain_art.render(scene,w,h,mono,amoled)
+                if amoled:
+                    # An explicit opaque 16-colour palette (4 bits per pixel) keeps four
+                    # backgrounds inside the 100,000-byte binary; the art is flat planes.
+                    image=image.convert('RGB').quantize(16 if scene<3 else 12,method=Image.Quantize.MEDIANCUT,dither=Image.Dither.NONE)
+                image.save(icons/filename,optimize=True)
+            palette=''
+            if amoled:
+                colors=sorted(set(Image.open(icons/filename).convert('RGB').getdata()))
+                palette='<palette disableTransparency="true">'+''.join('<color>'+''.join(f'{v:02X}' for v in color)+'</color>' for color in colors)+'</palette>'
+            entries.append(f'<bitmap id="Mountain{scene}" filename="{filename}" dithering="none" compress="true"'+(' automaticPalette="false"' if amoled else '')+'>'+palette+'</bitmap>')
+        (icons/'drawables.xml').write_text('<drawables><bitmap id="LauncherIcon" filename="icon.svg"/>'+''.join(entries)+'</drawables>')
+        (out/'LandscapeArt.mc').write_text('module LandscapeArt {function id(key){switch(key){case 1:return Rez.Drawables.Mountain1;case 2:return Rez.Drawables.Mountain2;case 3:return Rez.Drawables.Mountain3;}return Rez.Drawables.Mountain0;}}\n')
+        (out/'Device.mc').write_text('import Toybox.Lang;\nmodule Device {\n'+''.join(f' const {k}={str(v).lower()};\n' for k,v in constants.items())+'}\n')
         jungle += [f'{device}.sourcePath = $(base.sourcePath);generated/{device}',f'{device}.resourcePath = $(base.resourcePath);generated/{device}/resources',f'{device}.lang.zhs = resources-zhs']
         profiles.append(dict(device=device,**constants,minimumApi='.'.join(map(str,min(tuple(map(int,p['connectIQVersion'].split('.'))) for p in c['partNumbers'])))))
     (ROOT/'monkey.jungle').write_text('\n'.join(jungle)+'\n')

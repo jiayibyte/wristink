@@ -18,19 +18,23 @@ for path in (R/'resources-eng/config').glob('options-*.json'):
         assert [packed[i*width:(i+1)*width].rstrip() for i in range(len(b))]==b
 defaults={r['key']:r['default'] for r in schema['settings']}
 assert defaults['sideData']==19 and defaults['topCardImage']==0 and defaults['bottomCardImage']==0
-assert defaults['showMoveBar'] is False and defaults['showWind'] is False
+assert defaults['showMoveBar'] is False and defaults['showWind'] is True
 checks=0
-for path in (R/'resources-eng/fonts').glob('dataf*.fnt'):
+# Both languages share one font set: no English copy is packaged.
+assert not (R/'resources-eng/fonts').exists()
+import sys;sys.path.insert(0,str(R/'scripts'))
+from font_rasterizer import METRICS
+for path in (R/'resources/fonts').glob('dataf*.fnt'):
     def glyphs(p):return {int(m['id']):m for line in p.read_text().splitlines() if line.startswith('char id=') for m in [dict((k,int(v)) for k,v in re.findall(r'(\w+)=(-?\d+)',line))]}
-    enchars=glyphs(path);cnpath=R/'resources/fonts'/path.name;cnchars=glyphs(cnpath)
-    assert set(map(ord,'SunMonTueWedThuFriSatAMPd'))<=enchars.keys()
-    old=Image.open(cnpath.with_suffix('.png')).getchannel('A');new=Image.open(path.with_suffix('.png')).getchannel('A')
-    for ident,char in cnchars.items():
-        assert enchars[ident]==char
-        box=(char['x'],char['y'],char['x']+char['width'],char['y']+char['height'])
-        assert ImageChops.difference(old.crop(box),new.crop(box)).getbbox() is None
-    for text in ['10/19 Mon','10/19 Wed','Mon 10/19','2026/10/19','AM','PM','28d']:
-        assert all(ord(c) in enchars for c in text)
+    chars=glyphs(path)
+    assert set(map(ord,'SunMonTueWedThuFriSatAMPd'))<=chars.keys()
+    # Every published Chinese-set glyph keeps its geometry.
+    # (Metrics list some glyphs twice, e.g. the second 午 in 上午下午; the last entry is packaged.)
+    published={e['id']:{k:v for k,v in e.items() if k!='ink'} for e in METRICS[path.stem]['chars']}
+    for ident,entry in published.items():
+        assert chars[ident]==entry,(path.stem,ident)
+    for text in ['10/19 Mon','10/19 Wed','Mon 10/19','2026/10/19','AM','PM','28d','10月19日 周一']:
+        assert all(ord(c) in chars for c in text)
     checks+=1
 result=dict(status='passed',settings=94,groups=13,languages=['zhs','eng'],english_data_fonts=checks,identical_numeric_glyphs=True,rounded_clean_defaults=True,scope='Generated resource parity and font geometry; device runtime checked separately.')
 (R/'bin/english-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(result)

@@ -30,7 +30,7 @@ module DeviceDrawing {
         // MIP resources can carry device-specific transparent palette slots.
         // Retain the native MIP palette; AMOLED uses a bounded shared palette.
         if(Graphics has :createBufferedBitmap) {
-            if(DeviceProfile.COLOR) {options[:palette]=[0x000000,DeviceProfile.PAPER,DeviceProfile.TEAL,DeviceProfile.AMBER,DeviceProfile.AOD_INK,Graphics.COLOR_TRANSPARENT];}
+            if(DeviceProfile.COLOR) {options[:palette]=Theme.palette();}
             return Graphics.createBufferedBitmap(options);
         }
         return new Graphics.BufferedBitmap(options);
@@ -53,7 +53,7 @@ class NativeFaceDc {
     function py(v) {return Math.round(_y+v*_scale).toNumber();}
     function length(v) {return DeviceDrawing.size(v,_scale);}
     function setColor(ink,paper) {
-        _dc.setColor(ink==Graphics.COLOR_WHITE ? DeviceProfile.PAPER : ink,paper==Graphics.COLOR_WHITE ? DeviceProfile.PAPER : paper);
+        _dc.setColor(ink==Graphics.COLOR_WHITE ? Theme.paper : ink,paper==Graphics.COLOR_WHITE ? Theme.paper : paper);
     }
     function clear() {_dc.clear();}
     function clearClip() {_emptyClip=false;_dc.clearClip();}
@@ -65,6 +65,7 @@ class NativeFaceDc {
     function drawLine(x1,y1,x2,y2) {_dc.drawLine(px(x1),py(y1),px(x2),py(y2));}
     function drawPoint(x,y) {_dc.fillRectangle(px(x),py(y),length(1),length(1));}
     function fillRectangle(x,y,w,h) {_dc.fillRectangle(px(x),py(y),length(w),length(h));}
+    function fillRoundedRectangle(x,y,w,h,r) {_dc.fillRoundedRectangle(px(x),py(y),px(x+w)-px(x),py(y+h)-py(y),length(r));}
     function drawCircle(x,y,r) {_dc.drawCircle(px(x),py(y),length(r));}
     function fillCircle(x,y,r) {_dc.fillCircle(px(x),py(y),length(r));}
     function sprite(bitmap,index,x,y,w,h,count) {

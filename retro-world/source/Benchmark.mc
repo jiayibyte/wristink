@@ -30,7 +30,7 @@ module Benchmark {
             if(second==0) {_maps=SolarMap.builds;_reads=Environment.reads;}
             if(frames==6) {_awakeWorst=worst;_awakeMs=elapsed;_awakeMaps=SolarMap.builds-_maps;_awakeReads=Environment.reads-_reads;worst=0;elapsed=0;}
         } else {
-            if(frames==6) {view._sleeping=true;if(DeviceProfile.COLOR) {view._minute=-1;}}
+            if(frames==6) {view._sleeping=true;if(DeviceProfile.AMOLED) {view._minute=-1;}}
             sample(view,dc,_start+2400+(frames-6)*60,0);
             if(frames==8) {
                 var stats=System.getSystemStats();

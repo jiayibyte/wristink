@@ -69,10 +69,11 @@ module FaceDraw {
     function date(dc,text){
         var reserved=FacePrefs.flag("showMoveBar") && FacePrefs.get("moveSource")!=0;
         var compact=FacePrefs.get("topThree")!=0 && FacePrefs.flag("showMoon");
-        var width=reserved ? (compact ? 59 : 61) : (compact ? 83 : 103);
+        var width=reserved ? (compact ? 59 : 61) : (compact ? 80 : 103);
         var height=FacePrefs.flag("showTime") && FacePrefs.get("timeFormat")==1 ? 13 : 18;
         var font=FontCatalog.fit(dc,"data",FacePrefs.fontFamily("date"),FacePrefs.fontSize("date")+2,text,width,height);
-        dc.setClip(8,49,width,height);dc.setColor(foreground,background);dc.drawText(8,49,font,text,Graphics.TEXT_JUSTIFY_LEFT);dc.clearClip();
+        var x=8+DeviceProfile.UPPER_SHIFT;
+        dc.setClip(x,49,width,height);dc.setColor(foreground,background);dc.drawText(x,49,font,text,Graphics.TEXT_JUSTIFY_LEFT);dc.clearClip();
     }
     (:extendedCode)
     function time(dc,hour,minute){
@@ -111,14 +112,15 @@ module FaceDraw {
     }
     (:extendedCode)
     function sideData(dc,kind,value){
-        dc.setClip(136,74,35,36);dc.setColor(foreground,background);
-        if(FacePrefs.flag("showIcons")){icon(dc,kind,146,75,foreground,background);}
+        // The icon/value pair is centred on the clock digits rather than hung under the heart window.
+        dc.setClip(136,FaceLayout.SIDE_Y,35,38);dc.setColor(foreground,background);
+        if(FacePrefs.flag("showIcons")){icon(dc,kind,146,FaceLayout.SIDE_Y+1,foreground,background);}
         var font=FontCatalog.fit(dc,"data",FacePrefs.fontFamily("side"),FacePrefs.fontSize("side")+2,value,32,18);
-        dc.drawText(153,94,font,value,Graphics.TEXT_JUSTIFY_CENTER);dc.clearClip();
+        dc.drawText(153,FaceLayout.SIDE_Y+20,font,value,Graphics.TEXT_JUSTIFY_CENTER);dc.clearClip();
     }
     (:extendedCode)
     function moveBar(dc,ratio,compact){
-        var x=compact ? FaceLayout.MOVE_COMPACT_X : FaceLayout.MOVE_X;var y=FaceLayout.MOVE_Y;
+        var x=(compact ? FaceLayout.MOVE_COMPACT_X : FaceLayout.MOVE_X)+DeviceProfile.UPPER_SHIFT;var y=FaceLayout.MOVE_Y;
         moveBarAt(dc,ratio,x,y,compact);
     }
     (:extendedCode)
@@ -150,24 +152,40 @@ module FaceDraw {
         var low=limits[0];var high=limits[1];var labels=FacePrefs.flag("showChartLabels");
         if(labels){
             var labelFont=_chart;var selected=FacePrefs.get("chartLabelFont");
-            if(selected!=0){labelFont=FontCatalog.fit(dc,"data",selected-1,1,high!=null ? high.toString() : "--",15,10);}
+            if(selected!=0){labelFont=FontCatalog.fit(dc,"data",selected-1,1,high!=null ? high.toString() : "--",FaceLayout.GRAPH_LABEL_RIGHT,10);}
             var lowY=top+FaceLayout.GRAPH_HEIGHT-2-dc.getFontHeight(labelFont);
-            dc.drawText(left+15,top,labelFont,high!=null ? high.toString() : "--",Graphics.TEXT_JUSTIFY_RIGHT);
-            dc.drawText(left+15,lowY,labelFont,low!=null ? low.toString() : "--",Graphics.TEXT_JUSTIFY_RIGHT);
+            dc.drawText(left+FaceLayout.GRAPH_LABEL_RIGHT,top,labelFont,high!=null ? high.toString() : "--",Graphics.TEXT_JUSTIFY_RIGHT);
+            dc.drawText(left+FaceLayout.GRAPH_LABEL_RIGHT,lowY,labelFont,low!=null ? low.toString() : "--",Graphics.TEXT_JUSTIFY_RIGHT);
         }
-        var px=left+(labels ? 18 : 1);var py=top+1;var w=FaceLayout.GRAPH_WIDTH-(labels ? 20 : 3);var h=FaceLayout.GRAPH_HEIGHT-FaceLayout.GRAPH_BOTTOM_INSET;
-        dc.drawLine(px,py,px,py+h);dc.drawLine(px,py+h,px+w,py+h);
+        var px=left+(labels ? FaceLayout.GRAPH_PLOT_X : 1);var py=top+1;var w=FaceLayout.GRAPH_WIDTH-(labels ? FaceLayout.GRAPH_PLOT_X+2 : 3);var h=FaceLayout.GRAPH_HEIGHT-FaceLayout.GRAPH_BOTTOM_INSET;
+        // Baseline only: the labels already mark the left edge, and a second
+        // thin rule made the panel busier than the data rows beside it.
+        dc.drawLine(px,py+h,px+w,py+h);
         if(values.size()>0 && low!=null && high!=null){
             var span=high-low;if(span==0){span=1;}
-            var prevX=null as Numeric or Null;var prevY=null as Numeric or Null;var style=FacePrefs.get("chartStyle");
-            for(var i=0;i<values.size();i++){
+            var prevX=null as Number or Null;var prevY=null as Number or Null;var style=FacePrefs.get("chartStyle");
+            var count=values.size();var last=count>1 ? count-1 : 1;
+            // One two-pixel pen for the whole line: flat and steep stretches keep
+            // the same weight, matching the stroke of the numerals.
+            if(style==0){dc.setPenWidth(2);}
+            for(var i=0;i<count;i++){
                 var rate=values[i];if(rate==null){prevX=null;prevY=null;continue;}
-                var x=px+(values.size()>1 ? i.toFloat()*w/(values.size()-1) : w/2);
-                var y=high==low ? py+h/2 : py+h-(rate-low).toFloat()*h/span;
+                // One pixel per bucket leaves no room between samples: average out
+                // single-bucket jitter, but never the extremes the labels report.
+                if(i>0 && i<last && rate!=low && rate!=high){
+                    var before=values[i-1];var after=values[i+1];
+                    if(before!=null && after!=null){rate=(before+rate*2+after+2)/4;}
+                }
+                // Whole logical pixels: fractional columns drifted and doubled up.
+                var x=px+(count>1 ? (i*w+last/2)/last : w/2);
+                // The lowest value and its second trace row stay clear of the axis.
+                var y=high==low ? py+h/2 : py+h-2-((rate-low)*(h-2)+span/2)/span;
                 if(style==1 || style==2){dc.drawLine(x,y,x,py+h);}
                 if(style!=2 && prevX!=null && prevY!=null){dc.drawLine(prevX,prevY,x,y);}
-                dc.drawPoint(x,y);prevX=x;prevY=y;
+                dc.drawPoint(x,y);if(style==0){dc.drawPoint(x,y+1);}
+                prevX=x;prevY=y;
             }
+            dc.setPenWidth(1);
         }
         dc.clearClip();
     }
@@ -177,14 +195,21 @@ module FaceDraw {
         return FontCatalog.fit(dc,"data",FacePrefs.fontFamily(key),size,label,width,height);
     }
     (:extendedCode)
+    function slotTextEnd(dc,key,label,x,y,width,height){
+        // Right edge of a slot's text, with the icon offset and font fit slot() uses.
+        var style=FacePrefs.get(key+"Style");
+        var offset=style!=1 && FacePrefs.flag("showIcons") ? (y>=120 ? FaceLayout.LOWER_TEXT_OFFSET : (FacePrefs.get(key)==29 ? 18 : 17)) : 0;
+        return x+offset+dc.getTextWidthInPixels(label,slotFont(dc,key,label,width-offset,style==4 || style==5 ? height-4 : height-1,null));
+    }
+    (:extendedCode)
     function slot(dc,key,label,ratio,x,y,width,height,fontOverride){
         var kind=FacePrefs.get(key);if(kind==0){return;}
         var style=FacePrefs.get(key+"Style");var showIcon=style!=1 && FacePrefs.flag("showIcons");
-        var offset=showIcon ? (y>=120 ? FaceLayout.LOWER_TEXT_OFFSET : 17) : 0;
+        var offset=showIcon ? (y>=120 ? FaceLayout.LOWER_TEXT_OFFSET : (kind==29 ? 18 : 17)) : 0;
         var gauge=style==4 || style==5;var labelHeight=gauge ? height-4 : height-1;
         var font=fontOverride!=null ? fontOverride : slotFont(dc,key,label,width-offset,labelHeight,null);
         dc.setClip(x,y,width,height);dc.setColor(foreground,background);
-        if(showIcon){icon(dc,kind,x,y+(y>=120 || gauge ? 0 : 3),foreground,background);}
+        if(showIcon){icon(dc,kind,x,y+(y>=120 || gauge || (NativeStyle.enabled() && NativeStyle.glyph(kind)) ? 0 : 3),foreground,background);}
         dc.drawText(x+offset,y+1,font,label,Graphics.TEXT_JUSTIFY_LEFT);
         if(gauge){
             var p=ratio;if(p!=null){p=p<0 ? 0 : (p>1 ? 1 : p);}
@@ -207,12 +232,12 @@ module FaceDraw {
             var rightOffset=FacePrefs.get("footerRightStyle")==1 || !FacePrefs.flag("showIcons") ? 0 : FaceLayout.LOWER_TEXT_OFFSET;
             for(;size>=0;size--){
                 leftFont=FontCatalog.data(FacePrefs.fontFamily("footerLeft"),size);rightFont=FontCatalog.data(FacePrefs.fontFamily("footerRight"),size);
-                if(dc.getTextWidthInPixels(leftLabel,leftFont)<=FaceLayout.LOWER_LEFT_WIDTH-leftOffset && dc.getTextWidthInPixels(rightLabel,rightFont)<=FaceLayout.FOOTER_RIGHT_WIDTH-rightOffset && dc.getFontHeight(leftFont)<=18 && dc.getFontHeight(rightFont)<=18){break;}
+                if(dc.getTextWidthInPixels(leftLabel,leftFont)<=DeviceProfile.FOOTER_LEFT_WIDTH-leftOffset && dc.getTextWidthInPixels(rightLabel,rightFont)<=DeviceProfile.FOOTER_RIGHT_WIDTH-rightOffset && dc.getFontHeight(leftFont)<=18 && dc.getFontHeight(rightFont)<=18){break;}
                 leftFont=null;rightFont=null;
             }
         }
-        slot(dc,"footerLeft",leftLabel,leftRatio,FaceLayout.LOWER_LEFT_X,FaceLayout.FOOTER_Y,FaceLayout.LOWER_LEFT_WIDTH,20,leftFont);
-        slot(dc,"footerRight",rightLabel,rightRatio,FaceLayout.LOWER_RIGHT_X,FaceLayout.FOOTER_Y,FaceLayout.FOOTER_RIGHT_WIDTH,20,rightFont);
+        slot(dc,"footerLeft",leftLabel,leftRatio,FaceLayout.LOWER_LEFT_X,FaceLayout.FOOTER_Y,DeviceProfile.FOOTER_LEFT_WIDTH,20,leftFont);
+        slot(dc,"footerRight",rightLabel,rightRatio,DeviceProfile.FOOTER_RIGHT_X,FaceLayout.FOOTER_Y,DeviceProfile.FOOTER_RIGHT_WIDTH,20,rightFont);
     }
     (:extendedCode)
     function circle(dc,kind,value,heartValue){
@@ -220,6 +245,9 @@ module FaceDraw {
         var paper=bg==1 || (bg==2 && background==Graphics.COLOR_WHITE) ? Graphics.COLOR_WHITE : Graphics.COLOR_BLACK;
         var ink=paper==Graphics.COLOR_BLACK ? Graphics.COLOR_WHITE : Graphics.COLOR_BLACK;
         dc.setColor(paper,paper);dc.fillCircle(cx,cy,31);
+        // On round screens the window sits on the main display (no hardware bezel):
+        // a disc the same colour as the face needs an outline to read as a window.
+        if(DeviceProfile.UPPER_SHIFT>0 && paper==background){dc.setColor(ink,paper);dc.setPenWidth(2);dc.drawCircle(cx,cy,30);dc.setPenWidth(1);}
         if(cellsProgress==null || cellsProgress<=0 || FacePrefs.get("cellsStyle")==2){_energyBitmap=null;_energyKey=-1;_energyCount=0;}
         if(cellsProgress!=null && cellsProgress>0){
             var style=FacePrefs.get("cellsStyle");
@@ -261,8 +289,9 @@ module FaceDraw {
         dc.fillCircle(cx, cy, 7); dc.setColor(paper, paper);
         for (var y = -6; y <= 6; y++) {
             var span = Math.sqrt(36 - y * y); var edge = Math.cos(phase * 2 * Math.PI) * span;
-            if (phase < 0.5) { dc.drawLine(cx + edge, cy + y, cx + span, cy + y); }
-            else { dc.drawLine(cx - span, cy + y, cx - edge, cy + y); }
+            // Filled one-row rectangles scale with the screen; 1px lines leave gaps.
+            if (phase < 0.5) { dc.fillRectangle(cx + edge, cy + y, span - edge, 1); }
+            else { dc.fillRectangle(cx - span, cy + y, span - edge, 1); }
         }
         dc.setColor(ink, paper); dc.drawCircle(cx, cy, 7);
     }
@@ -318,6 +347,9 @@ module FaceDraw {
                 dc.drawLine(x+7,y,x+7,y+7);dc.drawCircle(x+4,y+9,3);dc.drawCircle(x+10,y+9,3);break;
             case 28:
                 dc.drawCircle(x+7,y+7,6);dc.drawLine(x+7,y+7,x+11,y+3);dc.drawLine(x+2,y+11,x+12,y+11);break;
+            case 29:
+                // Garmin's solar-intensity badge (disc, dashed ring, star, bolt) on the pixel grid.
+                dc.fillRectangle(x + 5, y - 1, 6, 1); dc.fillRectangle(x + 3, y, 10, 1); dc.fillRectangle(x + 2, y + 1, 4, 1); dc.fillRectangle(x + 10, y + 1, 4, 1); dc.fillRectangle(x + 1, y + 2, 3, 1); dc.fillRectangle(x + 5, y + 2, 6, 1); dc.fillRectangle(x + 12, y + 2, 3, 1); dc.fillRectangle(x + 1, y + 3, 2, 1); dc.fillRectangle(x + 4, y + 3, 3, 1); dc.fillRectangle(x + 9, y + 3, 3, 1); dc.fillRectangle(x + 13, y + 3, 2, 1); dc.fillRectangle(x, y + 4, 5, 1); dc.fillRectangle(x + 9, y + 4, 1, 1); dc.fillRectangle(x + 11, y + 4, 5, 1); dc.fillRectangle(x, y + 5, 2, 1); dc.fillRectangle(x + 3, y + 5, 2, 1); dc.fillRectangle(x + 8, y + 5, 1, 1); dc.fillRectangle(x + 11, y + 5, 2, 1); dc.fillRectangle(x + 14, y + 5, 2, 1); dc.fillRectangle(x, y + 6, 2, 1); dc.fillRectangle(x + 3, y + 6, 1, 1); dc.fillRectangle(x + 7, y + 6, 1, 1); dc.fillRectangle(x + 12, y + 6, 1, 1); dc.fillRectangle(x + 14, y + 6, 2, 1); dc.fillRectangle(x, y + 7, 2, 1); dc.fillRectangle(x + 3, y + 7, 1, 1); dc.fillRectangle(x + 7, y + 7, 3, 1); dc.fillRectangle(x + 12, y + 7, 1, 1); dc.fillRectangle(x + 14, y + 7, 2, 1); dc.fillRectangle(x, y + 8, 2, 1); dc.fillRectangle(x + 3, y + 8, 2, 1); dc.fillRectangle(x + 8, y + 8, 1, 1); dc.fillRectangle(x + 11, y + 8, 2, 1); dc.fillRectangle(x + 14, y + 8, 2, 1); dc.fillRectangle(x, y + 9, 5, 1); dc.fillRectangle(x + 7, y + 9, 1, 1); dc.fillRectangle(x + 11, y + 9, 5, 1); dc.fillRectangle(x + 1, y + 10, 2, 1); dc.fillRectangle(x + 4, y + 10, 3, 1); dc.fillRectangle(x + 9, y + 10, 3, 1); dc.fillRectangle(x + 13, y + 10, 2, 1); dc.fillRectangle(x + 1, y + 11, 3, 1); dc.fillRectangle(x + 5, y + 11, 6, 1); dc.fillRectangle(x + 12, y + 11, 3, 1); dc.fillRectangle(x + 2, y + 12, 4, 1); dc.fillRectangle(x + 10, y + 12, 4, 1); dc.fillRectangle(x + 3, y + 13, 10, 1); dc.fillRectangle(x + 5, y + 14, 6, 1); break;
         }
     }
 }

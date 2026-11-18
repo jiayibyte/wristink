@@ -2,7 +2,7 @@
 from pathlib import Path
 import xml.etree.ElementTree as ET
 from PIL import Image,ImageDraw,ImageFont
-from font_rasterizer import reference_digit,NOTO
+from pixel_glyphs import digit as grid_digit
 
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'resources/native'
 tree=ET.parse(OUT/'fonts.xml');root=tree.getroot()
@@ -19,8 +19,10 @@ for family in range(3):
             if char=='-':
                 ImageDraw.Draw(tile).rounded_rectangle((3,height//2-1,cell-4,height//2+1),radius=1,fill=255)
             else:
-                w=width//2 if char=='1' else width
-                ink=reference_digit(char,w,height,family,False)
+                # Same grid-native numerals as every other font; the one keeps
+                # the full tabular box and places its own stem.
+                w=width
+                ink=grid_digit(char,w,height,family)
                 tile.paste(ink,((cell-w)//2,0))
             rgba=Image.new('RGBA',tile.size,(255,255,255,0));rgba.putalpha(tile);atlas.paste(rgba,(i*(cell+1),0))
             rows.append(f'char id={ord(char)} x={i*(cell+1)} y=0 width={cell} height={height} xoffset=0 yoffset=0 xadvance={cell} page=0 chnl=15')

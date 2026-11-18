@@ -4,7 +4,7 @@ OPS={'drawLine':(0,4),'drawRectangle':(1,4),'fillRectangle':(2,4),'drawCircle':(
 def compact(source):
     start=source.index('        switch (kind) {');end=source.rindex('\n        }')
     body=re.sub(r'//[^\n]*','',source[start:end]);parts=re.split(r'((?:\s*case \d+:)+)',body)[1:]
-    paths=['']*29;dynamic=[]
+    paths=['']*30;dynamic=[]
     for labels,code in zip(parts[::2],parts[1::2]):
         ids=list(map(int,re.findall(r'case (\d+):',labels)))
         if any(i in (1,7,14,17) for i in ids):dynamic.append(labels+code);continue
@@ -32,7 +32,7 @@ def compact(source):
     const PATHS=PATH_DATA;
     const OFFSETS=OFFSET_DATA;
     function commands(dc,kind,x,y,ink,paper){
-        if(kind<0 || kind>=29){return;}
+        if(kind<0 || kind>=30){return;}
         var bounds=OFFSETS.substring(kind,kind+2).toCharArray();
         var c=PATHS.substring(bounds[0].toNumber()-32,bounds[1].toNumber()-32).toCharArray();var i=0;
         while(i<c.size()){

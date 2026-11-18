@@ -28,6 +28,7 @@
   "压力": "Stress",
   "呼吸频率": "Respiration rate",
   "气压": "Air pressure",
+  "光照强度": "Solar intensity",
   "步数目标": "Step goal",
   "今日强度（周目标除以7）": "Daily intensity (weekly goal / 7)",
   "本周强度目标": "Weekly intensity goal",
@@ -199,5 +200,8 @@
   "15分钟": "15 minutes",
   "30分钟": "30 minutes",
   "60分钟": "60 minutes",
-  "像素小字": "Small pixel labels"
+  "像素小字": "Small pixel labels",
+  "方角数字": "Square numerals",
+  "数码管": "Seven-segment",
+  "点阵": "Dot matrix"
 }

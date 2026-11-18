@@ -42,12 +42,16 @@ function weatherDayNightUsesExactSunBoundariesAndPolarFallback(logger) {
 
 (:test)
 function allOfficialWeatherCellsFitAndRenderInNativeSlot(logger) {
-    var bitmap=WatchUi.loadResource(Rez.Drawables.WeatherSmall);
-    Test.assertEqual(bitmap.getWidth(),13*DeviceDrawing.size(9,DeviceProfile.SCALE));Test.assertEqual(bitmap.getHeight(),DeviceDrawing.size(9,DeviceProfile.SCALE));
-    var buffer=DeviceDrawing.buffer(9,9,DeviceProfile.SCALE);var dc=DeviceDrawing.resolve(buffer).getDc();
-    var cell=DeviceDrawing.size(9,DeviceProfile.SCALE);
+    // The icons are a font; screens without a hardware sub-window carry 15px glyphs.
+    var font=WatchUi.loadResource(Rez.Fonts.WxIcon);
+    var logical=DeviceProfile.SUBSCREEN ? 9 : 15;
+    var buffer=DeviceDrawing.buffer(logical,logical,DeviceProfile.SCALE);var dc=DeviceDrawing.resolve(buffer).getDc();
+    var cell=DeviceDrawing.size(logical,DeviceProfile.SCALE);
+    Test.assertEqual(dc.getFontHeight(font),cell);
+    var names="abcdefghijklm";
     for(var kind=0;kind<WeatherIcons.COUNT;kind++) {
-        dc.setClip(0,0,cell,cell);dc.drawBitmap(-kind*cell,0,bitmap);dc.clearClip();
+        Test.assertEqual(dc.getTextWidthInPixels(names.substring(kind,kind+1),font),cell);
+        dc.setClip(0,0,cell,cell);dc.drawText(0,0,font,names.substring(kind,kind+1),Graphics.TEXT_JUSTIFY_LEFT);dc.clearClip();
     }
     return true;
 }

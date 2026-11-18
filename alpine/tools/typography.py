@@ -5,6 +5,7 @@ Rounded-stroke construction is adapted from this repository's Moke rasterizer.
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont
 import math,json
+import pixel_glyphs as pg
 FONT=Path(__file__).resolve().parents[1]/'assets/fonts/Rajdhani-SemiBold.ttf'
 CAPS={
 'A':['01110','10001','10001','11111','10001','10001','10001'],
@@ -129,7 +130,10 @@ def make_font(dest,name,height,mono,aa):
             w=round(height*ratio)
             if name=='Metric':w=max(5,round(height*.58))
             stroke=max(1,round(height*(.105 if name in ('Time','Aod') else .12 if name=='Circle' else .09)))
-            stroke=min(stroke,max(1,(w-1)//3));glyph=instrument(ch,w,height,stroke,aa)
+            stroke=min(stroke,max(1,(w-1)//3))
+            # Two-colour pixels (MIP) get numerals built on the pixel grid; a
+            # thresholded rounded path leaves uneven stems and stepped diagonals.
+            glyph=instrument(ch,w,height,stroke,aa) if aa else pg.digit(ch,w,height,0,stroke)
         elif ch in ':-.':
             w=max(2,round(height*(.16 if ch!='-' else .35)));glyph=Image.new('L',(w,height));d=ImageDraw.Draw(glyph)
             dot=max(1,round(height*.09))
@@ -137,6 +141,11 @@ def make_font(dest,name,height,mono,aa):
             else:
                 for y in ([round(height*.28),round(height*.68)] if ch==':' else [height-dot]):d.rectangle(((w-dot)//2,y,(w-dot)//2+dot-1,min(height-1,y+dot-1)),fill=255)
         elif mono and name=='Metric':glyph=pixel_text(ch,height)
+        elif not aa and (ch in pg.CAPS or ch in '%/'):
+            # Same advance as the outline letter, drawn on the grid instead of thresholded.
+            width=outline_text(ch,height,False).width
+            stroke=1 if height<13 else max(2,round(height*.12))
+            glyph=pg.caps(ch,width,height,stroke) if ch in pg.CAPS else pg.latin(ch,width,height,stroke)
         else:glyph=outline_text(ch,height,aa)
         if ch=='1' and name in ('Time','Circle','Aod'):
             bounds=glyph.getbbox()

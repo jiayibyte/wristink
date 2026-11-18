@@ -4,7 +4,7 @@ import json
 import xml.etree.ElementTree as ET
 
 ROOT=Path(__file__).resolve().parents[1]
-METRICS=['隐藏','电量百分比','步数','距离','爬升楼层','热量','心率','气温','日落时间','日出时间','湿度','通知数量','步数目标百分比','风速','月相亮度百分比','心率范围','体感温度','剩余续航天数','海拔','身体电量','今日强度分钟','本周强度分钟','今日强度完成百分比','本周强度完成百分比','久坐等级','恢复时间','压力','呼吸频率','气压']
+METRICS=['隐藏','电量百分比','步数','距离','爬升楼层','热量','心率','气温','日落时间','日出时间','湿度','通知数量','步数目标百分比','风速','月相亮度百分比','心率范围','体感温度','剩余续航天数','海拔','身体电量','今日强度分钟','本周强度分钟','今日强度完成百分比','本周强度完成百分比','久坐等级','恢复时间','压力','呼吸频率','气压','光照强度']
 PROGRESS=['隐藏','身体电量','电量百分比','步数目标','今日强度（周目标除以7）','本周强度目标','久坐等级','爬升楼层目标']
 STYLES=['图标和数值','仅数值','百分比','数值与目标','进度线和数值','分格和数值','趋势图']
 FONT=['跟随全局','简洁黑体','加粗黑体','紧凑黑体']
@@ -31,7 +31,7 @@ add(g,'timeFormat','时间制式',0,['24小时','12小时（上午下午）'])
 add(g,'timeSeparator','时间分隔符',0,['冒号','圆点','空格'])
 add(g,'secondsMode','秒数刷新策略',0,['随卡片自动切换','仅抬腕显示','持续显示（耗电较高）','关闭（最省电）'])
 for prefix,label in [('time','大时间'),('seconds','秒数')]:
-    add(g,prefix+'Font',label+'字体',0,['当前数字','简洁黑体','窄体数字'])
+    add(g,prefix+'Font',label+'字体',0,['当前数字','简洁黑体','窄体数字']+(['方角数字','数码管','点阵'] if prefix=='time' else []))
     add(g,prefix+'Size',label+'字号',1,['小','标准','大'])
 g=group('date','日期与状态')
 add(g,'showDate','显示日期',True)
@@ -41,7 +41,7 @@ add(g,'showMoveBar','显示活动指示区',False)
 add(g,'moveSource','活动指示区数据',6,PROGRESS)
 add(g,'moveStyle','活动指示区样式',0,['小人和分格','细进度线','百分比'])
 add(g,'moveFont','活动百分比字体',0,FONT)
-add(g,'showWind','显示风向箭头',False);add(g,'showMoon','显示月相',True)
+add(g,'showWind','显示风向箭头',True);add(g,'showMoon','显示月相',True)
 g=group('circle','右上圆窗')
 add(g,'showCircle','显示整个圆窗',True)
 add(g,'heartRefresh','中心心率刷新',0,['每5秒读取当前心率','仅抬腕时每5秒','每分钟（省电）'])
@@ -64,7 +64,7 @@ add(g,'showBeijingCard','显示上方卡片',True);add(g,'showAlipayCard','显�
 add(g,'topCardImage','上方卡片图案',0,CARDS);add(g,'bottomCardImage','下方卡片图案',0,CARDS)
 add(g,'sideData','替换卡片的数据（隐藏则卡片）',19,METRICS)
 add(g,'sideFont','右侧数据字体',0,FONT);add(g,'sideSize','右侧数据字号',2,SIZE)
-for key,label,default in [('topOne','顶部第一行',7),('topTwo','第二行左侧',17),('topThree','第二行右侧',0),('bottomLeft','下方左侧',2),('bottomRight','下方右侧',15),('footerLeft','底部左侧',5),('footerRight','底部右侧',18)]:
+for key,label,default in [('topOne','顶部第一行',7),('topTwo','第二行左侧',17),('topThree','第二行右侧',29),('bottomLeft','下方左侧',2),('bottomRight','下方右侧',15),('footerLeft','底部左侧',5),('footerRight','底部右侧',18)]:
     g=group(key,label)
     add(g,key,'数据（隐藏可关闭本区）',default,METRICS)
     add(g,key+'Style','显示方式',6 if key=='bottomRight' else 0,STYLES if key=='bottomRight' else STYLES[:6])
@@ -149,6 +149,7 @@ def main():
     defaults+='''    function max(key) {
         var suffix=key.length()>=4 ? key.substring(key.length()-4,key.length()) : "";
         if(suffix.equals("Goal")){return 1000000;}
+        if(key.equals("timeFont")){return 5;}
         if(suffix.equals("Font") || suffix.equals("Size")){
             return key.equals("dataFont") || key.equals("dataSize") || key.equals("timeFont") || key.equals("timeSize") || key.equals("circleFont") || key.equals("circleSize") || key.equals("secondsFont") || key.equals("secondsSize") ? 2 : 3;
         }
@@ -161,7 +162,7 @@ def main():
             case "topCardImage":case "bottomCardImage":return 20;
             case "timeFormat":case "temperatureUnit":case "distanceUnit":case "altitudeUnit":case "powerProfile":case "heartSource":return 1;
         }
-        return 28;
+        return '''+str(len(METRICS)-1)+''';
     }
 }
 '''

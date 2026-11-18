@@ -14,7 +14,7 @@ module FitnessProgress {
         return Math.ceil(value * 8 / 100.0).toNumber();
     }
     function dailyRatio(info) {
-        if (info == null || info.activeMinutesDay == null || info.activeMinutesWeekGoal == null || info.activeMinutesWeekGoal <= 0) { return null; }
+        if (info == null || !(info has :activeMinutesDay) || !(info has :activeMinutesWeekGoal) || info.activeMinutesDay == null || info.activeMinutesWeekGoal == null || info.activeMinutesWeekGoal <= 0) { return null; }
         // Garmin's total already includes double credit for vigorous minutes.
         // The system exposes only a weekly goal; the requested daily target is week / 7.
         return completion(info.activeMinutesDay.total, info.activeMinutesWeekGoal / 7.0);

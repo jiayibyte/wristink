@@ -9,6 +9,7 @@ import json
 import math
 import re
 from PIL import Image, ImageDraw, ImageFont
+from pixel_glyphs import digit as grid_digit, latin, cjk, stroke_for, LATIN, CJK
 
 ROOT = Path(__file__).resolve().parents[1]
 METRICS = json.loads((ROOT / 'assets/fonts/layout-metrics.json').read_text())
@@ -137,10 +138,10 @@ def text_glyph(char, width, height, size, bold=False):
 
 def render_font(name, dest, scale=1.0):
     """Preserve per-device advance/clip geometry and rasterize at native pixels."""
-    # The plot's 4x7 master must not collapse to a 2/3-column glyph: that
-    # removes the middle bar and makes 0 indistinguishable from 8.
+    # The plot labels must not collapse below a 4-column glyph: that removes
+    # the middle bar and makes 0 indistinguishable from 8.
     if name=='chart':
-        scale=max(1.0,scale)
+        scale=max(.75,scale)
     spec = METRICS[name]
     header = list(spec['header'])
     number = lambda v: round(v*scale)
@@ -149,9 +150,39 @@ def render_font(name, dest, scale=1.0):
     source_size = int(re.search(r'\bsize=(\d+)', header[0])[1])
     family = re.search(r'f(\d)s', name)
     weight = int(family[1]) if family else 0
+    # Families 3-5 are extra clock styles drawn on the regular metrics.
+    style = {3: 'square', 4: 'segment', 5: 'dot'}.get(weight, 'round')
+    if weight >= 3:
+        weight = 1 if style == 'segment' else 0
     small = name.startswith(('data', 'compact', 'date', 'days'))
     entries = []
     zero = next((e for e in spec['chars'] if e['id'] == 48), None)
+    grid = None
+    if zero and name != 'chart':
+        # Numeral box shared by the whole font: cap rows from the published
+        # zero, width limited so neighbouring glyphs keep a one-pixel gap.
+        origin, advance = -number(zero['xoffset']), max(1, number(zero['xadvance']))
+        tile_w = max(1, number(zero['x']+zero['width'])-number(zero['x']))
+        tile_h = max(1, number(zero['y']+zero['height'])-number(zero['y']))
+        top = min(number(zero['ink'][1]), tile_h-1)
+        bottom = max(top+1, min(number(zero['ink'][3]), tile_h))
+        left, digit_w = number(zero['ink'][0]), max(1, number(zero['ink'][2])-number(zero['ink'][0]))
+        room = advance-1 if advance > 3 else advance
+        if digit_w > room or left < origin or left+digit_w > origin+advance:
+            digit_w = max(1, min(digit_w, room))
+            left = origin+(advance-digit_w)//2
+        if digit_w < 7 and digit_w < room and weight != 2:
+            # Small numerals take the spare column of their advance: a
+            # two-pixel stroke then still leaves a three-pixel counter.
+            digit_w, left = digit_w+1, origin+(advance-digit_w-1)//2
+        left = max(0, min(left, tile_w-digit_w))
+        # Below 3 x 5 there is no grid design that keeps ten numerals apart;
+        # those last-resort sizes keep the previous outline path unchanged.
+        if digit_w >= 3 and bottom-top >= 5:
+            stroke = stroke_for(digit_w, bottom-top, weight)
+            if name.startswith('time') and weight == 0:
+                stroke += 1     # the default clock keeps its published weight
+            grid = dict(top=top, cap=bottom-top, left=left, width=digit_w, stroke=stroke)
     for original in spec['chars']:
         e = {k: v for k, v in original.items() if k != 'ink'}
         for key in ('x', 'y', 'xoffset', 'yoffset', 'xadvance'):
@@ -161,13 +192,42 @@ def render_font(name, dest, scale=1.0):
         tile = Image.new('L', (e['width'], e['height']))
         char = chr(e['id'])
         ink = original['ink']
-        if ink is None and not char.isspace():
+        if grid and (char in '0123456789' or char in LATIN or char in CJK):
+            pen, room = -e['xoffset'], max(1, e['xadvance']-1)
+            top, cap = grid['top'], min(grid['cap'], e['height']-grid['top'])
+            if char in '0123456789':
+                glyph, at = grid_digit(char, min(grid['width'], e['width']), cap, weight, grid['stroke'], style if name.startswith('time') else 'round'), (grid['left'], top)
+                if char == '1' and name.startswith('time') and ink:
+                    # Published one has an intentional left inset shared with the step icon.
+                    box = glyph.getbbox()
+                    glyph, at = glyph.crop(box), (min(number(ink[0]), e['width']-(box[2]-box[0])), top+box[1])
+            elif char in CJK:
+                # One row above and below the numerals, on an odd width so a
+                # centre stem has a real centre column.
+                above = 1 if top >= 1 and top+cap < e['height'] else 0
+                height = min(cap+1+above, e['height']-(top-above))
+                width = min(room, height+1)
+                width -= 1 if width % 2 == 0 and width > 5 else 0
+                # Thicken stems to match two-pixel numerals; bars stay single
+                # so the three bars of 年 never fuse.
+                glyph = cjk(char, width, height, grid['stroke'] >= 2 or weight == 1)
+                at = (pen+(e['xadvance']-width)//2, top-above)
+            else:
+                width, height, y = min(room, e['width']-pen), cap, top
+                if char == '°':
+                    width = height = max(3, min(width, round(cap*.4)))
+                glyph, at = latin(char, max(1, width), height, grid['stroke']), (pen, y)
+            tile.paste(glyph, at)
+            ink = None
+        elif ink is None and not char.isspace():
             # Some old tiny unit glyphs were already blank. Restore them using
             # the available line box instead of propagating missing characters.
             ink = (1, 1, max(2, original['width']-1), max(2, original['height']-1))
         if ink:
             bounds = ink
-            if char in '0123456789' and zero and name != 'chart':
+            if char in '0123456789' and zero:
+                # Tabular box for every numeral. The plot labels used their own
+                # ink, which squeezed 1 into three columns and dropped its flag.
                 bounds = zero['ink']
             if char in ':.' and zero and not small:
                 bounds = (ink[0], zero['ink'][1], ink[2], zero['ink'][3])
@@ -193,14 +253,14 @@ def render_font(name, dest, scale=1.0):
             right = min(right, e['width'])
             bottom = min(bottom, e['height'])
             w, h = max(1, right-left), max(1, bottom-top)
-            if name == 'chart':
-                # Tiny plot labels retain their hand-hinted 4 x 7 design.
-                rows = CHART[char]
-                raw = Image.new('L', (4, 7))
-                for y, row in enumerate(rows):
-                    for x, pixel in enumerate(row):
-                        if pixel == '1': raw.putpixel((x, y), 255)
-                glyph = raw.resize((w, h), Image.Resampling.NEAREST)
+            if name == 'chart' and char in '0123456789':
+                # Axis labels share the numeral construction and two-pixel
+                # stroke of the data fonts beside the plot, inside a tabular
+                # cell that always leaves a column between neighbours.
+                w = max(1, min(w, e['xadvance']-1))
+                glyph = grid_digit(char, w, h, 0, 2 if w >= 6 else 1)
+            elif name == 'chart':
+                glyph = Image.new('L', (w, h), 255)
             elif char in '0123456789':
                 if char=='1':
                     # Preserve a natural narrow one, rather than stretching it
@@ -250,20 +310,6 @@ def render_font(name, dest, scale=1.0):
     atlas.save(dest / (name+'.png'))
     (dest / (name+'.fnt')).write_text('\n'.join(header+entries)+'\n')
 
-
-CHART = {
-    '0': ['0110','1001','1001','1001','1001','1001','0110'],
-    '1': ['0010','0110','0010','0010','0010','0010','0111'],
-    '2': ['0110','1001','0001','0010','0100','1000','1111'],
-    '3': ['1110','0001','0001','0110','0001','0001','1110'],
-    '4': ['0010','0110','1010','1010','1111','0010','0010'],
-    '5': ['1111','1000','1000','1110','0001','0001','1110'],
-    '6': ['0110','1000','1000','1110','1001','1001','0110'],
-    '7': ['1111','0001','0010','0010','0100','0100','0100'],
-    '8': ['0110','1001','1001','0110','1001','1001','0110'],
-    '9': ['0110','1001','1001','0111','0001','0001','0110'],
-    '-': ['0000','0000','0000','1111','0000','0000','0000'],
-}
 
 TINY = dict(zip('0123456789', [
     ['111','101','101','101','111'], ['010','110','010','010','111'],

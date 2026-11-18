@@ -76,8 +76,14 @@ class InstinctFaceView extends WatchUi.WatchFace {
         if(PreviewMode.ENABLED){return PreviewMode.currentHeartRate(stamp);}
         var info=Activity.getActivityInfo();
         // Keep only two scalar values, not a second large Activity.Info object.
-        if(uses(PowerPolicy.LIVE)){_altitudeValue=info.altitude;_pressureValue=info.ambientPressure;}
+        if(uses(PowerPolicy.LIVE)){readLive(info);}
         return _heartSource==1 ? LiveHeart.recent(stamp) : info.currentHeartRate;
+    }
+    // Watches without a barometer (Forerunner 55, vivoactive) have no
+    // ambientPressure field at all: reading it is a Symbol Not Found crash.
+    function readLive(info){
+        _altitudeValue=(info has :altitude) ? info.altitude : null;
+        _pressureValue=(info has :ambientPressure) ? info.ambientPressure : null;
     }
     function refreshCurrentHeart(stamp){
         if(!LiveHeart.due(_heartAt,stamp)){return;}_heartAt=stamp;
@@ -96,7 +102,7 @@ class InstinctFaceView extends WatchUi.WatchFace {
         _stats=uses(PowerPolicy.STATS) && !PreviewMode.ENABLED ? System.getSystemStats() : null;
         if(uses(PowerPolicy.HEART)){refreshCurrentHeart(now.value());}
         else if(uses(PowerPolicy.LIVE) && !PreviewMode.ENABLED){
-            var info=Activity.getActivityInfo();_altitudeValue=info.altitude;_pressureValue=info.ambientPressure;
+            readLive(Activity.getActivityInfo());
         }
         if(uses(PowerPolicy.NOTIFICATIONS) && !PreviewMode.ENABLED){_notificationCount=System.getDeviceSettings().notificationCount;}
         if(uses(PowerPolicy.BODY)){
@@ -114,6 +120,8 @@ class InstinctFaceView extends WatchUi.WatchFace {
         if(_suspended){return;}
         var frameStamp=(now.value()/60).toNumber();
         if(!_forceFrame && _planRevision==FacePrefs.revision && frameStamp==_frameMinute){updateLiveHeart(dc,now.value());updateSeconds(dc);return;}
+        // A solar watch can report no reading right after start; re-check each minute.
+        if(FacePrefs.recheckSolar()){FacePrefs.reload();}
         if(_planRevision!=FacePrefs.revision){buildPlan();}
         FaceDraw.releaseLiveHeart();
         _frameTime=now.value();readData(now);
@@ -126,13 +134,19 @@ class InstinctFaceView extends WatchUi.WatchFace {
         WeatherIcons.current=WeatherIcons.category(PreviewMode.ENABLED ? PreviewMode.weatherCondition() : (_weather!=null ? _weather.condition : null));
         dc.clearClip();dc.setColor(FaceDraw.foreground,FaceDraw.background);dc.clear();
         
-        slot(dc,"topOne",34,5,48,20);
+        slot(dc,"topOne",34+DeviceProfile.WEATHER_SHIFT,5,48,20);
         if(FacePrefs.flag("showWind")){drawWind(dc);}
-        slot(dc,"topTwo",10,FaceLayout.POWER_ROW_Y,FacePrefs.get("topThree")==0 ? FaceLayout.POWER_ROW_WIDTH : 48,20);
-        slot(dc,"topThree",FaceLayout.FEELS_X,FaceLayout.POWER_ROW_Y,48,20);
+        slot(dc,"topTwo",10+DeviceProfile.UPPER_SHIFT,FaceLayout.POWER_ROW_Y,FacePrefs.get("topThree")==0 ? FaceLayout.POWER_ROW_WIDTH : FaceLayout.FEELS_X-10,20);
+        slot(dc,"topThree",FaceLayout.FEELS_X+DeviceProfile.UPPER_SHIFT,FaceLayout.POWER_ROW_Y,FaceLayout.STATUS_RIGHT-FaceLayout.FEELS_X,20);
         if(FacePrefs.flag("showMoon")){
             var spare=FacePrefs.get("topThree")==0;
-            FaceDraw.moon(dc,spare ? FaceLayout.MOON_X : 102,spare ? FaceLayout.MOON_Y : 54,moonPhase(),FaceDraw.foreground,FaceDraw.background);
+            var moonX=(spare ? FaceLayout.MOON_X : FaceLayout.MOON_BESIDE_DATE_X)+DeviceProfile.UPPER_SHIFT;
+            if(spare && FacePrefs.get("topTwo")!=0){
+                // Sit beside the status text; a fixed column left a wide gap after short values.
+                var near=FaceDraw.slotTextEnd(dc,"topTwo",slotLabel("topTwo"),10+DeviceProfile.UPPER_SHIFT,FaceLayout.POWER_ROW_Y,FaceLayout.POWER_ROW_WIDTH,20).toNumber()+FaceLayout.MOON_AFTER_TEXT;
+                if(near<moonX){moonX=near;}
+            }
+            FaceDraw.moon(dc,moonX,spare ? FaceLayout.MOON_Y : FaceLayout.MOON_BESIDE_DATE_Y,moonPhase(),FaceDraw.foreground,FaceDraw.background);
         }
         if(FacePrefs.flag("showDate")){FaceDraw.date(dc,FaceFormat.dateText(d));}
         if(FacePrefs.flag("showMoveBar") && FacePrefs.get("moveSource")!=0){
@@ -144,11 +158,13 @@ class InstinctFaceView extends WatchUi.WatchFace {
         if(_sideKind!=0){FaceDraw.sideData(dc,_sideKind,metric(_sideKind));}
         else{FaceDraw.walletCards(dc,_cardTop,_cardBottom);}
         _secondsVisible=false;updateSeconds(dc);
-        slot(dc,"bottomLeft",FaceLayout.STEP_X,FaceLayout.LOWER_Y,FaceLayout.STEP_WIDTH,20);
         var right=FacePrefs.get("bottomRight");
-        if(right!=0 && FacePrefs.flag("showHeartGraph") && FacePrefs.get("bottomRightStyle")==6 && TrendData.supported(right)){
+        var trend=right!=0 && FacePrefs.flag("showHeartGraph") && FacePrefs.get("bottomRightStyle")==6 && TrendData.supported(right);
+        // The trend panel starts left of the right column; the step slot stops short of it.
+        slot(dc,"bottomLeft",FaceLayout.STEP_X,FaceLayout.LOWER_Y,trend ? FaceLayout.GRAPH_X-FaceLayout.STEP_X-2 : FaceLayout.STEP_WIDTH,20);
+        if(trend){
             FaceDraw.heartPanel(dc,_trend,_trendRange);
-        }else{slot(dc,"bottomRight",FaceLayout.LOWER_RIGHT_X,FaceLayout.LOWER_Y,FaceLayout.LOWER_RIGHT_WIDTH,20);}
+        }else{slot(dc,"bottomRight",FaceLayout.LOWER_RIGHT_X,FaceLayout.LOWER_Y,DeviceProfile.LOWER_RIGHT_WIDTH,20);}
         FaceDraw.footerRow(dc,slotLabel("footerLeft"),slotRatio("footerLeft"),slotLabel("footerRight"),slotRatio("footerRight"));
         if(FacePrefs.flag("showCircle")){FaceDraw.circle(DeviceDrawing.circleTarget(dc),FacePrefs.get("circle"),slotLabel("circle"),_heartValue);_paintedHeart=_heartValue;}
         _frameMinute=frameStamp;_forceFrame=false;FaceDraw.finishFrame();
@@ -165,11 +181,11 @@ class InstinctFaceView extends WatchUi.WatchFace {
         var custom=FacePrefs.get(key+"Goal");if(custom>0){return custom;}
         var kind=FacePrefs.get(key);
         switch(kind){
-            case 1:case 10:case 12:case 14:case 19:case 22:case 23:return 100;
+            case 1:case 10:case 12:case 14:case 19:case 22:case 23:case 29:return 100;
             case 2:return PreviewMode.ENABLED ? 10000 : (_activity!=null ? _activity.stepGoal : null);
-            case 4:return PreviewMode.ENABLED ? 20 : (_activity!=null ? _activity.floorsClimbedGoal : null);
-            case 20:return PreviewMode.ENABLED ? PreviewMode.INTENSITY_WEEK_GOAL/7.0 : (_activity!=null && _activity.activeMinutesWeekGoal!=null ? _activity.activeMinutesWeekGoal/7.0 : null);
-            case 21:return PreviewMode.ENABLED ? PreviewMode.INTENSITY_WEEK_GOAL : (_activity!=null ? _activity.activeMinutesWeekGoal : null);
+            case 4:return PreviewMode.ENABLED ? 20 : (_activity!=null && (_activity has :floorsClimbedGoal) ? _activity.floorsClimbedGoal : null);
+            case 20:return PreviewMode.ENABLED ? PreviewMode.INTENSITY_WEEK_GOAL/7.0 : (_activity!=null && (_activity has :activeMinutesWeekGoal) && _activity.activeMinutesWeekGoal!=null ? _activity.activeMinutesWeekGoal/7.0 : null);
+            case 21:return PreviewMode.ENABLED ? PreviewMode.INTENSITY_WEEK_GOAL : (_activity!=null && (_activity has :activeMinutesWeekGoal) ? _activity.activeMinutesWeekGoal : null);
             case 24:return 5;
         }
         return null;
@@ -183,9 +199,9 @@ class InstinctFaceView extends WatchUi.WatchFace {
         if(source==2){return FitnessProgress.completion(number(1),100);}
         if(source==3){return FitnessProgress.completion(number(2),PreviewMode.ENABLED ? 10000 : (a!=null ? a.stepGoal : null));}
         if(source==4){return PreviewMode.ENABLED ? PreviewMode.intensityProgress() : FitnessProgress.dailyRatio(a);}
-        if(source==5){return FitnessProgress.completion(number(21),PreviewMode.ENABLED ? PreviewMode.INTENSITY_WEEK_GOAL : (a!=null ? a.activeMinutesWeekGoal : null));}
+        if(source==5){return FitnessProgress.completion(number(21),PreviewMode.ENABLED ? PreviewMode.INTENSITY_WEEK_GOAL : (a!=null && (a has :activeMinutesWeekGoal) ? a.activeMinutesWeekGoal : null));}
         if(source==6){return FitnessProgress.completion(number(24),5);}
-        if(source==7){return FitnessProgress.completion(number(4),PreviewMode.ENABLED ? 20 : (a!=null ? a.floorsClimbedGoal : null));}
+        if(source==7){return FitnessProgress.completion(number(4),PreviewMode.ENABLED ? 20 : (a!=null && (a has :floorsClimbedGoal) ? a.floorsClimbedGoal : null));}
         return null;
     }
     function number(kind){
@@ -197,7 +213,7 @@ class InstinctFaceView extends WatchUi.WatchFace {
                 case 1:n=_stats!=null ? _stats.battery : null;break;
                 case 2:n=a!=null ? a.steps : null;break;
                 case 3:n=a!=null && a.distance!=null ? a.distance/100000.0 : null;break;
-                case 4:n=a!=null ? a.floorsClimbed : null;break;
+                case 4:n=a!=null && (a has :floorsClimbed) ? a.floorsClimbed : null;break;
                 case 5:n=a!=null ? a.calories : null;break;
                 case 7:n=_weather!=null ? _weather.temperature : null;break;
                 case 10:n=_weather!=null ? _weather.relativeHumidity : null;break;
@@ -209,21 +225,23 @@ class InstinctFaceView extends WatchUi.WatchFace {
                 case 17:n=_stats!=null && (_stats has :batteryInDays) ? _stats.batteryInDays : null;break;
                 case 18:n=_altitudeValue;break;
                 case 19:n=FaceDraw.bodyBattery;break;
-                case 20:n=a!=null && a.activeMinutesDay!=null ? a.activeMinutesDay.total : null;break;
-                case 21:n=a!=null && a.activeMinutesWeek!=null ? a.activeMinutesWeek.total : null;break;
+                case 20:n=a!=null && (a has :activeMinutesDay) && a.activeMinutesDay!=null ? a.activeMinutesDay.total : null;break;
+                case 21:n=a!=null && (a has :activeMinutesWeek) && a.activeMinutesWeek!=null ? a.activeMinutesWeek.total : null;break;
                 case 22:var r=FitnessProgress.dailyRatio(a);n=r!=null ? r*100 : null;break;
-                case 23:n=a!=null && a.activeMinutesWeek!=null && a.activeMinutesWeekGoal!=null && a.activeMinutesWeekGoal>0 ? a.activeMinutesWeek.total*100.0/a.activeMinutesWeekGoal : null;break;
+                case 23:n=a!=null && (a has :activeMinutesWeek) && (a has :activeMinutesWeekGoal) && a.activeMinutesWeek!=null && a.activeMinutesWeekGoal!=null && a.activeMinutesWeekGoal>0 ? a.activeMinutesWeek.total*100.0/a.activeMinutesWeekGoal : null;break;
                 case 24:n=a!=null && (a has :moveBarLevel) ? a.moveBarLevel : null;break;
                 case 25:n=a!=null && (a has :timeToRecovery) ? a.timeToRecovery : null;break;
                 case 26:n=a!=null && (a has :stressScore) ? a.stressScore : null;break;
                 case 27:n=a!=null && (a has :respirationRate) ? a.respirationRate : null;break;
                 case 28:n=_pressureValue!=null ? _pressureValue/100.0 : null;break;
+                case 29:n=_stats!=null && (_stats has :solarIntensity) ? _stats.solarIntensity : null;break;
             }
         }
         if(n==null){return null;}
         if(kind==17 && n<0){return null;}
         if(kind==26 && (n<0 || n>100)){return null;}
         if(kind==27 && n<=0){return null;}
+        if(kind==29 && n<0){n=0;}
         if((kind==7 || kind==16) && FacePrefs.get("temperatureUnit")==1){n=n*1.8+32;}
         if((kind==3 || kind==13) && FacePrefs.get("distanceUnit")==1){n=n/1.609344;}
         if(kind==18 && FacePrefs.get("altitudeUnit")==1){n=n*3.28084;}
@@ -240,6 +258,8 @@ class InstinctFaceView extends WatchUi.WatchFace {
             case 3:return n.format("%.1f")+(units ? (FacePrefs.get("distanceUnit")==0 ? "km" : "mi") : "");
             case 7:case 16:return n.format("%.0f")+(units ? (FacePrefs.get("temperatureUnit")==1 ? "°F" : "°") : "");
             case 10:case 12:case 14:case 22:case 23:return n.format("%.0f")+"%";
+            // Garmin rates 100% solar intensity at 50,000 lux; show estimated kilolux.
+            case 29:return (n/2.0).format("%.0f")+"k";
             case 17:return Math.floor(n).format("%d")+(units ? FaceLocale.days() : "");
             case 18:return n.format("%.0f")+(units ? (FacePrefs.get("altitudeUnit")==0 ? "m" : "ft") : "");
             case 25:return n.format("%.0f")+(units ? "h" : "");
@@ -285,7 +305,7 @@ class InstinctFaceView extends WatchUi.WatchFace {
         return _moonValue;
     }
     function drawWind(dc){
-        drawWindAt(dc,FaceLayout.WIND_X,14);
+        drawWindAt(dc,FaceLayout.WIND_X+DeviceProfile.WEATHER_SHIFT,14);
     }
     function drawWindAt(dc,center,cy){
         if(!PreviewMode.ENABLED && (_weather==null || _weather.windBearing==null)){dc.drawLine(center-4,cy,center+4,cy);return;}

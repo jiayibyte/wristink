@@ -30,6 +30,12 @@ module NativeStyle {
         var codes="0123456789ABCDEFGHIJKLMNOPQRSTUV";
         dc.setColor(ink,paper);dc.drawText(cx-7,cy-7,_moon,codes.substring(index,index+1),Graphics.TEXT_JUSTIFY_LEFT);
     }
+    // Kinds drawn from the 16px standard icon font. Their ink is centred in the
+    // 16-row cell, so the cell top must sit on the row's own y, not y+3.
+    function glyph(kind){
+        switch(kind){case 2:case 3:case 4:case 5:case 6:case 8:case 9:case 10:case 11:case 12:case 15:case 19:case 20:case 21:case 22:case 23:case 24:case 25:case 26:case 29:return true;}
+        return false;
+    }
     function icon(dc,kind,x,y,ink,paper){
         var text=null;
         switch(kind){
@@ -39,7 +45,7 @@ module NativeStyle {
             case 8:text="c";break;case 9:text="b";break;case 10:text="Í";break;
             case 11:text="Â";break;case 12:text="g";break;case 19:text="A";break;
             case 20:case 21:case 22:case 23:text="o";break;case 24:text="r";break;
-            case 25:text="R";break;case 26:text="È";break;
+            case 25:text="R";break;case 26:text="È";break;case 29:text="S";break;
         }
         if(text==null){return false;}
         if(_icons==null){_icons=WatchUi.loadResource(Rez.Fonts.GarminStandardIcons);}

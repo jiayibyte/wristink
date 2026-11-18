@@ -7,7 +7,9 @@ from font_rasterizer import METRICS,render_font
 # Re-measuring fractional advances changed a few 8px/14px letters by one pixel.
 ADVANCES=json.loads((Path(__file__).resolve().parents[1]/'assets/fonts/english-advances.json').read_text())
 
-def generate(out,scale=1.0,circle_scale=None):
+def generate(out,scale=1.0,circle_scale=None,shared=False):
+    """shared=True writes the Latin-extended fonts over the base fonts: one font
+    set serves both languages instead of packaging Chinese and English copies."""
     out=Path(out);dest=out/'fonts';dest.mkdir(parents=True,exist_ok=True)
     resources=ET.Element('fonts')
     for name,original in list(METRICS.items()):
@@ -26,4 +28,4 @@ def generate(out,scale=1.0,circle_scale=None):
         finally:METRICS[name]=original
         ident=re.sub(r'(data|circle)f(\d)s(\d+)',lambda m:m[1].title()+'F'+m[2]+'S'+m[3],name)
         ET.SubElement(resources,'font',id=ident,filename=name+'.fnt')
-    ET.ElementTree(resources).write(dest/'fonts.xml',encoding='utf-8')
+    if not shared:ET.ElementTree(resources).write(dest/'fonts.xml',encoding='utf-8')

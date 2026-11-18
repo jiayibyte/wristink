@@ -82,10 +82,28 @@ for i,(name,char) in enumerate(chosen.items()):
     rgba=Image.new('RGBA',(16,16),(255,255,255,0));rgba.putalpha(tile)
     atlas.paste(rgba,(i*17,0))
     entries.append(f'char id={ord(char)} x={i*17} y=0 width=16 height=16 xoffset=0 yoffset=0 xadvance=16 page=0 chnl=15')
+# The forum set has no solar icon. Rebuild Garmin's official Solar Intensity
+# icon (assets/icons/garmin-solar: ring, eight-point sun, lightning bolt) on
+# the 16px grid as Garmin's white badge (disc, dashed ring, star, bolt) instead of thresholding the 59px support-page image.
+SOLAR = [2016, 8184, 15420, 30702, 28278, 64031, 55579, 53387, 54155, 55579, 63647, 28278, 30702, 15420, 8184, 2016]
+wide = Image.new('RGBA', (atlas.width + 17, 16), (255, 255, 255, 0)); wide.paste(atlas, (0, 0)); atlas = wide
+solar = Image.new('L', (16, 16))
+for y, row in enumerate(SOLAR):
+    for x in range(16):
+        if row >> x & 1:
+            solar.putpixel((x, y), 255)
+rgba = Image.new('RGBA', (16, 16), (255, 255, 255, 0)); rgba.putalpha(solar)
+x0 = len(chosen) * 17; atlas.paste(rgba, (x0, 0))
+entries.append(f'char id={ord("S")} x={x0} y=0 width=16 height=16 xoffset=0 yoffset=0 xadvance=16 page=0 chnl=15')
 atlas.save(out/'garmin-icons.png')
 (out/'garmin-icons.fnt').write_text('\n'.join([
     'info face="Garmin Forum Standard Icons" size=16 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=0 aa=1 padding=0,0,0,0 spacing=1,1',
     f'common lineHeight=16 base=16 scaleW={atlas.width} scaleH=16 pages=1 packed=0',
     'page id=0 file="garmin-icons.png"',f'chars count={len(entries)}',*entries])+'\n')
-(out/'fonts.xml').write_text('<fonts><font id="GarminStandardIcons" filename="garmin-icons.fnt" /></fonts>\n')
+# fonts.xml also lists the moon, wind and white-heart fonts; only add ours if missing.
+fonts_xml = out/'fonts.xml'
+listing = fonts_xml.read_text() if fonts_xml.exists() else '<fonts>\n</fonts>'
+if 'id="GarminStandardIcons"' not in listing:
+    listing = listing.replace('<fonts>', '<fonts>\n    <font id="GarminStandardIcons" filename="garmin-icons.fnt" />', 1)
+    fonts_xml.write_text(listing)
 print(f'Generated {len(chosen)} Garmin forum standard icons.')

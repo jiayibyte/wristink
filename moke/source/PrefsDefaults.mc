@@ -13,6 +13,7 @@ module PrefsDefaults {
         case "sideSize":return 2;
         case "topOne":return 7;
         case "topTwo":return 17;
+        case "topThree":return 29;
         case "bottomLeft":return 2;
         case "bottomRight":return 15;
         case "bottomRightStyle":return 6;
@@ -22,11 +23,11 @@ module PrefsDefaults {
     } return 0; }
     function flag(key) { switch(key) {
         case "showMoveBar":return false;
-        case "showWind":return false;
     }return true;}
     function max(key) {
         var suffix=key.length()>=4 ? key.substring(key.length()-4,key.length()) : "";
         if(suffix.equals("Goal")){return 1000000;}
+        if(key.equals("timeFont")){return 5;}
         if(suffix.equals("Font") || suffix.equals("Size")){
             return key.equals("dataFont") || key.equals("dataSize") || key.equals("timeFont") || key.equals("timeSize") || key.equals("circleFont") || key.equals("circleSize") || key.equals("secondsFont") || key.equals("secondsSize") ? 2 : 3;
         }
@@ -39,6 +40,6 @@ module PrefsDefaults {
             case "topCardImage":case "bottomCardImage":return 20;
             case "timeFormat":case "temperatureUnit":case "distanceUnit":case "altitudeUnit":case "powerProfile":case "heartSource":return 1;
         }
-        return 28;
+        return 29;
     }
 }

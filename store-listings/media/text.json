@@ -1,0 +1,524 @@
+{
+ "moke": {
+  "zh": {
+   "hero": {
+    "eyebrow": "墨刻 · Moke",
+    "headline": "黑白分明，\n一眼看清",
+    "sub": "6 种大时间字体 · 29 种数据 · 省电设计"
+   },
+   "badge": "1.3.0 全新升级",
+   "note": "模拟器截图 · 演示数据",
+   "screens": [
+    {
+     "eyebrow": "墨刻 · Moke",
+     "title": "每个像素都清清楚楚",
+     "sub": "所有字体按手表屏幕的像素网格重新绘制，小字也锐利，不发虚、不粘连。",
+     "zoom": "时间数字放大 4 倍：笔画整齐、粗细一致",
+     "note": "Instinct 3 模拟器截图 · 演示数据"
+    },
+    {
+     "eyebrow": "墨刻 · Moke",
+     "title": "6 种大时间字体，随心切换",
+     "sub": "在手表菜单或手机 Connect IQ 应用里一键更换。",
+     "labels": [
+      "当前数字",
+      "简洁黑体",
+      "窄体数字",
+      "方角数字",
+      "数码管",
+      "点阵"
+     ],
+     "note": "Instinct 3 模拟器截图 · 演示数据"
+    },
+    {
+     "eyebrow": "墨刻 · Moke",
+     "title": "深色浅色，本能圆屏都好看",
+     "sub": "fēnix 6/7/8、Forerunner、Enduro 等圆形 MIP 屏有专门放大的排版，数据不贴边。",
+     "labels": [
+      "Instinct · 深色 / 浅色主题",
+      "圆形 MIP 屏 · 深色 / 浅色"
+     ],
+     "note": "模拟器截图 · 演示数据"
+    },
+    {
+     "eyebrow": "墨刻 · Moke",
+     "title": "数据由你决定",
+     "sub": "每个数据位都能换数据、换样式、换字体字号，或者直接隐藏。",
+     "chips": [
+      "心率",
+      "身体电量",
+      "光照强度",
+      "步数",
+      "热量",
+      "距离",
+      "海拔",
+      "气压",
+      "天气",
+      "风向",
+      "体感温度",
+      "湿度",
+      "月相",
+      "日出日落",
+      "强度分钟",
+      "压力",
+      "呼吸频率",
+      "恢复时间",
+      "续航天数",
+      "通知"
+     ],
+     "extra": "右下角趋势图可显示 15 / 30 / 60 分钟的心率、海拔、气压或身体电量。",
+     "note": "Instinct 3 模拟器截图 · 演示数据"
+    }
+   ],
+   "power": {
+    "eyebrow": "墨刻 · Moke",
+    "title": "省电设计，放心常戴",
+    "sub": "表盘只做必须做的事：不开 GPS、不联网，屏幕上没显示的数据一项也不读。",
+    "note": "设计说明，非实测续航数据",
+    "stats": [
+     [
+      "0",
+      "GPS、联网请求和后台定时器"
+     ],
+     [
+      "按需读取",
+      "只读取屏幕上正在显示的数据"
+     ],
+     [
+      "5 / 30 分钟",
+      "默认省电模式：趋势图 / 天气更新间隔"
+     ],
+     [
+      "1 个",
+      "同一时间只加载一个字体"
+     ]
+    ],
+    "tip": "秒数可设为「仅抬腕」或「关闭」，心率可改为每分钟刷新，进一步省电。"
+   }
+  },
+  "en": {
+   "hero": {
+    "eyebrow": "MOKE",
+    "headline": "Sharp. Bold.\nEasy to read.",
+    "sub": "6 time styles · 29 data choices · battery-friendly"
+   },
+   "badge": "NEW IN 1.3.0",
+   "note": "Simulator captures · demo data",
+   "screens": [
+    {
+     "eyebrow": "MOKE",
+     "title": "Crisp to the last pixel",
+     "sub": "Every font is rebuilt on your watch's pixel grid, so even small text stays sharp and never smears.",
+     "zoom": "Time digits at 4x: clean, even strokes",
+     "note": "Instinct 3 simulator capture · demo data"
+    },
+    {
+     "eyebrow": "MOKE",
+     "title": "Six time styles",
+     "sub": "Switch on the watch or in the Connect IQ app.",
+     "labels": [
+      "Current numerals",
+      "Clean",
+      "Narrow numerals",
+      "Square numerals",
+      "Seven-segment",
+      "Dot matrix"
+     ],
+     "note": "Instinct 3 simulator captures · demo data"
+    },
+    {
+     "eyebrow": "MOKE",
+     "title": "Dark or light. Instinct or round.",
+     "sub": "Round MIP watches such as fēnix 6/7/8, Forerunner and Enduro get their own larger layout.",
+     "labels": [
+      "Instinct · dark / light theme",
+      "Round MIP screens · dark / light"
+     ],
+     "note": "Simulator captures · demo data"
+    },
+    {
+     "eyebrow": "MOKE",
+     "title": "Your data, your way",
+     "sub": "Change the data, style, font and size of every field, or hide it.",
+     "chips": [
+      "Heart rate",
+      "Body Battery",
+      "Solar intensity",
+      "Steps",
+      "Calories",
+      "Distance",
+      "Altitude",
+      "Air pressure",
+      "Weather",
+      "Wind",
+      "Feels like",
+      "Humidity",
+      "Moon",
+      "Sunrise & sunset",
+      "Intensity minutes",
+      "Stress",
+      "Respiration",
+      "Recovery time",
+      "Battery days",
+      "Notifications"
+     ],
+     "extra": "The trend chart shows 15, 30 or 60 minutes of heart rate, altitude, air pressure or Body Battery.",
+     "note": "Instinct 3 simulator capture · demo data"
+    }
+   ],
+   "power": {
+    "eyebrow": "MOKE",
+    "title": "Built to sip battery",
+    "sub": "The face only does what it must: no GPS, no network, and data you are not showing is never read.",
+    "note": "Design notes, not measured battery life",
+    "stats": [
+     [
+      "0",
+      "GPS, network requests or background timers"
+     ],
+     [
+      "On demand",
+      "Only the data shown on screen is read"
+     ],
+     [
+      "5 / 30 min",
+      "Default power saver: trend chart / weather refresh"
+     ],
+     [
+      "1",
+      "Font loaded in memory at a time"
+     ]
+    ],
+    "tip": "Set seconds to wrist-raise only or off, and heart rate to once a minute, to save even more."
+   }
+  }
+ },
+ "retro": {
+  "zh": {
+   "hero": {
+    "eyebrow": "寰游时刻 · Retro World",
+    "headline": "复古像素，\n腕上世界",
+    "sub": "6 套配色 · 16 种地图 · 安装包约 60 KB"
+   },
+   "badge": "2.2.0 全新配色",
+   "note": "模拟器截图 · 演示数据",
+   "screens": [
+    {
+     "eyebrow": "寰游时刻 · Retro World",
+     "title": "6 套配色，换个心情",
+     "sub": "经典、琥珀、冰川、薄荷、夜光、樱花，彩色 AMOLED 和彩色 MIP 屏都能用。",
+     "labels": [
+      "经典",
+      "琥珀",
+      "冰川",
+      "薄荷",
+      "夜光",
+      "樱花"
+     ],
+     "note": "Venu 3 模拟器截图 · 演示数据"
+    },
+    {
+     "eyebrow": "寰游时刻 · Retro World",
+     "title": "每种屏幕都原生绘制",
+     "sub": "AMOLED、彩色 MIP、黑白本能和方屏，各自按原生分辨率画，不是放大的小图。",
+     "labels": [
+      "AMOLED",
+      "彩色 MIP",
+      "本能 · 黑白",
+      "方屏"
+     ],
+     "note": "模拟器截图 · 演示数据"
+    },
+    {
+     "eyebrow": "寰游时刻 · Retro World",
+     "title": "复古液晶，信息满满",
+     "sub": "数字时间、模拟小表盘和实时昼夜世界地图，一屏看全。",
+     "chips": [
+      "心率",
+      "电量",
+      "续航天数",
+      "步数",
+      "热量",
+      "距离",
+      "海拔",
+      "楼层",
+      "天气温度",
+      "日出日落",
+      "强度分钟",
+      "通知"
+     ],
+     "extra": "9 个数据区可自定；支持的 MIP 手表可以持续走秒，AMOLED 常亮为低亮显示。",
+     "note": "Venu 3 模拟器截图 · 演示数据"
+    }
+   ],
+   "power": {
+    "eyebrow": "寰游时刻 · Retro World",
+    "title": "轻巧省电",
+    "sub": "安装包小，走秒只动秒数那一小块，地图缓存复用。",
+    "note": "Venu 3 本机构建实测包体；功耗为设计说明，非实测续航",
+    "stats": [
+     [
+      "62 KB",
+      "Venu 3 安装包（上一版 101 KB）"
+     ],
+     [
+      "1 小块",
+      "持续走秒只重画秒数区域"
+     ],
+     [
+      "0",
+      "GPS 与联网请求"
+     ],
+     [
+      "1 次/分钟",
+      "AMOLED 常亮低亮刷新"
+     ]
+    ],
+    "tip": "超出手表的电量预算时自动降级，先停秒针、再停走秒，不会一直耗电。"
+   }
+  },
+  "en": {
+   "hero": {
+    "eyebrow": "RETRO WORLD",
+    "headline": "Retro pixels.\nA living world.",
+    "sub": "6 colour themes · 16 map styles · about 60 KB"
+   },
+   "badge": "NEW IN 2.2.0",
+   "note": "Simulator captures · demo data",
+   "screens": [
+    {
+     "eyebrow": "RETRO WORLD",
+     "title": "Six colour themes",
+     "sub": "Classic, Amber, Glacier, Mint, Night glow and Sakura, on colour AMOLED and colour MIP screens.",
+     "labels": [
+      "Classic",
+      "Amber",
+      "Glacier",
+      "Mint",
+      "Night glow",
+      "Sakura"
+     ],
+     "note": "Venu 3 simulator captures · demo data"
+    },
+    {
+     "eyebrow": "RETRO WORLD",
+     "title": "Drawn natively for every screen",
+     "sub": "AMOLED, colour MIP, monochrome Instinct and square screens each get native-resolution artwork.",
+     "labels": [
+      "AMOLED",
+      "Colour MIP",
+      "Instinct · mono",
+      "Square"
+     ],
+     "note": "Simulator captures · demo data"
+    },
+    {
+     "eyebrow": "RETRO WORLD",
+     "title": "Retro LCD, packed with info",
+     "sub": "Digital time, an analogue dial and a live day-and-night world map on one screen.",
+     "chips": [
+      "Heart rate",
+      "Battery",
+      "Battery days",
+      "Steps",
+      "Calories",
+      "Distance",
+      "Altitude",
+      "Floors",
+      "Temperature",
+      "Sunrise & sunset",
+      "Intensity minutes",
+      "Notifications"
+     ],
+     "extra": "Nine configurable data areas. Continuous seconds on supported MIP watches; dim always-on display on AMOLED.",
+     "note": "Venu 3 simulator capture · demo data"
+    }
+   ],
+   "power": {
+    "eyebrow": "RETRO WORLD",
+    "title": "Light on battery and storage",
+    "sub": "A small download, seconds that redraw only their own corner, and a cached map.",
+    "note": "Package size from local Venu 3 build; power notes are design, not measured battery life",
+    "stats": [
+     [
+      "62 KB",
+      "Venu 3 download (was 101 KB)"
+     ],
+     [
+      "1 corner",
+      "Continuous seconds redraw only the seconds"
+     ],
+     [
+      "0",
+      "GPS or network requests"
+     ],
+     [
+      "1 / min",
+      "Dim AMOLED always-on refresh"
+     ]
+    ],
+    "tip": "If the watch’s power budget is exceeded, it steps down on its own: second hand first, then seconds."
+   }
+  }
+ },
+ "alpine": {
+  "zh": {
+   "hero": {
+    "eyebrow": "山境 · Alpine",
+    "headline": "选一座山，\n戴在腕上",
+    "sub": "4 款山峰 · 每台手表不到 100 KB · 省电"
+   },
+   "badge": "1.2.0 新增山峰",
+   "note": "模拟器截图 · 演示数据",
+   "screens": [
+    {
+     "eyebrow": "山境 · Alpine",
+     "title": "4 款山峰，随时切换",
+     "sub": "雪峰、群峰、富士、珠峰，在手表菜单或手机里一键更换。",
+     "labels": [
+      "雪峰（默认）",
+      "群峰",
+      "富士",
+      "珠峰"
+     ],
+     "note": "epix 2 模拟器截图 · 演示数据"
+    },
+    {
+     "eyebrow": "山境 · Alpine",
+     "title": "每种屏幕独立绘制",
+     "sub": "AMOLED 全彩渐变、彩色 MIP 64 色、黑白屏线稿，各有各的样子。",
+     "labels": [
+      "AMOLED",
+      "彩色 MIP",
+      "本能 · 黑白"
+     ],
+     "note": "模拟器截图 · 演示数据"
+    },
+    {
+     "eyebrow": "山境 · Alpine",
+     "title": "大字时间，数据随你",
+     "sub": "7 个数据位都能单独更换或隐藏；本能系列新增时间左侧数据位。4 种数据区样式。",
+     "chips": [
+      "步数",
+      "心率",
+      "热量",
+      "海拔",
+      "续航天数",
+      "距离",
+      "天气温度",
+      "压力",
+      "通知",
+      "日出",
+      "日落"
+     ],
+     "extra": "跟随系统或 12/24 小时制，抬腕显示秒数；AMOLED 常亮为低亮移动时钟。",
+     "note": "Instinct 3 模拟器截图 · 演示数据"
+    }
+   ],
+   "power": {
+    "eyebrow": "山境 · Alpine",
+    "title": "不到 100 KB，轻装上山",
+    "sub": "每台手表的安装包都小于 100 KB，同一时间只加载一张山景。",
+    "note": "包体为构建检查上限；功耗为设计说明，非实测续航",
+    "stats": [
+     [
+      "< 100 KB",
+      "每台手表的安装包"
+     ],
+     [
+      "1 张",
+      "同一时间只加载一张山景"
+     ],
+     [
+      "0",
+      "GPS 与联网请求"
+     ],
+     [
+      "1 次/分钟",
+      "AMOLED 常亮低亮刷新"
+     ]
+    ],
+    "tip": "秒数只在抬腕时走，放下手腕就停。"
+   }
+  },
+  "en": {
+   "hero": {
+    "eyebrow": "ALPINE",
+    "headline": "Pick your peak.",
+    "sub": "4 mountains · under 100 KB · battery-friendly"
+   },
+   "badge": "NEW IN 1.2.0",
+   "note": "Simulator captures · demo data",
+   "screens": [
+    {
+     "eyebrow": "ALPINE",
+     "title": "Four mountains, one tap away",
+     "sub": "Summit, Ranges, Fuji and Everest. Switch on the watch or in the Connect IQ app.",
+     "labels": [
+      "Summit (default)",
+      "Ranges",
+      "Fuji",
+      "Everest"
+     ],
+     "note": "epix 2 simulator captures · demo data"
+    },
+    {
+     "eyebrow": "ALPINE",
+     "title": "Made for every screen",
+     "sub": "Full-colour gradients on AMOLED, 64-colour art on colour MIP, line art on monochrome.",
+     "labels": [
+      "AMOLED",
+      "Colour MIP",
+      "Instinct · mono"
+     ],
+     "note": "Simulator captures · demo data"
+    },
+    {
+     "eyebrow": "ALPINE",
+     "title": "Bold time, your data",
+     "sub": "Seven fields, each changeable or hidden, now including one left of the time on Instinct. Four panel styles.",
+     "chips": [
+      "Steps",
+      "Heart rate",
+      "Calories",
+      "Altitude",
+      "Battery days",
+      "Distance",
+      "Temperature",
+      "Stress",
+      "Notifications",
+      "Sunrise",
+      "Sunset"
+     ],
+     "extra": "System, 12- or 24-hour time with awake seconds; a dim moving always-on clock on AMOLED.",
+     "note": "Instinct 3 simulator capture · demo data"
+    }
+   ],
+   "power": {
+    "eyebrow": "ALPINE",
+    "title": "Under 100 KB. Pack light.",
+    "sub": "Every watch gets a download under 100 KB, and only one mountain is loaded at a time.",
+    "note": "Size is enforced at build time; power notes are design, not measured battery life",
+    "stats": [
+     [
+      "< 100 KB",
+      "Download on every watch"
+     ],
+     [
+      "1",
+      "Mountain loaded at a time"
+     ],
+     [
+      "0",
+      "GPS or network requests"
+     ],
+     [
+      "1 / min",
+      "Dim AMOLED always-on refresh"
+     ]
+    ],
+    "tip": "Seconds run only while the watch is awake."
+   }
+  }
+ }
+}

@@ -21,7 +21,8 @@ import xml.etree.ElementTree as ET
 catalog={}; extra=[]
 for group,sizes in [('Data',[8,10,12,14,16]),('Time',[54,58,64,68]),('Circle',[18,22,26,28]),('LiveHeart',[18,22,26,28]),('Second',[18,22,26,28])]:
     matrix=[]
-    for family in range(3):
+    # The big clock offers three extra styles (square, seven-segment, dot matrix).
+    for family in range(6 if group=='Time' else 3):
         row=[]
         for size in sizes:
             ident=f'{group}F{family}S{size}';filename=ident.lower()

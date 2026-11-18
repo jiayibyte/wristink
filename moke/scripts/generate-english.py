@@ -28,5 +28,8 @@ for path in (R/'resources/config').glob('*.json'):
         width=max(map(len,data));(folder/path.name.replace('options-','labels-')).write_text(json.dumps(''.join(s.ljust(width) for s in data)))
 (folder/'resources.xml').write_bytes((R/'resources/config/resources.xml').read_bytes())
 (out/'strings/font-licenses.xml').write_bytes((R/'resources/strings/font-licenses.xml').read_bytes())
-generate(out)
+# The data/circle fonts carry the English letters themselves, so both languages
+# share one font set; a separate English copy only duplicated every glyph.
+generate(R/'resources',shared=True)
+import shutil;shutil.rmtree(out/'fonts',ignore_errors=True)
 print('Generated English settings and native-size Latin glyphs.')

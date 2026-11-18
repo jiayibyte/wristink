@@ -127,7 +127,10 @@ for value in ("00", "58", "59"):
     checks.append({"seconds": value, "right_margin_at_least_8px": True})
 checks.append({"cards": "28 x 13", "right_margin_at_least_8px": True})
 assert LAYOUT["LOWER_LEFT_X"]+LAYOUT["LOWER_LEFT_WIDTH"]<=LAYOUT["LOWER_RIGHT_X"]-4
-assert LAYOUT["GRAPH_X"]==LAYOUT["LOWER_RIGHT_X"]
+# The trend panel reaches left of the right column to balance the row, but keeps
+# the column's right edge and stays clear of the widest step count.
+assert LAYOUT["GRAPH_X"]+LAYOUT["GRAPH_WIDTH"]<=LAYOUT["LOWER_RIGHT_X"]+60
+assert max(x for x,y in ink("data","12 106",LAYOUT["STEP_X"]+LAYOUT["LOWER_TEXT_OFFSET"],LAYOUT["LOWER_Y"]+1))<=LAYOUT["GRAPH_X"]-3
 for label in ("12 106","605","128m"):
     points=ink("data",label,0,1)
     text_center=(min(y for x,y in points)+max(y for x,y in points))/2
@@ -147,13 +150,13 @@ assert max(y for x,y in points)<28
 checks.append({"temperature":"24°","clear_of_wind_and_battery_row":True})
 assert 'bold=0' in (ROOT/'resources/fonts/data.fnt').read_text().splitlines()[0]
 for label, y in (("240",LAYOUT["GRAPH_Y"]),("60",LAYOUT["GRAPH_Y"]+LAYOUT["GRAPH_LOW_LABEL_OFFSET"])):
-    points=ink("chart",label,LAYOUT["GRAPH_X"]+15, y, centered=False)
+    points=ink("chart",label,LAYOUT["GRAPH_X"]+LAYOUT["GRAPH_LABEL_RIGHT"], y, centered=False)
     # Labels are right-justified in the native drawing; subtract the advance here.
     advances=dict((int(m[0]),int(m[1])) for m in re.findall(r'char id=(\d+).*?xadvance=(\d+)',(ROOT/'resources/fonts/chart.fnt').read_text()))
     shift=sum(advances[ord(c)] for c in label)
     points=[(x-shift,py) for x,py in points]
     assert min(x for x,py in points)>=LAYOUT["GRAPH_X"]
-    assert max(x for x,py in points)<LAYOUT["GRAPH_X"]+18
+    assert max(x for x,py in points)<LAYOUT["GRAPH_X"]+LAYOUT["GRAPH_PLOT_X"]-1
     assert max(py for x,py in points)<LAYOUT["GRAPH_Y"]+LAYOUT["GRAPH_HEIGHT"]-2
     checks.append({"heart_axis_label":label,"clear_of_plot_and_footer":True})
 for label in ("28天","100天"):

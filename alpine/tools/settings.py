@@ -4,11 +4,12 @@ from xml.sax.saxutils import escape
 R=Path(__file__).resolve().parents[1]
 metrics=['Steps','Heart rate','Calories','Altitude','Battery days','Distance','Weather / temperature','Stress','Notifications','Sunrise','Sunset','Hidden']
 cnmetrics=['步数','心率','总热量','海拔','剩余天数','距离','天气 / 温度','压力','通知数','日出','日落','隐藏']
-slots=[('CircleData',6,'Circle / weather slot','圆窗 / 天气位'),('HeaderTop',11,'Top data','顶部数据'),('HeaderLeft',11,'Mountain left data','山景左侧数据'),('HeaderRight',11,'Mountain right (colour)','山景右侧（彩屏）'),('Left',0,'Bottom left','底部左侧'),('Middle',1,'Bottom middle','底部中间'),('Right',2,'Bottom right','底部右侧')]
+slots=[('CircleData',6,'Circle / weather slot','圆窗 / 天气位'),('HeaderTop',11,'Top data','顶部数据'),('HeaderLeft',11,'Mountain left data','山景左侧数据'),('HeaderRight',11,'Mountain right (colour)','山景右侧（彩屏）'),('Left',0,'Bottom left','底部左侧'),('Middle',1,'Bottom middle','底部中间'),('Right',2,'Bottom right','底部右侧'),('TimeLeft',11,'Left of time (Instinct)','时间左侧（本能）')]
 fields=[
     ('SkyDisplay', 0, 'Sun and Moon', '日月显示', ['Day / night', 'True astronomy'], ['日夜切换', '真实天象']),
     ('Festival', 0, 'Auto holiday', '自动模式的节日主题', ['Automatic', 'Off', 'Spring Festival', 'Christmas', 'Halloween', 'Mid-Autumn'], ['自动', '关闭', '春节', '圣诞', '万圣节', '中秋']),
     ('PanelStyle', 1, 'Data panel style', '数据区样式', ['Classic', 'Summit wings', 'Contour cards', 'Expedition'], ['经典', '峰翼', '等高线', '远征']),
+    ('Mountain', 0, 'Mountain', '背景山峰', ['Summit', 'Ranges', 'Fuji', 'Everest'], ['雪峰', '群峰', '富士', '珠峰']),
     ('TimeFormat', 0, 'Time format', '时间格式', ['System', '12 hour', '24 hour'], ['跟随系统', '12 小时', '24 小时']),
     ('Scene', 0, 'Background skin', '背景皮肤', ['Automatic', 'Dawn', 'Day', 'Dusk', 'Night', 'Rain', 'Warm accent', 'Lightning', 'Rainbow', 'Fireworks', 'Snow', 'Overcast', 'Fog', 'Aurora', 'Spring Festival', 'Christmas', 'Halloween', 'Mid-Autumn'], ['自动', '黎明', '白昼', '黄昏', '夜晚', '雨景', '暖色强调', '闪电', '彩虹', '烟花', '雪天', '阴天', '雾天', '极光', '春节', '圣诞', '万圣节', '中秋']),
     ('WeatherLink', 0, 'Weather effects', '天气联动', ['Follow weather', 'Fixed skin'], ['跟随天气', '固定所选皮肤']),
@@ -18,7 +19,7 @@ fields=[
     ('LowBattery', 20, 'Low battery threshold (%)', '低电量阈值（%）', None, None),
     ('StressLimit', 75, 'Stress threshold', '压力阈值', None, None),
 ]
-fields=[row for row in fields if row[0] in ('PanelStyle','TimeFormat','Seconds')]
+fields=[row for row in fields if row[0] in ('Mountain','PanelStyle','TimeFormat','Seconds')]
 props=['<property id="Circle" type="number">0</property>'];settings=[]
 en=['<string id="AppName">WristInk Alpine</string>','<string id="DataSlots">Setup</string><string id="CircleSlot">Circle</string><string id="WeatherSlot">Time left</string><string id="WeatherShort">Weather</string>'];zh=['<string id="AppName">山境 Alpine</string>','<string id="DataSlots">自定义</string><string id="CircleSlot">圆窗</string><string id="WeatherSlot">时间左侧</string><string id="WeatherShort">天气/温度</string>']
 for i,(a,b) in enumerate(zip(metrics,cnmetrics)):
@@ -46,12 +47,13 @@ keys=','.join('"'+x[0]+'"' for x in slots);names=','.join('Rez.Strings.'+x[0] fo
 (R/'source/SlotCatalog.mc').write_text('''import Toybox.Lang;
 import Toybox.WatchUi;
 module SlotCatalog {
- var choiceKeys as Array<String> = ["TimeFormat","PanelStyle"];
- var choiceTitles as Array<ResourceId> = [Rez.Strings.TimeFormat,Rez.Strings.PanelStyle];
+ var choiceKeys as Array<String> = ["Mountain","TimeFormat","PanelStyle"];
+ var choiceTitles as Array<ResourceId> = [Rez.Strings.Mountain,Rez.Strings.TimeFormat,Rez.Strings.PanelStyle];
+ var mountains as Array<ResourceId> = [Rez.Strings.Mountain0,Rez.Strings.Mountain1,Rez.Strings.Mountain2,Rez.Strings.Mountain3];
  var timeFormats as Array<ResourceId> = [Rez.Strings.TimeFormat0,Rez.Strings.TimeFormat1,Rez.Strings.TimeFormat2];
  function isChoice(key) {for(var i=0;i<choiceKeys.size();i++) {if(choiceKeys[i].equals(key)) {return true;}}return false;}
  function choices(key as String) as Array<ResourceId> {
-  switch(key) {case "TimeFormat":return timeFormats;case "PanelStyle":return panelStyles;}
+  switch(key) {case "TimeFormat":return timeFormats;case "PanelStyle":return panelStyles;case "Mountain":return mountains;}
   return timeFormats;
  }
  function choiceName(key as String,value as Number) as String {return WatchUi.loadResource(choices(key)[value]) as String;}

@@ -1,7 +1,7 @@
 """Gate the 2.0 store submission on native, visual, archive and signature evidence."""
 from pathlib import Path
 import hashlib,json,re,subprocess,xml.etree.ElementTree as ET,zipfile
-ROOT=Path(__file__).resolve().parents[1];DIST=ROOT/'dist';STORE=ROOT/'store';VERSION='2.0.0';IQ=DIST/f'RetroWorld-{VERSION}.iq'
+ROOT=Path(__file__).resolve().parents[1];DIST=ROOT/'dist';STORE=ROOT/'store';VERSION='2.2.0';IQ=DIST/f'RetroWorld-{VERSION}.iq'
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 matrix=json.loads((DIST/'device-matrix.json').read_text());parts=sum(r['parts'] for r in matrix['devices'])
 log=(ROOT/'bin/store-export.log').read_text();assert 'BUILD SUCCESSFUL' in log and 'ERROR:' not in log and f'{parts} OUT OF {parts} DEVICES BUILT' in log
