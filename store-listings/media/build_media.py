@@ -278,6 +278,35 @@ def alpine_locale(lang):
     return {'hero': {'eyebrow': eyebrow, 'headline': loc['headline'], 'sub': loc['tagline']}, 'badge': e['badge'], 'note': e['note']}
 
 
+def hero_locale(app, lang):
+    """Moke/Retro World banner text for one storefront language (i18n/hero-moke-retro.json; note shared with Alpine)."""
+    if lang in ('zh', 'en'):
+        return TEXT[app][lang]
+    h = json.loads((HERE / 'i18n' / 'hero-moke-retro.json').read_text(encoding='utf-8'))[app][lang]
+    eyebrow = h.get('eyebrow', TEXT[app]['en']['hero']['eyebrow'])
+    return {'hero': {'eyebrow': eyebrow, 'headline': h['headline'], 'sub': h['sub']}, 'badge': h['badge'],
+            'note': alpine_locale(lang)['note']}
+
+
+def hero_watches(app, lang):
+    """Device renders for the hero; mirrored for right-to-left Hebrew. Only Chinese has its own watch captures."""
+    mirror = (lambda x: 1440 - x) if lang == 'iw' else (lambda x: x)
+    if app == 'moke':
+        face = 'zh' if lang == 'zh' else 'en'
+        return [devs([(f'moke-{face}-f7-light', 300, mirror(790), 500, None), (f'moke-{face}-i3-dark', 470, mirror(1110), 360, None)])]
+    return [devs([('retro-venu3-t1', 270, mirror(800), 510, None), ('retro-venu3-t5', 270, mirror(1290), 520, None),
+                  ('retro-venu3-t0', 450, mirror(1050), 350, None)])]
+
+
+def build_heroes(app, locales=None):
+    """Hero banners for every storefront language (1440x720)."""
+    folder = 'moke' if app == 'moke' else 'retro-world'
+    for lang in locales or ALPINE_LOCALES:
+        key = 'zh_CN' if lang == 'zh' else lang
+        render(hero(app, lang, hero_locale(app, lang), hero_watches(app, lang)), OUT / folder / f'hero-{key}-1440x720.jpg',
+               1440, 720, 1_000_000)
+
+
 def screenshot(app, lang, s, inner):
     body = (f'<div class="abs" style="left:80px;top:64px;width:1280px">'
             f'<div class="eyebrow">{esc(s.get("eyebrow", ""))}</div>'
@@ -399,4 +428,5 @@ def build_alpine(locales=ALPINE_LOCALES):
 if __name__ == '__main__':
     apps = sys.argv[1:] or ['moke', 'retro', 'alpine']
     for app in apps:
-        {'moke': build_moke, 'retro': build_retro, 'alpine': build_alpine}[app]()
+        {'moke': build_moke, 'retro': build_retro, 'alpine': build_alpine,
+         'moke-heroes': lambda: build_heroes('moke'), 'retro-heroes': lambda: build_heroes('retro')}[app]()
