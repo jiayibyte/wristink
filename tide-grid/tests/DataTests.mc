@@ -1,0 +1,147 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.Test;
+import Toybox.Time;
+import Toybox.Time.Gregorian;
+import Toybox.System;
+import Toybox.Weather;
+
+(:test)
+function selectsNamedPortsAndRejectsDistantPositions(logger) {
+    var tides = new TideData();
+    Test.assertEqual(tides.nearest(24.45, 118.08)[0], "XIAMEN");
+    Test.assertEqual(tides.nearest(37.807, -122.466)[0], "SAN FRANCISCO");
+    Test.assert(tides.nearest(39.9042, 116.4074) == null);
+    Test.assert(tides.nearest(0, 0) == null);
+    Application.Properties.setValue("TidePlace", 5);
+    tides.reset(true);
+    Test.assertEqual(tides.name(), "XIAMEN");
+    Application.Properties.setValue("TidePlace", 23);
+    tides.reset(true);
+    Test.assertEqual(tides.name(), "SAN FRANCISCO");
+    Application.Properties.setValue("TidePlace", 0);
+    tides.reset(true);
+    Test.assert(tides.name() == null);
+    return true;
+}
+
+(:test)
+function localTideForecastMatchesReferenceModel(logger) {
+    var now = 1794970800; // 2026-11-18 03:00 UTC
+    var tides = new TideData();
+    var samples = new[25] as Array<Numeric or Null>;
+    Application.Properties.setValue("TidePlace", 5);
+    tides.reset(true);
+    tides.update(now);
+    tides.fill(now, samples);
+    // Independent uptide reconstruction from the same published constituents.
+    Test.assert((samples[0]-48.948).abs() < 2.50);
+    Test.assert((samples[6]+111.046).abs() < 2.50);
+    Test.assert((samples[24]-132.951).abs() < 2.50);
+    Test.assert(tides.next(now, 1, false) != null);
+    Test.assert(tides.height(now, 0) != null);
+    Application.Properties.setValue("TidePlace", 23);
+    tides.reset(true);
+    tides.update(now);
+    tides.fill(now, samples);
+    Test.assert((samples[0]-26.507).abs() < 2.50);
+    Test.assert((samples[12]+54.363).abs() < 2.50);
+    Application.Properties.setValue("TidePlace", 0);
+    return true;
+}
+
+(:test)
+function chartRangesKeepZeroAndMissingDataDistinct(logger) {
+    var chart = new Chart();
+    chart.samples = [null, -4, 0, 6] as Array<Numeric or Null>;
+    chart.measure(1);
+    Test.assertEqual(chart.minimum, -4);
+    Test.assertEqual(chart.maximum, 6);
+    chart.samples = [null, 0, 342, null] as Array<Numeric or Null>;
+    chart.measure(2);
+    Test.assertEqual(chart.minimum, 0);
+    Test.assertEqual(chart.maximum, 342);
+    chart.samples = [null, null] as Array<Numeric or Null>;
+    chart.measure(3);
+    Test.assert(chart.minimum == null && chart.maximum == null);
+    return true;
+}
+
+(:test)
+function nativeFrameDrawsTheFullDialAndSleepFrame(logger) {
+    if (!(Toybox.Graphics has :createBufferedBitmap)) { return true; }
+    var reference = Toybox.Graphics.createBufferedBitmap({
+        :width => Panel.W, :height => Panel.H
+    });
+    var buffer = reference.get();
+    var face = new TideGridFace();
+    var dc = buffer.getDc();
+    Application.Properties.setValue("Chart", 1);
+    Application.Properties.setValue("TimeFont", 1);
+    face.reloadSettings();
+    face.onLayout(dc);
+    face.onUpdate(dc);
+    face.onEnterSleep();
+    face.onUpdate(dc);
+    face.onExitSleep();
+    face.onUpdate(dc);
+    Test.assertEqual(dc.getWidth(), Panel.W);
+    Test.assertEqual(dc.getHeight(), Panel.H);
+
+    Application.Properties.setValue("Heading", Preferences.DATE);
+    Application.Properties.setValue("ClockCaption", Preferences.OFF);
+    Application.Properties.setValue("SecondsSlot", Preferences.BAT);
+    Application.Properties.setValue("Chart", 0);
+    Application.Properties.setValue("Theme", Panel.MONO || Panel.LOW_COLOR ? 5 : 11);
+    Test.assertEqual(Preferences.slot(Preferences.HEADING_SLOT), Preferences.DATE);
+    Test.assertEqual(Preferences.slot(Preferences.CAPTION_SLOT), Preferences.OFF);
+    Test.assertEqual(Preferences.slot(Preferences.SECONDS_SLOT), Preferences.BAT);
+    face.reloadSettings();
+    face.onUpdate(dc);
+
+    Application.Properties.setValue("SecondsSlot", Preferences.LOCAL_CAPTION);
+    Test.assertEqual(Preferences.slot(Preferences.SECONDS_SLOT), Preferences.AWAKE_SECONDS);
+    Application.Properties.setValue("Heading", Preferences.AUTO_HEADING);
+    Application.Properties.setValue("ClockCaption", Preferences.LOCAL_CAPTION);
+    Application.Properties.setValue("SecondsSlot", Preferences.AWAKE_SECONDS);
+    Application.Properties.setValue("Chart", 1);
+    Application.Properties.setValue("Theme", Panel.MONO || Panel.LOW_COLOR ? 4 : 0);
+    return true;
+}
+
+
+(:test)
+function sunriseAndSunsetFollowSelectedPort(logger) {
+    if (!(Weather has :getSunrise) || !(Weather has :getSunset)) { return true; }
+    var now = 1795054104; // 2026-11-19 02:08:24 UTC
+    var day = Gregorian.info(new Time.Moment(now), Time.FORMAT_SHORT);
+    var enabled = new Boolean[Preferences.COUNT];
+    for (var i=0; i<enabled.size(); i++) { enabled[i] = false; }
+    enabled[Preferences.SUNRISE] = true;
+    enabled[Preferences.SUNSET] = true;
+    var tides = new TideData();
+    var readings = new Readings();
+    var settings = System.getDeviceSettings();
+
+    Application.Properties.setValue("TidePlace", 5);
+    tides.reset(true);
+    readings.update(now, day, enabled, false, tides, settings);
+    var riseXiamen = readings.values[Preferences.SUNRISE];
+    var setXiamen = readings.values[Preferences.SUNSET];
+    Test.assert(riseXiamen != null && setXiamen != null);
+
+    // Same Readings object and watch date. A station change must refresh the
+    // solar cache even before the next minute or weather refresh.
+    Application.Properties.setValue("TidePlace", 23);
+    tides.reset(true);
+    readings.update(now, day, enabled, false, tides, settings);
+    var riseSanFrancisco = readings.values[Preferences.SUNRISE];
+    var setSanFrancisco = readings.values[Preferences.SUNSET];
+    Test.assert(riseSanFrancisco != null && setSanFrancisco != null);
+    Test.assert(!riseSanFrancisco.equals(riseXiamen));
+    Test.assert(!setSanFrancisco.equals(setXiamen));
+    logger.debug("XIAMEN " + riseXiamen + " / " + setXiamen);
+    logger.debug("SAN FRANCISCO " + riseSanFrancisco + " / " + setSanFrancisco);
+    Application.Properties.setValue("TidePlace", 0);
+    return true;
+}

@@ -1,0 +1,142 @@
+{
+  "en": {
+    "title": "Signal LCD · Retro Digital",
+    "description": "A retro digital watch face with a large LCD-style clock, three digit styles and six color themes. Choose what appears in the data fields, switch the progress bar between steps and battery, or hide it. The upper-right window on compatible Instinct models shows heart rate by default. Monochrome displays use high-contrast light and dark modes. The watch face and settings are in English.",
+    "whatsNew": "First release. Includes three time fonts, six color themes and configurable data fields."
+  },
+  "zh_CN": {
+    "title": "Signal LCD · 复古数字表盘",
+    "description": "以复古液晶屏为灵感，搭配大号数字、三款时间字体和六种彩色主题。可更换各数据位的指标，进度条可显示步数目标或电量，也可隐藏。兼容的 Instinct 机型右上圆窗默认显示心率。黑白屏提供高对比度深色和浅色模式。表盘及设置使用英文。",
+    "whatsNew": "首发版本，提供三款时间字体、六种彩色主题和可配置数据位。"
+  },
+  "zh_TW": {
+    "title": "Signal LCD · 復古數位錶面",
+    "description": "以復古液晶螢幕為靈感，搭配大尺寸數字、三款時間字型與六種彩色主題。可自訂各資料欄位，進度條可顯示步數目標或電量，也可隱藏。相容的 Instinct 機型右上圓窗預設顯示心率。單色螢幕提供高對比的深色與淺色模式。錶面及設定採用英文。",
+    "whatsNew": "首發版本，提供三款時間字型、六種彩色主題與可自訂的資料欄位。"
+  },
+  "ja": {
+    "title": "Signal LCD · レトロデジタル",
+    "description": "大きな液晶風の時刻表示を備えたレトロなウォッチフェイスです。3種類の数字フォントと6種類のカラーテーマを選べます。データ項目を変更でき、進捗バーには歩数目標またはバッテリー残量を表示できます。バーの非表示も可能です。対応するInstinctの右上の小窓は、初期設定で心拍数を表示します。モノクロ画面には高コントラストのライト／ダークモードがあります。ウォッチフェイスと設定は英語です。",
+    "whatsNew": "初回リリース。3種類の時刻フォント、6種類のカラーテーマ、変更可能なデータ項目を収録しました。"
+  },
+  "ko": {
+    "title": "Signal LCD · 레트로 디지털",
+    "description": "커다란 LCD 스타일 시계가 돋보이는 레트로 워치 페이스입니다. 숫자 글꼴 3종과 색상 테마 6종을 선택할 수 있습니다. 데이터 필드를 원하는 항목으로 바꾸고, 진행 막대에는 걸음 수 목표 또는 배터리 잔량을 표시하거나 막대를 숨길 수 있습니다. 호환 Instinct 모델의 오른쪽 위 창에는 기본적으로 심박수가 표시됩니다. 흑백 화면은 대비가 높은 밝은 모드와 어두운 모드를 지원합니다. 워치 페이스와 설정은 영어로 표시됩니다.",
+    "whatsNew": "첫 출시입니다. 시간 글꼴 3종, 색상 테마 6종, 사용자 지정 데이터 필드를 제공합니다."
+  },
+  "de": {
+    "title": "Signal LCD · Digital im Retro-Stil",
+    "description": "Ein digitales Retro-Uhren-Display mit großer LCD-Uhrzeit, drei Ziffernstilen und sechs Farbdesigns. Wähle die Inhalte der Datenfelder. Der Fortschrittsbalken zeigt das Schrittziel oder den Akkustand und lässt sich ausblenden. Bei kompatiblen Instinct-Modellen zeigt das Fenster oben rechts standardmäßig die Herzfrequenz. Für monochrome Displays gibt es kontrastreiche helle und dunkle Modi. Uhren-Display und Einstellungen sind auf Englisch.",
+    "whatsNew": "Erste Version mit drei Uhrzeit-Schriftarten, sechs Farbdesigns und anpassbaren Datenfeldern."
+  },
+  "fr": {
+    "title": "Signal LCD · Numérique rétro",
+    "description": "Un cadran numérique rétro avec une grande heure façon LCD, trois styles de chiffres et six thèmes de couleur. Choisissez les données à afficher. La barre de progression indique l’objectif de pas ou le niveau de batterie et peut être masquée. Sur les modèles Instinct compatibles, la fenêtre en haut à droite affiche la fréquence cardiaque par défaut. Les écrans monochromes proposent des modes clair et sombre à contraste élevé. Le cadran et les réglages sont en anglais.",
+    "whatsNew": "Première version avec trois polices horaires, six thèmes de couleur et des champs de données personnalisables."
+  },
+  "es": {
+    "title": "Signal LCD · Digital retro",
+    "description": "Una pantalla de reloj digital retro con hora de gran tamaño al estilo LCD, tres estilos de números y seis temas de color. Elige los datos de cada campo. La barra de progreso muestra el objetivo de pasos o el nivel de batería y se puede ocultar. En los modelos Instinct compatibles, la ventana superior derecha muestra la frecuencia cardiaca de forma predeterminada. Las pantallas monocromas ofrecen modos claro y oscuro de alto contraste. La pantalla y los ajustes están en inglés.",
+    "whatsNew": "Primera versión con tres tipografías para la hora, seis temas de color y campos de datos configurables."
+  },
+  "it": {
+    "title": "Signal LCD · Digitale rétro",
+    "description": "Un quadrante digitale rétro con orario in grandi cifre stile LCD, tre stili di cifre e sei temi cromatici. Scegli cosa mostrare nei campi dati. La barra indica l’obiettivo di passi o il livello della batteria e può essere nascosta. Sui modelli Instinct compatibili, la finestra in alto a destra mostra per impostazione predefinita la frequenza cardiaca. Gli schermi monocromatici offrono modalità chiara e scura ad alto contrasto. Il quadrante e le impostazioni sono in inglese.",
+    "whatsNew": "Prima versione con tre caratteri per l’ora, sei temi cromatici e campi dati configurabili."
+  },
+  "pt_BR": {
+    "title": "Signal LCD · Digital retrô",
+    "description": "Um mostrador digital retrô com hora em tamanho grande no estilo LCD, três estilos de números e seis temas de cores. Escolha o que aparece nos campos de dados. A barra de progresso pode exibir a meta de passos ou o nível da bateria, ou ser ocultada. Nos modelos Instinct compatíveis, a janela superior direita exibe a frequência cardíaca por padrão. Telas monocromáticas têm modos claro e escuro de alto contraste. O mostrador e as configurações estão em inglês.",
+    "whatsNew": "Primeira versão com três fontes para a hora, seis temas de cores e campos de dados configuráveis."
+  },
+  "pt_PT": {
+    "title": "Signal LCD · Digital retro",
+    "description": "Um mostrador digital retro com hora em grande formato ao estilo LCD, três estilos de algarismos e seis temas de cor. Escolha os dados apresentados em cada campo. A barra de progresso apresenta o objetivo de passos ou o nível da bateria e pode ser ocultada. Nos modelos Instinct compatíveis, a janela superior direita apresenta a frequência cardíaca por predefinição. Os ecrãs monocromáticos têm modos claro e escuro de alto contraste. O mostrador e as definições estão em inglês.",
+    "whatsNew": "Primeira versão com três tipos de letra para a hora, seis temas de cor e campos de dados configuráveis."
+  },
+  "nl": {
+    "title": "Signal LCD · Retro digitaal",
+    "description": "Een retro digitale wijzerplaat met grote lcd-cijfers, drie cijferstijlen en zes kleurenthema’s. Kies de inhoud van de gegevensvelden. De voortgangsbalk toont je stappendoel of batterijniveau en kan worden verborgen. Op compatibele Instinct-modellen toont het venster rechtsboven standaard de hartslag. Monochrome schermen hebben een lichte en donkere modus met hoog contrast. De wijzerplaat en instellingen zijn Engelstalig.",
+    "whatsNew": "Eerste versie met drie tijdlettertypen, zes kleurenthema’s en instelbare gegevensvelden."
+  },
+  "da": {
+    "title": "Signal LCD · Retro digital",
+    "description": "En digital urskive i retrostil med stort LCD-inspireret klokkeslæt, tre talstile og seks farvetemaer. Vælg, hvad datafelterne skal vise. Statuslinjen kan vise skridtmål eller batteriniveau og kan skjules. På kompatible Instinct-modeller viser vinduet øverst til højre som standard pulsen. Monokrome skærme har lys og mørk tilstand med høj kontrast. Urskiven og indstillingerne er på engelsk.",
+    "whatsNew": "Første udgivelse med tre skrifttyper til klokkeslæt, seks farvetemaer og justerbare datafelter."
+  },
+  "nb": {
+    "title": "Signal LCD · Retro digital",
+    "description": "En digital urskive i retrostil med stor LCD-inspirert klokke, tre sifferstiler og seks fargetemaer. Velg hva datafeltene viser. Fremdriftslinjen kan vise skrittmålet eller batterinivået, eller skjules. På kompatible Instinct-modeller viser vinduet øverst til høyre puls som standard. Monokrome skjermer har lys og mørk modus med høy kontrast. Urskiven og innstillingene er på engelsk.",
+    "whatsNew": "Første versjon med tre skrifttyper for klokkeslett, seks fargetemaer og konfigurerbare datafelt."
+  },
+  "sv": {
+    "title": "Signal LCD · Retrodigital",
+    "description": "En digital retrourtavla med stor LCD-inspirerad tidvisning, tre sifferstilar och sex färgteman. Välj vad datafälten visar. Förloppsindikatorn visar stegmål eller batterinivå och kan döljas. På kompatibla Instinct-modeller visar fönstret uppe till höger puls som standard. Monokroma skärmar har ljust och mörkt läge med hög kontrast. Urtavlan och inställningarna är på engelska.",
+    "whatsNew": "Första versionen med tre typsnitt för tiden, sex färgteman och anpassningsbara datafält."
+  },
+  "fi": {
+    "title": "Signal LCD · Digitaalinen retro",
+    "description": "Digitaalinen retrotyylinen kellotaulu, jossa on suuri LCD-henkinen aikanäyttö, kolme numerotyyliä ja kuusi väriteemaa. Valitse tietokentissä näytettävät tiedot. Edistymispalkki näyttää askeltavoitteen tai akun varauksen, ja sen voi piilottaa. Yhteensopivissa Instinct-malleissa oikean yläkulman ikkuna näyttää oletusarvoisesti sykkeen. Yksivärisille näytöille on vaalea ja tumma suuren kontrastin tila. Kellotaulu ja asetukset ovat englanninkieliset.",
+    "whatsNew": "Ensimmäinen julkaisu sisältää kolme ajan kirjasintyyliä, kuusi väriteemaa ja mukautettavat tietokentät."
+  },
+  "cs": {
+    "title": "Signal LCD · Digitální retro",
+    "description": "Digitální retro ciferník s velkým časem ve stylu LCD, třemi styly číslic a šesti barevnými motivy. Vyberte obsah datových polí. Ukazatel může zobrazovat plnění cíle kroků nebo stav baterie a lze ho skrýt. U kompatibilních modelů Instinct se v pravém horním okénku ve výchozím nastavení zobrazuje tepová frekvence. Monochromatické displeje mají světlý a tmavý režim s vysokým kontrastem. Ciferník a nastavení jsou v angličtině.",
+    "whatsNew": "První verze se třemi písmy pro čas, šesti barevnými motivy a nastavitelnými datovými poli."
+  },
+  "sk": {
+    "title": "Signal LCD · Digitálne retro",
+    "description": "Digitálny retro ciferník s veľkým časom v štýle LCD, tromi štýlmi číslic a šiestimi farebnými motívmi. Vyberte údaje zobrazené v jednotlivých poliach. Ukazovateľ pokroku môže zobrazovať cieľ krokov alebo stav batérie a dá sa skryť. V pravom hornom okienku kompatibilných modelov Instinct sa predvolene zobrazuje srdcový tep. Monochromatické displeje ponúkajú svetlý a tmavý režim s vysokým kontrastom. Ciferník a nastavenia sú v angličtine.",
+    "whatsNew": "Prvá verzia s tromi typmi písma času, šiestimi farebnými motívmi a nastaviteľnými dátovými poľami."
+  },
+  "pl": {
+    "title": "Signal LCD · Cyfrowe retro",
+    "description": "Cyfrowa tarcza w stylu retro z dużym zegarem LCD, trzema stylami cyfr i sześcioma motywami kolorystycznymi. Wybierz dane wyświetlane w poszczególnych polach. Pasek postępu może pokazywać realizację celu kroków albo poziom baterii i można go ukryć. W zgodnych modelach Instinct okienko w prawym górnym rogu domyślnie pokazuje tętno. Ekrany monochromatyczne mają jasny i ciemny tryb o wysokim kontraście. Tarcza i ustawienia są w języku angielskim.",
+    "whatsNew": "Pierwsza wersja z trzema krojami cyfr zegara, sześcioma motywami i konfigurowalnymi polami danych."
+  },
+  "hu": {
+    "title": "Signal LCD · Digitális retró",
+    "description": "Retró digitális óralap nagy, LCD-stílusú időkijelzéssel, három számjegystílussal és hat színtémával. Válaszd ki az adatmezők tartalmát. A folyamatjelző a lépéscél teljesítését vagy az akkumulátor töltöttségét mutatja, és elrejthető. A kompatibilis Instinct modellek jobb felső ablaka alapértelmezésben a pulzust mutatja. Monokróm kijelzőn nagy kontrasztú világos és sötét mód választható. Az óralap és a beállítások angol nyelvűek.",
+    "whatsNew": "Első kiadás három időbetűtípussal, hat színtémával és testreszabható adatmezőkkel."
+  },
+  "hr": {
+    "title": "Signal LCD · Digitalni retro",
+    "description": "Retro digitalno lice sata s velikim prikazom vremena u LCD stilu, trima stilovima znamenki i šest tema boja. Odaberite sadržaj podatkovnih polja. Traka napretka pokazuje napredak prema cilju koraka ili razinu baterije i može se sakriti. Na kompatibilnim modelima Instinct gornji desni prozor prema zadanim postavkama prikazuje puls. Jednobojni zasloni imaju svijetli i tamni način rada s visokim kontrastom. Lice sata i postavke na engleskom su jeziku.",
+    "whatsNew": "Prvo izdanje s trima fontovima za vrijeme, šest tema boja i prilagodljivim podatkovnim poljima."
+  },
+  "sl": {
+    "title": "Signal LCD · Digitalni retro",
+    "description": "Retro digitalna številčnica z velikim prikazom časa v slogu LCD, tremi slogi številk in šestimi barvnimi temami. Izberite vsebino podatkovnih polj. Vrstica napredka prikazuje napredek proti cilju korakov ali stanje baterije in jo lahko skrijete. Pri združljivih modelih Instinct zgornje desno okno privzeto prikazuje srčni utrip. Enobarvni zasloni imajo svetli in temni način z visokim kontrastom. Številčnica in nastavitve so v angleščini.",
+    "whatsNew": "Prva izdaja s tremi pisavami za čas, šestimi barvnimi temami in nastavljivimi podatkovnimi polji."
+  },
+  "el": {
+    "title": "Signal LCD · Ρετρό ψηφιακό",
+    "description": "Ρετρό ψηφιακή πρόσοψη με μεγάλη ώρα τύπου LCD, τρία στυλ ψηφίων και έξι χρωματικά θέματα. Επιλέξτε το περιεχόμενο των πεδίων δεδομένων. Η γραμμή προόδου δείχνει τον στόχο βημάτων ή τη στάθμη της μπαταρίας και μπορεί να κρυφτεί. Στα συμβατά μοντέλα Instinct, το επάνω δεξιό παράθυρο δείχνει από προεπιλογή τον καρδιακό ρυθμό. Οι μονόχρωμες οθόνες διαθέτουν φωτεινή και σκοτεινή λειτουργία υψηλής αντίθεσης. Η πρόσοψη και οι ρυθμίσεις είναι στα αγγλικά.",
+    "whatsNew": "Πρώτη έκδοση με τρεις γραμματοσειρές ώρας, έξι χρωματικά θέματα και προσαρμόσιμα πεδία δεδομένων."
+  },
+  "ru": {
+    "title": "Signal LCD · Цифровое ретро",
+    "description": "Ретро-циферблат с крупным временем в стиле ЖК-дисплея, тремя начертаниями цифр и шестью цветовыми темами. Выберите, какие данные показывать в каждом поле. Полоса прогресса отображает выполнение цели по шагам или заряд батареи. Её можно скрыть. На совместимых моделях Instinct верхнее правое окно по умолчанию показывает пульс. Для монохромных экранов есть контрастные светлый и тёмный режимы. Циферблат и настройки на английском языке.",
+    "whatsNew": "Первая версия с тремя шрифтами времени, шестью цветовыми темами и настраиваемыми полями данных."
+  },
+  "iw": {
+    "title": "Signal LCD · רטרו דיגיטלי",
+    "description": "תצוגת שעון דיגיטלית בסגנון רטרו עם שעה גדולה בעיצוב LCD, שלושה סגנונות ספרות ושש ערכות צבעים. אפשר לבחור אילו נתונים יופיעו בכל שדה. סרגל ההתקדמות מציג את ההתקדמות ליעד הצעדים או את רמת הסוללה, וניתן להסתיר אותו. בדגמי Instinct תואמים, החלון הימני העליון מציג כברירת מחדל את הדופק. למסכים מונוכרומטיים יש מצבים בהיר וכהה בניגודיות גבוהה. תצוגת השעון וההגדרות באנגלית.",
+    "whatsNew": "גרסה ראשונה עם שלושה גופנים לשעה, שש ערכות צבעים ושדות נתונים הניתנים להתאמה."
+  },
+  "th": {
+    "title": "Signal LCD · ดิจิทัลเรโทร",
+    "description": "หน้าปัดดิจิทัลสไตล์เรโทรที่แสดงเวลาตัวใหญ่แบบ LCD เลือกตัวเลขได้ 3 แบบและธีมสีได้ 6 แบบ ตั้งค่าข้อมูลที่ต้องการแสดงในแต่ละช่องได้ แถบความคืบหน้าแสดงเป้าหมายจำนวนก้าวหรือระดับแบตเตอรี่ และซ่อนได้ ใน Instinct รุ่นที่รองรับ ช่องขวาบนจะแสดงอัตราการเต้นของหัวใจเป็นค่าเริ่มต้น หน้าจอขาวดำมีโหมดสว่างและโหมดมืดที่มีความเปรียบต่างสูง หน้าปัดและการตั้งค่าเป็นภาษาอังกฤษ",
+    "whatsNew": "รุ่นแรกมาพร้อมแบบตัวเลขแสดงเวลา 3 แบบ ธีมสี 6 แบบ และช่องข้อมูลที่ปรับแต่งได้"
+  },
+  "in": {
+    "title": "Signal LCD · Digital Retro",
+    "description": "Tampilan jam digital retro dengan waktu besar bergaya LCD, tiga gaya angka, dan enam tema warna. Pilih informasi untuk setiap kolom data. Bilah kemajuan dapat menampilkan target langkah atau daya baterai, atau disembunyikan. Pada model Instinct yang kompatibel, jendela kanan atas menampilkan detak jantung secara default. Layar monokrom memiliki mode terang dan gelap berkontras tinggi. Tampilan jam dan pengaturan menggunakan bahasa Inggris.",
+    "whatsNew": "Rilis pertama dengan tiga font waktu, enam tema warna, dan kolom data yang dapat disesuaikan."
+  },
+  "ms": {
+    "title": "Signal LCD · Digital Retro",
+    "description": "Muka jam digital retro dengan paparan masa besar gaya LCD, tiga gaya angka dan enam tema warna. Pilih maklumat bagi setiap medan data. Bar kemajuan boleh menunjukkan sasaran langkah atau tahap bateri, atau disembunyikan. Pada model Instinct yang serasi, tetingkap kanan atas memaparkan kadar denyutan jantung secara lalai. Paparan monokrom menyediakan mod cerah dan gelap berkontras tinggi. Muka jam dan tetapan tersedia dalam bahasa Inggeris.",
+    "whatsNew": "Keluaran pertama dengan tiga fon masa, enam tema warna dan medan data yang boleh disesuaikan."
+  }
+}

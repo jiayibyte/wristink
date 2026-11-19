@@ -2,7 +2,7 @@
 
 **为 Garmin 手表打造的表盘与离线工具集。**
 
-从一眼读清的数据表盘，到会随昼夜变化的世界地图，再到腕上的北京离线导航。WristInk 聚焦 MIP 屏幕、原生像素资源和手表本地能力，当前包含两个表盘和一个独立应用，使用 Monkey C / Connect IQ 开发。
+从一眼读清的数据表盘，到会随昼夜变化的世界地图，再到腕上的北京离线导航。WristInk 聚焦 MIP 屏幕、原生像素资源和手表本地能力，各项目使用 Monkey C / Connect IQ 开发。
 
 ## 项目一览
 
@@ -10,6 +10,8 @@
 | --- | --- | --- | --- |
 | [墨刻 Moke](moke/) | 数据表盘 | 圆角大时间、可配置数据区、当前心率与曲线、中英文、主题与装饰卡片 | 清单内的 Garmin MIP 机型，含轻量兼容实现 |
 | [寰游时刻 Retro World](retro-world/) | 世界地图表盘 | 复古数字、模拟圆盘、16 种地图皮肤、昼夜变化、天气、日出日落、AMOLED 配色与常亮 | 112 个 SDK 目标 / 183 硬件变体，具体见项目兼容清单 |
+| [Tide Grid](tide-grid/) | 潮汐数据表盘 | 港口潮汐、日出日落、步数与心率图、三种时间字体、Instinct 实体圆窗 | 以 fēnix／epix 为主，覆盖彩屏 MIP、AMOLED 和单色 Instinct |
+| [Signal LCD](signal-lcd/) | 复古数字表盘 | 七段数字、可配置数据区、14 套彩屏主题、Instinct 实体圆窗 | 圆形彩屏和支持的单色 Instinct／Descent |
 | [北京离线地图](beijing-map/) | 独立手表应用 | 离线地图、地点搜索、步行路线、GPS 跟随、轨迹记录、手表数据页 | Instinct 3 Solar 45 / 50 mm |
 
 设备清单表示构建目标，不代表所有型号均已完成真机验证。两个 Instinct 3 Solar 尺寸使用 SDK 中的同一构建目标 `instinct3solar45mm`。

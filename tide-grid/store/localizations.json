@@ -1,0 +1,142 @@
+{
+  "en": {
+    "title": "Tide Grid",
+    "description": "A compact marine instrument for your wrist. Switch the chart between tide forecasts, steps, heart rate, distance and calories. Choose data for 13 positions, including the round window, and switch between three clock styles and 12 themes. Select a coastal station by name or use your Garmin location to find one nearby. For reference only.",
+    "whatsNew": "Initial release with three clock styles, configurable charts and Instinct round-window layouts."
+  },
+  "zh_CN": {
+    "title": "Tide Grid",
+    "description": "以航海仪表为灵感的轻量表盘。图表可切换 潮汐预报、步数、心率、距离和热量。13 个数据位置（含圆窗）可独立设置，另有三款时间字体和12 套主题。可按站名选择沿海站点，或根据佳明同步的位置自动匹配附近站点。潮汐仅供参考。",
+    "whatsNew": "首发包含三款时间字体、可配置图表及 Instinct 圆窗布局。"
+  },
+  "zh_TW": {
+    "title": "Tide Grid",
+    "description": "以航海儀表為靈感的輕量錶面。圖表可切換 潮汐預報、步數、心率、距離與熱量。13 個資料位置（含圓形視窗）可獨立設定，另有三款時間字體與12 套主題。可按站名選擇沿海測站，或依佳明同步的位置自動配對附近測站。潮汐僅供參考。",
+    "whatsNew": "首發包含三款時間字體、可設定的圖表與 Instinct 圓形視窗配置。"
+  },
+  "cs": {
+    "title": "Tide Grid",
+    "description": "Kompaktní ciferník inspirovaný námořními přístroji. Graf může zobrazovat předpověď přílivu a odlivu, kroky, tep, vzdálenost nebo kalorie. Nastavte 13 datových polí včetně kulatého okénka a vyberte si ze tří stylů času a 12 motivů. Vyberte pobřežní stanici podle názvu nebo použijte polohu z hodinek Garmin. Pouze pro orientaci.",
+    "whatsNew": "První vydání se třemi styly času, nastavitelnými grafy a rozvržením pro kulaté okénko Instinct."
+  },
+  "da": {
+    "title": "Tide Grid",
+    "description": "En kompakt urskive inspireret af marineinstrumenter. Vælg mellem tidevandsprognoser, skridt, puls, distance og kalorier i grafen. Tilpas 13 datafelter inklusive det runde vindue, tre urstile og 12 farvetemaer. Vælg en kyststation efter navn, eller brug din Garmin-position til at finde en i nærheden. Kun til orientering.",
+    "whatsNew": "Første udgave med tre urstile, konfigurerbare grafer og layout til Instincts runde vindue."
+  },
+  "de": {
+    "title": "Tide Grid",
+    "description": "Ein kompaktes Zifferblatt im Stil eines nautischen Instruments. Das Diagramm zeigt wahlweise Gezeitenprognosen, Schritte, Herzfrequenz, Distanz oder Kalorien. 13 Datenfelder einschließlich Rundfenster, drei Uhrzeitstile und 12 Farbthemen stehen zur Auswahl. Wählen Sie eine Küstenstation nach Namen oder verwenden Sie Ihre Garmin-Position. Nur zur Orientierung.",
+    "whatsNew": "Erstveröffentlichung mit drei Uhrzeitstilen, konfigurierbaren Diagrammen und einem Layout für das Instinct-Rundfenster."
+  },
+  "el": {
+    "title": "Tide Grid",
+    "description": "Μια μικρή πρόσοψη ρολογιού εμπνευσμένη από ναυτικά όργανα. Επιλέξτε γράφημα για προβλέψεις παλίρροιας, βήματα, καρδιακούς παλμούς, απόσταση ή θερμίδες. Προσαρμόστε 13 πεδία, μαζί με το στρογγυλό παράθυρο, και επιλέξτε τρία στυλ ώρας και 12 θέματα. Επιλέξτε παράκτιο σταθμό με το όνομά του ή χρησιμοποιήστε την τοποθεσία Garmin. Μόνο για ενημέρωση.",
+    "whatsNew": "Πρώτη έκδοση με τρία στυλ ώρας, παραμετροποιήσιμα γραφήματα και διάταξη για το στρογγυλό παράθυρο του Instinct."
+  },
+  "es": {
+    "title": "Tide Grid",
+    "description": "Una esfera compacta inspirada en los instrumentos náuticos. Cambia el gráfico entre predicciones de mareas, pasos, frecuencia cardiaca, distancia y calorías. Personaliza 13 campos, incluida la ventana circular, con tres estilos de hora y 12 temas. Elige una estación costera por su nombre o usa la ubicación de Garmin para encontrar una cercana. Solo como referencia.",
+    "whatsNew": "Primera versión con tres estilos de hora, gráficos configurables y diseño para la ventana circular de Instinct."
+  },
+  "fi": {
+    "title": "Tide Grid",
+    "description": "Kompakti, merenkulun mittareista inspiroitunut kellotaulu. Kaaviossa voi näyttää vuorovesiennusteen, askeleet, sykkeen, matkan tai kalorit. Muokkaa 13 tietokenttää, myös pyöreää ikkunaa, ja valitse kolmesta kellotyylistä ja 12 teemasta. Valitse rannikkoasema nimen perusteella tai etsi lähin Garmin-sijainnin avulla. Vain viitteeksi.",
+    "whatsNew": "Ensimmäinen versio sisältää kolme kellotyyliä, muokattavat kaaviot ja asettelun Instinctin pyöreälle ikkunalle."
+  },
+  "fr": {
+    "title": "Tide Grid",
+    "description": "Un cadran compact inspiré des instruments de marine. Le graphique affiche au choix les prévisions de marée, les pas, la fréquence cardiaque, la distance ou les calories. Personnalisez 13 champs, dont la fenêtre ronde, et choisissez parmi trois styles d’heure et 12 thèmes. Sélectionnez une station côtière par son nom ou utilisez votre position Garmin pour trouver une station proche. À titre indicatif.",
+    "whatsNew": "Première version avec trois styles d’heure, des graphiques réglables et une disposition adaptée à la fenêtre ronde d’Instinct."
+  },
+  "hr": {
+    "title": "Tide Grid",
+    "description": "Kompaktno lice sata nadahnuto pomorskim instrumentima. Odaberite graf prognoze plime i oseke, koraka, pulsa, udaljenosti ili kalorija. Prilagodite 13 podatkovnih polja, uključujući okrugli prozor, uz tri stila vremena i 12 tema. Odaberite obalnu postaju po nazivu ili upotrijebite Garmin lokaciju za pronalazak obližnje postaje. Samo za orijentaciju.",
+    "whatsNew": "Prvo izdanje s tri stila prikaza vremena, podesivim grafovima i rasporedom za okrugli prozor sata Instinct."
+  },
+  "hu": {
+    "title": "Tide Grid",
+    "description": "Kompakt, hajózási műszerek ihlette számlap. Válasszon árapály-előrejelzést, lépésszámot, pulzust, távolságot vagy kalóriát ábrázoló grafikont. 13 adatmező, köztük a kerek ablak, valamint három időstílus és 12 téma állítható be. Válasszon név szerint part menti állomást, vagy keressen közeli állomást a Garmin helyadatával. Tájékoztató jellegű.",
+    "whatsNew": "Az első kiadás három időstílust, testreszabható grafikonokat és Instinct kerek ablakához illeszkedő elrendezést kínál."
+  },
+  "in": {
+    "title": "Tide Grid",
+    "description": "Tampilan jam ringkas yang terinspirasi instrumen kelautan. Pilih grafik prediksi pasang surut, langkah, detak jantung, jarak, atau kalori. Atur 13 bidang data termasuk jendela bundar, tiga gaya waktu, dan 12 tema. Pilih stasiun pesisir berdasarkan nama atau gunakan lokasi Garmin untuk mencari stasiun terdekat. Hanya sebagai referensi.",
+    "whatsNew": "Rilis pertama dengan tiga gaya waktu, grafik yang dapat diatur, dan tata letak jendela bundar Instinct."
+  },
+  "it": {
+    "title": "Tide Grid",
+    "description": "Un quadrante compatto ispirato agli strumenti nautici. Scegli tra grafici per le previsioni delle maree, i passi, la frequenza cardiaca, la distanza o le calorie. Personalizza 13 campi, inclusa la finestra circolare, e scegli fra tre stili dell’ora e 12 temi. Scegli una stazione costiera per nome o usa la posizione Garmin per trovarne una vicina. Solo a titolo indicativo.",
+    "whatsNew": "Prima versione con tre stili dell’ora, grafici configurabili e layout per la finestra circolare di Instinct."
+  },
+  "iw": {
+    "title": "Tide Grid",
+    "description": "תצוגת שעון קומפקטית בהשראת מכשירי ניווט ימי. אפשר לבחור גרף לתחזית גאות ושפל, צעדים, דופק, מרחק או קלוריות. התאימו 13 שדות, כולל החלון העגול, ובחרו מבין שלושה סגנונות שעה ו12 ערכות נושא. אפשר לבחור תחנת חוף לפי שם או להשתמש במיקום של Garmin כדי למצוא תחנה קרובה. לעיון בלבד.",
+    "whatsNew": "גרסה ראשונה עם שלושה סגנונות שעה, גרפים הניתנים להתאמה ופריסה לחלון העגול של Instinct."
+  },
+  "ja": {
+    "title": "Tide Grid",
+    "description": "航海計器をモチーフにしたコンパクトなウォッチフェイス。グラフは 潮汐予測、歩数、心拍数、距離、消費カロリーから選択できます。丸窓を含む13個のデータ欄、3種類の時刻フォント、12種類のテーマを設定できます。沿岸観測所を名前で選ぶか、Garmin の位置情報から近くの観測所を探せます。潮汐は参考情報です。",
+    "whatsNew": "初回リリース。3種類の時刻フォント、切り替え可能なグラフ、Instinct の丸窓対応レイアウトを搭載。"
+  },
+  "ko": {
+    "title": "Tide Grid",
+    "description": "항해 계기판에서 영감을 받은 콤팩트한 워치 페이스입니다. 조석 예보, 걸음 수, 심박수, 거리, 칼로리 그래프를 선택할 수 있습니다. 원형 창을 포함한 13개 데이터 영역과 3가지 시계 글꼴, 12가지 테마를 설정할 수 있습니다. 연안 관측소를 이름으로 선택하거나 Garmin 위치를 사용하여 가까운 관측소를 찾을 수 있습니다. 참고용입니다.",
+    "whatsNew": "첫 출시. 시계 글꼴 3종, 맞춤 그래프, Instinct 원형 창 레이아웃을 제공합니다."
+  },
+  "ms": {
+    "title": "Tide Grid",
+    "description": "Muka jam kompak yang diinspirasikan oleh instrumen marin. Tukar carta antara ramalan pasang surut, langkah, kadar denyutan jantung, jarak dan kalori. Sesuaikan 13 medan data termasuk tetingkap bulat, tiga gaya jam dan 12 tema. Pilih stesen pantai mengikut nama atau gunakan lokasi Garmin untuk mencari stesen berdekatan. Untuk rujukan sahaja.",
+    "whatsNew": "Keluaran pertama dengan tiga gaya jam, carta boleh laras dan susun atur tetingkap bulat Instinct."
+  },
+  "nb": {
+    "title": "Tide Grid",
+    "description": "En kompakt urskive inspirert av maritime instrumenter. Velg graf for tidevannsvarsel, skritt, puls, distanse eller kalorier. Tilpass 13 datafelt, inkludert det runde vinduet, tre tidsstiler og 12 temaer. Velg en kyststasjon etter navn, eller bruk Garmin-posisjonen til å finne en i nærheten. Kun til orientering.",
+    "whatsNew": "Første utgave med tre tidsstiler, konfigurerbare grafer og oppsett for det runde Instinct-vinduet."
+  },
+  "nl": {
+    "title": "Tide Grid",
+    "description": "Een compacte wijzerplaat geïnspireerd op nautische instrumenten. Kies een grafiek voor getijdenvoorspellingen, stappen, hartslag, afstand of calorieën. Pas 13 gegevensvelden aan, inclusief het ronde venster, met drie klokstijlen en 12 thema’s. Kies een kuststation op naam of gebruik je Garmin-locatie om er een in de buurt te vinden. Alleen ter referentie.",
+    "whatsNew": "Eerste versie met drie klokstijlen, instelbare grafieken en een indeling voor het ronde venster van Instinct."
+  },
+  "pl": {
+    "title": "Tide Grid",
+    "description": "Kompaktowa tarcza inspirowana przyrządami morskimi. Wykres może pokazywać prognozy pływów, kroki, tętno, dystans lub kalorie. Dostosuj 13 pól danych, w tym okrągłe okienko, oraz wybierz jeden z trzech stylów czasu i 12 motywów. Wybierz stację nadbrzeżną według nazwy lub znajdź pobliską za pomocą lokalizacji Garmin. Wyłącznie informacyjnie.",
+    "whatsNew": "Pierwsza wersja z trzema stylami czasu, konfigurowalnymi wykresami i układem dla okrągłego okienka Instinct."
+  },
+  "pt_BR": {
+    "title": "Tide Grid",
+    "description": "Um mostrador compacto inspirado em instrumentos náuticos. Alterne o gráfico entre previsões de maré, passos, frequência cardíaca, distância e calorias. Personalize 13 campos, incluindo a janela redonda, e escolha entre três estilos de hora e 12 temas. Escolha uma estação costeira pelo nome ou use a localização Garmin para encontrar uma estação próxima. Apenas para referência.",
+    "whatsNew": "Primeira versão com três estilos de hora, gráficos configuráveis e layout para a janela redonda do Instinct."
+  },
+  "pt_PT": {
+    "title": "Tide Grid",
+    "description": "Um mostrador compacto inspirado em instrumentos náuticos. Alterne o gráfico entre previsões de marés, passos, frequência cardíaca, distância e calorias. Personalize 13 campos, incluindo a janela redonda, e escolha entre três estilos de hora e 12 temas. Escolha uma estação costeira pelo nome ou utilize a localização Garmin para encontrar uma por perto. Apenas para referência.",
+    "whatsNew": "Primeira versão com três estilos de hora, gráficos configuráveis e disposição para a janela redonda do Instinct."
+  },
+  "ru": {
+    "title": "Tide Grid",
+    "description": "Компактный циферблат в стиле морского прибора. Выберите график прогнозов приливов, шагов, пульса, расстояния или калорий. Настройте 13 полей, включая круглое окно, и выберите один из трёх стилей времени и 12 тем. Выберите прибрежную станцию по названию или найдите ближайшую с помощью местоположения Garmin. Только для справки.",
+    "whatsNew": "Первая версия с тремя стилями времени, настраиваемыми графиками и размещением данных в круглом окне Instinct."
+  },
+  "sk": {
+    "title": "Tide Grid",
+    "description": "Kompaktný ciferník inšpirovaný námornými prístrojmi. Graf môže zobrazovať predpoveď prílivu, kroky, tep, vzdialenosť alebo kalórie. Prispôsobte 13 údajových polí vrátane okrúhleho okienka a vyberte z troch štýlov času a 12 motívov. Vyberte pobrežnú stanicu podľa názvu alebo nájdite najbližšiu pomocou polohy Garmin. Len na orientáciu.",
+    "whatsNew": "Prvé vydanie s tromi štýlmi času, nastaviteľnými grafmi a rozložením pre okrúhle okienko Instinct."
+  },
+  "sl": {
+    "title": "Tide Grid",
+    "description": "Kompaktna številčnica, navdihnjena z navtičnimi instrumenti. Izberite graf napovedi plimovanja, korakov, srčnega utripa, razdalje ali kalorij. Prilagodite 13 podatkovnih polj, tudi okroglo okence, ter izberite med tremi slogi ure in 12 temami. Izberite obalno postajo po imenu ali uporabite lokacijo Garmin za iskanje bližnje postaje. Samo informativno.",
+    "whatsNew": "Prva izdaja s tremi slogi ure, nastavljivimi grafi in postavitvijo za okroglo okence ure Instinct."
+  },
+  "sv": {
+    "title": "Tide Grid",
+    "description": "En kompakt urtavla inspirerad av marina instrument. Växla grafen mellan tidvattenprognoser, steg, puls, distans och kalorier. Anpassa 13 datafält, inklusive det runda fönstret, och välj mellan tre tidsstilar och 12 teman. Välj en kuststation efter namn eller använd din Garmin-position för att hitta en i närheten. Endast som referens.",
+    "whatsNew": "Första versionen med tre tidsstilar, anpassningsbara grafer och layout för Instincts runda fönster."
+  },
+  "th": {
+    "title": "Tide Grid",
+    "description": "หน้าปัดขนาดกะทัดรัดที่ได้แรงบันดาลใจจากเครื่องมือเดินเรือ เลือกกราฟพยากรณ์น้ำขึ้นน้ำลง จำนวนก้าว อัตราการเต้นหัวใจ ระยะทาง หรือแคลอรี ปรับแต่งข้อมูลได้13 ตำแหน่งรวมหน้าต่างวงกลม พร้อมตัวเลขเวลาสามแบบและธีม 12 แบบ เลือกสถานีชายฝั่งตามชื่อหรือใช้ตำแหน่ง Garmin เพื่อค้นหาสถานีใกล้เคียง ใช้เพื่ออ้างอิงเท่านั้น",
+    "whatsNew": "รุ่นแรกพร้อมตัวเลขเวลาสามแบบ กราฟที่ปรับแต่งได้ และการจัดวางสำหรับหน้าต่างวงกลมของ Instinct"
+  }
+}
