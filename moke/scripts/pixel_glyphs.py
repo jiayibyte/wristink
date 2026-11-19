@@ -255,11 +255,12 @@ def _dots(char, width, height):
 
 
 @lru_cache(maxsize=8192)
-def digit(char, width, height, weight=0, stroke=None, style='round'):
+def digit(char, width, height, weight=0, stroke=None, style='round', grid_type=Grid):
     """Continuous instrument numerals built from horizontal and vertical strokes.
 
     style: 'round' (default), 'square' (sharp corners), 'segment' (seven-segment
     LCD) or 'dot' (5 x 7 dot matrix). All are built on the pixel grid.
+    A coverage grid can rasterize the same paths above native resolution.
     """
     if width <= 3 or height <= 5:
         return _tiny(char, width, height).image()
@@ -279,7 +280,7 @@ def digit(char, width, height, weight=0, stroke=None, style='round'):
     # into 8 and 2 into a second bowl.
     opening = (height - 3 * s) / 2
     hook = 0 if opening < (2.5 if s == 1 else 3) else (1 if height < 14 else max(2, round(height * .15)))
-    g = Grid(width, height)
+    g = grid_type(width, height)
     if char == '0':
         g.stroke([(l, t), (r, t), (r, b), (l, b)], s, rho, closed=True)
     elif char == '8':
