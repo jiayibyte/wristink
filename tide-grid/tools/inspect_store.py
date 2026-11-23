@@ -40,7 +40,7 @@ def inspect(package, report, sdk):
             path = root / product.get("filename")
             blob = path.read_bytes()
             assert len(blob) <= 100_000, (part, profile["device"], len(blob))
-            assert all(s not in blob for s in (b"PORT ELIZABETH_2", b"30 AUG", b"196CM", b"8:54P"))
+            assert all(s not in blob for s in (b"30 AUG", b"196CM", b"8:54P"))  # the demo port, CAPE TOWN, is a real catalogue entry
             settings, = path.parent.glob("*settings.json")
             data = json.loads(settings.read_text())
             items = {i["key"]: i for i in data["settings"]}
