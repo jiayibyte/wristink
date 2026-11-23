@@ -520,5 +520,279 @@
     "tip": "Seconds run only while the watch is awake."
    }
   }
+ },
+ "tide": {
+  "zh": {
+   "hero": {
+    "eyebrow": "Tide Grid · 潮汐",
+    "headline": "潮起潮落，\n抬腕便知",
+    "sub": "30 个港口潮汐 · 12 套主题 · 3 款字体"
+   },
+   "badge": "首发",
+   "note": "模拟器截图 · 演示数据",
+   "screens": [
+    {
+     "labels": [
+      "epix 2 · 深海",
+      "fēnix 7 · 余烬",
+      "Venu 3 · 紫外"
+     ]
+    },
+    {
+     "labels": [
+      "Venu 3 · 冰川",
+      "Venu Sq 2 · 青柠荧光",
+      "Instinct 3 · 墨"
+     ],
+     "note": "模拟器截图 · 演示数据"
+    },
+    {
+     "chips": [
+      "潮汐图",
+      "步数",
+      "心率",
+      "距离",
+      "热量",
+      "下次高潮",
+      "下次低潮",
+      "潮高",
+      "潮汐周期",
+      "日出",
+      "日落",
+      "月龄",
+      "天气温度",
+      "海拔",
+      "爬楼",
+      "通知",
+      "电量"
+     ],
+     "extra": "安装后按手表最近一次的位置，自动选最近的港口；也能在手机里按站名指定。图表可换成 7 天步数、距离、热量或 2 小时心率。"
+    }
+   ],
+   "power": {
+    "eyebrow": "Tide Grid · 潮汐",
+    "note": "潮汐为天文潮预报，仅供参考，不能用于航行",
+    "stats": [
+     [
+      "30",
+      "个沿海港口"
+     ],
+     [
+      "13",
+      "个数据位（含圆窗）"
+     ],
+     [
+      "5",
+      "种图表"
+     ],
+     [
+      "0",
+      "次主动 GPS 定位"
+     ]
+    ],
+    "tip": "潮汐在手表上用调和常数离线计算，位置不上传。"
+   }
+  },
+  "en": {
+   "hero": {
+    "eyebrow": "TIDE GRID",
+    "headline": "Tides at\na glance.",
+    "sub": "Tide forecasts for 30 ports · 12 themes · 3 clock styles"
+   },
+   "badge": "NEW",
+   "note": "Simulator captures · demo data",
+   "screens": [
+    {
+     "labels": [
+      "epix 2 · Deep Sea",
+      "fēnix 7 · Ember",
+      "Venu 3 · Ultraviolet"
+     ]
+    },
+    {
+     "labels": [
+      "Venu 3 · Glacier",
+      "Venu Sq 2 · Lime Phosphor",
+      "Instinct 3 · Ink"
+     ],
+     "note": "Simulator captures · demo data"
+    },
+    {
+     "chips": [
+      "Tide chart",
+      "Steps",
+      "Heart rate",
+      "Distance",
+      "Calories",
+      "Next high",
+      "Next low",
+      "Tide height",
+      "Tide cycle",
+      "Sunrise",
+      "Sunset",
+      "Moon age",
+      "Temperature",
+      "Elevation",
+      "Floors",
+      "Notifications",
+      "Battery"
+     ],
+     "extra": "Picks the nearest port from your watch's last known location, or choose one by name in the app. The chart can also show 7 days of steps, distance or calories, or 2 hours of heart rate."
+    }
+   ],
+   "power": {
+    "eyebrow": "TIDE GRID",
+    "note": "Astronomical tide predictions for reference only; not for navigation",
+    "stats": [
+     [
+      "30",
+      "coastal ports"
+     ],
+     [
+      "13",
+      "fields incl. the window"
+     ],
+     [
+      "5",
+      "chart modes"
+     ],
+     [
+      "0",
+      "GPS fixes started"
+     ]
+    ],
+    "tip": "Tides are computed on the watch from harmonic constants: offline, and your location never leaves it."
+   }
+  }
+ },
+ "signal": {
+  "zh": {
+   "hero": {
+    "eyebrow": "Signal LCD",
+    "headline": "复古液晶，\n重回腕上",
+    "sub": "七段数字 · 14 套彩屏主题 · 3 款数字字体"
+   },
+   "badge": "首发",
+   "note": "模拟器截图 · 演示数据",
+   "screens": [
+    {
+     "labels": [
+      "Venu 3 · 琥珀夜（默认）",
+      "epix 2 · 蓝色 LCD",
+      "fēnix 7 · 荧光绿"
+     ]
+    },
+    {
+     "labels": [
+      "Venu 3 · 深红",
+      "epix 2 · 玫瑰石英",
+      "Instinct 3 · 黑白 LCD"
+     ],
+     "note": "模拟器截图 · 演示数据"
+    },
+    {
+     "chips": [
+      "心率",
+      "电量",
+      "步数",
+      "热量",
+      "距离",
+      "温度",
+      "通知",
+      "海拔",
+      "爬楼",
+      "秒数"
+     ],
+     "extra": "进度刻度可显示步数、爬楼、强度分钟、电量或当天进度；状态图标提示勿扰、闹钟和手机连接。Instinct 的圆窗默认显示心率。"
+    }
+   ],
+   "power": {
+    "eyebrow": "Signal LCD",
+    "note": "模拟器截图 · 演示数据",
+    "stats": [
+     [
+      "14",
+      "套彩屏主题"
+     ],
+     [
+      "3",
+      "款数字字体"
+     ],
+     [
+      "5",
+      "个可换数据位"
+     ],
+     [
+      "1 次/分钟",
+      "待机刷新"
+     ]
+    ],
+    "tip": "小秒数默认关闭，打开后也只在抬腕时走秒。"
+   }
+  },
+  "en": {
+   "hero": {
+    "eyebrow": "SIGNAL LCD",
+    "headline": "Retro LCD,\nreborn.",
+    "sub": "Seven-segment digits · 14 colour themes · 3 digit styles"
+   },
+   "badge": "NEW",
+   "note": "Simulator captures · demo data",
+   "screens": [
+    {
+     "labels": [
+      "Venu 3 · Amber Night (default)",
+      "epix 2 · Blue LCD",
+      "fēnix 7 · Phosphor Green"
+     ]
+    },
+    {
+     "labels": [
+      "Venu 3 · Crimson",
+      "epix 2 · Rose Quartz",
+      "Instinct 3 · Black LCD"
+     ],
+     "note": "Simulator captures · demo data"
+    },
+    {
+     "chips": [
+      "Heart rate",
+      "Battery",
+      "Steps",
+      "Calories",
+      "Distance",
+      "Temperature",
+      "Notifications",
+      "Elevation",
+      "Floors",
+      "Seconds"
+     ],
+     "extra": "The progress scale shows steps, floors, intensity minutes, battery or the day; status icons flag Do Not Disturb, alarms and the phone connection. Instinct's window shows heart rate by default."
+    }
+   ],
+   "power": {
+    "eyebrow": "SIGNAL LCD",
+    "note": "Simulator captures · demo data",
+    "stats": [
+     [
+      "14",
+      "colour themes"
+     ],
+     [
+      "3",
+      "digit styles"
+     ],
+     [
+      "5",
+      "changeable fields"
+     ],
+     [
+      "1/min",
+      "standby refresh"
+     ]
+    ],
+    "tip": "Small seconds are off by default; when on, they run only while you look."
+   }
+  }
  }
 }

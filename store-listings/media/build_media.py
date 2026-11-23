@@ -15,13 +15,15 @@ CAP = HERE / 'captures'
 OUT = HERE / 'out'
 TEXT = json.loads((HERE / 'text.json').read_text(encoding='utf-8'))
 CHROME = next(p for p in [Path(r'C:\Program Files\Google\Chrome\Application\chrome.exe'),
-                          Path(r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe')] if p.exists())
+                          Path(r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'),
+                          Path('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'),
+                          Path('/usr/bin/google-chrome'), Path('/usr/bin/chromium')] if p.exists())
 
 BASE_CSS = """
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:%(w)dpx;height:%(h)dpx;overflow:hidden}
-body{position:relative;font-family:'Bahnschrift','Segoe UI','Microsoft YaHei UI','Microsoft YaHei','Yu Gothic UI','Malgun Gothic','Leelawadee UI',Arial,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
-.zh{font-family:'Microsoft YaHei UI','Microsoft YaHei','Bahnschrift',sans-serif}
+body{position:relative;font-family:'Bahnschrift','Segoe UI','Microsoft YaHei UI','Microsoft YaHei','Yu Gothic UI','Malgun Gothic','Leelawadee UI','Noto Sans','Noto Sans CJK SC','Noto Sans Thai',Arial,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+.zh{font-family:'Microsoft YaHei UI','Microsoft YaHei','Bahnschrift','Noto Sans CJK SC',sans-serif}
 .abs{position:absolute}
 .eyebrow{font-size:26px;letter-spacing:.08em;color:var(--accent);font-weight:600}
 .headline{font-weight:700;line-height:1.08;letter-spacing:-.01em}
@@ -53,6 +55,10 @@ PALETTES = {
                   muted='#9fb3c8', faint='#64788d', line='#36506b', **{'badge-bg': '#ffc35c', 'badge-ink': '#1a1206'}),
     'alpine': dict(bg='linear-gradient(180deg,#0d2347 0%,#15336a 45%,#0b1a36 100%)', ink='#f4f8fb', accent='#9fe3d2',
                    muted='#b7c9da', faint='#7b91a8', line='#3d5b82', **{'badge-bg': '#9fe3d2', 'badge-ink': '#06201b'}),
+    'tide': dict(bg='radial-gradient(1200px 800px at 70% 30%,#0f3a4a 0%,#0a2230 48%,#04101a 100%)', ink='#eef8fa', accent='#5fe0c8',
+                 muted='#9cc3cc', faint='#5f8792', line='#285463', **{'badge-bg': '#5fe0c8', 'badge-ink': '#04201c'}),
+    'signal': dict(bg='radial-gradient(1200px 800px at 72% 32%,#2b2618 0%,#15130d 48%,#070605 100%)', ink='#f6efdc', accent='#ffb547',
+                   muted='#c2b593', faint='#7d735c', line='#4a432f', **{'badge-bg': '#ffb547', 'badge-ink': '#211603'}),
 }
 
 
@@ -71,7 +77,9 @@ def cap(name):
     return path
 
 
-DEVICES = Path(os.environ['APPDATA']) / 'Garmin/ConnectIQ/Devices'
+sys.path.append(str(HERE.parents[1] / 'tools'))
+import ciq_env  # noqa: E402
+DEVICES = ciq_env.DEVICES
 
 
 def device_of(name):
@@ -221,7 +229,9 @@ def render(markup, out, w, h, limit=None):
         page_path = Path(tmp) / 'page.html'
         page_path.write_text(markup, encoding='utf-8')
         png = Path(tmp) / 'shot.png'
+        # A throwaway profile: never attach to (or open pages in) a running browser.
         subprocess.run([str(CHROME), '--headless=new', '--disable-gpu', '--hide-scrollbars', '--force-device-scale-factor=1',
+                        f'--user-data-dir={Path(tmp) / "profile"}', '--no-first-run', '--no-default-browser-check',
                         '--allow-file-access-from-files', f'--window-size={w},{h}', f'--screenshot={png}', page_path.as_uri()],
                        check=True, capture_output=True, timeout=120)
         im = Image.open(png).convert('RGB')
@@ -510,10 +520,69 @@ def build_alpine(locales=ALPINE_LOCALES):
     render(cover('alpine', 'alpine-epix2-m0', 470), OUT / 'alpine' / 'cover-500.png', 500, 500, 300_000)
 
 
+# ---------------------------------------------------------------- Tide Grid and Signal LCD
+# Same set as Alpine: 28 localized heroes, a cover, and the five store screenshots
+# (look and data pages in English and Chinese, plus a language-neutral collage).
+NEW_FACES = {
+    'tide': dict(folder='tide-grid', cover='tide-epix2-t0',
+                 hero=[('tide-venu3-t2', 270, 800, 510), ('tide-venu3-t7', 270, 1290, 520), ('tide-epix2-t0', 450, 1050, 350)],
+                 look=[['tide-epix2-t0', 'tide-fenix7-t1', 'tide-venu3-t7'], ['tide-venu3-t2', 'tide-venusq2-t9', 'tide-instinct3solar45mm-t4']],
+                 data='tide-epix2-steps',
+                 collage=[[('tide-epix2-t0', 'epix 2'), ('tide-fenix7-t1', 'fēnix 7'), ('tide-instinct3solar45mm-t4', 'Instinct 3')],
+                          [('tide-venusq2-t9', 'Venu Sq 2'), ('tide-venu3-t7', 'Venu 3'), ('tide-venu3-t2', 'Venu 3')]]),
+    'signal': dict(folder='signal-lcd', cover='signal-venu3-t1',
+                   hero=[('signal-venu3-t9', 270, 800, 510), ('signal-epix2-t11', 270, 1290, 520), ('signal-venu3-t1', 450, 1050, 350)],
+                   look=[['signal-venu3-t1', 'signal-epix2-t0', 'signal-fenix7-t7'], ['signal-venu3-t9', 'signal-epix2-t11', 'signal-instinct3solar45mm-t0']],
+                   data='signal-venu3-t0',
+                   collage=[[('signal-venu3-t1', 'Venu 3'), ('signal-fenix7-t7', 'fēnix 7'), ('signal-instinct3solar45mm-t0', 'Instinct 3')],
+                            [('signal-epix2-t11', 'epix 2'), ('signal-venu3-t9', 'Venu 3'), ('signal-fenix7-t0', 'fēnix 7')]]),
+}
+
+
+def keep_together(sub):
+    """No line break between a number and its noun, or before a ' · ' separator."""
+    import re
+    return re.sub(r'(\d) ', '\\1\u00a0', sub.replace(' · ', '\u00a0· '))
+
+
+def new_face_locale(app, lang):
+    """Hero text: zh/en from text.json, other storefronts from i18n/<app>.json (the demo note is shared with Alpine)."""
+    if lang in ('zh', 'en'):
+        t = json.loads(json.dumps(TEXT[app][lang]))
+        t['hero']['sub'] = keep_together(t['hero']['sub'])
+        return t
+    h = json.loads((HERE / 'i18n' / f'{app}.json').read_text(encoding='utf-8'))['heroes'][lang]
+    return {'hero': {'eyebrow': TEXT[app]['en']['hero']['eyebrow'], 'headline': h['headline'], 'sub': keep_together(h['sub'])},
+            'badge': h['badge'], 'note': alpine_locale(lang)['note']}
+
+
+def build_new_face(app, locales=ALPINE_LOCALES):
+    f = NEW_FACES[app]
+    o = OUT / f['folder']
+    for lang in locales:
+        key = 'zh_CN' if lang == 'zh' else lang
+        mirror = (lambda x: 1440 - x) if lang == 'iw' else (lambda x: x)
+        watches = [devs([(n, w, mirror(x), y, None) for n, w, x, y in f['hero']])]
+        render(hero(app, lang, new_face_locale(app, lang), watches), o / f'hero-{key}-1440x720.jpg', 1440, 720, 1_000_000)
+    combo = json.loads((HERE / 'i18n' / f'{app}.json').read_text(encoding='utf-8'))['combo']
+    for lang in ('en', 'zh'):
+        t, c = TEXT[app][lang], combo[lang]
+        s, pw = t['screens'], t['power']
+        look = row(f['look'][0], s[0]['labels'], 300, 500, 250, 1190) + row(f['look'][1], s[1]['labels'], 300, 945, 250, 1190)
+        data = data_inner(devs([(f['data'], 580, 340, 690, None)]), pw, s[2])
+        render(combo_page(app, lang, pw['eyebrow'], c['look']['title'], c['look']['sub'], look, s[1]['note']), o / f'c1-look-{lang}.jpg', 1440, 1280, 148_000)
+        render(combo_page(app, lang, pw['eyebrow'], c['data']['title'], c['data']['sub'], data, pw['note']), o / f'c2-data-{lang}.jpg', 1440, 1280, 148_000)
+    inner = ''.join(row([n for n, _ in r], [l for _, l in r], 360, cy, 270, 1170) for r, cy in zip(f['collage'], (520, 975)))
+    render(combo_page(app, 'en', TEXT[app]['en']['hero']['eyebrow'], combo['devices'], None, inner, 'Simulator captures · demo data', 52),
+           o / 'c3-devices.jpg', 1440, 1280, 148_000)
+    render(cover(app, f['cover'], 470), o / 'cover-500.png', 500, 500, 300_000)
+
+
 if __name__ == '__main__':
     apps = sys.argv[1:] or ['moke', 'retro', 'alpine']
     for app in apps:
         {'moke': build_moke, 'retro': build_retro, 'alpine': build_alpine,
          'moke-heroes': lambda: build_heroes('moke'), 'retro-heroes': lambda: build_heroes('retro'),
          'moke-combo': lambda: build_combo('moke'), 'retro-combo': lambda: build_combo('retro'),
-         'alpine-combo': lambda: build_combo('alpine')}[app]()
+         'alpine-combo': lambda: build_combo('alpine'),
+         'tide': lambda: build_new_face('tide'), 'signal': lambda: build_new_face('signal')}[app]()

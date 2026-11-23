@@ -1,142 +1,142 @@
 {
   "en": {
     "title": "Signal LCD · Retro Digital",
-    "description": "A retro digital watch face with a large LCD-style clock, three digit styles and six color themes. Choose what appears in the data fields, switch the progress bar between steps and battery, or hide it. The upper-right window on compatible Instinct models shows heart rate by default. Monochrome displays use high-contrast light and dark modes. The watch face and settings are in English.",
-    "whatsNew": "First release. Includes three time fonts, six color themes and configurable data fields."
+    "description": "A retro digital watch face with a large LCD-style clock, three digit styles and 14 colour themes (Amber Night by default). Choose what appears in the data fields; switch the progress scale between steps, floors, intensity minutes, battery and the time of day, or hide it. Status icons can show Do Not Disturb, alarms and the phone connection. The upper-right window on compatible Instinct models shows heart rate by default. Monochrome displays use high-contrast black and white LCD modes. The watch face and settings are in English.",
+    "whatsNew": "First release. Includes three digit styles, 14 colour themes and configurable data fields."
   },
   "zh_CN": {
     "title": "Signal LCD · 复古数字表盘",
-    "description": "以复古液晶屏为灵感，搭配大号数字、三款时间字体和六种彩色主题。可更换各数据位的指标，进度条可显示步数目标或电量，也可隐藏。兼容的 Instinct 机型右上圆窗默认显示心率。黑白屏提供高对比度深色和浅色模式。表盘及设置使用英文。",
-    "whatsNew": "首发版本，提供三款时间字体、六种彩色主题和可配置数据位。"
+    "description": "以复古液晶屏为灵感，搭配大号数字、三款数字字体和 14 套彩色主题（默认琥珀夜）。可更换各数据位的指标；进度刻度可显示步数、爬楼、强度分钟、电量或当天进度，也可隐藏。状态图标可提示勿扰、闹钟和手机连接。兼容的 Instinct 机型右上圆窗默认显示心率。黑白屏提供高对比度的黑色和白色 LCD。表盘及设置使用英文。",
+    "whatsNew": "首发版本，提供三款数字字体、14 套彩色主题和可配置数据位。"
   },
   "zh_TW": {
     "title": "Signal LCD · 復古數位錶面",
-    "description": "以復古液晶螢幕為靈感，搭配大尺寸數字、三款時間字型與六種彩色主題。可自訂各資料欄位，進度條可顯示步數目標或電量，也可隱藏。相容的 Instinct 機型右上圓窗預設顯示心率。單色螢幕提供高對比的深色與淺色模式。錶面及設定採用英文。",
-    "whatsNew": "首發版本，提供三款時間字型、六種彩色主題與可自訂的資料欄位。"
+    "description": "以復古液晶螢幕為靈感，搭配大號數字、三款數字字體和 14 套彩色主題（預設琥珀夜）。可更換各資料欄位的指標；進度刻度可顯示步數、爬樓、強度分鐘、電量或當天進度，也可隱藏。狀態圖示可提示勿擾、鬧鐘和手機連線。相容的 Instinct 機型右上圓窗預設顯示心率。黑白螢幕提供高對比的黑色和白色 LCD。錶盤及設定使用英文。",
+    "whatsNew": "首發版本，提供三款數字字體、14 套彩色主題和可設定的資料欄位。"
   },
   "ja": {
     "title": "Signal LCD · レトロデジタル",
-    "description": "大きな液晶風の時刻表示を備えたレトロなウォッチフェイスです。3種類の数字フォントと6種類のカラーテーマを選べます。データ項目を変更でき、進捗バーには歩数目標またはバッテリー残量を表示できます。バーの非表示も可能です。対応するInstinctの右上の小窓は、初期設定で心拍数を表示します。モノクロ画面には高コントラストのライト／ダークモードがあります。ウォッチフェイスと設定は英語です。",
-    "whatsNew": "初回リリース。3種類の時刻フォント、6種類のカラーテーマ、変更可能なデータ項目を収録しました。"
+    "description": "大きな液晶風の時刻、3 種類の数字スタイル、14 のカラーテーマ（初期設定は Amber Night）を備えたレトロなデジタル文字盤。データ欄の表示項目を選べ、進捗スケールは歩数、上昇階数、運動時間、バッテリー、1 日の経過から切り替え、または非表示にできます。ステータスアイコンでおやすみモード、アラーム、スマートフォン接続を表示できます。対応する Instinct モデルでは右上の丸窓に心拍数を初期表示します。モノクロ画面は高コントラストのブラックとホワイトの液晶モードです。文字盤と設定は英語表記です。",
+    "whatsNew": "初回リリース。3 種類の数字スタイル、14 のカラーテーマ、カスタマイズ可能なデータ欄を搭載。"
   },
   "ko": {
     "title": "Signal LCD · 레트로 디지털",
-    "description": "커다란 LCD 스타일 시계가 돋보이는 레트로 워치 페이스입니다. 숫자 글꼴 3종과 색상 테마 6종을 선택할 수 있습니다. 데이터 필드를 원하는 항목으로 바꾸고, 진행 막대에는 걸음 수 목표 또는 배터리 잔량을 표시하거나 막대를 숨길 수 있습니다. 호환 Instinct 모델의 오른쪽 위 창에는 기본적으로 심박수가 표시됩니다. 흑백 화면은 대비가 높은 밝은 모드와 어두운 모드를 지원합니다. 워치 페이스와 설정은 영어로 표시됩니다.",
-    "whatsNew": "첫 출시입니다. 시간 글꼴 3종, 색상 테마 6종, 사용자 지정 데이터 필드를 제공합니다."
+    "description": "큰 LCD 스타일 시계, 숫자 스타일 3종, 컬러 테마 14종(기본 Amber Night)을 갖춘 레트로 디지털 워치페이스입니다. 데이터 필드에 표시할 항목을 고르고, 진행 눈금을 걸음 수, 오른 층수, 강도 높은 활동 시간, 배터리, 하루 경과로 바꾸거나 숨길 수 있습니다. 상태 아이콘으로 방해 금지, 알람, 휴대폰 연결을 표시할 수 있습니다. 호환되는 Instinct 모델의 오른쪽 위 창에는 기본으로 심박수가 표시됩니다. 흑백 화면은 고대비 검정·흰색 LCD 모드를 사용합니다. 워치페이스와 설정은 영어로 제공됩니다.",
+    "whatsNew": "첫 출시. 숫자 스타일 3종, 컬러 테마 14종, 설정 가능한 데이터 필드를 제공합니다."
   },
   "de": {
     "title": "Signal LCD · Digital im Retro-Stil",
-    "description": "Ein digitales Retro-Uhren-Display mit großer LCD-Uhrzeit, drei Ziffernstilen und sechs Farbdesigns. Wähle die Inhalte der Datenfelder. Der Fortschrittsbalken zeigt das Schrittziel oder den Akkustand und lässt sich ausblenden. Bei kompatiblen Instinct-Modellen zeigt das Fenster oben rechts standardmäßig die Herzfrequenz. Für monochrome Displays gibt es kontrastreiche helle und dunkle Modi. Uhren-Display und Einstellungen sind auf Englisch.",
-    "whatsNew": "Erste Version mit drei Uhrzeit-Schriftarten, sechs Farbdesigns und anpassbaren Datenfeldern."
+    "description": "Ein digitales Retro-Zifferblatt mit großer Uhr im LCD-Stil, drei Ziffernstilen und 14 Farbdesigns (standardmäßig Amber Night). Legen Sie fest, was in den Datenfeldern erscheint; die Fortschrittsskala zeigt Schritte, Etagen, Intensitätsminuten, Akku oder den Tagesverlauf an oder lässt sich ausblenden. Statussymbole können „Nicht stören“, Wecker und die Telefonverbindung anzeigen. Das Fenster oben rechts zeigt auf kompatiblen Instinct-Modellen standardmäßig die Herzfrequenz. Monochrome Displays nutzen kontrastreiche schwarze und weiße LCD-Modi. Zifferblatt und Einstellungen sind auf Englisch.",
+    "whatsNew": "Erste Version mit drei Ziffernstilen, 14 Farbdesigns und konfigurierbaren Datenfeldern."
   },
   "fr": {
     "title": "Signal LCD · Numérique rétro",
-    "description": "Un cadran numérique rétro avec une grande heure façon LCD, trois styles de chiffres et six thèmes de couleur. Choisissez les données à afficher. La barre de progression indique l’objectif de pas ou le niveau de batterie et peut être masquée. Sur les modèles Instinct compatibles, la fenêtre en haut à droite affiche la fréquence cardiaque par défaut. Les écrans monochromes proposent des modes clair et sombre à contraste élevé. Le cadran et les réglages sont en anglais.",
-    "whatsNew": "Première version avec trois polices horaires, six thèmes de couleur et des champs de données personnalisables."
+    "description": "Un cadran numérique rétro avec une grande heure façon écran LCD, trois styles de chiffres et 14 thèmes de couleur (Amber Night par défaut). Choisissez ce qui s'affiche dans les champs de données ; l'échelle de progression affiche les pas, les étages, les minutes intensives, la batterie ou l'avancée de la journée, ou peut être masquée. Des icônes d'état peuvent signaler Ne pas déranger, les alarmes et la connexion au téléphone. Sur les modèles Instinct compatibles, la fenêtre en haut à droite affiche la fréquence cardiaque par défaut. Les écrans monochromes utilisent des modes LCD noir et blanc à fort contraste. Le cadran et les réglages sont en anglais.",
+    "whatsNew": "Première version, avec trois styles de chiffres, 14 thèmes de couleur et des champs de données configurables."
   },
   "es": {
     "title": "Signal LCD · Digital retro",
-    "description": "Una pantalla de reloj digital retro con hora de gran tamaño al estilo LCD, tres estilos de números y seis temas de color. Elige los datos de cada campo. La barra de progreso muestra el objetivo de pasos o el nivel de batería y se puede ocultar. En los modelos Instinct compatibles, la ventana superior derecha muestra la frecuencia cardiaca de forma predeterminada. Las pantallas monocromas ofrecen modos claro y oscuro de alto contraste. La pantalla y los ajustes están en inglés.",
-    "whatsNew": "Primera versión con tres tipografías para la hora, seis temas de color y campos de datos configurables."
+    "description": "Una esfera digital retro con una gran hora estilo LCD, tres estilos de dígitos y 14 temas de color (Amber Night por defecto). Elige qué aparece en los campos de datos; la escala de progreso puede mostrar pasos, pisos, minutos de intensidad, batería o el avance del día, o se puede ocultar. Los iconos de estado pueden indicar No molestar, alarmas y la conexión con el teléfono. En los modelos Instinct compatibles, la ventana superior derecha muestra la frecuencia cardiaca por defecto. Las pantallas monocromas usan modos LCD negro y blanco de alto contraste. La esfera y los ajustes están en inglés.",
+    "whatsNew": "Primera versión, con tres estilos de dígitos, 14 temas de color y campos de datos configurables."
   },
   "it": {
     "title": "Signal LCD · Digitale rétro",
-    "description": "Un quadrante digitale rétro con orario in grandi cifre stile LCD, tre stili di cifre e sei temi cromatici. Scegli cosa mostrare nei campi dati. La barra indica l’obiettivo di passi o il livello della batteria e può essere nascosta. Sui modelli Instinct compatibili, la finestra in alto a destra mostra per impostazione predefinita la frequenza cardiaca. Gli schermi monocromatici offrono modalità chiara e scura ad alto contrasto. Il quadrante e le impostazioni sono in inglese.",
-    "whatsNew": "Prima versione con tre caratteri per l’ora, sei temi cromatici e campi dati configurabili."
+    "description": "Un quadrante digitale retrò con un grande orario in stile LCD, tre stili di cifre e 14 temi a colori (Amber Night predefinito). Scegli cosa mostrare nei campi dati; la scala di avanzamento può indicare passi, piani, minuti di intensità, batteria o l'avanzare della giornata, oppure essere nascosta. Le icone di stato possono segnalare Non disturbare, sveglie e connessione al telefono. Sui modelli Instinct compatibili la finestra in alto a destra mostra la frequenza cardiaca per impostazione predefinita. I display monocromatici usano modalità LCD nera e bianca ad alto contrasto. Il quadrante e le impostazioni sono in inglese.",
+    "whatsNew": "Prima versione, con tre stili di cifre, 14 temi a colori e campi dati configurabili."
   },
   "pt_BR": {
     "title": "Signal LCD · Digital retrô",
-    "description": "Um mostrador digital retrô com hora em tamanho grande no estilo LCD, três estilos de números e seis temas de cores. Escolha o que aparece nos campos de dados. A barra de progresso pode exibir a meta de passos ou o nível da bateria, ou ser ocultada. Nos modelos Instinct compatíveis, a janela superior direita exibe a frequência cardíaca por padrão. Telas monocromáticas têm modos claro e escuro de alto contraste. O mostrador e as configurações estão em inglês.",
-    "whatsNew": "Primeira versão com três fontes para a hora, seis temas de cores e campos de dados configuráveis."
+    "description": "Um mostrador digital retrô com hora grande em estilo LCD, três estilos de dígitos e 14 temas de cores (Amber Night por padrão). Escolha o que aparece nos campos de dados; a escala de progresso pode mostrar passos, andares, minutos de intensidade, bateria ou o andamento do dia, ou ser ocultada. Ícones de status podem indicar Não perturbe, alarmes e a conexão com o telefone. Nos modelos Instinct compatíveis, a janela no canto superior direito mostra a frequência cardíaca por padrão. Telas monocromáticas usam modos LCD preto e branco de alto contraste. O mostrador e as configurações estão em inglês.",
+    "whatsNew": "Primeira versão, com três estilos de dígitos, 14 temas de cores e campos de dados configuráveis."
   },
   "pt_PT": {
     "title": "Signal LCD · Digital retro",
-    "description": "Um mostrador digital retro com hora em grande formato ao estilo LCD, três estilos de algarismos e seis temas de cor. Escolha os dados apresentados em cada campo. A barra de progresso apresenta o objetivo de passos ou o nível da bateria e pode ser ocultada. Nos modelos Instinct compatíveis, a janela superior direita apresenta a frequência cardíaca por predefinição. Os ecrãs monocromáticos têm modos claro e escuro de alto contraste. O mostrador e as definições estão em inglês.",
-    "whatsNew": "Primeira versão com três tipos de letra para a hora, seis temas de cor e campos de dados configuráveis."
+    "description": "Um mostrador digital retro com hora grande em estilo LCD, três estilos de dígitos e 14 temas de cor (Amber Night por predefinição). Escolha o que aparece nos campos de dados; a escala de progresso pode mostrar passos, pisos, minutos de intensidade, bateria ou o decorrer do dia, ou ser ocultada. Os ícones de estado podem indicar Não incomodar, alarmes e a ligação ao telemóvel. Nos modelos Instinct compatíveis, a janela no canto superior direito mostra a frequência cardíaca por predefinição. Os ecrãs monocromáticos usam modos LCD preto e branco de alto contraste. O mostrador e as definições estão em inglês.",
+    "whatsNew": "Primeira versão, com três estilos de dígitos, 14 temas de cor e campos de dados configuráveis."
   },
   "nl": {
     "title": "Signal LCD · Retro digitaal",
-    "description": "Een retro digitale wijzerplaat met grote lcd-cijfers, drie cijferstijlen en zes kleurenthema’s. Kies de inhoud van de gegevensvelden. De voortgangsbalk toont je stappendoel of batterijniveau en kan worden verborgen. Op compatibele Instinct-modellen toont het venster rechtsboven standaard de hartslag. Monochrome schermen hebben een lichte en donkere modus met hoog contrast. De wijzerplaat en instellingen zijn Engelstalig.",
-    "whatsNew": "Eerste versie met drie tijdlettertypen, zes kleurenthema’s en instelbare gegevensvelden."
+    "description": "Een retro digitale wijzerplaat met een grote klok in lcd-stijl, drie cijferstijlen en 14 kleurthema's (standaard Amber Night). Kies wat er in de gegevensvelden staat; de voortgangsschaal toont stappen, verdiepingen, intensiteitsminuten, batterij of het verloop van de dag, of kan worden verborgen. Statuspictogrammen kunnen Niet storen, alarmen en de telefoonverbinding tonen. Op compatibele Instinct-modellen toont het venster rechtsboven standaard de hartslag. Monochrome schermen gebruiken zwarte en witte lcd-modi met hoog contrast. De wijzerplaat en instellingen zijn in het Engels.",
+    "whatsNew": "Eerste versie, met drie cijferstijlen, 14 kleurthema's en instelbare gegevensvelden."
   },
   "da": {
     "title": "Signal LCD · Retro digital",
-    "description": "En digital urskive i retrostil med stort LCD-inspireret klokkeslæt, tre talstile og seks farvetemaer. Vælg, hvad datafelterne skal vise. Statuslinjen kan vise skridtmål eller batteriniveau og kan skjules. På kompatible Instinct-modeller viser vinduet øverst til højre som standard pulsen. Monokrome skærme har lys og mørk tilstand med høj kontrast. Urskiven og indstillingerne er på engelsk.",
-    "whatsNew": "Første udgivelse med tre skrifttyper til klokkeslæt, seks farvetemaer og justerbare datafelter."
+    "description": "En retro digital urskive med et stort ur i LCD-stil, tre cifferstile og 14 farvetemaer (Amber Night som standard). Vælg, hvad datafelterne viser; fremskridtsskalaen kan vise skridt, etager, intensitetsminutter, batteri eller dagens forløb eller skjules. Statusikoner kan vise Forstyr ikke, alarmer og telefonforbindelsen. På kompatible Instinct-modeller viser vinduet øverst til højre puls som standard. Monokrome skærme bruger sort og hvid LCD-tilstand med høj kontrast. Urskiven og indstillingerne er på engelsk.",
+    "whatsNew": "Første udgave med tre cifferstile, 14 farvetemaer og konfigurerbare datafelter."
   },
   "nb": {
     "title": "Signal LCD · Retro digital",
-    "description": "En digital urskive i retrostil med stor LCD-inspirert klokke, tre sifferstiler og seks fargetemaer. Velg hva datafeltene viser. Fremdriftslinjen kan vise skrittmålet eller batterinivået, eller skjules. På kompatible Instinct-modeller viser vinduet øverst til høyre puls som standard. Monokrome skjermer har lys og mørk modus med høy kontrast. Urskiven og innstillingene er på engelsk.",
-    "whatsNew": "Første versjon med tre skrifttyper for klokkeslett, seks fargetemaer og konfigurerbare datafelt."
+    "description": "En retro digital urskive med en stor klokke i LCD-stil, tre sifferstiler og 14 fargetemaer (Amber Night som standard). Velg hva datafeltene viser; fremdriftsskalaen kan vise skritt, etasjer, intensitetsminutter, batteri eller hvor langt dagen har kommet, eller skjules. Statusikoner kan vise Ikke forstyrr, alarmer og telefontilkoblingen. På kompatible Instinct-modeller viser vinduet øverst til høyre puls som standard. Monokrome skjermer bruker svart og hvit LCD-modus med høy kontrast. Urskiven og innstillingene er på engelsk.",
+    "whatsNew": "Første versjon med tre sifferstiler, 14 fargetemaer og konfigurerbare datafelt."
   },
   "sv": {
     "title": "Signal LCD · Retrodigital",
-    "description": "En digital retrourtavla med stor LCD-inspirerad tidvisning, tre sifferstilar och sex färgteman. Välj vad datafälten visar. Förloppsindikatorn visar stegmål eller batterinivå och kan döljas. På kompatibla Instinct-modeller visar fönstret uppe till höger puls som standard. Monokroma skärmar har ljust och mörkt läge med hög kontrast. Urtavlan och inställningarna är på engelska.",
-    "whatsNew": "Första versionen med tre typsnitt för tiden, sex färgteman och anpassningsbara datafält."
+    "description": "En retro digital urtavla med en stor klocka i LCD-stil, tre sifferstilar och 14 färgteman (Amber Night som standard). Välj vad datafälten visar; förloppsskalan kan visa steg, våningar, intensitetsminuter, batteri eller hur långt dagen har gått, eller döljas. Statusikoner kan visa Stör ej, larm och telefonanslutningen. På kompatibla Instinct-modeller visar fönstret uppe till höger puls som standard. Monokroma skärmar använder svart och vitt LCD-läge med hög kontrast. Urtavlan och inställningarna är på engelska.",
+    "whatsNew": "Första versionen med tre sifferstilar, 14 färgteman och anpassningsbara datafält."
   },
   "fi": {
     "title": "Signal LCD · Digitaalinen retro",
-    "description": "Digitaalinen retrotyylinen kellotaulu, jossa on suuri LCD-henkinen aikanäyttö, kolme numerotyyliä ja kuusi väriteemaa. Valitse tietokentissä näytettävät tiedot. Edistymispalkki näyttää askeltavoitteen tai akun varauksen, ja sen voi piilottaa. Yhteensopivissa Instinct-malleissa oikean yläkulman ikkuna näyttää oletusarvoisesti sykkeen. Yksivärisille näytöille on vaalea ja tumma suuren kontrastin tila. Kellotaulu ja asetukset ovat englanninkieliset.",
-    "whatsNew": "Ensimmäinen julkaisu sisältää kolme ajan kirjasintyyliä, kuusi väriteemaa ja mukautettavat tietokentät."
+    "description": "Retrohenkinen digitaalinen kellotaulu, jossa on suuri LCD-tyylinen kello, kolme numerotyyliä ja 14 väriteemaa (oletuksena Amber Night). Valitse, mitä tietokentissä näkyy; edistymisasteikko näyttää askeleet, kerrokset, rasitusminuutit, akun tai päivän kulun, tai sen voi piilottaa. Tilakuvakkeet voivat näyttää Älä häiritse -tilan, hälytykset ja puhelinyhteyden. Yhteensopivissa Instinct-malleissa oikean yläkulman ikkuna näyttää oletuksena sykkeen. Mustavalkoiset näytöt käyttävät suurikontrastista mustaa ja valkoista LCD-tilaa. Kellotaulu ja asetukset ovat englanniksi.",
+    "whatsNew": "Ensimmäinen versio: kolme numerotyyliä, 14 väriteemaa ja muokattavat tietokentät."
   },
   "cs": {
     "title": "Signal LCD · Digitální retro",
-    "description": "Digitální retro ciferník s velkým časem ve stylu LCD, třemi styly číslic a šesti barevnými motivy. Vyberte obsah datových polí. Ukazatel může zobrazovat plnění cíle kroků nebo stav baterie a lze ho skrýt. U kompatibilních modelů Instinct se v pravém horním okénku ve výchozím nastavení zobrazuje tepová frekvence. Monochromatické displeje mají světlý a tmavý režim s vysokým kontrastem. Ciferník a nastavení jsou v angličtině.",
-    "whatsNew": "První verze se třemi písmy pro čas, šesti barevnými motivy a nastavitelnými datovými poli."
+    "description": "Retro digitální ciferník s velkými hodinami ve stylu LCD, třemi styly číslic a 14 barevnými motivy (výchozí Amber Night). Zvolte, co se zobrazí v datových polích; ukazatel postupu může zobrazovat kroky, patra, minuty intenzivní aktivity, baterii nebo průběh dne, nebo ho lze skrýt. Stavové ikony mohou upozorňovat na režim Nerušit, budíky a připojení telefonu. Na kompatibilních modelech Instinct okno vpravo nahoře ve výchozím nastavení zobrazuje tepovou frekvenci. Monochromatické displeje používají kontrastní černý a bílý režim LCD. Ciferník a nastavení jsou v angličtině.",
+    "whatsNew": "První vydání se třemi styly číslic, 14 barevnými motivy a nastavitelnými datovými poli."
   },
   "sk": {
     "title": "Signal LCD · Digitálne retro",
-    "description": "Digitálny retro ciferník s veľkým časom v štýle LCD, tromi štýlmi číslic a šiestimi farebnými motívmi. Vyberte údaje zobrazené v jednotlivých poliach. Ukazovateľ pokroku môže zobrazovať cieľ krokov alebo stav batérie a dá sa skryť. V pravom hornom okienku kompatibilných modelov Instinct sa predvolene zobrazuje srdcový tep. Monochromatické displeje ponúkajú svetlý a tmavý režim s vysokým kontrastom. Ciferník a nastavenia sú v angličtine.",
-    "whatsNew": "Prvá verzia s tromi typmi písma času, šiestimi farebnými motívmi a nastaviteľnými dátovými poľami."
+    "description": "Retro digitálny ciferník s veľkými hodinami v štýle LCD, tromi štýlmi číslic a 14 farebnými motívmi (predvolene Amber Night). Zvoľte, čo sa zobrazí v dátových poliach; ukazovateľ pokroku môže zobrazovať kroky, poschodia, minúty intenzívnej aktivity, batériu alebo priebeh dňa, alebo ho možno skryť. Stavové ikony môžu upozorňovať na režim Nerušiť, budíky a pripojenie telefónu. Na kompatibilných modeloch Instinct okno vpravo hore predvolene zobrazuje tepovú frekvenciu. Monochromatické displeje používajú kontrastný čierny a biely režim LCD. Ciferník a nastavenia sú v angličtine.",
+    "whatsNew": "Prvé vydanie s tromi štýlmi číslic, 14 farebnými motívmi a nastaviteľnými dátovými poľami."
   },
   "pl": {
     "title": "Signal LCD · Cyfrowe retro",
-    "description": "Cyfrowa tarcza w stylu retro z dużym zegarem LCD, trzema stylami cyfr i sześcioma motywami kolorystycznymi. Wybierz dane wyświetlane w poszczególnych polach. Pasek postępu może pokazywać realizację celu kroków albo poziom baterii i można go ukryć. W zgodnych modelach Instinct okienko w prawym górnym rogu domyślnie pokazuje tętno. Ekrany monochromatyczne mają jasny i ciemny tryb o wysokim kontraście. Tarcza i ustawienia są w języku angielskim.",
-    "whatsNew": "Pierwsza wersja z trzema krojami cyfr zegara, sześcioma motywami i konfigurowalnymi polami danych."
+    "description": "Cyfrowa tarcza w stylu retro z dużym zegarem jak z wyświetlacza LCD, trzema stylami cyfr i 14 motywami kolorystycznymi (domyślnie Amber Night). Wybierz, co pokazują pola danych; skala postępu może pokazywać kroki, piętra, minuty intensywności, baterię lub upływ dnia albo zostać ukryta. Ikony stanu mogą sygnalizować tryb Nie przeszkadzać, alarmy i połączenie z telefonem. Na zgodnych modelach Instinct okno w prawym górnym rogu domyślnie pokazuje tętno. Ekrany monochromatyczne mają kontrastowe tryby LCD czarny i biały. Tarcza i ustawienia są w języku angielskim.",
+    "whatsNew": "Pierwsze wydanie: trzy style cyfr, 14 motywów kolorystycznych i konfigurowalne pola danych."
   },
   "hu": {
     "title": "Signal LCD · Digitális retró",
-    "description": "Retró digitális óralap nagy, LCD-stílusú időkijelzéssel, három számjegystílussal és hat színtémával. Válaszd ki az adatmezők tartalmát. A folyamatjelző a lépéscél teljesítését vagy az akkumulátor töltöttségét mutatja, és elrejthető. A kompatibilis Instinct modellek jobb felső ablaka alapértelmezésben a pulzust mutatja. Monokróm kijelzőn nagy kontrasztú világos és sötét mód választható. Az óralap és a beállítások angol nyelvűek.",
-    "whatsNew": "Első kiadás három időbetűtípussal, hat színtémával és testreszabható adatmezőkkel."
+    "description": "Retró digitális számlap nagy, LCD-stílusú órával, három számjegystílussal és 14 színtémával (alapértelmezés: Amber Night). Válassza ki, mi jelenjen meg az adatmezőkben; a haladásjelző lépéseket, emeleteket, intenzív perceket, akkumulátort vagy a nap haladását mutathatja, illetve elrejthető. Az állapotikonok jelezhetik a Ne zavarjanak módot, az ébresztéseket és a telefonkapcsolatot. A kompatibilis Instinct modelleken a jobb felső ablak alapértelmezés szerint a pulzust mutatja. A monokróm kijelzők nagy kontrasztú fekete és fehér LCD-módot használnak. A számlap és a beállítások angol nyelvűek.",
+    "whatsNew": "Első kiadás három számjegystílussal, 14 színtémával és testre szabható adatmezőkkel."
   },
   "hr": {
     "title": "Signal LCD · Digitalni retro",
-    "description": "Retro digitalno lice sata s velikim prikazom vremena u LCD stilu, trima stilovima znamenki i šest tema boja. Odaberite sadržaj podatkovnih polja. Traka napretka pokazuje napredak prema cilju koraka ili razinu baterije i može se sakriti. Na kompatibilnim modelima Instinct gornji desni prozor prema zadanim postavkama prikazuje puls. Jednobojni zasloni imaju svijetli i tamni način rada s visokim kontrastom. Lice sata i postavke na engleskom su jeziku.",
-    "whatsNew": "Prvo izdanje s trima fontovima za vrijeme, šest tema boja i prilagodljivim podatkovnim poljima."
+    "description": "Retro digitalni brojčanik s velikim satom u LCD stilu, tri stila znamenki i 14 tema boja (zadano Amber Night). Odaberite što prikazuju podatkovna polja; ljestvica napretka može prikazivati korake, katove, minute intenzivne aktivnosti, bateriju ili tijek dana, a može se i sakriti. Ikone statusa mogu prikazati način Ne uznemiravaj, alarme i vezu s telefonom. Na kompatibilnim modelima Instinct prozor gore desno zadano prikazuje otkucaje srca. Jednobojni zasloni koriste kontrastni crni i bijeli LCD način. Brojčanik i postavke su na engleskom.",
+    "whatsNew": "Prvo izdanje s tri stila znamenki, 14 tema boja i podesivim podatkovnim poljima."
   },
   "sl": {
     "title": "Signal LCD · Digitalni retro",
-    "description": "Retro digitalna številčnica z velikim prikazom časa v slogu LCD, tremi slogi številk in šestimi barvnimi temami. Izberite vsebino podatkovnih polj. Vrstica napredka prikazuje napredek proti cilju korakov ali stanje baterije in jo lahko skrijete. Pri združljivih modelih Instinct zgornje desno okno privzeto prikazuje srčni utrip. Enobarvni zasloni imajo svetli in temni način z visokim kontrastom. Številčnica in nastavitve so v angleščini.",
-    "whatsNew": "Prva izdaja s tremi pisavami za čas, šestimi barvnimi temami in nastavljivimi podatkovnimi polji."
+    "description": "Retro digitalna številčnica z veliko uro v slogu LCD, tremi slogi števk in 14 barvnimi temami (privzeto Amber Night). Izberite, kaj prikazujejo podatkovna polja; lestvica napredka lahko prikazuje korake, nadstropja, minute intenzivnosti, baterijo ali potek dneva ali pa jo skrijete. Ikone stanja lahko prikažejo način Ne moti, alarme in povezavo s telefonom. Na združljivih modelih Instinct okno zgoraj desno privzeto prikazuje srčni utrip. Enobarvni zasloni uporabljajo kontrastna črni in beli način LCD. Številčnica in nastavitve so v angleščini.",
+    "whatsNew": "Prva izdaja s tremi slogi števk, 14 barvnimi temami in nastavljivimi podatkovnimi polji."
   },
   "el": {
     "title": "Signal LCD · Ρετρό ψηφιακό",
-    "description": "Ρετρό ψηφιακή πρόσοψη με μεγάλη ώρα τύπου LCD, τρία στυλ ψηφίων και έξι χρωματικά θέματα. Επιλέξτε το περιεχόμενο των πεδίων δεδομένων. Η γραμμή προόδου δείχνει τον στόχο βημάτων ή τη στάθμη της μπαταρίας και μπορεί να κρυφτεί. Στα συμβατά μοντέλα Instinct, το επάνω δεξιό παράθυρο δείχνει από προεπιλογή τον καρδιακό ρυθμό. Οι μονόχρωμες οθόνες διαθέτουν φωτεινή και σκοτεινή λειτουργία υψηλής αντίθεσης. Η πρόσοψη και οι ρυθμίσεις είναι στα αγγλικά.",
-    "whatsNew": "Πρώτη έκδοση με τρεις γραμματοσειρές ώρας, έξι χρωματικά θέματα και προσαρμόσιμα πεδία δεδομένων."
+    "description": "Μια ρετρό ψηφιακή πρόσοψη με μεγάλο ρολόι σε στυλ LCD, τρία στυλ ψηφίων και 14 χρωματικά θέματα (προεπιλογή Amber Night). Επιλέξτε τι εμφανίζεται στα πεδία δεδομένων· η κλίμακα προόδου μπορεί να δείχνει βήματα, ορόφους, λεπτά έντασης, μπαταρία ή την πρόοδο της ημέρας, ή να αποκρυφτεί. Τα εικονίδια κατάστασης μπορούν να δείχνουν Μην ενοχλείτε, ξυπνητήρια και τη σύνδεση με το τηλέφωνο. Στα συμβατά μοντέλα Instinct το παράθυρο πάνω δεξιά δείχνει από προεπιλογή τους καρδιακούς παλμούς. Οι μονόχρωμες οθόνες χρησιμοποιούν μαύρη και λευκή λειτουργία LCD υψηλής αντίθεσης. Η πρόσοψη και οι ρυθμίσεις είναι στα αγγλικά.",
+    "whatsNew": "Πρώτη έκδοση με τρία στυλ ψηφίων, 14 χρωματικά θέματα και ρυθμιζόμενα πεδία δεδομένων."
   },
   "ru": {
     "title": "Signal LCD · Цифровое ретро",
-    "description": "Ретро-циферблат с крупным временем в стиле ЖК-дисплея, тремя начертаниями цифр и шестью цветовыми темами. Выберите, какие данные показывать в каждом поле. Полоса прогресса отображает выполнение цели по шагам или заряд батареи. Её можно скрыть. На совместимых моделях Instinct верхнее правое окно по умолчанию показывает пульс. Для монохромных экранов есть контрастные светлый и тёмный режимы. Циферблат и настройки на английском языке.",
-    "whatsNew": "Первая версия с тремя шрифтами времени, шестью цветовыми темами и настраиваемыми полями данных."
+    "description": "Цифровой циферблат в стиле ретро с крупными часами под ЖК-экран, тремя стилями цифр и 14 цветовыми темами (по умолчанию Amber Night). Выберите, что показывать в полях данных; шкала прогресса может отображать шаги, этажи, минуты интенсивности, заряд батареи или ход дня либо быть скрыта. Значки состояния показывают режим «Не беспокоить», будильники и подключение телефона. На совместимых моделях Instinct окно в правом верхнем углу по умолчанию показывает пульс. Монохромные экраны используют контрастные чёрный и белый ЖК-режимы. Циферблат и настройки на английском языке.",
+    "whatsNew": "Первый выпуск: три стиля цифр, 14 цветовых тем и настраиваемые поля данных."
   },
   "iw": {
     "title": "Signal LCD · רטרו דיגיטלי",
-    "description": "תצוגת שעון דיגיטלית בסגנון רטרו עם שעה גדולה בעיצוב LCD, שלושה סגנונות ספרות ושש ערכות צבעים. אפשר לבחור אילו נתונים יופיעו בכל שדה. סרגל ההתקדמות מציג את ההתקדמות ליעד הצעדים או את רמת הסוללה, וניתן להסתיר אותו. בדגמי Instinct תואמים, החלון הימני העליון מציג כברירת מחדל את הדופק. למסכים מונוכרומטיים יש מצבים בהיר וכהה בניגודיות גבוהה. תצוגת השעון וההגדרות באנגלית.",
-    "whatsNew": "גרסה ראשונה עם שלושה גופנים לשעה, שש ערכות צבעים ושדות נתונים הניתנים להתאמה."
+    "description": "פני שעון דיגיטליים ברוח רטרו עם שעון גדול בסגנון LCD, שלושה סגנונות ספרות ו-14 ערכות צבע (ברירת המחדל: Amber Night). בחרו מה יוצג בשדות הנתונים; סרגל ההתקדמות יכול להציג צעדים, קומות, דקות פעילות אינטנסיבית, סוללה או את התקדמות היום, או להיות מוסתר. סמלי מצב יכולים להציג את מצב 'נא לא להפריע', התראות ואת החיבור לטלפון. בדגמי Instinct תואמים, החלון בפינה הימנית העליונה מציג דופק כברירת מחדל. מסכים מונוכרומטיים משתמשים במצבי LCD שחור ולבן בניגודיות גבוהה. פני השעון וההגדרות באנגלית.",
+    "whatsNew": "גרסה ראשונה: שלושה סגנונות ספרות, 14 ערכות צבע ושדות נתונים הניתנים להגדרה."
   },
   "th": {
     "title": "Signal LCD · ดิจิทัลเรโทร",
-    "description": "หน้าปัดดิจิทัลสไตล์เรโทรที่แสดงเวลาตัวใหญ่แบบ LCD เลือกตัวเลขได้ 3 แบบและธีมสีได้ 6 แบบ ตั้งค่าข้อมูลที่ต้องการแสดงในแต่ละช่องได้ แถบความคืบหน้าแสดงเป้าหมายจำนวนก้าวหรือระดับแบตเตอรี่ และซ่อนได้ ใน Instinct รุ่นที่รองรับ ช่องขวาบนจะแสดงอัตราการเต้นของหัวใจเป็นค่าเริ่มต้น หน้าจอขาวดำมีโหมดสว่างและโหมดมืดที่มีความเปรียบต่างสูง หน้าปัดและการตั้งค่าเป็นภาษาอังกฤษ",
-    "whatsNew": "รุ่นแรกมาพร้อมแบบตัวเลขแสดงเวลา 3 แบบ ธีมสี 6 แบบ และช่องข้อมูลที่ปรับแต่งได้"
+    "description": "หน้าปัดดิจิทัลสไตล์ย้อนยุคที่มีนาฬิกาตัวใหญ่แบบจอ LCD ตัวเลข 3 สไตล์ และธีมสี 14 แบบ (ค่าเริ่มต้นคือ Amber Night) เลือกได้ว่าจะแสดงอะไรในช่องข้อมูล แถบความคืบหน้าแสดงได้ทั้งจำนวนก้าว ชั้นที่ขึ้น นาทีความเข้มข้น แบตเตอรี่ หรือความคืบหน้าของวัน หรือซ่อนไว้ก็ได้ ไอคอนสถานะแสดงโหมดห้ามรบกวน การปลุก และการเชื่อมต่อโทรศัพท์ได้ หน้าต่างมุมขวาบนของรุ่น Instinct ที่รองรับจะแสดงอัตราการเต้นของหัวใจเป็นค่าเริ่มต้น จอขาวดำใช้โหมด LCD สีดำและสีขาวที่มีคอนทราสต์สูง หน้าปัดและการตั้งค่าเป็นภาษาอังกฤษ",
+    "whatsNew": "เวอร์ชันแรก มีตัวเลข 3 สไตล์ ธีมสี 14 แบบ และช่องข้อมูลที่ปรับแต่งได้"
   },
   "in": {
     "title": "Signal LCD · Digital Retro",
-    "description": "Tampilan jam digital retro dengan waktu besar bergaya LCD, tiga gaya angka, dan enam tema warna. Pilih informasi untuk setiap kolom data. Bilah kemajuan dapat menampilkan target langkah atau daya baterai, atau disembunyikan. Pada model Instinct yang kompatibel, jendela kanan atas menampilkan detak jantung secara default. Layar monokrom memiliki mode terang dan gelap berkontras tinggi. Tampilan jam dan pengaturan menggunakan bahasa Inggris.",
-    "whatsNew": "Rilis pertama dengan tiga font waktu, enam tema warna, dan kolom data yang dapat disesuaikan."
+    "description": "Tampilan jam digital bergaya retro dengan jam besar bergaya LCD, tiga gaya angka, dan 14 tema warna (bawaan Amber Night). Pilih apa yang tampil di kolom data; skala kemajuan dapat menampilkan langkah, lantai, menit intensitas, baterai, atau jalannya hari, atau disembunyikan. Ikon status dapat menunjukkan Jangan Ganggu, alarm, dan koneksi ponsel. Pada model Instinct yang kompatibel, jendela kanan atas menampilkan detak jantung secara bawaan. Layar monokrom memakai mode LCD hitam dan putih berkontras tinggi. Tampilan jam dan pengaturan berbahasa Inggris.",
+    "whatsNew": "Rilis pertama, dengan tiga gaya angka, 14 tema warna, dan kolom data yang dapat diatur."
   },
   "ms": {
     "title": "Signal LCD · Digital Retro",
-    "description": "Muka jam digital retro dengan paparan masa besar gaya LCD, tiga gaya angka dan enam tema warna. Pilih maklumat bagi setiap medan data. Bar kemajuan boleh menunjukkan sasaran langkah atau tahap bateri, atau disembunyikan. Pada model Instinct yang serasi, tetingkap kanan atas memaparkan kadar denyutan jantung secara lalai. Paparan monokrom menyediakan mod cerah dan gelap berkontras tinggi. Muka jam dan tetapan tersedia dalam bahasa Inggeris.",
-    "whatsNew": "Keluaran pertama dengan tiga fon masa, enam tema warna dan medan data yang boleh disesuaikan."
+    "description": "Muka jam digital gaya retro dengan jam besar gaya LCD, tiga gaya digit dan 14 tema warna (lalai Amber Night). Pilih apa yang dipaparkan dalam medan data; skala kemajuan boleh menunjukkan langkah, tingkat, minit intensiti, bateri atau perjalanan hari, atau disembunyikan. Ikon status boleh menunjukkan Jangan Ganggu, penggera dan sambungan telefon. Pada model Instinct yang serasi, tetingkap kanan atas menunjukkan kadar jantung secara lalai. Skrin monokrom menggunakan mod LCD hitam dan putih berkontras tinggi. Muka jam dan tetapan dalam bahasa Inggeris.",
+    "whatsNew": "Keluaran pertama, dengan tiga gaya digit, 14 tema warna dan medan data boleh dikonfigurasi."
   }
 }
