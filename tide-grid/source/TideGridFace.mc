@@ -262,7 +262,8 @@ class TideGridFace extends WatchUi.WatchFace {
             return chartMode == 0 ? "LOCAL" : chart.TITLES[chartMode];
         }
         if (Fixture.ENABLED) {
-            return hardwareWindow ? "ELIZABETH_2" : "PORT ELIZABETH_2";
+            // A catalogue port, so store screenshots show a place the app offers.
+            return "CAPE TOWN";
         }
         var port = tides.name();
         return port != null ? port : "TIDE";

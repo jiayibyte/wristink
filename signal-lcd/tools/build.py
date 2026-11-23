@@ -22,8 +22,8 @@ from typefaces import aod_font, clock_fonts, data_fonts, data_heights, window_fo
 
 ROOT = Path(__file__).resolve().parents[1]
 WINDOWS = os.name == "nt"
-CIQ = Path(os.environ.get("CIQ_HOME", Path(os.environ.get("APPDATA", "")) / "Garmin/ConnectIQ" if WINDOWS
-                          else Path.home() / "Library/Application Support/Garmin/ConnectIQ"))
+import sys; sys.path.append(str(ROOT.parent / "tools")); import ciq_env
+CIQ = ciq_env.CIQ_HOME
 KEY = Path(os.environ.get("CIQ_KEY", Path.home() / ".Garmin/keys/developer_key.der"))
 APP_ID = "ba601b9abc3a44c89a481f1da0234faa"
 VERSION = "1.0.1"
@@ -231,9 +231,7 @@ def compiler(config, artifact, device, test=False):
     else:
         sdk = Path((CIQ/"current-sdk.cfg").read_text().strip())
     env = os.environ.copy()
-    java_home = Path(env.get("JAVA_HOME", "/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home"))
-    if java_home.is_dir():
-        env["PATH"] = str(java_home/"bin") + os.pathsep + env["PATH"]
+    env = ciq_env.java_env(env)
     args = [str(sdk/"bin"/("monkeyc.bat" if WINDOWS else "monkeyc")), "-f", str(config), "-o", str(artifact),
             "-y", str(KEY), "-t" if test else "-r", "-O", "3z", "-l", "1", "-w", "--no-gen-styles",
             "--disable-api-has-check-removal"]

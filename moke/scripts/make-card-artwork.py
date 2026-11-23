@@ -1,5 +1,6 @@
 """Small, original pixel card artwork; only the two selected images load at runtime."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import json
 import xml.etree.ElementTree as ET
 from PIL import Image, ImageDraw, ImageFont
@@ -97,8 +98,8 @@ def main():
     ET.indent(tree,space='    ');tree.write(folder/'drawables.xml',encoding='utf-8')
     (ROOT/'config/card-artwork.json').write_text(json.dumps(entries,ensure_ascii=False,indent=2)+'\n')
     sheet=Image.new('RGB',(840,700),'#f1f1ee');d=ImageDraw.Draw(sheet)
-    font=ImageFont.truetype('/System/Library/Fonts/STHeiti Medium.ttc',20,index=1)
-    title=ImageFont.truetype('/System/Library/Fonts/STHeiti Medium.ttc',26,index=1)
+    font=ciq_env.cjk_font(20)
+    title=ciq_env.cjk_font(26)
     d.text((28,20),'20 款黑白小卡片 · 上下两处可独立选择',font=title,fill='#202020')
     for i,name in enumerate(NAMES):
         x=24+(i%4)*202;y=76+(i//4)*116

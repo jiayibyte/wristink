@@ -1,10 +1,7 @@
 #!/bin/zsh
 set -euo pipefail
 cd "${0:A:h:h}"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home"
-export PATH="$JAVA_HOME/bin:$PATH"
-sdk_config="$HOME/Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg"
-sdk_path="$(tr -d '\r\n' < "$sdk_config")"
+source ../tools/ciq_env.sh
 ./scripts/build.sh -r
 "$sdk_path/bin/monkeyc" -f preview.jungle -d instinct3solar45mm -o bin/InstinctFace-demo.prg -y "$HOME/.Garmin/keys/developer_key.der" -r -w
 print '正式安装版：bin/InstinctFace.prg（真实数据）'

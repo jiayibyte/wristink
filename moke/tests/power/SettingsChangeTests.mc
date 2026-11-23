@@ -1,3 +1,4 @@
+import Toybox.Graphics;
 import Toybox.Application;
 import Toybox.Lang;
 import Toybox.Test;
@@ -28,5 +29,23 @@ function phoneSettingsChangeReachesTheFace(logger) {
     // The render plan is rebuilt from the new values on the next frame.
     Test.assert(FacePrefs.revision!=revision);
     Application.Properties.setValue("timeFormat",old);app.onSettingsChanged();
+    return true;
+}
+
+(:test)
+function colourThemeLeavesMonochromeScreensBlackAndWhite(logger) {
+    // The power tests build for Instinct 3 Solar (1-bit): a colour theme chosen
+    // on the phone must not tint anything there.
+    var old=Application.Properties.getValue("colorTheme");
+    Application.Properties.setValue("colorTheme",3);FacePrefs.reload();
+    Test.assertEqual(FacePalette.theme(),0);
+    FaceDraw.setTheme(true);
+    Test.assertEqual(FaceDraw.accent,FaceDraw.foreground);
+    Test.assertEqual(FaceDraw.heart,FaceDraw.foreground);
+    Test.assertEqual(FaceDraw.soft,FaceDraw.foreground);
+    Test.assertEqual(FacePalette.accentOn(Graphics.COLOR_WHITE),Graphics.COLOR_BLACK);
+    FaceDraw.setTheme(false);
+    Test.assertEqual(FaceDraw.accent,Graphics.COLOR_BLACK);
+    Application.Properties.setValue("colorTheme",old);FacePrefs.reload();FaceDraw.setTheme(true);
     return true;
 }

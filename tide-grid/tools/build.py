@@ -11,8 +11,8 @@ import subprocess
 from generate import ROOT, THEMES, generate
 
 WINDOWS = os.name == "nt"
-SDK_CONFIG = (Path(os.environ.get("APPDATA", "")) / "Garmin/ConnectIQ/current-sdk.cfg" if WINDOWS
-              else Path.home() / "Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg")
+import sys; sys.path.append(str(ROOT.parent / "tools")); import ciq_env
+SDK_CONFIG = ciq_env.CIQ_HOME / "current-sdk.cfg"
 KEY = Path(os.environ.get("CIQ_KEY", Path.home() / ".Garmin/keys/developer_key.der"))
 RECOMMENDED = 50_000
 HARD_CAP = 100_000
@@ -25,10 +25,7 @@ def build(args):
     output.mkdir(exist_ok=True)
     sdk = Path(os.environ["CIQ_SDK"]) if "CIQ_SDK" in os.environ else Path(SDK_CONFIG.read_text().strip())
     env = dict(os.environ)
-    java = Path("/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home")
-    if "JAVA_HOME" not in env and java.is_dir():
-        env["JAVA_HOME"] = str(java)
-        env["PATH"] = f"{java / 'bin'}:{env['PATH']}"
+    env = ciq_env.java_env(env)
     env["JAVA_TOOL_OPTIONS"] = (env.get("JAVA_TOOL_OPTIONS", "") + " -Djava.awt.headless=true").strip()
     command = [str(sdk / "bin" / ("monkeyc.bat" if WINDOWS else "monkeyc")), "-f", "preview.jungle" if args.preview else "monkey.jungle",
                "-y", str(KEY), "-O", "3z", "-w", "--no-gen-styles"]

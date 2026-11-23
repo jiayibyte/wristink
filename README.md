@@ -8,7 +8,7 @@
 
 | 项目 | 类型 | 主要功能 | 设备范围 |
 | --- | --- | --- | --- |
-| [墨刻 Moke](moke/) | 数据表盘 | 圆角大时间、可配置数据区、当前心率与曲线、中英文、主题与装饰卡片 | 清单内的 Garmin MIP 机型，含轻量兼容实现 |
+| [墨刻 Moke](moke/) | 数据表盘 | 圆角大时间、可配置数据区、当前心率与曲线、中英文、6 套彩色配色与装饰卡片 | 147 个 SDK 目标：MIP（含轻量兼容实现）、AMOLED 与 LCD |
 | [寰游时刻 Retro World](retro-world/) | 世界地图表盘 | 复古数字、模拟圆盘、16 种地图皮肤、昼夜变化、天气、日出日落、AMOLED 配色与常亮 | 112 个 SDK 目标 / 183 硬件变体，具体见项目兼容清单 |
 | [Tide Grid](tide-grid/) | 潮汐数据表盘 | 港口潮汐、日出日落、步数与心率图、三种时间字体、Instinct 实体圆窗 | 以 fēnix／epix 为主，覆盖彩屏 MIP、AMOLED 和单色 Instinct |
 | [Signal LCD](signal-lcd/) | 复古数字表盘 | 七段数字、可配置数据区、14 套彩屏主题、Instinct 实体圆窗 | 圆形彩屏和支持的单色 Instinct／Descent |
@@ -26,8 +26,10 @@
 
 ## 墨刻 · 百变数据表盘
 
-- 粗体大时间与多个可配置数据区，提供 94 项设置、28 种数据选项。
+- 粗体大时间与多个可配置数据区，提供 95 项设置、28 种数据选项。
 - 支持简体中文和英文、12/24 小时制、黑白主题、字体及字号调整。
+- 彩色屏（彩色 MIP、AMOLED、LCD）提供 6 套配色：经典黑白、琥珀（默认）、冰川、薄荷、夜光、樱花；主时间保持白色，图标、进度、趋势线和秒数随配色变化。单色屏不受影响。
+- AMOLED 低功耗时只显示小号时间和日期并每分钟微移，右上心率窗默认黑底。
 - 展示当前心率、心率曲线、步数、热量、海拔、天气和续航等数据；具体能力随设备而异，缺失数据使用占位符。
 - 本能 3 专用图标、月相、方向箭头和右上心率窗，配合原生分辨率位图字体。
 - 20 种装饰卡片、卡片与秒数切换，以及不同数据刷新策略。
@@ -94,9 +96,14 @@ wristink/
 
 ## 开发与构建
 
-当前脚本面向 **macOS + zsh、Connect IQ SDK 9.2、JDK 19、Python 3**。Java 默认路径写在构建脚本中，其他环境需要按实际安装位置调整。通过 Garmin SDK Manager 安装 SDK 和目标设备，并将 SDK 的 `bin` 目录加入 `PATH`，使 `monkeyc`、`monkeydo` 可用。
+当前脚本支持 **macOS 和 Linux（zsh、Connect IQ SDK 9.2+、JDK 17+、Python 3）**。通过 Garmin SDK Manager 安装 SDK 和目标设备即可，脚本通过 [`tools/ciq_env.sh`](tools/ciq_env.sh) / [`tools/ciq_env.py`](tools/ciq_env.py) 自动找到当前 SDK、设备包和 Java：
 
-使用自己的开发者签名密钥，当前脚本读取 `~/.Garmin/keys/developer_key.der`。密钥不包含在仓库内。VS Code 的 Java 和签名密钥路径请放在个人设置中。
+- SDK Manager 数据目录：macOS 为 `~/Library/Application Support/Garmin/ConnectIQ`，Linux 为 `~/.Garmin/ConnectIQ`，Windows 为 `%APPDATA%\Garmin\ConnectIQ`；可用 `CIQ_HOME`、`CIQ_SDK`、`CIQ_DEVICES` 覆盖。
+- Java：macOS 上存在 `jdk-19` 时沿用它，否则使用 `JAVA_HOME` 或 `PATH` 中的 `java`。编译器默认堆上限放宽到内存的 70%（山境单机型编译约需 11 GB），可用 `JAVA_TOOL_OPTIONS` 覆盖。
+- 预览图中文字体：macOS 用华文黑体；Linux 需安装 Noto CJK（如 `sudo apt install fonts-noto-cjk`）。
+- Ubuntu 24.04 上 SDK Manager 和模拟器需要 WebKitGTK 4.0（`libwebkit2gtk-4.0-37`），该版本需从 Ubuntu 22.04 软件源获取。
+
+使用自己的开发者签名密钥，当前脚本读取 `~/.Garmin/keys/developer_key.der`（可用 `CIQ_KEY` 覆盖）。密钥不包含在仓库内。VS Code 的 Java 和签名密钥路径请放在个人设置中。
 
 ```sh
 git clone https://github.com/jiayibyte/wristink.git

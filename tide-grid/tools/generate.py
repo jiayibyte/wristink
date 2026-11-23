@@ -12,8 +12,8 @@ from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageOps
 ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parent
 WEATHER = REPO / "retro-world/assets/garmin-weather"
-PACKS = Path(os.environ.get("CIQ_DEVICES", Path(os.environ.get("APPDATA", "")) / "Garmin/ConnectIQ/Devices"
-                            if os.name == "nt" else Path.home() / "Library/Application Support/Garmin/ConnectIQ/Devices"))
+sys.path.append(str(REPO / "tools")); import ciq_env
+PACKS = ciq_env.DEVICES
 OUT = ROOT / "generated"
 sys.path.insert(0, str(REPO / "moke/scripts"))
 from pixel_glyphs import Grid, _flatten, caps, digit, stroke_for

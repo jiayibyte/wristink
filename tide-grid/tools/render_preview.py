@@ -47,7 +47,7 @@ def emit(panel, filename):
     regions, graph_bottom, (cx, cy, radius) = boxes_for(panel)
     left = px(w, .343 if hardware else .313)
     y_header = px(h, .105 if hardware else .137)
-    label(left if hardware else w//2, y_header, "ELIZABETH_2" if hardware else "PORT ELIZABETH_2", quiet)
+    label(left if hardware else w//2, y_header, "CAPE TOWN", quiet)
     upper = px(h, .198 if hardware else .225)
     lower = upper + small + px(h, .014)
     pair(left, upper, "6:18", "n")

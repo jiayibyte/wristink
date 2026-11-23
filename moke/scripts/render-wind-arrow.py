@@ -1,5 +1,6 @@
 """Resource preview of the arrow change, retaining the white heart window."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import importlib.util
 from PIL import Image,ImageDraw,ImageFont,ImageChops
 ROOT=Path(__file__).resolve().parents[1]
@@ -11,7 +12,7 @@ delta=ImageChops.difference(before,after).convert('L');mask=Image.new('L',(176,1
 assert ImageChops.multiply(delta,ImageChops.invert(mask)).getbbox() is None
 out=ROOT/'bin/wind-arrow';out.mkdir(exist_ok=True);before.save(out/'before.png');after.save(out/'after.png')
 board=Image.new('RGB',(800,510),'#202320');d=ImageDraw.Draw(board)
-title=ImageFont.truetype('/System/Library/Fonts/STHeiti Medium.ttc',21,index=1);small=ImageFont.truetype('/System/Library/Fonts/STHeiti Medium.ttc',16,index=1)
+title=ciq_env.cjk_font(21);small=ciq_env.cjk_font(16)
 d.text((32,16),'风向箭头 · 佳明官方方向指针轮廓',font=title,fill='white')
 for image,x,label in [(before,32,'改前'),(after,416,'改后')]:
     d.text((x,57),label,font=small,fill='#c5cdc4');board.paste(image.resize((352,352),Image.Resampling.NEAREST),(x,87))

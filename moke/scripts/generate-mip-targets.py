@@ -1,12 +1,13 @@
 """Build deterministic native assets/source profiles from Garmin's installed device packs."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import argparse,json,re,shutil,math
 import xml.etree.ElementTree as ET
 from PIL import Image
 from font_rasterizer import render_font
 
 ROOT=Path(__file__).resolve().parents[1]
-DEVICES=Path.home()/'Library/Application Support/Garmin/ConnectIQ/Devices'
+DEVICES=ciq_env.DEVICES
 NS={'iq':'http://www.garmin.com/xml/connectiq'}
 ET.register_namespace('iq',NS['iq'])
 
@@ -36,10 +37,15 @@ def geometry(c,s,round_layout=False):
         g.update(circle_scale=cs,circle_x=round(sub['x']-location['x']+sub['width']/2-144*cs,6),circle_y=round(sub['y']-location['y']+sub['height']/2-31*cs,6))
     return g
 
-def scaled_assets(key,g,icon,noclip=False,compact=False):
+def scaled_assets(key,g,icon,noclip=False,compact=False,amoled=False):
     dest=ROOT/'generated/assets'/key/'resources'
     if dest.exists():shutil.rmtree(dest)
     shutil.copytree(ROOT/'resources',dest)
+    if amoled:
+        # A white heart window is a large always-lit area on AMOLED: default to black there.
+        props=dest/'settings/properties.xml';text=props.read_text()
+        text,n=re.subn(r'(<property id="circleBackground" type="number">)\d(</property>)',r'\g<1>0\g<2>',text)
+        assert n==1,'circleBackground default not found';props.write_text(text)
     scale=g['scale']
     if noclip:
         tree=ET.parse(dest/'drawables/drawables.xml')
@@ -264,12 +270,15 @@ def main():
         try:c=json.loads(path.read_text());s=json.loads((path.parent/'simulator.json').read_text())
         except (ValueError,FileNotFoundError):continue
         types={a['type']:a['memoryLimit'] for a in c['appTypes']}
-        if c.get('displayType')!='mip' or 'watchFace' not in types:continue
+        if 'watchFace' not in types:continue
         if args.only and c['deviceId'] not in args.only:continue
         # Regional hardware may expose an older API than the device group.
         api=min(tuple(map(int,part['connectIQVersion'].split('.'))) for part in c['partNumbers'])
         api=min(tuple(map(int,part['connectIQVersion'].split('.'))) for part in c['partNumbers'])
         modern=api>=(3,3) and (types['watchFace']>65536 or c.get('codePageSize',0)>0)
+        # Colour AMOLED/LCD watches use the full renderer only; the low-memory
+        # legacy face stays MIP-only.
+        if c.get('displayType')!='mip' and not modern:continue
         g=geometry(c,s,modern);icon=c.get('launcherIcon',dict(width=40,height=40));key=c['deviceFamily']+'-'+str(round(g['scale']*1000000))+f'-c{round(g["circle_scale"]*1000000)}-t{round(g["time_scale"]*1000000)}-icon{icon["width"]}x{icon["height"]}'
         paging=c.get('codePageSize',0)>0
         renderer='modern' if api>=(3,3) and (types['watchFace']>65536 or paging) else 'legacy'
@@ -277,7 +286,8 @@ def main():
         if api<(2,3):key+='-noclip'
         if renderer=='legacy':key+='-legacy'+('-ui' if api>=(3,0) and (paging or types['watchFace']>65536) else '-phone')
         if types['watchFace']<65536:key+='-compact-text'
-        rows.append(dict(id=c['deviceId'],name=c['displayName'],api='.'.join(map(str,api)),memory=types['watchFace'],family=c['deviceFamily'],geometry=g,icon=icon,asset_key=key,paging=paging,mode=mode,renderer=renderer,on_watch_settings=api>=(3,0) and (paging or types['watchFace']>65536)))
+        if c.get('displayType')=='amoled':key+='-amoled'
+        rows.append(dict(id=c['deviceId'],name=c['displayName'],api='.'.join(map(str,api)),memory=types['watchFace'],family=c['deviceFamily'],geometry=g,icon=icon,asset_key=key,paging=paging,mode=mode,renderer=renderer,on_watch_settings=api>=(3,0) and (paging or types['watchFace']>65536),color=c.get('bitsPerPixel',1)>1,amoled=c.get('displayType')=='amoled'))
     seen=set()
     for row in rows:
         g=row['geometry'];folder=ROOT/'generated/profiles'/row['id']
@@ -290,9 +300,10 @@ def main():
         if g['analog']:
             profile+='var _holding=false;function hands(view,awake){var mode=FacePrefs.get("analogHandMode");var want=mode==2 || (mode==1 && awake);if(want==_holding){return;}view.setClockHandPosition({:clockState=>want ? WatchUi.ANALOG_CLOCK_STATE_HOLDING : WatchUi.ANALOG_CLOCK_STATE_SYSTEM_TIME,:hour=>270,:minute=>90});_holding=want;}function releaseHands(view){if(_holding){view.setClockHandPosition({:clockState=>WatchUi.ANALOG_CLOCK_STATE_SYSTEM_TIME});_holding=false;}}'
         else:profile+='function hands(view,awake){}function releaseHands(view){}'
+        profile+=f'const COLOR={str(row["color"]).lower()};const AMOLED={str(row["amoled"]).lower()};'
         folder.joinpath('DeviceProfile.mc').write_text(profile+'}\n')
         if row['asset_key'] not in seen and not args.sources_only:
-            resource=scaled_assets(row['asset_key'],g,row['icon'],api<(2,3),row['memory']<65536)
+            resource=scaled_assets(row['asset_key'],g,row['icon'],api<(2,3),row['memory']<65536,row['amoled'])
             if not row['on_watch_settings']:
                 shutil.rmtree(resource/'config')
                 shutil.rmtree(resource.parent/'resources-eng/config')

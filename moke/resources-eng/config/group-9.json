@@ -1,1 +1,1 @@
-[["bottomRight", "Data (hidden disables this area)", 0, 15, 20], ["bottomRightStyle", "Display style", 0, 6, 28], ["bottomRightFont", "Font", 0, 0, 14], ["bottomRightSize", "Text size", 0, 0, 15], ["bottomRightGoal", "Custom goal (0 = auto)", 2, 0, 0]]
+[["bottomRight", "Data (hidden disables this area)", 0, 15, 21], ["bottomRightStyle", "Display style", 0, 6, 29], ["bottomRightFont", "Font", 0, 0, 15], ["bottomRightSize", "Text size", 0, 0, 16], ["bottomRightGoal", "Custom goal (0 = auto)", 2, 0, 0]]

@@ -1,5 +1,6 @@
 """Honest native-size and enlarged views of the same monochrome watch assets."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import importlib.util,json,re
 from PIL import Image,ImageDraw,ImageFont
 
@@ -30,7 +31,7 @@ def render(after,dark=True):
 if __name__=='__main__':
     out=ROOT/'bin/fine-pass';out.mkdir(exist_ok=True);before=render(False);after=render(True)
     before.save(out/'before-native.png');after.save(out/'after-native.png');render(True,False).save(out/'after-light-native.png')
-    title=ImageFont.truetype('/System/Library/Fonts/STHeiti Medium.ttc',21,index=1);small=ImageFont.truetype('/System/Library/Fonts/STHeiti Medium.ttc',16,index=1)
+    title=ciq_env.cjk_font(21);small=ciq_env.cjk_font(16)
     board=Image.new('RGB',(800,520),'#202320');d=ImageDraw.Draw(board)
     d.text((32,16),'保留粗体主时间 · 细化图标与边缘',font=title,fill='white')
     for im,x,label in [(before,32,'改前'),(after,416,'改后')]:

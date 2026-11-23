@@ -31,6 +31,16 @@
   <setting propertyKey="@Properties.ShowMarker" title="@Strings.ShowMarkerTitle">
     <settingConfig type="boolean" />
   </setting>
+  <setting propertyKey="@Properties.ColorTheme" title="@Strings.ColorThemeTitle">
+    <settingConfig type="list">
+      <listEntry value="0">@Strings.ColorThemeOption0</listEntry>
+      <listEntry value="1">@Strings.ColorThemeOption1</listEntry>
+      <listEntry value="2">@Strings.ColorThemeOption2</listEntry>
+      <listEntry value="3">@Strings.ColorThemeOption3</listEntry>
+      <listEntry value="4">@Strings.ColorThemeOption4</listEntry>
+      <listEntry value="5">@Strings.ColorThemeOption5</listEntry>
+    </settingConfig>
+  </setting>
   <setting propertyKey="@Properties.MapSkin" title="@Strings.MapSkinTitle">
     <settingConfig type="list">
       <listEntry value="-1">@Strings.MapSkinOptionN1</listEntry>

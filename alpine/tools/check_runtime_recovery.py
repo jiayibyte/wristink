@@ -2,6 +2,7 @@
 Uses a separate test application ID and restores its own properties after pass 2.
 """
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import argparse,hashlib,json,os,subprocess,uuid
 ROOT=Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser();p.add_argument('device');p.add_argument('--typecheck',type=int,choices=[0,1,2,3],default=1);a=p.parse_args()
@@ -41,8 +42,8 @@ ident=uuid.uuid5(uuid.NAMESPACE_DNS,f'wristink.alpine.sky-recovery1.{a.device}')
 rel=folder.relative_to(ROOT)
 jungle=(ROOT/'monkey.jungle').read_text().replace('project.manifest = manifest.xml',f'project.manifest = {rel}/manifest.xml').replace('base.sourcePath = source;live',f'base.sourcePath = source;live;{rel}')
 jf=ROOT/f'scenario-recovery-{a.device}.jungle';jf.write_text(jungle)
-sdk=Path((Path.home()/'Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg').read_text().strip())
-env=dict(os.environ,JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home');env['PATH']=env['JAVA_HOME']+'/bin:'+env['PATH']
+sdk=ciq_env.sdk()
+env=ciq_env.java_env()
 out=ROOT/'bin/recovery'/a.device;out.mkdir(parents=True,exist_ok=True);prg=out/'Alpine.prg'
 flags=['-O','2z','--disable-api-has-check-removal'] if a.device=='instinct2s' else []
 with (out/'build.log').open('w') as log:

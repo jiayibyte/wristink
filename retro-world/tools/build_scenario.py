@@ -1,5 +1,6 @@
 """Build an isolated simulator scenario using the unmodified production source."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import argparse,json,os,subprocess,uuid,xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser();p.add_argument('--device',default='instinct3solar45mm');p.add_argument('--name',required=True);p.add_argument('--settings',default='{}');p.add_argument('--refresh-probe',action='store_true',help='Log real OS partial callbacks and budget violations; simulator only');a=p.parse_args()
@@ -44,7 +45,7 @@ source=next(l.split(' = ')[1] for l in lines if l.startswith(a.device+'.sourcePa
 resources=next(l.split(' = ')[1] for l in lines if l.startswith(a.device+'.resourcePath'))
 absolute=lambda paths:';'.join(str(ROOT/part) for part in paths.split(';'))
 (folder/'scenario.jungle').write_text('project.manifest = manifest.xml\nbase.excludeAnnotations = diagnostic\nbase.sourcePath = .;'+absolute(source)+'\nbase.resourcePath = '+absolute(resources)+'\nbase.lang.zhs = '+str(ROOT/'resources-zhs')+'\n')
-sdk=Path((Path.home()/'Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg').read_text().strip())
-env=dict(os.environ,JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home');env['PATH']=env['JAVA_HOME']+'/bin:'+env['PATH']
+sdk=ciq_env.sdk()
+env=ciq_env.java_env()
 cmd=[str(sdk/'bin/monkeyc'),'-f',str(folder/'scenario.jungle'),'-d',a.device,'-o',str(folder/'Scenario.prg'),'-y',str(Path.home()/'.Garmin/keys/developer_key.der'),'-r','-O','3z','-w']
 r=subprocess.run(cmd,cwd=ROOT,env=env,capture_output=True,text=True);(folder/'build.log').write_text(r.stdout+r.stderr);print(r.stdout[-1500:]);raise SystemExit(r.returncode)

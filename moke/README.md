@@ -14,7 +14,7 @@
 
 # 墨刻 Moke
 
-面向 Garmin MIP 屏幕的可配置数据表盘。功能概览见[主目录说明](../README.md#墨刻--百变数据表盘)。
+面向 Garmin MIP、AMOLED 与 LCD 屏幕的可配置数据表盘；彩色屏提供 6 套配色（`source/FacePalette.mc`）。功能概览见[主目录说明](../README.md#墨刻--百变数据表盘)。
 
 ## 构建
 

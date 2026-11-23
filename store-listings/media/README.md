@@ -1,4 +1,4 @@
-# 商店图与文案（墨刻 1.3.0 · 寰游时刻 2.2.0 · 山境 1.2.0）
+# 商店图与文案（墨刻 1.3.0 · 寰游时刻 2.2.0 · 山境 1.2.0 · Tide Grid · Signal LCD）
 
 - `captures/`：模拟器预览包截图（演示数据），每张是 1:1 的屏幕像素，不经重绘。
 - `text.json`：图上的中英文标题、说明和标签。
@@ -15,6 +15,8 @@
 - 表壳为中性造型，不使用 Garmin 机身图片或标志。
 
 ```bash
-python build_media.py moke retro alpine
+python build_media.py moke retro alpine tide signal
 python contact_sheet.py
 ```
+
+Tide Grid 与 Signal LCD（首发）：横幅文案和两张组合页的标题放在 `i18n/tide.json`、`i18n/signal.json`（`heroes` 为 26 种语言，`combo` 为中英），图内中英文与数据卡片在 `text.json`。截图来自各自的演示包（Tide Grid `tools/build.py --preview`，Signal LCD `tools/build.py --demo`），从模拟器窗口按 1:1 屏幕像素裁出。脚本在 Windows、macOS 和 Linux（`google-chrome`）上都能运行。

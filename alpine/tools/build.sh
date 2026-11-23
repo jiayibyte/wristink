@@ -1,9 +1,7 @@
 #!/bin/zsh
 set -euo pipefail
 cd "${0:A:h:h}"
-export JAVA_HOME="${JAVA_HOME:-/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home}"
-export PATH="$JAVA_HOME/bin:$PATH"
-sdk_path="$(tr -d '\r\n' < "$HOME/Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg")"
+source ../tools/ciq_env.sh
 "${ALPINE_PYTHON:-python3}" tools/settings.py
 "${ALPINE_PYTHON:-python3}" tools/generate.py
 mkdir -p bin dist

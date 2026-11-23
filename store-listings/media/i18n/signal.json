@@ -1,0 +1,157 @@
+{
+ "combo": {
+  "zh": {
+   "look": {
+    "title": "14 套配色，一眼复古",
+    "sub": "琥珀夜、蓝色 LCD、荧光绿、深红、玫瑰石英……黑白屏有黑、白两种 LCD。"
+   },
+   "data": {
+    "title": "数据位、进度刻度和状态灯",
+    "sub": "框外 5 个数据位可以单独更换或关闭，进度刻度和状态图标也能自选。"
+   }
+  },
+  "en": {
+   "look": {
+    "title": "14 colour themes, pure retro",
+    "sub": "Amber Night, Blue LCD, Phosphor Green, Crimson, Rose Quartz and more; monochrome screens get a black or white LCD."
+   },
+   "data": {
+    "title": "Fields, progress scale and status lights",
+    "sub": "Change or hide each of the five outer fields, and pick what the progress scale and status icons show."
+   }
+  },
+  "devices": "epix · fēnix · Forerunner · Instinct · Venu"
+ },
+ "heroes": {
+  "zh_TW": {
+   "headline": "復古液晶，\n重回腕上",
+   "sub": "七段數字 · 14 套彩色主題 · 3 款數字字體",
+   "badge": "全新推出"
+  },
+  "ja": {
+   "headline": "レトロな液晶を\n手首に",
+   "sub": "7セグ数字 · カラーテーマ14種 · 数字書体3種",
+   "badge": "新登場"
+  },
+  "ko": {
+   "headline": "레트로 LCD,\n다시 손목 위로",
+   "sub": "7세그먼트 숫자 · 컬러 테마 14종 · 숫자 글꼴 3종",
+   "badge": "신규"
+  },
+  "de": {
+   "headline": "Retro-LCD,\nneu erfunden.",
+   "sub": "7-Segment-Ziffern · 14 Farbdesigns · 3 Ziffernstile",
+   "badge": "NEU"
+  },
+  "fr": {
+   "headline": "Le LCD rétro\nest de retour.",
+   "sub": "Chiffres 7 segments · 14 thèmes couleur · 3 styles",
+   "badge": "NOUVEAU"
+  },
+  "es": {
+   "headline": "El LCD retro\nha vuelto.",
+   "sub": "Dígitos de 7 segmentos · 14 temas de color · 3 estilos",
+   "badge": "NUEVO"
+  },
+  "it": {
+   "headline": "Il LCD retrò\nè tornato.",
+   "sub": "Cifre a 7 segmenti · 14 temi a colori · 3 stili",
+   "badge": "NOVITÀ"
+  },
+  "pt_BR": {
+   "headline": "O LCD retrô\nestá de volta.",
+   "sub": "Dígitos de 7 segmentos · 14 temas de cores · 3 estilos",
+   "badge": "NOVO"
+  },
+  "pt_PT": {
+   "headline": "O LCD retro\nestá de volta.",
+   "sub": "Dígitos de 7 segmentos · 14 temas de cor · 3 estilos",
+   "badge": "NOVO"
+  },
+  "nl": {
+   "headline": "Retro-lcd,\nopnieuw geboren.",
+   "sub": "Zevensegmentcijfers · 14 kleurthema's · 3 stijlen",
+   "badge": "NIEUW"
+  },
+  "da": {
+   "headline": "Retro-LCD\ner tilbage.",
+   "sub": "7-segment-cifre · 14 farvetemaer · 3 cifferstile",
+   "badge": "NY"
+  },
+  "nb": {
+   "headline": "Retro-LCD\ner tilbake.",
+   "sub": "7-segmentsifre · 14 fargetemaer · 3 sifferstiler",
+   "badge": "NY"
+  },
+  "sv": {
+   "headline": "Retro-LCD\när tillbaka.",
+   "sub": "Sjusegmentssiffror · 14 färgteman · 3 sifferstilar",
+   "badge": "NY"
+  },
+  "fi": {
+   "headline": "Retro-LCD\npalaa.",
+   "sub": "7-segmenttinumerot · 14 väriteemaa · 3 numerotyyliä",
+   "badge": "UUSI"
+  },
+  "pl": {
+   "headline": "Retro LCD\npowraca.",
+   "sub": "Cyfry 7-segmentowe · 14 motywów kolorów · 3 style cyfr",
+   "badge": "NOWOŚĆ"
+  },
+  "cs": {
+   "headline": "Retro LCD\nje zpět.",
+   "sub": "Sedmisegmentové číslice · 14 barevných motivů · 3 styly",
+   "badge": "NOVINKA"
+  },
+  "sk": {
+   "headline": "Retro LCD\nje späť.",
+   "sub": "Sedemsegmentové číslice · 14 farebných motívov · 3 štýly",
+   "badge": "NOVINKA"
+  },
+  "sl": {
+   "headline": "Retro LCD\nse vrača.",
+   "sub": "Sedemsegmentne števke · 14 barvnih tem · 3 slogi",
+   "badge": "NOVO"
+  },
+  "hr": {
+   "headline": "Retro LCD\nse vraća.",
+   "sub": "Znamenke od 7 segmenata · 14 tema boja · 3 stila",
+   "badge": "NOVO"
+  },
+  "hu": {
+   "headline": "Visszatér\na retró LCD.",
+   "sub": "Hétszegmenses számok · 14 színtéma · 3 számstílus",
+   "badge": "ÚJ"
+  },
+  "ru": {
+   "headline": "Ретро-LCD\nснова на руке",
+   "sub": "Семисегментные цифры · 14 цветовых тем · 3 стиля",
+   "badge": "НОВИНКА"
+  },
+  "el": {
+   "headline": "Η ρετρό LCD\nεπιστρέφει.",
+   "sub": "Ψηφία 7 τμημάτων · 14 χρωματικά θέματα · 3 στυλ",
+   "badge": "ΝΕΟ"
+  },
+  "iw": {
+   "headline": "מסך LCD רטרו\nחוזר.",
+   "sub": "ספרות 7 מקטעים · 14 ערכות צבע · 3 סגנונות",
+   "badge": "חדש"
+  },
+  "th": {
+   "headline": "จอ LCD ย้อนยุค\nกลับมาแล้ว",
+   "sub": "ตัวเลข 7 เซกเมนต์ · 14 ธีมสี · 3 สไตล์ตัวเลข",
+   "badge": "ใหม่"
+  },
+  "in": {
+   "headline": "LCD retro\nkembali.",
+   "sub": "Angka 7 segmen · 14 tema warna · 3 gaya angka",
+   "badge": "BARU"
+  },
+  "ms": {
+   "headline": "LCD retro\nkembali.",
+   "sub": "Digit 7 segmen · 14 tema warna · 3 gaya digit",
+   "badge": "BAHARU"
+  }
+ }
+}

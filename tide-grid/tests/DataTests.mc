@@ -8,11 +8,14 @@ import Toybox.System;
 import Toybox.Weather;
 
 (:test)
-function selectsNamedPortsAndRejectsDistantPositions(logger) {
+function selectsTheNearestPortAnywhere(logger) {
     var tides = new TideData();
     Test.assertEqual(tides.nearest(24.45, 118.08)[0], "XIAMEN");
     Test.assertEqual(tides.nearest(37.807, -122.466)[0], "SAN FRANCISCO");
-    Test.assert(tides.nearest(39.9042, 116.4074) == null);
+    // Inland: the closest port however far (Beijing -> Dalian, about 460 km).
+    Test.assertEqual(tides.nearest(39.9042, 116.4074)[0], "DALIAN");
+    Test.assertEqual(tides.nearest(38.6270, -90.1994)[0], "NEW YORK");
+    Test.assertEqual(tides.nearest(51.5072, -0.1276)[0], "PORTSMOUTH");
     Test.assert(tides.nearest(0, 0) == null);
     Application.Properties.setValue("TidePlace", 5);
     tides.reset(true);

@@ -61,7 +61,8 @@ class AlpineView extends WatchUi.WatchFace {
     }
     function restore(dc,x as Numeric,y as Numeric,w as Numeric,h as Numeric) {
         dc.setClip(p(x),p(y),p(x+w)-p(x),p(y+h)-p(y));
-        if(_background!=null) {dc.drawBitmap(0,0,_background);}else {dc.setColor(0,0);dc.clear();}
+        // Colour mountains have a transparent sky: repaint the sky under them.
+        if(_background!=null) {if(!Device.MONO) {SkyScene.paint(dc);}dc.drawBitmap(0,0,_background);if(Device.MONO) {SkyScene.paintMono(dc);}}else {dc.setColor(0,0);dc.clear();}
         dc.clearClip();
     }
     function accent(scene) {
@@ -76,7 +77,12 @@ class AlpineView extends WatchUi.WatchFace {
             _background=null;_background=WatchUi.loadResource(LandscapeArt.id(key));_artScene=key;
         }
     }
-    function landscape(dc,minutes,stamp) {prepareBackground();dc.drawBitmap(0,0,_background);}
+    function landscape(dc,minutes,stamp) {
+        prepareBackground();
+        if(!Device.MONO) {SkyScene.paint(dc);}
+        dc.drawBitmap(0,0,_background);
+        if(Device.MONO) {SkyScene.paintMono(dc);}
+    }
     function firework(dc,x as Numeric,y as Numeric,c as Number) {for(var i=0;i<12;i++) {var a=i*Math.PI/6;line(dc,x+4*Math.cos(a),y+4*Math.sin(a),x+11*Math.cos(a),y+11*Math.sin(a),c);}}
     function slotHeader(dc,x as Numeric,y as Numeric,width as Numeric,kind as Number) {
         if(kind==11) {return;}
@@ -201,6 +207,8 @@ class AlpineView extends WatchUi.WatchFace {
         var is24=Settings.is24(sys.is24Hour);
         if(Device.AMOLED && _sleep) {if(_aod==null) {_aod=WatchUi.loadResource(Rez.Fonts.Aod);}aod(dc,h,m,is24);_minute=minute;return;}
         Data.refresh(now,sys);_scene=2;
+        // Day/night phase, Sun and Moon positions and the Moon's phase for the sky.
+        Sky.refresh(now.value(),h*60+m,Data.latitude,Data.longitude,Data.rise,Data.set);
         var d=Gregorian.info(now,Time.FORMAT_SHORT);
         _holiday=0;_accent=accent(2);
         // Reuse the background while menus are shown. If a skin changed, obtain

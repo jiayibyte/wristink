@@ -2,13 +2,14 @@
 No runtime image scaling; each build only contains its own layout/resources.
 """
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import json,re,shutil,math,xml.etree.ElementTree as ET
 from PIL import Image,ImageOps,ImageFilter,ImageDraw
 import assets
 from retro_style import GLYPHS, native as native_glyph
 from garmin_weather import icon as garmin_icon
 ROOT=Path(__file__).resolve().parents[1]
-PACKS=Path.home()/'Library/Application Support/Garmin/ConnectIQ/Devices'
+PACKS=ciq_env.DEVICES
 NS='http://www.garmin.com/xml/connectiq';ET.register_namespace('iq',NS)
 PAPER=0xE8EDDC;TEAL=0x63B6A4;AMBER=0xF2BD67;NIGHT=0x203F48
 # Colour screens get one accent per data kind and coloured panel frames.

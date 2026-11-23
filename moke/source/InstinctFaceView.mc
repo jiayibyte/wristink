@@ -25,7 +25,9 @@ class InstinctFaceView extends WatchUi.WatchFace {
     var _suspended=false;
     var _notificationCount=null;var _moonAt=-1;var _moonValue=0.0;
     var _sunDay=-1;var _sunLat=null;var _sunLon=null;var _sunWeatherAt=-1;
-    function initialize(){WatchFace.initialize();FaceDraw.initialize();}
+    // MIP starts as asleep for the partial-update policy; AMOLED starts awake
+    // so launch shows the full face rather than the always-on layout.
+    function initialize(){WatchFace.initialize();FaceDraw.initialize();_sleeping=!DeviceProfile.AMOLED;}
     function suspend(){_suspended=true;invalidate();}
     function invalidate(){
         _history=[];_trend=[];_range=[null,null];_trendRange=[null,null];
@@ -36,8 +38,12 @@ class InstinctFaceView extends WatchUi.WatchFace {
     }
     function onShow() as Void {_suspended=false;_forceFrame=true;DeviceProfile.hands(self,!_sleeping);}
     function onHide() as Void {DeviceProfile.releaseHands(self);suspend();}
-    function onEnterSleep() as Void {_sleeping=true;DeviceProfile.hands(self,false);if(_secondsMode==1 && _secondsVisible){WatchUi.requestUpdate();}}
-    function onExitSleep() as Void {_sleeping=false;DeviceProfile.hands(self,true);}
+    function onEnterSleep() as Void {
+        _sleeping=true;DeviceProfile.hands(self,false);
+        if(DeviceProfile.AMOLED){_forceFrame=true;WatchUi.requestUpdate();return;}
+        if(_secondsMode==1 && _secondsVisible){WatchUi.requestUpdate();}
+    }
+    function onExitSleep() as Void {_sleeping=false;if(DeviceProfile.AMOLED){_forceFrame=true;}DeviceProfile.hands(self,true);}
     function disablePartialSeconds(){_secondsMode=PowerPolicy.budgetSeconds(_secondsMode);if(_secondsVisible){WatchUi.requestUpdate();}}
     function disablePartialHeart(){_partialHeartAllowed=false;}
     function includeMetric(kind){_needs=_needs|PowerPolicy.metric(kind);}
@@ -118,6 +124,7 @@ class InstinctFaceView extends WatchUi.WatchFace {
     function onUpdate(dc as Graphics.Dc) as Void {updateAt(DeviceDrawing.target(dc),Time.now());}
     function updateAt(dc,now as Time.Moment) as Void {
         if(_suspended){return;}
+        if(DeviceProfile.AMOLED && _sleeping){alwaysOn(dc,now);return;}
         var frameStamp=(now.value()/60).toNumber();
         if(!_forceFrame && _planRevision==FacePrefs.revision && frameStamp==_frameMinute){updateLiveHeart(dc,now.value());updateSeconds(dc);return;}
         // A solar watch can report no reading right after start; re-check each minute.
@@ -310,17 +317,38 @@ class InstinctFaceView extends WatchUi.WatchFace {
     function drawWindAt(dc,center,cy){
         if(!PreviewMode.ENABLED && (_weather==null || _weather.windBearing==null)){dc.drawLine(center-4,cy,center+4,cy);return;}
         var bearing=PreviewMode.ENABLED ? 90 : _weather.windBearing;
-        if(NativeStyle.enabled()){NativeStyle.windArrow(dc,center,cy,bearing,FaceDraw.foreground,FaceDraw.background);dc.setPenWidth(1);return;}
+        if(NativeStyle.enabled()){NativeStyle.windArrow(dc,center,cy,bearing,FaceDraw.accent,FaceDraw.background);dc.setPenWidth(1);dc.setColor(FaceDraw.foreground,FaceDraw.background);return;}
         var a=(bearing-90)*Math.PI/180;
-        var x=center+6*Math.cos(a);var y=cy+6*Math.sin(a);dc.setPenWidth(2);
-        dc.drawLine(center-5*Math.cos(a),cy-5*Math.sin(a),x,y);dc.drawLine(x,y,x-4*Math.cos(a-.7),y-4*Math.sin(a-.7));dc.drawLine(x,y,x-4*Math.cos(a+.7),y-4*Math.sin(a+.7));dc.setPenWidth(1);
+        var x=center+6*Math.cos(a);var y=cy+6*Math.sin(a);dc.setPenWidth(2);dc.setColor(FaceDraw.accent,FaceDraw.background);
+        dc.drawLine(center-5*Math.cos(a),cy-5*Math.sin(a),x,y);dc.drawLine(x,y,x-4*Math.cos(a-.7),y-4*Math.sin(a-.7));dc.drawLine(x,y,x-4*Math.cos(a+.7),y-4*Math.sin(a+.7));dc.setPenWidth(1);dc.setColor(FaceDraw.foreground,FaceDraw.background);
+    }
+    // AMOLED low power: only the time and date, small, dim and moved a few
+    // pixels each minute (about 3% of pixels lit; Garmin's limit is 10%).
+    // The next awake frame is a full redraw.
+    function alwaysOn(dc,now as Time.Moment){
+        if(_planRevision!=FacePrefs.revision){buildPlan();}
+        FaceDraw.enterSettings();_frameMinute=-1;_secondsVisible=false;
+        var minute=(now.value()/60).toNumber();var clock=System.getClockTime();
+        FaceDraw.setTheme(true);
+        var ink=FacePalette.theme()==0 ? 0xAAAAAA : FaceDraw.soft;
+        dc.clearClip();dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();
+        var dx=[0,3,-3,2,-2][minute%5];var dy=[0,-2,2,3,-3][(minute/5)%5];
+        var text=FaceFormat.timeText(clock.hour,clock.min);
+        dc.setColor(ink,Graphics.COLOR_TRANSPARENT);
+        dc.drawText(88+dx,62+dy,FontCatalog.fit(dc,"circle",0,3,text,120,30),text,Graphics.TEXT_JUSTIFY_CENTER);
+        if(FacePrefs.flag("showDate")){
+            var date=FaceFormat.dateText(Gregorian.info(now,Time.FORMAT_SHORT));
+            dc.setColor(0x808080,Graphics.COLOR_TRANSPARENT);
+            dc.drawText(88+dx,98+dy,FontCatalog.fit(dc,"data",0,2,date,100,16),date,Graphics.TEXT_JUSTIFY_CENTER);
+        }
+        FaceDraw.finishFrame();
     }
     function updateSeconds(dc){
         var show=PowerPolicy.seconds(_secondsEnabled,_secondsMode,_sleeping);
         if(!show && !_secondsVisible){return;}
         dc.setClip(DeviceProfile.SECONDS_LEFT,DeviceProfile.SECONDS_Y,DeviceProfile.SECONDS_WIDTH,DeviceProfile.SECONDS_HEIGHT);
         dc.setColor(FaceDraw.background,FaceDraw.background);dc.fillRectangle(DeviceProfile.SECONDS_LEFT,DeviceProfile.SECONDS_Y,DeviceProfile.SECONDS_WIDTH,DeviceProfile.SECONDS_HEIGHT);
-        if(show){dc.setColor(FaceDraw.foreground,FaceDraw.background);FaceDraw.seconds(dc,System.getClockTime().sec);}
+        if(show){dc.setColor(FaceDraw.accent,FaceDraw.background);FaceDraw.seconds(dc,System.getClockTime().sec);}
         dc.clearClip();_secondsVisible=show;
     }
     function onPartialUpdate(dc as Graphics.Dc) as Void {
@@ -333,7 +361,7 @@ class InstinctFaceView extends WatchUi.WatchFace {
         // Font is prepared by onUpdate; no resource loads or property reads on this path.
         dc.setClip(DeviceProfile.SECONDS_LEFT,DeviceProfile.SECONDS_Y,DeviceProfile.SECONDS_WIDTH,DeviceProfile.SECONDS_HEIGHT);
         dc.setColor(FaceDraw.background,FaceDraw.background);dc.fillRectangle(DeviceProfile.SECONDS_LEFT,DeviceProfile.SECONDS_Y,DeviceProfile.SECONDS_WIDTH,DeviceProfile.SECONDS_HEIGHT);
-        dc.setColor(FaceDraw.foreground,FaceDraw.background);FaceDraw.seconds(dc,System.getClockTime().sec);
+        dc.setColor(FaceDraw.accent,FaceDraw.background);FaceDraw.seconds(dc,System.getClockTime().sec);
         dc.clearClip();_secondsVisible=true;
     }
 }

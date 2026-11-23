@@ -34,7 +34,8 @@ def monochrome(width,height,weather=0):
         ridge([(0,74),(28,71),(55,75),(80,72)])
     return im
 
-def render(width,height,scene,mono=False,amoled=False,weather=0,holiday=0,aurora=False):
+def render(width,height,scene,mono=False,amoled=False,weather=0,holiday=0,aurora=False,skyfill=None):
+    # skyfill: a solid RGB sky with no backdrop (the face draws its own sky).
     if mono:
         im=monochrome(width,height,weather)
         # Sky effects use a mask, so fireworks never paint over the snow faces.
@@ -90,10 +91,11 @@ def render(width,height,scene,mono=False,amoled=False,weather=0,holiday=0,aurora
         if weather==4:snow=tint(snow,target,.38)
     for y in range(H):
         k=min(1,y/(H*.62));a=rgb(top);b=rgb(bottom)
-        color=tuple(round(v*(1-k)+z*k) for v,z in zip(a,b))
+        color=tuple(round(v*(1-k)+z*k) for v,z in zip(a,b)) if skyfill is None else skyfill
         if mono:color=(0,0,0) if night else (255,255,255)
         d.line((0,y,W,y),fill=color)
-    if aurora:aurora_sky(im,False)
+    if skyfill is not None:pass
+    elif aurora:aurora_sky(im,False)
     else:backdrop(im,holiday,False)
     # Distant silhouettes, softened on colour screens and clean contours on MIP.
     far=[(-.1,.64),(.04,.43),(.10,.47),(.165,.37),(.23,.46),(.30,.41),(.39,.50),(.50,.43),(.59,.47),(.69,.37),(.74,.42),(.82,.35),(.89,.44),(1.1,.49),(1.1,1),(-.1,1)]

@@ -79,7 +79,9 @@ def _sky(d, W, H, C, horizon, mipmode):
         d.line((0, y, W, y), fill=tuple(round(x + (z - x) * k) for x, z in zip(a, b)))
 
 
-def render_colour(scene, width, height, amoled):
+def render_colour(scene, width, height, amoled, sky=None):
+    """sky: a solid RGB fill instead of the scene's sky, sun and stars (the face
+    draws those itself from the time and weather; see generate.skyless)."""
     ss = 4 if amoled else 1
     W, H = width * ss, height * ss
     im, d = _canvas(width, height, ss)
@@ -90,9 +92,12 @@ def render_colour(scene, width, height, amoled):
         d.polygon(xy(pts + [(pts[-1][0], close_to), (pts[0][0], close_to)]), fill=col(c))
     def shape(pts, c):
         d.polygon(xy(pts), fill=col(c))
+    if sky is not None:
+        d.rectangle((0, 0, W, H), fill=sky)
     if scene == 0:
-        _sky(d, W, H, C, .5, not amoled)
-        for x, y, r in [(.12, .07, 1), (.24, .13, 1), (.36, .05, 1), (.70, .09, 1), (.83, .16, 1), (.62, .04, 1), (.18, .19, 1)]:
+        if sky is None:
+            _sky(d, W, H, C, .5, not amoled)
+        for x, y, r in ([] if sky is not None else [(.12, .07, 1), (.24, .13, 1), (.36, .05, 1), (.70, .09, 1), (.83, .16, 1), (.62, .04, 1), (.18, .19, 1)]):
             rr = max(1, round(r * width / 260)) * ss
             d.ellipse((round(x * W) - rr, round(y * H) - rr, round(x * W) + rr, round(y * H) + rr), fill=(230, 238, 250))
         poly(SUMMIT_FAR, C['far'])
@@ -104,9 +109,10 @@ def render_colour(scene, width, height, amoled):
         poly([(-.05, .57), (.15, .52), (.32, .56), (.50, .53), (.68, .57), (.86, .52), (1.05, .56)], C['mid'])
         poly([(-.05, .64), (.20, .60), (.42, .63), (.64, .60), (.85, .63), (1.05, .60)], C['near'])
     elif scene == 1:
-        _sky(d, W, H, C, .55, not amoled)
-        cx, cy, r = .30 * W, .38 * H, .075 * min(W, H)
-        d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=col(C['sun']))
+        if sky is None:
+            _sky(d, W, H, C, .55, not amoled)
+            cx, cy, r = .30 * W, .38 * H, .075 * min(W, H)
+            d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=col(C['sun']))
         for k, (pts, c) in enumerate(zip(RANGES, C['layers'])):
             poly(pts, c)
             if k == 0:
@@ -114,9 +120,10 @@ def render_colour(scene, width, height, amoled):
                     shape([(x, y), (x - .03, y + .03), (x - .012, y + .024), (x, y + .035), (x + .014, y + .022), (x + .03, y + .028)], C['snow'])
         poly([(-.05, .66), (1.05, .66)], C['layers'][-1])
     else:
-        _sky(d, W, H, C, .6, not amoled)
-        cx, cy, r = .78 * W, .2 * H, .06 * min(W, H)
-        d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=col(C['sun']))
+        if sky is None:
+            _sky(d, W, H, C, .6, not amoled)
+            cx, cy, r = .78 * W, .2 * H, .06 * min(W, H)
+            d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=col(C['sun']))
         poly(FUJI, C['lit'])
         shape([(.51, .24), (.53, .245), (.56, .25), (.60, .31), (.67, .40), (.76, .50), (.88, .58), (1.05, .63), (1.05, 1.2), (.56, 1.2), (.53, .5)], C['shade'])
         shape(FUJI_SNOW, C['snow'])
@@ -139,25 +146,20 @@ def render_mono(scene, width, height):
     # so no ridge line crosses the digits (the colour layouts sit lower).
     P = lambda pts: [(round(x * width), round((.05 + y * .78) * height)) for x, y in pts]
     line = lambda pts: d.line(P(pts), fill=1, width=1)
+    # No baked stars or sun: the face draws them from the clock and weather.
     if scene == 0:
-        for x, y in [(.12, .07), (.24, .13), (.36, .05), (.18, .19), (.30, .21)]:
-            d.point(P([(x, y)])[0], fill=1)
         line(SUMMIT_FAR[:5] + [(.36, .41)])
         d.polygon(P(SUMMIT + [(1.05, 1.1), (-.05, 1.1)]), fill=0)
         line(SUMMIT)
         d.polygon(P(SUMMIT_SNOW_LIT), fill=1)
         d.polygon(P(SUMMIT_SNOW_SHADE), fill=1)
     elif scene == 1:
-        cx, cy, r = .30 * width, (.05 + .38 * .78) * height, .075 * width
-        d.ellipse((cx - r, cy - r, cx + r, cy + r), outline=1)
         for k, pts in enumerate(RANGES[:3]):
             d.polygon(P(pts + [(1.05, 1.1), (-.05, 1.1)]), fill=0)
             line(pts)
         for x, y in RANGE_TIPS:
             d.polygon(P([(x, y), (x - .03, y + .03), (x - .012, y + .024), (x, y + .035), (x + .014, y + .022), (x + .03, y + .028)]), fill=1)
     else:
-        cx, cy, r = .24 * width, (.05 + .16 * .78) * height, .06 * width
-        d.ellipse((cx - r, cy - r, cx + r, cy + r), outline=1)
         d.polygon(P(FUJI + [(1.05, 1.1), (-.05, 1.1)]), fill=0)
         line(FUJI)
         d.polygon(P(FUJI_SNOW), fill=1)

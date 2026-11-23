@@ -2,6 +2,7 @@
 Uses the production source, generated native assets, and isolated demo app IDs.
 """
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import argparse,concurrent.futures,json,os,shutil,subprocess,uuid,xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser();p.add_argument('device',choices=['fenix7','epix2','instinct2s','instinct3solar45mm']);p.add_argument('names',nargs='+',choices=['halloween','mid-autumn-night','sunrise','sunset','sky-birds','sky-plane','sky-both','aurora','rain','snow','auto-rain','budget']);a=p.parse_args()
@@ -9,8 +10,8 @@ FRAMES={'halloween':(4,0),'mid-autumn-night':(5,3),'sunrise':(1,1),'sunset':(1,2
 PRESETS={'halloween':{'Scene':16},'mid-autumn-night':{'Scene':17},'sky-birds':{'Scene':2,'SkyDecor':1,'WeatherLink':1},'sky-plane':{'Scene':2,'SkyDecor':2,'WeatherLink':1},'sky-both':{'Scene':2,'SkyDecor':3,'WeatherLink':1},'aurora':{'Scene':13,'SkyDecor':3,'WeatherLink':1},'rain':{'Scene':5,'SkyDecor':3},'snow':{'Scene':10,'SkyDecor':3},'auto-rain':{'Scene':0}}
 # Avoid the legacy factory IDs that first-run migration intentionally hides.
 PRESETS['budget']={'Scene':7,'SkyDecor':3,'PanelStyle':3,'HeaderTop':5,'HeaderLeft':3,'HeaderRight':8,'Left':5,'Middle':1,'Right':7}
-sdk=Path((Path.home()/'Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg').read_text().strip())
-env=dict(os.environ,JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home');env['PATH']=env['JAVA_HOME']+'/bin:'+env['PATH']
+sdk=ciq_env.sdk()
+env=ciq_env.java_env()
 def build(name):
  festival,frame=FRAMES[name]
  folder=ROOT/'generated/gallery'/a.device/name;folder.mkdir(parents=True,exist_ok=True)

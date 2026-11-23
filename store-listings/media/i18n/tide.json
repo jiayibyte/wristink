@@ -1,0 +1,157 @@
+{
+ "combo": {
+  "zh": {
+   "look": {
+    "title": "航海仪表风，12 套主题",
+    "sub": "深海、余烬、冰川、紫外……彩色屏和黑白屏各有配色，三款时间字体随心换。"
+   },
+   "data": {
+    "title": "潮汐和你的数据，一屏看全",
+    "sub": "安装即显示离你最近港口的潮汐；13 个数据位都能单独设置。"
+   }
+  },
+  "en": {
+   "look": {
+    "title": "A marine instrument in 12 themes",
+    "sub": "Deep Sea, Ember, Glacier, Ultraviolet and more, with palettes for colour and monochrome screens and three clock styles."
+   },
+   "data": {
+    "title": "Tides and your data on one screen",
+    "sub": "The nearest port's tides right after install; all 13 fields can be set one by one."
+   }
+  },
+  "devices": "epix · fēnix · Forerunner · Instinct · Venu"
+ },
+ "heroes": {
+  "zh_TW": {
+   "headline": "潮起潮落，\n抬腕便知",
+   "sub": "30 個港口潮汐 · 12 套主題 · 3 款字體",
+   "badge": "全新推出"
+  },
+  "ja": {
+   "headline": "潮の満ち引きを\nひと目で",
+   "sub": "30港の潮汐予報 · 12テーマ · 時刻書体3種",
+   "badge": "新登場"
+  },
+  "ko": {
+   "headline": "밀물과 썰물을\n한눈에",
+   "sub": "30개 항구 조석 예보 · 테마 12종 · 시계 글꼴 3종",
+   "badge": "신규"
+  },
+  "de": {
+   "headline": "Gezeiten auf\neinen Blick.",
+   "sub": "Gezeiten für 30 Häfen · 12 Designs · 3 Uhrstile",
+   "badge": "NEU"
+  },
+  "fr": {
+   "headline": "Les marées en\nun coup d'œil.",
+   "sub": "Marées de 30 ports · 12 thèmes · 3 styles d'heure",
+   "badge": "NOUVEAU"
+  },
+  "es": {
+   "headline": "Las mareas,\nde un vistazo.",
+   "sub": "Mareas de 30 puertos · 12 temas · 3 estilos de hora",
+   "badge": "NUEVO"
+  },
+  "it": {
+   "headline": "Le maree a\ncolpo d'occhio.",
+   "sub": "Maree di 30 porti · 12 temi · 3 stili dell'ora",
+   "badge": "NOVITÀ"
+  },
+  "pt_BR": {
+   "headline": "As marés\nnum relance.",
+   "sub": "Marés de 30 portos · 12 temas · 3 estilos de hora",
+   "badge": "NOVO"
+  },
+  "pt_PT": {
+   "headline": "As marés\nnum relance.",
+   "sub": "Marés de 30 portos · 12 temas · 3 estilos de hora",
+   "badge": "NOVO"
+  },
+  "nl": {
+   "headline": "Getijden in\néén oogopslag.",
+   "sub": "Getijden voor 30 havens · 12 thema's · 3 klokstijlen",
+   "badge": "NIEUW"
+  },
+  "da": {
+   "headline": "Tidevandet\nmed ét blik.",
+   "sub": "Tidevand for 30 havne · 12 temaer · 3 urstile",
+   "badge": "NY"
+  },
+  "nb": {
+   "headline": "Tidevannet\nmed ett blikk.",
+   "sub": "Tidevann for 30 havner · 12 temaer · 3 klokkestiler",
+   "badge": "NY"
+  },
+  "sv": {
+   "headline": "Tidvattnet\nmed en blick.",
+   "sub": "Tidvatten för 30 hamnar · 12 teman · 3 klockstilar",
+   "badge": "NY"
+  },
+  "fi": {
+   "headline": "Vuorovesi\nyhdellä silmäyksellä.",
+   "sub": "Vuorovedet 30 satamaan · 12 teemaa · 3 kellotyyliä",
+   "badge": "UUSI"
+  },
+  "pl": {
+   "headline": "Pływy\nw mgnieniu oka.",
+   "sub": "Pływy dla 30 portów · 12 motywów · 3 style zegara",
+   "badge": "NOWOŚĆ"
+  },
+  "cs": {
+   "headline": "Příliv a odliv\nna první pohled.",
+   "sub": "Příliv pro 30 přístavů · 12 motivů · 3 styly času",
+   "badge": "NOVINKA"
+  },
+  "sk": {
+   "headline": "Príliv a odliv\nna prvý pohľad.",
+   "sub": "Príliv pre 30 prístavov · 12 motívov · 3 štýly času",
+   "badge": "NOVINKA"
+  },
+  "sl": {
+   "headline": "Plimovanje\nna prvi pogled.",
+   "sub": "Plimovanje za 30 pristanišč · 12 tem · 3 slogi ure",
+   "badge": "NOVO"
+  },
+  "hr": {
+   "headline": "Plima i oseka\nna prvi pogled.",
+   "sub": "Plima za 30 luka · 12 tema · 3 stila sata",
+   "badge": "NOVO"
+  },
+  "hu": {
+   "headline": "Az árapály\negy pillantással.",
+   "sub": "Árapály 30 kikötőre · 12 téma · 3 órastílus",
+   "badge": "ÚJ"
+  },
+  "ru": {
+   "headline": "Приливы\nс одного взгляда",
+   "sub": "Приливы 30 портов · 12 тем · 3 стиля времени",
+   "badge": "НОВИНКА"
+  },
+  "el": {
+   "headline": "Οι παλίρροιες\nμε μια ματιά.",
+   "sub": "Παλίρροιες 30 λιμανιών · 12 θέματα · 3 στυλ ώρας",
+   "badge": "ΝΕΟ"
+  },
+  "iw": {
+   "headline": "גאות ושפל\nבמבט אחד.",
+   "sub": "גאות ל-30 נמלים · 12 ערכות נושא · 3 סגנונות שעון",
+   "badge": "חדש"
+  },
+  "th": {
+   "headline": "น้ำขึ้นน้ำลง\nเห็นในพริบตา",
+   "sub": "น้ำขึ้นน้ำลง 30 ท่าเรือ · 12 ธีม · นาฬิกา 3 สไตล์",
+   "badge": "ใหม่"
+  },
+  "in": {
+   "headline": "Pasang surut\nsekilas pandang.",
+   "sub": "Pasang surut 30 pelabuhan · 12 tema · 3 gaya jam",
+   "badge": "BARU"
+  },
+  "ms": {
+   "headline": "Air pasang surut\nsekali pandang.",
+   "sub": "Air pasang 30 pelabuhan · 12 tema · 3 gaya jam",
+   "badge": "BAHARU"
+  }
+ }
+}

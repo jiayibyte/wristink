@@ -18,6 +18,8 @@ def add(g,key,label,default,options=None,limits=None):
     rows.append(dict(group=g,key=key,label=label,type=kind,default=default,options=options or [],min=(limits or [0,0])[0],max=(limits or [0,len(options or [])-1])[1]))
 g=group('general','全局外观')
 for k,l,d in [('darkTheme','黑色背景',True),('showIcons','显示数据图标',True),('showUnits','显示单位',True),('linkFooterFonts','底部两项字号联动',True)]:add(g,k,l,d)
+# Colour screens start in Amber; monochrome screens ignore the theme.
+add(g,'colorTheme','配色主题（彩色屏）',1,['经典黑白','琥珀','冰川','薄荷','夜光','樱花'])
 add(g,'dataFont','全局数据字体',0,['简洁黑体','加粗黑体','紧凑黑体'])
 add(g,'dataSize','全局数据字号',1,['小','标准','大'])
 add(g,'temperatureUnit','温度单位',0,['摄氏度','华氏度'])
@@ -159,6 +161,7 @@ def main():
             case "ringStart":return 3;
             case "timeSeparator":case "circleBackground":case "chartMinutes":case "heartRefresh":case "analogHandMode":return 2;
             case "secondsMode":return 3;
+            case "colorTheme":return 5;
             case "topCardImage":case "bottomCardImage":return 20;
             case "timeFormat":case "temperatureUnit":case "distanceUnit":case "altitudeUnit":case "powerProfile":case "heartSource":return 1;
         }

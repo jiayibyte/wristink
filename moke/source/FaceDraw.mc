@@ -5,10 +5,12 @@ import Toybox.Lang;
 
 module FaceDraw {
     var foreground=Graphics.COLOR_WHITE;var background=Graphics.COLOR_BLACK;
+    // Theme colours (FacePalette); all equal the foreground on monochrome screens.
+    var accent=Graphics.COLOR_WHITE;var heart=Graphics.COLOR_WHITE;var soft=Graphics.COLOR_WHITE;
     var batteryPercent=0;var bodyBattery=null;var cellsProgress=null;var intensityProgress=null;
     var _energyBitmap;var _energyCount=0;
     var _energyKey=-1;var _chart;var _topCard;var _bottomCard;var _topCardKey=-1;var _bottomCardKey=-1;var _secondsFont;
-    var _hrFontTwo;var _hrFontThree;var _hrInk;var _hrPaper;var _hrStyle=0;var _hrGoal=0;var _hrCellsStyle=0;var _hrPlain=false;
+    var _hrFontTwo;var _hrFontThree;var _hrInk;var _hrPaper;var _hrCellsInk;var _hrStyle=0;var _hrGoal=0;var _hrCellsStyle=0;var _hrPlain=false;
     var _hrPlainTop=23;var _hrPlainHeight=29;var _hrCenterY=38;
     function initialize(){}
     function enterSettings(){FontCatalog.reset();NativeStyle.reset();_energyBitmap=null;_energyCount=0;_energyKey=-1;_chart=null;_topCard=null;_bottomCard=null;_topCardKey=-1;_bottomCardKey=-1;_secondsFont=null;releaseLiveHeart();}
@@ -18,7 +20,7 @@ module FaceDraw {
     }
     function releaseLiveHeart(){_hrFontTwo=null;_hrFontThree=null;_hrPlain=false;}
     function prepareLiveHeart(dc,ink,paper){
-        releaseLiveHeart();_hrInk=ink;_hrPaper=paper;
+        releaseLiveHeart();_hrInk=FacePalette.heartOn(paper);_hrCellsInk=FacePalette.accentOn(paper);_hrPaper=paper;
         _hrStyle=FacePrefs.get("circleStyle");_hrGoal=FacePrefs.get("circleGoal");_hrCellsStyle=FacePrefs.get("cellsStyle");
         _hrPlain=NativeStyle.enabled() && paper==Graphics.COLOR_WHITE && FacePrefs.get("cellsSource")==0 && FacePrefs.get("ringSource")==0 && _hrStyle<=1;
         if(_hrPlain){
@@ -51,7 +53,7 @@ module FaceDraw {
         else{dc.setClip(126,25,36,25);dc.fillRectangle(126,25,36,25);}
         // Restore the small parts of the energy texture behind the digits; no resource loads.
         if(!_hrPlain && cellsProgress!=null && cellsProgress>0){
-            dc.setColor(_hrInk,_hrPaper);
+            dc.setColor(_hrCellsInk,_hrPaper);
             if(_hrCellsStyle==2){
                 dc.setPenWidth(6);
                 if(cellsProgress>=1){dc.drawCircle(144,31,23);}else{dc.drawArc(144,31,23,Graphics.ARC_CLOCKWISE,90,90-cellsProgress*360);}
@@ -62,7 +64,7 @@ module FaceDraw {
         }
         drawLiveHeart(dc,value);dc.clearClip();dc.setColor(foreground,background);
     }
-    function setTheme(dark){foreground=dark ? Graphics.COLOR_WHITE : Graphics.COLOR_BLACK;background=dark ? Graphics.COLOR_BLACK : Graphics.COLOR_WHITE;}
+    function setTheme(dark){foreground=dark ? Graphics.COLOR_WHITE : Graphics.COLOR_BLACK;background=dark ? Graphics.COLOR_BLACK : Graphics.COLOR_WHITE;FacePalette.apply(dark);}
     (:extendedCode)
     function dateFont(){return FontCatalog.data(FacePrefs.fontFamily("date"),FacePrefs.fontSize("date")+2);}
     (:extendedCode)
@@ -73,7 +75,7 @@ module FaceDraw {
         var height=FacePrefs.flag("showTime") && FacePrefs.get("timeFormat")==1 ? 13 : 18;
         var font=FontCatalog.fit(dc,"data",FacePrefs.fontFamily("date"),FacePrefs.fontSize("date")+2,text,width,height);
         var x=8+DeviceProfile.UPPER_SHIFT;
-        dc.setClip(x,49,width,height);dc.setColor(foreground,background);dc.drawText(x,49,font,text,Graphics.TEXT_JUSTIFY_LEFT);dc.clearClip();
+        dc.setClip(x,49,width,height);dc.setColor(soft,background);dc.drawText(x,49,font,text,Graphics.TEXT_JUSTIFY_LEFT);dc.clearClip();
     }
     (:extendedCode)
     function time(dc,hour,minute){
@@ -114,7 +116,7 @@ module FaceDraw {
     function sideData(dc,kind,value){
         // The icon/value pair is centred on the clock digits rather than hung under the heart window.
         dc.setClip(136,FaceLayout.SIDE_Y,35,38);dc.setColor(foreground,background);
-        if(FacePrefs.flag("showIcons")){icon(dc,kind,146,FaceLayout.SIDE_Y+1,foreground,background);}
+        if(FacePrefs.flag("showIcons")){icon(dc,kind,146,FaceLayout.SIDE_Y+1,accent,background);dc.setColor(foreground,background);}
         var font=FontCatalog.fit(dc,"data",FacePrefs.fontFamily("side"),FacePrefs.fontSize("side")+2,value,32,18);
         dc.drawText(153,FaceLayout.SIDE_Y+20,font,value,Graphics.TEXT_JUSTIFY_CENTER);dc.clearClip();
     }
@@ -126,12 +128,12 @@ module FaceDraw {
     (:extendedCode)
     function moveBarAt(dc,ratio,x,y,compact){
         var width=compact ? 3 : 4;var gap=compact ? 0 : 1;
-        dc.setColor(foreground,background);
+        dc.setColor(accent,background);
         var source=FacePrefs.get("moveSource");
         if(source==2){dc.drawRectangle(x,y+3,8,6);dc.fillRectangle(x+8,y+5,1,2);}
         else if(source==1){dc.fillCircle(x+2,y+4,2);dc.fillCircle(x+6,y+4,2);dc.fillPolygon([[x,y+5],[x+8,y+5],[x+4,y+10]]);}
         else{
-            if(NativeStyle.enabled()){NativeStyle.activity(dc,x,y,foreground,background);}
+            if(NativeStyle.enabled()){NativeStyle.activity(dc,x,y,accent,background);}
             else{
             dc.fillCircle(x+4,y+1,1);dc.drawLine(x+4,y+4,x+4,y+8);dc.drawLine(x+1,y+7,x+4,y+4);
             dc.drawLine(x+4,y+4,x+7,y+7);dc.drawLine(x+4,y+8,x+2,y+12);dc.drawLine(x+4,y+8,x+6,y+12);
@@ -162,6 +164,7 @@ module FaceDraw {
         // thin rule made the panel busier than the data rows beside it.
         dc.drawLine(px,py+h,px+w,py+h);
         if(values.size()>0 && low!=null && high!=null){
+            dc.setColor(accent,background);
             var span=high-low;if(span==0){span=1;}
             var prevX=null as Number or Null;var prevY=null as Number or Null;var style=FacePrefs.get("chartStyle");
             var count=values.size();var last=count>1 ? count-1 : 1;
@@ -185,7 +188,7 @@ module FaceDraw {
                 dc.drawPoint(x,y);if(style==0){dc.drawPoint(x,y+1);}
                 prevX=x;prevY=y;
             }
-            dc.setPenWidth(1);
+            dc.setPenWidth(1);dc.setColor(foreground,background);
         }
         dc.clearClip();
     }
@@ -209,9 +212,10 @@ module FaceDraw {
         var gauge=style==4 || style==5;var labelHeight=gauge ? height-4 : height-1;
         var font=fontOverride!=null ? fontOverride : slotFont(dc,key,label,width-offset,labelHeight,null);
         dc.setClip(x,y,width,height);dc.setColor(foreground,background);
-        if(showIcon){icon(dc,kind,x,y+(y>=120 || gauge || (NativeStyle.enabled() && NativeStyle.glyph(kind)) ? 0 : 3),foreground,background);}
+        if(showIcon){icon(dc,kind,x,y+(y>=120 || gauge || (NativeStyle.enabled() && NativeStyle.glyph(kind)) ? 0 : 3),accent,background);dc.setColor(foreground,background);}
         dc.drawText(x+offset,y+1,font,label,Graphics.TEXT_JUSTIFY_LEFT);
         if(gauge){
+            dc.setColor(accent,background);
             var p=ratio;if(p!=null){p=p<0 ? 0 : (p>1 ? 1 : p);}
             var gx=x+offset;var gw=width-offset-1;var gy=y+height-3;
             if(style==4){dc.drawLine(gx,gy+2,gx+gw,gy+2);if(p!=null && p>0){dc.fillRectangle(gx,gy,Math.ceil(gw*p),2);}}
@@ -251,7 +255,7 @@ module FaceDraw {
         if(cellsProgress==null || cellsProgress<=0 || FacePrefs.get("cellsStyle")==2){_energyBitmap=null;_energyKey=-1;_energyCount=0;}
         if(cellsProgress!=null && cellsProgress>0){
             var style=FacePrefs.get("cellsStyle");
-            if(style==2){dc.setColor(ink,paper);dc.setPenWidth(6);if(cellsProgress>=1){dc.drawCircle(cx,cy,23);}else{dc.drawArc(cx,cy,23,Graphics.ARC_CLOCKWISE,90,90-cellsProgress*360);}dc.setPenWidth(1);}
+            if(style==2){dc.setColor(FacePalette.accentOn(paper),paper);dc.setPenWidth(6);if(cellsProgress>=1){dc.drawCircle(cx,cy,23);}else{dc.drawArc(cx,cy,23,Graphics.ARC_CLOCKWISE,90,90-cellsProgress*360);}dc.setPenWidth(1);}
             else{
                 var count=FitnessProgress.segmentCount(cellsProgress*100);
                 var variant=style*2+(ink==Graphics.COLOR_BLACK ? 1 : 0);var assetKey=variant*9+count;
@@ -259,7 +263,7 @@ module FaceDraw {
                 dc.drawBitmap(cx-31+EnergyCatalog.X[count-1],cy-31+EnergyCatalog.Y[count-1],_energyBitmap);
             }
         }
-        dc.setColor(ink,paper);
+        dc.setColor(FacePalette.accentOn(paper),paper);
         if(intensityProgress!=null && intensityProgress>0){
             var style=FacePrefs.get("ringStyle");var start=[90,0,270,180][FacePrefs.get("ringStart")];
             dc.setPenWidth(style==0 ? 1 : (style==2 ? 3 : 2));
@@ -269,7 +273,8 @@ module FaceDraw {
         }
         if(kind!=0){
             if(FacePrefs.flag("showCircleIcon") && FacePrefs.get("circleStyle")!=1){
-                if(!(NativeStyle.enabled() && NativeStyle.circleIcon(dc,kind,cx,FaceLayout.HEART_ICON_Y,ink,paper))){icon(dc,kind,cx-7,FaceLayout.HEART_ICON_Y,ink,paper);}
+                var iconInk=kind==6 ? FacePalette.heartOn(paper) : FacePalette.accentOn(paper);
+                if(!(NativeStyle.enabled() && NativeStyle.circleIcon(dc,kind,cx,FaceLayout.HEART_ICON_Y,iconInk,paper))){icon(dc,kind,cx-7,FaceLayout.HEART_ICON_Y,iconInk,paper);}
             }
             if(kind==6){prepareLiveHeart(dc,ink,paper);drawLiveHeart(dc,heartValue);}
             else{

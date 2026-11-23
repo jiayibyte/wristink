@@ -1,5 +1,6 @@
 """Build a few immutable visual fixtures with separate app IDs and compiler folders."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import os,json,datetime,uuid,subprocess,concurrent.futures,shutil,time
 from generate import ROOT,generate
 CASES=[('sunrise','2026-06-21T04:50:00+08:00',1),('fullmoon','2026-10-26T23:00:00+08:00',1),('snow','2026-12-21T12:00:00+08:00',5)]
@@ -7,8 +8,8 @@ import argparse
 parser=argparse.ArgumentParser();parser.add_argument('--cases',nargs='+');parser.add_argument('--device',default='epix2',choices=['epix2','instinct2s','instinct3solar45mm']);args=parser.parse_args()
 if args.cases:CASES=[x for x in CASES if x[0] in args.cases]
 subprocess.run([os.sys.executable,str(ROOT/'tools/settings.py')],check=True);generate()
-sdk=Path((Path.home()/'Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg').read_text().strip())
-env=dict(os.environ,JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home');env['PATH']=env['JAVA_HOME']+'/bin:'+env['PATH']
+sdk=ciq_env.sdk()
+env=ciq_env.java_env()
 def build(case):
  name,when,weather=case;at=datetime.datetime.fromisoformat(when);src=ROOT/'generated/samples'/f'{args.device}-{name}';src.mkdir(parents=True,exist_ok=True);out=ROOT/'bin/sky-samples'/f'{args.device}-{name}';out.mkdir(parents=True,exist_ok=True)
  (src/'Mode.mc').write_text(f'import Toybox.Lang;\nmodule Mode {{const DEMO=true;const SCENE=0;const STAMP={int(at.timestamp())};const MINUTES={at.hour*60+at.minute};const WEATHER={weather};const LAT=39.9d;const LON=116.4d;const DATE="{at.strftime("%a %m/%d").upper()}";function refresh() {{}}}}\n')

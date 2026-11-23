@@ -48,7 +48,9 @@ for key in range(4):
         box=combined.getbbox();offset_x[key].append(box[0]);offset_y[key].append(box[1])
         ident=f'EnergyLevelV{key}N{sector+1}';filename=f'energy-level-v{key}-n{sector+1}.png'
         combined.crop(box).save(folder/filename)
-        ET.SubElement(root,'bitmap',id=ident,filename=filename);ids[key].append('Rez.Drawables.'+ident)
+        # compress keeps the 32 level bitmaps small in the package (added by hand on 11-16;
+        # the generator now writes it so a rebuild does not drop it).
+        ET.SubElement(root,'bitmap',id=ident,filename=filename,compress='true');ids[key].append('Rez.Drawables.'+ident)
 ET.indent(tree,space='    ');tree.write(folder/'drawables.xml',encoding='utf-8')
 mc='// Generated sector palettes and textures, loaded only for the selected style.\nimport Toybox.Graphics;\nimport Toybox.WatchUi;\nimport Toybox.Lang;\nmodule EnergyCatalog {\n'
 mc+='    function id(style,index) as ResourceId {switch(style*8+index){\n'

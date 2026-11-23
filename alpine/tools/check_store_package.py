@@ -1,4 +1,5 @@
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import argparse,json,hashlib,subprocess,tempfile,xml.etree.ElementTree as ET
 R=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser();parser.add_argument('--source-commit',required=True);parser.add_argument('--version',default='1.0.0');parser.add_argument('--package');args=parser.parse_args()
@@ -14,7 +15,7 @@ assert app.attrib['id']=='bb71078cce15417aa5425aa350817001' and app.attrib['type
 assert {e.text for e in app.findall('.//iq:language',ns)}=={'eng','zhs'}
 profiles=json.loads((R/'config/devices.json').read_text());expected={}
 for dev in profiles:
- data=json.loads((Path.home()/f'Library/Application Support/Garmin/ConnectIQ/Devices/{dev}/compiler.json').read_text())
+ data=json.loads((ciq_env.DEVICES/dev/'compiler.json').read_text())
  for p in data['partNumbers']:expected[p['number']]={'sdkDevice':dev,'api':p['connectIQVersion']}
 products=app.findall('.//iq:product',ns);assert {p.attrib['partNumber'] for p in products}==set(expected)
 reports=[]

@@ -1,5 +1,6 @@
 """Compile and run power regressions; MonkeyDo may exit 1 even when all tests pass."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import os
 import re
 import subprocess
@@ -7,10 +8,8 @@ import argparse
 p=argparse.ArgumentParser();p.add_argument("--english",action="store_true");args=p.parse_args()
 
 ROOT = Path(__file__).resolve().parents[1]
-SDK = Path((Path.home() / 'Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg').read_text().strip())
-env = dict(os.environ)
-env.setdefault('JAVA_HOME', '/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home')
-env['PATH'] = env['JAVA_HOME'] + '/bin:' + env['PATH']
+SDK = ciq_env.sdk()
+env = ciq_env.java_env()
 
 jungle='tests/power/test.jungle'
 name='PowerTestsEnglish' if args.english else 'PowerTests'

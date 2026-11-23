@@ -1,5 +1,6 @@
 """Resource-based before/after preview; not a simulator or real-watch capture."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import importlib.util
 from PIL import Image, ImageDraw, ImageFont, ImageChops
 
@@ -41,8 +42,8 @@ if __name__=='__main__':
     assert ImageChops.difference(before.crop((0,64,176,176)),after.crop((0,64,176,176))).getbbox() is None
     before.save(out/'before-dark.png');after.save(out/'after-dark.png');render(True,False).save(out/'after-light.png')
     board=Image.new('RGB',(800,500),'#202320');d=ImageDraw.Draw(board)
-    title=ImageFont.truetype('/System/Library/Fonts/STHeiti Medium.ttc',22,index=1)
-    text=ImageFont.truetype('/System/Library/Fonts/STHeiti Medium.ttc',16,index=1)
+    title=ciq_env.cjk_font(22)
+    text=ciq_env.cjk_font(16)
     d.text((32,18),'上方细节优化 · 原功能与布局',font=title,fill='#f1f3ee')
     for image,x,label in [(before,32,'改前'),(after,416,'改后')]:
         d.text((x,58),label,font=text,fill='#c5cdc4')

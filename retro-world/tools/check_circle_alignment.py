@@ -1,7 +1,8 @@
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 from PIL import Image
 import json,math
-ROOT=Path(__file__).resolve().parents[1];PACK=Path.home()/'Library/Application Support/Garmin/ConnectIQ/Devices/instinct3solar45mm'
+ROOT=Path(__file__).resolve().parents[1];PACK=ciq_env.DEVICES/'instinct3solar45mm'
 config=json.loads((PACK/'simulator.json').read_text());skin=Image.open(PACK/'device.png').convert('RGBA');main=config['display']['location'];sub=config['subscreen']['location'];points=[]
 for y in range(sub['y']-15,sub['y']+sub['height']+15):
  for x in range(sub['x']-15,sub['x']+sub['width']+15):
