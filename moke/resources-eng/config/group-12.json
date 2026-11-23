@@ -1,1 +1,1 @@
-[["showHeartGraph", "Enable lower-right chart", 1, true, 0], ["chartStyle", "Chart style", 0, 0, 29], ["chartMinutes", "Chart duration", 0, 1, 30], ["showChartLabels", "Show minimum and maximum", 1, true, 0], ["chartLabelFont", "Chart label font", 0, 0, 31]]
+[["showHeartGraph", "Enable lower-right chart", 1, true, 0], ["chartStyle", "Chart style", 0, 0, 30], ["chartMinutes", "Chart duration", 0, 1, 31], ["showChartLabels", "Show minimum and maximum", 1, true, 0], ["chartLabelFont", "Chart label font", 0, 0, 32]]

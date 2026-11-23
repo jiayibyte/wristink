@@ -4,6 +4,7 @@ Each invocation uses a new app ID. The two launches share the exact PRG and ID;
 the second launch verifies values restored by Garmin's persistent store.
 """
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import argparse
 import json
 import os
@@ -85,8 +86,7 @@ class RecoveryView extends BASE {
 }
 '''.replace("VIEWS", views).replace("BASE", base).replace("PHONE_PROBE", phone_probe)
 (folder / "Recovery.mc").write_text(program)
-env = dict(os.environ, JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home")
-env["PATH"] = env["JAVA_HOME"] + "/bin:" + env["PATH"]
+env = ciq_env.java_env()
 prg = folder / "recovery.prg"
 build = subprocess.run(["monkeyc", "-f", str(folder / "recovery.jungle"), "-d", args.device, "-o", str(prg), "-y", str(Path.home() / ".Garmin/keys/developer_key.der"), "-r", "-O", "3z", "-w"], env=env, capture_output=True, text=True)
 (folder / "build.log").write_text(build.stdout + build.stderr)

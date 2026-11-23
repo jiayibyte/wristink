@@ -3,6 +3,7 @@
 An offline pixel preview, explicitly not a simulator or physical-device capture.
 """
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import importlib.util
 from PIL import Image, ImageDraw, ImageFont
 
@@ -26,8 +27,8 @@ def render(root, dark, seconds=False):
 if __name__ == '__main__':
     out = ROOT/'bin/typography'
     out.mkdir(exist_ok=True)
-    face = ImageFont.truetype('/System/Library/Fonts/STHeiti Medium.ttc', 24, index=1)
-    body = ImageFont.truetype('/System/Library/Fonts/STHeiti Medium.ttc', 17, index=1)
+    face = ciq_env.cjk_font(24)
+    body = ciq_env.cjk_font(17)
     board = Image.new('RGB', (1200, 680), '#eceeea')
     d = ImageDraw.Draw(board)
     d.text((40, 25), '墨刻 · 圆角数字与原生像素优化', font=face, fill='#202720')

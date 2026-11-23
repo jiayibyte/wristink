@@ -1,5 +1,6 @@
 """Offline design preview using the project's real font atlases. NOT a simulator capture."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import io
 import json
 import re
@@ -227,8 +228,8 @@ if __name__ == "__main__":
     for dark in (True,False):render(dark).save(folder/("design-dark.png" if dark else "design-light.png"))
     board=Image.new("RGB",(1152,674),"#e9e9e6")
     labels=ImageDraw.Draw(board)
-    face=ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc",22,index=1)
-    small=ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc",17,index=1)
+    face=ciq_env.cjk_font(22)
+    small=ciq_env.cjk_font(17)
     for dark,x,label in ((True,24,"黑底 · 演示数据"),(False,600,"白底 · 演示数据")):
         labels.text((x,18),label,font=face,fill="#222")
         board.paste(render(dark).resize((528,528),Image.Resampling.NEAREST),(x,60))

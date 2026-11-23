@@ -4,6 +4,7 @@
   <property id="showIcons" type="boolean">true</property>
   <property id="showUnits" type="boolean">true</property>
   <property id="linkFooterFonts" type="boolean">true</property>
+  <property id="colorTheme" type="number">1</property>
   <property id="dataFont" type="number">0</property>
   <property id="dataSize" type="number">1</property>
   <property id="temperatureUnit" type="number">0</property>

@@ -138,6 +138,23 @@
     },
     {
       "group": 0,
+      "key": "colorTheme",
+      "label": "配色主题（彩色屏）",
+      "type": 0,
+      "default": 1,
+      "options": [
+        "经典黑白",
+        "琥珀",
+        "冰川",
+        "薄荷",
+        "夜光",
+        "樱花"
+      ],
+      "min": 0,
+      "max": 5
+    },
+    {
+      "group": 0,
       "key": "dataFont",
       "label": "全局数据字体",
       "type": 0,

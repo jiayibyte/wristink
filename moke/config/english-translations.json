@@ -203,5 +203,12 @@
   "像素小字": "Small pixel labels",
   "方角数字": "Square numerals",
   "数码管": "Seven-segment",
-  "点阵": "Dot matrix"
+  "点阵": "Dot matrix",
+  "配色主题（彩色屏）": "Colour theme (colour screens)",
+  "经典黑白": "Classic black & white",
+  "琥珀": "Amber",
+  "冰川": "Glacier",
+  "薄荷": "Mint",
+  "夜光": "Night glow",
+  "樱花": "Sakura"
 }

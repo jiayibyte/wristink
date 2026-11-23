@@ -1,5 +1,6 @@
 """Generate original 15px monochrome weather glyphs and a source-derived gallery."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import json
 from PIL import Image, ImageDraw, ImageFont
 
@@ -92,7 +93,7 @@ if __name__ == '__main__':
     # This sheet renders the exact pixel rows consumed by the watch, enlarged 4x.
     board = Image.new('RGB',(792,268),'#e9e9e6')
     d = ImageDraw.Draw(board)
-    font = ImageFont.truetype('/System/Library/Fonts/STHeiti Medium.ttc',15,index=1)
+    font = ciq_env.cjk_font(15)
     for dark in (True,False):
         y=0 if dark else 112
         bg,fg = ('black','white') if dark else ('white','black')

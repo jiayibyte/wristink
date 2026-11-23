@@ -1,8 +1,9 @@
 """Inspect Garmin's signed 7z IQ export without changing the signed archive."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import subprocess,json,xml.etree.ElementTree as ET,hashlib,argparse,tempfile
 R=Path(__file__).resolve().parents[1];p=argparse.ArgumentParser();p.add_argument('package');p.add_argument('--only',nargs='*');a=p.parse_args();archive=Path(a.package).resolve();ns={'iq':'http://www.garmin.com/xml/connectiq'}
-rows=json.loads((R/'config/mip-devices.json').read_text());rows=[r for r in rows if not a.only or r['id'] in a.only];devices=Path.home()/'Library/Application Support/Garmin/ConnectIQ/Devices';expected={}
+rows=json.loads((R/'config/mip-devices.json').read_text());rows=[r for r in rows if not a.only or r['id'] in a.only];devices=ciq_env.DEVICES;expected={}
 for row in rows:
  c=json.loads((devices/row['id']/'compiler.json').read_text())
  for part in c['partNumbers']:expected[part['number']]=(row['id'],part)

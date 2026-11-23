@@ -33,11 +33,11 @@ module SettingsCatalog {
         case 3:return 3;
         case 4:return 2;
     }return 1;}
-    const OPTIONS = [Rez.JsonData.ConfigOptions0,Rez.JsonData.ConfigOptions1,Rez.JsonData.ConfigOptions2,Rez.JsonData.ConfigOptions3,Rez.JsonData.ConfigOptions4,Rez.JsonData.ConfigOptions5,Rez.JsonData.ConfigOptions6,Rez.JsonData.ConfigOptions7,Rez.JsonData.ConfigOptions8,Rez.JsonData.ConfigOptions9,Rez.JsonData.ConfigOptions10,Rez.JsonData.ConfigOptions11,Rez.JsonData.ConfigOptions12,Rez.JsonData.ConfigOptions13,Rez.JsonData.ConfigOptions14,Rez.JsonData.ConfigOptions15,Rez.JsonData.ConfigOptions16,Rez.JsonData.ConfigOptions17,Rez.JsonData.ConfigOptions18,Rez.JsonData.ConfigOptions19,Rez.JsonData.ConfigOptions20,Rez.JsonData.ConfigOptions21,Rez.JsonData.ConfigOptions22,Rez.JsonData.ConfigOptions23,Rez.JsonData.ConfigOptions24,Rez.JsonData.ConfigOptions25,Rez.JsonData.ConfigOptions26,Rez.JsonData.ConfigOptions27,Rez.JsonData.ConfigOptions28,Rez.JsonData.ConfigOptions29,Rez.JsonData.ConfigOptions30,Rez.JsonData.ConfigOptions31];
+    const OPTIONS = [Rez.JsonData.ConfigOptions0,Rez.JsonData.ConfigOptions1,Rez.JsonData.ConfigOptions2,Rez.JsonData.ConfigOptions3,Rez.JsonData.ConfigOptions4,Rez.JsonData.ConfigOptions5,Rez.JsonData.ConfigOptions6,Rez.JsonData.ConfigOptions7,Rez.JsonData.ConfigOptions8,Rez.JsonData.ConfigOptions9,Rez.JsonData.ConfigOptions10,Rez.JsonData.ConfigOptions11,Rez.JsonData.ConfigOptions12,Rez.JsonData.ConfigOptions13,Rez.JsonData.ConfigOptions14,Rez.JsonData.ConfigOptions15,Rez.JsonData.ConfigOptions16,Rez.JsonData.ConfigOptions17,Rez.JsonData.ConfigOptions18,Rez.JsonData.ConfigOptions19,Rez.JsonData.ConfigOptions20,Rez.JsonData.ConfigOptions21,Rez.JsonData.ConfigOptions22,Rez.JsonData.ConfigOptions23,Rez.JsonData.ConfigOptions24,Rez.JsonData.ConfigOptions25,Rez.JsonData.ConfigOptions26,Rez.JsonData.ConfigOptions27,Rez.JsonData.ConfigOptions28,Rez.JsonData.ConfigOptions29,Rez.JsonData.ConfigOptions30,Rez.JsonData.ConfigOptions31,Rez.JsonData.ConfigOptions32];
     (:extendedCode)
     function label(index,value) as String {switch(index){
-        case 20:return packedLabel(Rez.JsonData.ConfigLabels20,30,value);
-        case 26:return packedLabel(Rez.JsonData.ConfigLabels26,21,value);
+        case 21:return packedLabel(Rez.JsonData.ConfigLabels21,30,value);
+        case 27:return packedLabel(Rez.JsonData.ConfigLabels27,21,value);
     }var labels=choices(index);return labels[value] as String;}
     (:extendedCode)
     function packedLabel(id as ResourceId,count,value) as String {var text=WatchUi.loadResource(id) as String;var width=(text.length()/count).toNumber();return text.substring(value*width,(value+1)*width); }

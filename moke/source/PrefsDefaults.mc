@@ -1,6 +1,7 @@
 // Small validated defaults: no full settings map is loaded while rendering.
 module PrefsDefaults {
     function value(key) { switch(key) {
+        case "colorTheme":return 1;
         case "dataSize":return 1;
         case "timeSize":return 1;
         case "secondsSize":return 1;
@@ -37,6 +38,7 @@ module PrefsDefaults {
             case "ringStart":return 3;
             case "timeSeparator":case "circleBackground":case "chartMinutes":case "heartRefresh":case "analogHandMode":return 2;
             case "secondsMode":return 3;
+            case "colorTheme":return 5;
             case "topCardImage":case "bottomCardImage":return 20;
             case "timeFormat":case "temperatureUnit":case "distanceUnit":case "altitudeUnit":case "powerProfile":case "heartSource":return 1;
         }

@@ -1,5 +1,6 @@
 """Whole-face resource preview for weather, battery and date refinements."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import importlib.util,json,re
 from PIL import Image,ImageDraw,ImageFont,ImageChops
 
@@ -36,8 +37,8 @@ if __name__=='__main__':
     assert ImageChops.difference(before.crop((0,64,176,176)),after.crop((0,64,176,176))).getbbox() is None
     before.save(out/'before-dark.png');after.save(out/'after-dark.png');render(True,False).save(out/'after-light.png')
     board=Image.new('RGB',(800,530),'#202320');d=ImageDraw.Draw(board)
-    title=ImageFont.truetype('/System/Library/Fonts/STHeiti Medium.ttc',21,index=1)
-    text=ImageFont.truetype('/System/Library/Fonts/STHeiti Medium.ttc',16,index=1)
+    title=ciq_env.cjk_font(21)
+    text=ciq_env.cjk_font(16)
     d.text((32,16),'天气 · 续航 · 日期：统一细节与字形比例',font=title,fill='#f1f3ee')
     for image,x,label in [(before,32,'改前'),(after,416,'改后')]:
         d.text((x,57),label,font=text,fill='#c5cdc4');board.paste(image.resize((352,352),Image.Resampling.NEAREST),(x,87))

@@ -1,5 +1,42 @@
 [
   {
+    "id": "approachs50",
+    "name": "Approach® S50",
+    "api": "5.1.0",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 56,
+      "width": 56
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon56x56-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
     "id": "approachs60",
     "name": "Approach® S60",
     "api": "2.4.9",
@@ -16,7 +53,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 33,
@@ -26,7 +69,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "approachs62",
@@ -45,7 +90,13 @@
       "circle_scale": 1.122727,
       "circle_x": 31,
       "circle_y": 31,
-      "time_scale": 1.122727
+      "time_scale": 1.122727,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 35,
@@ -55,7 +106,194 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "approachs7042mm",
+    "name": "Approach® S70 42mm",
+    "api": "5.1.0",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "approachs7047mm",
+    "name": "Approach® S70 47mm",
+    "api": "5.1.0",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 70,
+      "width": 70
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon70x70-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "approachs7243mm",
+    "name": "Approach® S72 43mm",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-416x416",
+    "geometry": {
+      "width": 416,
+      "height": 416,
+      "shape": "round",
+      "scale": 2.032727,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.639296,
+      "circle_x": 69.392248,
+      "circle_y": 55.42545,
+      "time_scale": 2.032727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-416x416-2032727-c1639296-t2032727-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "approachs7247mm",
+    "name": "Approach® S72 47mm",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon65x65-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "d2airx10",
+    "name": "D2™ Air X10",
+    "api": "5.0.0",
+    "memory": 131072,
+    "family": "round-416x416",
+    "geometry": {
+      "width": 416,
+      "height": 416,
+      "shape": "round",
+      "scale": 2.032727,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.639296,
+      "circle_x": 69.392248,
+      "circle_y": 55.42545,
+      "time_scale": 2.032727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 70,
+      "width": 70
+    },
+    "asset_key": "round-416x416-2032727-c1639296-t2032727-icon70x70-amoled",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "d2bravo",
@@ -74,7 +312,13 @@
       "circle_scale": 0.941364,
       "circle_x": 26,
       "circle_y": 26,
-      "time_scale": 0.941364
+      "time_scale": 0.941364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -84,7 +328,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "d2bravo_titanium",
@@ -103,7 +349,13 @@
       "circle_scale": 0.941364,
       "circle_x": 26,
       "circle_y": 26,
-      "time_scale": 0.941364
+      "time_scale": 0.941364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -113,7 +365,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "d2charlie",
@@ -132,7 +386,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -142,7 +402,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "d2delta",
@@ -161,7 +423,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -171,7 +439,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "d2deltapx",
@@ -190,7 +460,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -200,7 +476,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "d2deltas",
@@ -219,7 +497,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -229,7 +513,120 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "d2mach1",
+    "name": "D2™ Mach 1",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-416x416",
+    "geometry": {
+      "width": 416,
+      "height": 416,
+      "shape": "round",
+      "scale": 2.032727,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.639296,
+      "circle_x": 69.392248,
+      "circle_y": 55.42545,
+      "time_scale": 2.032727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-416x416-2032727-c1639296-t2032727-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "d2mach2",
+    "name": "D2™ Mach 2",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon65x65-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "d2mach2pro",
+    "name": "D2™ Mach 2 Pro",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon65x65-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "descentg1",
@@ -248,7 +645,13 @@
       "circle_scale": 1.0,
       "circle_x": 0.0,
       "circle_y": 0.0,
-      "time_scale": 1.0
+      "time_scale": 1.0,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 62,
@@ -258,7 +661,46 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": false,
+    "amoled": false
+  },
+  {
+    "id": "descentg2",
+    "name": "Descent™ G2",
+    "api": "5.1.0",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "descentmk1",
@@ -277,7 +719,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -287,7 +735,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "descentmk2",
@@ -299,24 +749,32 @@
       "width": 280,
       "height": 280,
       "shape": "round",
-      "scale": 1.209091,
-      "x": 34,
-      "y": 34,
+      "scale": 1.368182,
+      "x": 20,
+      "y": 20,
       "analog": false,
-      "circle_scale": 1.209091,
-      "circle_x": 34,
-      "circle_y": 34,
-      "time_scale": 1.209091
+      "circle_scale": 1.103373,
+      "circle_x": 47.18704,
+      "circle_y": 37.786353,
+      "time_scale": 1.368182,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "asset_key": "round-280x280-1368182-c1103373-t1368182-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "descentmk2s",
@@ -328,24 +786,106 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "descentmk343mm",
+    "name": "Descent™ Mk3 43mm / Mk3i 43mm",
+    "api": "5.1.0",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "descentmk351mm",
+    "name": "Descent™ Mk3i 51mm",
+    "api": "5.1.0",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "enduro",
@@ -357,24 +897,32 @@
       "width": 280,
       "height": 280,
       "shape": "round",
-      "scale": 1.209091,
-      "x": 34,
-      "y": 34,
+      "scale": 1.368182,
+      "x": 20,
+      "y": 20,
       "analog": false,
-      "circle_scale": 1.209091,
-      "circle_x": 34,
-      "circle_y": 34,
-      "time_scale": 1.209091
+      "circle_scale": 1.103373,
+      "circle_x": 47.18704,
+      "circle_y": 37.786353,
+      "time_scale": 1.368182,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "asset_key": "round-280x280-1368182-c1103373-t1368182-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "enduro3",
@@ -386,24 +934,32 @@
       "width": 280,
       "height": 280,
       "shape": "round",
-      "scale": 1.209091,
-      "x": 34,
-      "y": 34,
+      "scale": 1.368182,
+      "x": 20,
+      "y": 20,
       "analog": false,
-      "circle_scale": 1.209091,
-      "circle_x": 34,
-      "circle_y": 34,
-      "time_scale": 1.209091
+      "circle_scale": 1.103373,
+      "circle_x": 47.18704,
+      "circle_y": 37.786353,
+      "time_scale": 1.368182,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "asset_key": "round-280x280-1368182-c1103373-t1368182-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "enduro4",
@@ -415,24 +971,32 @@
       "width": 280,
       "height": 280,
       "shape": "round",
-      "scale": 1.209091,
-      "x": 34,
-      "y": 34,
+      "scale": 1.368182,
+      "x": 20,
+      "y": 20,
       "analog": false,
-      "circle_scale": 1.209091,
-      "circle_x": 34,
-      "circle_y": 34,
-      "time_scale": 1.209091
+      "circle_scale": 1.103373,
+      "circle_x": 47.18704,
+      "circle_y": 37.786353,
+      "time_scale": 1.368182,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "asset_key": "round-280x280-1368182-c1103373-t1368182-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "epix",
@@ -451,7 +1015,13 @@
       "circle_scale": 0.795455,
       "circle_x": 32,
       "circle_y": 4,
-      "time_scale": 0.795455
+      "time_scale": 0.795455,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -461,7 +1031,157 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "epix2",
+    "name": "epix™ (Gen 2) / quatix® 7 Sapphire",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-416x416",
+    "geometry": {
+      "width": 416,
+      "height": 416,
+      "shape": "round",
+      "scale": 2.032727,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.639296,
+      "circle_x": 69.392248,
+      "circle_y": 55.42545,
+      "time_scale": 2.032727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-416x416-2032727-c1639296-t2032727-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "epix2pro42mm",
+    "name": "epix™ Pro (Gen 2) 42mm",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "epix2pro47mm",
+    "name": "epix™ Pro (Gen 2) 47mm / quatix® 7 Pro",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-416x416",
+    "geometry": {
+      "width": 416,
+      "height": 416,
+      "shape": "round",
+      "scale": 2.032727,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.639296,
+      "circle_x": 69.392248,
+      "circle_y": 55.42545,
+      "time_scale": 2.032727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-416x416-2032727-c1639296-t2032727-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "epix2pro51mm",
+    "name": "epix™ Pro (Gen 2) 51mm / D2™ Mach 1 Pro / tactix® 7 – AMOLED Edition",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "fenix3",
@@ -480,7 +1200,13 @@
       "circle_scale": 0.941364,
       "circle_x": 26,
       "circle_y": 26,
-      "time_scale": 0.941364
+      "time_scale": 0.941364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -490,7 +1216,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix3_hr",
@@ -509,7 +1237,13 @@
       "circle_scale": 0.941364,
       "circle_x": 26,
       "circle_y": 26,
-      "time_scale": 0.941364
+      "time_scale": 0.941364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -519,7 +1253,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix5",
@@ -538,7 +1274,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -548,7 +1290,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix5plus",
@@ -567,7 +1311,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -577,7 +1327,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix5s",
@@ -596,7 +1348,13 @@
       "circle_scale": 0.941364,
       "circle_x": 26,
       "circle_y": 26,
-      "time_scale": 0.941364
+      "time_scale": 0.941364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 36,
@@ -606,7 +1364,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix5splus",
@@ -625,7 +1385,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -635,7 +1401,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix5x",
@@ -654,7 +1422,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -664,7 +1438,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix5xplus",
@@ -683,7 +1459,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -693,7 +1475,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix6",
@@ -705,24 +1489,32 @@
       "width": 260,
       "height": 260,
       "shape": "round",
-      "scale": 1.122727,
-      "x": 31,
-      "y": 31,
+      "scale": 1.270455,
+      "x": 18,
+      "y": 18,
       "analog": false,
-      "circle_scale": 1.122727,
-      "circle_x": 31,
-      "circle_y": 31,
-      "time_scale": 1.122727
+      "circle_scale": 1.02456,
+      "circle_x": 43.24524,
+      "circle_y": 34.51593,
+      "time_scale": 1.270455,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "asset_key": "round-260x260-1270455-c1024560-t1270455-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix6pro",
@@ -734,24 +1526,32 @@
       "width": 260,
       "height": 260,
       "shape": "round",
-      "scale": 1.122727,
-      "x": 31,
-      "y": 31,
+      "scale": 1.270455,
+      "x": 18,
+      "y": 18,
       "analog": false,
-      "circle_scale": 1.122727,
-      "circle_x": 31,
-      "circle_y": 31,
-      "time_scale": 1.122727
+      "circle_scale": 1.02456,
+      "circle_x": 43.24524,
+      "circle_y": 34.51593,
+      "time_scale": 1.270455,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "asset_key": "round-260x260-1270455-c1024560-t1270455-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix6s",
@@ -763,24 +1563,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix6spro",
@@ -792,24 +1600,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix6xpro",
@@ -821,24 +1637,32 @@
       "width": 280,
       "height": 280,
       "shape": "round",
-      "scale": 1.209091,
-      "x": 34,
-      "y": 34,
+      "scale": 1.368182,
+      "x": 20,
+      "y": 20,
       "analog": false,
-      "circle_scale": 1.209091,
-      "circle_x": 34,
-      "circle_y": 34,
-      "time_scale": 1.209091
+      "circle_scale": 1.103373,
+      "circle_x": 47.18704,
+      "circle_y": 37.786353,
+      "time_scale": 1.368182,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "asset_key": "round-280x280-1368182-c1103373-t1368182-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix7",
@@ -850,24 +1674,32 @@
       "width": 260,
       "height": 260,
       "shape": "round",
-      "scale": 1.122727,
-      "x": 31,
-      "y": 31,
+      "scale": 1.270455,
+      "x": 18,
+      "y": 18,
       "analog": false,
-      "circle_scale": 1.122727,
-      "circle_x": 31,
-      "circle_y": 31,
-      "time_scale": 1.122727
+      "circle_scale": 1.02456,
+      "circle_x": 43.24524,
+      "circle_y": 34.51593,
+      "time_scale": 1.270455,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "asset_key": "round-260x260-1270455-c1024560-t1270455-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix7pro",
@@ -879,24 +1711,32 @@
       "width": 260,
       "height": 260,
       "shape": "round",
-      "scale": 1.122727,
-      "x": 31,
-      "y": 31,
+      "scale": 1.270455,
+      "x": 18,
+      "y": 18,
       "analog": false,
-      "circle_scale": 1.122727,
-      "circle_x": 31,
-      "circle_y": 31,
-      "time_scale": 1.122727
+      "circle_scale": 1.02456,
+      "circle_x": 43.24524,
+      "circle_y": 34.51593,
+      "time_scale": 1.270455,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "asset_key": "round-260x260-1270455-c1024560-t1270455-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix7pronowifi",
@@ -908,24 +1748,32 @@
       "width": 260,
       "height": 260,
       "shape": "round",
-      "scale": 1.122727,
-      "x": 31,
-      "y": 31,
+      "scale": 1.270455,
+      "x": 18,
+      "y": 18,
       "analog": false,
-      "circle_scale": 1.122727,
-      "circle_x": 31,
-      "circle_y": 31,
-      "time_scale": 1.122727
+      "circle_scale": 1.02456,
+      "circle_x": 43.24524,
+      "circle_y": 34.51593,
+      "time_scale": 1.270455,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "asset_key": "round-260x260-1270455-c1024560-t1270455-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix7s",
@@ -937,24 +1785,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix7spro",
@@ -966,24 +1822,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix7x",
@@ -995,24 +1859,32 @@
       "width": 280,
       "height": 280,
       "shape": "round",
-      "scale": 1.209091,
-      "x": 34,
-      "y": 34,
+      "scale": 1.368182,
+      "x": 20,
+      "y": 20,
       "analog": false,
-      "circle_scale": 1.209091,
-      "circle_x": 34,
-      "circle_y": 34,
-      "time_scale": 1.209091
+      "circle_scale": 1.103373,
+      "circle_x": 47.18704,
+      "circle_y": 37.786353,
+      "time_scale": 1.368182,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "asset_key": "round-280x280-1368182-c1103373-t1368182-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix7xpro",
@@ -1024,24 +1896,32 @@
       "width": 280,
       "height": 280,
       "shape": "round",
-      "scale": 1.209091,
-      "x": 34,
-      "y": 34,
+      "scale": 1.368182,
+      "x": 20,
+      "y": 20,
       "analog": false,
-      "circle_scale": 1.209091,
-      "circle_x": 34,
-      "circle_y": 34,
-      "time_scale": 1.209091
+      "circle_scale": 1.103373,
+      "circle_x": 47.18704,
+      "circle_y": 37.786353,
+      "time_scale": 1.368182,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "asset_key": "round-280x280-1368182-c1103373-t1368182-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix7xpronowifi",
@@ -1053,24 +1933,143 @@
       "width": 280,
       "height": 280,
       "shape": "round",
-      "scale": 1.209091,
-      "x": 34,
-      "y": 34,
+      "scale": 1.368182,
+      "x": 20,
+      "y": 20,
       "analog": false,
-      "circle_scale": 1.209091,
-      "circle_x": 34,
-      "circle_y": 34,
-      "time_scale": 1.209091
+      "circle_scale": 1.103373,
+      "circle_x": 47.18704,
+      "circle_y": 37.786353,
+      "time_scale": 1.368182,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "asset_key": "round-280x280-1368182-c1103373-t1368182-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "fenix843mm",
+    "name": "fēnix® 8 43mm",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-416x416",
+    "geometry": {
+      "width": 416,
+      "height": 416,
+      "shape": "round",
+      "scale": 2.032727,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.639296,
+      "circle_x": 69.392248,
+      "circle_y": 55.42545,
+      "time_scale": 2.032727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-416x416-2032727-c1639296-t2032727-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "fenix847mm",
+    "name": "fēnix® 8 47mm / 51mm / tactix® 8 47mm / 51mm / quatix® 8 47mm / 51mm",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon65x65-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "fenix8pro47mm",
+    "name": "fēnix® 8 Pro 47mm / 51mm / MicroLED / quatix® 8 Pro 47mm / 51mm",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon65x65-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "fenix8solar47mm",
@@ -1082,24 +2081,32 @@
       "width": 260,
       "height": 260,
       "shape": "round",
-      "scale": 1.122727,
-      "x": 31,
-      "y": 31,
+      "scale": 1.270455,
+      "x": 18,
+      "y": 18,
       "analog": false,
-      "circle_scale": 1.122727,
-      "circle_x": 31,
-      "circle_y": 31,
-      "time_scale": 1.122727
+      "circle_scale": 1.02456,
+      "circle_x": 43.24524,
+      "circle_y": 34.51593,
+      "time_scale": 1.270455,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "asset_key": "round-260x260-1270455-c1024560-t1270455-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix8solar51mm",
@@ -1111,24 +2118,217 @@
       "width": 280,
       "height": 280,
       "shape": "round",
-      "scale": 1.209091,
-      "x": 34,
-      "y": 34,
+      "scale": 1.368182,
+      "x": 20,
+      "y": 20,
       "analog": false,
-      "circle_scale": 1.209091,
-      "circle_x": 34,
-      "circle_y": 34,
-      "time_scale": 1.209091
+      "circle_scale": 1.103373,
+      "circle_x": 47.18704,
+      "circle_y": 37.786353,
+      "time_scale": 1.368182,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "asset_key": "round-280x280-1368182-c1103373-t1368182-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "fenix943mm",
+    "name": "fēnix® 9 43mm",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-416x416",
+    "geometry": {
+      "width": 416,
+      "height": 416,
+      "shape": "round",
+      "scale": 2.032727,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.639296,
+      "circle_x": 69.392248,
+      "circle_y": 55.42545,
+      "time_scale": 2.032727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-416x416-2032727-c1639296-t2032727-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "fenix947mm",
+    "name": "fēnix® 9 47mm / 51mm",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon65x65-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "fenix9pro43mm",
+    "name": "fēnix® 9 Pro 43mm",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-416x416",
+    "geometry": {
+      "width": 416,
+      "height": 416,
+      "shape": "round",
+      "scale": 2.032727,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.639296,
+      "circle_x": 69.392248,
+      "circle_y": 55.42545,
+      "time_scale": 2.032727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-416x416-2032727-c1639296-t2032727-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "fenix9pro47mm",
+    "name": "fēnix® 9 Pro 47mm",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon65x65-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "fenix9pro51mm",
+    "name": "fēnix® 9 Pro 51mm",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-466x466",
+    "geometry": {
+      "width": 466,
+      "height": 466,
+      "shape": "round",
+      "scale": 2.277045,
+      "x": 33,
+      "y": 33,
+      "analog": false,
+      "circle_scale": 1.836327,
+      "circle_x": 78.247032,
+      "circle_y": 62.601573,
+      "time_scale": 2.277045,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-466x466-2277045-c1836327-t2277045-icon65x65-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "fenix9prosolar47mm",
@@ -1140,24 +2340,32 @@
       "width": 260,
       "height": 260,
       "shape": "round",
-      "scale": 1.122727,
-      "x": 31,
-      "y": 31,
+      "scale": 1.270455,
+      "x": 18,
+      "y": 18,
       "analog": false,
-      "circle_scale": 1.122727,
-      "circle_x": 31,
-      "circle_y": 31,
-      "time_scale": 1.122727
+      "circle_scale": 1.02456,
+      "circle_x": 43.24524,
+      "circle_y": 34.51593,
+      "time_scale": 1.270455,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "asset_key": "round-260x260-1270455-c1024560-t1270455-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenix9prosolar51mm",
@@ -1169,24 +2377,32 @@
       "width": 280,
       "height": 280,
       "shape": "round",
-      "scale": 1.209091,
-      "x": 34,
-      "y": 34,
+      "scale": 1.368182,
+      "x": 20,
+      "y": 20,
       "analog": false,
-      "circle_scale": 1.209091,
-      "circle_x": 34,
-      "circle_y": 34,
-      "time_scale": 1.209091
+      "circle_scale": 1.103373,
+      "circle_x": 47.18704,
+      "circle_y": 37.786353,
+      "time_scale": 1.368182,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-280x280-1209091-c1209091-t1209091-icon40x40",
+    "asset_key": "round-280x280-1368182-c1103373-t1368182-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fenixchronos",
@@ -1205,7 +2421,13 @@
       "circle_scale": 0.941364,
       "circle_x": 26,
       "circle_y": 26,
-      "time_scale": 0.941364
+      "time_scale": 0.941364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 36,
@@ -1215,7 +2437,194 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "fenixe",
+    "name": "fēnix® E",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-416x416",
+    "geometry": {
+      "width": 416,
+      "height": 416,
+      "shape": "round",
+      "scale": 2.032727,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.639296,
+      "circle_x": 69.392248,
+      "circle_y": 55.42545,
+      "time_scale": 2.032727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-416x416-2032727-c1639296-t2032727-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "fr165",
+    "name": "Forerunner® 165",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 54,
+      "width": 54
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon54x54-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "fr165m",
+    "name": "Forerunner® 165 Music",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 54,
+      "width": 54
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon54x54-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "fr170",
+    "name": "Forerunner® 170",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 54,
+      "width": 54
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon54x54-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "fr170m",
+    "name": "Forerunner® 170 Music",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 54,
+      "width": 54
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon54x54-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "fr230",
@@ -1234,7 +2643,13 @@
       "circle_scale": 0.777273,
       "circle_x": 39,
       "circle_y": 22,
-      "time_scale": 0.777273
+      "time_scale": 0.777273,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -1244,7 +2659,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr235",
@@ -1263,7 +2680,13 @@
       "circle_scale": 0.777273,
       "circle_x": 39,
       "circle_y": 22,
-      "time_scale": 0.777273
+      "time_scale": 0.777273,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -1273,7 +2696,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr245",
@@ -1285,24 +2710,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr245m",
@@ -1314,24 +2747,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr255",
@@ -1343,24 +2784,32 @@
       "width": 260,
       "height": 260,
       "shape": "round",
-      "scale": 1.122727,
-      "x": 31,
-      "y": 31,
+      "scale": 1.270455,
+      "x": 18,
+      "y": 18,
       "analog": false,
-      "circle_scale": 1.122727,
-      "circle_x": 31,
-      "circle_y": 31,
-      "time_scale": 1.122727
+      "circle_scale": 1.02456,
+      "circle_x": 43.24524,
+      "circle_y": 34.51593,
+      "time_scale": 1.270455,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "asset_key": "round-260x260-1270455-c1024560-t1270455-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr255m",
@@ -1372,24 +2821,32 @@
       "width": 260,
       "height": 260,
       "shape": "round",
-      "scale": 1.122727,
-      "x": 31,
-      "y": 31,
+      "scale": 1.270455,
+      "x": 18,
+      "y": 18,
       "analog": false,
-      "circle_scale": 1.122727,
-      "circle_x": 31,
-      "circle_y": 31,
-      "time_scale": 1.122727
+      "circle_scale": 1.02456,
+      "circle_x": 43.24524,
+      "circle_y": 34.51593,
+      "time_scale": 1.270455,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "asset_key": "round-260x260-1270455-c1024560-t1270455-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr255s",
@@ -1401,24 +2858,32 @@
       "width": 218,
       "height": 218,
       "shape": "round",
-      "scale": 0.941364,
-      "x": 26,
-      "y": 26,
+      "scale": 1.065227,
+      "x": 15,
+      "y": 15,
       "analog": false,
-      "circle_scale": 0.941364,
-      "circle_x": 26,
-      "circle_y": 26,
-      "time_scale": 0.941364
+      "circle_scale": 0.859054,
+      "circle_x": 36.167096,
+      "circle_y": 28.847952,
+      "time_scale": 1.065227,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-218x218-941364-c941364-t941364-icon40x40",
+    "asset_key": "round-218x218-1065227-c859054-t1065227-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr255sm",
@@ -1430,24 +2895,106 @@
       "width": 218,
       "height": 218,
       "shape": "round",
-      "scale": 0.941364,
-      "x": 26,
-      "y": 26,
+      "scale": 1.065227,
+      "x": 15,
+      "y": 15,
       "analog": false,
-      "circle_scale": 0.941364,
-      "circle_x": 26,
-      "circle_y": 26,
-      "time_scale": 0.941364
+      "circle_scale": 0.859054,
+      "circle_x": 36.167096,
+      "circle_y": 28.847952,
+      "time_scale": 1.065227,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-218x218-941364-c941364-t941364-icon40x40",
+    "asset_key": "round-218x218-1065227-c859054-t1065227-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "fr265",
+    "name": "Forerunner® 265",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-416x416",
+    "geometry": {
+      "width": 416,
+      "height": 416,
+      "shape": "round",
+      "scale": 2.032727,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.639296,
+      "circle_x": 69.392248,
+      "circle_y": 55.42545,
+      "time_scale": 2.032727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-416x416-2032727-c1639296-t2032727-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "fr265s",
+    "name": "Forerunner® 265s",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-360x360",
+    "geometry": {
+      "width": 360,
+      "height": 360,
+      "shape": "round",
+      "scale": 1.759091,
+      "x": 25,
+      "y": 25,
+      "analog": false,
+      "circle_scale": 1.418622,
+      "circle_x": 59.954808,
+      "circle_y": 47.868176,
+      "time_scale": 1.759091,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-360x360-1759091-c1418622-t1759091-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "fr45",
@@ -1466,7 +3013,13 @@
       "circle_scale": 0.898182,
       "circle_x": 25,
       "circle_y": 25,
-      "time_scale": 0.898182
+      "time_scale": 0.898182,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 65,
@@ -1476,7 +3029,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr55",
@@ -1488,24 +3043,106 @@
       "width": 208,
       "height": 208,
       "shape": "round",
-      "scale": 0.898182,
-      "x": 25,
-      "y": 25,
+      "scale": 1.016364,
+      "x": 15,
+      "y": 15,
       "analog": false,
-      "circle_scale": 0.898182,
-      "circle_x": 25,
-      "circle_y": 25,
-      "time_scale": 0.898182
+      "circle_scale": 0.819648,
+      "circle_x": 35.196192,
+      "circle_y": 28.212744,
+      "time_scale": 1.016364,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 35,
       "width": 35
     },
-    "asset_key": "round-208x208-898182-c898182-t898182-icon35x35",
+    "asset_key": "round-208x208-1016364-c819648-t1016364-icon35x35",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "fr57042mm",
+    "name": "Forerunner® 570 42mm",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 54,
+      "width": 54
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon54x54-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "fr57047mm",
+    "name": "Forerunner® 570 47mm",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon65x65-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "fr630",
@@ -1524,7 +3161,13 @@
       "circle_scale": 0.777273,
       "circle_x": 39,
       "circle_y": 22,
-      "time_scale": 0.777273
+      "time_scale": 0.777273,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -1534,7 +3177,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr645",
@@ -1553,7 +3198,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -1563,7 +3214,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr645m",
@@ -1582,7 +3235,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -1592,7 +3251,46 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "fr70",
+    "name": "Forerunner® 70",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 54,
+      "width": 54
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon54x54-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "fr735xt",
@@ -1611,7 +3309,13 @@
       "circle_scale": 0.777273,
       "circle_x": 39,
       "circle_y": 22,
-      "time_scale": 0.777273
+      "time_scale": 0.777273,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -1621,7 +3325,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr745",
@@ -1633,24 +3339,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr920xt",
@@ -1669,7 +3383,13 @@
       "circle_scale": 0.795455,
       "circle_x": 32,
       "circle_y": 4,
-      "time_scale": 0.795455
+      "time_scale": 0.795455,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 65,
@@ -1679,7 +3399,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr935",
@@ -1698,7 +3420,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 40,
@@ -1708,7 +3436,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr945",
@@ -1720,24 +3450,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr945lte",
@@ -1749,24 +3487,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "fr955",
@@ -1778,24 +3524,106 @@
       "width": 260,
       "height": 260,
       "shape": "round",
-      "scale": 1.122727,
-      "x": 31,
-      "y": 31,
+      "scale": 1.270455,
+      "x": 18,
+      "y": 18,
       "analog": false,
-      "circle_scale": 1.122727,
-      "circle_x": 31,
-      "circle_y": 31,
-      "time_scale": 1.122727
+      "circle_scale": 1.02456,
+      "circle_x": 43.24524,
+      "circle_y": 34.51593,
+      "time_scale": 1.270455,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon40x40",
+    "asset_key": "round-260x260-1270455-c1024560-t1270455-icon40x40",
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "fr965",
+    "name": "Forerunner® 965",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon65x65-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "fr970",
+    "name": "Forerunner® 970",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon65x65-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "garminswim2",
@@ -1814,7 +3642,13 @@
       "circle_scale": 0.898182,
       "circle_x": 25,
       "circle_y": 25,
-      "time_scale": 0.898182
+      "time_scale": 0.898182,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 65,
@@ -1824,7 +3658,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "instinct2",
@@ -1843,7 +3679,13 @@
       "circle_scale": 1.0,
       "circle_x": 0.0,
       "circle_y": 0.0,
-      "time_scale": 1.0
+      "time_scale": 1.0,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 62,
@@ -1853,7 +3695,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": false,
+    "amoled": false
   },
   {
     "id": "instinct2s",
@@ -1872,7 +3716,13 @@
       "circle_scale": 0.870968,
       "circle_x": 9.580608,
       "circle_y": -8e-06,
-      "time_scale": 0.886364
+      "time_scale": 0.886364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 54,
@@ -1882,7 +3732,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": false,
+    "amoled": false
   },
   {
     "id": "instinct2x",
@@ -1901,7 +3753,13 @@
       "circle_scale": 1.0,
       "circle_x": 0.0,
       "circle_y": 0.0,
-      "time_scale": 1.0
+      "time_scale": 1.0,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 62,
@@ -1911,11 +3769,87 @@
     "paging": false,
     "mode": "完整",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": false,
+    "amoled": false
+  },
+  {
+    "id": "instinct3amoled45mm",
+    "name": "Instinct® 3 AMOLED 45mm",
+    "api": "6.0.2",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.684091,
+      "x": 47,
+      "y": 47,
+      "analog": false,
+      "circle_scale": 1.580645,
+      "circle_x": 74.38712,
+      "circle_y": 48.000005,
+      "time_scale": 1.684091,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-390x390-1684091-c1580645-t1684091-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "instinct3amoled50mm",
+    "name": "Instinct® 3 AMOLED 50mm",
+    "api": "6.0.2",
+    "memory": 131072,
+    "family": "round-416x416",
+    "geometry": {
+      "width": 416,
+      "height": 416,
+      "shape": "round",
+      "scale": 1.796364,
+      "x": 50,
+      "y": 50,
+      "analog": false,
+      "circle_scale": 1.580645,
+      "circle_x": 94.38712,
+      "circle_y": 55.000005,
+      "time_scale": 1.796364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-416x416-1796364-c1580645-t1796364-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "instinct3solar45mm",
-    "name": "Instinct® 3 Solar 45mm / 50mm",
+    "name": "Instinct® 3 Solar / Solar Tactical 45mm / 50mm",
     "api": "6.0.2",
     "memory": 65536,
     "family": "semioctagon-176x176",
@@ -1930,7 +3864,13 @@
       "circle_scale": 1.0,
       "circle_x": 0.0,
       "circle_y": 0.0,
-      "time_scale": 1.0
+      "time_scale": 1.0,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 62,
@@ -1940,7 +3880,9 @@
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": false,
+    "amoled": false
   },
   {
     "id": "instinctcrossover",
@@ -1959,7 +3901,13 @@
       "circle_scale": 0.76,
       "circle_x": 21,
       "circle_y": 21,
-      "time_scale": 0.6992
+      "time_scale": 0.6992,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 26,
@@ -1969,7 +3917,46 @@
     "paging": false,
     "mode": "完整",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": false,
+    "amoled": false
+  },
+  {
+    "id": "instinctcrossoveramoled",
+    "name": "Instinct® Crossover AMOLED",
+    "api": "6.0.2",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.684091,
+      "x": 47,
+      "y": 47,
+      "analog": true,
+      "circle_scale": 1.684091,
+      "circle_x": 47,
+      "circle_y": 47,
+      "time_scale": 1.549364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
+    },
+    "icon": {
+      "height": 38,
+      "width": 38
+    },
+    "asset_key": "round-390x390-1684091-c1684091-t1549364-icon38x38-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "instincte40mm",
@@ -1988,7 +3975,13 @@
       "circle_scale": 0.83871,
       "circle_x": 18.22576,
       "circle_y": -1e-05,
-      "time_scale": 0.943182
+      "time_scale": 0.943182,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 52,
@@ -1998,7 +3991,9 @@
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": false,
+    "amoled": false
   },
   {
     "id": "instincte45mm",
@@ -2017,7 +4012,13 @@
       "circle_scale": 1.0,
       "circle_x": 0.0,
       "circle_y": 0.0,
-      "time_scale": 1.0
+      "time_scale": 1.0,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 62,
@@ -2027,7 +4028,9 @@
     "paging": true,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": false,
+    "amoled": false
   },
   {
     "id": "legacyherocaptainmarvel",
@@ -2039,24 +4042,32 @@
       "width": 218,
       "height": 218,
       "shape": "round",
-      "scale": 0.941364,
-      "x": 26,
-      "y": 26,
+      "scale": 1.065227,
+      "x": 15,
+      "y": 15,
       "analog": false,
-      "circle_scale": 0.941364,
-      "circle_x": 26,
-      "circle_y": 26,
-      "time_scale": 0.941364
+      "circle_scale": 0.859054,
+      "circle_x": 36.167096,
+      "circle_y": 28.847952,
+      "time_scale": 1.065227,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 30,
       "width": 30
     },
-    "asset_key": "round-218x218-941364-c941364-t941364-icon30x30",
+    "asset_key": "round-218x218-1065227-c859054-t1065227-icon30x30",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "legacyherofirstavenger",
@@ -2068,24 +4079,32 @@
       "width": 260,
       "height": 260,
       "shape": "round",
-      "scale": 1.122727,
-      "x": 31,
-      "y": 31,
+      "scale": 1.270455,
+      "x": 18,
+      "y": 18,
       "analog": false,
-      "circle_scale": 1.122727,
-      "circle_x": 31,
-      "circle_y": 31,
-      "time_scale": 1.122727
+      "circle_scale": 1.02456,
+      "circle_x": 43.24524,
+      "circle_y": 34.51593,
+      "time_scale": 1.270455,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 35,
       "width": 35
     },
-    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon35x35",
+    "asset_key": "round-260x260-1270455-c1024560-t1270455-icon35x35",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "legacysagadarthvader",
@@ -2097,24 +4116,32 @@
       "width": 260,
       "height": 260,
       "shape": "round",
-      "scale": 1.122727,
-      "x": 31,
-      "y": 31,
+      "scale": 1.270455,
+      "x": 18,
+      "y": 18,
       "analog": false,
-      "circle_scale": 1.122727,
-      "circle_x": 31,
-      "circle_y": 31,
-      "time_scale": 1.122727
+      "circle_scale": 1.02456,
+      "circle_x": 43.24524,
+      "circle_y": 34.51593,
+      "time_scale": 1.270455,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 35,
       "width": 35
     },
-    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon35x35",
+    "asset_key": "round-260x260-1270455-c1024560-t1270455-icon35x35",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "legacysagarey",
@@ -2126,24 +4153,143 @@
       "width": 218,
       "height": 218,
       "shape": "round",
-      "scale": 0.941364,
-      "x": 26,
-      "y": 26,
+      "scale": 1.065227,
+      "x": 15,
+      "y": 15,
       "analog": false,
-      "circle_scale": 0.941364,
-      "circle_x": 26,
-      "circle_y": 26,
-      "time_scale": 0.941364
+      "circle_scale": 0.859054,
+      "circle_x": 36.167096,
+      "circle_y": 28.847952,
+      "time_scale": 1.065227,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 30,
       "width": 30
     },
-    "asset_key": "round-218x218-941364-c941364-t941364-icon30x30",
+    "asset_key": "round-218x218-1065227-c859054-t1065227-icon30x30",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "marq2",
+    "name": "MARQ® (Gen 2) Athlete / Adventurer / Captain / Golfer / Carbon Edition / Commander - Carbon Edition",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "marq2aviator",
+    "name": "MARQ® (Gen 2) Aviator",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon60x60-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "marq3",
+    "name": "MARQ® (Gen 3) Athlete / Adventurer / Aviator / Commander / Golfer / Diver",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon65x65-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "marqadventurer",
@@ -2155,24 +4301,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "marqathlete",
@@ -2184,24 +4338,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "marqaviator",
@@ -2213,24 +4375,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "marqcaptain",
@@ -2242,24 +4412,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "marqcommander",
@@ -2271,24 +4449,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "marqdriver",
@@ -2300,24 +4486,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "marqexpedition",
@@ -2329,24 +4523,32 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "marqgolfer",
@@ -2358,24 +4560,513 @@
       "width": 240,
       "height": 240,
       "shape": "round",
-      "scale": 1.036364,
-      "x": 29,
-      "y": 29,
+      "scale": 1.172727,
+      "x": 17,
+      "y": 17,
       "analog": false,
-      "circle_scale": 1.036364,
-      "circle_x": 29,
-      "circle_y": 29,
-      "time_scale": 1.036364
+      "circle_scale": 0.945748,
+      "circle_x": 40.30316,
+      "circle_y": 32.245438,
+      "time_scale": 1.172727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 40,
       "width": 40
     },
-    "asset_key": "round-240x240-1036364-c1036364-t1036364-icon40x40",
+    "asset_key": "round-240x240-1172727-c945748-t1172727-icon40x40",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "venu",
+    "name": "Venu®",
+    "api": "3.3.1",
+    "memory": 524288,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 60,
+      "width": 60
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon60x60-amoled",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "venu2",
+    "name": "Venu® 2",
+    "api": "5.0.0",
+    "memory": 131072,
+    "family": "round-416x416",
+    "geometry": {
+      "width": 416,
+      "height": 416,
+      "shape": "round",
+      "scale": 2.032727,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.639296,
+      "circle_x": 69.392248,
+      "circle_y": 55.42545,
+      "time_scale": 2.032727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 70,
+      "width": 70
+    },
+    "asset_key": "round-416x416-2032727-c1639296-t2032727-icon70x70-amoled",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "venu2plus",
+    "name": "Venu® 2 Plus",
+    "api": "5.0.0",
+    "memory": 131072,
+    "family": "round-416x416",
+    "geometry": {
+      "width": 416,
+      "height": 416,
+      "shape": "round",
+      "scale": 2.032727,
+      "x": 29,
+      "y": 29,
+      "analog": false,
+      "circle_scale": 1.639296,
+      "circle_x": 69.392248,
+      "circle_y": 55.42545,
+      "time_scale": 2.032727,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 70,
+      "width": 70
+    },
+    "asset_key": "round-416x416-2032727-c1639296-t2032727-icon70x70-amoled",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "venu2s",
+    "name": "Venu® 2S",
+    "api": "5.0.0",
+    "memory": 131072,
+    "family": "round-360x360",
+    "geometry": {
+      "width": 360,
+      "height": 360,
+      "shape": "round",
+      "scale": 1.759091,
+      "x": 25,
+      "y": 25,
+      "analog": false,
+      "circle_scale": 1.418622,
+      "circle_x": 59.954808,
+      "circle_y": 47.868176,
+      "time_scale": 1.759091,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 61,
+      "width": 61
+    },
+    "asset_key": "round-360x360-1759091-c1418622-t1759091-icon61x61-amoled",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "venu3",
+    "name": "Venu® 3",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 70,
+      "width": 70
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon70x70-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "venu3s",
+    "name": "Venu® 3S",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 70,
+      "width": 70
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon70x70-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "venu441mm",
+    "name": "Venu® 4 41mm",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 54,
+      "width": 54
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon54x54-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "venu445mm",
+    "name": "Venu® 4 45mm / D2™ Air X15",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-454x454",
+    "geometry": {
+      "width": 454,
+      "height": 454,
+      "shape": "round",
+      "scale": 2.218409,
+      "x": 32,
+      "y": 32,
+      "analog": false,
+      "circle_scale": 1.78904,
+      "circle_x": 76.081864,
+      "circle_y": 60.839302,
+      "time_scale": 2.218409,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "round-454x454-2218409-c1789040-t2218409-icon65x65-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "venusq",
+    "name": "Venu® Sq",
+    "api": "3.3.1",
+    "memory": 98304,
+    "family": "rectangle-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "rectangle",
+      "scale": 1.318182,
+      "x": 4,
+      "y": 4,
+      "analog": false,
+      "circle_scale": 1.318182,
+      "circle_x": 4,
+      "circle_y": 4,
+      "time_scale": 1.318182,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
+    },
+    "icon": {
+      "height": 36,
+      "width": 36
+    },
+    "asset_key": "rectangle-240x240-1318182-c1318182-t1318182-icon36x36",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "venusq2",
+    "name": "Venu® Sq 2",
+    "api": "5.0.0",
+    "memory": 131072,
+    "family": "rectangle-320x360",
+    "geometry": {
+      "width": 320,
+      "height": 360,
+      "shape": "rectangle",
+      "scale": 1.772727,
+      "x": 4,
+      "y": 24,
+      "analog": false,
+      "circle_scale": 1.772727,
+      "circle_x": 4,
+      "circle_y": 24,
+      "time_scale": 1.772727,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "rectangle-320x360-1772727-c1772727-t1772727-icon40x40-amoled",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "venusq2m",
+    "name": "Venu® Sq 2 Music",
+    "api": "5.0.0",
+    "memory": 131072,
+    "family": "rectangle-320x360",
+    "geometry": {
+      "width": 320,
+      "height": 360,
+      "shape": "rectangle",
+      "scale": 1.772727,
+      "x": 4,
+      "y": 24,
+      "analog": false,
+      "circle_scale": 1.772727,
+      "circle_x": 4,
+      "circle_y": 24,
+      "time_scale": 1.772727,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
+    },
+    "icon": {
+      "height": 40,
+      "width": 40
+    },
+    "asset_key": "rectangle-320x360-1772727-c1772727-t1772727-icon40x40-amoled",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "venusqm",
+    "name": "Venu® Sq. Music Edition",
+    "api": "3.3.6",
+    "memory": 524288,
+    "family": "rectangle-240x240",
+    "geometry": {
+      "width": 240,
+      "height": 240,
+      "shape": "rectangle",
+      "scale": 1.318182,
+      "x": 4,
+      "y": 4,
+      "analog": false,
+      "circle_scale": 1.318182,
+      "circle_x": 4,
+      "circle_y": 4,
+      "time_scale": 1.318182,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
+    },
+    "icon": {
+      "height": 36,
+      "width": 36
+    },
+    "asset_key": "rectangle-240x240-1318182-c1318182-t1318182-icon36x36",
+    "paging": false,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "venux1",
+    "name": "Venu® X1",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "rectangle-448x486",
+    "geometry": {
+      "width": 448,
+      "height": 486,
+      "shape": "rectangle",
+      "scale": 2.5,
+      "x": 4,
+      "y": 23,
+      "analog": false,
+      "circle_scale": 2.5,
+      "circle_x": 4,
+      "circle_y": 23,
+      "time_scale": 2.5,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
+    },
+    "icon": {
+      "height": 65,
+      "width": 65
+    },
+    "asset_key": "rectangle-448x486-2500000-c2500000-t2500000-icon65x65-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "vivoactive",
@@ -2394,7 +5085,13 @@
       "circle_scale": 0.795455,
       "circle_x": 32,
       "circle_y": 4,
-      "time_scale": 0.795455
+      "time_scale": 0.795455,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 43,
@@ -2404,7 +5101,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "vivoactive3",
@@ -2423,7 +5122,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 33,
@@ -2433,7 +5138,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "vivoactive3d",
@@ -2452,7 +5159,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 33,
@@ -2462,7 +5175,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "vivoactive3m",
@@ -2481,7 +5196,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 33,
@@ -2491,7 +5212,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "vivoactive3mlte",
@@ -2510,7 +5233,13 @@
       "circle_scale": 1.036364,
       "circle_x": 29,
       "circle_y": 29,
-      "time_scale": 1.036364
+      "time_scale": 1.036364,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 33,
@@ -2520,7 +5249,9 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "vivoactive4",
@@ -2532,24 +5263,32 @@
       "width": 260,
       "height": 260,
       "shape": "round",
-      "scale": 1.122727,
-      "x": 31,
-      "y": 31,
+      "scale": 1.270455,
+      "x": 18,
+      "y": 18,
       "analog": false,
-      "circle_scale": 1.122727,
-      "circle_x": 31,
-      "circle_y": 31,
-      "time_scale": 1.122727
+      "circle_scale": 1.02456,
+      "circle_x": 43.24524,
+      "circle_y": 34.51593,
+      "time_scale": 1.270455,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 35,
       "width": 35
     },
-    "asset_key": "round-260x260-1122727-c1122727-t1122727-icon35x35",
+    "asset_key": "round-260x260-1270455-c1024560-t1270455-icon35x35",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
   },
   {
     "id": "vivoactive4s",
@@ -2561,24 +5300,106 @@
       "width": 218,
       "height": 218,
       "shape": "round",
-      "scale": 0.941364,
-      "x": 26,
-      "y": 26,
+      "scale": 1.065227,
+      "x": 15,
+      "y": 15,
       "analog": false,
-      "circle_scale": 0.941364,
-      "circle_x": 26,
-      "circle_y": 26,
-      "time_scale": 0.941364
+      "circle_scale": 0.859054,
+      "circle_x": 36.167096,
+      "circle_y": 28.847952,
+      "time_scale": 1.065227,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
     },
     "icon": {
       "height": 30,
       "width": 30
     },
-    "asset_key": "round-218x218-941364-c941364-t941364-icon30x30",
+    "asset_key": "round-218x218-1065227-c859054-t1065227-icon30x30",
     "paging": false,
     "mode": "完整",
     "renderer": "modern",
-    "on_watch_settings": true
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": false
+  },
+  {
+    "id": "vivoactive5",
+    "name": "vívoactive® 5",
+    "api": "5.2.0",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 56,
+      "width": 56
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon56x56-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
+  },
+  {
+    "id": "vivoactive6",
+    "name": "vívoactive® 6",
+    "api": "6.0.3",
+    "memory": 131072,
+    "family": "round-390x390",
+    "geometry": {
+      "width": 390,
+      "height": 390,
+      "shape": "round",
+      "scale": 1.905682,
+      "x": 27,
+      "y": 27,
+      "analog": false,
+      "circle_scale": 1.53684,
+      "circle_x": 64.867792,
+      "circle_y": 51.773876,
+      "time_scale": 1.905682,
+      "weather_shift": 8,
+      "upper_shift": 6,
+      "footer_left_width": 56,
+      "footer_right_x": 88,
+      "footer_right_width": 56,
+      "lower_right_width": 60
+    },
+    "icon": {
+      "height": 54,
+      "width": 54
+    },
+    "asset_key": "round-390x390-1905682-c1536840-t1905682-icon54x54-amoled",
+    "paging": true,
+    "mode": "完整",
+    "renderer": "modern",
+    "on_watch_settings": true,
+    "color": true,
+    "amoled": true
   },
   {
     "id": "vivoactive_hr",
@@ -2597,7 +5418,13 @@
       "circle_scale": 0.795455,
       "circle_x": 4,
       "circle_y": 32,
-      "time_scale": 0.795455
+      "time_scale": 0.795455,
+      "weather_shift": 0,
+      "upper_shift": 0,
+      "footer_left_width": 64,
+      "footer_right_x": 98,
+      "footer_right_width": 58,
+      "lower_right_width": 68
     },
     "icon": {
       "height": 33,
@@ -2607,6 +5434,8 @@
     "paging": false,
     "mode": "轻量兼容",
     "renderer": "legacy",
-    "on_watch_settings": false
+    "on_watch_settings": false,
+    "color": true,
+    "amoled": false
   }
 ]
