@@ -12,6 +12,28 @@ PACKS=ciq_env.DEVICES
 DEVICES=json.loads((ROOT/'config/devices.json').read_text())
 FONT=ROOT/'assets/fonts/Rajdhani-SemiBold.ttf'
 
+def skyless(scene,w,h,amoled):
+    """The mountain with a transparent sky: the face paints the sky, sun, Moon
+    and stars for the real time and weather behind it. Rendered once on a black
+    and once on a white sky; pixels that change are sky (or a blended edge)."""
+    from PIL import ImageChops
+    if scene==3:
+        from everest_art import render as everest
+        draw=lambda sky: everest(w,h,2,False,amoled,0,skyfill=sky)
+    else:
+        draw=lambda sky: mountain_art.render_colour(scene,w,h,amoled,sky=sky)
+    a=draw((0,0,0)).convert('RGB');b=draw((255,255,255)).convert('RGB')
+    mask=ImageChops.difference(a,b).convert('L').point(lambda v:255 if v<24 else 0)
+    if amoled:
+        # 15 (Everest 11) flat colours plus the transparent sky: 4 bits per pixel.
+        counts={}
+        for px,m in zip(a.getdata(),mask.getdata()):
+            if m:counts[px]=counts.get(px,0)+1
+        base=a.copy();base.paste(max(counts,key=counts.get),(0,0,w,h),ImageChops.invert(mask))
+        a=base.quantize(15 if scene<3 else 11,method=Image.Quantize.MEDIANCUT,dither=Image.Dither.NONE).convert('RGB')
+    out=a.convert('RGBA');out.putalpha(mask)
+    return out
+
 def generate():
     from panels import generate as generate_panels
     from festivals import generate as generate_festivals
@@ -40,19 +62,22 @@ def generate():
         for scene in range(len(mountain_art.NAMES)):
             filename=f'mountain-{scene}.png'
             if not reuse:
-                if scene==3:
-                    from everest_art import render
-                    image=render(w,h,2,mono,amoled,0)
-                else:image=mountain_art.render(scene,w,h,mono,amoled)
-                if amoled:
-                    # An explicit opaque 16-colour palette (4 bits per pixel) keeps four
-                    # backgrounds inside the 100,000-byte binary; the art is flat planes.
-                    image=image.convert('RGB').quantize(16 if scene<3 else 12,method=Image.Quantize.MEDIANCUT,dither=Image.Dither.NONE)
+                if mono:
+                    # 1-bit art stays opaque (a transparent slot would double it in the
+                    # 64 KB Instinct 2 heap); the face draws the sky objects over the sky.
+                    if scene==3:
+                        from everest_art import render
+                        image=render(w,h,2,mono,amoled,0)
+                    else:image=mountain_art.render(scene,w,h,mono,amoled)
+                else:image=skyless(scene,w,h,amoled)
                 image.save(icons/filename,optimize=True)
             palette=''
             if amoled:
-                colors=sorted(set(Image.open(icons/filename).convert('RGB').getdata()))
-                palette='<palette disableTransparency="true">'+''.join('<color>'+''.join(f'{v:02X}' for v in color)+'</color>' for color in colors)+'</palette>'
+                # An explicit palette (opaque colours + transparency) keeps four
+                # backgrounds inside the 100,000-byte binary; the art is flat planes.
+                image=Image.open(icons/filename).convert('RGBA')
+                colors=sorted(set(px[:3] for px in image.getdata() if px[3]))
+                palette='<palette disableTransparency="false">'+''.join('<color>'+''.join(f'{v:02X}' for v in color)+'</color>' for color in colors)+'</palette>'
             entries.append(f'<bitmap id="Mountain{scene}" filename="{filename}" dithering="none" compress="true"'+(' automaticPalette="false"' if amoled else '')+'>'+palette+'</bitmap>')
         (icons/'drawables.xml').write_text('<drawables><bitmap id="LauncherIcon" filename="icon.svg"/>'+''.join(entries)+'</drawables>')
         (out/'LandscapeArt.mc').write_text('module LandscapeArt {function id(key){switch(key){case 1:return Rez.Drawables.Mountain1;case 2:return Rez.Drawables.Mountain2;case 3:return Rez.Drawables.Mountain3;}return Rez.Drawables.Mountain0;}}\n')
