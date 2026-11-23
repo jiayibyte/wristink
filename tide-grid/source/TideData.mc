@@ -30,26 +30,44 @@ class TideData {
         haveLocation = false;
     }
 
+    // The closest catalogue port, however far: a fresh install shows tides
+    // straight away instead of asking for a port. The face names the port, and
+    // TidePlace still pins a specific one. (0,0) is what an unknown position
+    // looks like, not a place.
     function nearest(lat, lon) {
-        if (lat == null || lon == null || lat < -90 || lat > 90 || lon < -180 || lon > 180) { return null; }
-        var scale = Math.cos(lat * DEGREES);
-        // Close-range equirectangular distance. 0.55 degrees is about 61 km.
-        var bestDistance = .55*.55;
+        if (lat == null || lon == null || lat < -90 || lat > 90 || lon < -180 || lon > 180 || (lat == 0 && lon == 0)) { return null; }
+        var sinLat = Math.sin(lat * DEGREES);
+        var cosLat = Math.cos(lat * DEGREES);
+        // Largest cosine of the central angle = shortest great-circle distance.
+        var best = -2.0;
         var nearestPort = null;
         for (var i=0; i<TideCatalog.PORTS.size(); i++) {
             var port = TideCatalog.port(i);
-            var dy = port[1]-lat;
-            var dx = port[2]-lon;
-            if (dx > 180) { dx -= 360; }
-            if (dx < -180) { dx += 360; }
-            dx *= scale;
-            var distance = dx*dx+dy*dy;
-            if (distance < bestDistance) {
-                bestDistance = distance;
+            var portLat = port[1] * DEGREES;
+            var closeness = sinLat*Math.sin(portLat) + cosLat*Math.cos(portLat)*Math.cos((port[2]-lon) * DEGREES);
+            if (closeness > best) {
+                best = closeness;
                 nearestPort = port;
             }
         }
         return nearestPort;
+    }
+
+    // The watch's last fix (no GPS start), else the weather station's position.
+    function currentPosition(now) as Array? {
+        var fix = Position.getInfo();
+        if (fix != null && fix.position != null && fix.accuracy != null && fix.accuracy > Position.QUALITY_NOT_AVAILABLE) {
+            var coords = fix.position.toDegrees();
+            if (nearest(coords[0], coords[1]) != null) { return coords; }
+        }
+        var wx = Weather.getCurrentConditions();
+        if (wx == null || !(wx has :observationLocationPosition) ||
+            wx.observationLocationPosition == null || wx.observationTime == null) {
+            return null;
+        }
+        var age = now-wx.observationTime.value();
+        if (age < 0 || age > 21600) { return null; }
+        return wx.observationLocationPosition.toDegrees();
     }
 
     // Station records are parsed on demand, so compare them by name.
@@ -57,21 +75,11 @@ class TideData {
         return a == null ? b == null : b != null && a[0].equals(b[0]);
     }
 
-    function weatherPort(now) {
-        var wx = Weather.getCurrentConditions();
-        if (wx == null || !(wx has :observationLocationPosition) ||
-            wx.observationLocationPosition == null || wx.observationTime == null) {
-            haveLocation = false;
-            return null;
-        }
-        var age = now-wx.observationTime.value();
-        if (age < 0 || age > 21600) {
-            haveLocation = false;
-            return null;
-        }
-        var coords = wx.observationLocationPosition.toDegrees();
-        haveLocation = true;
-        return nearest(coords[0], coords[1]);
+    function locatedPort(now) {
+        var coords = currentPosition(now);
+        var port = coords == null ? null : nearest(coords[0], coords[1]);
+        haveLocation = port != null;
+        return port;
     }
 
     function update(now) {
@@ -79,7 +87,7 @@ class TideData {
         var changed = false;
         if (selection == 0 && (locationAt < 0 || now < locationAt || now-locationAt >= 900)) {
             locationAt = now;
-            var match = weatherPort(now);
+            var match = locatedPort(now);
             if (!samePort(match, station)) {
                 station = match;
                 portPosition = null;
