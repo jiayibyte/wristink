@@ -64,7 +64,17 @@ class SignalFace extends WatchUi.WatchFace {
     }
 
     function setting(key, last, fallback) {
-        var value = Application.Properties.getValue(key);
+        var value = null;
+        try { value = Application.Properties.getValue(key); } catch (e) {}
+        return choice(value, last, fallback);
+    }
+
+    // Garmin Connect / the store may return a choice as Long, Float or a
+    // numeric String. Rejecting those silently restored the default.
+    function choice(value, last, fallback) {
+        if (value instanceof Long || value instanceof Float || value instanceof Double || value instanceof String) {
+            value = value.toNumber();
+        }
         return value instanceof Number && value >= 0 && value <= last ? value : fallback;
     }
 

@@ -8,12 +8,15 @@ import Toybox.Time.Gregorian;
 import Toybox.WatchUi;
 
 class RetroWorldApp extends Application.AppBase {
+    var _view;
     function initialize() { AppBase.initialize(); }
-    function getInitialView() {var view=new RetroWorldView();return [view,new RetroWorldDelegate(view)];}
+    function getInitialView() {_view=new RetroWorldView();return [_view,new RetroWorldDelegate(_view)];}
     function onSettingsChanged() {
         FaceSettings.load();SolarMap._slot=-1;Environment._readAt=-1;Environment._sunDay=-1;
-        var views=WatchUi.getCurrentView();
-        var view=views[0];if(view instanceof RetroWorldView) {view.settingsChanged();}
+        // WatchUi.getCurrentView() needs API 3.4. On Instinct 2/2S, Descent G1,
+        // Forerunner 245/745/945 and Venu (API 3.2-3.3) it was a Symbol Not
+        // Found crash, so changes from the phone never reached the dial.
+        if(_view!=null) {_view.settingsChanged();}
         WatchUi.requestUpdate();
     }
 }

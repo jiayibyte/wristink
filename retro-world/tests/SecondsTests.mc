@@ -117,7 +117,9 @@ function settingsControlTimeFieldsAndValidatePersistedValues(logger) {
     FaceSettings.timeFormat=0;Test.assert(FaceSettings.is24(true));Test.assert(!FaceSettings.is24(false));
     Test.assertEqual(FaceSettings.bounded(null,3,0,14),3);
     Test.assertEqual(FaceSettings.bounded(99,3,0,14),3);
-    Test.assertEqual(FaceSettings.bounded("1",3,0,14),3);
+    // A numeric String from the phone is that number; anything else falls back.
+    Test.assertEqual(FaceSettings.bounded("1",3,0,14),1);
+    Test.assertEqual(FaceSettings.bounded("one",3,0,14),3);
     Test.assertEqual(FaceSettings.bounded(0,3,0,14),0);
     Test.assertEqual(DataFields.text(0,false),"");
     var old=LiveData.altitude;LiveData.altitude=-42;Test.assertEqual(DataFields.value(5),"-42M");LiveData.altitude=old;

@@ -50,8 +50,32 @@ module Preferences {
         return value < COUNT || value == fallback ? value : fallback;
     }
 
+    // Garmin Connect / the store may return a choice as Long, Float or a
+    // numeric String, and a switch as 0/1 or "true". Rejecting those silently
+    // restored the default. An undeclared key throws.
+    function raw(key) {
+        try { return Application.Properties.getValue(key); } catch (e) { return null; }
+    }
+
     function read(key, fallback, count) {
-        var value = Application.Properties.getValue(key);
+        return choice(raw(key), fallback, count);
+    }
+
+    function choice(value, fallback, count) {
+        if (value instanceof Long || value instanceof Float || value instanceof Double || value instanceof String) {
+            value = value.toNumber();
+        }
         return value instanceof Number && value >= 0 && value < count ? value : fallback;
+    }
+
+    function flag(key, fallback) {
+        return toFlag(raw(key), fallback);
+    }
+
+    function toFlag(value, fallback) {
+        if (value instanceof Boolean) { return value; }
+        if (value instanceof String) { return value.equals("true") || value.equals("1") ? true : value.equals("false") || value.equals("0") ? false : fallback; }
+        if (value instanceof Number || value instanceof Long) { return value != 0; }
+        return fallback;
     }
 }

@@ -5,11 +5,30 @@ module Settings {
     var lowBattery=20;var stressLimit=75;var left=0;var middle=1;var right=2;
     var top=11;var upperLeft=11;var upperRight=11;var panelStyle=1;var festival=0;var skyDisplay=0;
     var weatherLink=0;var skyDecor=0;var mountain=0;var timeLeft=11;
-    function number(key as String,fallback as Number,lo as Number,hi as Number) as Number {
-        var v=Application.Properties.getValue(key);
-        return v instanceof Number && v>=lo && v<=hi ? v : fallback;
+    // Values written by Garmin Connect / the Connect IQ store do not always keep
+    // the declared type: list choices can arrive as Long, Float or a numeric
+    // String, booleans as 0/1 or "true". A strict instanceof check rejected
+    // them and silently fell back to the default, so phone changes appeared
+    // to do nothing. A key missing from an older settings file throws.
+    function raw(key as String) {
+        try {return Application.Properties.getValue(key);} catch(e) {return null;}
     }
-    function flag(key as String,fallback as Boolean) as Boolean {var v=Application.Properties.getValue(key);return v instanceof Boolean ? v : fallback;}
+    function toNumber(v) {
+        if(v instanceof Number) {return v;}
+        if(v instanceof Long || v instanceof Float || v instanceof Double || v instanceof String) {return v.toNumber();}
+        if(v instanceof Boolean) {return v ? 1 : 0;}
+        return null;
+    }
+    function number(key as String,fallback as Number,lo as Number,hi as Number) as Number {
+        var v=toNumber(raw(key));
+        return v!=null && v>=lo && v<=hi ? v : fallback;
+    }
+    function flag(key as String,fallback as Boolean) as Boolean {
+        var v=raw(key);
+        if(v instanceof Boolean) {return v;}
+        if(v instanceof String) {if(v.equals("true")) {return true;}if(v.equals("false")) {return false;}}
+        var n=toNumber(v);return n==null ? fallback : n!=0;
+    }
     function legacyCircle(value as Number) as Number {return value==1 ? 4 : (value==2 ? 7 : 6);}
     function migrateSlots() {
         if(Application.Storage.getValue("DataSlotsVersion")==2) {return;}

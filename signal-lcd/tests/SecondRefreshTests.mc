@@ -1,4 +1,6 @@
+import Toybox.Application;
 import Toybox.Graphics;
+import Toybox.Lang;
 import Toybox.System;
 import Toybox.Test;
 import Toybox.Time;
@@ -192,6 +194,43 @@ function valuesShortenOnlyWhenNeeded(logger) {
     Test.assertEqual(data.text(Field.STEPS,settings,-1,true),"8.6K");
     Test.assertEqual(data.text(Field.CALORIES,settings,-1,false),"12.9K");
     Test.assertEqual(data.text(Field.CALORIES,settings,-1,true),"13K");
+    return true;
+}
+
+(:test)
+function phoneSettingsAcceptLooseTypes(logger) {
+    // Values from Garmin Connect may not keep the declared Number type.
+    var face = new SignalFace();
+    Test.assertEqual(face.choice(3,13,1),3);
+    Test.assertEqual(face.choice(3l,13,1),3);
+    Test.assertEqual(face.choice(3.0,13,1),3);
+    Test.assertEqual(face.choice("3",13,1),3);
+    Test.assertEqual(face.choice("x",13,1),1);
+    Test.assertEqual(face.choice(null,13,1),1);
+    Test.assertEqual(face.choice(14,13,1),1);
+    return true;
+}
+
+(:test)
+function phoneSettingsChangeReachesTheFace(logger) {
+    var app = Application.getApp() as SignalApp;
+    var face = new SignalFace();
+    app._face = face;
+    var keys = ["Typeface","DateStyle","Gauge"];
+    var old = [];
+    for (var i = 0; i < keys.size(); i++) { old.add(Application.Properties.getValue(keys[i])); }
+    Application.Properties.setValue("Typeface",2);
+    Application.Properties.setValue("DateStyle",3);
+    Application.Properties.setValue("Gauge",GaugeMode.DAY);
+    face._paintedMinute = 1;
+    app.onSettingsChanged();
+    Test.assertEqual(face._type,2);
+    Test.assertEqual(face._date,3);
+    Test.assertEqual(face._gauge,GaugeMode.DAY);
+    // The next frame is a full redraw, not a seconds-only repaint.
+    Test.assertEqual(face._paintedMinute,-1);
+    for (var i = 0; i < keys.size(); i++) { Application.Properties.setValue(keys[i],old[i]); }
+    app._face = null;
     return true;
 }
 

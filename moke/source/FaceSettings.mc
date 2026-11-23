@@ -76,14 +76,30 @@ module FacePrefs {
         if(_solar!=false){return false;}
         _solar=null;return solar();
     }
+    // Garmin Connect / the store can return a choice as Long, Float or a
+    // numeric String and a switch as 0/1 or "true". Strict instanceof checks
+    // rejected those and quietly used the default, so phone edits seemed lost.
+    function toNumber(v) {
+        if(v instanceof Number){return v;}
+        if(v instanceof Long || v instanceof Float || v instanceof Double || v instanceof String){return v.toNumber();}
+        if(v instanceof Boolean){return v ? 1 : 0;}
+        return null;
+    }
+    function toFlag(v) {
+        if(v instanceof Boolean){return v;}
+        if(v instanceof String){if(v.equals("true")){return true;}if(v.equals("false")){return false;}}
+        var n=toNumber(v);return n==null ? null : n!=0;
+    }
     function get(key) {
         var v=null;try{v=Application.Properties.getValue(key);}catch(e){}
         var max=PrefsDefaults.max(key);
-        v=v instanceof Number && v>=0 && v<=max ? v : PrefsDefaults.value(key);
+        v=toNumber(v);
+        v=v!=null && v>=0 && v<=max ? v : PrefsDefaults.value(key);
         return v==SOLAR && max==SOLAR && !solar() ? 10 : v;
     }
     function flag(key) {
-        var v=null;try{v=Application.Properties.getValue(key);}catch(e){}return v instanceof Boolean ? v : PrefsDefaults.flag(key);
+        var v=null;try{v=Application.Properties.getValue(key);}catch(e){}
+        v=toFlag(v);return v!=null ? v : PrefsDefaults.flag(key);
     }
     (:extendedCode)
     function set(key,value) {

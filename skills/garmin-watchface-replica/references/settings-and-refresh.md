@@ -13,6 +13,13 @@
 
 参考：Retro World 的 `FaceSettings.mc`、`DataFields.mc`、`tools/settings.py`、`tools/check_settings_package.py`；Moke 的资源生成器与 `scripts/check-iq-package.py`。这些是可复用代码，不是固定要求必须具有21项或94项设置。
 
+### 手机/商店改设置后“不生效”（2026-11 五款表盘排查）
+
+- **`onSettingsChanged` 里不能用超出最低 API 的调用。** Retro World 曾在其中调用 `WatchUi.getCurrentView()`（API 3.4）。FR245/745/945、Venu、Venu Sq、vívoactive 4 和 Legacy 系列的所有固件都停在 3.3.x，手机一改设置就报 `Symbol Not Found`，新设置不会落到表盘上。编译器对此不报警告；模拟器只跑该型号的最新固件，Instinct 2 这类“只有区域变体低于 3.4”的机型也测不出来，必须拿**所有变体都低于该 API** 的机型（如 fr945）跑测试。改法是在 `getInitialView` 里保存视图引用。
+- **读设置不要只认声明的类型。** 读取值统一转换：`Long`、`Float`、`Double` 和数字 `String` 转为 Number，`"true"`、`"false"` 和 0/1 转为 Boolean。非法值和越界值回退到默认值。用 try/catch 包住 `Properties.getValue`，读取未在 properties.xml 声明的键会抛 `InvalidKeyException`。严格的 `instanceof Number` 一旦遇到别的类型，就会把用户的改动无声退回默认值。
+- **生成的设置资源要与提交版本一致。** 山境曾经只更新了 `tools/settings.py`，没有重新生成并提交 properties.xml、settings.xml 和 `SlotCatalog.mc`。商店包是重新生成过的，所以没出问题；但直接用仓库编译时，代码读取不存在的 `TimeLeft` 键，表盘启动即崩。每次改设置定义都要连生成物一起提交。
+- 每款表盘至少要有一条“设置变更”测试：`setValue` 后调用 `Application.getApp().onSettingsChanged()`，断言新值已经进入表盘状态，并且下一帧会整帧重画。
+
 ## 刷新状态和功耗
 
 Garmin 系统决定抬腕高功耗窗口，不能通过表盘计时器保证“抬着腕就永久高功耗”。在支持局部更新的 MIP 设备上，用 `onPartialUpdate` 实现持续秒；AMOLED 的低亮 AOD 单独处理，不把 MIP 策略直接移植。

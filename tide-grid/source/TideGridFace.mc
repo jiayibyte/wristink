@@ -16,12 +16,12 @@ class TideGridFace extends WatchUi.WatchFace {
     // background, dial, border, main ink, quiet ink, accent, secondary accent
     private var palette as Array<Number> = new Number[7];
     private var style = -1;
-    private var chartMode;
-    private var clockFormat;
+    var chartMode;
+    var clockFormat;
     private var instrument;
     private var timeFont;
     private var secondsFont;
-    private var awakeSeconds;
+    var awakeSeconds;
     private var lastSecond = -1;
     private var sleeping = false;
     private var renderedMinute = -1;
@@ -86,7 +86,7 @@ class TideGridFace extends WatchUi.WatchFace {
             if (metric < Preferences.COUNT) { enabled[metric] = true; }
         }
         awakeSeconds = slots[Preferences.SECONDS_SLOT] == Preferences.AWAKE_SECONDS &&
-                       Application.Properties.getValue("WristSeconds") != false;
+                       Preferences.flag("WristSeconds", true);
         tides.reset(chartMode == 1 || enabled[Preferences.HIGH] || enabled[Preferences.LOW] ||
                     enabled[Preferences.HIGH_LEVEL] || enabled[Preferences.LOW_LEVEL]);
         readings.invalidate();

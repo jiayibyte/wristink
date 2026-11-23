@@ -91,6 +91,45 @@ function paletteCarriesOnlyThisScreenFamily(logger) {
 }
 
 (:test)
+function phoneSettingsAcceptLooseTypes(logger) {
+    // Values from Garmin Connect may not keep the declared Number / Boolean type.
+    Test.assertEqual(Preferences.choice(2, 0, 6), 2);
+    Test.assertEqual(Preferences.choice(2l, 0, 6), 2);
+    Test.assertEqual(Preferences.choice(2.0, 0, 6), 2);
+    Test.assertEqual(Preferences.choice("2", 0, 6), 2);
+    Test.assertEqual(Preferences.choice("x", 0, 6), 0);
+    Test.assertEqual(Preferences.choice(6, 0, 6), 0);
+    Test.assertEqual(Preferences.toFlag(false, true), false);
+    Test.assertEqual(Preferences.toFlag("false", true), false);
+    Test.assertEqual(Preferences.toFlag(0, true), false);
+    Test.assertEqual(Preferences.toFlag(null, true), true);
+    Test.assertEqual(Preferences.read("NoSuchKey", 4, 6), 4);
+    return true;
+}
+
+(:test)
+function phoneSettingsChangeReachesTheFace(logger) {
+    var app = Application.getApp() as TideGridApp;
+    var face = new TideGridFace();
+    app.face = face;
+    Application.Properties.setValue("Chart", 3);
+    Application.Properties.setValue("ClockFormat", 2);
+    Application.Properties.setValue("WristSeconds", false);
+    app.onSettingsChanged();
+    Test.assertEqual(face.chartMode, 3);
+    Test.assertEqual(face.clockFormat, 2);
+    Test.assertEqual(face.awakeSeconds, false);
+    Application.Properties.setValue("Chart", 1);
+    Application.Properties.setValue("ClockFormat", 0);
+    Application.Properties.setValue("WristSeconds", true);
+    app.onSettingsChanged();
+    Test.assertEqual(face.chartMode, 1);
+    Test.assertEqual(face.awakeSeconds, true);
+    app.face = null;
+    return true;
+}
+
+(:test)
 function chartRangesKeepZeroAndMissingDataDistinct(logger) {
     var chart = new Chart();
     chart.samples = [null, -4, 0, 6] as Array<Numeric or Null>;

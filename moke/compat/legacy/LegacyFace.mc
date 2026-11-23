@@ -22,8 +22,10 @@ module FacePrefs {
     }
     function read(key){try{return Application.getApp().getProperty(key);}catch(e){return null;}}
     function raw(key){var index=LegacyPrefsIndex.index(key);if(_cache!=null && index!=null){return _cache[index];}return read(key);}
-    function get(key){var value=raw(key);return value instanceof Number && value>=0 && value<=PrefsDefaults.max(key) ? value : PrefsDefaults.value(key);}
-    function flag(key){var value=raw(key);return value instanceof Boolean ? value : PrefsDefaults.flag(key);}
+    // Phone edits may come back as Long, Float or numeric String: accept them.
+    function toNumber(v){if(v instanceof Number){return v;}if(v instanceof Long || v instanceof Float || v instanceof Double || v instanceof String){return v.toNumber();}if(v instanceof Boolean){return v ? 1 : 0;}return null;}
+    function get(key){var value=toNumber(raw(key));return value!=null && value>=0 && value<=PrefsDefaults.max(key) ? value : PrefsDefaults.value(key);}
+    function flag(key){var value=raw(key);if(value instanceof Boolean){return value;}if(value instanceof String){if(value.equals("true")){return true;}if(value.equals("false")){return false;}}value=toNumber(value);return value!=null ? value!=0 : PrefsDefaults.flag(key);}
     function fontFamily(key){var n=get(key+"Font");return n==0 ? get("dataFont") : n-1;}
     function fontSize(key){var n=get(key+"Size");return n==0 ? get("dataSize") : n-1;}
 }
