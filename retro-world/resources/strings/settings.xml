@@ -13,6 +13,13 @@
   <string id="ShowDateTitle">Date and weekday</string>
   <string id="ShowMapTitle">World map</string>
   <string id="ShowMarkerTitle">Map location marker</string>
+  <string id="ColorThemeTitle">Colour theme (colour screens)</string>
+  <string id="ColorThemeOption0">Classic</string>
+  <string id="ColorThemeOption1">Amber</string>
+  <string id="ColorThemeOption2">Glacier</string>
+  <string id="ColorThemeOption3">Mint</string>
+  <string id="ColorThemeOption4">Night glow</string>
+  <string id="ColorThemeOption5">Sakura</string>
   <string id="MapSkinTitle">Map style</string>
   <string id="MapSkinOptionN1">Automatic / weather</string>
   <string id="MapSkinOption0">Style 01</string>

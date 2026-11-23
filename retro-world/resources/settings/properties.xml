@@ -8,6 +8,7 @@
   <property id="ShowDate" type="boolean">true</property>
   <property id="ShowMap" type="boolean">true</property>
   <property id="ShowMarker" type="boolean">true</property>
+  <property id="ColorTheme" type="number">0</property>
   <property id="MapSkin" type="number">-1</property>
   <property id="Field1" type="number">1</property>
   <property id="Field2" type="number">2</property>

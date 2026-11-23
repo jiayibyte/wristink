@@ -14,6 +14,13 @@
   <string id="ShowDateTitle">日期与星期</string>
   <string id="ShowMapTitle">世界地图</string>
   <string id="ShowMarkerTitle">地图定位点</string>
+  <string id="ColorThemeTitle">配色主题（彩色屏）</string>
+  <string id="ColorThemeOption0">经典</string>
+  <string id="ColorThemeOption1">琥珀</string>
+  <string id="ColorThemeOption2">冰川</string>
+  <string id="ColorThemeOption3">薄荷</string>
+  <string id="ColorThemeOption4">夜光</string>
+  <string id="ColorThemeOption5">樱花</string>
   <string id="MapSkinTitle">地图样式</string>
   <string id="MapSkinOptionN1">自动／天气</string>
   <string id="MapSkinOption0">样式 01</string>

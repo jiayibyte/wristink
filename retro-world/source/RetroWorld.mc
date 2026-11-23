@@ -35,23 +35,25 @@ class RetroWorldView extends WatchUi.WatchFace {
     var _circleBuffer;var _secFont;var _icons;var _xs as Array<Number> = [];var _ys as Array<Number> = [];
     var _oldSecond=-1;var _lastSecond=-1;var _partialBlocked=false;
     var _partialHeartAllowed=true;var _budgetStrikes=0;
+    // API 3 monochrome watches (Instinct 2/2S, Descent G1) keep bitmaps and fonts
+    // in the 64 KB app heap. Resident, they left under 3 KB and the first frame
+    // ran out of memory. There the dial and the frame-only fonts are loaded per
+    // full frame, one after the other.
+    var _lean=false;
     var _secondWidth=13;var _secondHeight=24;var _secondY=122;var _secondTensX=132;var _secondOnesX=146;
     function initialize() {
         WatchFace.initialize();
         FaceSettings.load();Theme.load(FaceSettings.theme);
         // Colour screens draw vector panels in the theme; monochrome keeps the approved bitmap.
-        if(DeviceProfile.COLOR) {_icons=WatchUi.loadResource(Rez.Fonts.Icons);} else {_dial=WatchUi.loadResource(Rez.Drawables.Dial);}
+        _lean=!DeviceProfile.COLOR && !(Graphics has :createBufferedBitmap);
+        if(DeviceProfile.COLOR) {_icons=WatchUi.loadResource(Rez.Fonts.Icons);} else if(!_lean) {_dial=WatchUi.loadResource(Rez.Drawables.Dial);}
         if(DeviceProfile.AMOLED) {_aod=WatchUi.loadResource(Rez.Drawables.Aod);}
-        // Two-tone sprites are fonts, drawn in the theme's ink.
-        _large=WatchUi.loadResource(Rez.Fonts.Seg);
-        _date=WatchUi.loadResource(Rez.Fonts.SegDate);
-        _letters=WatchUi.loadResource(Rez.Fonts.Caps);
-        _weekdays=WatchUi.loadResource(Rez.Fonts.Days);
+        // Two-tone sprites are fonts, drawn in the theme's ink. The partial
+        // update needs the circle, seconds and data-field fonts at all times.
         _circle=WatchUi.loadResource(Rez.Fonts.Face);
-        _weather=WatchUi.loadResource(Rez.Fonts.WxIcon);
         _secFont=WatchUi.loadResource(Rez.Fonts.SegSec);
         _tiny=WatchUi.loadResource(Rez.Fonts.Tiny);_medium=WatchUi.loadResource(Rez.Fonts.Medium);
-        _weatherFont=WatchUi.loadResource(Rez.Fonts.WeatherSmall);
+        if(!_lean) {loadFrameFonts();}
         // The native default accepts the resource's transparent palette slots on MIP.
         _circleBuffer=DeviceDrawing.buffer(39,39,DeviceProfile.CIRCLE_SCALE);
         // The seconds glyphs are generated at the native device size. Do not
@@ -66,6 +68,16 @@ class RetroWorldView extends WatchUi.WatchFace {
         }
         SolarMap.initialize();
     }
+    function loadFrameFonts() {
+        if(_large!=null) {return;}
+        _large=WatchUi.loadResource(Rez.Fonts.Seg);
+        _date=WatchUi.loadResource(Rez.Fonts.SegDate);
+        _letters=WatchUi.loadResource(Rez.Fonts.Caps);
+        _weekdays=WatchUi.loadResource(Rez.Fonts.Days);
+        _weather=WatchUi.loadResource(Rez.Fonts.WxIcon);
+        _weatherFont=WatchUi.loadResource(Rez.Fonts.WeatherSmall);
+    }
+    function releaseFrameFonts() {_large=null;_date=null;_letters=null;_weekdays=null;_weather=null;_weatherFont=null;}
     function onShow() {_minute=-1;_dataMinute=-1;_environmentWake=true;_partialBlocked=false;}
     function settingsChanged() {
         _dataMinute=-1;_minute=-1;_environmentWake=true;_partialBlocked=false;_partialHeartAllowed=true;_budgetStrikes=0;
@@ -339,7 +351,12 @@ class RetroWorldView extends WatchUi.WatchFace {
         var is24=FaceSettings.is24(PreviewMode.ENABLED ? false : settings.is24Hour);
         var shown=FaceSettings.shownHour(hr,is24);
         dc.clearClip();dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();dc.setPenWidth(1);
-        if(DeviceProfile.COLOR) {panels(dc);} else {DeviceDrawing.raw(dc).drawBitmap(0,0,_dial);}
+        if(DeviceProfile.COLOR) {panels(dc);}
+        else {
+            var dial=_lean ? WatchUi.loadResource(Rez.Drawables.Dial) : _dial;
+            DeviceDrawing.raw(dc).drawBitmap(0,0,dial);dial=null;
+        }
+        if(_lean) {loadFrameFonts();}
         // Keep the original digit shapes. A 10px gutter to the left of the
         // hour pair holds stacked AM/PM; 12h single digits omit the leading 0.
         if(is24 || FaceSettings.leadingZero || shown>=10) {number(dc,_large,(shown/10).toNumber(),26,111,22,35);}
@@ -361,6 +378,7 @@ class RetroWorldView extends WatchUi.WatchFace {
         else {dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.fillRectangle(17,56,89,29);}
         buildCircle();paintCircle(dc,sec);
         if(!_sleeping || FaceSettings.continuous) {seconds(dc,sec);}
+        if(_lean) {releaseFrameFonts();}
         _minute=stamp;
         if(PreviewMode.DIAGNOSTIC && !_logged) {
             Performance.log("RETRO_FRAME_OK version=2.2.0 demo="+PreviewMode.ENABLED+" free="+System.getSystemStats().freeMemory+" hour="+hr+" minute="+mn+" month="+month+" day="+day+" weekday="+weekday+" mode24="+is24+" data="+(PreviewMode.ENABLED ? "fixture" : "garmin")+" configurable_seconds=true map_skin="+SolarMap.skin+" weather_kind="+Environment.category(Environment.condition)+" location_source="+Environment.source+" sunrise="+Environment.sunrise+" sunset="+Environment.sunset);

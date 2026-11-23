@@ -1,21 +1,21 @@
-// Generated bitmap resource lookup; only the selected two bitmaps are loaded.
+// Generated font lookup; only the selected skin (day + night glyphs) is loaded.
 module MapSkinResources {
-function get(skin,night) {switch(skin) {
-case 0:return night ? Rez.Drawables.MapSkin0Night : Rez.Drawables.MapSkin0Day;
-case 1:return night ? Rez.Drawables.MapSkin1Night : Rez.Drawables.MapSkin1Day;
-case 2:return night ? Rez.Drawables.MapSkin2Night : Rez.Drawables.MapSkin2Day;
-case 3:return night ? Rez.Drawables.MapSkin3Night : Rez.Drawables.MapSkin3Day;
-case 4:return night ? Rez.Drawables.MapSkin4Night : Rez.Drawables.MapSkin4Day;
-case 5:return night ? Rez.Drawables.MapSkin5Night : Rez.Drawables.MapSkin5Day;
-case 6:return night ? Rez.Drawables.MapSkin6Night : Rez.Drawables.MapSkin6Day;
-case 7:return night ? Rez.Drawables.MapSkin7Night : Rez.Drawables.MapSkin7Day;
-case 8:return night ? Rez.Drawables.MapSkin8Night : Rez.Drawables.MapSkin8Day;
-case 9:return night ? Rez.Drawables.MapSkin9Night : Rez.Drawables.MapSkin9Day;
-case 10:return night ? Rez.Drawables.MapSkin10Night : Rez.Drawables.MapSkin10Day;
-case 11:return night ? Rez.Drawables.MapSkin11Night : Rez.Drawables.MapSkin11Day;
-case 12:return night ? Rez.Drawables.MapSkin12Night : Rez.Drawables.MapSkin12Day;
-case 13:return night ? Rez.Drawables.MapSkin13Night : Rez.Drawables.MapSkin13Day;
-case 14:return night ? Rez.Drawables.MapSkin14Night : Rez.Drawables.MapSkin14Day;
-case 15:return night ? Rez.Drawables.MapSkin15Night : Rez.Drawables.MapSkin15Day;
-}return night ? Rez.Drawables.MapSkin0Night : Rez.Drawables.MapSkin0Day;}
+function get(skin) {switch(skin) {
+case 0:return Rez.Fonts.MapSkin0;
+case 1:return Rez.Fonts.MapSkin1;
+case 2:return Rez.Fonts.MapSkin2;
+case 3:return Rez.Fonts.MapSkin3;
+case 4:return Rez.Fonts.MapSkin4;
+case 5:return Rez.Fonts.MapSkin5;
+case 6:return Rez.Fonts.MapSkin6;
+case 7:return Rez.Fonts.MapSkin7;
+case 8:return Rez.Fonts.MapSkin8;
+case 9:return Rez.Fonts.MapSkin9;
+case 10:return Rez.Fonts.MapSkin10;
+case 11:return Rez.Fonts.MapSkin11;
+case 12:return Rez.Fonts.MapSkin12;
+case 13:return Rez.Fonts.MapSkin13;
+case 14:return Rez.Fonts.MapSkin14;
+case 15:return Rez.Fonts.MapSkin15;
+}return Rez.Fonts.MapSkin0;}
 }
