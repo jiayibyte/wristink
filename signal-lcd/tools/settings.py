@@ -35,6 +35,9 @@ FIELDS = {
 def generate(dest, overrides, name, window_default, mono=False):
     strings = ET.Element("strings")
     ET.SubElement(strings, "string", id="AppName").text = name
+    # Titles and choices are read only by the phone's settings page. Scoped
+    # strings stay out of the watch's resource table and the installed PRG.
+    scoped = {"scope": "settings"}
     properties = ET.Element("properties")
     settings = ET.Element("settings")
     options = {}
@@ -53,14 +56,14 @@ def generate(dest, overrides, name, window_default, mono=False):
         value = overrides.get(key, default)
         if value not in entries:
             raise ValueError(f"{key}={value} is outside its setting range")
-        ET.SubElement(strings, "string", id=key).text = title
+        ET.SubElement(strings, "string", id=key, **scoped).text = title
         ET.SubElement(properties, "property", id=key, type="number").text = str(value)
         setting = ET.SubElement(settings, "setting", propertyKey=f"@Properties.{key}", title=f"@Strings.{key}")
         menu = ET.SubElement(setting, "settingConfig", type="list")
         for i, label in entries.items():
             if label not in options:
                 options[label] = f"Option{len(options)}"
-                ET.SubElement(strings, "string", id=options[label]).text = label
+                ET.SubElement(strings, "string", id=options[label], **scoped).text = label
             ET.SubElement(menu, "listEntry", value=str(i)).text = f"@Strings.{options[label]}"
     for xml in (strings, properties, settings):
         ET.indent(xml)

@@ -8,51 +8,20 @@ import Toybox.Time.Gregorian;
 import Toybox.WatchUi;
 
 class TideGridFace extends WatchUi.WatchFace {
-    // background, dial, border, main ink, quiet ink, accent, secondary accent
-    const AMOLED_THEMES = [
-        [0x071518, 0x10272B, 0x28464B, 0xEDF6E8, 0x9CB9B6, 0x61E8C9, 0xF5BB71],
-        [0x190C10, 0x2F1A1C, 0x5F3433, 0xFFF1DD, 0xD0A99D, 0xFF8A69, 0xF1CC83],
-        [0x0B1421, 0x152640, 0x325071, 0xEFF5FF, 0xA1BCD7, 0x93C7FF, 0xCFB3F4],
-        [0x101710, 0x1D2A1B, 0x394D32, 0xF4F2DB, 0xAFC0A0, 0xBCE881, 0xF0CA8B],
-        [0x080B0C, 0x191E22, 0x47515A, 0xF3F5F6, 0xBDC7CE, 0xE4E9EC, 0xA8B4BE],
-        [0xF4EBD6, 0xE6DBC2, 0xB9AB8F, 0x172522, 0x425954, 0x00685E, 0x923B20],
-        [0x000000, 0x1B1103, 0x78591D, 0xFFEBC1, 0xD0AB62, 0xFFB942, 0xFFED97],
-        [0x10091E, 0x241639, 0x603780, 0xF5ECFF, 0xC4AADF, 0xB8A4FF, 0xFF84D4],
-        [0x08090C, 0x221015, 0x842A3A, 0xFFF2F3, 0xD4A0AA, 0xFF6077, 0xFFBF79],
-        [0x020900, 0x112010, 0x437133, 0xE7FFCC, 0xA9CC92, 0xC4FF4D, 0x63E4AB],
-        [0xF7E7E8, 0xF1D7DA, 0x9E6B79, 0x321723, 0x683E4E, 0x9B2D57, 0x514678],
-        [0xEAF5F8, 0xCEDFEE, 0x7792A6, 0x122837, 0x3C5767, 0x136A83, 0x593B8F]
-    ];
-    const MIP_THEMES = [
-        [0x000000, 0x005555, 0x00AAAA, 0xFFFFFF, 0xAAAAAA, 0x55FFFF, 0xFFAA00],
-        [0x000000, 0x550000, 0xAA5500, 0xFFFFAA, 0xAAAAAA, 0xFFAA55, 0xFFFF00],
-        [0x000000, 0x000055, 0x0055AA, 0xFFFFFF, 0xAAAAAA, 0x55FFFF, 0xAAAAFF],
-        [0x000000, 0x005500, 0x55AA00, 0xFFFFAA, 0xAAAAAA, 0xAAFF55, 0xFFAA55],
-        [0x000000, 0x000000, 0x555555, 0xFFFFFF, 0xAAAAAA, 0xFFFFFF, 0xAAAAAA],
-        [0xFFFFAA, 0xFFAAAA, 0xAA5555, 0x000000, 0x555555, 0x005555, 0xAA0000],
-        [0x000000, 0x555500, 0xAA5500, 0xFFFFAA, 0xFFAA55, 0xFFAA00, 0xFFFF55],
-        [0x000000, 0x550055, 0xAA55AA, 0xFFFFFF, 0xFFAAFF, 0xAAAAFF, 0xFF55FF],
-        [0x000000, 0x550000, 0xAA0000, 0xFFFFFF, 0xFFAAAA, 0xFF5555, 0xFFAA55],
-        [0x000000, 0x005500, 0x55AA00, 0xFFFFAA, 0xAAFFAA, 0xAAFF00, 0x55FFAA],
-        [0xFFAAFF, 0xFFAAAA, 0xAA55AA, 0x550000, 0x550055, 0xAA0055, 0x5500AA],
-        [0xAAFFFF, 0xAAAAFF, 0x5555AA, 0x000055, 0x005555, 0x0055AA, 0x5500AA]
-    ];
-    const MONO_DARK = [0x000000, 0x000000, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF];
-    const MONO_LIGHT = [0xFFFFFF, 0xFFFFFF, 0x000000, 0x000000, 0x000000, 0x000000, 0x000000];
-
     private var slots as Array<Number> = new Number[13];
     private var enabled as Array<Boolean> = new Boolean[Preferences.COUNT];
     private var chart as Chart;
     private var tides;
     private var readings as Readings;
-    private var palette as Array<Number> = MONO_DARK;
+    // background, dial, border, main ink, quiet ink, accent, secondary accent
+    private var palette as Array<Number> = new Number[7];
     private var style = -1;
-    private var chartMode;
-    private var clockFormat;
+    var chartMode;
+    var clockFormat;
     private var instrument;
     private var timeFont;
     private var secondsFont;
-    private var awakeSeconds;
+    var awakeSeconds;
     private var lastSecond = -1;
     private var sleeping = false;
     private var renderedMinute = -1;
@@ -75,22 +44,33 @@ class TideGridFace extends WatchUi.WatchFace {
         drawEnabled = false;
     }
 
+    // The system does not redraw on these transitions by itself. Without a
+    // request, MIP keeps the last awake second for up to a minute and AMOLED
+    // keeps the full-brightness dial until the next minute instead of its
+    // always-on frame.
     function onEnterSleep() as Void {
         sleeping = true;
-        drawEnabled = false;
+        if (Panel.AMOLED) { drawEnabled = false; }
+        if (Panel.AMOLED || awakeSeconds) { WatchUi.requestUpdate(); }
     }
 
     function onExitSleep() as Void {
         sleeping = false;
-        drawEnabled = false;
+        // AMOLED leaves the always-on frame; MIP only needs the seconds box,
+        // the rest of the dial is current to the minute already.
+        if (Panel.AMOLED) { drawEnabled = false; }
+        if (Panel.AMOLED || awakeSeconds) { WatchUi.requestUpdate(); }
     }
 
     function reloadSettings() {
-        var theme = Preferences.read("Theme", Panel.MONO || Panel.LOW_COLOR ? 4 : 0, AMOLED_THEMES.size());
-        if (Panel.MONO || Panel.LOW_COLOR) {
-            palette = theme == 5 ? MONO_LIGHT : MONO_DARK;
-        } else {
-            palette = Panel.AMOLED ? AMOLED_THEMES[theme] : MIP_THEMES[theme];
+        var mono = Panel.MONO || Panel.LOW_COLOR;
+        var theme = Preferences.read("Theme", mono ? 4 : 0, 12);
+        // Panel.PALETTE holds only this screen family's themes, seven
+        // six-digit hex colors per theme. Ink (4) and Paper (5) on mono.
+        var row = mono ? (theme == 5 ? 1 : 0) : theme;
+        for (var i = 0; i < 7; i++) {
+            var at = (row*7+i)*6;
+            palette[i] = Panel.PALETTE.substring(at, at+6).toNumberWithBase(16) as Number;
         }
         var chosen = Preferences.read("TimeFont", 1, 3);
         if (style != chosen) {
@@ -106,7 +86,7 @@ class TideGridFace extends WatchUi.WatchFace {
             if (metric < Preferences.COUNT) { enabled[metric] = true; }
         }
         awakeSeconds = slots[Preferences.SECONDS_SLOT] == Preferences.AWAKE_SECONDS &&
-                       Application.Properties.getValue("WristSeconds") != false;
+                       Preferences.flag("WristSeconds", true);
         tides.reset(chartMode == 1 || enabled[Preferences.HIGH] || enabled[Preferences.LOW] ||
                     enabled[Preferences.HIGH_LEVEL] || enabled[Preferences.LOW_LEVEL]);
         readings.invalidate();
@@ -119,14 +99,20 @@ class TideGridFace extends WatchUi.WatchFace {
         var now = moment.value();
         var minute = now / 60;
         if (drawEnabled && renderedMinute == minute) {
-            if (awakeSeconds && !sleeping && !Fixture.ENABLED && lastSecond != now) {
-                drawSeconds(dc, now % 60);
-                lastSecond = now;
+            if (awakeSeconds && !Fixture.ENABLED) {
+                if (!sleeping && lastSecond != now) {
+                    drawSeconds(dc, now % 60);
+                    lastSecond = now;
+                } else if (sleeping && lastSecond >= 0) {
+                    // Only the seconds box changes when a MIP watch dozes off.
+                    drawSeconds(dc, null);
+                    lastSecond = -1;
+                }
             }
             return;
         }
         renderedMinute = minute;
-        lastSecond = now;
+        lastSecond = awakeSeconds && !sleeping ? now : -1;
         drawEnabled = true;
         var config = System.getDeviceSettings();
         var use12 = clockFormat == 1 || (clockFormat == 0 && !config.is24Hour);
@@ -189,6 +175,8 @@ class TideGridFace extends WatchUi.WatchFace {
     function sideX() { return px(Panel.W, .785); }
 
     function drawFull(dc, digits, pm, seconds) {
+        // Moon disc, cycle arc and chart edges blend on AMOLED; MIP stays crisp.
+        if (Panel.AMOLED && (dc has :setAntiAlias)) { dc.setAntiAlias(true); }
         dc.setColor(palette[0], palette[0]);
         dc.clear();
         var w = Panel.W;
@@ -365,12 +353,13 @@ class TideGridFace extends WatchUi.WatchFace {
         if (secondsFont == null) { secondsFont = WatchUi.loadResource(Rez.Fonts.Seconds); }
         var x = sideX();
         var y = clockTop() + Panel.SMALL + 2;
-        var text = seconds.format("%02d");
         var width = dc.getTextWidthInPixels("00", secondsFont);
         var height = dc.getFontHeight(secondsFont);
         dc.setColor(palette[0], Graphics.COLOR_TRANSPARENT);
         dc.fillRectangle(x-width/2-1, y, width+2, height);
-        label(dc, x, y, text, secondsFont, palette[3], Graphics.TEXT_JUSTIFY_CENTER);
+        if (seconds != null) {
+            label(dc, x, y, seconds.format("%02d"), secondsFont, palette[3], Graphics.TEXT_JUSTIFY_CENTER);
+        }
     }
 
     function pair(dc, metric, x, y, maxWidth, ink) {

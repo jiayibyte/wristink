@@ -1,3 +1,4 @@
+import Toybox.ActivityMonitor;
 import Toybox.Application;
 import Toybox.Lang;
 import Toybox.Test;
@@ -47,6 +48,84 @@ function localTideForecastMatchesReferenceModel(logger) {
     Test.assert((samples[0]-26.507).abs() < 2.50);
     Test.assert((samples[12]+54.363).abs() < 2.50);
     Application.Properties.setValue("TidePlace", 0);
+    return true;
+}
+
+(:test)
+function heartRateRejectsInvalidSamples(logger) {
+    // ActivityMonitor marks gaps in the history with 255.
+    Test.assert(!Readings.validHeartRate(ActivityMonitor.INVALID_HR_SAMPLE));
+    Test.assert(!Readings.validHeartRate(null));
+    Test.assert(!Readings.validHeartRate(0));
+    Test.assert(Readings.validHeartRate(74));
+    Test.assert(Readings.validHeartRate(199));
+    return true;
+}
+
+(:test)
+function packedCatalogRecordsParse(logger) {
+    var xiamen = TideCatalog.port(4);
+    Test.assertEqual(xiamen[0], "XIAMEN");
+    Test.assert((xiamen[1]-24.45).abs() < .001);
+    Test.assert((xiamen[2]-118.067).abs() < .001);
+    Test.assertEqual(xiamen[3].length(), TideCatalog.TERMS.size()*3);
+    var legacy = 0;
+    for (var i = 0; i < TideCatalog.PORTS.size(); i++) {
+        var port = TideCatalog.port(i);
+        Test.assert(port[0].length() > 0 && port[3].length() == TideCatalog.TERMS.size()*3);
+        if (port[4].length() > 0) { legacy++; }
+    }
+    // Four retired NOAA station ids still migrate to their stations.
+    Test.assertEqual(legacy, 4);
+    return true;
+}
+
+(:test)
+function paletteCarriesOnlyThisScreenFamily(logger) {
+    var rows = Panel.MONO || Panel.LOW_COLOR ? 2 : 12;
+    Test.assertEqual(Panel.PALETTE.length(), rows*7*6);
+    for (var i = 0; i < rows*7; i++) {
+        Test.assert(Panel.PALETTE.substring(i*6, i*6+6).toNumberWithBase(16) != null);
+    }
+    return true;
+}
+
+(:test)
+function phoneSettingsAcceptLooseTypes(logger) {
+    // Values from Garmin Connect may not keep the declared Number / Boolean type.
+    Test.assertEqual(Preferences.choice(2, 0, 6), 2);
+    Test.assertEqual(Preferences.choice(2l, 0, 6), 2);
+    Test.assertEqual(Preferences.choice(2.0, 0, 6), 2);
+    Test.assertEqual(Preferences.choice("2", 0, 6), 2);
+    Test.assertEqual(Preferences.choice("x", 0, 6), 0);
+    Test.assertEqual(Preferences.choice(6, 0, 6), 0);
+    Test.assertEqual(Preferences.toFlag(false, true), false);
+    Test.assertEqual(Preferences.toFlag("false", true), false);
+    Test.assertEqual(Preferences.toFlag(0, true), false);
+    Test.assertEqual(Preferences.toFlag(null, true), true);
+    Test.assertEqual(Preferences.read("NoSuchKey", 4, 6), 4);
+    return true;
+}
+
+(:test)
+function phoneSettingsChangeReachesTheFace(logger) {
+    var app = Application.getApp() as TideGridApp;
+    var face = new TideGridFace();
+    app.face = face;
+    Application.Properties.setValue("Chart", 3);
+    Application.Properties.setValue("ClockFormat", 2);
+    Application.Properties.setValue("WristSeconds", false);
+    app.onSettingsChanged();
+    Test.assertEqual(face.chartMode, 3);
+    Test.assertEqual(face.clockFormat, 2);
+    Test.assertEqual(face.awakeSeconds, false);
+    Application.Properties.setValue("Chart", 1);
+    Application.Properties.setValue("ClockFormat", 0);
+    Application.Properties.setValue("WristSeconds", true);
+    app.onSettingsChanged();
+    Test.assertEqual(face.chartMode, 1);
+    Test.assertEqual(face.awakeSeconds, true);
+    app.face = null;
     return true;
 }
 

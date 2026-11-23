@@ -16,6 +16,15 @@ SAMPLES = ("0123456789", "10:08", "11:11", "23:59")
 FIRST = {"fenix847mm": "fenix8", "instinct3solar45mm": "instinct3"}
 
 
+def typeface(size):
+    for path in ("/System/Library/Fonts/Helvetica.ttc", "C:/Windows/Fonts/arial.ttf"):
+        try:
+            return ImageFont.truetype(path, size)
+        except OSError:
+            pass
+    return ImageFont.load_default()
+
+
 def load(path):
     with Image.open(path.with_suffix(".png")) as image:
         coverage = image.getchannel("A") if image.mode == "RGBA" else image.convert("L")
@@ -46,7 +55,7 @@ def sheet(folder, filename, headline, scale, dark):
     margin = 30
     faces = [folder / f"{name}.fnt" for name in FONTS]
     widgets = [[sample(path, phrase, scale, dark) for phrase in SAMPLES] for path in faces]
-    font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 23)
+    font = typeface(23)
     width = max(widgets[0][0].width + margin*2, sum(im.width for im in widgets[0][1:]) + margin*4)
     row_height = widgets[0][0].height * 2 + 88
     title_space = 85
@@ -78,7 +87,7 @@ def instrument_sheet(folder, filename, headline, scale, dark):
                for name, text in rows]
     background = "#101f22" if dark else "#ffffff"
     ink = "#9acdc1" if dark else "#222222"
-    label = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 19)
+    label = typeface(19)
     width = max(im.width for im in samples) + 48
     height = 65 + sum(im.height + 54 for im in samples)
     result = Image.new("RGB", (width, height), background)

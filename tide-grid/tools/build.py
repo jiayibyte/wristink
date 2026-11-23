@@ -5,11 +5,14 @@ import argparse
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 
 from generate import ROOT, THEMES, generate
 
-SDK_CONFIG = Path.home() / "Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg"
+WINDOWS = os.name == "nt"
+SDK_CONFIG = (Path(os.environ.get("APPDATA", "")) / "Garmin/ConnectIQ/current-sdk.cfg" if WINDOWS
+              else Path.home() / "Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg")
 KEY = Path(os.environ.get("CIQ_KEY", Path.home() / ".Garmin/keys/developer_key.der"))
 RECOMMENDED = 50_000
 HARD_CAP = 100_000
@@ -27,7 +30,7 @@ def build(args):
         env["JAVA_HOME"] = str(java)
         env["PATH"] = f"{java / 'bin'}:{env['PATH']}"
     env["JAVA_TOOL_OPTIONS"] = (env.get("JAVA_TOOL_OPTIONS", "") + " -Djava.awt.headless=true").strip()
-    command = [str(sdk / "bin/monkeyc"), "-f", "preview.jungle" if args.preview else "monkey.jungle",
+    command = [str(sdk / "bin" / ("monkeyc.bat" if WINDOWS else "monkeyc")), "-f", "preview.jungle" if args.preview else "monkey.jungle",
                "-y", str(KEY), "-O", "3z", "-w", "--no-gen-styles"]
     if not args.test:
         command += ["-r"]
@@ -35,6 +38,10 @@ def build(args):
     def compile_one(flags, package):
         log = output / f"{package.stem}.log"
         package.parent.mkdir(parents=True, exist_ok=True)
+        # monkeyc caches compiled resources by position next to the output;
+        # a changed font list must not be served from a stale cache.
+        for stale in ("gen", "mir", "internal-mir", "external-mir"):
+            shutil.rmtree(package.parent / stale, ignore_errors=True)
         with log.open("w") as report:
             result = subprocess.run(command+flags+["-o", str(package)], cwd=ROOT, env=env,
                                     stdout=report, stderr=subprocess.STDOUT)

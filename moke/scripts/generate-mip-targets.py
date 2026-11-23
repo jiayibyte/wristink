@@ -151,8 +151,9 @@ def legacy_extras(folder,api,analog,native_menu,memory,g):
 module FacePrefs {
 var revision=0;function prepare(){}function reload(){revision+=1;}
 function raw(key){FontCatalog.reset();var v=null;try{v=Application.getApp().getProperty(key);}catch(e){}return v;}
-function get(key){var v=raw(key);return v instanceof Number && v>=0 && v<=PrefsDefaults.max(key) ? v : PrefsDefaults.value(key);}
-function flag(key){var v=raw(key);return v instanceof Boolean ? v : PrefsDefaults.flag(key);}
+function num(v){if(v instanceof String || v instanceof Float || v instanceof Long || v instanceof Double){return v.toNumber();}return v;}
+function get(key){var v=num(raw(key));return v instanceof Number && v>=0 && v<=PrefsDefaults.max(key) ? v : PrefsDefaults.value(key);}
+function flag(key){var v=raw(key);if(v instanceof String){v=v.equals("true") ? true : v.equals("false") ? false : num(v);}if(v instanceof Number){v=v!=0;}return v instanceof Boolean ? v : PrefsDefaults.flag(key);}
 function fontFamily(key){var n=get(key+"Font");return n==0 ? get("dataFont") : n-1;}
 function fontSize(key){var n=get(key+"Size");return n==0 ? get("dataSize") : n-1;}
 }
@@ -161,7 +162,7 @@ function fontSize(key){var n=get(key+"Size");return n==0 ? get("dataSize") : n-1
         catalog=json.loads(ROOT.joinpath('config/settings-catalog.json').read_text())['settings']
         entries=[[r['key'],r['default'],r['type'],r['max']] for r in catalog]
         fast='module FacePrefs {var revision=0;var _cache;const ENTRIES='+json.dumps(entries,ensure_ascii=False)+';'
-        fast+='function reload(){revision+=1;_cache=null;}function prepare(){if(_cache!=null){return;}_cache={};var app=Application.getApp();for(var i=0;i<ENTRIES.size();i++){var row=ENTRIES[i];var value=app.getProperty(row[0]);if(row[2]==1){value=value instanceof Boolean ? value : row[1];}else{value=value instanceof Number && value>=0 && value<=row[3] ? value : row[1];}_cache[row[0]]=value;}}'
+        fast+='function reload(){revision+=1;_cache=null;}function prepare(){if(_cache!=null){return;}_cache={};var app=Application.getApp();for(var i=0;i<ENTRIES.size();i++){var row=ENTRIES[i];var value=app.getProperty(row[0]);if(value instanceof String && row[2]==1){value=value.equals("true") ? true : value.equals("false") ? false : value.toNumber();}else if(value instanceof String || value instanceof Float || value instanceof Long){value=value.toNumber();}if(row[2]==1){if(value instanceof Number){value=value!=0;}value=value instanceof Boolean ? value : row[1];}else{value=value instanceof Number && value>=0 && value<=row[3] ? value : row[1];}_cache[row[0]]=value;}}'
         fast+='function get(key){var v=_cache[key];return v instanceof Number ? v : 0;}function flag(key){var v=_cache[key];return v instanceof Boolean ? v : PrefsDefaults.flag(key);}function fontFamily(key){var n=get(key+"Font");return n==0 ? get("dataFont") : n-1;}function fontSize(key){var n=get(key+"Size");return n==0 ? get("dataSize") : n-1;}}\n'
         start=face.index('(:classicPrefs)');end=face.index('class InstinctFaceApp',start)
         face=face[:start]+fast+face[end:]

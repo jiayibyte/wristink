@@ -23,7 +23,7 @@ class TideData {
     function reset(wanted) {
         active = wanted;
         selection = Preferences.read("TidePlace", 0, TideCatalog.PORTS.size()+1);
-        station = selection > 0 ? TideCatalog.PORTS[selection-1] : null;
+        station = selection > 0 ? TideCatalog.port(selection-1) : null;
         portPosition = null;
         locationAt = -1;
         anchor = -1;
@@ -37,7 +37,7 @@ class TideData {
         var bestDistance = .55*.55;
         var nearestPort = null;
         for (var i=0; i<TideCatalog.PORTS.size(); i++) {
-            var port = TideCatalog.PORTS[i];
+            var port = TideCatalog.port(i);
             var dy = port[1]-lat;
             var dx = port[2]-lon;
             if (dx > 180) { dx -= 360; }
@@ -50,6 +50,11 @@ class TideData {
             }
         }
         return nearestPort;
+    }
+
+    // Station records are parsed on demand, so compare them by name.
+    function samePort(a, b) {
+        return a == null ? b == null : b != null && a[0].equals(b[0]);
     }
 
     function weatherPort(now) {
@@ -75,7 +80,7 @@ class TideData {
         if (selection == 0 && (locationAt < 0 || now < locationAt || now-locationAt >= 900)) {
             locationAt = now;
             var match = weatherPort(now);
-            if (match != station) {
+            if (!samePort(match, station)) {
                 station = match;
                 portPosition = null;
                 anchor = -1;

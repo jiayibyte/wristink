@@ -117,7 +117,9 @@ class SignalData {
             if (daily != null) {
                 _values[Field.STEPS] = daily.steps;
                 _values[Field.CALORIES] = daily.calories;
-                _values[Field.FLOORS] = daily.floorsClimbed;
+                // Watches without a barometer (Forerunner 55, Venu Sq...) have no
+                // floorsClimbed member at all. Reading it there is a fatal error.
+                _values[Field.FLOORS] = (daily has :floorsClimbed) ? daily.floorsClimbed : null;
                 var miles = settings.distanceUnits == System.UNIT_STATUTE;
                 _distanceLabel = miles ? "MI" : "KM";
                 _values[Field.DISTANCE] = daily.distance == null ? null :
@@ -161,7 +163,7 @@ class SignalData {
                 _values[Field.HEART] = validBpm(bpm) ? bpm : null;
             }
             if (altitude) {
-                var meters = active == null ? null : active.altitude;
+                var meters = active == null || !(active has :altitude) ? null : active.altitude;
                 var feet = settings.elevationUnits == System.UNIT_STATUTE;
                 _altitudeLabel = feet ? "FT" : "M";
                 _values[Field.ALT] = meters == null ? null : meters * (feet ? 3.28084 : 1.0);
@@ -225,15 +227,18 @@ class SignalData {
         }
         if (field == Field.TEMP) {
             var f = settings.temperatureUnits == System.UNIT_STATUTE && !Profile.DEMO;
-            return (f ? v * 1.8 + 32 : v).format("%.0f") + (f ? "F" : "C");
+            // 19°C, or 19° where the unit letter does not fit.
+            var degrees = (f ? v * 1.8 + 32 : v).format("%.0f") + "°";
+            return compact ? degrees : degrees + (f ? "F" : "C");
         }
         if (field == Field.DISTANCE) {
             return v < 100 && !compact ? v.format("%.1f") : v.format("%.0f");
         }
         var n = v.toNumber();
         if (n.abs() >= (compact ? 1000 : 10000)) {
+            // Full: 12.9K or 129K. Compact keeps one decimal below ten: 8.6K.
             var k = n / 1000.0;
-            return !compact && k.abs() < 100 ? k.format("%.1f") + "K" : k.format("%.0f") + "K";
+            return k.abs() < (compact ? 10 : 100) ? k.format("%.1f") + "K" : k.format("%.0f") + "K";
         }
         return n.format("%d");
     }

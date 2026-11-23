@@ -1,4 +1,11 @@
-"""Build each font at its target pixel dimensions from stroke and dot masters."""
+"""Build each font at its target pixel dimensions from stroke and dot masters.
+
+Every glyph is constructed on the target grid: integer strokes, stems on whole
+pixels, symmetric rounded joins and even stairs. Grayscale screens run the same
+construction at four times the size and area-sample it down, so their edges
+are smooth instead of enlarged pixel steps. Nothing is scaled by a non-integer
+factor after it has been rasterized.
+"""
 from functools import lru_cache
 from pathlib import Path
 import sys
@@ -6,12 +13,18 @@ import sys
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "moke/scripts"))
-from pixel_glyphs import DOTS, SEGMENTS, digit, latin
+from pixel_glyphs import DOTS, SEGMENTS, Grid, caps, digit, latin
+import icons
 
 DIGITS = "0123456789"
 TIME = DIGITS + ":"
-VALUE_GLYPHS = DIGITS + "-.%KCFMITd"
-# Compact uppercase for labels and dates, constructed on a 5x7 grid.
+VALUE_GLYPHS = DIGITS + "-.%°KCFMITd"
+# Only the characters the face can draw are packed into each atlas.
+LABEL_GLYPHS = "01 ABCDEFGHIKLMNOPRSTUVW"     # gauge ends, P, status words, units
+DATE_GLYPHS = DIGITS + "ADEFHIMNORSTUW -'"    # weekdays and numeric dates
+SYMBOLS = "bcdefghijklmnopqrs"
+SUPERSAMPLE = 4
+# Compact uppercase for small labels and the dot-matrix weekday, on a 5x7 grid.
 CAPS = dict(zip("ABCDEFGHIJKLMNOPQRSTUVWXYZ", (
     "0e11111f111111", "1e11111e11111e", "0f10101010100f", "1e11111111111e",
     "1f10101e10101f", "1f10101e101010", "0f10101711110f", "1111111f111111",
@@ -20,29 +33,6 @@ CAPS = dict(zip("ABCDEFGHIJKLMNOPQRSTUVWXYZ", (
     "0e11111115120d", "1e11111e141211", "0f10100e01011e", "1f040404040404",
     "1111111111110e", "11111111110a04", "11111115151b11", "11110a040a1111",
     "1111110a040404", "1f01020408101f",
-)))
-# Data glyphs follow the public Garmin manual symbols recorded in README.
-# Shapes are rebuilt on the target pixel grid so narrow counters stay open.
-ICONS = dict(zip("abcdefghijklmnopqrs", (
-    "00000/00000/00000/00000/00000/00000/00000",
-    "01100110/11111111/11111111/01111110/00111100/00011000",
-    "111111110/100000010/101110011/101110011/100000010/111111110",
-    "000110000110/001111001111/001111001111/011110011110/011100011100/000000000000/110000110000/111000111000/110000110000",
-    "000001000/001111000/011111000/011111100/111111110/111001111/110100111/110000011/010000010",
-    "00000110/00000101/01110111/11010010/10010000/11110100/01110110/01100110/00001100",
-    "001100/001010/001010/001010/001010/010011/010111/001110",
-    "00111100/01111110/11111111/11111111/11111111/11111111/01111110/00111100/00100000",
-    "000100000/001010000/001011000/010100100/010111100/100001010/100000001/111111111",
-    "0001101111/0001101111/0010001100/0101111100/1001100000/1111100000/1111100000/1100000000/1000000000",
-    "0011100/0001000/0011100/0100010/1001001/1001101/1000001/0100010/0011100",
-    "0001000/0011100/0110110/0100010/0100010/1111111/0001000",
-    "00101010/10101010/10101001/10101010/00101010",
-    "0001001/0011010/1110100/1101100/1011000/0101000/1001000",
-    "0011100/0110000/1100000/1100000/1100001/0110011/0011110",
-    "11111110/10000010/10100011/10100011/10000010/11111110",
-    "0011111/0010010/1010100/1011101/1010011/0100100/1001100",
-    "1001110/0101010/0011000/0010100/0001100/0101010/0111001",
-    "0001000/0011000/0110000/0111110/0001100/0011000/0010000",
 )))
 
 
@@ -61,6 +51,10 @@ def pixels(rows, w, h, gutter=0, rounded=False):
                 else:
                     draw.rectangle(box, fill=255)
     return im
+
+
+def caps_rows(c):
+    return [f"{int(CAPS[c][i:i+2], 16):05b}" for i in range(0, 14, 2)]
 
 
 def clock_mark(w, h, radius):
@@ -184,25 +178,136 @@ def clock_fonts(size, aa):
     return result
 
 
-def letter(c, h):
-    if c == "'":
-        im = Image.new("L",(max(2,h//4),h))
-        ImageDraw.Draw(im).rectangle((im.width//2,0,im.width-1,max(1,h//4)),fill=255)
-        return im
-    if c in CAPS:
-        rows = [f"{int(CAPS[c][i:i+2], 16):05b}" for i in range(0,14,2)]
-        return pixels(rows, round(h*.76), h)
+# --- Small type --------------------------------------------------------------
+
+def weight(height, aa):
+    """Stroke width: whole-pixel bands on 1-bit screens, about 11.5% of the
+    height on grayscale ones (quarter pixels survive the supersampling)."""
+    if aa:
+        return max(1.0, round(height*.115*4)/4)
+    return 1 if height <= 8 else 2 if height <= 18 else round(height*.11)
+
+
+def build(draw, width, height, stroke, aa):
+    """Run a grid-native builder at 1x, or 4x then area-sample for grayscale."""
+    if not aa:
+        return draw(width, height, max(1, round(stroke)))
+    k = SUPERSAMPLE
+    return draw(width*k, height*k, max(1, round(stroke*k))).resize((width, height), Image.Resampling.BOX)
+
+
+def figure_width(height, stroke, narrow=False):
+    """Tabular digit box. Counters keep at least two clear pixels."""
+    return max(2*round(stroke)+2, int(height*(.47 if narrow else .54)+.5))
+
+
+def ring(grid, x, y, size, stroke):
+    """Closed rounded box, symmetric on the grid."""
+    a = (stroke-1)/2
+    radius = max(0, (size-stroke)/2*.9)
+    grid.stroke([(x+a, y+a), (x+size-1-a, y+a), (x+size-1-a, y+size-1-a), (x+a, y+size-1-a)],
+                stroke, radius, closed=True)
+
+
+def degree(width, height, stroke):
+    g = Grid(width, height)
+    ring(g, 0, 0, width, stroke)
+    return g.image()
+
+
+def percent(width, height, stroke):
+    g = Grid(width, height)
+    size = max(3, round(width*.5))
+    line = max(1, round(stroke*.75))
+    ring(g, 0, 0, size, line)
+    ring(g, width-size, height-size, size, line)
+    g.slant(width-line, 0, 0, height-1, line)
+    return g.image()
+
+
+def value_glyph(c, height, aa, narrow=False, stroke=None):
+    """Numerals and the few units a value can carry, on one stroke weight."""
+    s = stroke or weight(height, aa)
+    w = figure_width(height, s, narrow)
+    if c in DIGITS:
+        return build(lambda W, H, S: digit(c, W, H, stroke=S), w, height, s, aa)
+    if c == "-":
+        return build(_bar, w, height, s, aa)
+    if c == ".":
+        return build(_dot, max(2, round(s)), height, s, aa)
+    if c == "%":
+        return build(percent, w+2, height, s, aa)
+    if c == "°":
+        size = max(3, round(height*.3))
+        line = 1 if not aa and height < 19 else max(1, s*.6)
+        return _top(build(degree, size, size, line, aa), height)
+    if c == "d":
+        return build(lambda W, H, S: latin("d", W, H, S), w, height, s, aa)
+    if c in "KM":
+        w += 1
+    elif c == "I":
+        w = max(round(s)+2, w-2)
+    return build(lambda W, H, S: caps(c, W, H, S), w, height, s, aa)
+
+
+def _bar(width, height, stroke):
+    g = Grid(width, height)
+    top = (height-stroke)//2
+    g.rect(0, top, width-1, top+stroke-1)
+    return g.image()
+
+
+def _dot(width, height, stroke):
+    g = Grid(width, height)
+    g.rect((width-stroke)//2, height-stroke, (width-stroke)//2+stroke-1, height-1)
+    return g.image()
+
+
+def _top(mark, height):
+    cell = Image.new("L", (mark.width, height))
+    cell.paste(mark, (0, 0))
+    return cell
+
+
+def label_glyph(c, height, aa):
     if c == " ":
-        return Image.new("L", (max(2, h//2), h))
-    return latin(c, max(2, round(h*.64)), h, max(1, round(h*.135))) if c not in DIGITS else digit(c, max(3, round(h*.59)), h)
+        return Image.new("L", (max(2, height//2), height))
+    if c in DIGITS:
+        if height <= 7 and not aa:
+            return digit(c, max(3, round(height*.59)), height)
+        s = weight(height, aa)
+        return build(lambda W, H, S: digit(c, W, H, stroke=S), max(3, round(height*.59)), height, s, aa)
+    width = round(height*.76)
+    if height <= 7 and not aa:
+        # Exactly one pixel per master cell: the 5x7 grid is already native.
+        return pixels(caps_rows(c), width, height)
+    s = weight(height, aa)
+    return build(lambda W, H, S: caps(c, W, H, S), width, height, s, aa)
 
 
-def data_heights(size):
-    return {
-        "Label": max(7, round(size*.031)), "Date": max(12, round(size*.077)),
-        "Seconds": max(16, round(size*.114)), "Value": max(10, round(size*.057)),
-        "Symbol": max(8, round(size*.041)),
-    }
+def date_figure_width(height, compact):
+    return max(7, round(height*.58)) if compact else max(8, round(height*.65))
+
+
+def date_glyph(c, height, aa, compact):
+    if c in DIGITS or c == " ":
+        width = date_figure_width(height, compact)
+        if c == " ":
+            # A blank figure cell: one-digit months keep the LCD's column.
+            return Image.new("L", (width, height))
+        if not aa:
+            return digit(c, width, height, stroke=2)
+        return native_segments(c, width, height, aa)
+    if c in CAPS:
+        if not aa:
+            return caps(c, round(height*.79), height, 2)
+        gutter = max(1, round(height*.048))
+        return pixels(caps_rows(c), round(height*.79), height, gutter)
+    if c == "'":
+        im = Image.new("L", (max(2, height//4), height))
+        ImageDraw.Draw(im).rectangle((im.width//2, 0, im.width-1, max(1, height//4)), fill=255)
+        return im
+    return latin(c, max(2, round(height*.64)), height, max(1, round(height*.135)))
 
 
 def native_segments(c, w, h, aa):
@@ -211,76 +316,54 @@ def native_segments(c, w, h, aa):
     return segments(c,w*4,h*4,4,slanted=True).resize((w,h),Image.Resampling.BOX)
 
 
-def date_glyph(c, height, aa, compact):
-    if c in DIGITS:
-        width = max(7,round(height*.58)) if compact else max(8,round(height*.65))
-        if not aa:
-            return digit(c,width,height,stroke=2,style="square")
-        return native_segments(c,width,height,aa)
-    if c in CAPS:
-        rows = [f"{int(CAPS[c][i:i+2],16):05b}" for i in range(0,14,2)]
-        gutter = max(1,round(height*.048)) if aa else 0
-        return pixels(rows,round(height*.79),height,gutter)
-    return letter(c,height)
-
-
-def symbol_glyph(c, height):
-    rows = ICONS[c].split("/")
-    im = pixels(rows,round(height*len(rows[0])/len(rows)),height)
-    left,top,right,bottom = im.getbbox()
-    result = Image.new("L",(right-left,height))
-    result.paste(im.crop((left,top,right,bottom)),(0,(height-(bottom-top))//2))
-    return result
-
-
-def value_glyph(c, height):
-    if c == "d":
-        unit_height = max(6,round(height*.64))
-        rows = ["0001","0001","0111","1001","1001","1001","0111"]
-        unit = pixels(rows,max(4,round(unit_height*4/7)),unit_height)
-        glyph = Image.new("L",(unit.width,height))
-        glyph.paste(unit,(0,height-unit_height))
-        return glyph
-    return digit(c,max(4,round(height*.54)),height) if c in DIGITS else letter(c,height)
+def data_heights(size, window=False, aa=False):
+    # Instinct windows: bolder, larger readouts beside the aperture.
+    value = round(size*.084) if window else max(10, round(size*.057))
+    return {
+        "Label": max(7, round(size*.031)), "Date": max(12, round(size*.077)),
+        "Seconds": max(16, round(size*.114)), "Value": value,
+        # MIP pictograms are drawn natively on an 11px grid; grayscale
+        # screens trace them at four fifths of the numeral height.
+        "Symbol": max(12, round(value*.8)) if aa else icons.GRID,
+    }
 
 
 def window_heights(radius):
-    return {"WindowValue":max(12,round(radius*.58)), "WindowSymbol":max(8,round(radius*.36))}
+    return {"WindowValue": max(12, int(radius*.66+.5))}
 
 
 def window_fonts(radius):
-    result = {}
-    for name,height in window_heights(radius).items():
-        chars,builder = (VALUE_GLYPHS,value_glyph) if name=="WindowValue" else ("bcdefghijk",symbol_glyph)
-        result[name] = {}
-        for c in chars:
-            im = builder(c,height)
-            result[name][c] = im,im.width+max(1,round(height*.105))
-    return result
+    height = window_heights(radius)["WindowValue"]
+    stroke = 3 if height >= 17 else 2
+    items = {}
+    for c in VALUE_GLYPHS:
+        im = value_glyph(c, height, False, stroke=stroke)
+        items[c] = im, im.width+max(1, round(height*.105))
+    return {"WindowValue": items}
 
 
-def data_fonts(size, aa):
+def data_fonts(size, aa, window=False):
     result = {}
     subsets = {
-        "Label": DIGITS+"ABCDEFGHIJKLMNOPQRSTUVWXYZ -./%'",
-        "Date": DIGITS+"ABCDEFGHIJKLMNOPQRSTUVWXYZ -/'",
+        "Label": LABEL_GLYPHS,
+        "Date": DATE_GLYPHS,
         "Seconds": DIGITS,
         "Value": VALUE_GLYPHS,
-        "Symbol": "bcdefghijklmnopqrs",
+        "Symbol": SYMBOLS,
     }
-    for name, height in data_heights(size).items():
+    for name, height in data_heights(size, window, aa).items():
         items = {}
         for c in subsets[name]:
             if name == "Symbol":
-                im = symbol_glyph(c,height)
+                im = icons.glyph(c, height, aa)
             elif name == "Seconds":
                 im = native_segments(c,round(height*.63),height,aa)
             elif name == "Date":
                 im = date_glyph(c,height,aa,size < 150)
             elif name == "Value":
-                im = value_glyph(c,height)
+                im = value_glyph(c, height, aa, narrow=window)
             else:
-                im = letter(c,height)
+                im = label_glyph(c, height, aa)
             items[c] = im, im.width + max(1,round(height*.105))
         result[name] = items
     return result
@@ -289,8 +372,10 @@ def data_fonts(size, aa):
 def aod_font(size):
     h, w = round(size*.089), round(size*.061)
     s = max(2, round(h*.085))
-    items = {c: (segments(c,w,h,1,True), w+max(3,w//6)) for c in DIGITS}
-    items[":"] = (clock_mark(s,h,0), s+max(3,w//6))
+    k = SUPERSAMPLE
+    gap = max(3, w//6)
+    items = {c: (segments(c, w*k, h*k, k, True).resize((w, h), Image.Resampling.BOX), w+gap) for c in DIGITS}
+    items[":"] = (clock_mark(s*k, h*k, 0).resize((s, h), Image.Resampling.BOX), s+gap)
     return items
 
 

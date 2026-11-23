@@ -5,20 +5,25 @@ from datetime import datetime, timezone
 from functools import lru_cache
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import uuid
 from xml.etree import ElementTree as ET
 
 from PIL import Image, ImageDraw
 
+import icons
 from settings import FIELDS, generate as settings_resources
 from themes import THEME_NAMES, display_palettes, rgb
 from typefaces import aod_font, clock_fonts, data_fonts, data_heights, window_fonts, window_heights, write_atlas
 
 ROOT = Path(__file__).resolve().parents[1]
-CIQ = Path(os.environ.get("CIQ_HOME", Path.home() / "Library/Application Support/Garmin/ConnectIQ"))
+WINDOWS = os.name == "nt"
+CIQ = Path(os.environ.get("CIQ_HOME", Path(os.environ.get("APPDATA", "")) / "Garmin/ConnectIQ" if WINDOWS
+                          else Path.home() / "Library/Application Support/Garmin/ConnectIQ"))
 KEY = Path(os.environ.get("CIQ_KEY", Path.home() / ".Garmin/keys/developer_key.der"))
 APP_ID = "ba601b9abc3a44c89a481f1da0234faa"
 VERSION = "1.0.1"
@@ -88,52 +93,98 @@ def make_profile(dest, d, demo):
         "HOUR": demo["hour"] if demo else 10, "MINUTE": demo["minute"] if demo else 8,
         "AOD_PREVIEW": bool(demo and demo["aod"] is not None), "AOD_PHASE": (demo["aod"] or 0) if demo else 0,
     }
-    heights = data_heights(lcd_size)
-    window = window_heights(d["r"])
-    heights.update({"WINDOW_VALUE":window["WindowValue"],"WINDOW_SYMBOL":window["WindowSymbol"]})
+    heights = data_heights(lcd_size, d["r"] >= 0, d["aa"])
+    heights["WINDOW_VALUE"] = window_heights(d["r"])["WindowValue"]
     for name,height in heights.items():
         profile_vars[name.upper()+"_H"] = height
         profile_vars[name.upper()+"_GAP"] = max(1,round(height*.105))
+    profile_vars.update(window_grid(d, heights))
     data = "module Profile {\n"
     data += "".join(f"    const {key} = {mc(value)};\n" for key,value in profile_vars.items())
     stamp = int(datetime(2030,6,30,12,tzinfo=timezone.utc).timestamp())
     data += f"    var DEMO_DATE = new Toybox.Time.Moment({stamp});\n"
     value_id = "WindowValue" if d["r"] >= 0 else "Value"
-    symbol_id = "WindowSymbol" if d["r"] >= 0 else "Symbol"
     data += f"    function windowValueId() {{ return Rez.Fonts.{value_id}; }}\n"
-    data += f"    function windowSymbolId() {{ return Rez.Fonts.{symbol_id}; }}\n}}\n"
+    # The always-on atlas only ships to AMOLED targets.
+    aod = "Rez.Fonts.AlwaysOn" if d["amoled"] else "null"
+    data += f"    function aodFontId() {{ return {aod}; }}\n}}\n"
     (dest/"Profile.mc").write_text(data)
 
 
+def window_grid(d, heights):
+    """Two-by-two data grid beside an Instinct-style aperture.
+
+    Columns sit on fixed x positions with an icon column of constant width, so
+    every value in a column starts on the same pixel. The right column ends
+    where the aperture's bezel ring begins on each row.
+    """
+    if d["r"] < 0:
+        return {k: 0 for k in ("COL1", "COL2", "ROW1", "ROW2", "ROW1_END", "ROW2_END", "ICON_W", "ICON_GAP")}
+    s, x0, y0 = d["size"], (d["width"]-d["size"])//2, (d["height"]-d["size"])//2
+    value = heights["Value"]
+    rows = [y0+round(s*.142), y0+round(s*.273)]
+    ring = d["r"]*3/2
+    ends = []
+    for top in rows:
+        dy = max(0, top-d["cy"], d["cy"]-(top+value-1))
+        ends.append(int(d["cx"]-math.sqrt(max(0, ring*ring-dy*dy)))-1)
+    grid = {"COL1": x0+round(s*.074), "COL2": x0+round(s*.324), "ROW1": rows[0], "ROW2": rows[1],
+            "ROW1_END": ends[0], "ROW2_END": ends[1],
+            "ICON_W": max(icons.mask(c).width for c in "bcdefghijk"),
+            "ICON_GAP": 3 if s >= 170 else 2}
+    assert grid["ROW2"]+value < d["lcd_y"]+round(d["lcd_size"]*.203), d["id"]
+    # Common readings must fit their column at the regular size: four-digit
+    # steps on the 176px Instinct, the compact forms everywhere, and 100%.
+    font = glyphs(d["size"], d["aa"], d["lcd_size"], True, d["amoled"])["Value"]
+    gap = max(1, round(value*.105))
+    width = lambda text: sum(font[c][1] for c in text)-gap
+    room = grid["ICON_W"]+grid["ICON_GAP"]
+    left = grid["COL2"]-grid["COL1"]-2-room          # matches outsideData()
+    right = min(grid["ROW1_END"], grid["ROW2_END"])-grid["COL2"]+1-room
+    assert width("8.6K") <= left and width("100%") <= right and width("8.6K") <= right, (d["id"], left, right)
+    if s >= 176:
+        assert width("8640") <= left and width("8640") <= right and width("129K") <= left, (d["id"], left, right)
+    return grid
+
+
 @lru_cache(maxsize=64)
-def glyphs(size, aa, lcd_size=None):
+def glyphs(size, aa, lcd_size=None, window=False, amoled=False):
     lcd_size = lcd_size if lcd_size is not None else size
-    return {**clock_fonts(lcd_size, aa), **data_fonts(lcd_size, aa), "AlwaysOn": aod_font(size)}
+    fonts = {**clock_fonts(lcd_size, aa), **data_fonts(lcd_size, aa, window)}
+    if amoled:
+        fonts["AlwaysOn"] = aod_font(size)
+    return fonts
 
 
 def make_resources(dest, d, demo):
     dest.mkdir(parents=True,exist_ok=True)
     settings_resources(dest, demo["settings"] if demo else {}, "Signal LCD Preview" if demo else "Signal LCD", d["window_default"], d["mono"])
     fonts = ET.Element("fonts")
-    families = glyphs(d["size"], d["aa"], d["lcd_size"]).copy()
+    families = glyphs(d["size"], d["aa"], d["lcd_size"], d["r"] >= 0, d["amoled"]).copy()
     if d["r"] >= 0:
         families.update(window_fonts(d["r"]))
     for name,family in families.items():
         write_atlas(dest/name,family)
         attrs = {"id": name, "filename": f"{name}.fnt"}
-        if d["aa"] and name in ("Segment","Contour","Matrix","Date","Seconds"):
+        if d["aa"]:
+            # Every atlas carries grayscale coverage on these screens.
             attrs["antialias"] = "true"
         ET.SubElement(fonts,"font",attrs)
     ET.ElementTree(fonts).write(dest/"fonts.xml")
     drawables = ET.Element("drawables")
     ET.SubElement(drawables,"bitmap",id="LauncherIcon",filename="launcher.png")
     ET.ElementTree(drawables).write(dest/"drawables.xml")
-    icon = Image.new("RGB",(30,30),0x160e08)
-    draw = ImageDraw.Draw(icon)
-    draw.rounded_rectangle((1,5,28,24),radius=4,outline="#67DFCE",width=2)
-    draw.line([(4,15),(9,15),(12,10),(16,20),(19,15),(25,15)],fill="#FFB677",width=2)
     launcher = d["launcher"]
-    icon.resize((launcher["width"],launcher["height"]),Image.Resampling.NEAREST).save(dest/"launcher.png")
+    w, h = launcher["width"], launcher["height"]
+    # Draw the launcher at its own size (4x, area-sampled), not a blown-up 30px tile.
+    k = 4
+    icon = Image.new("RGB",(w*k,h*k),0x160e08)
+    draw = ImageDraw.Draw(icon)
+    u = w*k/30
+    draw.rounded_rectangle((1*u,5*u,29*u-1,25*u-1),radius=4*u,outline="#67DFCE",width=round(2*u))
+    draw.line([(4*u,15*u),(9*u,15*u),(12*u,10*u),(16*u,20*u),(19*u,15*u),(25*u,15*u)],
+              fill="#FFB677",width=round(2*u),joint="curve")
+    icon.resize((w,h),Image.Resampling.BOX).save(dest/"launcher.png")
 
 
 def manifest(path, ids, demo):
@@ -152,10 +203,17 @@ def manifest(path, ids, demo):
     ET.ElementTree(elem).write(path,encoding="utf-8",xml_declaration=True)
 
 
-def jungle(dest, devices, demo):
+def jungle(dest, devices, demo, test=False):
+    # monkeyc caches compiled resources by position. When the font list
+    # changes, a stale cache maps Rez.Fonts ids onto the wrong atlases.
+    for stale in ("gen", "mir", "internal-mir", "external-mir"):
+        shutil.rmtree(dest/stale, ignore_errors=True)
+    for d in devices:
+        shutil.rmtree(dest/d["id"]/"resources", ignore_errors=True)
     dest.mkdir(parents=True,exist_ok=True)
     manifest(dest/"manifest.xml",[d["id"] for d in devices],demo)
-    content = ["project.manifest = manifest.xml", f"base.sourcePath = {ROOT/'source'}"]
+    sources = f"{ROOT/'source'};{ROOT/'tests'}" if test else f"{ROOT/'source'}"
+    content = ["project.manifest = manifest.xml", f"base.sourcePath = {sources}"]
     for d in devices:
         target = dest/d["id"]
         make_resources(target/"resources",d,demo)
@@ -167,7 +225,7 @@ def jungle(dest, devices, demo):
     return path
 
 
-def compiler(config, artifact, device):
+def compiler(config, artifact, device, test=False):
     if os.environ.get("CIQ_SDK"):
         sdk = Path(os.environ["CIQ_SDK"])
     else:
@@ -176,8 +234,8 @@ def compiler(config, artifact, device):
     java_home = Path(env.get("JAVA_HOME", "/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home"))
     if java_home.is_dir():
         env["PATH"] = str(java_home/"bin") + os.pathsep + env["PATH"]
-    args = [str(sdk/"bin/monkeyc"), "-f", str(config), "-o", str(artifact),
-            "-y", str(KEY), "-r", "-O", "3z", "-l", "1", "-w", "--no-gen-styles",
+    args = [str(sdk/"bin"/("monkeyc.bat" if WINDOWS else "monkeyc")), "-f", str(config), "-o", str(artifact),
+            "-y", str(KEY), "-t" if test else "-r", "-O", "3z", "-l", "1", "-w", "--no-gen-styles",
             "--disable-api-has-check-removal"]
     args += ["-d",device] if device else ["-e"]
     log = artifact.with_suffix(".log")
@@ -187,7 +245,7 @@ def compiler(config, artifact, device):
         print(log.read_text()[-9000:],flush=True)
         return None
     size = artifact.stat().st_size
-    if device and size > LIMIT:
+    if device and size > LIMIT and not test:
         print(f"{device}: {size} bytes exceeds the {LIMIT} byte limit",flush=True)
         return None
     return {"bytes": size, "sha256": hashlib.sha256(artifact.read_bytes()).hexdigest()}
@@ -205,6 +263,7 @@ def main():
     ap.add_argument("--settings",type=json.loads,default={})
     ap.add_argument("--extreme",action="store_true")
     ap.add_argument("--always-on",type=int,choices=range(4))
+    ap.add_argument("--test",action="store_true",help="compile tests/ into SignalTests.prg (run with monkeydo -t)")
     args = ap.parse_args()
     targets = json.loads((ROOT/"devices.json").read_text())
     ids = args.devices or targets
@@ -214,6 +273,8 @@ def main():
         ap.error("unknown setting")
     if args.demo and args.export:
         ap.error("the IQ export must use live data")
+    if args.test and (args.demo or args.export):
+        ap.error("--test builds the live face with its unit tests")
     if args.jobs < 1:
         ap.error("--jobs must be positive")
     devices = [profile(id) for id in ids]
@@ -229,6 +290,8 @@ def main():
     if args.demo:
         dest /= "demo"
         dest /= args.demo
+    elif args.test:
+        dest /= "tests"
 
     def single(d):
         id = d["id"]
@@ -237,9 +300,10 @@ def main():
             demo = dict(hour=args.hour, minute=args.minute, extreme=args.extreme,
                         aod=args.always_on,settings={"TimeFormat":2,**args.settings})
             demo["id"] = uuid.uuid5(uuid.UUID(APP_ID),json.dumps([id,args.demo,demo],sort_keys=True)).hex
-        config = jungle(dest/id,[d],demo)
-        artifact = config.parent/("SignalDemo.prg" if demo else "SignalLCD.prg")
-        result = compiler(config,artifact,id)
+        config = jungle(dest/id,[d],demo,args.test)
+        name = "SignalDemo" if demo else "SignalTests" if args.test else "SignalLCD"
+        artifact = config.parent/(name+".prg")
+        result = compiler(config,artifact,id,args.test)
         print(id, result["bytes"] if result else "FAIL", flush=True)
         return {**d,"artifact":str(artifact),"build":result}
 

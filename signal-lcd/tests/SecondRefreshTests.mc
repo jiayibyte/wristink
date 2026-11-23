@@ -1,6 +1,10 @@
+import Toybox.Application;
 import Toybox.Graphics;
+import Toybox.Lang;
+import Toybox.System;
 import Toybox.Test;
 import Toybox.Time;
+import Toybox.Time.Gregorian;
 
 class RecordedDisplay {
     var _bitmap;
@@ -140,6 +144,93 @@ function verifyMIPClock(small,window) {
     display.reset();
     face.drawFrame(display,new Time.Moment(base+60));
     Test.assertEqual(display.clears,1);
+    return true;
+}
+
+(:test)
+function dateKeepsItsCellsInTwoDigitMonths(logger) {
+    var face = new SignalFace();
+    face._date = 0;
+    var november = Gregorian.info(Gregorian.moment({:year=>2026,:month=>11,:day=>19,:hour=>12}),Time.FORMAT_SHORT);
+    var june = Gregorian.info(Gregorian.moment({:year=>2030,:month=>6,:day=>30,:hour=>12}),Time.FORMAT_SHORT);
+    Test.assertEqual(face.dateText(november),"'26-11-19");
+    Test.assertEqual(face.dateText(june),"'30- 6-30");
+    face._date = 2;
+    Test.assertEqual(face.dateText(november),"19-11");
+    return true;
+}
+
+(:test)
+function liveDataSurvivesMissingSensors(logger) {
+    // Every field and gauge on the running device, including watches without
+    // a barometer, floors, intensity minutes or weather.
+    var data = new SignalData();
+    var settings = System.getDeviceSettings();
+    var slots = [Field.HEART, Field.BATTERY, Field.STEPS, Field.CALORIES, Field.DISTANCE,
+                 Field.TEMP, Field.NOTIFY, Field.ALT, Field.FLOORS];
+    for (var gauge = 0; gauge <= GaugeMode.INTENSITY; gauge++) {
+        data.reset();
+        data.refresh(Time.now(),slots,gauge,settings,true,gauge % 2 == 0);
+        data.percent(gauge);
+        for (var i = 0; i < slots.size(); i++) {
+            Test.assert(data.text(slots[i],settings,-1,false) != null);
+            Test.assert(data.text(slots[i],settings,-1,true) != null);
+        }
+    }
+    return true;
+}
+
+(:test)
+function valuesShortenOnlyWhenNeeded(logger) {
+    var data = new SignalData();
+    var settings = System.getDeviceSettings();
+    data._values[Field.TEMP] = 19;
+    data._values[Field.STEPS] = 8640;
+    data._values[Field.CALORIES] = 12900;
+    var metric = settings.temperatureUnits != System.UNIT_STATUTE;
+    Test.assertEqual(data.text(Field.TEMP,settings,-1,false),metric ? "19°C" : "66°F");
+    Test.assertEqual(data.text(Field.TEMP,settings,-1,true),metric ? "19°" : "66°");
+    Test.assertEqual(data.text(Field.STEPS,settings,-1,false),"8640");
+    Test.assertEqual(data.text(Field.STEPS,settings,-1,true),"8.6K");
+    Test.assertEqual(data.text(Field.CALORIES,settings,-1,false),"12.9K");
+    Test.assertEqual(data.text(Field.CALORIES,settings,-1,true),"13K");
+    return true;
+}
+
+(:test)
+function phoneSettingsAcceptLooseTypes(logger) {
+    // Values from Garmin Connect may not keep the declared Number type.
+    var face = new SignalFace();
+    Test.assertEqual(face.choice(3,13,1),3);
+    Test.assertEqual(face.choice(3l,13,1),3);
+    Test.assertEqual(face.choice(3.0,13,1),3);
+    Test.assertEqual(face.choice("3",13,1),3);
+    Test.assertEqual(face.choice("x",13,1),1);
+    Test.assertEqual(face.choice(null,13,1),1);
+    Test.assertEqual(face.choice(14,13,1),1);
+    return true;
+}
+
+(:test)
+function phoneSettingsChangeReachesTheFace(logger) {
+    var app = Application.getApp() as SignalApp;
+    var face = new SignalFace();
+    app._face = face;
+    var keys = ["Typeface","DateStyle","Gauge"];
+    var old = [];
+    for (var i = 0; i < keys.size(); i++) { old.add(Application.Properties.getValue(keys[i])); }
+    Application.Properties.setValue("Typeface",2);
+    Application.Properties.setValue("DateStyle",3);
+    Application.Properties.setValue("Gauge",GaugeMode.DAY);
+    face._paintedMinute = 1;
+    app.onSettingsChanged();
+    Test.assertEqual(face._type,2);
+    Test.assertEqual(face._date,3);
+    Test.assertEqual(face._gauge,GaugeMode.DAY);
+    // The next frame is a full redraw, not a seconds-only repaint.
+    Test.assertEqual(face._paintedMinute,-1);
+    for (var i = 0; i < keys.size(); i++) { Application.Properties.setValue(keys[i],old[i]); }
+    app._face = null;
     return true;
 }
 

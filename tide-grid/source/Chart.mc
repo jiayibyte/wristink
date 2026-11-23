@@ -10,27 +10,39 @@ class Chart {
     var maximum;
     private var mode = -1;
     private var updated = -1;
+    private var pastDay = -1;
 
-    function invalidate() { updated = -1; }
+    function invalidate() {
+        updated = -1;
+        pastDay = -1;
+    }
 
     function refresh(now, source, tide) {
         if (source == 0) { return; }
         var age = now - updated;
         var interval = source == 3 || source == 1 ? 600 : 180;
         if (source == mode && updated >= 0 && age >= 0 && age < interval) { return; }
+        var count = source == 1 ? 25 : source == 3 ? 12 : 7;
+        if (source != mode || samples.size() != count) {
+            samples = new[count] as Array<Numeric or Null>;
+            pastDay = -1;
+        }
         mode = source;
         updated = now;
-        var count = source == 1 ? 25 : source == 3 ? 12 : 7;
-        if (samples.size() != count) { samples = new[count] as Array<Numeric or Null>; }
-        for (var i = 0; i < count; i++) { samples[i] = null; }
         if (source == 1) {
+            clear();
             tide.fill(now, samples);
         } else if (source == 3) {
+            clear();
             fillHeart(now);
         } else {
             fillDaily(now, source);
         }
         measure(source);
+    }
+
+    function clear() {
+        for (var i = 0; i < samples.size(); i++) { samples[i] = null; }
     }
 
     function measure(source) {
@@ -55,7 +67,7 @@ class Chart {
         for (var i = 0; i < 240; i++) {
             var entry = it.next();
             if (entry == null) { break; }
-            if (entry.when == null || entry.heartRate == null || entry.heartRate <= 0 || entry.heartRate > 300) { continue; }
+            if (entry.when == null || !Readings.validHeartRate(entry.heartRate)) { continue; }
             var time = entry.when.value();
             if (time > now || time < earliest) { continue; }
             var bucket = ((time - earliest) / 600).toNumber();
@@ -75,17 +87,23 @@ class Chart {
 
     function fillDaily(now, source) {
         var today = civilDay(now);
-        var history = ActivityMonitor.getHistory();
-        if (history != null) {
-            for (var i = 0; i < history.size(); i++) {
-                var row = history[i];
-                if (row == null || row.startOfDay == null) { continue; }
-                var offset = (today - civilDay(row.startOfDay.value())) / 86400;
-                if (offset >= 1 && offset <= 6) { samples[6-offset] = dailyValue(row, source); }
+        // Finished days never change: read the history once per day and only
+        // refresh today's bar on later passes.
+        if (today != pastDay) {
+            clear();
+            var history = ActivityMonitor.getHistory();
+            if (history != null) {
+                for (var i = 0; i < history.size(); i++) {
+                    var row = history[i];
+                    if (row == null || row.startOfDay == null) { continue; }
+                    var offset = (today - civilDay(row.startOfDay.value())) / 86400;
+                    if (offset >= 1 && offset <= 6) { samples[6-offset] = dailyValue(row, source); }
+                }
             }
+            pastDay = today;
         }
         var current = ActivityMonitor.getInfo();
-        if (current != null) { samples[6] = dailyValue(current, source); }
+        samples[6] = current == null ? null : dailyValue(current, source);
     }
 
     function dailyValue(row, source) {
