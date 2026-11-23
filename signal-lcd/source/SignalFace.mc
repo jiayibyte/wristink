@@ -32,7 +32,6 @@ class SignalFace extends WatchUi.WatchFace {
     var _value;
     var _symbol;
     var _windowValue;
-    var _windowSymbol;
     var _aodFont;
     var _theme;
     var _type;
@@ -125,7 +124,6 @@ class SignalFace extends WatchUi.WatchFace {
         _value = null;
         _symbol = null;
         _windowValue = null;
-        _windowSymbol = null;
         _aodFont = null;
     }
 
@@ -149,10 +147,7 @@ class SignalFace extends WatchUi.WatchFace {
             _dateFont = WatchUi.loadResource(Rez.Fonts.Date);
             _value = WatchUi.loadResource(Rez.Fonts.Value);
             _symbol = WatchUi.loadResource(Rez.Fonts.Symbol);
-            if (Profile.XR >= 0) {
-                _windowValue = WatchUi.loadResource(Profile.windowValueId());
-                _windowSymbol = WatchUi.loadResource(Profile.windowSymbolId());
-            }
+            if (Profile.XR >= 0) { _windowValue = WatchUi.loadResource(Profile.windowValueId()); }
         }
         if (_showSeconds && _secondsFont == null) { _secondsFont = WatchUi.loadResource(Rez.Fonts.Seconds); }
     }
@@ -182,7 +177,6 @@ class SignalFace extends WatchUi.WatchFace {
         else if (font == _value) { trailing = Profile.VALUE_GAP; }
         else if (font == _symbol) { trailing = Profile.SYMBOL_GAP; }
         else if (font == _windowValue) { trailing = Profile.WINDOW_VALUE_GAP; }
-        else if (font == _windowSymbol) { trailing = Profile.WINDOW_SYMBOL_GAP; }
         else if (font == _timeFont) { trailing = Profile.TIME_GAP; }
         else if (Profile.AMOLED && font == _aodFont) { trailing = Profile.AOD_GAP; }
         var width = dc.getTextWidthInPixels(value,font) - trailing;
@@ -231,15 +225,21 @@ class SignalFace extends WatchUi.WatchFace {
     function calendar(dc, info, status) {
         if (status != null) { text(dc,x(.628),y(.309),_label,status,_colors[2]); }
         if (_date == 3) { return; }
+        var week = WEEK[info.day_of_week-1];
+        if (_date != 2) { text(dc,x(.250),y(.366),_dateFont,week,_colors[2]); }
+        text(dc,x(_date == 2 ? .5 : .644),y(.366),_dateFont,dateText(info),_colors[2]);
+    }
+
+    function dateText(info) {
         var day = info.day.format("%02d");
         var month = info.month.format("%d");
-        var week = WEEK[info.day_of_week-1];
+        if (_date == 2) { return day+"-"+month; }
         var digits = month+"-"+day;
-        if (_date == 0) { digits = "'"+(info.year%100).format("%02d")+"- "+digits; }
-        else if (_date == 2) { digits = day+"-"+month; }
-
-        if (_date != 2) { text(dc,x(.250),y(.366),_dateFont,week,_colors[2]); }
-        text(dc,x(_date == 2 ? .5 : .644),y(.366),_dateFont,digits,_colors[2]);
+        // Like the LCD it imitates, a one-digit month leaves its tens cell blank.
+        // The Date atlas gives the space a digit's advance, so October to
+        // December occupy the same cells instead of pushing into the frame.
+        if (_date == 0) { digits = "'"+(info.year%100).format("%02d")+(info.month < 10 ? "- " : "-")+digits; }
+        return digits;
     }
 
     function upperRight(dc, settings, seconds) {
@@ -266,7 +266,7 @@ class SignalFace extends WatchUi.WatchFace {
             dc.fillCircle(cx,cy,r-larger(1,p(.005)));
         }
         if (_windowSeconds) {
-            text(dc,cx,_windowSymbolY,_windowSymbol,Field.SYMBOLS[field],symbol);
+            text(dc,cx,_windowSymbolY,_symbol,Field.SYMBOLS[field],symbol);
             paintWindowTick(dc,seconds < 0 ? "--" : seconds.format("%02d"),seconds < 0);
             return;
         }
@@ -281,24 +281,27 @@ class SignalFace extends WatchUi.WatchFace {
         var height = big ? Profile.WINDOW_VALUE_H : Profile.VALUE_H;
         var gap = big ? Profile.WINDOW_VALUE_GAP : Profile.VALUE_GAP;
         var value = fit(dc,raw,compact,limit,font,gap);
-        var separation = larger(1,p(.013));
-        var iconY = cy-(height+Profile.WINDOW_SYMBOL_H+separation)/2;
-        text(dc,cx,iconY,_windowSymbol,Field.SYMBOLS[field],symbol);
-        text(dc,cx,iconY+Profile.WINDOW_SYMBOL_H+separation,font,value,ink);
+        var separation = windowSeparation();
+        var iconY = cy-(height+Profile.SYMBOL_H+separation)/2;
+        text(dc,cx,iconY,_symbol,Field.SYMBOLS[field],symbol);
+        text(dc,cx,iconY+Profile.SYMBOL_H+separation,font,value,ink);
     }
+
+    function windowSeparation() { return larger(2,p(.019)); }
 
     function dataSlot(dc, field, settings, seconds, anchor, top, capacity) {
         if (field == Field.OFF) { return; }
         var aligned = Profile.XR >= 0;
         var icon = Field.SYMBOLS[field];
         var iconWidth = dc.getTextWidthInPixels(icon,_symbol)-Profile.SYMBOL_GAP;
-        var gap = larger(1,p(aligned ? .010 : .014));
+        var gap = aligned ? Profile.ICON_GAP : larger(1,p(.014));
         var unit = field == Field.DISTANCE || field == Field.ALT ? _data.label(field) : null;
         var unitWidth = unit == null ? 0 : dc.getTextWidthInPixels(unit,_label)-Profile.LABEL_GAP;
         var unitSpace = unit == null ? 0 : gap+unitWidth;
         var raw = _data.text(field,settings,seconds,false);
         var compact = _data.text(field,settings,seconds,true);
-        var iconSpace = aligned ? larger(iconWidth,Profile.SYMBOL_H+1) : iconWidth;
+        // A constant icon column keeps every value in a column on one x.
+        var iconSpace = aligned ? Profile.ICON_W : iconWidth;
         var available = capacity-iconSpace-gap-unitSpace;
         var value = fit(dc,raw,compact,available,_value,Profile.VALUE_GAP);
         var valueWidth = dc.getTextWidthInPixels(value,_value)-Profile.VALUE_GAP;
@@ -313,18 +316,13 @@ class SignalFace extends WatchUi.WatchFace {
 
     function outsideData(dc, settings, seconds) {
         if (Profile.XR >= 0) {
-            var left = Profile.X+Math.round(Profile.SIZE*.106).toNumber();
-            var right = Profile.X+Math.round(Profile.SIZE*.346).toNumber();
-            var rightEdge = smaller(Profile.X+Math.round(Profile.SIZE*.605).toNumber(),
-                Profile.CX-Profile.XR-larger(2,p(.101)));
-            var leftCapacity = right-left-larger(2,p(.012));
-            var rightCapacity = rightEdge-right;
-            var top = Profile.Y+Math.round(Profile.SIZE*.173).toNumber();
-            var lower = Profile.Y+Math.round(Profile.SIZE*.294).toNumber();
-            dataSlot(dc,_slots[1],settings,seconds,left,top,leftCapacity);
-            dataSlot(dc,_slots[2],settings,seconds,right,top,rightCapacity);
-            dataSlot(dc,_slots[6],settings,seconds,left,lower,leftCapacity);
-            dataSlot(dc,_slots[7],settings,seconds,right,lower,rightCapacity);
+            // Two rows by two columns beside the aperture; see window_grid().
+            // The left column may run to 2px before the right column's icons.
+            var left = Profile.COL2-Profile.COL1-2;
+            dataSlot(dc,_slots[1],settings,seconds,Profile.COL1,Profile.ROW1,left);
+            dataSlot(dc,_slots[2],settings,seconds,Profile.COL2,Profile.ROW1,Profile.ROW1_END-Profile.COL2+1);
+            dataSlot(dc,_slots[6],settings,seconds,Profile.COL1,Profile.ROW2,left);
+            dataSlot(dc,_slots[7],settings,seconds,Profile.COL2,Profile.ROW2,Profile.ROW2_END-Profile.COL2+1);
             return;
         }
         dataSlot(dc,_slots[1],settings,seconds,x(.367),y(.122),p(.237));
@@ -386,9 +384,9 @@ class SignalFace extends WatchUi.WatchFace {
             var digits = dc.getTextWidthInPixels("00",_windowValue)-Profile.WINDOW_VALUE_GAP;
             var dashes = dc.getTextWidthInPixels("--",_windowValue)-Profile.WINDOW_VALUE_GAP;
             var width = larger(digits,dashes);
-            var gap = larger(1,p(.013));
-            _windowSymbolY = Profile.CY-(Profile.WINDOW_VALUE_H+Profile.WINDOW_SYMBOL_H+gap)/2;
-            _windowTick = [Profile.CX-width/2,_windowSymbolY+Profile.WINDOW_SYMBOL_H+gap,
+            var gap = windowSeparation();
+            _windowSymbolY = Profile.CY-(Profile.WINDOW_VALUE_H+Profile.SYMBOL_H+gap)/2;
+            _windowTick = [Profile.CX-width/2,_windowSymbolY+Profile.SYMBOL_H+gap,
                 width,Profile.WINDOW_VALUE_H];
             _windowDigitsX = Profile.CX-digits/2;
             _windowDashesX = Profile.CX-dashes/2;
@@ -407,6 +405,7 @@ class SignalFace extends WatchUi.WatchFace {
     }
 
     function repaintSecondRegions(dc, second) {
+        if (Profile.AMOLED && (dc has :setAntiAlias)) { dc.setAntiAlias(true); }
         var blank = second < 0;
         var value = blank ? "--" : second.format("%02d");
         if (_showSeconds) {
@@ -456,6 +455,9 @@ class SignalFace extends WatchUi.WatchFace {
         _paintedMinute = minute;
         _paintedAod = aod;
         _paintedSecond = second;
+        // Smooth the LCD frame's curves where the panel can blend; MIP keeps
+        // crisp whole pixels.
+        if (Profile.AMOLED && (dc has :setAntiAlias)) { dc.setAntiAlias(true); }
         dc.setColor(0,aod ? 0 : _colors[0]);
         dc.clear();
         if (aod) {
@@ -480,7 +482,7 @@ class SignalFace extends WatchUi.WatchFace {
     }
 
     function drawAlwaysOn(dc,time,phase) {
-        if (_aodFont == null) { _aodFont = WatchUi.loadResource(Rez.Fonts.AlwaysOn); }
+        if (_aodFont == null) { _aodFont = WatchUi.loadResource(Profile.aodFontId()); }
         // Each successive minute uses a disjoint row. Small single-color text
         // is the only lit content in the system-managed always-on state.
         var stride = Profile.AOD_H+2;

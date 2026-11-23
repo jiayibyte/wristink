@@ -26,7 +26,7 @@ class TideGridApp extends Application.AppBase {
         if (Preferences.read("TidePlace", 0, TideCatalog.PORTS.size()+1) == 0 &&
             legacy != null && legacy.length() > 0) {
             for (var i = 0; i < TideCatalog.PORTS.size(); i++) {
-                if (legacy.equals(TideCatalog.PORTS[i][4])) {
+                if (legacy.equals(TideCatalog.port(i)[4])) {
                     Application.Properties.setValue("TidePlace", i+1);
                     break;
                 }

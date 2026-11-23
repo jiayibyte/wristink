@@ -45,13 +45,13 @@ class Readings {
         if (enabled[3]) { values[3] = daily == null ? null : compact(daily.steps); }
         if (enabled[4]) {
             var hr = info == null ? null : info.currentHeartRate;
-            if ((hr == null || hr <= 0 || hr > 300) && (ActivityMonitor has :getHeartRateHistory)) {
+            if (!validHeartRate(hr) && (ActivityMonitor has :getHeartRateHistory)) {
                 var last = ActivityMonitor.getHeartRateHistory(1, true).next();
                 if (last != null && last.when != null && now >= last.when.value() && now-last.when.value() < 180) {
                     hr = last.heartRate;
                 }
             }
-            values[4] = hr != null && hr > 0 && hr <= 300 ? hr.format("%d") : null;
+            values[4] = validHeartRate(hr) ? hr.format("%d") : null;
         }
         if (enabled[6]) {
             var cm = daily == null ? null : daily.distance;
@@ -193,6 +193,11 @@ class Readings {
         var h = format12 ? (hour + 11) % 12 + 1 : hour;
         var suffix = format12 && hour >= 12 ? "P" : "";
         return h.format("%d") + ":" + ((seconds%3600)/60).format("%02d") + suffix;
+    }
+
+    // History samples use 255 (ActivityMonitor.INVALID_HR_SAMPLE) for gaps.
+    static function validHeartRate(bpm) {
+        return bpm != null && bpm >= 25 && bpm <= 250 && bpm != ActivityMonitor.INVALID_HR_SAMPLE;
     }
 
     function number(value, suffix) {

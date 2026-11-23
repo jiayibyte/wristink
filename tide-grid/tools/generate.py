@@ -7,16 +7,20 @@ import os
 import sys
 import xml.etree.ElementTree as ET
 
-from PIL import Image, ImageChops, ImageDraw
+from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageOps
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parent
-PACKS = Path(os.environ.get("CIQ_DEVICES", Path.home() / "Library/Application Support/Garmin/ConnectIQ/Devices"))
+WEATHER = REPO / "retro-world/assets/garmin-weather"
+PACKS = Path(os.environ.get("CIQ_DEVICES", Path(os.environ.get("APPDATA", "")) / "Garmin/ConnectIQ/Devices"
+                            if os.name == "nt" else Path.home() / "Library/Application Support/Garmin/ConnectIQ/Devices"))
 OUT = ROOT / "generated"
 sys.path.insert(0, str(REPO / "moke/scripts"))
-from pixel_glyphs import Grid, _flatten, digit, stroke_for
+from pixel_glyphs import Grid, _flatten, caps, digit, stroke_for
 sys.path.insert(0, str(REPO / "retro-world/tools"))
 from garmin_weather import icon as garmin_icon
+sys.path.insert(0, str(REPO / "signal-lcd/tools"))
+import icons as pictograms
 
 METRICS = [
     ("OFF", "Hidden"), ("DATE", "Date"), ("BAT", "Battery"), ("STP", "Steps"),
@@ -32,6 +36,29 @@ CHARTS = ["Hidden", "Tide forecast · selected port", "Steps · 7 days", "Heart 
 THEMES = ["Deep Sea", "Ember", "Glacier", "Kelp", "Ink", "Paper",
           "Amber LCD", "Ultraviolet", "Signal Red", "Lime Phosphor", "Rose Quartz", "Polar Light"]
 MONO_THEMES = (4, 5)
+# Theme colors per screen family: background, dial, border, main ink, quiet
+# ink, accent, secondary accent. Each device carries only its own family, as
+# one hex string in Panel.PALETTE.
+AMOLED_PALETTES = [
+    "071518 10272B 28464B EDF6E8 9CB9B6 61E8C9 F5BB71", "190C10 2F1A1C 5F3433 FFF1DD D0A99D FF8A69 F1CC83",
+    "0B1421 152640 325071 EFF5FF A1BCD7 93C7FF CFB3F4", "101710 1D2A1B 394D32 F4F2DB AFC0A0 BCE881 F0CA8B",
+    "080B0C 191E22 47515A F3F5F6 BDC7CE E4E9EC A8B4BE", "F4EBD6 E6DBC2 B9AB8F 172522 425954 00685E 923B20",
+    "000000 1B1103 78591D FFEBC1 D0AB62 FFB942 FFED97", "10091E 241639 603780 F5ECFF C4AADF B8A4FF FF84D4",
+    "08090C 221015 842A3A FFF2F3 D4A0AA FF6077 FFBF79", "020900 112010 437133 E7FFCC A9CC92 C4FF4D 63E4AB",
+    "F7E7E8 F1D7DA 9E6B79 321723 683E4E 9B2D57 514678", "EAF5F8 CEDFEE 7792A6 122837 3C5767 136A83 593B8F",
+]
+MIP_PALETTES = [
+    "000000 005555 00AAAA FFFFFF AAAAAA 55FFFF FFAA00", "000000 550000 AA5500 FFFFAA AAAAAA FFAA55 FFFF00",
+    "000000 000055 0055AA FFFFFF AAAAAA 55FFFF AAAAFF", "000000 005500 55AA00 FFFFAA AAAAAA AAFF55 FFAA55",
+    "000000 000000 555555 FFFFFF AAAAAA FFFFFF AAAAAA", "FFFFAA FFAAAA AA5555 000000 555555 005555 AA0000",
+    "000000 555500 AA5500 FFFFAA FFAA55 FFAA00 FFFF55", "000000 550055 AA55AA FFFFFF FFAAFF AAAAFF FF55FF",
+    "000000 550000 AA0000 FFFFFF FFAAAA FF5555 FFAA55", "000000 005500 55AA00 FFFFAA AAFFAA AAFF00 55FFAA",
+    "FFAAFF FFAAAA AA55AA 550000 550055 AA0055 5500AA", "AAFFFF AAAAFF 5555AA 000055 005555 0055AA 5500AA",
+]
+# Ink (theme 4) and Paper (theme 5) on 1-bit and 8-color screens.
+MONO_PALETTES = ["000000 000000 FFFFFF FFFFFF FFFFFF FFFFFF FFFFFF",
+                 "FFFFFF FFFFFF 000000 000000 000000 000000 000000"]
+assert len(AMOLED_PALETTES) == len(MIP_PALETTES) == len(THEMES)
 TIDE_PORTS = json.loads((ROOT / "assets/tide-ports.json").read_text())
 FONTS = {"Harbor": "round", "Dock": "lcd", "Beacon": "segment"}
 # Normalized ink from the licensed Casio module 3482 TIME+TIDE ALL example.
@@ -306,29 +333,139 @@ def font_resources(folder, clock_height, small, antialias):
 
     width = max(5, round(small * .69))
     gap = max(1, round(small * .13))
-    glyphs = [(c, grid(rows, width, small), width+gap) for c, rows in (LETTERS | PUNCT).items() if c != " "]
+    stroke = text_stroke(small, antialias)
+    glyphs = [(c, small_glyph(c, width, small, stroke, antialias), width+gap)
+              for c in LETTERS | PUNCT if c != " "]
     glyphs.append((" ", Image.new("L", (max(1,width//2), small)), max(1,width//2)+gap))
     icon_width = max(7, width+1)
     for c, rows in ICONS.items():
         # Bottom-align optical ink (including the battery and footsteps),
         # using the same baseline as the numerical readout.
-        ink = grid(rows, icon_width, small)
+        ink = pictogram(c, rows, icon_width, small, antialias)
         ink = ink.crop(ink.getbbox())
-        cell = Image.new("L", (icon_width, small))
-        cell.paste(ink, ((icon_width-ink.width)//2, small-ink.height))
-        glyphs.append((c, cell, icon_width+gap))
-    glyphs += [(c, digit(c, width, small, stroke=max(1, round(small * .13))), width+gap)
+        cell = Image.new("L", (max(icon_width, ink.width), small))
+        cell.paste(ink, ((cell.width-ink.width)//2, small-ink.height))
+        glyphs.append((c, cell, cell.width+gap))
+    glyphs += [(c, build(lambda W, H, S, c=c: digit(c, W, H, stroke=S), width, small, stroke, antialias), width+gap)
                for c in "0123456789"]
     # Garmin support weather pictograms, already pinned and checked by WristInk.
     for i in range(13):
-        source = garmin_icon(i, small).convert("L").point(lambda v: 255-v)
-        source = source.crop(source.getbbox())
-        source.thumbnail((icon_width, small), Image.Resampling.NEAREST)
+        source = weather_ink(i, icon_width, small, antialias)
         cell = Image.new("L", (icon_width, small))
         cell.paste(source, ((icon_width-source.width)//2, small-source.height))
         glyphs.append((chr(0x100+i), cell, icon_width+gap))
     glyphs.append(("f", next(g[1] for g in glyphs if g[0] == chr(0x10a)), icon_width+gap))
     # The public Garmin support symbol represents both sunrise and sunset.
+    for char, direction in (("n", 1), ("o", -1)):
+        glyphs.append((char, sun_glyph(direction, icon_width, small, antialias), icon_width+gap))
+    font_file(folder, fonts, "Instrument", small, glyphs, antialias)
+    write_xml(fonts, folder / "fonts.xml")
+
+
+SUPERSAMPLE = 4
+
+
+def text_stroke(small, antialias):
+    """Whole pixels on MIP, matching the numerals; proportional on AMOLED."""
+    return max(1.0, round(small*.12*4)/4) if antialias else max(1, round(small*.13))
+
+
+def build(draw, width, height, stroke, antialias):
+    """Run a grid-native builder at 1x, or 4x and area-sample for grayscale."""
+    if not antialias:
+        return draw(width, height, max(1, round(stroke)))
+    k = SUPERSAMPLE
+    return draw(width*k, height*k, max(1, round(stroke*k))).resize((width, height), Image.Resampling.BOX)
+
+
+def small_glyph(c, width, small, stroke, antialias):
+    """Letters and punctuation. At 7px the 5x7 masters are exactly native;
+    larger sizes are stroked on their own grid instead of being stretched."""
+    rows = LETTERS.get(c) or PUNCT[c]
+    if small <= 7 and width == 5 and not antialias:
+        return grid(rows, width, small)
+    if c in LETTERS:
+        return build(lambda W, H, S: caps(c, W, H, S), width, small, stroke, antialias)
+
+    def punct(W, H, S):
+        g = Grid(W, H)
+        mid = (H-S)//2
+        if c == "-":
+            g.rect(0, mid, W-1, mid+S-1)
+        elif c == "_":
+            g.rect(0, H-S, W-1, H-1)
+        elif c == "+":
+            g.rect(0, mid, W-1, mid+S-1)
+            g.rect((W-S)//2, (H-W)//2+S//2, (W-S)//2+S-1, (H+W)//2-1-S//2)
+        elif c in ":.":
+            x = (W-S)//2
+            rows_at = [H-S] if c == "." else [round(H*.28), round(H*.72)-S+1]
+            for y in rows_at:
+                g.rect(x, y, x+S-1, y+S-1)
+        elif c == "/":
+            g.slant(W-S, 0, 0, H-1, S)
+        elif c == "%":
+            ring = max(3, W//2+1)
+            a = (S-1)/2
+            for x0, y0 in ((0, 0), (W-ring, H-ring)):
+                g.stroke([(x0+a, y0+a), (x0+ring-1-a, y0+a), (x0+ring-1-a, y0+ring-1-a), (x0+a, y0+ring-1-a)],
+                         S, max(0, (ring-S)/2*.9), closed=True)
+            g.slant(W-S, 0, 0, H-1, S)
+        elif c == "°":
+            ring = min(W, max(3, round(H*.5)))
+            a = (S-1)/2
+            x0 = (W-ring)//3
+            g.stroke([(x0+a, a), (x0+ring-1-a, a), (x0+ring-1-a, ring-1-a), (x0+a, ring-1-a)],
+                     S, max(0, (ring-S)/2*.9), closed=True)
+        return g.image()
+    return build(punct, width, small, stroke, antialias)
+
+
+def traced(mask, size, antialias):
+    """Smooth outline of a small 1-bit master at `size`. The master is
+    magnified, softened by under half a master pixel and cut at half coverage:
+    stairs become straight edges and corners become arcs."""
+    zoom = 16
+    big = mask.resize((mask.width*zoom, mask.height*zoom), Image.Resampling.NEAREST)
+    canvas = Image.new("L", (big.width+2*zoom, big.height+2*zoom))
+    canvas.paste(big, (zoom, zoom))
+    shape = canvas.filter(ImageFilter.GaussianBlur(zoom*.42)).point(lambda v: 255 if v >= 128 else 0)
+    shape = shape.crop((zoom, zoom, zoom+big.width, zoom+big.height)).resize(size, Image.Resampling.BOX)
+    return shape if antialias else shape.point(lambda v: 255 if v >= 128 else 0)
+
+
+# Grayscale screens trace the shared 11px pictogram masters (signal-lcd/tools/icons.py).
+TRACED = {"c": "c", "d": "d", "e": "b", "g": "f", "h": "e", "i": "i", "j": "j", "k": "h",
+          "l": "H", "m": "L", "p": "W"}
+
+
+def pictogram(c, rows, icon_width, small, antialias):
+    if antialias:
+        # Nine tenths of the text height sits level with the capitals.
+        return pictograms.smooth(TRACED[c], round(small*.9))
+    if small <= 9:
+        # The 5x7 master is the native drawing at this size: never stretch it.
+        return grid(rows, 5, 7)
+    return grid(rows, icon_width, small)
+
+
+def weather_ink(i, icon_width, small, antialias):
+    if not antialias:
+        source = garmin_icon(i, small).convert("L").point(lambda v: 255-v)
+        source = source.crop(source.getbbox())
+        source.thumbnail((icon_width, small), Image.Resampling.NEAREST)
+        return source
+    # Area-sample the pinned source pictogram itself: no 1-bit intermediate.
+    meta = json.loads((WEATHER / "sources.json").read_text())["icons"][i]
+    path = WEATHER / meta["file"]
+    assert hashlib.sha256(path.read_bytes()).hexdigest() == meta["sha256"], path
+    ink = ImageOps.invert(Image.open(path).convert("L")).point(lambda v: 0 if v < 40 else v)
+    ink = ink.crop(ink.getbbox())
+    scale = min(icon_width/ink.width, small/ink.height)
+    return ink.resize((max(1, round(ink.width*scale)), max(1, round(ink.height*scale))), Image.Resampling.BOX)
+
+
+def sun_glyph(direction, icon_width, small, antialias):
     sun_dir = REPO / "retro-world/assets/garmin-sun"
     sun_meta = json.loads((sun_dir / "source.json").read_text())
     sun_path = sun_dir / "official-sunrise-sunset.png"
@@ -336,18 +473,19 @@ def font_resources(folder, clock_height, small, antialias):
     source = Image.open(sun_path).convert("RGBA")
     base = Image.new("RGBA", source.size, "white")
     base.alpha_composite(source)
+    k = SUPERSAMPLE if antialias else 1
     ink = base.convert("L").point(lambda v: 255 if v < 145 else 0)
     ink = ink.crop(ink.getbbox())
-    ink.thumbnail((icon_width, small-2), Image.Resampling.BOX)
-    for char, direction in (("n", 1), ("o", -1)):
-        cell = Image.new("L", (icon_width, small))
-        cell.paste(ink.point(lambda v: 255 if v >= 88 else 0), ((icon_width-ink.width)//2, small-ink.height))
-        center = icon_width//2
-        y = (1 if direction == 1 else 0)
-        ImageDraw.Draw(cell).line((center-1, y, center, y-direction, center+1, y), fill=255)
-        glyphs.append((char, cell, icon_width+gap))
-    font_file(folder, fonts, "Instrument", small, glyphs)
-    write_xml(fonts, folder / "fonts.xml")
+    ink.thumbnail((icon_width*k, (small-2)*k), Image.Resampling.BOX)
+    cell = Image.new("L", (icon_width*k, small*k))
+    cell.paste(ink if antialias else ink.point(lambda v: 255 if v >= 88 else 0),
+               ((icon_width*k-ink.width)//2, small*k-ink.height))
+    center = icon_width//2
+    y = 1 if direction == 1 else 0
+    # Chevron above the horizon: up for sunrise, down for sunset.
+    ImageDraw.Draw(cell).line([((center-1)*k+k//2, y*k+k//2), (center*k+k//2, (y-direction)*k+k//2),
+                               ((center+1)*k+k//2, y*k+k//2)], fill=255, width=k)
+    return cell.resize((icon_width, small), Image.Resampling.BOX) if antialias else cell
 
 
 def manifest(path, devices, preview, preview_key=""):
@@ -416,7 +554,7 @@ def tide_resources():
     dest = OUT / "tides"
     dest.mkdir(parents=True, exist_ok=True)
     lines = ["// Generated from the licensed station subset in assets/tide-ports.json.",
-             "module TideCatalog {", "    const PORTS = ["]
+             "import Toybox.Lang;", "", "module TideCatalog {", "    const PORTS = ["]
     for port in TIDE_PORTS["stations"]:
         # Each harmonic occupies three ASCII characters. It carries nine
         # bits of amplitude (half-cm increments) and nine bits of phase.
@@ -428,9 +566,26 @@ def tide_resources():
             assert 0 <= half_cm <= 511
             code = (half_cm << 9) | (round(phase*512/36000) & 511)
             packed += "".join(alphabet[(code>>shift)&63] for shift in (12,6,0))
-        values = [port["name"], round(port["lat"], 3), round(port["lon"], 3), packed, port.get("legacyNoaa", "")]
-        lines.append("        " + json.dumps(values) + ",")
-    lines += ["    ];", f"    const EPOCH_DAY = {TIDE_PORTS['epochUnixDay']};",
+        # One record string per station costs about a third less than a
+        # five-element array of constants in the PRG data section.
+        fields = [port["name"], str(round(port["lat"]*1000)), str(round(port["lon"]*1000)),
+                  packed, port.get("legacyNoaa", "")]
+        assert not any("|" in field for field in fields)
+        lines.append("        " + json.dumps("|".join(fields)) + ",")
+    lines += ["    ];",
+              "    // [name, latitude, longitude, harmonics, legacy NOAA id]; degrees.",
+              "    function port(i as Number) as Array {",
+              "        var text = PORTS[i] as String;",
+              "        var parts = [] as Array<String>;",
+              "        for (var k = 0; k < 4; k++) {",
+              "            var bar = text.find(\"|\") as Number;",
+              "            parts.add(text.substring(0, bar) as String);",
+              "            text = text.substring(bar+1, text.length()) as String;",
+              "        }",
+              "        return [parts[0], (parts[1].toNumber() as Number)/1000.0,",
+              "                (parts[2].toNumber() as Number)/1000.0, parts[3], text];",
+              "    }",
+              f"    const EPOCH_DAY = {TIDE_PORTS['epochUnixDay']};",
               "    const NODE = " + json.dumps(TIDE_PORTS["lunarNode"]) + ";",
               "    const TERMS = ["]
     for term in TIDE_PORTS["constituents"]:
@@ -487,6 +642,9 @@ def generate(preview_device=None, fixture="tide", theme=0, font=0, test=False):
         code = OUT / "devices" / name
         code.mkdir(parents=True, exist_ok=True)
         values = "\n".join(f"    const {k} = {str(v).lower()};" for k, v in profile.items())
+        family = (MONO_PALETTES if mono or profile["LOW_COLOR"] else
+                  AMOLED_PALETTES if amoled else MIP_PALETTES)
+        values += '\n    const PALETTE = "' + "".join(family).replace(" ", "") + '";'
         (code / "Panel.mc").write_text("module Panel {\n"+values+"\n}\n")
         paths = assets.relative_to(ROOT)
         jungle.extend([f"{name}.sourcePath = source;{mode};{code.relative_to(ROOT)};generated/tides",
