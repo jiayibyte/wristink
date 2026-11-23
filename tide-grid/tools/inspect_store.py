@@ -8,6 +8,7 @@ from tempfile import TemporaryDirectory
 from xml.etree import ElementTree as ET
 
 from generate import APP_ID, CHARTS, FONTS, TIDE_PORTS, MONO_THEMES, NS, OUT, PACKS, REPO, ROOT, SLOTS, THEMES, slot_options
+import ciq_env
 
 
 def inspect(package, report, sdk):
@@ -58,8 +59,7 @@ def inspect(package, report, sdk):
             assert data["languages"]["valyrian"]
             rows.append({"partNumber": part, "device": profile["device"], "bytes": len(blob),
                          "sha256": hashlib.sha256(blob).hexdigest(), "sdkApi": product.get("connectIqVersion")})
-        java_home = Path(os.environ.get("JAVA_HOME", "/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home"))
-        java = str(java_home / "bin/java") if (java_home / "bin/java").is_file() else "java"
+        java = ciq_env.java()
         subprocess.run([java, "-cp", str(sdk / "bin/monkeybrains.jar"),
                         str(REPO / "alpine/tools/VerifyIq.java"), str(package), str(root / "dev_key.pub")], check=True)
     report.write_text(json.dumps({

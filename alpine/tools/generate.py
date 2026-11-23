@@ -1,5 +1,6 @@
 """Native geometry and font resources; all artwork is original vector geometry."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import json, math, uuid, shutil
 from PIL import Image, ImageDraw, ImageFont
 from everest_art import generate_resources
@@ -7,7 +8,7 @@ import mountain_art
 from typography import build_fonts
 from sky_ornaments import generate as generate_ornaments
 ROOT=Path(__file__).resolve().parents[1]
-PACKS=Path.home()/'Library/Application Support/Garmin/ConnectIQ/Devices'
+PACKS=ciq_env.DEVICES
 DEVICES=json.loads((ROOT/'config/devices.json').read_text())
 FONT=ROOT/'assets/fonts/Rajdhani-SemiBold.ttf'
 

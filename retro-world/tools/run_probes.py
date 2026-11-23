@@ -1,9 +1,10 @@
 """Run Garmin's official simulator launcher, retaining per-target evidence."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import argparse,os,subprocess,time,signal,json,re,hashlib,shutil
-ROOT=Path(__file__).resolve().parents[1];SDK=Path.home()/'Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.2.0-2026-06-09-92a1605b2'
+ROOT=Path(__file__).resolve().parents[1];SDK=ciq_env.sdk()
 p=argparse.ArgumentParser();p.add_argument('--mode',choices=['perf','test'],default='perf');p.add_argument('--devices',nargs='+',required=True);p.add_argument('--timeout',type=int,default=45);a=p.parse_args()
-env=dict(os.environ,JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home');env['PATH']=env['JAVA_HOME']+'/bin:'+env['PATH']
+env=ciq_env.java_env()
 folder=ROOT/'bin/probes'/a.mode;folder.mkdir(parents=True,exist_ok=True);results=[]
 for id in a.devices:
  prg=ROOT/'bin/matrix'/a.mode/id/'RetroWorld.prg';build=prg.parent/'build.log'

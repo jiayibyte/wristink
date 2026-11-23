@@ -1,9 +1,10 @@
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import os, subprocess, json, argparse, re, hashlib
 from types import SimpleNamespace
 R=Path(__file__).resolve().parents[1]
-sdk=Path((Path.home()/'Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg').read_text().strip())
-env=dict(os.environ,JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home');env['PATH']=env['JAVA_HOME']+'/bin:'+env['PATH']
+sdk=ciq_env.sdk()
+env=ciq_env.java_env()
 parser=argparse.ArgumentParser();parser.add_argument("--devices",nargs="+",default=["instinct2s","instinct3solar45mm","epix2"]);args=parser.parse_args()
 results=[]
 for device in args.devices:

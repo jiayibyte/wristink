@@ -1,11 +1,12 @@
 """Bounded parallel native compiles; fail the release on any listed target error."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import concurrent.futures,json,os,subprocess,argparse,time
 ROOT=Path(__file__).resolve().parents[1]
-SDK=Path.home()/'Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.2.0-2026-06-09-92a1605b2'
+SDK=ciq_env.sdk()
 args=argparse.ArgumentParser();args.add_argument('--mode',choices=['live','demo','perf','test'],default='live');args.add_argument('--devices',nargs='*');args.add_argument('--jobs',type=int,default=2);a=args.parse_args()
 rows=json.loads((ROOT/'dist/device-matrix.json').read_text())['devices'];ids=a.devices or [r['id'] for r in rows]
-env=dict(os.environ,JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home');env['PATH']=env['JAVA_HOME']+'/bin:'+env['PATH']
+env=ciq_env.java_env()
 folder=ROOT/'bin/matrix'/a.mode;folder.mkdir(parents=True,exist_ok=True)
 def build(id):
     out=folder/id;out.mkdir(exist_ok=True);start=time.monotonic()

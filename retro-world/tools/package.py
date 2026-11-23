@@ -1,5 +1,6 @@
 """Gate the 2.0 store submission on native, visual, archive and signature evidence."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import hashlib,json,re,subprocess,xml.etree.ElementTree as ET,zipfile
 ROOT=Path(__file__).resolve().parents[1];DIST=ROOT/'dist';STORE=ROOT/'store';VERSION='2.2.0';IQ=DIST/f'RetroWorld-{VERSION}.iq'
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -29,8 +30,8 @@ subprocess.run(['openssl','dgst','-sha256','-keyform','DER','-verify',str(inspec
 for product in products:
  path=inspect/product.get('filename');assert path.is_file()
  assert b'PERF_RESULT' not in path.read_bytes(),'Diagnostic marker in release binary'
-sdk=Path.home()/'Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.2.0-2026-06-09-92a1605b2'
-subprocess.run(['/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home/bin/java','-cp',str(sdk/'bin/monkeybrains.jar'),str(ROOT/'tools/VerifyIq.java'),str(IQ),str(inspect/'dev_key.pub')],check=True)
+sdk=ciq_env.sdk()
+subprocess.run([ciq_env.java(),'-cp',str(sdk/'bin/monkeybrains.jar'),str(ROOT/'tools/VerifyIq.java'),str(IQ),str(inspect/'dev_key.pub')],check=True)
 report={'version':VERSION,'name_zh':'寰游时刻 · Retro World','name_en':'Retro World · Map Watch Face','price':'Free','device_targets':len(matrix['devices']),'hardware_variants':parts,'resource_profiles':matrix['profiles'],'excluded_targets':len(matrix['excluded']),'iq_sha256':sha(IQ),'iq_bytes':IQ.stat().st_size,'signature_verification':'manifest and every PRG verified with exported public key','native_probes':native,'native_tests':tests,'layout':layout,'circle':circle,'media':media,'physical_device_tested':False,'battery_life_measured':False,'timing_scope':'Host simulator measurements; not real-watch battery/CPU benchmarks','publication_status':'ready; not submitted'}
 receipt_path=STORE/'submission-receipt.json'
 publication_status='ready; not submitted'

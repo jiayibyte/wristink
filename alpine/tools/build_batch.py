@@ -1,12 +1,13 @@
 """Parallel native builds with isolated compiler output directories (no shared gen/)."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import os,subprocess,concurrent.futures,shutil,json,argparse,time,xml.etree.ElementTree as ET
 from generate import generate,ROOT,DEVICES
 p=argparse.ArgumentParser();p.add_argument('mode',choices=['live','preview','tests']);p.add_argument('devices',nargs='*');p.add_argument('--jobs',type=int,default=2);p.add_argument('--skip-generate',action='store_true');p.add_argument('--typecheck',type=int,choices=[0,1,2,3],default=1);a=p.parse_args()
 if not a.skip_generate:
  subprocess.run([os.sys.executable,str(ROOT/'tools/settings.py')],check=True);generate()
-sdk=Path((Path.home()/'Library/Application Support/Garmin/ConnectIQ/current-sdk.cfg').read_text().strip());key=Path.home()/'.Garmin/keys/developer_key.der'
-env=dict(os.environ,JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home');env['PATH']=env['JAVA_HOME']+'/bin:'+env['PATH']
+sdk=ciq_env.sdk();key=Path.home()/'.Garmin/keys/developer_key.der'
+env=ciq_env.java_env()
 def build(device):
  out=ROOT/'bin/isolated'/a.mode/device;out.mkdir(parents=True,exist_ok=True);prg=out/'Alpine.prg';log=ROOT/f'bin/{device}-{a.mode}-build.log'
  ns='http://www.garmin.com/xml/connectiq';ET.register_namespace('iq',ns)
