@@ -26,7 +26,7 @@ def inspect(package, report, sdk):
         assert all(1 <= len(item[key]) <= 4000 for key in ("description", "whatsNew"))
     with TemporaryDirectory(prefix="tide-grid-iq-") as folder:
         root = Path(folder)
-        subprocess.run(["7zz", "x", str(package), "-o"+folder, "-y"], check=True, stdout=subprocess.DEVNULL)
+        subprocess.run([ciq_env.sevenzip(), "x", str(package), "-o"+folder, "-y"], check=True, stdout=subprocess.DEVNULL)
         ns = {"iq": NS}
         app = ET.parse(root / "manifest.xml").getroot().find("iq:application", ns)
         assert app.get("id") == APP_ID

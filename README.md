@@ -99,7 +99,8 @@ wristink/
 当前脚本支持 **macOS 和 Linux（zsh、Connect IQ SDK 9.2+、JDK 17+、Python 3）**。通过 Garmin SDK Manager 安装 SDK 和目标设备即可，脚本通过 [`tools/ciq_env.sh`](tools/ciq_env.sh) / [`tools/ciq_env.py`](tools/ciq_env.py) 自动找到当前 SDK、设备包和 Java：
 
 - SDK Manager 数据目录：macOS 为 `~/Library/Application Support/Garmin/ConnectIQ`，Linux 为 `~/.Garmin/ConnectIQ`，Windows 为 `%APPDATA%\Garmin\ConnectIQ`；可用 `CIQ_HOME`、`CIQ_SDK`、`CIQ_DEVICES` 覆盖。
-- Java：macOS 上存在 `jdk-19` 时沿用它，否则使用 `JAVA_HOME` 或 `PATH` 中的 `java`。编译器默认堆上限放宽到内存的 70%（山境单机型编译约需 11 GB），可用 `JAVA_TOOL_OPTIONS` 覆盖。
+- Java：macOS 上存在 `jdk-19` 时沿用它，否则使用 `JAVA_HOME` 或 `PATH` 中的 `java`。编译器默认堆上限放宽到内存的 70%（山境单机型编译约需 11 GB），可用 `JAVA_TOOL_OPTIONS` 覆盖。山境商店包只在 epix2 上做一次完整类型检查，全量导出跳过重复推断（`-l 0`，产物逐字节相同），15 GB 内存的 Linux 上约 8 分钟。
+- 7-Zip：检查和打包 `.iq` 依次使用 `7zz`、`7z` 或 `7za`（macOS：`brew install sevenzip`；Linux：`sudo apt install p7zip-full`）。
 - 预览图中文字体：macOS 用华文黑体；Linux 需安装 Noto CJK（如 `sudo apt install fonts-noto-cjk`）。
 - Ubuntu 24.04 上 SDK Manager 和模拟器需要 WebKitGTK 4.0（`libwebkit2gtk-4.0-37`），该版本需从 Ubuntu 22.04 软件源获取。
 

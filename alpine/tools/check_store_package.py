@@ -9,7 +9,7 @@ subprocess.run(['git','diff','--quiet',source_commit,'--']+inputs,cwd=R,check=Tr
 package=Path(args.package).resolve() if args.package else R/f'dist/Alpine-{args.version}.iq'
 assert package.exists()
 root=Path(tempfile.mkdtemp(prefix='iq-audit-',dir=R/'dist'))
-subprocess.run(['/opt/homebrew/bin/7zz','x',str(package),'-o'+str(root),'-y'],stdout=subprocess.DEVNULL,check=True)
+subprocess.run([ciq_env.sevenzip(),'x',str(package),'-o'+str(root),'-y'],stdout=subprocess.DEVNULL,check=True)
 ns={'iq':'http://www.garmin.com/xml/connectiq'};doc=ET.parse(root/'manifest.xml').getroot();app=doc.find('iq:application',ns)
 assert app.attrib['id']=='bb71078cce15417aa5425aa350817001' and app.attrib['type']=='watchface'
 assert {e.text for e in app.findall('.//iq:language',ns)}=={'eng','zhs'}

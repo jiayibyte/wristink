@@ -13,7 +13,7 @@ System.out.println("GARMIN_SDK_IQ_SIGNATURE_VALID="+ok);if(!ok)System.exit(1);
 }}
 '''
 with tempfile.TemporaryDirectory(prefix='moke-sdk-signature-') as folder:
- f=Path(folder);subprocess.run(['7zz','e','-y','-o'+folder,str(archive),'dev_key.pub'],check=True,capture_output=True);(f/'VerifyIq.java').write_text(source)
+ f=Path(folder);subprocess.run([ciq_env.sevenzip(),'e','-y','-o'+folder,str(archive),'dev_key.pub'],check=True,capture_output=True);(f/'VerifyIq.java').write_text(source)
  result=subprocess.run([ciq_env.java(),'-cp',str(SDK/'bin/monkeybrains.jar'),str(f/'VerifyIq.java'),str(archive),str(f/'dev_key.pub')],capture_output=True,text=True)
  (R/'bin/iq-signature-validation.log').write_text(result.stdout+result.stderr)
  if result.returncode or 'GARMIN_SDK_IQ_SIGNATURE_VALID=true' not in result.stdout:raise SystemExit(result.stdout+result.stderr)

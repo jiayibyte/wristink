@@ -6,20 +6,22 @@ R=Path(__file__).resolve().parents[1];p=argparse.ArgumentParser();p.add_argument
 rows=json.loads((R/'config/mip-devices.json').read_text());rows=[r for r in rows if not a.only or r['id'] in a.only];devices=ciq_env.DEVICES;expected={}
 for row in rows:
  c=json.loads((devices/row['id']/'compiler.json').read_text())
- for part in c['partNumbers']:expected[part['number']]=(row['id'],part)
+ for part in c['partNumbers']:expected[part['number']]=(row['id'],part,row.get('amoled',False))
 with tempfile.TemporaryDirectory(prefix='moke-iq-review-') as folder:
- subprocess.run(['7zz','x','-r','-y','-o'+folder,str(archive),'manifest.xml','*-settings.json'],check=True,capture_output=True)
+ subprocess.run([ciq_env.sevenzip(),'x','-r','-y','-o'+folder,str(archive),'manifest.xml','*-settings.json'],check=True,capture_output=True)
  root=ET.parse(Path(folder)/'manifest.xml').getroot();app=root.find('iq:application',ns);assert app.get('id')=='e4c16f1eb76d4c88a6de6aa791adf801' and app.get('entry')=='InstinctFaceApp'
  products=app.find('iq:products',ns);assert {x.get('partNumber') for x in products}==set(expected)
  schema=json.loads((R/'config/settings-catalog.json').read_text());keys={x['key'] for x in schema['settings']};translations=json.loads((R/'config/english-translations.json').read_text());licensed=0;bilingual=0
  for item in products:
-  part=item.get('partNumber');device,original=expected[part];assert int(item.get('minFirmwareVersion') or 0)>=original.get('firmwareVersion',0);assert item.get('connectIqVersion')==original['connectIQVersion']
+  part=item.get('partNumber');device,original,amoled=expected[part];assert int(item.get('minFirmwareVersion') or 0)>=original.get('firmwareVersion',0);assert item.get('connectIqVersion')==original['connectIQVersion']
   data=json.loads((Path(folder)/item.get('settings')).read_text());assert {x['key'] for x in data['settings']}==keys,part
   langs=data['languages'];text=json.dumps(langs,ensure_ascii=False)
   assert 'eng' in langs and 'zhs' in langs and 'valyrian' in langs,part
   settings={x['key']:x for x in data['settings']}
   for row in schema['settings']:
-   item=settings[row['key']];assert item['defaultValue']==row['default']
+   # AMOLED asset profiles default the heart window to black (generate-mip-targets.py).
+   default=0 if amoled and row['key']=='circleBackground' else row['default']
+   item=settings[row['key']];assert item['defaultValue']==default,(part,row['key'])
    title=schema['groups'][row['group']][1]+' · '+row['label'];english=translations[schema['groups'][row['group']][1]]+' · '+translations[row['label']]
    assert langs['zhs'][item['configTitle']]==title,(part,row['key'],'Chinese')
    assert langs['valyrian'][item['configTitle']]==english,(part,row['key'],'English fallback')
