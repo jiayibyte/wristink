@@ -21,8 +21,8 @@ layout=json.loads((DIST/'device-layout-validation.json').read_text());assert all
 assert all(r.get('aod_fraction',0)<.1 and r.get('aod_four_minute_shared_pixels',0)==0 for r in layout['profiles'])
 circle=json.loads((DIST/'circle-alignment-2.0.json').read_text());assert circle['bezel_center']==circle['dial_center'] and circle['white_pixels_clipped_by_hardware_mask']==0
 media=json.loads((STORE/'media-validation.json').read_text());assert len(media['screenshots'])==8
-subprocess.run(['7zz','t',str(IQ)],check=True,stdout=subprocess.DEVNULL)
-inspect=ROOT/'bin/store-export-inspect';subprocess.run(['7zz','x','-y','-o'+str(inspect),str(IQ)],check=True,stdout=subprocess.DEVNULL)
+subprocess.run([ciq_env.sevenzip(),'t',str(IQ)],check=True,stdout=subprocess.DEVNULL)
+inspect=ROOT/'bin/store-export-inspect';subprocess.run([ciq_env.sevenzip(),'x','-y','-o'+str(inspect),str(IQ)],check=True,stdout=subprocess.DEVNULL)
 ns={'i':'http://www.garmin.com/xml/connectiq'};app=ET.parse(inspect/'manifest.xml').getroot().find('i:application',ns)
 assert app.get('id')=='d2fd1f269ea4491f9bf5c77046e0e301'
 products=app.find('i:products',ns);assert len(products)==parts

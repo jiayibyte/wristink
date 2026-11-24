@@ -1,9 +1,10 @@
 """Fail the release if any device binary exceeds the user's 100,000-byte cap."""
 from pathlib import Path
+import sys; sys.path.append(str(Path(__file__).resolve().parents[2]/'tools')); import ciq_env
 import argparse,subprocess,tempfile,xml.etree.ElementTree as ET,json,hashlib
 p=argparse.ArgumentParser();p.add_argument('package');p.add_argument('--limit',type=int,default=100000);a=p.parse_args();package=Path(a.package).resolve()
 with tempfile.TemporaryDirectory(prefix='alpine-size-') as tmp:
- subprocess.run(['7zz','x','-y','-o'+tmp,str(package)],check=True,capture_output=True)
+ subprocess.run([ciq_env.sevenzip(),'x','-y','-o'+tmp,str(package)],check=True,capture_output=True)
  root=ET.parse(Path(tmp)/'manifest.xml').getroot();rows=[]
  for item in root.iter():
   if 'filename' in item.attrib:

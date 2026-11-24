@@ -3,7 +3,7 @@ set -euo pipefail
 cd "${0:A:h:h}"
 source ../tools/ciq_env.sh
 python_bin="${RETRO_PYTHON:-python3}"
-version="${1:-2.2.0}"
+version="${1:-2.2.1}"
 mkdir -p bin dist
 "$python_bin" tools/device_profiles.py
 "$python_bin" tools/check_devices.py

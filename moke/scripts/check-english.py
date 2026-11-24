@@ -7,7 +7,7 @@ tr=json.loads((R/'config/english-translations.json').read_text());schema=json.lo
 cn={e.get('id'):e.text for e in ET.parse(R/'resources/strings/strings.xml').getroot()}
 en={e.get('id'):e.text for e in ET.parse(R/'resources-eng/strings/strings.xml').getroot()}
 assert set(cn)==set(en);assert cn['LocaleEnglish']=='false' and en['LocaleEnglish']=='true'
-assert len(schema['settings'])==94
+assert len(schema['settings'])==95
 for path in (R/'resources-eng/config').glob('group-*-page-*.json'):
     original=json.loads((R/'resources/config'/path.name).read_text());english=json.loads(path.read_text())
     for a,b in zip(original,english):assert a[0]==b[0] and a[2:]==b[2:] and tr[a[1]]==b[1]
@@ -36,5 +36,5 @@ for path in (R/'resources/fonts').glob('dataf*.fnt'):
     for text in ['10/19 Mon','10/19 Wed','Mon 10/19','2026/10/19','AM','PM','28d','10月19日 周一']:
         assert all(ord(c) in chars for c in text)
     checks+=1
-result=dict(status='passed',settings=94,groups=13,languages=['zhs','eng'],english_data_fonts=checks,identical_numeric_glyphs=True,rounded_clean_defaults=True,scope='Generated resource parity and font geometry; device runtime checked separately.')
+result=dict(status='passed',settings=len(schema['settings']),groups=13,languages=['zhs','eng'],english_data_fonts=checks,identical_numeric_glyphs=True,rounded_clean_defaults=True,scope='Generated resource parity and font geometry; device runtime checked separately.')
 (R/'bin/english-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(result)

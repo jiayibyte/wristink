@@ -48,6 +48,15 @@ def tool(name):
     return sdk() / 'bin' / (name + '.bat' if WINDOWS else name)
 
 
+def sevenzip():
+    """7-Zip command for .iq archives: 7zz (Homebrew/official build) or p7zip's 7z/7za on Linux."""
+    for name in ('7zz', '7z', '7za'):
+        found = shutil.which(name)
+        if found:
+            return found
+    raise SystemExit('7-Zip not found: install 7zz (macOS: brew install sevenzip) or 7z (Linux: apt install p7zip-full).')
+
+
 def java_home():
     """The macOS JDK the project was built with when present, else JAVA_HOME, else None (java on PATH)."""
     if MAC_JDK.is_dir():
